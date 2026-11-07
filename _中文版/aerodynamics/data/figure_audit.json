@@ -1,0 +1,28 @@
+{
+  "CD": {
+    "curves": 2,
+    "measured_points": 5,
+    "formula_samples": 401,
+    "physical_size_inches": [
+      5.8,
+      3.35
+    ],
+    "png_dpi": 300,
+    "x_variable": "Sp",
+    "fixed_Re": 455172,
+    "shaded_regions": 0
+  },
+  "CL": {
+    "curves": 2,
+    "measured_points": 5,
+    "formula_samples": 401,
+    "physical_size_inches": [
+      5.8,
+      3.35
+    ],
+    "png_dpi": 300,
+    "x_variable": "Sp",
+    "fixed_Re": 455172,
+    "shaded_regions": 0
+  }
+}

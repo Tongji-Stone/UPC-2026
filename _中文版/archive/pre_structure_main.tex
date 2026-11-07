@@ -1,0 +1,374 @@
+\RequirePackage{fix-cm}
+\documentclass[12pt,letterpaper]{article}
+\usepackage[margin=1in,headheight=15pt,headsep=15pt]{geometry}
+\usepackage{amsmath,amssymb,graphicx,booktabs,array,float,fancyhdr,lastpage,hyperref,listings,xcolor}
+\usepackage{microtype,needspace,fontspec}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\setmainfont{Times New Roman}
+\hypersetup{colorlinks=false,hidelinks}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\normalsize Problem B}
+\fancyhead[C]{\small The University Physics Competition}
+\fancyhead[R]{\small Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0pt}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,numbers=left,numberstyle=\tiny,numbersep=8pt,columns=fullflexible,showstringspaces=false,frame=none}
+\graphicspath{{aerodynamics/}{assets/}{../results/coupled_model/figures/}{../results/paper_geometry/}}
+\input{coupled_results.tex}
+\begin{document}
+\begin{center}
+{\Large\bfseries Modeling and Validation of a Soccer Ball's Three-Dimensional Flight to the Goal\par}
+\vspace{2mm}{\bfseries Problem B\par}
+\vspace{3mm}{\bfseries Abstract\par}
+\end{center}
+The flight of a soccer ball couples translational motion to rotation through drag, Magnus lift and rotational damping. We construct a nine-state model with three translational forces and a dissipative spin torque. The drag and lift coefficients follow the complete speed- and spin-dependent Teamgeist relations of Kiratidis and Leinweber. Their reproduction of digitized 2007 wind-tunnel data at matched Reynolds number gives coefficient RMSE values of 0.0113 for drag and 0.0504 for lift. The torque law uses the spherical specialization of the MuJoCo fluid model, with its reference angular-drag parameter explicitly stated.
+
+Initial velocity and spin are jointly fitted to the three competition positions by unweighted least squares. A deterministic 19-start search finds two distinct initial states with position residuals below $10^{-8}$ m, predicting goal-plane points $(\FitAY,\FitAZ)$ m and $(\FitBY,\FitBZ)$ m. Their separation is \GoalSeparation\ m. Both fitted spin magnitudes exceed the wind-tunnel range, so these are conditional model predictions involving spin extrapolation. During the first predicted flight, spin decreases from \StartSpin\ to \EndSpin\ rad/s under the declared torque setting.
+
+Four previously selected shots from two DFL matches test the same procedure using only positions at 0, 0.04 and 0.08 s. Three predictions reach the goal plane and one reaches the ground first. The mean plane error of the three reached cases is \RealMeanError\ m, with substantial variation between events. No measurement-noise distribution or parameter prior is imposed. Multiple fitted states, extrapolation and residual mismatch are reported separately from numerical integration accuracy.
+
+\noindent\textbf{Keywords:} Soccer ball, flight trajectory, aerodynamic drag, Magnus effect, model validation
+\newpage
+\tableofcontents
+\newpage
+\section{Introduction}
+\subsection{Problem Background}
+The path of a kicked soccer ball is not generally a straight line. Gravity bends the trajectory downwards, air resistance slows the ball, and its rotation can produce a sideways or vertical aerodynamic force. The combination of these effects determines where the ball reaches the plane of the goal. Mathematical models of soccer-ball flight have therefore been developed using Newton's law together with experimental aerodynamic relationships \cite{bray,maponi,kiratidis2018}. High-fidelity simulations have also shown how seams and other surface features can alter the flow and the trajectory \cite{paudel}.
+
+An effective way to examine a physical model is to compare its calculated path with positions recorded during a real kick. The DFL open dataset combines match events and optical tracking data for professional matches \cite{bassek,dataset}. These records make it possible to identify a penalty event, follow the ball through the flight, and compare the model with its position at the actual goal plane.
+
+\subsection{Problem Restatement}
+We model a soccer ball travelling in three dimensions from the vicinity of the penalty mark to the goal. The goal is 7.32 m wide and 2.44 m high; the penalty mark is 11 m from the goal line. We establish a model incorporating gravity, drag and the Magnus effect, solve for its trajectory and the point at which it crosses the goal plane, and compare the calculated positions with a recorded penalty flight. The prediction uses the initial position and the positions at 0.05 and 0.10 s; subsequent positions are reserved for validation. Figure~\ref{fig:workflow} summarizes the coupled model and inverse problem: early positions determine candidate initial states, while later positions provide validation targets.
+\begin{figure}[H]\centering
+\resizebox{\textwidth}{!}{\input{assets/workflow_tikz.tex}}
+\caption{Coupled translation--rotation model, initial-state fitting and goal-plane validation.}\label{fig:workflow}
+\end{figure}
+
+\section{Preparation of the Models}
+\subsection{Assumptions}
+\begin{itemize}
+\item The ball is first idealized geometrically as a rigid sphere of constant mass and radius, so its cross-sectional area is $\pi R^2$ and its position represents its centre. This idealization follows the centre-of-mass approach in soccer-ball flight models \cite{maponi,bray,myers}. Seams and surface texture are not explicitly resolved in the geometry; their aerodynamic influence is considered in the sensitivity analysis. The reference force coefficients are empirical soccer-ball coefficients, rather than coefficients established for a perfectly smooth sphere.
+\item During free flight, gravity, aerodynamic drag and spin-induced lift are the principal forces, as in the flight models of Maponi and Piombin and Bray and Kerwin \cite{maponi,bray}. Free-flight integration stops at ground contact; the analysis assumes no additional contact before the recorded goal-plane crossing.
+\item Air density is uniform over the short flight. Wind enters through the relative air velocity, as in Maponi and Piombin \cite{maponi}. Spin evolves under the rotational-drag law in Section~\ref{sec:rotation}; the reference angular-drag strength is the documented MuJoCo value 1.5, and the reference wind is zero.
+\item The first position and the next two available early positions are used to fit the state; later positions are retained for validation using the available DFL tracking data \cite{bassek}.
+\item The tracking data's vertical coordinate is treated as a height in metres for the present calculation. The dataset description identifies it as ball height \cite{bassek}; its unit and reference are working assumptions here.
+\end{itemize}
+\Needspace{28\baselineskip}
+\subsection{Notations}
+The main notations and reference values used in the model are shown in Table~\ref{tab:notations}.
+\begin{table}[H]\centering\caption{Notations}\label{tab:notations}
+\begin{tabular}{lll}\toprule
+Symbol & Definition & Value or unit \\\midrule
+$\boldsymbol r=(x,y,z)$ & Ball-centre position & m \\
+$\boldsymbol v$ & Ball velocity & m/s \\
+$\boldsymbol\omega$ & Angular velocity & rad/s \\
+$m$ & Ball mass & 0.43 kg \\
+$R$ & Ball radius & 0.11 m \\
+$\rho$ & Air density & 1.20 kg/m$^3$ \\
+$g$ & Gravitational acceleration & 9.81 m/s$^2$ \\
+$A$ & Cross-sectional area, $\pi R^2$ & m$^2$ \\
+$C_D,C_L$ & Drag and lift coefficients & Dimensionless \\
+$\boldsymbol u$ & Velocity relative to air & m/s \\
+$v=\|\boldsymbol u\|$ & Relative airspeed & m/s \\
+$\mu,\nu=\mu/\rho$ & Dynamic and kinematic viscosity & Pa\,s; m$^2$/s \\
+$Re,Sp$ & Reynolds number and spin parameter & Dimensionless \\
+$q=\rho v^2/2$ & Translational dynamic pressure & Pa \\
+$\boldsymbol Q$ & Rotational drag torque & N\,m \\
+$C_{Q,v},C_{Q,\omega}$ & Torque coefficients (two normalizations) & Dimensionless \\
+$C_{\mathrm{angular}}$ & Angular-drag model parameter & Dimensionless \\
+$I_b$ & Ball moment of inertia & kg\,m$^2$ \\
+$X_g$ & Goal-plane coordinate & 52.50 m (match coordinates) \\\bottomrule
+\end{tabular}\end{table}
+
+\section{Model Establishment}
+We express the ball's motion using one set of equations and switch individual forces on or off to obtain simpler comparison models. The coordinate $x$ points towards the goal, $y$ is horizontal across the goal, and $z$ is vertical. In the selected match the coordinate origin is the centre of the pitch.
+\subsection{Geometry and Goal Plane}
+For a pitch 105 m long with its origin at the centre, the two goal lines are located at $x=\pm52.50$ m. The selected kick travels towards the positive-$x$ goal. For the competition geometry the valid goal opening is $-3.66\le y\le3.66$ m and $0\le z\le2.44$ m. The goal-plane position is the ball centre's first forward intersection with $x=X_g$.
+\begin{figure}[H]\centering\includegraphics[width=0.94\textwidth]{geometry.pdf}
+\caption{Penalty-kick geometry in local coordinates. The dashed line and point $P$ indicate an illustrative crossing.}\label{fig:geometry}\end{figure}
+Figure~\ref{fig:geometry} uses the penalty mark as the local origin and places the goal plane at $x=11$ m. For the match record below, the pitch-centred coordinate system instead places the goal at $X_g=52.50$ m.
+\subsection{State Variables and Newton's Law}
+The state consists of position $\boldsymbol r$, velocity $\boldsymbol v$ and spin $\boldsymbol\omega$. Three-dimensional models of a spinning ball have also been studied analytically and numerically by Myers and Mitchell \cite{myers}. Newton's law gives
+\begin{equation}
+\frac{d\boldsymbol r}{dt}=\boldsymbol v,\qquad
+m\frac{d\boldsymbol v}{dt}=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L.
+\label{eq:motion}\end{equation}
+The initial position is observed. The three components of initial velocity and the three components of initial spin are estimated jointly; the force coefficients are functions of the evolving state, not independent fitted parameters.
+\subsection{Gravity}
+With the vertical unit vector $\boldsymbol e_z$, the gravitational force is
+\begin{equation}\boldsymbol F_g=-mg\boldsymbol e_z.\end{equation}
+When drag and lift are removed, Eq.~\eqref{eq:motion} reduces to the familiar parabolic trajectory.
+\subsection{Aerodynamic Drag}\label{sec:drag}
+Let $\boldsymbol u=\boldsymbol v-\boldsymbol v_{\mathrm{wind}}$ denote velocity relative to the air. The drag force opposes this relative motion:
+\begin{equation}
+\boldsymbol F_D=-\tfrac12\rho C_D(Re,Sp)A\|\boldsymbol u\|\boldsymbol u.
+\label{eq:drag-force}\end{equation}
+As the ball slows down, its boundary layer can change state, altering drag and lift. Spin also changes the relative motion of the surface and the air. Coefficients depending on these quantities therefore connect the force model to measured soccer-ball aerodynamics. Following the definitions used by Asai et al.\ \cite{asai2007} and Kiratidis and Leinweber \cite{kiratidis2018}, we write
+\begin{equation}
+v=\|\boldsymbol u\|,\qquad Re=\frac{2Rv}{\nu},\qquad
+Sp=\frac{R\omega}{v},\qquad \omega=\|\boldsymbol\omega\|,\quad \nu=\frac{\mu}{\rho}.
+\label{eq:re-sp}\end{equation}
+Here $\mu$ and $\nu$ are dynamic and kinematic viscosity. The Reynolds number compares inertial and viscous flow effects, while $Sp$ compares equatorial surface speed with airspeed. At fixed radius and air properties, $v$ and $Re$ describe the same speed dependence. All coefficient laws below use SI units and a dimensionless $Sp$.
+
+\subsubsection{Wind-tunnel evidence and comparison conditions}
+To assess whether a coefficient law represents a soccer ball under relevant conditions, we compare it with published force measurements, rather than judging it from a trajectory alone. Asai et al.\ \cite{asai2007} measured drag and transverse forces on nonspinning and spinning soccer balls in a low-speed circulating wind tunnel at Tokai University, Japan. The tunnel used a six-component balance, a $1.5\times1$ m measuring section and a reported turbulence level of 1\%. Its maximum airspeed was 40 m/s. The nonspinning tests used commercial Size~5 balls at 7--35 m/s; the spinning tests used a full-size fibre-reinforced-plastic (FRP) replica of the Teamgeist, with $R=0.11$ m, supported by 2 mm piano wires and bearings. Air-driven rotation was measured with a laser tachometer. The reported air density was $1.2$ kg/m$^3$; spinning-ball tests covered 22--30 m/s and 2--10 revolutions/s \cite{asai2007}.
+
+We use the spinning Teamgeist measurements in their Figures~8 and~9 to examine the drag and lift trends. Their Figure~9 reports the side-force coefficient $C_S$; under the transverse-spin geometry it represents the Magnus-force coefficient denoted $C_L$ here, consistent with its use by Kiratidis and Leinweber \cite{asai2007,kiratidis2018}. The comparisons below select the five points for each coefficient at $Re=455172$, corresponding to approximately 30 m/s. This keeps the empirical and measured curves at the same flow condition, near the roughly 31 m/s speed of the competition example.
+
+Values are digitized from the original publication's plotted marker centres. The wind-speed and Reynolds-number correspondence gives $\nu\simeq1.45\times10^{-5}$ m$^2$/s; this reconstructed conversion is used consistently for both the comparison speed and the lift reference condition. The general trajectory model uses $\nu=1.50\times10^{-5}$ m$^2$/s unless otherwise stated. The plots connect measured points only over their observed $Sp$ range. Since the published coefficient laws draw on these experiments, the comparison measures reproduction of the wind-tunnel data.
+
+\paragraph{Reynolds-number applicability to the competition example.}
+A quadratic interpolation through the three specified positions gives early airspeeds of approximately 30.38--32.56 m/s in still air. With $R=0.11$ m and $\nu=1.50\times10^{-5}$ m$^2$/s, these correspond to $Re\simeq(4.46$--$4.78)\times10^5$, with a representative value of $4.61\times10^5$. Kiratidis and Leinweber's Teamgeist fit extends to 35 m/s \cite{kiratidis2018}, equivalent to $Re\simeq5.13\times10^5$ for these air properties. The competition conditions therefore lie within the high-speed range represented by the empirical model and in the same supercritical flow regime as the wind-tunnel measurements of Asai et al.\ \cite{asai2007}. This agreement makes the Teamgeist relation a relevant empirical reference for the problem's Reynolds-number regime. Spin-range coverage must also be checked after initial-state fitting, as done in Section~\ref{sec:example}. The spinning-ball measurements themselves span $Re=333793$--455172; the representative problem value is approximately 1.38\% above that experimental upper limit. The two coefficient plots consequently use the actual measured condition $Re=455172$ for a matched comparison.
+
+\subsubsection{Empirical drag relation and matched-condition comparison}
+The drag crisis is the rapid reduction of drag associated with boundary-layer transition. A useful coefficient law should describe this transition as well as the slower variation in the supercritical regime. According to Kiratidis and Leinweber \cite{kiratidis2018}, their Eq.~(5) represents zero-spin drag by
+\begin{equation}
+\begin{aligned}
+f(v)={}&\frac{a-b_{\min}}{1+\exp[(v-v_c)/v_s]}+b_{\min}\\
+&+\frac{v-v_{\min}}{1+\exp[-(v-v_{\min})/v_s]}
+\frac{b_{\max}-b_{\min}}{v_{\max}-v_{\min}}.
+\end{aligned}
+\label{eq:cd-zero}\end{equation}
+The coefficient $a$ sets the low-speed level, $v_c$ locates the transition, and $v_s$ controls its width. The remaining parameters set the level and slope of the high-speed tail. Table~\ref{tab:teamgeist} gives the Teamgeist parameters reported in their Table~1 \cite{kiratidis2018}.
+\begin{table}[H]\centering
+\caption{Teamgeist zero-spin drag parameters from Kiratidis and Leinweber \cite{kiratidis2018}.}\label{tab:teamgeist}
+\begin{tabular}{ccccccc}\toprule
+$a$ & $v_c$ & $v_s$ & $b_{\min}$ & $b_{\max}$ & $v_{\min}$ & $v_{\max}$\\
+--- & m/s & m/s & --- & --- & m/s & m/s\\\midrule
+0.4927 & 12.58 & 1.071 & 0.1440 & 0.1540 & 23.17 & 35.00\\\bottomrule
+\end{tabular}\end{table}
+For a spinning Teamgeist, Kiratidis and Leinweber's Eq.~(7) adds a linear spin correction with slope 0.514, fitted to the supercritical wind-tunnel data \cite{kiratidis2018}:
+\begin{equation}
+C_D(Re,Sp)=f\!\left(\frac{Re\nu}{2R}\right)+0.514Sp.
+\label{eq:cd-full}\end{equation}
+Thus drag changes with speed even at zero spin, and also increases with rotation. The Teamgeist parameter set is used throughout the coefficient comparison; other ball surfaces require their own parameters.
+
+Figure~\ref{fig:cd-comparison} compares Eq.~\eqref{eq:cd-full} with the matched-condition measurements of Asai et al.\ \cite{asai2007}. Both curves show increasing drag with $Sp$. Evaluating the formula at the five measured abscissae gives a mean absolute error (MAE) of 0.00985 and a root-mean-square error (RMSE) of 0.01127 in coefficient units. These values support the drag relation over this measured interval.
+\begin{figure}[H]\centering
+\includegraphics[width=5.8in]{cd_comparison.pdf}
+\caption{Teamgeist drag at $Re=455172$ (approximately 30 m/s), $R=0.11$ m and $\rho=1.2$ kg/m$^3$. The solid curve is Eq.~\eqref{eq:cd-full} from Kiratidis and Leinweber \cite{kiratidis2018}; the dashed curve connects five digitized measurements from Asai et al.\ \cite{asai2007}, Figure~8. Symbols mark the measured locations.}\label{fig:cd-comparison}
+\end{figure}
+
+
+\subsection{Spin-Induced Lift}\label{sec:lift}
+Magnus lift acts perpendicular to the relative airflow. The empirical coefficient below describes transverse spin. To extend it continuously to an oblique spin axis, we adopt the projection
+\begin{equation}
+\begin{aligned}
+\boldsymbol F_L&=\tfrac12\rho C_L(Re,Sp)A v^2\sin\theta\,
+\frac{\boldsymbol\omega\times\boldsymbol u}{\|\boldsymbol\omega\times\boldsymbol u\|},\\
+\sin\theta&=\frac{\|\boldsymbol\omega\times\boldsymbol u\|}{\omega v}.
+\end{aligned}
+\label{eq:lift-force}\end{equation}
+This angular projection is a three-dimensional modeling closure; the cited wind-tunnel measurements calibrate transverse spin. We set lift to zero for zero spin, zero airspeed or parallel spin and airflow. In every other state, the coefficient is evaluated from the complete relation below.
+\subsubsection{Empirical lift relation and matched-condition comparison}
+Rotation creates an asymmetric flow and a transverse Magnus force. Its magnitude depends on the boundary-layer state as well as spin, so a spin-only relation does not describe all flow conditions. Kiratidis and Leinweber \cite{kiratidis2018} introduce the reference power law in their Eq.~(8),
+\begin{equation}
+C_L^{\mathrm{fit}}(Sp)=1.15Sp^{0.83},
+\label{eq:cl-reference}\end{equation}
+and scale it using drag as an indicator of flow state in their Eq.~(9) \cite{kiratidis2018}. We use that complete relation:
+\begin{equation}
+C_L(Re,Sp)=C_L^{\mathrm{fit}}(Sp)
+\frac{C_{D,\mathrm{ceil}}-\min\!\left[C_D(Re,Sp),C_{D,\mathrm{ceil}}\right]}
+{C_{D,\mathrm{ceil}}-C_{D,\mathrm{ref}}},
+\label{eq:cl-full}\end{equation}
+with the Teamgeist reference quantities
+\begin{equation}
+C_{D,\mathrm{ceil}}=f(0),\qquad
+C_{D,\mathrm{ref}}=C_D(333793,0.19).
+\label{eq:cl-anchors}\end{equation}
+Here $C_{D,\mathrm{ceil}}\simeq0.4927$ is the zero-spin low-speed ceiling. The reference drag is evaluated with Eq.~\eqref{eq:cd-full}, including its spin term and using the same $R$ and $\nu$ as the calculation. At the reference $(Re,Sp)=(333793,0.19)$ the scaling factor is one and $C_L\simeq0.290$. The ceiling, reference condition and use of drag to reduce lift follow Kiratidis and Leinweber \cite{kiratidis2018}; Eq.~\eqref{eq:cl-reference} is an intermediate reference, while Eq.~\eqref{eq:cl-full} supplies the lift coefficient in the force model.
+
+Figure~\ref{fig:cl-comparison} compares the complete relation with the five matched-condition measurements of Asai et al.\ \cite{asai2007}. Both curves increase across the measured interval, but the formula is above all five measured values. Its MAE is 0.04505, RMSE is 0.05040, and maximum absolute difference is 0.07325. This comparison supports the qualitative spin dependence while identifying a larger quantitative discrepancy than for drag. The coefficients should therefore be used with their ball type and measured range specified. In particular, large-$Sp$ extrapolation is not established by this experiment.
+\begin{figure}[H]\centering
+\includegraphics[width=5.8in]{cl_comparison.pdf}
+\caption{Teamgeist Magnus lift at $Re=455172$ (approximately 30 m/s), $R=0.11$ m and $\rho=1.2$ kg/m$^3$. The solid curve is the complete scaled relation, Eq.~\eqref{eq:cl-full}, from Kiratidis and Leinweber \cite{kiratidis2018}; the dashed curve connects five digitized side-force measurements from Asai et al.\ \cite{asai2007}, Figure~9, interpreted as $C_L$ for transverse spin. Symbols mark the measured locations.}\label{fig:cl-comparison}
+\end{figure}
+
+\subsection{Rotational Drag and Environmental Settings}\label{sec:rotation}
+Spin affects Magnus lift, so describing its evolution requires a torque law as well as a force law. Grad et al.\ \cite{grad2026}, Supplementary Section~8.4, describe quadratic angular drag and viscous drag in the MuJoCo ellipsoid fluid model. Using the spherical specialization of the MuJoCo 3.8.1 implementation \cite{mujoco381}, these contributions give
+\begin{equation}
+\boldsymbol Q=-\frac{8\pi}{15}\rho C_{\mathrm{angular}}R^5
+\omega\boldsymbol\omega-8\pi\mu R^3\boldsymbol\omega.
+\label{eq:torque-dimensional}\end{equation}
+The first term is inertial angular drag, quadratic in angular speed; the second is linear viscous drag. The parameter $C_{\mathrm{angular}}$ controls the inertial contribution. The factor $8\pi R^5/15$ is a fluid-drag geometric factor, not the ball's moment of inertia.
+
+To compare torque with the translational force coefficients, we define the dynamic pressure $q=\rho v^2/2$ and use radius $R$ as the torque reference length:
+\begin{equation}
+C_{Q,v}=\frac{\|\boldsymbol Q\|}{qAR},\qquad
+\boldsymbol Q=-qAR C_{Q,v}\widehat{\boldsymbol\omega},\qquad
+\widehat{\boldsymbol\omega}=\frac{\boldsymbol\omega}{\omega}.
+\label{eq:cq-definition}\end{equation}
+\Needspace{5\baselineskip}
+Substitution of the spherical torque law \eqref{eq:torque-dimensional}, based on Grad et al.\ \cite{grad2026} and MuJoCo \cite{mujoco381}, into this definition gives
+\begin{equation}
+C_{Q,v}(Re,Sp)=\frac{16}{15}C_{\mathrm{angular}}Sp^2+\frac{32Sp}{Re}.
+\label{eq:cq-full}\end{equation}
+Thus the inertial contribution scales as $Sp^2$. If the reference pressure instead uses the rotating surface speed $R\omega$, the same dimensional torque gives
+\begin{equation}
+C_{Q,\omega}=\frac{\|\boldsymbol Q\|}{\tfrac12\rho(R\omega)^2AR}
+=\frac{C_{Q,v}}{Sp^2}
+=\frac{16}{15}C_{\mathrm{angular}}+\frac{32}{Re\,Sp},\qquad Sp>0.
+\label{eq:cq-rotation}\end{equation}
+The different powers of $Sp$ reflect the choice of reference pressure. MuJoCo uses a default $C_{\mathrm{angular}}=1.5$ \cite{mujoco381}; it is a software reference parameter, not a soccer-ball spin-decay calibration. Asai et al.'s force measurements \cite{asai2007} do not supply a rotational-torque dataset. The reference calculations use this documented value, $C_{\mathrm{angular}}=1.5$. Changes to it are declared sensitivity experiments rather than estimates from the force dataset.
+
+To relate torque to spin, we use the thin spherical-shell inertia employed by Maponi and Piombin \cite{maponi}, an isotropic mechanical approximation:
+\begin{equation}
+I_b=\frac23mR^2,\qquad I_b\dot{\boldsymbol\omega}=\boldsymbol Q.
+\label{eq:spin-evolution}\end{equation}
+This inertia is a mechanical approximation distinct from the fluid-drag geometry in Eq.~\eqref{eq:torque-dimensional}. For nonzero spin and positive drag or viscosity, $\boldsymbol Q\cdot\boldsymbol\omega<0$, so the model dissipates rotational energy. At zero spin we set the torque directly to zero; at zero airspeed the translational aerodynamic forces are zero and we evaluate torque from Eq.~\eqref{eq:torque-dimensional}, avoiding the undefined $Sp$ and $Re$ ratios.
+
+\subsubsection{Reference parameters and mechanical consistency}
+The fluid-relative velocity, coefficients and torque are updated together during flight. Table~\ref{tab:parameter-sources} distinguishes physical reference values, declared model settings and estimated initial conditions. In particular, no independent $C_D$, $C_L$, zero-spin drag offset or spin-decay rate is fitted.
+\begin{table}[H]\centering\small
+\caption{Parameter values, sources and roles in the coupled calculation.}\label{tab:parameter-sources}
+\begin{tabular}{p{.16\textwidth}p{.27\textwidth}p{.47\textwidth}}\toprule
+Quantity & Value & Source or role\\\midrule
+$m,R,g$ & 0.43 kg; 0.11 m; 9.81 m/s$^2$ & Reference values in Maponi and Piombin, Table 1 \cite{maponi}.\\
+$\rho$ & 1.2 kg/m$^3$ & Air-density reference from Asai et al.\ \cite{asai2007}.\\
+$\nu,\mu$ & $1.50\times10^{-5}$ m$^2$/s; $\mu=\rho\nu$ & Declared reference air setting; dynamic viscosity is derived consistently.\\
+$C_D,C_L$ & Eqs.~\eqref{eq:cd-full}, \eqref{eq:cl-full} & Teamgeist empirical parameters \cite{kiratidis2018}; evaluated at the current state.\\
+$C_{\mathrm{angular}}$ & 1.5 & Documented MuJoCo reference value \cite{mujoco381}.\\
+$I_b$ & $2mR^2/3$ & Isotropic thin-shell approximation \cite{maponi}.\\
+$\boldsymbol v_{\mathrm{wind}}$ & $(0,0,0)$ m/s & Declared still-air reference scenario.\\
+$\boldsymbol v_0,\boldsymbol\omega_0$ & Six fitted components & Estimated from early positions, without parameter priors.\\\bottomrule
+\end{tabular}\end{table}
+
+These choices give nine first-order differential equations for the nine state variables. Spherical isotropic inertia makes $\boldsymbol\omega\times(I_b\boldsymbol\omega)=\boldsymbol0$, so no additional gyroscopic term is required. The torque is parallel and opposite to spin; it reduces spin magnitude without rotating the spin axis in this model.
+
+In still air, the total mechanical energy satisfies
+\begin{equation}
+\frac{d}{dt}\left(\tfrac12m\|\boldsymbol v\|^2+mgz+\tfrac12I_b\omega^2\right)
+=\boldsymbol F_D\cdot\boldsymbol v+\boldsymbol Q\cdot\boldsymbol\omega\le0.
+\label{eq:energy}\end{equation}
+Gravity exchanges kinetic and potential energy, lift is perpendicular to velocity, and both drag terms dissipate energy. This establishes mechanical consistency of the chosen force--torque closure. Whether early positions uniquely identify its initial state is a separate inverse-problem question.
+
+\section{Model Solving}\label{sec:solving}
+\subsection{Shared integration and joint initial-state estimation}
+We integrate the complete nine-state system using the adaptive DOP853 Runge--Kutta method. The forward predictor and inverse fitter call the same state derivative, including rotational damping. Continuous event detection stops at the first forward crossing of the target plane or at descending contact of the ball centre with $z=R$. Fits evaluate positions at the actual observation times.
+
+With the initial observed position fixed, the unknown vector is $\boldsymbol\eta=(\boldsymbol v_0,\boldsymbol\omega_0)$. For observed positions $\boldsymbol r_i$ at times $t_i$, we minimize
+\begin{equation}
+J(\boldsymbol\eta)=\sum_{i=1}^{2}\|\boldsymbol r(t_i;\boldsymbol\eta)-\boldsymbol r_i\|^2.
+\label{eq:joint-fit}\end{equation}
+The objective is unweighted position least squares. Dividing residuals by $R$ and scaling velocity by 30 m/s and spin by $20\pi$ rad/s improves numerical conditioning without introducing a prior or measurement-error distribution. Initial $v_x$ is positive; no upper bound or directional constraint is imposed on fitted spin.
+
+The numerical search uses 19 deterministic starts: a zero-spin start, and starts at 2, 6 and 10 revolutions/s around each positive and negative coordinate axis. These rates span the experimental spin settings of Asai et al.\ \cite{asai2007}; they initialize the optimizer and do not fix or bound the final estimate. Initial velocity guesses come from a quadratic interpolation through the three observations. Each search permits 400 function evaluations. Integration uses relative/absolute tolerances $2\times10^{-9}$/$10^{-11}$ during fitting and $10^{-9}$/$10^{-11}$ for prediction, with a maximum prediction step of 0.005 s. These are numerical controls, not physical uncertainties.
+
+Distinct fitted states are retained when their residual sums differ from the minimum by at most $\max(10^{-12}\ \mathrm{m}^2,10^{-6}J_{\min})$. This tolerance identifies numerically near-equal minima, not a confidence region. We also retain optimization status, residuals and singular values of the dimensionless residual Jacobian. A relative singular-value threshold of $10^{-7}$ is used as a practical numerical-rank diagnostic.
+
+\subsection{Competition example and candidate predictions}\label{sec:example}
+The three specified ball-centre positions are
+\begin{equation}
+\begin{aligned}
+\boldsymbol r(0)&=(0,0,0.11),\\
+\boldsymbol r(0.05)&=(1.50,0.45,0.44),\\
+\boldsymbol r(0.10)&=(2.96,0.86,0.74)\ \mathrm{m}.
+\end{aligned}
+\end{equation}
+The multistart search finds two distinct near-best states, A and B, shown in Table~\ref{tab:fit-states}. Each reproduces the supplied positions with maximum coordinate residual below $10^{-8}$ m.
+\begin{table}[H]\centering\small
+\caption{Joint initial-state estimates for the competition example.}\label{tab:fit-states}
+\begin{tabular}{cl}\toprule
+Fit & Initial state\\\midrule
+A & $\boldsymbol v_0=\FitAVelocity$ m/s\\
+  & $\boldsymbol\omega_0=\FitASpin$ rad/s\\
+B & $\boldsymbol v_0=\FitBVelocity$ m/s\\
+  & $\boldsymbol\omega_0=\FitBSpin$ rad/s\\\bottomrule
+\end{tabular}\end{table}
+
+The predicted first forward crossings of $x=11$ m are
+\begin{equation}
+\begin{aligned}
+\text{A:}\quad (y_g,z_g)&=(\FitAY,\FitAZ)\ \mathrm{m},& t_g&=\FitATime\ \mathrm{s},\\
+\text{B:}\quad (y_g,z_g)&=(\FitBY,\FitBZ)\ \mathrm{m},& t_g&=\FitBTime\ \mathrm{s}.
+\end{aligned}
+\label{eq:predictions}\end{equation}
+Both ball centres lie inside the goal opening, and their radii also fit within the frame. Their goal-plane separation is \GoalSeparation\ m. Figure~\ref{fig:coupled-prediction} shows both trajectories and the observed points. With no stochastic observation model, these are conditional best-fit candidates; no probability weights are assigned to them.
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{prediction.pdf}
+\caption{Coupled-model fits A and B: top and side views and goal-plane intersections. Black markers are the three input positions.}\label{fig:coupled-prediction}\end{figure}
+
+The initial spin magnitude for A is \StartSpin\ rad/s, approximately \StartRev\ revolutions/s, with initial $Sp\simeq\StartSp$. This exceeds the 2--10 revolutions/s spinning-ball experiment and its measured $Sp$ range, whose largest value is approximately 0.32 \cite{asai2007}. Its initial speed remains within the 35 m/s speed range represented by the Teamgeist drag fit. Consequently, Reynolds-number agreement alone does not establish experimental support for the fitted spin: the predictions involve extrapolation in $Sp$. We retain the actual fits and this coverage information rather than imposing extra coefficient caps or changing the supplied positions.
+
+The torque law reduces A's spin magnitude to \EndSpin\ rad/s by the crossing. Figure~\ref{fig:state-evolution} shows the associated coefficient and torque evolution. Tightening prediction tolerances to $10^{-11}$/$10^{-13}$ and halving the maximum step changes the reported crossing by less than $10^{-6}$ m, substantially below the A--B separation.
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{state_evolution.pdf}
+\caption{Spin magnitude, drag, lift, translationally normalized torque coefficient, torque magnitude and spin parameter along the two fitted flights. Coefficients are recomputed from the evolving state.}\label{fig:state-evolution}\end{figure}
+
+\subsection{Early-frame prediction of recorded shots}\label{sec:real-validation}
+To test prediction rather than full-trajectory reconstruction, we retain the four previously selected events from two matches of the DFL tracking dataset \cite{bassek,dataset}. At its 25 Hz rate, the available early inputs are the positions at 0, 0.04 and 0.08 s. Later recorded frames are used only to interpolate the actual goal-line crossing. Both matches belong to the same dataset, and the selected events include headers and foot shots. The tracking height is treated as metres, with its reference and event alignment remaining relevant data-quality questions.
+
+For a shot travelling toward either goal, let $s=+1$ for the positive-$x$ goal and $s=-1$ for the opposite goal. We use local coordinates $x'=s(x-x_0)$ and $y'=s(y-y_0)$, leaving height unchanged. The target plane is then $x'_g=52.5-sx_0$. Rotating both horizontal axes preserves handedness for the Magnus cross product; recorded targets are transformed in exactly the same way as the inputs.
+
+All four events use the same six-parameter fit, reference air settings and rotational-drag law. Table~\ref{tab:real-results} reports every event, including failed plane arrivals. The maximum coordinate residual measures agreement with the three inputs; the goal error is the distance between predicted and recorded goal-plane coordinates.
+\begin{table}[H]\centering\small
+\caption{Early-frame results for the fixed four-event selection.}\label{tab:real-results}
+\begin{tabular}{clllrr}\toprule
+Case & Match & Shot & Event & Max. residual (m) & Goal error (m)\\\midrule
+\RealTableRows
+\bottomrule\end{tabular}\end{table}
+
+Three cases reach the plane and one reaches the ground first. The mean error among reached cases is \RealMeanError\ m; the ground case is reported separately and is not assigned an invented plane error. Input residuals vary markedly, so exact interpolation achieved in the competition example is not typical of these tracking segments. Case 1 has many near-equal initial-state fits and a scaled Jacobian condition number above $10^{12}$; other cases also exhibit weak spin identifiability. The first two cases exceed the global experimental $Sp$ range. These results measure the behavior of the declared reference model on the fixed records.
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{real_validation.pdf}
+\caption{Goal-plane errors and maximum early-position residuals. The ground case has no goal-plane error and is explicitly labeled.}\label{fig:real-validation}\end{figure}
+
+\section{Sensitivity Analysis}\label{sec:sensitivity}
+We use fitted state A as a conditional reference and change one quantity at a time, holding the initial position and other inputs fixed. The perturbed states are integrated with the same coupled equations. They are controlled numerical experiments, not assumed parameter distributions and not new fits to the observations.
+
+\subsection{Launch speed and direction}
+Multiplying the initial velocity by 0.95--1.05 gives sampled goal-plane heights from \SpeedZMin\ to \SpeedZMax\ m. Rotating the horizontal velocity by $-2^\circ$ to $+2^\circ$ changes lateral crossings from \AngleYMin\ to \AngleYMax\ m. The two scans demonstrate distinct effects: speed changes flight time and direction mainly changes lateral location.
+
+\subsection{Initial spin and rotational damping}
+Scaling the fitted spin vector by 0--2 gives sampled crossing ranges $y=\SpinYMin$--\SpinYMax\ m and $z=\SpinZMin$--\SpinZMax\ m. Each spin magnitude subsequently evolves under the torque law. Separately, multiplying $C_{\mathrm{angular}}=1.5$ by 0.5--2 changes the sampled ranges to $y=\DampingYMin$--\DampingYMax\ m and $z=\DampingZMin$--\DampingZMax\ m. The damping multipliers explore dependence on the documented reference setting; they are not an experimental calibration interval. Figure~\ref{fig:coupled-sensitivity} reports all four scans.
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{sensitivity.pdf}
+\caption{Deterministic single-factor perturbations around fit A. Solid and dashed curves give lateral and vertical crossing coordinates. Spin extrapolation in the reference fit also applies to portions of these scans.}\label{fig:coupled-sensitivity}\end{figure}
+
+\subsection{Surface-related drag-law comparison}
+Published simulations show that surface geometry can alter soccer-ball aerodynamics \cite{paudel}. To isolate the consequence of two drag descriptions, we run otherwise identical nonspinning flights from A's fitted initial velocity. One uses the Teamgeist zero-spin law, Eq.~\eqref{eq:cd-zero}; the other uses the smooth-sphere drag expression reproduced by Paudel and Yan \cite{paudel}, Eq.~(26). Since spin is zero, lift and rotational torque vanish in both calculations.
+
+The Teamgeist and smooth-sphere calculations reach heights \SurfaceSoccerZ\ m and \SurfaceSmoothZ\ m, with flight times \SurfaceSoccerTime\ s and \SurfaceSmoothTime\ s, respectively. The height difference is \SurfaceDifference\ m. This is a comparison of coefficient laws at equal mechanical initial conditions, rather than a matched simulation of surface-resolved flow.
+\begin{figure}[H]\centering\includegraphics[width=.85\textwidth]{surface_comparison.pdf}
+\caption{Nonspinning flights using complete Teamgeist zero-spin drag and the published smooth-sphere drag relation, with equal initial velocity and air properties.}\label{fig:coupled-surface}\end{figure}
+
+\section{Identifiability and Prediction Uncertainty}\label{sec:identifiability}
+Three position observations provide six nontrivial coordinate constraints after the initial position is fixed. The unknown initial state also has six components, but matching the number of equations does not guarantee a unique nonlinear solution. The two competition fits demonstrate this directly: their initial velocities are close, their spin vectors differ substantially, and both interpolate the inputs to numerical accuracy.
+
+The dimensionless Jacobian condition numbers are \FitACondition\ and \FitBCondition\ for A and B. Figure~\ref{fig:identifiability} shows their singular spectra and separated goal-plane predictions. Local Jacobian diagnostics describe sensitivity near a fitted state; the multistart search establishes the existence of two solutions but does not prove that all solutions have been found.
+\begin{figure}[H]\centering\includegraphics[width=.92\textwidth]{identifiability.pdf}
+\caption{Scaled residual-Jacobian singular values for the two fitted states and a close view of their goal-plane intersections. The two points are candidate solutions, not a confidence region.}\label{fig:identifiability}\end{figure}
+
+The supplied coordinates are fitted as given. No camera-error standard deviation, random spin prior, wind distribution or probability law for model parameters is introduced. Accordingly, the A--B separation expresses demonstrated solution ambiguity rather than a probabilistic uncertainty interval. Experimental coefficient mismatch, uncalibrated rotational-drag strength and spin extrapolation are additional sources of model uncertainty. The controlled sensitivity calculations quantify selected changes in these inputs without assigning them probabilities.
+
+\section{Model Evaluation}
+\subsection{Strengths}
+The force and torque equations share consistent units, normalization and reference air properties. Forward prediction and inverse estimation use one nine-state derivative. Numerical checks verify the energy identity, analytic spin decay and integration convergence. The coefficient comparison matches experimental flow conditions, and the tracking evaluation reserves future positions for scoring.
+\subsection{Limitations}
+The model is mechanically closed under its stated assumptions, while the inverse problem can have multiple or weakly identified states. The angular-drag strength is a software reference value; independent spin-decay measurements would calibrate it. The fitted competition spins exceed the experimental range, and the lift law has a positive discrepancy in the matched-condition force comparison. The four tracking events are a small selection from one dataset and include unresolved height and event-alignment issues.
+\subsection{Further measurements}
+Direct spin observations, local wind measurements and confirmed ball inertia would reduce uncertain inputs. Additional early frames could distinguish competing initial states, while independent full-flight records would test extrapolated predictions. Force measurements across a broader $Re$--$Sp$ range and dedicated spin-decay experiments would improve the empirical force--torque closure.
+
+\section{Conclusion}
+We formulated and implemented one coupled model in which translation responds to gravity, drag and Magnus lift, while rotation responds to a dissipative torque. Drag and lift use the complete Teamgeist empirical relations throughout prediction and fitting. All fixed values are traced to cited references or declared reference settings, and the six initial-state components are estimated jointly.
+
+For the competition example, the two predictions are $(\FitAY,\FitAZ)$ m and $(\FitBY,\FitBZ)$ m. Their \GoalSeparation\ m separation demonstrates a nonunique state reconstruction, and their spin extrapolation identifies an experimental-validation need. In the four recorded events, three predictions reach the plane and one reaches the ground first; the reached-case mean error is \RealMeanError\ m. These outcomes connect the model's mechanical consistency to its actual predictive performance without imposing unsupported probability statements.
+
+\addcontentsline{toc}{section}{References}
+\begin{thebibliography}{99}
+\raggedright
+\bibitem{bray} K. Bray and D. G. Kerwin, ``Modelling the flight of a soccer ball in a direct free kick,'' \emph{Journal of Sports Sciences}, 21, 75--85, 2003. \url{https://doi.org/10.1080/0264041031000070994}.
+\bibitem{bassek} M. Bassek, R. Rein, H. Weber and D. Memmert, ``An integrated dataset of spatiotemporal and event data in elite soccer,'' \emph{Scientific Data}, 12, 195, 2025. \url{https://doi.org/10.1038/s41597-025-04505-y}.
+\bibitem{dataset} DFL, ``Sportec Open DFL Dataset,'' CC BY 4.0. Data mirror: \url{https://huggingface.co/datasets/pysport/idsse-data}.
+\bibitem{maponi} P. Maponi and R. Piombin, ``A computational framework to predict the soccer ball trajectory,'' \emph{Journal of Applied Mathematics}, 2025, 7425581. \url{https://doi.org/10.1155/jama/7425581}.
+\bibitem{paudel} S. Paudel and J. Yan, ``High-fidelity simulations of full-flight soccer ball aerodynamics using a monolithic overset approach,'' \emph{Computational Mechanics}, 77, 1245--1265, 2026. \url{https://doi.org/10.1007/s00466-025-02705-2}.
+\bibitem{myers} T. G. Myers and S. L. Mitchell, ``A mathematical analysis of the motion of an in-flight soccer ball,'' \emph{Sports Engineering}, 16, 29--41, 2013. \url{https://doi.org/10.1007/s12283-012-0105-8}.
+\bibitem{asai2007} T. Asai, K. Seo, O. Kobayashi and R. Sakashita, ``Fundamental aerodynamics of the soccer ball,'' \emph{Sports Engineering}, 10, 101--110, 2007. \url{https://doi.org/10.1007/BF02844207}.
+\bibitem{kiratidis2018} A. L. Kiratidis and D. B. Leinweber, ``An aerodynamic analysis of recent FIFA World Cup balls,'' \emph{European Journal of Physics}, 39, 034001, 2018. \url{https://doi.org/10.1088/1361-6404/aaa888}. Equations and parameters: \url{https://arxiv.org/abs/1710.02784v2}.
+\bibitem{grad2026} \L{}. Grad, K. M. Czajkowski and A. Varashylau, ``Physics-Based 3D Ball Trajectory Reconstruction from Monocular Soccer Video: A Multi-Model Benchmark,'' \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops}, 9940--9948, 2026. \href{https://openaccess.thecvf.com/content/CVPR2026W/CVsports/supplemental/Grad_Physics-Based_3D_Ball_CVPRW_2026_supplemental.pdf}{Supplementary material}, Section~8.4.
+\bibitem{mujoco381} MuJoCo developers, MuJoCo 3.8.1, ellipsoid fluid model, \texttt{mj\_viscousForces} in \texttt{src/engine/engine\_passive.c}. \href{https://github.com/google-deepmind/mujoco/blob/3.8.1/src/engine/engine_passive.c}{Version 3.8.1 source}; default angular drag: \href{https://mujoco.readthedocs.io/en/stable/XMLreference.html#body-geom-fluidcoef}{XML reference, geom/fluidcoef}. Accessed 7 November 2026.
+\end{thebibliography}
+\newpage
+\addcontentsline{toc}{section}{Reproduction Code}
+\section*{Reproduction Code}
+The input configuration specifies the observed coordinates and the reference physical settings. The shared physics module supplies the nine-state derivative, and the inverse module estimates the initial velocity and spin. The following excerpt is the deterministic initial-state estimator. Its finite list of starts initializes numerical optimization; no stochastic prior is applied. The complete calculation and plotting scripts, saved residuals, configurations and result tables accompany the paper.
+\lstinputlisting[language=Python,firstline=19,lastline=100]{../src/football/inference/coupled_fit.py}
+\end{document}

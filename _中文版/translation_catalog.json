@@ -1,0 +1,431 @@
+{
+  "english_sha256": "eaa8daa8c9f8cec406cf5453aaf249ef4545b9843ac086fd479328884766cebf",
+  "policy": "normal Chinese: SimSun; English bold -> SimHei; English italic -> KaiTi; figures retain English",
+  "paragraphs": [
+    {
+      "line": 28,
+      "source": "Gravity bends a soccer ball's path, drag reduces its speed, and Magnus lift redirects a spinning ball. We formulate a three-dimensional model with these three forces and constant spin. Four models distinguish gravity alone, constant drag, constant drag and lift, and complete speed- and spin-dependent aerodynamic coefficients. Published Teamgeist relations reproduce the selected 2007 wind-tunnel drag and lift curves with coefficient RMSE values of 0.0113 and 0.0504.",
+      "translation": "重力使足球轨迹向下弯曲，空气阻力降低飞行速度，马格努斯升力改变旋转足球的运动方向。本文建立包含这三种力、保持自旋恒定的三维模型，并比较四种模型：仅考虑重力、加入恒定阻力系数、采用恒定阻力与升力系数，以及采用随速度和自旋变化的完整经验系数。已发表的 Teamgeist 经验关系与所选 2007 年风洞数据对照时，阻力和升力系数的均方根误差分别为 0.0113 和 0.0504。"
+    },
+    {
+      "line": 30,
+      "source": "Forward calculations are compared with controlled launch experiments, including a measured range of 21.9 m and four rotating-ball trajectory segments. The variable-coefficient model predicts a range of \\ForwardMFourRange\\ m in the nonspinning experiment. Inverse calculations estimate initial motion and nonnegative force corrections from two later positions, selecting corrections close to unity. Five recorded match flights provide subsequent positions for comparison. For the competition data, the variable-coefficient model predicts the goal-plane centre $(y,z)=(\\ProblemY,\\ProblemZ)$ m at $t=\\ProblemTime$ s. A separate same-initial-state calculation quantifies rotational damping, while surface geometry and wind are discussed through published flow results and force estimates.",
+      "translation": "正向计算与受控发射实验对照，实验包括一组实测射程为 21.9 m 的无旋转飞行和四组旋转足球轨迹片段。变系数模型对无旋转实验的预测射程为 \\ForwardMFourRange\\ m。逆向计算利用两个后续时刻的位置反演初始运动状态与非负气动力修正系数，并优先选择接近单位修正的解。五组比赛飞行记录提供后续位置用于比较。对于题目给定数据，变系数模型预测球心在 $t=\\ProblemTime$ s 到达球门平面，交点为 $(y,z)=(\\ProblemY,\\ProblemZ)$ m。另以相同初始条件量化旋转阻尼的影响，并结合已发表的流动结果和气动力估算讨论表面几何与风的作用。"
+    },
+    {
+      "line": 32,
+      "source": "\\noindent\\textbf{Keywords:} Soccer ball, aerodynamic drag, Magnus effect, inverse prediction, trajectory comparison",
+      "translation": "\\noindent\\textbf{关键词：}足球；空气阻力；马格努斯效应；逆向预测；轨迹对照"
+    },
+    {
+      "line": 36,
+      "source": "The path of a kicked soccer ball is not generally a straight line. Gravity bends the trajectory downwards, air resistance slows the ball, and its rotation can produce a sideways or vertical aerodynamic force. The combination of these effects determines where the ball reaches the plane of the goal. Mathematical models of soccer-ball flight have therefore been developed using Newton's law together with experimental aerodynamic relationships \\cite{bray,maponi,kiratidis2018}. High-fidelity simulations have also shown how seams and other surface features can alter the flow and the trajectory \\cite{paudel}.",
+      "translation": "足球踢出后的轨迹通常会发生弯曲。重力使轨迹向下弯曲，空气阻力使足球减速，自旋还会产生侧向或竖直方向的气动力。这些作用共同决定足球到达球门平面的位置。已有研究将牛顿运动定律与实验气动关系结合，用于描述足球飞行\\cite{bray,maponi,kiratidis2018}；高精度模拟也揭示了接缝等表面特征对流动与轨迹的影响\\cite{paudel}。"
+    },
+    {
+      "line": 38,
+      "source": "An effective way to examine a physical model is to compare its calculated path with positions recorded during a real kick. The DFL open dataset combines match events and optical tracking data for professional matches \\cite{bassek,dataset}. These records make it possible to identify a penalty event, follow the ball through the flight, and compare the model with its position at the actual goal plane.",
+      "translation": "将计算轨迹与真实踢球过程中记录的位置比较，可以检验物理模型的预测表现。DFL 开放数据集同时提供职业比赛事件和光学追踪数据\\cite{bassek,dataset}，可据此识别点球事件、追踪空中飞行，并比较足球在实际球门平面的位置。"
+    },
+    {
+      "line": 41,
+      "source": "We model a soccer ball travelling in three dimensions from the vicinity of the penalty mark to the goal. The goal is 7.32 m wide and 2.44 m high; the penalty mark is 11 m from the goal line. We establish a model incorporating gravity, drag and the Magnus effect, solve for its trajectory and the point at which it crosses the goal plane, and compare the calculated positions with a recorded penalty flight. The prediction uses the initial position and the positions at 0.05 and 0.10 s; subsequent positions are reserved for validation. Figure~\\ref{fig:workflow} summarizes the force models and inverse problem: early positions determine initial conditions and force corrections, while later positions provide validation targets. Section 2 states the assumptions and notation. Section 3 establishes the forces and equations. Section 4 compares forward and inverse predictions. Section 5 is reserved for sensitivity analysis. Section 6 discusses surface geometry, spin damping and wind, followed by conclusions and model evaluation in Sections 7 and 8.",
+      "translation": "本文研究足球从点球点附近飞向球门的三维运动。球门宽 7.32 m、高 2.44 m，点球点距球门线 11 m。我们建立包含重力、阻力与马格努斯效应的模型，求解飞行轨迹及球门平面交点，并与实测点球飞行对照。题目预测使用初始位置及 0.05、0.10 s 的位置，后续位置用于验证。图~\\ref{fig:workflow} 概述受力模型与逆向问题：早期位置确定初始状态和气动力修正系数，后续位置提供比较目标。第二章介绍假设与符号，第三章建立受力和运动方程，第四章比较正向与逆向预测，第五章预留灵敏性分析，第六章讨论表面几何、旋转阻尼和风，第七、八章给出小结与模型评价。"
+    },
+    {
+      "line": 51,
+      "source": "\\item The ball is idealized as a rigid sphere of constant mass and radius, with cross-sectional area $A=\\pi R^2$ and position at its centre, following common soccer-ball flight models \\cite{maponi,bray,myers}. Empirical football coefficients represent the average aerodynamic effect of its surface. Section~\\ref{sec:surface} discusses the effect of seams and asymmetric geometry.",
+      "translation": "\\item 参照已有足球飞行模型\\cite{maponi,bray,myers}，将足球视为质量和半径恒定的刚性球体，迎风面积为 $A=\\pi R^2$，位置取球心位置。经验足球气动系数表征表面的平均影响，第~\\ref{sec:surface} 节进一步讨论接缝和非对称几何的作用。"
+    },
+    {
+      "line": 52,
+      "source": "\\item Gravity, aerodynamic drag and spin-induced lift act during free flight \\cite{maponi,bray}. Integration ends at ground contact or the selected goal plane.",
+      "translation": "\\item 自由飞行中考虑重力、空气阻力与自旋升力\\cite{maponi,bray}；到达地面或指定球门平面时停止积分。"
+    },
+    {
+      "line": 53,
+      "source": "\\item The main model neglects aerodynamic torque, so its spin vector remains constant. Section~\\ref{sec:rotation} examines this approximation by adding rotational damping to the same initial state.",
+      "translation": "\\item 主模型忽略气动力矩，因此自旋向量保持恒定。第~\\ref{sec:rotation} 节通过在同一初始状态下加入旋转阻尼，分析这一近似的影响。"
+    },
+    {
+      "line": 54,
+      "source": "\\item Air density and viscosity are uniform, and the main calculation uses still air. Section~\\ref{sec:wind} estimates how wind changes relative airflow and force magnitude.",
+      "translation": "\\item 空气密度与黏度均匀，主计算采用静止空气。第~\\ref{sec:wind} 节估算风对相对来流和气动力的影响。"
+    },
+    {
+      "line": 55,
+      "source": "\\item The initial position and the next two early positions determine the inverse input. Subsequent positions from the DFL tracking records are used for comparison \\cite{bassek,dataset}. The recorded vertical coordinate is interpreted as height in metres.",
+      "translation": "\\item 初始位置和随后两个早期位置构成逆向输入，DFL 追踪记录中的后续位置用于比较\\cite{bassek,dataset}。记录的竖直坐标按以米为单位的高度处理。"
+    },
+    {
+      "line": 76,
+      "source": "The competition mass, radius and gravity follow the reference values of Maponi and Piombin \\cite{maponi}; the air density follows Asai et al.\\ \\cite{asai2007}. The viscosity is a declared reference air setting, with $\\mu=\\rho\\nu$. Controlled experiments use their reported mass, diameter and air properties.",
+      "translation": "题目工况的质量、半径与重力加速度采用 Maponi 和 Piombin 的参考值\\cite{maponi}，空气密度取自 Asai 等\\cite{asai2007}。运动黏度作为参考空气条件给定，动力黏度按 $\\mu=\\rho\\nu$ 统一计算。受控实验采用各自报告的质量、直径及空气参数。"
+    },
+    {
+      "line": 79,
+      "source": "The same Newtonian equations generate all four models by selecting the included aerodynamic terms. We first describe the geometry, then connect the forces to the surrounding flow and ball rotation.",
+      "translation": "通过选择纳入的气动力项，同一组牛顿运动方程可形成四类模型。以下先描述几何关系，再将受力与周围流动和球体自旋联系起来。"
+    },
+    {
+      "line": 81,
+      "source": "For a pitch 105 m long with its origin at the centre, the two goal lines are located at $x=\\pm52.50$ m. The selected kick travels towards the positive-$x$ goal. For the competition geometry the valid goal opening is $-3.66\\le y\\le3.66$ m and $0\\le z\\le2.44$ m. The goal-plane position is the ball centre's first forward intersection with $x=X_g$.",
+      "translation": "以球场中心为原点、球场长 105 m 时，两条球门线位于 $x=\\pm52.50$ m。所选踢球方向朝向正 $x$ 球门。题目局部坐标中，球门开口范围为 $-3.66\\le y\\le3.66$ m、$0\\le z\\le2.44$ m。球门交点定义为球心沿前进方向首次到达 $x=X_g$ 时的位置。"
+    },
+    {
+      "line": 84,
+      "source": "Figure~\\ref{fig:geometry} uses the penalty mark as the local origin and places the goal plane at $x=11$ m. For the match record below, the pitch-centred coordinate system instead places the goal at $X_g=52.50$ m.",
+      "translation": "图~\\ref{fig:geometry} 以点球点为局部原点，球门平面为 $x=11$ m；比赛记录采用球场中心坐标，球门位于 $X_g=52.50$ m。"
+    },
+    {
+      "line": 86,
+      "source": "The ball crosses the opening cleanly when its centre satisfies $|y|\\leq3.66-R$ and $R\\leq z\\leq2.44-R$ at $x=X_g$. Ground contact occurs when the descending centre reaches $z=R$. These event definitions are used consistently for all four models.",
+      "translation": "在 $x=X_g$ 处，若球心满足 $|y|\\leq3.66-R$ 和 $R\\leq z\\leq2.44-R$，足球可完整通过球门开口。球心下降至 $z=R$ 时视为触地。四种模型统一采用上述事件判据。"
+    },
+    {
+      "line": 90,
+      "source": "Gravity supplies a constant downward force,",
+      "translation": "重力提供恒定的竖直向下作用力，"
+    },
+    {
+      "line": 92,
+      "source": "where $\\boldsymbol e_z$ is the upward vertical unit vector. It produces downward curvature even when all aerodynamic forces are removed.",
+      "translation": "其中 $\\boldsymbol e_z$ 为竖直向上的单位向量。即使不计气动力，重力也会使轨迹向下弯曲。"
+    },
+    {
+      "line": 95,
+      "source": "A moving ball transfers momentum to the air in its wake. The mass flow through area $A$ scales as $\\rho Av$, and the velocity change scales as $v$, giving a force scale $\\rho Av^2$. Introducing dynamic pressure $q=\\rho v^2/2$ gives the conventional drag expression \\cite{goff2009,kiratidis2018},",
+      "translation": "运动足球向尾流中的空气传递动量。通过面积 $A$ 的空气质量流率与 $\\rho Av$ 成正比，速度变化量与 $v$ 同阶，因此气动力尺度为 $\\rho Av^2$。引入动压 $q=\\rho v^2/2$，得到常用阻力表达式\\cite{goff2009,kiratidis2018}："
+    },
+    {
+      "line": 100,
+      "source": "Its quantities have the following physical roles:",
+      "translation": "式中各物理量的作用如下："
+    },
+    {
+      "line": 102,
+      "source": "\\item \\textbf{Air density \\boldmath$\\rho$.} The density measures air mass per unit volume. We use the uniform reference value $1.2$ kg/m$^3$ reported by Asai et al.\\ \\cite{asai2007}.",
+      "translation": "\\item \\textbf{空气密度\\boldmath$\\rho$。} 密度表示单位体积内的空气质量。本文采用 Asai 等报告的均匀参考值 $1.2$ kg/m$^3$\\cite{asai2007}。"
+    },
+    {
+      "line": 103,
+      "source": "\\item \\textbf{Projected area \\boldmath$A=\\pi R^2$.} A larger radius intercepts more airflow; the spherical geometry fixes this area throughout flight.",
+      "translation": "\\item \\textbf{迎风面积\\boldmath$A=\\pi R^2$。} 半径越大，球体截获的气流越多；球形几何使该面积在飞行中保持不变。"
+    },
+    {
+      "line": 104,
+      "source": "\\item \\textbf{Relative speed and direction \\boldmath$v,\\boldsymbol u$.} The quadratic speed dependence gives stronger resistance at higher speed, and the negative direction opposes airflow. The still-air main model has $\\boldsymbol u=\\boldsymbol v$.",
+      "translation": "\\item \\textbf{相对速度及方向\\boldmath$v,\\boldsymbol u$。} 阻力随速度平方增大，负号表明其方向与相对来流相反。静止空气的主模型中，$\\boldsymbol u=\\boldsymbol v$。"
+    },
+    {
+      "line": 105,
+      "source": "\\item \\textbf{Drag coefficient \\boldmath$C_D(Re,Sp)$.} The coefficient represents boundary-layer transition, separation and wake formation. Following Asai et al.\\ and Kiratidis and Leinweber \\cite{asai2007,kiratidis2018}, we define",
+      "translation": "\\item \\textbf{阻力系数\\boldmath$C_D(Re,Sp)$。} 该系数表征边界层转捩、流动分离和尾流形成。依据 Asai 等及 Kiratidis、Leinweber 的定义\\cite{asai2007,kiratidis2018}，引入"
+    },
+    {
+      "line": 110,
+      "source": "$Re$ compares inertial and viscous flow effects; $Sp$ compares rotating surface speed with airspeed. Constant spin makes $Sp$ rise as the ball slows.",
+      "translation": "$Re$ 比较流动中的惯性效应与黏性效应，$Sp$ 比较球面旋转速度与来流速度。自旋恒定时，足球减速会使 $Sp$ 增大。"
+    },
+    {
+      "line": 112,
+      "source": "The drag crisis is the rapid reduction of drag associated with boundary-layer transition. A useful coefficient law should describe this transition as well as the slower variation in the supercritical regime. According to Kiratidis and Leinweber \\cite{kiratidis2018}, their Eq.~(5) represents zero-spin drag by",
+      "translation": "阻力危机是边界层转捩引起的阻力快速下降过程。经验关系需同时描述这一过渡和超临界区较缓慢的变化。根据 Kiratidis 和 Leinweber\\cite{kiratidis2018}，其文献式（5）将无旋转阻力表示为"
+    },
+    {
+      "line": 120,
+      "source": "The coefficient $a$ sets the low-speed level, $v_c$ locates the transition, and $v_s$ controls its width. The remaining parameters set the level and slope of the high-speed tail. Table~\\ref{tab:teamgeist} gives the Teamgeist parameters reported in their Table~1 \\cite{kiratidis2018}.",
+      "translation": "系数 $a$ 决定低速阻力水平，$v_c$ 确定转捩位置，$v_s$ 控制过渡宽度，其余参数确定高速段的水平与斜率。表~\\ref{tab:teamgeist} 列出该文献表 1 的 Teamgeist 参数\\cite{kiratidis2018}。"
+    },
+    {
+      "line": 128,
+      "source": "For a spinning Teamgeist, Kiratidis and Leinweber's Eq.~(7) adds a linear spin correction with slope 0.514, fitted to the supercritical wind-tunnel data \\cite{kiratidis2018}:",
+      "translation": "对于旋转 Teamgeist 球，Kiratidis 和 Leinweber 的文献式（7）加入斜率为 0.514 的线性自旋修正，该值由超临界风洞数据拟合得到\\cite{kiratidis2018}："
+    },
+    {
+      "line": 132,
+      "source": "Thus drag changes with speed even at zero spin, and also increases with rotation. The Teamgeist parameter set is used throughout the coefficient comparison; other ball surfaces require their own parameters.",
+      "translation": "因此，无旋转时阻力系数仍随速度变化，旋转也会增大阻力。系数对照统一采用 Teamgeist 参数；其他球面可采用对应的经验参数。"
+    },
+    {
+      "line": 135,
+      "source": "The final M4 trajectory has speeds of \\ProblemSpeedMin--\\ProblemSpeedMax\\ m/s and Reynolds numbers of $(\\ProblemReMin$--$\\ProblemReMax)\\times10^5$. Kiratidis and Leinweber's Teamgeist fit extends to 35 m/s \\cite{kiratidis2018}, corresponding to $Re=5.13\\times10^5$ for the reference air. The competition flight lies in this speed range and in the supercritical regime represented by the empirical relation, supporting its use here. The rotating Asai measurements span $Re=333793$--455172; the coefficient figures use the measured upper condition exactly. The inferred competition spin gives $Sp=\\ProblemSpMin$--\\ProblemSpMax; its higher values extend beyond the selected wind-tunnel spin interval.",
+      "translation": "最终 M4 轨迹的速度为 \\ProblemSpeedMin--\\ProblemSpeedMax\\ m/s，雷诺数为 $(\\ProblemReMin$--$\\ProblemReMax)\\times10^5$。Kiratidis 和 Leinweber 的 Teamgeist 拟合覆盖至 35 m/s\\cite{kiratidis2018}，在本文空气条件下对应 $Re=5.13\\times10^5$。题目飞行处于该速度范围和经验关系所描述的超临界流动区，采用这一经验关系具有相应工况依据。Asai 的旋转实测范围为 $Re=333793$--455172，两张系数图固定在实测上限工况进行对照。题目反演得到 $Sp=\\ProblemSpMin$--\\ProblemSpMax，其较高取值超出所选风洞自旋区间。"
+    },
+    {
+      "line": 136,
+      "source": "\\item \\textbf{Drag correction \\boldmath$\\alpha_D\\geq0$.} This dimensionless multiplier equals one in forward calculations and is estimated from early positions in inverse calculations.",
+      "translation": "\\item \\textbf{阻力修正系数\\boldmath$\\alpha_D\\geq0$。} 该无量纲乘子在正向计算中取一，在逆向计算中由早期位置估计。"
+    },
+    {
+      "line": 139,
+      "source": "Asai et al.\\ \\cite{asai2007} measured soccer-ball forces in Tokai University's low-speed recirculating wind tunnel using a six-component balance ($1.5\\times1$ m test section; about 1\\% turbulence). We use their spinning full-size Teamgeist FRP replica: $R=0.11$ m, $\\rho=1.2$ kg/m$^3$, airspeed 22--30 m/s and spin 2--10 rev/s. Five points per coefficient are digitized from their Figures 8 and 9 at $Re=455172$ (about 30 m/s); the reported side force $C_S$ represents transverse Magnus lift here. The speed--Re correspondence gives $\\nu\\simeq1.45\\times10^{-5}$ m$^2$/s for this matched comparison.",
+      "translation": "Asai 等\\cite{asai2007} 在日本东海大学低速回流风洞中利用六分力天平测量足球气动力，测量段为 $1.5\\times1$ m，湍流度约 1\\%。本文采用其全尺寸旋转 Teamgeist 玻璃纤维增强塑料复制球数据：$R=0.11$ m、$\\rho=1.2$ kg/m$^3$，风速 22--30 m/s，转速 2--10 rev/s。在 $Re=455172$（约 30 m/s）下，从原文图 8、9 各提取五个系数数据点；其中侧向力系数 $C_S$ 对应本文的横向马格努斯升力。速度与雷诺数的对应关系给出该对照工况的 $\\nu\\simeq1.45\\times10^{-5}$ m$^2$/s。"
+    },
+    {
+      "line": 141,
+      "source": "Figure~\\ref{fig:cd-comparison} reproduces the increase of drag with $Sp$: the coefficient MAE is 0.00985 and RMSE is 0.01127. Both curves use the same experimental condition and measured spin interval.",
+      "translation": "图~\\ref{fig:cd-comparison} 再现了阻力随 $Sp$ 增大的趋势，系数平均绝对误差为 0.00985，均方根误差为 0.01127。两条曲线采用相同工况，并在实测自旋区间内比较。"
+    },
+    {
+      "line": 148,
+      "source": "Rotation changes the flow on opposite sides of the ball and creates a transverse pressure force. Using the drag dynamic-pressure scale gives $F_L=qAC_L$ for transverse spin \\cite{goff2009,kiratidis2018}. For a three-dimensional spin axis, we adopt",
+      "translation": "旋转改变球体两侧的流动，形成横向压力作用。采用与阻力相同的动压尺度，横向旋转时有 $F_L=qAC_L$\\cite{goff2009,kiratidis2018}。对于三维旋转轴，本文采用"
+    },
+    {
+      "line": 156,
+      "source": "Lift is zero for zero spin, zero airspeed or parallel spin and airflow.",
+      "translation": "自旋为零、来流速度为零，或旋转轴与来流平行时，升力取零。"
+    },
+    {
+      "line": 158,
+      "source": "\\item \\textbf{Dynamic-pressure and area scale \\boldmath$\\rho Av^2/2$.} Density, projected area and speed have the same meanings as in the drag force.",
+      "translation": "\\item \\textbf{动压与面积尺度\\boldmath$\\rho Av^2/2$。} 密度、迎风面积和速度的含义与阻力表达式相同。"
+    },
+    {
+      "line": 159,
+      "source": "\\item \\textbf{Magnus direction \\boldmath$\\boldsymbol e_L$.} This unit vector is perpendicular to airflow. Topspin bends the path downward, backspin upward, and sidespin horizontally.",
+      "translation": "\\item \\textbf{马格努斯力方向\\boldmath$\\boldsymbol e_L$。} 该单位向量垂直于来流。上旋使轨迹向下弯曲，下旋使其向上弯曲，侧旋使其在水平方向偏转。"
+    },
+    {
+      "line": 160,
+      "source": "\\item \\textbf{Angular projection \\boldmath$\\sin\\theta$.} The transverse component is one for perpendicular spin and airflow and vanishes for parallel directions. This projection extends the transverse empirical law to an oblique spin axis.",
+      "translation": "\\item \\textbf{角度投影\\boldmath$\\sin\\theta$。} 旋转轴与来流垂直时该横向分量为一，平行时为零。此投影将横向旋转经验关系扩展至斜置旋转轴。"
+    },
+    {
+      "line": 161,
+      "source": "\\item \\textbf{Lift coefficient \\boldmath$C_L(Re,Sp)$.} Rotation and boundary-layer state jointly determine lift.",
+      "translation": "\\item \\textbf{升力系数\\boldmath$C_L(Re,Sp)$。} 旋转强度与边界层状态共同决定升力。"
+    },
+    {
+      "line": 163,
+      "source": "Rotation creates an asymmetric flow and a transverse Magnus force. Its magnitude depends on the boundary-layer state as well as spin, so a spin-only relation does not describe all flow conditions. Kiratidis and Leinweber \\cite{kiratidis2018} introduce the reference power law in their Eq.~(8),",
+      "translation": "旋转引起非对称流动和横向马格努斯力，其大小同时受边界层状态与自旋影响。Kiratidis 和 Leinweber\\cite{kiratidis2018} 在文献式（8）中给出参考幂律"
+    },
+    {
+      "line": 167,
+      "source": "and scale it using drag as an indicator of flow state in their Eq.~(9) \\cite{kiratidis2018}. We use that complete relation:",
+      "translation": "并在文献式（9）中用阻力表征流动状态，对该幂律进行缩放\\cite{kiratidis2018}。本文采用这一完整关系："
+    },
+    {
+      "line": 173,
+      "source": "with the Teamgeist reference quantities",
+      "translation": "其中 Teamgeist 参考量为"
+    },
+    {
+      "line": 178,
+      "source": "Here $C_{D,\\mathrm{ceil}}\\simeq0.4927$ is the zero-spin low-speed ceiling. The reference drag is evaluated with Eq.~\\eqref{eq:cd-full}, including its spin term and using the same $R$ and $\\nu$ as the calculation. At the reference $(Re,Sp)=(333793,0.19)$ the scaling factor is one and $C_L\\simeq0.290$. The ceiling, reference condition and use of drag to reduce lift follow Kiratidis and Leinweber \\cite{kiratidis2018}; Eq.~\\eqref{eq:cl-full} supplies the final lift coefficient in the force model.",
+      "translation": "$C_{D,\\mathrm{ceil}}\\simeq0.4927$ 为无旋转低速阻力上限。参考阻力按式~\\eqref{eq:cd-full} 计算，包含自旋项，并采用与当前计算一致的 $R$ 和 $\\nu$。在参考点 $(Re,Sp)=(333793,0.19)$，缩放因子为一，$C_L\\simeq0.290$。阻力上限、参考工况及利用阻力缩放升力的方法均来自 Kiratidis 和 Leinweber\\cite{kiratidis2018}；式~\\eqref{eq:cl-full} 给出受力模型最终采用的升力系数。"
+    },
+    {
+      "line": 181,
+      "source": "\\item \\textbf{Lift correction \\boldmath$\\alpha_L\\geq0$.} This dimensionless multiplier is one in forward prediction and is fitted to early positions when inverse prediction includes lift.",
+      "translation": "\\item \\textbf{升力修正系数\\boldmath$\\alpha_L\\geq0$。} 该无量纲乘子在正向预测中取一，在包含升力的逆向预测中由早期位置拟合。"
+    },
+    {
+      "line": 184,
+      "source": "Figure~\\ref{fig:cl-comparison} uses the same Asai experiment and flow condition. The complete relation reproduces increasing lift with $Sp$ and lies above all five measured values: MAE 0.04505, RMSE 0.05040 and maximum difference 0.07325. This larger discrepancy motivates the inverse lift correction $\\alpha_L$.",
+      "translation": "图~\\ref{fig:cl-comparison} 采用同一 Asai 实验工况。完整经验关系再现了升力随 $Sp$ 增大的趋势，且高于全部五个实测点：平均绝对误差为 0.04505，均方根误差为 0.05040，最大差值为 0.07325。这一较大的偏差说明了逆向计算引入升力修正系数 $\\alpha_L$ 的意义。"
+    },
+    {
+      "line": 191,
+      "source": "Newton's second law and angular-momentum balance give",
+      "translation": "牛顿第二定律与角动量定律给出"
+    },
+    {
+      "line": 196,
+      "source": "With zero applied torque and constant spherical inertia, the main model is",
+      "translation": "外力矩取零、球体转动惯量恒定时，主模型为"
+    },
+    {
+      "line": 204,
+      "source": "Its initial conditions are",
+      "translation": "相应初始条件为"
+    },
+    {
+      "line": 212,
+      "source": "The observed initial position fixes the origin of the flight. The six velocity and spin components determine its initial motion. In still air, drag removes mechanical energy while Magnus lift does no work along the velocity; gravity converts kinetic and potential energy during flight.",
+      "translation": "已知初始位置确定飞行起点，三个初速度分量与三个自旋分量描述初始运动。在静止空气中，阻力消耗机械能，马格努斯力沿速度方向不做功，重力使动能与势能相互转换。"
+    },
+    {
+      "line": 215,
+      "source": "We compare increasing levels of aerodynamic description to identify which effects control the trajectory. Table~\\ref{tab:models} defines the four models. Forward prediction uses measured or reconstructed launch conditions and unit force corrections. Inverse prediction uses two later positions to estimate the initial motion and force corrections, then propagates the fitted state to the goal.",
+      "translation": "通过逐步增加气动描述，比较各作用对轨迹的影响。表~\\ref{tab:models} 定义四类模型。正向预测采用实测或重建的发射条件，气动力修正系数取一；逆向预测利用两个后续位置反演初始运动与气动力修正，再将该状态推进至球门。"
+    },
+    {
+      "line": 225,
+      "source": "For M2 and M3, the constants are evaluated once at the published reference point:",
+      "translation": "M2、M3 的常系数统一在文献参考点计算："
+    },
+    {
+      "line": 229,
+      "source": "For the competition air and ball parameters, $C_D^*=\\ReferenceCD$ and $C_L^*=\\ReferenceCL$. All models use the same physical conditions within each comparison. M1 and M2 have no spin-dependent trajectory; M3 uses the spin-axis direction, and M4 uses both its direction and magnitude.",
+      "translation": "在题目的球体与空气参数下，$C_D^*=\\ReferenceCD$、$C_L^*=\\ReferenceCL$。同一算例中的各模型采用相同物理条件。M1、M2 的轨迹与自旋无关；M3 使用旋转轴方向，M4 同时使用其方向和大小。"
+    },
+    {
+      "line": 233,
+      "source": "Given $\\boldsymbol r_0$, $\\boldsymbol v_0$ and $\\boldsymbol\\omega_0$, we set $\\alpha_D=\\alpha_L=1$ and integrate Eq.~\\eqref{eq:motion} using an adaptive Runge--Kutta method. A root of $x-X_g$ locates the goal-plane crossing, and a descending root of $z-R$ locates ground contact. The calculation records speed and aerodynamic force magnitudes along the flight.",
+      "translation": "给定 $\\boldsymbol r_0$、$\\boldsymbol v_0$、$\\boldsymbol\\omega_0$，取 $\\alpha_D=\\alpha_L=1$，采用自适应龙格--库塔方法积分式~\\eqref{eq:motion}。通过 $x-X_g$ 的零点确定球门交点，通过 $z-R$ 的下降零点确定触地。计算同时记录飞行速度和气动力大小。"
+    },
+    {
+      "line": 235,
+      "source": "Goff and Carr\\'e \\cite{goff2009} launched a 32-panel soccer ball using independently driven wheels and recorded its motion with two high-speed cameras. The reported ball mass is 0.424 kg, diameter 0.218 m, air density 1.2 kg/m$^3$ and kinematic viscosity $1.54\\times10^{-5}$ m$^2$/s. Rotation was measured by tracking marks on the ball. Ground markers provided landing ranges with a reported error of at most $\\pm0.05$ m.",
+      "translation": "Goff 和 Carr\\'e\\cite{goff2009} 用独立驱动轮发射 32 块面板足球，并由两台高速相机记录运动。实验球质量为 0.424 kg、直径为 0.218 m，空气密度为 1.2 kg/m$^3$，运动黏度为 $1.54\\times10^{-5}$ m$^2$/s。通过球面标记测量旋转，利用地面标记测量落点射程，报告的射程误差不超过 $\\pm0.05$ m。"
+    },
+    {
+      "line": 237,
+      "source": "We use the nonspinning launch in their Figures 3, 4 and 11: approximate initial speed 18 m/s, elevation $22^\\circ$, initial centre height about 0.85 m, and measured range 21.9 m. Four topspin launches from their Figure 14 provide additional spatial trajectory segments. Their published initial $Re$ and $Sp$ determine speed and spin; the first three digitized positions determine the initial spatial tangent. All five comparisons use red measurement-marker centres extracted from the vector PDF. The nonspinning early markers have 0.005 s spacing. Rotating segments are compared as $z(x)$ curves, matching their published spatial coordinates.",
+      "translation": "本文采用其图 3、4、11 的无旋转算例：初速度约 18 m/s、仰角约 $22^\\circ$、初始球心高度约 0.85 m，实测射程 21.9 m。其图 14 中的四组上旋实验提供额外空间轨迹片段。已发表的初始 $Re$、$Sp$ 用于确定速度与自旋，前三个数字化位置确定初始空间切线。五组对照均直接提取原矢量 PDF 的红色实测标记中心。无旋转早期标记间隔为 0.005 s；旋转片段按 $z(x)$ 空间曲线与公开坐标比较。"
+    },
+    {
+      "line": 239,
+      "source": "Table~\\ref{tab:forward-initial} specifies the forward inputs. All examples lie in the $x$--$z$ plane, with $y_0=v_{y0}=0$ and $\\omega_{x0}=\\omega_{z0}=0$; the listed $v_{x0}$, $v_{z0}$ and $\\omega_{y0}$ therefore complete the six initial velocity and spin components. Each first marker fixes the initial position.",
+      "translation": "表~\\ref{tab:forward-initial} 列出正向输入。各算例位于 $x$--$z$ 平面，$y_0=v_{y0}=0$、$\\omega_{x0}=\\omega_{z0}=0$，因此表中的 $v_{x0}$、$v_{z0}$、$\\omega_{y0}$ 补全了六个初速度和自旋分量。首个标记给出初始位置。"
+    },
+    {
+      "line": 246,
+      "source": "Gravity alone produces the longest range. Air resistance removes horizontal momentum and shortens flight distance. M2 and M3 use the same constant drag and predict identical nonspinning trajectories. M4 allows drag to change with the slowing airflow; its predicted range differs from the measured value by \\ForwardMFourError\\ m under the stated approximate launch conditions.",
+      "translation": "仅受重力作用时射程最远。空气阻力消耗水平动量并缩短射程。M2、M3 采用相同恒定阻力系数，因而在无旋转条件下得到重合轨迹。M4 允许阻力系数随减速来流变化，在所述近似发射条件下，其预测射程与实测之差为 \\ForwardMFourError\\ m。"
+    },
+    {
+      "line": 251,
+      "source": "Topspin produces downward Magnus force and increases downward curvature. Table~\\ref{tab:forward-spin} gives the height RMSE at measured horizontal positions. The ranking varies across launches. Local direction estimates and the experimental ball's surface both influence the comparison with the Teamgeist reference. In topspin c, the high spin parameter raises the empirical drag above the ceiling in Eq.~\\eqref{eq:cl-full}, so M4 assigns zero lift. The measured path retains downward spin-induced curvature, and M3 consequently gives a smaller local error in that case. These examples connect differences in the coefficient law to differences in the predicted path.",
+      "translation": "上旋产生向下的马格努斯力，增大轨迹向下弯曲的程度。表~\\ref{tab:forward-spin} 给出各实测水平位置对应的高度均方根误差，不同发射的模型排序有所变化。初始方向的局部估计和实验球表面都会影响与 Teamgeist 参考关系的对照。在上旋 c 算例中，较大的自旋参数使经验阻力超过式~\\eqref{eq:cl-full} 中的上限，M4 因而给出零升力；实测轨迹仍保留向下的旋转弯曲，故 M3 在该算例中的局部误差较小。这些结果将系数关系的差别与预测路径的变化联系起来。"
+    },
+    {
+      "line": 255,
+      "source": "Figure~\\ref{fig:forward-dynamics} shows the mechanism behind these paths. Drag is strongest when the ball is fast. Downward lift in a topspin flight changes its vertical motion and flight duration. In M4, changing speed also changes $Re$ and $Sp$, so the force evolution includes both dynamic-pressure and coefficient effects.",
+      "translation": "图~\\ref{fig:forward-dynamics} 展示上述路径对应的物理过程：球速较高时阻力较强；上旋的向下升力改变竖直运动与飞行时间。M4 中速度变化还会改变 $Re$ 和 $Sp$，因此气动力演化同时包含动压和系数变化的影响。"
+    },
+    {
+      "line": 259,
+      "source": "Let $\\boldsymbol p_1$ and $\\boldsymbol p_2$ be positions at $t_1,t_2$ after the known $\\boldsymbol r_0$. The initial motion and applicable force corrections are chosen to minimize",
+      "translation": "设已知 $\\boldsymbol r_0$，其后 $t_1,t_2$ 时刻的位置为 $\\boldsymbol p_1,\\boldsymbol p_2$。选择初始运动与相应气动力修正，使下式最小："
+    },
+    {
+      "line": 264,
+      "source": "The next selection criterion favors the published force scale,",
+      "translation": "随后优先选择接近文献基准气动力尺度的修正系数，"
+    },
+    {
+      "line": 266,
+      "source": "using only the terms present in each model. Among equal-quality M4 states, the smallest spin magnitude selects a representative state. Deterministic multi-start optimization applies these criteria in order. The position-error allowance is $6\\times10^{-12}$ m$^2$, and the coefficient-objective allowance is $10^{-8}$; both are numerical selection tolerances. Initial guesses use measured displacement velocities and the literature's experimental spin rates. M3 represents its spin axis by two angles; its unit vector serves only to carry direction in Eq.~\\eqref{eq:lift-force}.",
+      "translation": "其中仅保留各模型实际包含的修正项。对拟合质量相同的 M4 状态，再以最小自旋模长选取代表解。确定性多初值优化依次执行这些准则；位置目标允许差额为 $6\\times10^{-12}$ m$^2$，系数目标允许差额为 $10^{-8}$，均为数值选解容差。初值由观测位移速度与文献实验转速生成。M3 用两个角度表示旋转轴，其单位向量在式~\\eqref{eq:lift-force} 中用于确定方向。"
+    },
+    {
+      "line": 269,
+      "source": "The Sportec Open DFL dataset associates optical tracking with match events \\cite{bassek,dataset}. We analyze four flights from matches J03WOH and J03WQQ, and one recorded penalty. Events are selected for an identifiable shot and a tracked crossing of the actual goal-line plane. The four flights comprise two headers and two foot shots. Each inverse calculation uses the first three available positions at 0, 0.04 and 0.08 s. Later tracking coordinates determine the observed crossing of the goal plane. The penalty segment begins with a slower first displacement before the faster recorded flight; its early coordinates are used as recorded.",
+      "translation": "Sportec Open DFL 数据集将光学追踪与比赛事件关联\\cite{bassek,dataset}。本文分析 J03WOH、J03WQQ 两场比赛中的四段飞行，以及一组点球记录；筛选依据为可识别的射门事件和跨越实际球门线平面的连续追踪。四段飞行包括两次头球和两次脚部射门。逆向计算使用 0、0.04、0.08 s 的前三个位置，随后追踪坐标用于确定实测球门交点。点球片段的首次位移较小，之后运动较快，计算沿用原始早期坐标。"
+    },
+    {
+      "line": 278,
+      "source": "The comparison links early acceleration to later flight. A large fitted drag correction produces rapid momentum loss, while lift corrections alter the direction of curvature. Changes in early recorded displacement therefore have a strong effect on the predicted endpoint. The event-level results show how each model responds to the actual recorded segment.",
+      "translation": "这一对照将早期加速度与后续飞行联系起来。较大的阻力修正会造成较快的动量损失，升力修正则改变轨迹弯曲方向。因此，早期记录位移的变化会明显影响终点预测，各事件结果展示了不同模型对实际记录片段的响应。"
+    },
+    {
+      "line": 281,
+      "source": "The supplied observations are",
+      "translation": "题目给出的观测为"
+    },
+    {
+      "line": 288,
+      "source": "Applying the same inverse procedure gives Table~\\ref{tab:problem}. The preferred M4 initial conditions are",
+      "translation": "采用相同逆向流程得到表~\\ref{tab:problem}，所选 M4 初始条件为"
+    },
+    {
+      "line": 299,
+      "source": "M1 and M2 predict nearly the same horizontal direction because gravity and drag preserve the horizontal velocity ratio. Adding Magnus lift in M3 and M4 bends the ball laterally. The M4 goal-plane centre is $(\\ProblemY,\\ProblemZ)$ m at $\\ProblemTime$ s and fits inside the goal with the ball-radius margin. Its early maximum coordinate residual is \\ProblemResidual\\ m. The inferred initial spin is \\ProblemSpin\\ rad/s; it supplies the aerodynamic curvature required by this representative fit.",
+      "translation": "重力和阻力保持水平速度分量之比，M1、M2 因而预测近似相同的水平方向。M3、M4 加入马格努斯力后，轨迹产生侧向弯曲。M4 球心在 $\\ProblemTime$ s 到达球门平面，交点为 $(\\ProblemY,\\ProblemZ)$ m，考虑球半径后仍可通过开口。早期坐标最大残差为 \\ProblemResidual\\ m，反演初始自旋为 \\ProblemSpin\\ rad/s，为该代表解提供所需的气动弯曲。"
+    },
+    {
+      "line": 306,
+      "source": "The coefficient evolution in Figure~\\ref{fig:problem-coefficients} shows why constant spin still produces changing aerodynamics. The surface-to-air speed ratio increases as the ball slows, while the drag-dependent scaling also changes the lift coefficient.",
+      "translation": "图~\\ref{fig:problem-coefficients} 说明了自旋恒定时气动力仍会变化的原因：足球减速使球面速度与来流速度之比增大，阻力缩放也随之改变升力系数。"
+    },
+    {
+      "line": 312,
+      "source": "The main model isolates gravity, drag and Magnus lift. We now examine the physical effects omitted from its geometry, spin evolution and ambient airflow.",
+      "translation": "主模型突出重力、阻力和马格努斯升力，以下分析其在几何、自旋演化和环境来流中省略的因素。"
+    },
+    {
+      "line": 314,
+      "source": "Paudel and Yan \\cite{paudel} performed full-flight flow simulations using realistic football geometry and a smooth-sphere comparison. For launch speeds of 10, 15 and 20 m/s and spin rates of 31.5, 63 and 94.5 rad/s, their results show that seams and surface structure alter separation, wake dynamics and Magnus force. The smooth sphere produces greater lateral bending in their nine comparisons, and vertical flight-time differences become more visible at higher speed and rotation.",
+      "translation": "Paudel 和 Yan\\cite{paudel} 利用真实足球几何进行全程流动模拟，并与光滑球比较。在初速度 10、15、20 m/s，自旋 31.5、63、94.5 rad/s 的工况下，接缝和表面结构会改变流动分离、尾流演化及马格努斯力。九组对照中光滑球的横向弯曲均更强，较高速度和转速下竖直飞行时间的差异也更明显。"
+    },
+    {
+      "line": 316,
+      "source": "The spherical geometry in the present report describes the centre-of-mass motion and projected area. Its force coefficients come from football measurements, so the average surface influence enters through $C_D$ and $C_L$. Explicit panel orientation and asymmetric wake fluctuations provide a further level of description when lateral-force details are important. These published results support retaining football-specific coefficients in a spherical trajectory model.",
+      "translation": "本文的球形几何描述质心运动与迎风面积，气动力系数来自足球实验，因此表面的平均作用已进入 $C_D$、$C_L$。当侧向力细节更为重要时，可进一步描述面板朝向与非对称尾流波动。这些文献结果说明，在球形轨迹模型中保留足球专用气动系数具有物理依据。"
+    },
+    {
+      "line": 319,
+      "source": "Rotation changes Magnus force, so a declining spin can change the continuation of a curved shot. According to Grad et al.\\ \\cite{grad2026}, Supplementary Section 8.4, and the MuJoCo ellipsoid model \\cite{mujoco381}, the spherical inertial and viscous damping torques are",
+      "translation": "旋转影响马格努斯力，因此自旋衰减会改变弧线球的后续运动。依据 Grad 等的补充材料第 8.4 节\\cite{grad2026}和 MuJoCo 椭球流体模型\\cite{mujoco381}，球形化简后的惯性与黏性阻尼力矩为"
+    },
+    {
+      "line": 325,
+      "source": "The quadratic term describes high-Reynolds-number angular drag; the linear term is viscous resistance. We use MuJoCo's documented reference value $C_{\\rm angular}=1.5$ \\cite{mujoco381}. Defining $q=\\rho v^2/2$ and $C_{Q,v}=\\|\\boldsymbol Q\\|/(qAR)$ gives",
+      "translation": "二次项描述高雷诺数旋转阻力，线性项为黏性阻力。本文采用 MuJoCo 文档给出的参考值 $C_{\\rm angular}=1.5$\\cite{mujoco381}。定义 $q=\\rho v^2/2$、$C_{Q,v}=\\|\\boldsymbol Q\\|/(qAR)$，得到"
+    },
+    {
+      "line": 331,
+      "source": "$C_{Q,\\omega}$ uses rotating surface speed $R\\omega$ in its reference pressure. The factor $1/Sp^2$ converts between the two normalizations. The viscous-to-inertial torque ratio is",
+      "translation": "$C_{Q,\\omega}$ 采用球面旋转速度 $R\\omega$ 定义参考动压，$1/Sp^2$ 用于两种归一化之间的换算。黏性力矩与惯性力矩之比为"
+    },
+    {
+      "line": 337,
+      "source": "It is \\TorqueViscousRatio\\ at the fitted competition launch, so the quadratic term dominates. Following the thin-shell inertia used by Maponi and Piombin \\cite{maponi}, $I_b=2mR^2/3$. Adding the high-Reynolds-number torque gives",
+      "translation": "在题目反演初始状态下，该比值为 \\TorqueViscousRatio，二次项占主导。采用 Maponi 和 Piombin 的薄球壳转动惯量\\cite{maponi}，$I_b=2mR^2/3$。加入高雷诺数阻尼后，动力学方程为"
+    },
+    {
+      "line": 345,
+      "source": "The torque opposes spin and removes rotational energy. With this isolated quadratic law, $\\omega(t)=\\omega_0/[1+(k_2/I_b)\\omega_0t]$, providing an integration check.",
+      "translation": "力矩方向与自旋相反，消耗旋转动能。单独考虑二次阻尼时，$\\omega(t)=\\omega_0/[1+(k_2/I_b)\\omega_0t]$，可用于校验转动积分。"
+    },
+    {
+      "line": 347,
+      "source": "We repeat the M4 Problem B flight with exactly its fitted initial state and force corrections, first with constant spin and then with Eq.~\\eqref{eq:motion-torque}. The state is held fixed so the comparison measures the damping effect directly.",
+      "translation": "保持 M4 题目算例的初始状态与气动力修正系数相同，分别计算恒定自旋与式~\\eqref{eq:motion-torque} 的阻尼飞行，从而直接比较旋转阻尼的作用。"
+    },
+    {
+      "line": 353,
+      "source": "Wind changes the airflow through $\\boldsymbol u=\\boldsymbol v-\\boldsymbol v_{\\rm wind}$ \\cite{maponi}. At fixed coefficients, a wind speed $w$ along the flight direction changes the dynamic-pressure scale by",
+      "translation": "风通过 $\\boldsymbol u=\\boldsymbol v-\\boldsymbol v_{\\rm wind}$ 改变相对来流\\cite{maponi}。暂保持气动系数不变，沿飞行方向大小为 $w$ 的风使动压尺度变为"
+    },
+    {
+      "line": 359,
+      "source": "Crosswind also rotates the airflow by $\\arctan(w/v)$, changing the force direction. Table~\\ref{tab:wind} evaluates these rough estimates at the fitted initial speed. The listed wind speeds are illustrative conditions for comparison.",
+      "translation": "横风还使来流转过 $\\arctan(w/v)$，从而改变气动力方向。表~\\ref{tab:wind} 在反演初速度下给出上述粗略估算，列示风速作为比较工况。"
+    },
+    {
+      "line": 361,
+      "source": "A 5\\% limit on the headwind dynamic-pressure change corresponds to $w/v\\leq\\sqrt{1.05}-1$, or $w\\leq\\WindThreshold$ m/s at this launch. The still-air approximation is most suitable for indoor or weak-wind flight; stronger wind should enter through the relative-velocity calculation.",
+      "translation": "将逆风动压增幅限制在 5\\% 时，有 $w/v\\leq\\sqrt{1.05}-1$，对应本算例的 $w\\leq\\WindThreshold$ m/s。静止空气近似更适合室内或弱风飞行；风速较大时应通过相对速度纳入计算。"
+    },
+    {
+      "line": 364,
+      "source": "The three-force model connects soccer-ball flight to three distinct mechanisms: gravity produces downward curvature, drag removes momentum, and Magnus lift changes direction. The complete Teamgeist coefficient relations represent flow-state and spin changes, while the matched 2007 wind-tunnel comparison gives a closer reproduction for drag than for lift.",
+      "translation": "三力模型将足球飞行与三种作用联系起来：重力造成向下弯曲，阻力消耗动量，马格努斯升力改变方向。完整 Teamgeist 经验关系描述流动状态与自旋变化，2007 年同工况风洞对照中，阻力的定量吻合程度高于升力。"
+    },
+    {
+      "line": 366,
+      "source": "The controlled nonspinning example shows that including drag is essential for range prediction. Its M4 range is \\ForwardMFourRange\\ m against the published 21.9 m. The rotating trajectory segments display the downward curvature of topspin and variation in the accuracy of the common coefficient law. Recorded match comparisons show how early displacement and fitted force corrections affect subsequent prediction.",
+      "translation": "受控无旋转算例说明，阻力对射程预测十分重要；M4 预测 \\ForwardMFourRange\\ m，文献实测为 21.9 m。旋转轨迹片段展示了上旋造成的向下弯曲，以及同一系数关系在不同算例中的表现差异。比赛记录对照则说明早期位移和拟合修正系数如何影响后续预测。"
+    },
+    {
+      "line": 368,
+      "source": "For Problem B, M4 gives $(y,z)=(\\ProblemY,\\ProblemZ)$ m at the goal plane. Magnus lift accounts for the marked horizontal difference from the gravity-only and drag-only predictions. The same-state rotational-damping comparison shifts the crossing by \\TorqueDisplacement\\ m under the documented torque setting. Wind estimates give the weak-wind condition for the still-air approximation. Sensitivity-analysis findings will be added after Section 5 is completed.",
+      "translation": "对于题目 B，M4 的球门交点为 $(y,z)=(\\ProblemY,\\ProblemZ)$ m。马格努斯力解释了其与仅含重力、阻力模型之间明显的水平差别。相同初始状态下，采用所引力矩参考值使交点移动 \\TorqueDisplacement\\ m。风的估算给出了静止空气近似对应的弱风条件，灵敏性分析结论将在第五章完成后补充。"
+    },
+    {
+      "line": 372,
+      "source": "The hierarchy makes the contribution of each force visible. The same dynamics handles forward calculation, early-position inversion and endpoint prediction. Force corrections provide a direct way to accommodate measured trajectory differences, and all experimental and numerical inputs are retained with their sources.",
+      "translation": "模型层级使各力的作用清晰可见，同一套动力学支持正向求解、早期位置反演和终点预测。气动力修正系数直接联系实测轨迹差异，各实验与数值输入均保留相应来源。"
+    },
+    {
+      "line": 374,
+      "source": "The wind-tunnel comparisons, controlled launches and recorded match flights examine complementary aspects of the model: coefficient trends, curvature and range, and prediction from early observations. Their event-level errors identify where a common football coefficient law and an early trajectory segment give a useful continuation. Ball-specific aerodynamic measurements, directly measured spin and synchronized higher-rate positions would improve this connection. Explicit surface orientation, rotational damping and wind can be included as the application requires.",
+      "translation": "风洞系数、受控发射和比赛飞行分别考察系数趋势、曲率与射程、以及依据早期位置进行预测的表现。逐事件误差展示了经验足球系数与早期轨迹对后续运动的描述情况。球型专用气动测量、直接自旋测量和同步高频位置记录有助于改善预测，具体应用还可纳入表面朝向、旋转阻尼与风。"
+    }
+  ]
+}
