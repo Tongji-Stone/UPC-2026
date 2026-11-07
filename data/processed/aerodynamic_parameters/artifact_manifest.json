@@ -1,0 +1,200 @@
+{
+  "date": "2026-11-07",
+  "files": [
+    {
+      "path": "data/processed/aerodynamic_parameters/environment.json",
+      "bytes": 377,
+      "sha256": "07990c8758ea467fbdc6d8cbbc78c0c3749c057815553b047b7076c680a78fec"
+    },
+    {
+      "path": "data/processed/aerodynamic_parameters/error_summary.csv",
+      "bytes": 2434,
+      "sha256": "d18bc6b4dc9c99455de3fd0b0879d474de98beb9e241ab2afb7c758b4f151d70"
+    },
+    {
+      "path": "data/processed/aerodynamic_parameters/problem_conditions.csv",
+      "bytes": 326,
+      "sha256": "e4631b718c2b3ee5b8ea6b2610ed581fac603e59bc45d0a326ade1adb13c1c9a"
+    },
+    {
+      "path": "data/processed/aerodynamic_parameters/spin_decay_sensitivity.csv",
+      "bytes": 69508,
+      "sha256": "784ed78ef6ccff22bb0bf65bb2b84c2e0c2b7dc0455b3cb7b98255bf6798981a"
+    },
+    {
+      "path": "data/processed/aerodynamic_parameters/summary.json",
+      "bytes": 8097,
+      "sha256": "6538a95554ff3dccd4b094cc0be1d244f897ca3322db7b28f125445752078bd5"
+    },
+    {
+      "path": "data/processed/aerodynamic_parameters/verification.json",
+      "bytes": 1648,
+      "sha256": "c29680e7431215d140400250559f37440802e0252e12bd923a17d4118de36ecf"
+    },
+    {
+      "path": "data/processed/aerodynamic_parameters/参数对照.csv",
+      "bytes": 1311805,
+      "sha256": "a7242b4d5d57f9fe1daef5c5b72de939f497ff32444aec56e6295e4ce4c4b354"
+    },
+    {
+      "path": "data/sources/aerodynamic_parameters/arxiv_source_inventory.json",
+      "bytes": 1295,
+      "sha256": "96f6c9b103ed3fc0a2477a1ef8048b306a9bef34a168952dfa454c57235a2cac"
+    },
+    {
+      "path": "data/sources/aerodynamic_parameters/asai2007_digitized.csv",
+      "bytes": 24513,
+      "sha256": "51dcbeb5f2c39960fa323c12ecfea4fd7d2dae1628f9a02bcba9f896a1255a40"
+    },
+    {
+      "path": "data/sources/aerodynamic_parameters/asai2007_fig4.png",
+      "bytes": 67788,
+      "sha256": "fbef48ad47b0df515b160c61c60c0fa4e12d95ae924a9a84670983582bff858a"
+    },
+    {
+      "path": "data/sources/aerodynamic_parameters/asai2007_fig4_audit.png",
+      "bytes": 71195,
+      "sha256": "33e8e6b6432241dd5cd5fa6557ec0f88db9b02db7f5220d5baf05c3f9d22585e"
+    },
+    {
+      "path": "data/sources/aerodynamic_parameters/asai2007_fig8.png",
+      "bytes": 53955,
+      "sha256": "1dea09c45d7772d5be9f40aca91f3b4509080f0471b75cfd695c91b8dc4a8a64"
+    },
+    {
+      "path": "data/sources/aerodynamic_parameters/asai2007_fig8_audit.png",
+      "bytes": 58970,
+      "sha256": "be33346d179e1449d9f06a80d52334c22aae91b95bd45f07feebc5af8f3313d8"
+    },
+    {
+      "path": "data/sources/aerodynamic_parameters/asai2007_fig9.png",
+      "bytes": 58294,
+      "sha256": "d3a10131c860351961780897ec5c9363de8a6a2e16b644042e6b16043cb05fb9"
+    },
+    {
+      "path": "data/sources/aerodynamic_parameters/asai2007_fig9_audit.png",
+      "bytes": 63524,
+      "sha256": "d19f92530e814525fb5e08723cf3f6bedcf0b26c707c68b8ed8de6ea552e303e"
+    },
+    {
+      "path": "data/sources/aerodynamic_parameters/digitization_calibration.json",
+      "bytes": 2722,
+      "sha256": "39bf2befad70f37d0bb75659ba058a60095462be9bc5e2223377494d56a2b558"
+    },
+    {
+      "path": "data/sources/aerodynamic_parameters/grad2026_supplement.pdf",
+      "bytes": 16775018,
+      "sha256": "5d9601422ffecb030871f58530e8c86702f084f7f89f323545256b466d9c413f"
+    },
+    {
+      "path": "data/sources/aerodynamic_parameters/GRAD_LICENSE.txt",
+      "bytes": 20849,
+      "sha256": "1349a4b6148492b44f629e64eed676612e234fe9a839e4f3b277c1482c8849f1"
+    },
+    {
+      "path": "data/sources/aerodynamic_parameters/grad_mujoco_config.yaml",
+      "bytes": 856,
+      "sha256": "1a051784dd2d7e117a259a6a3a142f67594f915b3bf6c3f74b1573affbbd9a5b"
+    },
+    {
+      "path": "data/sources/aerodynamic_parameters/grad_mujoco_lock_excerpt.txt",
+      "bytes": 6971,
+      "sha256": "0eaba97a8ad8ed6f7ac433de918233244894924a3614d9fcfc74e3f899992c13"
+    },
+    {
+      "path": "data/sources/aerodynamic_parameters/grad_mujoco_model.py",
+      "bytes": 8986,
+      "sha256": "2cc1ce4142514d075e2bb72498dc6915a28904b217899a8fc210527676280fb5"
+    },
+    {
+      "path": "data/sources/aerodynamic_parameters/mujoco_3.8.1_engine_passive_excerpt.c",
+      "bytes": 5323,
+      "sha256": "702e5a96334f205ad250d4ffe7e724df75bfaef481d5f80d167ba67934e3c12b"
+    },
+    {
+      "path": "data/sources/aerodynamic_parameters/source_provenance.json",
+      "bytes": 2760,
+      "sha256": "9be9fd17f3778533db402148f6ae57e49cbd9d27e522414b4973bf9fe14d2d27"
+    },
+    {
+      "path": "docs/气动参数文献核查与建议.md",
+      "bytes": 27525,
+      "sha256": "d610d135c304da2008afe9df27d75ebc7791b94231fb929c754289969b03b08c"
+    },
+    {
+      "path": "results/aerodynamic_parameters/01_nonspin_drag.png",
+      "bytes": 235454,
+      "sha256": "3a28a5fa3d99f3734f2b3758f82e4692a5dbeed222c0da90073fd95c9e746196"
+    },
+    {
+      "path": "results/aerodynamic_parameters/01_nonspin_drag.svg",
+      "bytes": 33495,
+      "sha256": "eda573d715571d5bcf930ed443a989500dfa7c4e9fee2db8dea598cb4ffecb1a"
+    },
+    {
+      "path": "results/aerodynamic_parameters/02_spin_coefficients.png",
+      "bytes": 515507,
+      "sha256": "f6122d82b4745a7c71b4bd6effcb36271717272fed895b75d6599a6ac321160f"
+    },
+    {
+      "path": "results/aerodynamic_parameters/02_spin_coefficients.svg",
+      "bytes": 66612,
+      "sha256": "81db6b0e2b6d2c40662d0ba14aaa068ff54b89725380cf377e5ac57f3954b13c"
+    },
+    {
+      "path": "results/aerodynamic_parameters/03_experimental_residuals.png",
+      "bytes": 347489,
+      "sha256": "f76290c192073c716f628bdbf4aafc6e45957b645796c8ffca334778ec666235"
+    },
+    {
+      "path": "results/aerodynamic_parameters/03_experimental_residuals.svg",
+      "bytes": 59251,
+      "sha256": "2e35554cba2f0284754767023f221ceb869ace07936d4a8ebb0050e3a3a45dbe"
+    },
+    {
+      "path": "results/aerodynamic_parameters/04_spin_damping.png",
+      "bytes": 417652,
+      "sha256": "15eccd7f57a83e85188e2705249490c495b3d40019d45133e0ebfba94bc74252"
+    },
+    {
+      "path": "results/aerodynamic_parameters/04_spin_damping.svg",
+      "bytes": 65725,
+      "sha256": "2aaca3e34fd697cfcaab3f10a40a79b90f839894c73e58ebec2e2ac95f02b54c"
+    },
+    {
+      "path": "scripts/aerodynamic_formulas.py",
+      "bytes": 2379,
+      "sha256": "a5793d2b8c5a893bebed0b309f49d249c2c319645115a00c4c1363b00d9ebe6b"
+    },
+    {
+      "path": "scripts/compute_aerodynamic_comparison.py",
+      "bytes": 9524,
+      "sha256": "141458f4eb58b9621e2ff2789d7dc76833b71015bc8912086e5bd9df8e3bf06e"
+    },
+    {
+      "path": "scripts/extract_aerodynamic_points.py",
+      "bytes": 5253,
+      "sha256": "d1b67e4128b1e987f4414ba8ccb736486e76b6318ab9ba6f650c84e9f29fe1e8"
+    },
+    {
+      "path": "scripts/plot_aerodynamic_comparison.py",
+      "bytes": 9092,
+      "sha256": "fad093cd941342fda72ff1d646d35be588b70b5f279815b31cb2b3b0eeb91579"
+    },
+    {
+      "path": "scripts/requirements-aerodynamic.txt",
+      "bytes": 52,
+      "sha256": "09dcde5667f71fbb2cf9d866de22eac0ccb27bc5e7e33ced2409546da20fe8a3"
+    },
+    {
+      "path": "scripts/verify_aerodynamic_comparison.py",
+      "bytes": 3010,
+      "sha256": "4ad0cc510ea02797f0951c2f949480fad80b88562bc02c8db22103b275a39456"
+    },
+    {
+      "path": "探索树.html",
+      "bytes": 3633,
+      "sha256": "d87b4e97e187ff5c961287788c627375677b53e50a74533215e1b866a47aecb0"
+    }
+  ]
+}

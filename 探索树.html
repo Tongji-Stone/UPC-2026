@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UPC 2026 · 气动参数探索树</title>
+<style>
+body{margin:0;background:#f5f1e9;color:#39362f;font:16px/1.7 system-ui,"Microsoft YaHei",sans-serif}main{max-width:980px;margin:45px auto;padding:0 26px}h1{font-size:30px;font-weight:600}p{color:#706b61}a{color:#a64f35;text-underline-offset:3px}details{margin:14px 0;padding:18px 24px;background:#fffcf6;border:1px solid #ded6c8;border-radius:14px}summary{font-weight:600;cursor:pointer}ul{border-left:2px solid #d5c4b0;padding-left:24px}li{margin:12px 0}.tag{font-size:12px;padding:3px 8px;background:#e7e5d9;border-radius:12px;color:#556451}img{width:100%;height:auto}.small{font-size:13px}footer{padding:25px 0;color:#7e7669}
+</style><main>
+<h1>足球气动参数 · 证据与方法</h1>
+<p>2026-11-07 · Teamgeist 主对照 · 从原文、实测图形和源码到参数交接。</p>
+<p><a href="docs/气动参数文献核查与建议.md">完整交接说明</a> · <a href="data/processed/aerodynamic_parameters/参数对照.csv">主对照 CSV</a> · <a href="data/processed/aerodynamic_parameters/verification.json">验证记录</a></p>
+<details open><summary>1 · 来源核查 <span class="tag">五篇指定论文</span></summary><ul>
+<li>Asai 2007：搜索原始附件 → 未取得数表 → 提取 PDF 矢量标记。图4校准对数 Re 轴；图8、9校准线性 Sp 轴。<a href="data/sources/aerodynamic_parameters/asai2007_digitized.csv">110个提点</a></li>
+<li>Goff 2010、2012：区分阻力拟合与升力轨迹实验；没有将未提供的 CL 公式补写为作者结论。</li>
+<li>Kiratidis 2018：核对表1和式5–9；查阅 arXiv TeX 源包，确认公式及参考条件。</li>
+<li>Grad 2026：取得官方补充§8.4 → 查阅公开代码和 uv.lock → 对照 MuJoCo 3.8.1 力矩源码。</li>
+</ul></details>
+<details open><summary>2 · 系数定义 <span class="tag">量纲与方向</span></summary><ul>
+<li>相对空气速度 → Re=2rv/ν，Sp=rω/v；把 CS 统一映射到 Magnus 横向系数 CL。</li>
+<li>CD：2010 logistic/分段幂律，与2018高速尾项/旋转修正。</li>
+<li>CL：2018参考幂律与完整式分别列出；实测插值只在相邻 Re 行的共同 Sp 覆盖区计算。</li>
+<li>CQ：平动动压口径 ∝Sp²，旋转动压口径近似常数；Sp⁻² 是归一化转换因子。</li>
+</ul></details>
+<details open><summary>3 · 题目数值与对照 <span class="tag">4428行结果</span></summary><ul>
+<li>中心差分代表速度31.461 m/s；项目黏度下 Re≈461432，比旋转实测上限高1.38%。</li>
+<li>主扫描 Sp=0–0.35；扩展到1时标明外推。原实验逐点比较与题目情景分开保存。</li>
+<li>阻力公式的高 Re RMSE≈0.011；完整升力公式≈0.043。<a href="data/processed/aerodynamic_parameters/error_summary.csv">误差表</a></li>
+</ul><img src="results/aerodynamic_parameters/02_spin_coefficients.png" alt="题目条件下的阻力升力关系及实测对照"></details>
+<details><summary>4 · 交接建议与复现 <span class="tag">求解器未改动</span></summary><ul>
+<li>CD采用速度与旋转关系；CL优先实测插值，并显式处理范围外情景。</li>
+<li>CQ采用核实后的力矩结构；angular_drag=1.5保留为软件初值敏感性情景。</li>
+<li>提点、计算、绘图、验证脚本分离；SVG与300 DPI PNG同时保存。</li>
+</ul></details>
+<footer class="small">本页记录本次气动参数研究。原有模型与完整点球预测流程保留在项目其他分支。</footer>
+</main></html>

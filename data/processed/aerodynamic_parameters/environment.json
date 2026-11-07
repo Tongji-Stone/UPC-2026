@@ -1,0 +1,11 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "packages": {
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "Pillow": "13.0.0",
+    "PyMuPDF": "2.1"
+  },
+  "date": "2026-11-07",
+  "visual_review": "All four final figure groups and three digitization audit overlays inspected; no missing glyph warnings after font fixes."
+}

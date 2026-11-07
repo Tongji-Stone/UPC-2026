@@ -1,0 +1,122 @@
+{
+  "pdf_name": "Fundamental_aerodynamics_of_the_soccer_ball.pdf",
+  "pdf_sha256": "af44f14f6ae8f4ceb9fa797e4e55e706522d722d877fe6a8c6c2ed9410d88b8c",
+  "calibration": {
+    "fig4": {
+      "page": 4,
+      "x_type": "log",
+      "x_pt": [
+        95.85400390625,
+        208.8199920654297
+      ],
+      "x_value": [
+        40000,
+        600000
+      ],
+      "y_pt": [
+        608.9960327148438,
+        495.8330383300781
+      ],
+      "y_value": [
+        0,
+        0.5
+      ],
+      "x_affine": [
+        0.02397226143223137,
+        8.298797492129317
+      ],
+      "y_affine": [
+        -0.004418405528400473,
+        2.6907914377212214
+      ],
+      "coordinate_tolerance_pt": 1.0,
+      "tolerance_meaning": "conservative graphical reading bound; not experimental SD/CI",
+      "check_Re_at_100000_tick": 99889.85808650903
+    },
+    "fig8": {
+      "page": 6,
+      "x_type": "linear",
+      "x_pt": [
+        99.6290054321289,
+        132.80599975585938,
+        165.98300170898438,
+        199.16000366210938,
+        232.33700561523438
+      ],
+      "x_value": [
+        0,
+        0.1,
+        0.2,
+        0.3,
+        0.4
+      ],
+      "y_pt": [
+        604.9349365234375,
+        571.7579345703125,
+        538.5809326171875,
+        505.4039306640625,
+        472.2269287109375
+      ],
+      "y_value": [
+        0,
+        0.1,
+        0.2,
+        0.3,
+        0.4
+      ],
+      "x_affine": [
+        0.0030141362604280625,
+        -0.30029538866495
+      ],
+      "y_affine": [
+        -0.003014136121801699,
+        1.8233562435151127
+      ],
+      "coordinate_tolerance_pt": 1.0,
+      "tolerance_meaning": "conservative graphical reading bound; not experimental SD/CI"
+    },
+    "fig9": {
+      "page": 6,
+      "x_type": "linear",
+      "x_pt": [
+        346.4769287109375,
+        377.4039306640625,
+        408.5809326171875,
+        439.7579345703125,
+        470.6849365234375
+      ],
+      "x_value": [
+        0,
+        0.1,
+        0.2,
+        0.3,
+        0.4
+      ],
+      "y_pt": [
+        624.6829223632812,
+        593.5059204101562,
+        562.0789184570312,
+        530.4019165039062,
+        499.97491455078125
+      ],
+      "y_value": [
+        0,
+        0.1,
+        0.2,
+        0.3,
+        0.4
+      ],
+      "x_affine": [
+        0.0032178052855096175,
+        -1.1147338845340342
+      ],
+      "y_affine": [
+        -0.003199674208912378,
+        1.998629402470772
+      ],
+      "coordinate_tolerance_pt": 1.0,
+      "tolerance_meaning": "conservative graphical reading bound; not experimental SD/CI"
+    }
+  },
+  "point_count": 110
+}
