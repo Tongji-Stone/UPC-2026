@@ -1,0 +1,135 @@
+{
+  "interpretation": "fit all 12 frames, including the first frame beyond the line; in-sample trajectory reconstruction",
+  "source_metadata": {
+    "match": "J03WOH",
+    "event_id": "18232100000995",
+    "event_timestamp": "2022-08-26T19:54:15.640+02:00",
+    "event_description": "Penalty / ShotAtGoal / SuccessfulShot",
+    "pitch_m": [
+      105.0,
+      68.0
+    ],
+    "coordinate_origin": "pitch center",
+    "goal_plane_x_m": 52.5,
+    "goal_y_limits_m": [
+      -3.66,
+      3.66
+    ],
+    "first_frame": 128954,
+    "last_frame": 128965,
+    "crossing_bracketing_frames": [
+      128964,
+      128965
+    ],
+    "linear_interpolation_fraction": 0.10784313725490183,
+    "crossing_elapsed_s": 0.4043137254901961,
+    "crossing_y_m": 2.9188235294117644,
+    "crossing_z_raw": 1.178921568627451,
+    "height_unit": "not established by paper; working assumption metres",
+    "selection_note": "earliest visible segment after long repeated position near penalty event; first step appears slower",
+    "event_alignment_note": "event time is 0.88 s before first selected frame, not a kick timestamp",
+    "source": "https://huggingface.co/datasets/pysport/idsse-data; CC BY 4.0"
+  },
+  "height_unit": "assumed metres",
+  "goal_plane_distance_from_first_frame_m": 10.939999999999998,
+  "m5_fitted_note": "velocity, spin and Cd0 fitted with bounds using same trajectory; spin not measured",
+  "models": {
+    "M5_fitted": {
+      "frames": 12,
+      "trajectory_rmse_m": 0.19439961648193,
+      "trajectory_median_error_m": 0.10458767575445052,
+      "goal_plane_yz_m": [
+        2.8681589648905144,
+        1.2023391441632796
+      ],
+      "goal_plane_error_m": 0.05581470184551864,
+      "velocity_m_s": [
+        28.255844214383682,
+        6.034098565240382,
+        5.465305906319039
+      ],
+      "spin_rad_s": [
+        -2.993557484982135,
+        5.901701174204912,
+        14.109079948134708
+      ],
+      "cd0": 0.1000000000000019,
+      "converged": true,
+      "jacobian_singular_values": [
+        6.587462914107988,
+        0.8721406830509576,
+        0.8685402454180566,
+        0.20775478761944677,
+        0.018623521504452394,
+        0.009443845012321317,
+        0.0003275383657177893
+      ]
+    },
+    "M0": {
+      "frames": 12,
+      "trajectory_rmse_m": 0.2549789123007042,
+      "trajectory_median_error_m": 0.24553985613454843,
+      "goal_plane_yz_m": [
+        2.7831678561616267,
+        1.3624127552162715
+      ],
+      "goal_plane_error_m": 0.22819175541794112,
+      "event": "completed"
+    },
+    "M1": {
+      "frames": 12,
+      "trajectory_rmse_m": 0.20378489432894423,
+      "trajectory_median_error_m": 0.1594280440900357,
+      "goal_plane_yz_m": [
+        2.783167855207345,
+        1.2442832989354846
+      ],
+      "goal_plane_error_m": 0.15058093416072188,
+      "event": "completed"
+    },
+    "M2": {
+      "frames": 12,
+      "trajectory_rmse_m": 0.14586112257549844,
+      "trajectory_median_error_m": 0.08043389283679091,
+      "goal_plane_yz_m": [
+        2.9103985581785103,
+        1.194265657219572
+      ],
+      "goal_plane_error_m": 0.017504890602457808,
+      "event": "completed"
+    },
+    "M3": {
+      "frames": 12,
+      "trajectory_rmse_m": 0.26262289016697904,
+      "trajectory_median_error_m": 0.21161548673231106,
+      "goal_plane_yz_m": [
+        2.7800639993187573,
+        1.2356590540990156
+      ],
+      "goal_plane_error_m": 0.14991113850967894,
+      "event": "completed"
+    },
+    "M4": {
+      "frames": 12,
+      "trajectory_rmse_m": 0.23547955729138378,
+      "trajectory_median_error_m": 0.16616465048807927,
+      "goal_plane_yz_m": [
+        2.8897916639881154,
+        1.2363395879763708
+      ],
+      "goal_plane_error_m": 0.06434033071044779,
+      "event": "completed"
+    },
+    "M5": {
+      "frames": 12,
+      "trajectory_rmse_m": 0.2333174656827582,
+      "trajectory_median_error_m": 0.1628602635136821,
+      "goal_plane_yz_m": [
+        2.9049717755288516,
+        1.2365464700525548
+      ],
+      "goal_plane_error_m": 0.05926635090745607,
+      "event": "completed"
+    }
+  }
+}

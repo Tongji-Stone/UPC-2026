@@ -1,0 +1,86 @@
+{
+  "assumptions": {
+    "measurement_sigma_m": 0.01,
+    "fixed_initial_position": true,
+    "velocity_prior_mean_m_s": [
+      30,
+      8,
+      6
+    ],
+    "velocity_prior_sd_m_s": [
+      10,
+      10,
+      10
+    ],
+    "spin_prior_component_sd_rad_s": 30,
+    "cd0_uniform": [
+      0.1,
+      0.2
+    ],
+    "samples": 5000,
+    "seed": 2026,
+    "coefficients": "Linthorne and Patel (2011) equations 3–4; 3D spin direction extension"
+  },
+  "005": {
+    "mode": [
+      3.006190717682217,
+      1.3536691378307366
+    ],
+    "mean": [
+      3.3196778693659974,
+      1.900412713152041
+    ],
+    "covariance": [
+      [
+        0.19853043452408534,
+        0.007606501142552053
+      ],
+      [
+        0.007606501142552053,
+        0.19147641763455925
+      ]
+    ],
+    "ellipse_mahalanobis2": [
+      2.5871509667300723,
+      3.703234697549125
+    ],
+    "total": 10000,
+    "reached": 10000,
+    "ground": 0,
+    "no_event": 0,
+    "center_in": 6218,
+    "full_in": 5233,
+    "effective_sample_size": 4988.275470910796
+  },
+  "010": {
+    "mode": [
+      2.667933400086652,
+      2.1112741270658097
+    ],
+    "mean": [
+      2.9446333042278003,
+      1.9398747652914454
+    ],
+    "covariance": [
+      [
+        0.09236917937460808,
+        0.005949740747753156
+      ],
+      [
+        0.005949740747753156,
+        0.11034611884537367
+      ]
+    ],
+    "ellipse_mahalanobis2": [
+      2.123564257403485,
+      5.6126473074037175
+    ],
+    "total": 10000,
+    "reached": 10000,
+    "ground": 0,
+    "no_event": 0,
+    "center_in": 9105,
+    "full_in": 8136,
+    "effective_sample_size": 2768.597680301191
+  }
+}
