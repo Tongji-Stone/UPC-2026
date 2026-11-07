@@ -1,3 +1,4 @@
+# HISTORICAL pipeline; not used by the current paper. Use scripts/coupled_compute.py.
 """Fit event-synchronised shots to their complete paths through real goal lines.
 
 All shots in one match are screened by the same fixed rules. The trajectory is

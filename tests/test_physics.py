@@ -45,7 +45,7 @@ class PhysicsTests(unittest.TestCase):
         def coeff(re, sp):
             seen.append((re, sp))
             return .25, .1
-        cfg = PhysicsConfig.for_model('M5', coefficients=coeff, spin_decay=1.)
+        cfg = PhysicsConfig.for_model('M5', coefficients=coeff, spin_decay=1.,use_rotational_drag=False)
         r = simulate((0, 0, 2), (20, 0, 3), (0, 0, 10), cfg, t_span=(0,.4), plane_x=100)
         self.assertTrue(seen and all(x > 0 and y > 0 for x, y in seen))
         self.assertAlmostEqual(r.spin[-1, 2], 10*np.exp(-.4), places=6)

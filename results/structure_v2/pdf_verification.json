@@ -1,0 +1,188 @@
+{
+  "pages": 25,
+  "warnings": [],
+  "out_of_page_text": [],
+  "all_fonts_embedded": true,
+  "fonts": {
+    "NCGJBZ+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "ITFREI+TimesNewRomanPS-BoldMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "NZQQSN+CMR12": {
+      "format": "cff",
+      "embedded": true
+    },
+    "SBVWHJ+CMMI12": {
+      "format": "cff",
+      "embedded": true
+    },
+    "OPLKAF+CMMI8": {
+      "format": "cff",
+      "embedded": true
+    },
+    "QSLESQ+CMMI10": {
+      "format": "cff",
+      "embedded": true
+    },
+    "MQEAND+CMMIB10": {
+      "format": "cff",
+      "embedded": true
+    },
+    "DUOLQP+CMR10": {
+      "format": "cff",
+      "embedded": true
+    },
+    "WDNFMJ+CMMI7": {
+      "format": "cff",
+      "embedded": true
+    },
+    "DXTRHO+CMSY10": {
+      "format": "cff",
+      "embedded": true
+    },
+    "MQSKLY+CMBX10": {
+      "format": "cff",
+      "embedded": true
+    },
+    "RVLUHP+CMR7": {
+      "format": "cff",
+      "embedded": true
+    },
+    "QWIOFZ+CMR8": {
+      "format": "cff",
+      "embedded": true
+    },
+    "RBLIAP+CMSY8": {
+      "format": "cff",
+      "embedded": true
+    },
+    "FHXFSG+TimesNewRomanPS-BoldMT": {
+      "format": "Type3 embedded glyph programs",
+      "embedded": true
+    },
+    "ELZQIX+CMBX12": {
+      "format": "cff",
+      "embedded": true
+    },
+    "VTRNNC+CMBX8": {
+      "format": "cff",
+      "embedded": true
+    },
+    "YTRYUC+CMEX10": {
+      "format": "cff",
+      "embedded": true
+    },
+    "CNJMFF+CMBSY10": {
+      "format": "cff",
+      "embedded": true
+    },
+    "FUREHM+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "FSFVNI+DejaVuSans-Oblique": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "WEGTXO+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "DIRUKW+DejaVuSans-Oblique": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "CMCOBI+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "XKCLMS+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "EHJTQD+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "CECFXM+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "LVUCBU+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "BTYWEQ+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "GXJRBY+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "PPMNIJ+TimesNewRomanPS-ItalicMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "PBHPPM+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "CKBRDD+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "CCOGTQ+DejaVuSans-Oblique": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "LKVKMV+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "LHLOPI+LMMono12-Regular-Identity-H": {
+      "format": "cid",
+      "embedded": true
+    },
+    "AURRGM+LMMono10-Regular-Identity-H": {
+      "format": "cid",
+      "embedded": true
+    },
+    "UEDEGF+LMMonoLt10-Bold-Identity-H": {
+      "format": "cid",
+      "embedded": true
+    },
+    "SJLGZF+LMMono10-Italic-Identity-H": {
+      "format": "cid",
+      "embedded": true
+    }
+  },
+  "has_eight_chapters": true,
+  "no_unresolved_references": true,
+  "no_old_results": true,
+  "fifth_chapter_pending": true,
+  "workflow_border_removed": true,
+  "workflow_body_font_pt": 12.0,
+  "unit_tests": {
+    "command": "python -m pytest -q",
+    "passed": 34,
+    "failed": 0,
+    "elapsed_seconds": 160.23,
+    "date": "2026-11-08",
+    "coverage": [
+      "four-model hierarchy",
+      "synthetic eight-parameter early fit",
+      "iteration-limit status",
+      "zero-speed/spin limits",
+      "constant spin",
+      "force scaling and work",
+      "analytic spin decay",
+      "historical regression tests"
+    ]
+  },
+  "all_passed": true
+}

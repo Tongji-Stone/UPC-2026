@@ -1,0 +1,24 @@
+{
+  "width_inches": 6.4,
+  "formats": [
+    "pdf",
+    "svg",
+    "png"
+  ],
+  "dpi": 300,
+  "palette": [
+    "#454B4B",
+    "#0072B2",
+    "#D55E00",
+    "#009E73"
+  ],
+  "encoding": "colour plus line style or marker",
+  "claims": {
+    "forward_range": "range response to gravity, constant and variable drag",
+    "forward_topspin": "measured local curvature and model differences",
+    "forward_dynamics": "physical speed and force evolution",
+    "inverse_errors": "individual event errors; crosses denote no goal-plane prediction",
+    "torque_comparison": "same initial state, changed angular damping"
+  },
+  "uncertainty": "No synthetic error bars; individual experiments and deterministic simulations"
+}

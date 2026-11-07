@@ -1,3 +1,4 @@
+# HISTORICAL pipeline; not used by the current paper. Use scripts/coupled_compute.py.
 """Importance sampling for a physical trajectory with uncertain spin and drag.
 
 The first ball position is fixed. Independent Gaussian errors apply to later

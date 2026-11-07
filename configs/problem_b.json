@@ -1,8 +1,71 @@
 {
-  "times": [0.0, 0.05, 0.10],
-  "positions": [[0.0, 0.0, 0.11], [1.50, 0.45, 0.44], [2.96, 0.86, 0.74]],
-  "sigma": 0.01,
-  "spin": [0.0, 0.0, 0.0],
-  "plane_x": 11.0,
-  "physics": {"drag_coefficient": 0.25}
+  "model": "four-model-v2",
+  "times_s": [
+    0.0,
+    0.05,
+    0.1
+  ],
+  "positions_m": [
+    [
+      0.0,
+      0.0,
+      0.11
+    ],
+    [
+      1.5,
+      0.45,
+      0.44
+    ],
+    [
+      2.96,
+      0.86,
+      0.74
+    ]
+  ],
+  "plane_x_m": 11.0,
+  "physics": {
+    "mass": 0.43,
+    "radius": 0.11,
+    "air_density": 1.2,
+    "kinematic_viscosity": 1.5e-05,
+    "gravity": 9.81,
+    "wind": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "angular_drag_coefficient": 1.5,
+    "inertia_coefficient": 0.6666666666666666,
+    "use_rotational_drag": false,
+    "spin_decay": 0.0
+  },
+  "observation_noise_model": null,
+  "parameter_prior": null,
+  "fit": {
+    "max_nfev": 240,
+    "rss_allowance_m2": 6e-12,
+    "selection": "positions / scales nearest one / smallest M4 spin"
+  },
+  "prediction": {
+    "rtol": 1e-09,
+    "atol": 1e-11,
+    "max_step_s": 0.005,
+    "max_time_s": 3.0
+  },
+  "declared_settings": [
+    "still air reference",
+    "thin isotropic spherical shell",
+    "MuJoCo default angular-drag strength",
+    "sin(theta) oblique-spin extension"
+  ],
+  "sources": {
+    "coefficients": "Kiratidis-Leinweber 2018 Eqs 5,7-9/Table 1",
+    "torque": "Grad 2026 supp 8.4 and MuJoCo 3.8.1 sphere specialization",
+    "inertia": "Maponi-Piombin 2025 Eq 6",
+    "density": "Asai 2007"
+  },
+  "force_scales": {
+    "drag": 1.0,
+    "lift": 1.0
+  }
 }

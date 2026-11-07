@@ -1,0 +1,131 @@
+{
+  "all_passed": true,
+  "checks": {
+    "goal_convergence": {
+      "passed": true,
+      "difference_m": 5.277940006822452e-15
+    },
+    "drag_dissipation": {
+      "passed": true,
+      "max_power_W": -153.61971916114246
+    },
+    "magnus_work": {
+      "passed": true,
+      "max_absolute_power_W": 1.865174681370263e-14
+    },
+    "constant_spin": {
+      "passed": true
+    },
+    "shared_rhs": {
+      "passed": true,
+      "forward": "football.physics.model.state_derivative",
+      "inverse": "coupled_fit.observed_trajectory -> same state_derivative",
+      "force_scales": [
+        1.0001000000004363,
+        0.9999999935575422
+      ]
+    },
+    "M1_hierarchy": {
+      "passed": true,
+      "gravity": true,
+      "drag": false,
+      "lift": false,
+      "coefficient_mode": "constant"
+    },
+    "M2_hierarchy": {
+      "passed": true,
+      "gravity": true,
+      "drag": true,
+      "lift": false,
+      "coefficient_mode": "constant"
+    },
+    "M3_hierarchy": {
+      "passed": true,
+      "gravity": true,
+      "drag": true,
+      "lift": true,
+      "coefficient_mode": "constant"
+    },
+    "M4_hierarchy": {
+      "passed": true,
+      "gravity": true,
+      "drag": true,
+      "lift": true,
+      "coefficient_mode": "KL18"
+    },
+    "previous_coupled_results_preserved": {
+      "passed": true
+    },
+    "early_only_J03WOH_18232100000487_M1": {
+      "passed": true
+    },
+    "early_only_J03WOH_18232100000487_M2": {
+      "passed": true
+    },
+    "early_only_J03WOH_18232100000487_M3": {
+      "passed": true
+    },
+    "early_only_J03WOH_18232100000487_M4": {
+      "passed": true
+    },
+    "early_only_J03WOH_18232100000606_M1": {
+      "passed": true
+    },
+    "early_only_J03WOH_18232100000606_M2": {
+      "passed": true
+    },
+    "early_only_J03WOH_18232100000606_M3": {
+      "passed": true
+    },
+    "early_only_J03WOH_18232100000606_M4": {
+      "passed": true
+    },
+    "early_only_J03WOH_18232100000968_M1": {
+      "passed": true
+    },
+    "early_only_J03WOH_18232100000968_M2": {
+      "passed": true
+    },
+    "early_only_J03WOH_18232100000968_M3": {
+      "passed": true
+    },
+    "early_only_J03WOH_18232100000968_M4": {
+      "passed": true
+    },
+    "early_only_J03WQQ_18240200001227_M1": {
+      "passed": true
+    },
+    "early_only_J03WQQ_18240200001227_M2": {
+      "passed": true
+    },
+    "early_only_J03WQQ_18240200001227_M3": {
+      "passed": true
+    },
+    "early_only_J03WQQ_18240200001227_M4": {
+      "passed": true
+    },
+    "early_only_penalty_18232100000995_M1": {
+      "passed": true
+    },
+    "early_only_penalty_18232100000995_M2": {
+      "passed": true
+    },
+    "early_only_penalty_18232100000995_M3": {
+      "passed": true
+    },
+    "early_only_penalty_18232100000995_M4": {
+      "passed": true
+    },
+    "coefficient_comparisons": {
+      "passed": true,
+      "curves_per_figure": 2,
+      "references": "Kiratidis-Leinweber complete relation; five Asai measured points at Re455172"
+    },
+    "eight_report_sections": {
+      "passed": true
+    },
+    "fifth_chapter_pending": {
+      "passed": true
+    }
+  }
+}

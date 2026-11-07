@@ -1,0 +1,142 @@
+{
+  "records": [
+    {
+      "match": "J03WOH",
+      "event_id": "18232100000487",
+      "shot_type": "head",
+      "status": "plane",
+      "input_times_s": [
+        0.0,
+        0.04,
+        0.08
+      ],
+      "fit_rss_m2": 5.3518248594250265e-05,
+      "max_fit_residual_m": 0.005056297218971828,
+      "fit_success": true,
+      "near_best_candidates": 19,
+      "condition_number": 1698554457508.646,
+      "error_m": 1.0088909698832464,
+      "predicted_local_y_m": 1.0183342959889266,
+      "predicted_z_m": 2.171403920230369,
+      "actual_local_y_m": 1.7170491803278687,
+      "actual_z_assumed_m": 2.899180327868853,
+      "above_35_m_s": false,
+      "above_A07_global_Sp": true
+    },
+    {
+      "match": "J03WOH",
+      "event_id": "18232100000606",
+      "shot_type": "rightLeg",
+      "status": "plane",
+      "input_times_s": [
+        0.0,
+        0.04,
+        0.08
+      ],
+      "fit_rss_m2": 0.001121282366386157,
+      "max_fit_residual_m": 0.02227035808553335,
+      "fit_success": true,
+      "near_best_candidates": 1,
+      "condition_number": 455346440.18025196,
+      "error_m": 8.242983368144198,
+      "predicted_local_y_m": 2.2723619758073488,
+      "predicted_z_m": 4.948719503808339,
+      "actual_local_y_m": 10.073620689655172,
+      "actual_z_assumed_m": 2.2865517241379307,
+      "above_35_m_s": false,
+      "above_A07_global_Sp": true
+    },
+    {
+      "match": "J03WOH",
+      "event_id": "18232100000968",
+      "shot_type": "rightLeg",
+      "status": "ground",
+      "input_times_s": [
+        0.0,
+        0.04,
+        0.08
+      ],
+      "fit_rss_m2": 0.03561376022639304,
+      "max_fit_residual_m": 0.12504153201216184,
+      "fit_success": true,
+      "near_best_candidates": 1,
+      "condition_number": 63282807.04114464,
+      "error_m": null,
+      "predicted_local_y_m": null,
+      "predicted_z_m": null,
+      "actual_local_y_m": 7.2787500000000005,
+      "actual_z_assumed_m": 0.344375,
+      "above_35_m_s": false,
+      "above_A07_global_Sp": false
+    },
+    {
+      "match": "J03WQQ",
+      "event_id": "18240200001227",
+      "shot_type": "head",
+      "status": "plane",
+      "input_times_s": [
+        0.0,
+        0.04,
+        0.08
+      ],
+      "fit_rss_m2": 0.05033395947926987,
+      "max_fit_residual_m": 0.1750348123339217,
+      "fit_success": true,
+      "near_best_candidates": 1,
+      "condition_number": 20628284807.302483,
+      "error_m": 3.4779822646100054,
+      "predicted_local_y_m": -2.5904573734740537,
+      "predicted_z_m": 4.573661622912753,
+      "actual_local_y_m": -5.523999999999998,
+      "actual_z_assumed_m": 6.441999999999999,
+      "above_35_m_s": false,
+      "above_A07_global_Sp": false
+    }
+  ],
+  "n": 4,
+  "status": {
+    "plane": 3,
+    "ground": 1
+  },
+  "successful_crossings": 3,
+  "mean_error_m": 4.243285534212483,
+  "median_error_m": 3.4779822646100054,
+  "height_unit": "treated as metres as in the saved DFL extraction",
+  "configuration": {
+    "mass": 0.43,
+    "radius": 0.11,
+    "air_density": 1.2,
+    "kinematic_viscosity": 1.5e-05,
+    "gravity": 9.81,
+    "use_gravity": true,
+    "use_drag": true,
+    "use_magnus": true,
+    "wind": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "spin_decay": 0.0,
+    "use_rotational_drag": true,
+    "angular_drag_coefficient": 1.5,
+    "inertia_coefficient": 0.6666666666666666,
+    "model_id": "KL18-Teamgeist-MuJoCo381-shell-v1",
+    "dynamic_viscosity": 1.8e-05,
+    "moment_of_inertia": 0.003468666666666666,
+    "coefficient_callback": "model default",
+    "sources": {
+      "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+      "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+      "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+      "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+      "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+      "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+    },
+    "assumptions": [
+      "still air reference unless wind is supplied",
+      "isotropic thin shell",
+      "sin(theta) oblique-spin extension"
+    ]
+  },
+  "input_rule": "only 0,0.04,0.08 s; future coordinates reserved for the target"
+}

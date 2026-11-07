@@ -1,3 +1,4 @@
+# HISTORICAL pipeline; not used by the current paper. Use scripts/coupled_compute.py.
 """保存演示范围内的物理参数敏感性结果，单独运行后再运行绘图脚本。"""
 import csv
 import json

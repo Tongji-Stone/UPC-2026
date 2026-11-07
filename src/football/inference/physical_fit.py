@@ -2,7 +2,7 @@
 import numpy as np
 from scipy.integrate import solve_ivp
 from scipy.optimize import least_squares
-from football.physics import forces
+from football.physics import state_derivative
 
 
 def fit_velocity(times, positions, config, sigma=.01, spin=(0., 0., 0.), starts=None, prior=None):
@@ -11,8 +11,7 @@ def fit_velocity(times, positions, config, sigma=.01, spin=(0., 0., 0.), starts=
         raise ValueError('ordered observations and positive measurement error required')
     def trajectory(v):
         def rhs(_, state):
-            f = forces(state[3:6], state[6:9], config)
-            return np.r_[state[3:6], sum(f.values()) / config.mass, -config.spin_decay*state[6:9]]
+            return state_derivative(_, state, config)
         sol = solve_ivp(rhs, (t[0], t[-1]), np.r_[p[0], v, spin], t_eval=t, rtol=1e-8, atol=1e-10)
         if not sol.success: raise RuntimeError(sol.message)
         return sol.y[:3].T

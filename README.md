@@ -1,41 +1,40 @@
-# 足球三维轨迹预测
+# 足球三力模型与四类模型对照
 
-项目研究足球飞行的三维物理模型。当前工作重点是将模型轨迹与真实足球的完整飞行记录对照，并比较它们在终点平面上的空间位置。代码分为正向物理仿真、参数拟合、数据处理和评价模块；计算结果与图分开保存。
+当前论文以恒定自旋、无风的三力模型为主线：重力、空气阻力和 Magnus 升力。M1 仅含重力，M2 加入恒定阻力系数，M3 使用恒定阻力和升力系数，M4 使用 Kiratidis–Leinweber 完整经验式。正向计算的两项力修正系数均为 1；逆向计算根据三个早期位置估计初始运动和相应修正系数。
 
-`docs/概率预测与验证.md` 和 `results/physical_probability/` 是此前对短时间观测预测的探索记录，属于后续预测阶段，不作为当前完整轨迹物理验证的评价结果。
+报告分八章，第五章灵敏性分析留待完成。旋转阻尼放在第六章，以题目反演状态作相同初始条件的对照。当前结果目录为 `results/structure_v2/`，PDF 和 LaTeX 位于 `paper/`。
 
-当前实际球门的对照结果见 `docs/真实点球完整轨迹对照.md`，真实点球逐帧数据与模型曲线见 `results/real_penalty_fit/`；更多空中轨迹的对照见 `docs/完整空中轨迹拟合验证.md`。在仓库根目录复现真实点球对照：
+## 快速使用
+
+需要 Python 3.10+、XeLaTeX 和 Times New Roman 字体。在仓库根目录安装依赖：
+
+```powershell
+python -m pip install -e '.[report,test]'
+./scripts/reproduce_report.ps1 -RefreshFiguresOnly
+```
+
+完整计算并编译使用 `./scripts/reproduce_report.ps1`。脚本支持 `-Python '解释器完整路径'`。逆向计算逐案例缓存；重算时先将对应案例 JSON/CSV 移到存档目录。逐步命令见 [论文复现说明](paper/README.md)。
+
+自定义三点反演与测试：
 
 ```powershell
 $env:PYTHONPATH='src'
-python scripts/fit_real_penalty.py
-python scripts/plot_real_penalty.py
-```
-
-## 环境与运行
-
-需要 Python 3.10 以上、NumPy、SciPy、Matplotlib、Pandas 和 pytest。在仓库根目录的 PowerShell 中：
-
-```powershell
-python -m pip install -e . pytest
+python scripts/predict_observations.py configs/problem_b.json --model M4
 python -m pytest -q
-python scripts/predict_problem_b.py
-python scripts/plot_problem_b.py
-python scripts/predict_observations.py configs/problem_b.json --model M3
-python scripts/predict_physical_probability.py --samples 5000
-python scripts/plot_physical_probability.py
-python scripts/validate_synthetic_probability.py --cases 20 --samples 500
-python scripts/plot_calibration.py
 ```
 
-题目案例的计算输出在 `results/problem_b.json` 和 `results/prediction_*.npz`；绘图脚本读取这些中间结果。自定义输入格式见 `configs/problem_b.json`，位置单位为米，时间为秒，角速度为弧度每秒。自定义物理反演当前估计初速度，给定自旋和气动参数，并输出首次到达平面或触地的事件。
+## 数据与计算
 
-## 已实现的方法
+受控实验来自 Goff–Carré 2009：一个具有实测落距的无旋转案例，以及四组旋转轨迹片段。实测标记直接从原 PDF 提取，标定和原始点保存在 `data/report_v2/`。五个比赛案例沿用固定的既有筛选结果；仅前三帧进入反演，后续坐标用于球门交点比较。
 
-`football.physics` 的统一方程支持 M0、M1、M3、M4、M5 的受力组合及连续事件检测。M5 可选择 Linthorne–Patel 论文系数关系，也可传入实测系数表；默认参数仍为常数。M2 是独立的匀加速度拟合，至少需要三个观测点。`football.inference.physical_fit` 使用固定物理配置和自旋估计初速度；`football.inference.kinematic` 则用带先验的匀加速度模型产生题目案例的概率预测，两者是不同方法。
+反演按位置残差、修正系数接近 1、M4 自旋最小的顺序选解。M1 估计 3 项，M2 估计 4 项，M3 估计 7 项，M4 估计 8 项。M3 的自旋模长不参与恒定升力系数计算。选择容差、初值、阶段结果和 Jacobian 奇异值均保存于案例 JSON。
 
-`football.inference.physical_probability` 使用重要性采样，在论文气动关系下同时考虑速度、自旋和阻力参数的不确定性。先验、误差假设、样本有效数量和合成覆盖率检查见 `docs/概率预测与验证.md`。DFL 真实数据验证及复现方法见 `docs/数据与验证阶段报告.md`。
+计算、绘图和正文数值生成分离；图表导出 PDF、SVG 和 300 dpi PNG。论文数字由结果文件生成。结果摘要见 [重构与计算记录](docs/报告结构与四模型重算.md)。
 
-落点概率结果以采样总数为分母，同时记录先到达预测平面的样本数、球心在门框内的样本数、球完整通过门框的样本数。分布、均值和区域只针对先到达平面的样本。预测区域采用样本协方差椭圆，边界由样本马氏距离的 68% 和 95% 分位数确定。
+## 历史材料
 
-方法、假设与进度见 `docs/`。真实轨迹验证和完整模型比较的进度以其中记录及实际结果为准。
+`results/coupled_model/` 和其他旧目录保持原样，记录此前包含旋转阻尼的探索。M5 和 coupled 系列脚本用于该历史版本；本次论文使用 four_model 系列入口。旧版源稿保存在 `paper/archive/`，完整重构前存档位于项目同级压缩包。
+
+## 中英文论文版本
+
+英文稿位于 `paper/`，分支为 `codex/report-english-20261108`。中文版位于单独分支 [`codex/report-chinese-20261108`](https://github.com/Tongji-Stone/UPC-2026/tree/codex/report-chinese-20261108/_%E4%B8%AD%E6%96%87%E7%89%88)，编译目录名为 `_中文版`。正文样式对应宋体、黑体和楷体，图与路线图保留英文。详见 [中英版本说明](docs/中英版本说明.md)。

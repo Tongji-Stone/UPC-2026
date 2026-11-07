@@ -1,3 +1,4 @@
+# HISTORICAL pipeline; not used by the current paper. Use scripts/coupled_compute.py.
 """Fit complete selected DFL tracks and evaluate reconstruction, not prediction."""
 import argparse
 import csv

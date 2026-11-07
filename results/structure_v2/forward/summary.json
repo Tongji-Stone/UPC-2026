@@ -1,0 +1,1515 @@
+{
+  "cases": [
+    {
+      "case": "zero_spin",
+      "physics": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05
+      },
+      "position": [
+        9.310583201943556e-05,
+        0.0,
+        0.8500871845949224
+      ],
+      "velocity": [
+        16.689309382202175,
+        0.0,
+        6.742918681486416
+      ],
+      "spin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "launch_basis": "published approximate 18 m/s and 22 degrees, Fig.3; first digitized height",
+      "observations": "zero_spin.csv",
+      "measured_range_m": 21.9,
+      "comparison": "landing range and early trajectory",
+      "time_basis": "Fig.3 camera-1 marker spacing 0.005 s; rotating panels scored spatially"
+    },
+    {
+      "case": "topspin_a",
+      "physics": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05
+      },
+      "position": [
+        9.616792225682069e-05,
+        0.0,
+        0.84988192855194
+      ],
+      "velocity": [
+        16.82539504307524,
+        0.0,
+        7.365579380991958
+      ],
+      "spin": [
+        0.0,
+        82.56712397946302,
+        0.0
+      ],
+      "launch_basis": "published initial Re and Sp, Fig.14; tangent of first three digitized markers",
+      "observations": "topspin_a.csv",
+      "measured_range_m": null,
+      "comparison": "spatial trajectory z(x)",
+      "time_basis": "Fig.3 camera-1 marker spacing 0.005 s; rotating panels scored spatially"
+    },
+    {
+      "case": "topspin_b",
+      "physics": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05
+      },
+      "position": [
+        9.718355344318086e-05,
+        0.0,
+        0.84988192855194
+      ],
+      "velocity": [
+        18.193689672191095,
+        0.0,
+        6.810481447215254
+      ],
+      "spin": [
+        0.0,
+        44.55643464354853,
+        0.0
+      ],
+      "launch_basis": "published initial Re and Sp, Fig.14; tangent of first three digitized markers",
+      "observations": "topspin_b.csv",
+      "measured_range_m": null,
+      "comparison": "spatial trajectory z(x)",
+      "time_basis": "Fig.3 camera-1 marker spacing 0.005 s; rotating panels scored spatially"
+    },
+    {
+      "case": "topspin_c",
+      "physics": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05
+      },
+      "position": [
+        -0.007031597946460119,
+        0.0,
+        0.8526443954076709
+      ],
+      "velocity": [
+        17.382982082794264,
+        0.0,
+        8.187540479539784
+      ],
+      "spin": [
+        0.0,
+        125.15983503072134,
+        0.0
+      ],
+      "launch_basis": "published initial Re and Sp, Fig.14; tangent of first three digitized markers",
+      "observations": "topspin_c.csv",
+      "measured_range_m": null,
+      "comparison": "spatial trajectory z(x)",
+      "time_basis": "Fig.3 camera-1 marker spacing 0.005 s; rotating panels scored spatially"
+    },
+    {
+      "case": "topspin_d",
+      "physics": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05
+      },
+      "position": [
+        -0.006708613160166146,
+        0.0,
+        0.8499510341185819
+      ],
+      "velocity": [
+        18.770407810510665,
+        0.0,
+        10.862988741766165
+      ],
+      "spin": [
+        0.0,
+        47.751536065987715,
+        0.0
+      ],
+      "launch_basis": "published initial Re and Sp, Fig.14; tangent of first three digitized markers",
+      "observations": "topspin_d.csv",
+      "measured_range_m": null,
+      "comparison": "spatial trajectory z(x)",
+      "time_basis": "Fig.3 camera-1 marker spacing 0.005 s; rotating panels scored spatially"
+    }
+  ],
+  "records": [
+    {
+      "case": "zero_spin",
+      "model": "M1",
+      "spatial_rmse_m": 0.005104315694485958,
+      "event": {
+        "type": "ground",
+        "time": 1.4769972028626899,
+        "position": [
+          24.650156381054703,
+          0.0,
+          0.10900000000000384
+        ],
+        "velocity": [
+          16.689309382202175,
+          0.0,
+          -7.746423878596543
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "predicted_range_m": 24.650156381054703,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.25,
+        "lift_coefficient": 0.2,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "constant",
+        "use_gravity": true,
+        "use_drag": false,
+        "use_magnus": false,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "comparison",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": 21.9,
+      "range_error_m": 2.7501563810547047
+    },
+    {
+      "case": "zero_spin",
+      "model": "M2",
+      "spatial_rmse_m": 0.005004249376053031,
+      "event": {
+        "type": "ground",
+        "time": 1.4221862460844423,
+        "position": [
+          20.65628244316176,
+          0.0,
+          0.10900000000000065
+        ],
+        "velocity": [
+          12.690548775107745,
+          0.0,
+          -7.1369446437637
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "predicted_range_m": 20.65628244316176,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.24187806075510232,
+        "lift_coefficient": 0.28977661113044667,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "constant",
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": false,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M2",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": 21.9,
+      "range_error_m": -1.243717556838238
+    },
+    {
+      "case": "zero_spin",
+      "model": "M3",
+      "spatial_rmse_m": 0.005004249376053031,
+      "event": {
+        "type": "ground",
+        "time": 1.4221862460844423,
+        "position": [
+          20.65628244316176,
+          0.0,
+          0.10900000000000065
+        ],
+        "velocity": [
+          12.690548775107745,
+          0.0,
+          -7.1369446437637
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "predicted_range_m": 20.65628244316176,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.24187806075510232,
+        "lift_coefficient": 0.28977661113044667,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "constant",
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": true,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M3",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": 21.9,
+      "range_error_m": -1.243717556838238
+    },
+    {
+      "case": "zero_spin",
+      "model": "M4",
+      "spatial_rmse_m": 0.005043906413420525,
+      "event": {
+        "type": "ground",
+        "time": 1.4435745790647736,
+        "position": [
+          21.871303665156944,
+          0.0,
+          0.10900000000000018
+        ],
+        "velocity": [
+          13.69018044760329,
+          0.0,
+          -7.307151533876091
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "predicted_range_m": 21.871303665156944,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.25,
+        "lift_coefficient": 0.2,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "KL18",
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": true,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M4",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": 21.9,
+      "range_error_m": -0.02869633484305467
+    },
+    {
+      "case": "topspin_a",
+      "model": "M1",
+      "spatial_rmse_m": 0.01185993138954412,
+      "event": {
+        "type": "ground",
+        "time": 1.5962715872355986,
+        "position": [
+          26.857996219197968,
+          0.0,
+          0.10899999999999821
+        ],
+        "velocity": [
+          16.82539504307524,
+          0.0,
+          -8.29384488978923
+        ],
+        "spin": [
+          0.0,
+          82.56712397946302,
+          0.0
+        ]
+      },
+      "predicted_range_m": 26.857996219197968,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.25,
+        "lift_coefficient": 0.2,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "constant",
+        "use_gravity": true,
+        "use_drag": false,
+        "use_magnus": false,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "comparison",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": null
+    },
+    {
+      "case": "topspin_a",
+      "model": "M2",
+      "spatial_rmse_m": 0.011772132788922024,
+      "event": {
+        "type": "ground",
+        "time": 1.5289079080884553,
+        "position": [
+          22.142583156716594,
+          0.0,
+          0.10899999999999785
+        ],
+        "velocity": [
+          12.523778120933132,
+          0.0,
+          -7.578653125771544
+        ],
+        "spin": [
+          0.0,
+          82.56712397946302,
+          0.0
+        ]
+      },
+      "predicted_range_m": 22.142583156716594,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.24187806075510232,
+        "lift_coefficient": 0.28977661113044667,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "constant",
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": false,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M2",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": null
+    },
+    {
+      "case": "topspin_a",
+      "model": "M3",
+      "spatial_rmse_m": 0.006235113401046263,
+      "event": {
+        "type": "ground",
+        "time": 1.1279497999306287,
+        "position": [
+          17.19556442935128,
+          0.0,
+          0.1089999999999997
+        ],
+        "velocity": [
+          13.210792814021962,
+          0.0,
+          -7.796170458448854
+        ],
+        "spin": [
+          0.0,
+          82.56712397946302,
+          0.0
+        ]
+      },
+      "predicted_range_m": 17.19556442935128,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.24187806075510232,
+        "lift_coefficient": 0.28977661113044667,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "constant",
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": true,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M3",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": null
+    },
+    {
+      "case": "topspin_a",
+      "model": "M4",
+      "spatial_rmse_m": 0.0071847382486165045,
+      "event": {
+        "type": "ground",
+        "time": 1.3769184970751083,
+        "position": [
+          18.012388059246323,
+          0.0,
+          0.10899999999999932
+        ],
+        "velocity": [
+          9.421801129058291,
+          0.0,
+          -6.434050117249215
+        ],
+        "spin": [
+          0.0,
+          82.56712397946302,
+          0.0
+        ]
+      },
+      "predicted_range_m": 18.012388059246323,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.25,
+        "lift_coefficient": 0.2,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "KL18",
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": true,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M4",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": null
+    },
+    {
+      "case": "topspin_b",
+      "model": "M1",
+      "spatial_rmse_m": 0.039573289354963674,
+      "event": {
+        "type": "ground",
+        "time": 1.4898602033763861,
+        "position": [
+          27.106151378730942,
+          0.0,
+          0.1089999999999967
+        ],
+        "velocity": [
+          18.193689672191095,
+          0.0,
+          -7.805047147907064
+        ],
+        "spin": [
+          0.0,
+          44.55643464354853,
+          0.0
+        ]
+      },
+      "predicted_range_m": 27.106151378730942,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.25,
+        "lift_coefficient": 0.2,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "constant",
+        "use_gravity": true,
+        "use_drag": false,
+        "use_magnus": false,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "comparison",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": null
+    },
+    {
+      "case": "topspin_b",
+      "model": "M2",
+      "spatial_rmse_m": 0.039666370220819584,
+      "event": {
+        "type": "ground",
+        "time": 1.4295836340492898,
+        "position": [
+          22.381180938355207,
+          0.0,
+          0.10899999999999971
+        ],
+        "velocity": [
+          13.540119135612409,
+          0.0,
+          -7.14657095764213
+        ],
+        "spin": [
+          0.0,
+          44.55643464354853,
+          0.0
+        ]
+      },
+      "predicted_range_m": 22.381180938355207,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.24187806075510232,
+        "lift_coefficient": 0.28977661113044667,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "constant",
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": false,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M2",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": null
+    },
+    {
+      "case": "topspin_b",
+      "model": "M3",
+      "spatial_rmse_m": 0.045928821196864394,
+      "event": {
+        "type": "ground",
+        "time": 1.0169630419274143,
+        "position": [
+          16.76728449622618,
+          0.0,
+          0.10899999999999921
+        ],
+        "velocity": [
+          14.402875355326833,
+          0.0,
+          -7.434694347774791
+        ],
+        "spin": [
+          0.0,
+          44.55643464354853,
+          0.0
+        ]
+      },
+      "predicted_range_m": 16.76728449622618,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.24187806075510232,
+        "lift_coefficient": 0.28977661113044667,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "constant",
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": true,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M3",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": null
+    },
+    {
+      "case": "topspin_b",
+      "model": "M4",
+      "spatial_rmse_m": 0.04657876968259273,
+      "event": {
+        "type": "ground",
+        "time": 0.9961714818491668,
+        "position": [
+          16.128666837861473,
+          0.0,
+          0.1090000000000004
+        ],
+        "velocity": [
+          13.777874299131003,
+          0.0,
+          -7.21240495503482
+        ],
+        "spin": [
+          0.0,
+          44.55643464354853,
+          0.0
+        ]
+      },
+      "predicted_range_m": 16.128666837861473,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.25,
+        "lift_coefficient": 0.2,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "KL18",
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": true,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M4",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": null
+    },
+    {
+      "case": "topspin_c",
+      "model": "M1",
+      "spatial_rmse_m": 0.010038488405997179,
+      "event": {
+        "type": "ground",
+        "time": 1.7555818635284395,
+        "position": [
+          30.51021648064703,
+          0.0,
+          0.10899999999999743
+        ],
+        "velocity": [
+          17.382982082794264,
+          0.0,
+          -9.034717601674174
+        ],
+        "spin": [
+          0.0,
+          125.15983503072134,
+          0.0
+        ]
+      },
+      "predicted_range_m": 30.51021648064703,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.25,
+        "lift_coefficient": 0.2,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "constant",
+        "use_gravity": true,
+        "use_drag": false,
+        "use_magnus": false,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "comparison",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": null
+    },
+    {
+      "case": "topspin_c",
+      "model": "M2",
+      "spatial_rmse_m": 0.009951986064398396,
+      "event": {
+        "type": "ground",
+        "time": 1.6682539033638288,
+        "position": [
+          24.520923082171876,
+          0.0,
+          0.10900000000000379
+        ],
+        "velocity": [
+          12.508561782942198,
+          0.0,
+          -8.152471710461667
+        ],
+        "spin": [
+          0.0,
+          125.15983503072134,
+          0.0
+        ]
+      },
+      "predicted_range_m": 24.520923082171876,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.24187806075510232,
+        "lift_coefficient": 0.28977661113044667,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "constant",
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": false,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M2",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": null
+    },
+    {
+      "case": "topspin_c",
+      "model": "M3",
+      "spatial_rmse_m": 0.004684528917373701,
+      "event": {
+        "type": "ground",
+        "time": 1.209270372014083,
+        "position": [
+          18.883020403674802,
+          0.0,
+          0.10899999999999962
+        ],
+        "velocity": [
+          13.323608736119546,
+          0.0,
+          -8.338491081236585
+        ],
+        "spin": [
+          0.0,
+          125.15983503072134,
+          0.0
+        ]
+      },
+      "predicted_range_m": 18.883020403674802,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.24187806075510232,
+        "lift_coefficient": 0.28977661113044667,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "constant",
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": true,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M3",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": null
+    },
+    {
+      "case": "topspin_c",
+      "model": "M4",
+      "spatial_rmse_m": 0.009853397567579266,
+      "event": {
+        "type": "ground",
+        "time": 1.6073065221312341,
+        "position": [
+          18.551273787380467,
+          0.0,
+          0.10899999999999714
+        ],
+        "velocity": [
+          6.873500600974092,
+          0.0,
+          -6.861535433865602
+        ],
+        "spin": [
+          0.0,
+          125.15983503072134,
+          0.0
+        ]
+      },
+      "predicted_range_m": 18.551273787380467,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.25,
+        "lift_coefficient": 0.2,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "KL18",
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": true,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M4",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": null
+    },
+    {
+      "case": "topspin_d",
+      "model": "M1",
+      "spatial_rmse_m": 0.017117979987952184,
+      "event": {
+        "type": "ground",
+        "time": 2.2809048609220715,
+        "position": [
+          42.80680580332308,
+          0.0,
+          0.10900000000000178
+        ],
+        "velocity": [
+          18.770407810510665,
+          0.0,
+          -11.51268794387936
+        ],
+        "spin": [
+          0.0,
+          47.751536065987715,
+          0.0
+        ]
+      },
+      "predicted_range_m": 42.80680580332308,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.25,
+        "lift_coefficient": 0.2,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "constant",
+        "use_gravity": true,
+        "use_drag": false,
+        "use_magnus": false,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "comparison",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": null
+    },
+    {
+      "case": "topspin_d",
+      "model": "M2",
+      "spatial_rmse_m": 0.01701458501719104,
+      "event": {
+        "type": "ground",
+        "time": 2.1117474409431347,
+        "position": [
+          31.712064018689155,
+          0.0,
+          0.10900000000000167
+        ],
+        "velocity": [
+          12.139998153786475,
+          0.0,
+          -9.968448096549539
+        ],
+        "spin": [
+          0.0,
+          47.751536065987715,
+          0.0
+        ]
+      },
+      "predicted_range_m": 31.712064018689155,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.24187806075510232,
+        "lift_coefficient": 0.28977661113044667,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "constant",
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": false,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M2",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": null
+    },
+    {
+      "case": "topspin_d",
+      "model": "M3",
+      "spatial_rmse_m": 0.008962468631397852,
+      "event": {
+        "type": "ground",
+        "time": 1.4660476782820624,
+        "position": [
+          24.13647520676033,
+          0.0,
+          0.10900000000000107
+        ],
+        "velocity": [
+          13.316737012189009,
+          0.0,
+          -10.036412122783766
+        ],
+        "spin": [
+          0.0,
+          47.751536065987715,
+          0.0
+        ]
+      },
+      "predicted_range_m": 24.13647520676033,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.24187806075510232,
+        "lift_coefficient": 0.28977661113044667,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "constant",
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": true,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M3",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": null
+    },
+    {
+      "case": "topspin_d",
+      "model": "M4",
+      "spatial_rmse_m": 0.008228958589721629,
+      "event": {
+        "type": "ground",
+        "time": 1.4350765992633516,
+        "position": [
+          23.00541693195525,
+          0.0,
+          0.10899999999999875
+        ],
+        "velocity": [
+          12.439317961556528,
+          0.0,
+          -9.547355483235982
+        ],
+        "spin": [
+          0.0,
+          47.751536065987715,
+          0.0
+        ]
+      },
+      "predicted_range_m": 23.00541693195525,
+      "configuration": {
+        "mass": 0.424,
+        "radius": 0.109,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.54e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.25,
+        "lift_coefficient": 0.2,
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "coefficient_mode": "KL18",
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": true,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M4",
+        "dynamic_viscosity": 1.8480000000000003e-05,
+        "moment_of_inertia": 0.003358362666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "measured_range_m": null
+    }
+  ]
+}

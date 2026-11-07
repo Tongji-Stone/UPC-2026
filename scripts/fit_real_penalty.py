@@ -1,3 +1,4 @@
+# HISTORICAL pipeline; not used by the current paper. Use scripts/coupled_compute.py.
 """Fit recorded complete penalty flight and compare with actual goal plane."""
 import csv, json
 from dataclasses import replace

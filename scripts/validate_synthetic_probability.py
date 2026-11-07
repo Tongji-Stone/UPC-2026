@@ -1,3 +1,4 @@
+# HISTORICAL pipeline; not used by the current paper. Use scripts/coupled_compute.py.
 """Check coverage on simulated shots sampled from the stated physical prior."""
 import argparse, json, time
 from dataclasses import replace

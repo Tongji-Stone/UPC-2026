@@ -10,3 +10,14 @@ paper/*.aux
 paper/*.log
 paper/*.out
 paper/*.toc
+*.aux
+*.log
+*.out
+*.toc
+*.xdv
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+results/structure_v2/qa/
+results/structure_v2/*.png
+results/bilingual_report/*.png

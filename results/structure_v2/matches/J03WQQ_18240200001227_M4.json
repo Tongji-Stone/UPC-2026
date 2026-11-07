@@ -1,0 +1,646 @@
+{
+  "record": {
+    "case": "J03WQQ_18240200001227",
+    "model": "M4",
+    "status": "fit_failure",
+    "event": {
+      "type": "ground",
+      "time": 0.5212815191070516,
+      "position": [
+        2.7746111838189855,
+        3.8238725454018545,
+        0.10999999999999942
+      ],
+      "velocity": [
+        -12.87916867835419,
+        2.998553289904369,
+        -9.21491310226741
+      ],
+      "spin": [
+        -13.663175305901882,
+        22.258829783960948,
+        47.89946821329792
+      ]
+    },
+    "error_m": null,
+    "rss_m2": 0.01583796866969348,
+    "max_residual_m": 0.09519834627340051,
+    "initial_state": [
+      13.818946227195642,
+      -10.857081668006494,
+      9.382146676352209,
+      -13.663175305901882,
+      22.258829783960948,
+      47.89946821329792
+    ],
+    "drag_scale": 1.851069624853131,
+    "lift_scale": 22.66717211681649,
+    "active_parameters": 8,
+    "coverage": {
+      "speed_range": [
+        16.11765898510809,
+        19.921450083577604
+      ],
+      "Re_range": [
+        236392.3317815853,
+        292181.2678924715
+      ],
+      "Sp_range": [
+        0.30124819692746174,
+        0.3723432120882497
+      ],
+      "above_35_m_s": false,
+      "outside_A07_spinning_Re": true,
+      "above_A07_global_Sp": true,
+      "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+    },
+    "shot_type": "head",
+    "target_yz_m": [
+      -5.523999999999998,
+      6.441999999999999
+    ],
+    "fit_converged": false,
+    "candidate_plane_error_m": null
+  },
+  "fit": {
+    "model": "M4",
+    "initial_state": [
+      13.818946227195642,
+      -10.857081668006494,
+      9.382146676352209,
+      -13.663175305901882,
+      22.258829783960948,
+      47.89946821329792
+    ],
+    "drag_scale": 1.851069624853131,
+    "lift_scale": 22.66717211681649,
+    "rss_m2": 0.01583796866969348,
+    "minimum_search_rss_m2": 0.01583796870662727,
+    "max_residual_m": 0.09519834627340051,
+    "fitted_positions": [
+      [
+        0.0,
+        0.0,
+        2.13
+      ],
+      [
+        0.6183486122334052,
+        -0.3348016537265994,
+        2.469796279323927
+      ],
+      [
+        1.3205234738901108,
+        -0.46418526799601684,
+        2.7223504513157404
+      ]
+    ],
+    "active_parameters": 8,
+    "spin_representation": "rad/s vector",
+    "coefficient_distance": 470.19066704609764,
+    "rss_allowance_m2": 6e-12,
+    "coefficient_distance_allowance": 1e-08,
+    "starts": [
+      {
+        "start": 0,
+        "rss_m2": 0.01656172355207589,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.46689012624270665,
+          -0.3606512561553125,
+          0.31398756169553327,
+          -0.21693612923650712,
+          0.3534775627390651,
+          0.7605390081729466,
+          2.5446311256571783,
+          22.102654493346744
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 1,
+        "rss_m2": 0.01685329806823419,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.46482939564828607,
+          -0.35656189515858683,
+          0.3114603893248367,
+          -0.22192173341375554,
+          0.3615782873600436,
+          0.7780062938855377,
+          1.8696549430034897,
+          21.831210585458095
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 2,
+        "rss_m2": 0.016717968355320134,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.46391725265794953,
+          -0.35821142918553034,
+          0.31195699961374446,
+          -0.2370128510711213,
+          0.3860881774256533,
+          0.8309200655252171,
+          1.8874323944210507,
+          21.994838116101484
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 3,
+        "rss_m2": 0.01657773928172985,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.4638560052925507,
+          -0.358285952455102,
+          0.311977386560929,
+          -0.23220581770396215,
+          0.37827433422664547,
+          0.8140561523158719,
+          1.8912114197447771,
+          22.072659171455257
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 4,
+        "rss_m2": 0.016731205595069045,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.46422098308918897,
+          -0.35704459498909413,
+          0.31151302130728115,
+          -0.21727426083671847,
+          0.3540173673137074,
+          0.7617029382491497,
+          1.8710316545165644,
+          21.94630498266354
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 5,
+        "rss_m2": 0.016567105048397947,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.4641200266857327,
+          -0.35825341093216967,
+          0.3120441735568051,
+          -0.2272533771104806,
+          0.37023404813261185,
+          0.7967002009713507,
+          1.940075617502205,
+          22.06531180356013
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 6,
+        "rss_m2": 0.01583796870662727,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.4606315409065214,
+          -0.36190272226688314,
+          0.3127382225450736,
+          -0.22771958843169804,
+          0.37098049639934916,
+          0.798324470221632,
+          1.851069624853131,
+          22.66717211681649
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 7,
+        "rss_m2": 0.01643131412809394,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.4639347840422437,
+          -0.35907187706826504,
+          0.31238176955125113,
+          -0.217431162504402,
+          0.35425676646999255,
+          0.7622459217019457,
+          2.066319257597117,
+          22.194361871974515
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 8,
+        "rss_m2": 0.01664874121859554,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.4649693804255803,
+          -0.35848206134698596,
+          0.3123966282357541,
+          -0.2276880903915294,
+          0.3709177914812517,
+          0.7982082443712496,
+          2.077863819412994,
+          22.002849219140288
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 9,
+        "rss_m2": 0.016612044984899467,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.4651995485789302,
+          -0.35872332875562496,
+          0.3125871353501876,
+          -0.2213199268976437,
+          0.3606178726575374,
+          0.775917810222546,
+          2.127317402378035,
+          22.03369254044669
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 10,
+        "rss_m2": 0.01654042642899999,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.464611596456808,
+          -0.35947731323650123,
+          0.31275861117746234,
+          -0.2341257541507496,
+          0.3814173572854041,
+          0.8208239937467896,
+          2.0841242621785026,
+          22.119248456213786
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 11,
+        "rss_m2": 0.01659274354618304,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.4659183824982811,
+          -0.3601140043700641,
+          0.3134393484925465,
+          -0.2339320661983845,
+          0.3811043314656014,
+          0.8201528277811492,
+          2.3009760227846123,
+          22.08182511316393
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 12,
+        "rss_m2": 0.016287494433644748,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.4632561793910565,
+          -0.3605831718940962,
+          0.3128824626178098,
+          -0.23446285458766575,
+          0.3819682602805413,
+          0.8220059262892313,
+          2.016661583486754,
+          22.327604446674734
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 13,
+        "rss_m2": 0.052015932991877754,
+        "success": true,
+        "nfev": 65,
+        "parameters": [
+          0.5700320868917458,
+          -0.22179354765363726,
+          0.2790217576051528,
+          -1.5891886070416923,
+          -0.42706860367167593,
+          1.5831661943192457,
+          2.9241152430318422,
+          1.418198473048211
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 14,
+        "rss_m2": 0.052015942524466584,
+        "success": true,
+        "nfev": 50,
+        "parameters": [
+          0.5700165267396056,
+          -0.2217874157885974,
+          0.27901415081920616,
+          1.3662828785200556,
+          1.7424117361837332,
+          1.152841632353403,
+          2.7352563149220153,
+          0.9615724072607384
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 15,
+        "rss_m2": 0.017204298257608167,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.4703445237101723,
+          -0.35813600134229295,
+          0.3138039541423982,
+          -0.22837220931733182,
+          0.3720462723013086,
+          0.800646067910057,
+          2.698982958261016,
+          21.573458541248087
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 16,
+        "rss_m2": 0.05201594138766205,
+        "success": true,
+        "nfev": 49,
+        "parameters": [
+          0.5700230299806559,
+          -0.2217901249610486,
+          0.279017345658426,
+          -1.1369694002376716,
+          1.2881552100021758,
+          1.7740029631030203,
+          2.7580030796525907,
+          1.6285749768282394
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 17,
+        "rss_m2": 0.05201594147518009,
+        "success": true,
+        "nfev": 31,
+        "parameters": [
+          0.5700250157678934,
+          -0.2217909789229251,
+          0.2790183247221836,
+          -0.9808973942753318,
+          0.7489740374232494,
+          -2.141471161795742,
+          2.75649703171406,
+          0.9550207879874596
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 18,
+        "rss_m2": 0.016617364589006794,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.4652673086246938,
+          -0.3588643120649108,
+          0.31267436976608487,
+          -0.21994246670401632,
+          0.35838321302518306,
+          0.7710919374097366,
+          2.1515683449760292,
+          22.0337531446221
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      }
+    ],
+    "stages": [
+      {
+        "stage": "positions",
+        "rss_m2": 0.01583796870662727,
+        "coefficient_distance": 470.19066704609764
+      },
+      {
+        "stage": "coefficients",
+        "success": true,
+        "message": "Optimization terminated successfully",
+        "rss_m2": 0.015837968712628173,
+        "coefficient_distance": 469.1626300631936
+      },
+      {
+        "stage": "spin",
+        "success": true,
+        "accepted": false,
+        "message": "Optimization terminated successfully",
+        "rss_m2": 0.01583796871263218,
+        "coefficient_distance": 470.1906670560979
+      }
+    ],
+    "position_jacobian_singular_values": [
+      26.82449699684542,
+      24.35187963227999,
+      20.010553067119794,
+      1.0175315762063073,
+      0.06125582616462314,
+      0.041535186722454445
+    ],
+    "position_jacobian_rank": 6,
+    "selection": "positions, then coefficients nearest one, then smallest M4 spin",
+    "success": false,
+    "position_stage_converged": false
+  },
+  "input": {
+    "times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "positions_m": [
+      [
+        0.0,
+        0.0,
+        2.13
+      ],
+      [
+        0.5700000000000003,
+        -0.42999999999999994,
+        2.5
+      ],
+      [
+        1.3299999999999983,
+        -0.4099999999999999,
+        2.7
+      ]
+    ]
+  },
+  "source_case": {
+    "case": "J03WQQ_18240200001227",
+    "shot_type": "head",
+    "times_s": [
+      0.0,
+      0.04,
+      0.08,
+      0.12,
+      0.16,
+      0.2,
+      0.24,
+      0.28,
+      0.32,
+      0.36,
+      0.4,
+      0.44,
+      0.48,
+      0.52,
+      0.56,
+      0.6,
+      0.64
+    ],
+    "positions_m": [
+      [
+        0.0,
+        0.0,
+        2.13
+      ],
+      [
+        0.5700000000000003,
+        -0.42999999999999994,
+        2.5
+      ],
+      [
+        1.3299999999999983,
+        -0.4099999999999999,
+        2.7
+      ],
+      [
+        1.6700000000000017,
+        -1.22,
+        3.2
+      ],
+      [
+        2.219999999999999,
+        -1.62,
+        3.56
+      ],
+      [
+        2.769999999999996,
+        -1.99,
+        3.88
+      ],
+      [
+        3.3100000000000023,
+        -2.36,
+        4.2
+      ],
+      [
+        3.8299999999999983,
+        -2.73,
+        4.49
+      ],
+      [
+        4.359999999999999,
+        -3.0700000000000003,
+        4.78
+      ],
+      [
+        4.909999999999997,
+        -3.42,
+        5.05
+      ],
+      [
+        5.420000000000002,
+        -3.76,
+        5.3
+      ],
+      [
+        5.93,
+        -4.09,
+        5.53
+      ],
+      [
+        6.449999999999996,
+        -4.42,
+        5.76
+      ],
+      [
+        6.969999999999999,
+        -4.74,
+        5.97
+      ],
+      [
+        7.469999999999999,
+        -5.04,
+        6.16
+      ],
+      [
+        7.990000000000002,
+        -5.35,
+        6.34
+      ],
+      [
+        8.490000000000002,
+        -5.64,
+        6.51
+      ]
+    ],
+    "plane_x_m": 8.29,
+    "target_yz_m": [
+      -5.523999999999998,
+      6.441999999999999
+    ],
+    "source": "Sportec Open DFL; fixed existing selection; height treated as metres",
+    "physics": {}
+  },
+  "configuration": {
+    "mass": 0.43,
+    "radius": 0.11,
+    "air_density": 1.2,
+    "kinematic_viscosity": 1.5e-05,
+    "gravity": 9.81,
+    "drag_coefficient": 0.25,
+    "lift_coefficient": 0.2,
+    "drag_scale": 1.851069624853131,
+    "lift_scale": 22.66717211681649,
+    "coefficient_mode": "KL18",
+    "use_gravity": true,
+    "use_drag": true,
+    "use_magnus": true,
+    "wind": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "spin_decay": 0.0,
+    "use_rotational_drag": false,
+    "use_viscous_torque": true,
+    "angular_drag_coefficient": 1.5,
+    "inertia_coefficient": 0.6666666666666666,
+    "model_id": "four-model-v2-M4",
+    "dynamic_viscosity": 1.8e-05,
+    "moment_of_inertia": 0.003468666666666666,
+    "coefficient_callback": "model default",
+    "sources": {
+      "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+      "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+      "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+      "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+      "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+      "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+    },
+    "assumptions": [
+      "still air reference unless wind is supplied",
+      "isotropic thin shell",
+      "sin(theta) oblique-spin extension"
+    ]
+  },
+  "validation_rule": "Only first three positions supplied to fit_early; subsequent data used for scoring"
+}

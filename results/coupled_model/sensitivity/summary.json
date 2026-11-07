@@ -1,0 +1,145 @@
+{
+  "reference_state": [
+    30.429330796103354,
+    9.411504176395882,
+    6.913502096130413,
+    -53.651511826390724,
+    -34.485360400942696,
+    -123.04336481768532
+  ],
+  "configuration": {
+    "mass": 0.43,
+    "radius": 0.11,
+    "air_density": 1.2,
+    "kinematic_viscosity": 1.5e-05,
+    "gravity": 9.81,
+    "use_gravity": true,
+    "use_drag": true,
+    "use_magnus": true,
+    "wind": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "spin_decay": 0.0,
+    "use_rotational_drag": true,
+    "angular_drag_coefficient": 1.5,
+    "inertia_coefficient": 0.6666666666666666,
+    "model_id": "KL18-Teamgeist-MuJoCo381-shell-v1",
+    "dynamic_viscosity": 1.8e-05,
+    "moment_of_inertia": 0.003468666666666666,
+    "coefficient_callback": "model default",
+    "sources": {
+      "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+      "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+      "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+      "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+      "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+      "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+    },
+    "assumptions": [
+      "still air reference unless wind is supplied",
+      "isotropic thin shell",
+      "sin(theta) oblique-spin extension"
+    ]
+  },
+  "meaning": "controlled deterministic perturbations, not parameter probabilities",
+  "sweeps": {
+    "speed_scale": [
+      0.95,
+      0.96,
+      0.97,
+      0.98,
+      0.99,
+      1.0,
+      1.01,
+      1.02,
+      1.03,
+      1.04,
+      1.05
+    ],
+    "azimuth_deg": [
+      -2.0,
+      -1.5,
+      -1.0,
+      -0.5,
+      0.0,
+      0.5,
+      1.0,
+      1.5,
+      2.0
+    ],
+    "spin_scale": [
+      0.0,
+      0.2,
+      0.4,
+      0.6000000000000001,
+      0.8,
+      1.0,
+      1.2000000000000002,
+      1.4000000000000001,
+      1.6,
+      1.8,
+      2.0
+    ],
+    "angular_drag_scale": [
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0
+    ]
+  },
+  "groups": {
+    "speed_scale": {
+      "n": 11,
+      "reached": 11,
+      "y_range": [
+        2.5596813174258193,
+        2.599569489736883
+      ],
+      "z_range": [
+        1.8992987255096316,
+        2.058462762031242
+      ]
+    },
+    "azimuth_deg": {
+      "n": 9,
+      "reached": 9,
+      "y_range": [
+        2.1804588577762716,
+        2.9777124611655705
+      ],
+      "z_range": [
+        1.9803305129404418,
+        1.9912048784325747
+      ]
+    },
+    "spin_scale": {
+      "n": 11,
+      "reached": 11,
+      "y_range": [
+        2.495469375519298,
+        3.4021959481807538
+      ],
+      "z_range": [
+        1.8123044912245612,
+        2.025005530232038
+      ]
+    },
+    "angular_drag_scale": {
+      "n": 7,
+      "reached": 7,
+      "y_range": [
+        2.529310135840756,
+        2.6458901452064545
+      ],
+      "z_range": [
+        1.966950976814978,
+        2.0021459496602554
+      ]
+    }
+  }
+}

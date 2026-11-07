@@ -1,0 +1,147 @@
+[
+  {
+    "case": "zero_spin",
+    "physics": {
+      "mass": 0.424,
+      "radius": 0.109,
+      "air_density": 1.2,
+      "kinematic_viscosity": 1.54e-05
+    },
+    "position": [
+      9.310583201943556e-05,
+      0.0,
+      0.8500871845949224
+    ],
+    "velocity": [
+      16.689309382202175,
+      0.0,
+      6.742918681486416
+    ],
+    "spin": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "launch_basis": "published approximate 18 m/s and 22 degrees, Fig.3; first digitized height",
+    "observations": "zero_spin.csv",
+    "measured_range_m": 21.9,
+    "comparison": "landing range and early trajectory",
+    "time_basis": "Fig.3 camera-1 marker spacing 0.005 s; rotating panels scored spatially"
+  },
+  {
+    "case": "topspin_a",
+    "physics": {
+      "mass": 0.424,
+      "radius": 0.109,
+      "air_density": 1.2,
+      "kinematic_viscosity": 1.54e-05
+    },
+    "position": [
+      9.616792225682069e-05,
+      0.0,
+      0.84988192855194
+    ],
+    "velocity": [
+      16.82539504307524,
+      0.0,
+      7.365579380991958
+    ],
+    "spin": [
+      0.0,
+      82.56712397946302,
+      0.0
+    ],
+    "launch_basis": "published initial Re and Sp, Fig.14; tangent of first three digitized markers",
+    "observations": "topspin_a.csv",
+    "measured_range_m": null,
+    "comparison": "spatial trajectory z(x)",
+    "time_basis": "Fig.3 camera-1 marker spacing 0.005 s; rotating panels scored spatially"
+  },
+  {
+    "case": "topspin_b",
+    "physics": {
+      "mass": 0.424,
+      "radius": 0.109,
+      "air_density": 1.2,
+      "kinematic_viscosity": 1.54e-05
+    },
+    "position": [
+      9.718355344318086e-05,
+      0.0,
+      0.84988192855194
+    ],
+    "velocity": [
+      18.193689672191095,
+      0.0,
+      6.810481447215254
+    ],
+    "spin": [
+      0.0,
+      44.55643464354853,
+      0.0
+    ],
+    "launch_basis": "published initial Re and Sp, Fig.14; tangent of first three digitized markers",
+    "observations": "topspin_b.csv",
+    "measured_range_m": null,
+    "comparison": "spatial trajectory z(x)",
+    "time_basis": "Fig.3 camera-1 marker spacing 0.005 s; rotating panels scored spatially"
+  },
+  {
+    "case": "topspin_c",
+    "physics": {
+      "mass": 0.424,
+      "radius": 0.109,
+      "air_density": 1.2,
+      "kinematic_viscosity": 1.54e-05
+    },
+    "position": [
+      -0.007031597946460119,
+      0.0,
+      0.8526443954076709
+    ],
+    "velocity": [
+      17.382982082794264,
+      0.0,
+      8.187540479539784
+    ],
+    "spin": [
+      0.0,
+      125.15983503072134,
+      0.0
+    ],
+    "launch_basis": "published initial Re and Sp, Fig.14; tangent of first three digitized markers",
+    "observations": "topspin_c.csv",
+    "measured_range_m": null,
+    "comparison": "spatial trajectory z(x)",
+    "time_basis": "Fig.3 camera-1 marker spacing 0.005 s; rotating panels scored spatially"
+  },
+  {
+    "case": "topspin_d",
+    "physics": {
+      "mass": 0.424,
+      "radius": 0.109,
+      "air_density": 1.2,
+      "kinematic_viscosity": 1.54e-05
+    },
+    "position": [
+      -0.006708613160166146,
+      0.0,
+      0.8499510341185819
+    ],
+    "velocity": [
+      18.770407810510665,
+      0.0,
+      10.862988741766165
+    ],
+    "spin": [
+      0.0,
+      47.751536065987715,
+      0.0
+    ],
+    "launch_basis": "published initial Re and Sp, Fig.14; tangent of first three digitized markers",
+    "observations": "topspin_d.csv",
+    "measured_range_m": null,
+    "comparison": "spatial trajectory z(x)",
+    "time_basis": "Fig.3 camera-1 marker spacing 0.005 s; rotating panels scored spatially"
+  }
+]

@@ -1,3 +1,4 @@
+# HISTORICAL pipeline; not used by the current paper. Use scripts/coupled_compute.py.
 """Run physical-model importance sampling, saving samples and metadata."""
 import argparse
 import json

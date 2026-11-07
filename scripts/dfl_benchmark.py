@@ -1,3 +1,4 @@
+# HISTORICAL pipeline; not used by the current paper. Use scripts/coupled_compute.py.
 """Fixed sequential, non-overlapping DFL trajectory demonstration benchmark."""
 import argparse
 import csv
