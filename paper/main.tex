@@ -1,0 +1,169 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in,headheight=14pt,headsep=15pt]{geometry}
+\usepackage{amsmath,amssymb,graphicx,booktabs,array,float,fancyhdr,lastpage,hyperref,listings,xcolor}
+\usepackage{microtype,needspace}
+\hypersetup{colorlinks=false,hidelinks}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Problem B}
+\fancyhead[C]{\small The University Physics Competition}
+\fancyhead[R]{\small Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0pt}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,numbers=left,numberstyle=\tiny,numbersep=8pt,columns=fullflexible,showstringspaces=false,frame=none}
+\graphicspath{{../results/real_penalty_fit/}{../results/penalty_paper_sensitivity/}}
+\begin{document}
+\begin{center}
+{\Large\bfseries Modeling and Validation of a Soccer Ball's Three-Dimensional Flight to the Goal\par}
+\vspace{2mm}{\bfseries Problem B\par}
+\vspace{3mm}{\bfseries Abstract\par}
+\end{center}
+The flight of a soccer ball is shaped by gravity, aerodynamic drag and the force associated with spin. A model of these effects provides a way to describe the ball's three-dimensional path from a penalty kick to the goal. We establish a system of differential equations for the ball's position, velocity and spin, and solve it numerically to locate the first crossing of the goal plane.
+
+To examine how well the model follows a real flight, we use an event-labelled penalty kick in the open German Football League tracking dataset. The selected record contains 12 ball-position observations from near the penalty mark to the first frame beyond the actual goal line. Linear interpolation between the two frames surrounding the line gives a crossing position of approximately $(y,z)=(2.919,1.179)$ m, with the dataset's height values treated as metres. Fitting the initial velocity, spin and zero-spin drag coefficient to the complete recorded flight gives a three-dimensional trajectory root-mean-square error of 0.194 m and a goal-plane discrepancy of 0.056 m. The whole trajectory is used in the fit; these quantities measure reconstruction of the recorded flight.
+
+We also compare simpler models and examine the effect of varying launch speed, horizontal direction, spin and drag around the fitted reference shot. Within the selected ranges, a $4^\circ$ change in horizontal launch direction shifts the goal-plane position by approximately 0.827 m. The framework connects an interpretable physical model to a real goal-plane measurement and provides a starting point for subsequent prediction research.
+
+\noindent\textbf{Keywords:} Soccer ball, flight trajectory, aerodynamic drag, Magnus effect, model validation
+\newpage
+\tableofcontents
+\newpage
+\section{Introduction}
+\subsection{Problem Background}
+The path of a kicked soccer ball is not generally a straight line. Gravity bends the trajectory downwards, air resistance slows the ball, and its rotation can produce a sideways or vertical aerodynamic force. The combination of these effects determines where the ball reaches the plane of the goal. Mathematical models of soccer-ball flight have therefore been developed using Newton's law together with experimental aerodynamic relationships \cite{linthorne,bray}.
+
+An effective way to examine a physical model is to compare its calculated path with positions recorded during a real kick. The DFL open dataset combines match events and optical tracking data for professional matches \cite{bassek,dataset}. These records make it possible to identify a penalty event, follow the ball through the flight, and compare the model with its position at the actual goal plane.
+
+\subsection{Problem Restatement}
+We model a soccer ball travelling in three dimensions from the vicinity of the penalty mark to the goal. The goal is 7.32 m wide and 2.44 m high; the penalty mark is 11 m from the goal line. We establish a model incorporating gravity, drag and the Magnus effect, solve for its trajectory and the point at which it crosses the goal plane, and compare the calculated positions with a recorded penalty flight. The present analysis uses the entire observed trajectory to examine the agreement between model and measurement.
+
+\section{Preparation of the Models}
+\subsection{Assumptions}
+\begin{itemize}
+\item The ball is treated as a sphere with constant mass and radius, and its position represents its centre.
+\item During free flight, gravity, aerodynamic drag and spin-induced lift are the principal forces; contact with the ground or another object terminates the free-flight calculation.
+\item Air density is uniform over the flight. The reference comparison uses still air and constant angular velocity; wind and spin decay are available as optional model inputs.
+\item The first retained tracking position is used as the initial position. Subsequent recorded positions are used together to fit the unknown motion parameters.
+\item The tracking data's vertical coordinate is treated as a height in metres for the present calculation. The dataset description identifies it as ball height, while its unit and reference require further confirmation.
+\end{itemize}
+\Needspace{16\baselineskip}
+\subsection{Notations}
+The main notations and reference values used in the model are shown in Table~\ref{tab:notations}.
+\begin{table}[H]\centering\caption{Notations}\label{tab:notations}
+\begin{tabular}{lll}\toprule
+Symbol & Definition & Reference value \\\midrule
+$\boldsymbol r=(x,y,z)$ & Ball-centre position & m \\
+$\boldsymbol v$ & Ball velocity & m/s \\
+$\boldsymbol\omega$ & Angular velocity & rad/s \\
+$m$ & Ball mass & 0.43 kg \\
+$R$ & Ball radius & 0.11 m \\
+$\rho$ & Air density & 1.20 kg/m$^3$ \\
+$g$ & Gravitational acceleration & 9.81 m/s$^2$ \\
+$A$ & Cross-sectional area, $\pi R^2$ & m$^2$ \\
+$C_D,C_L$ & Drag and lift coefficients & Dimensionless \\
+$\boldsymbol u$ & Velocity relative to air & m/s \\
+$X_g$ & Goal-plane coordinate & 52.50 m (match coordinates) \\\bottomrule
+\end{tabular}\end{table}
+
+\section{Model Establishment}
+We express the ball's motion using one set of equations and switch individual forces on or off to obtain simpler comparison models. The coordinate $x$ points towards the goal, $y$ is horizontal across the goal, and $z$ is vertical. In the selected match the coordinate origin is the centre of the pitch.
+\subsection{Geometry and Goal Plane}
+For a pitch 105 m long with its origin at the centre, the two goal lines are located at $x=\pm52.50$ m. The selected kick travels towards the positive-$x$ goal. For the competition geometry the valid goal opening is $-3.66\le y\le3.66$ m and $0\le z\le2.44$ m. The goal-plane position is the ball centre's first forward intersection with $x=X_g$.
+\subsection{State Variables and Newton's Law}
+The state consists of position $\boldsymbol r$, velocity $\boldsymbol v$ and spin $\boldsymbol\omega$. Newton's law gives
+\begin{equation}
+\frac{d\boldsymbol r}{dt}=\boldsymbol v,\qquad
+m\frac{d\boldsymbol v}{dt}=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L.
+\label{eq:motion}\end{equation}
+The initial position and motion parameters define the subsequent flight.
+\subsection{Gravity}
+With the vertical unit vector $\boldsymbol e_z$, the gravitational force is
+\begin{equation}\boldsymbol F_g=-mg\boldsymbol e_z.\end{equation}
+When drag and lift are removed, Eq.~\eqref{eq:motion} reduces to the familiar parabolic trajectory.
+\subsection{Aerodynamic Drag}
+Let $\boldsymbol u=\boldsymbol v-\boldsymbol v_{\mathrm{wind}}$ be the velocity relative to the air. Drag acts against this motion:
+\begin{equation}\boldsymbol F_D=-\tfrac12\rho C_D A\lVert\boldsymbol u\rVert\boldsymbol u.\end{equation}
+The drag coefficient depends on the ball and its flow conditions; it is prescribed or estimated within a chosen range.
+\subsection{Spin-Induced Lift}
+The direction of the Magnus force is given by $\boldsymbol\omega\times\boldsymbol u$. Let $\theta$ be the angle between the spin axis and relative airflow. In our three-dimensional extension of the transverse-spin relationship, the force is
+\begin{equation}\boldsymbol F_L=\tfrac12\rho C_L A\lVert\boldsymbol u\rVert^2\sin\theta\,
+\frac{\boldsymbol\omega\times\boldsymbol u}{\lVert\boldsymbol\omega\times\boldsymbol u\rVert}.
+\end{equation}
+The force is set to zero when the cross product vanishes. The factor $\sin\theta$ smoothly reduces lift as the spin axis approaches the airflow direction; this is a modeling extension of the transverse-spin relation.
+\subsection{Aerodynamic Coefficients}
+Linthorne and Patel use the following relationships for a spinning soccer ball \cite{linthorne}:
+\begin{equation}C_L=0.25\left(1-e^{-0.5f}\right),\qquad C_D=C_{D0}+0.014f,\end{equation}
+where $f=\lVert\boldsymbol\omega\rVert/(2\pi)$ is the spin rate in revolutions per second. The paper discusses $C_{D0}$ of approximately 0.1--0.2 for speeds near 25--35 m/s. The original work considers punt kicks; applying the relation to a three-dimensional penalty shot is the modeling choice examined here.
+\subsection{Spin and Environmental Inputs}
+The optional spin-decay equation is
+\begin{equation}\frac{d\boldsymbol\omega}{dt}=-k_\omega\boldsymbol\omega.\end{equation}
+For the reference fit, $k_\omega=0$ and $\boldsymbol v_{\mathrm{wind}}=\boldsymbol 0$. Both quantities can be changed for other experiments.
+\subsection{Numerical Solution and Comparison Models}
+Equation~\eqref{eq:motion} is integrated using an adaptive Runge--Kutta solver. Continuous event detection locates the first forward crossing of the goal plane and descending ground contact. We compare six configurations: M0 has uniform velocity; M1 adds gravity; M2 is a separate constant-acceleration fit; M3 adds drag; M4 adds constant-coefficient lift; and M5 uses the spin-dependent coefficient relationships. For M0, M1, M3, M4 and M5 only the initial velocity is fitted in the fixed-parameter comparison. A second M5 fit also adjusts spin and $C_{D0}$.
+
+\section{Model Solving}
+The DFL J03WOH match record contains an event labelled as a successful penalty \cite{bassek,dataset}. We retain frames 128954--128965, from the first visible motion near the penalty mark through the first observation beyond the goal line. Consecutive frames are separated by 0.04 s. The initial recorded position is $(41.56,-0.04,0.11)$ m in pitch coordinates. The event timestamp precedes this retained segment by 0.88 s and is not treated as a precise kick time.
+
+The ball is at $x=52.39$ m in frame 128964 and at $x=53.41$ m in the next frame. Linear interpolation in the measured coordinates at $X_g=52.50$ m gives the reference point
+\begin{equation}(y_g,z_g)\simeq(2.919,1.179)\ \mathrm{m}.\end{equation}
+For model fitting, we hold the first observed position fixed and minimise the sum of squared three-dimensional residuals over all 12 observed positions:
+\begin{equation}\min_{\boldsymbol\theta}\sum_{i=1}^{12}\left\lVert\boldsymbol r_{\mathrm{model}}(t_i;\boldsymbol\theta)-\boldsymbol r_i\right\rVert^2.\end{equation}
+For M4 and the fixed-spin M5 comparison, the spin is set to $(0,0,30)$ rad/s. In the separately fitted M5, initial velocity, spin and $C_{D0}$ are adjusted, with $0.1\le C_{D0}\le0.2$. Table~\ref{tab:results} reports the reconstruction errors. The trajectory root-mean-square error is evaluated over all recorded frames; the goal-plane error is the Euclidean distance in the $y$--$z$ plane.
+\begin{table}[H]\centering\caption{Full-flight fit and goal-plane comparison}\label{tab:results}
+\begin{tabular}{lccc}\toprule
+Model & Trajectory RMSE (m) & Goal $(y,z)$ (m) & Goal error (m)\\\midrule
+M0: uniform velocity & 0.255 & (2.783, 1.362) & 0.228\\
+M1: gravity & 0.204 & (2.783, 1.244) & 0.151\\
+M2: constant acceleration & 0.146 & (2.910, 1.194) & 0.018\\
+M3: gravity and drag & 0.263 & (2.780, 1.236) & 0.150\\
+M4: constant-coefficient spin & 0.235 & (2.890, 1.236) & 0.064\\
+M5: fixed spin & 0.233 & (2.905, 1.237) & 0.059\\
+M5: fitted spin and drag & 0.194 & (2.868, 1.202) & 0.056\\\bottomrule
+\end{tabular}\end{table}
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{trajectory_fit.png}
+\caption{Recorded penalty trajectory and selected model fits. The dashed line marks the actual goal plane; the height values are treated as metres.}\label{fig:fit}\end{figure}
+The fitted M5 gives an initial velocity of approximately $(28.26,6.03,5.47)$ m/s. Its fitted spin is $(-2.99,5.90,14.11)$ rad/s and $C_{D0}$ reaches the lower bound of 0.1. The spin is a fitted parameter rather than a separately measured value. The first recorded displacement is noticeably smaller than later displacements, so the exact timing of the kick within the first frame interval is relevant to the fit. Figure~\ref{fig:fit} compares the spatial paths.
+
+\section{Sensitivity Analysis}
+We vary one parameter at a time around the fitted M5 reference, while retaining its initial position and the remaining parameters. Each resulting trajectory is integrated to the same goal plane. The purpose is to see how the calculated crossing moves when a physical input changes.
+\subsection{Launch Speed}
+Multiplying the fitted velocity by 0.95 and 1.05 gives goal-plane heights of approximately 1.117 m and 1.276 m, respectively. The faster ball spends less time in flight and reaches the plane at a greater height.
+\subsection{Horizontal Launch Angle}
+Rotating the horizontal velocity by $-2^\circ$ and $+2^\circ$ gives $y=2.459$ m and $y=3.286$ m, a change of approximately 0.827 m across the two settings. Direction therefore strongly affects the horizontal location in this experiment.
+\subsection{Spin}
+Scaling all three fitted spin components by 0.5 and 1.5 moves the calculated goal-plane position from approximately $(2.665,1.296)$ m to $(2.979,1.148)$ m. This illustrates the effect of the assumed spin on the calculated path.
+\subsection{Drag Coefficient}
+Increasing $C_{D0}$ from 0.10 to 0.20 changes the calculated height from 1.202 m to 1.168 m for the chosen reference state. Drag affects flight time and hence the amount of vertical displacement.
+\subsection{Summary of Sensitivity Analysis}
+The selected horizontal-angle range produces the largest lateral change among the four illustrated variations, while launch speed, spin and drag also change the height. The comparison uses different chosen ranges for different quantities. The 12 computed cases and their assumptions are saved with the project.
+\begin{figure}[H]\centering\includegraphics[width=0.92\textwidth]{scan.pdf}
+\caption{One-factor changes in goal-plane coordinates around the fitted reference shot.}\label{fig:sensitivity}\end{figure}
+
+\section{Conclusion}
+We established a three-dimensional soccer-ball flight model including gravity, aerodynamic drag and spin-induced lift. A numerical solver calculates the flight and its intersection with a specified goal plane. For one event-labelled professional penalty, the recorded goal-plane position is approximately $(2.919,1.179)$ m. Fitting the M5 model to all 12 recorded positions yields a trajectory RMSE of 0.194 m and a goal-plane discrepancy of 0.056 m. The sensitivity experiment shows how launch direction and other physical inputs move the calculated crossing.
+
+\section{Model Evaluation}
+\subsection{Model Strengths}
+\begin{itemize}\item The model combines recognizable physical forces in a single set of equations, while allowing individual effects to be switched on and off.
+\item Event detection determines the goal-plane intersection and identifies ground contact during numerical integration.
+\item The comparison uses a recorded penalty and the actual goal-line coordinate, together with the full sequence of measured positions.\end{itemize}
+\subsection{Model Weaknesses}
+\begin{itemize}\item The vertical tracking coordinate is treated as metres pending confirmation of its unit and reference.
+\item Only one event-labelled penalty is used in the goal-line comparison, and the precise kick time within the initial frame interval is not established.
+\item Spin is not independently recorded; the fitted drag coefficient reaches its imposed lower bound.\end{itemize}
+\subsection{Model Improvements}
+Further work can check the tracking system's height definition and align the kick time using synchronized video or higher-rate measurements. Additional penalty trajectories, together with measured ball spin and environmental conditions, would support a broader comparison of the force models. Once the physical trajectory model has been examined across such flights, a separate study can evaluate how to estimate the eventual goal-plane position from early observations.
+
+\addcontentsline{toc}{section}{References}
+\begin{thebibliography}{9}
+\bibitem{linthorne} N. P. Linthorne and D. S. Patel, ``Optimum projection angle for attaining maximum distance in a soccer punt kick,'' \emph{Journal of Sports Science and Medicine}, 10, 203--214, 2011. \url{https://www.jssm.org/volume10/iss1/cap/jssm-10-203.pdf}.
+\bibitem{bray} K. Bray and D. G. Kerwin, ``Modelling the flight of a soccer ball in a direct free kick,'' \emph{Journal of Sports Sciences}, 21, 75--85, 2003. \url{https://doi.org/10.1080/0264041031000070994}.
+\bibitem{bassek} M. Bassek, R. Rein, H. Weber and D. Memmert, ``An integrated dataset of spatiotemporal and event data in elite soccer,'' \emph{Scientific Data}, 12, 195, 2025. \url{https://doi.org/10.1038/s41597-025-04505-y}.
+\bibitem{dataset} DFL, ``Sportec Open DFL Dataset,'' CC BY 4.0. Data mirror: \url{https://huggingface.co/datasets/pysport/idsse-data}.
+\end{thebibliography}
+\newpage
+\addcontentsline{toc}{section}{Python Code}
+\section*{Python Code}
+The following script fits the selected complete penalty flight and compares the models at the goal plane. The numerical physics implementation and the calculation and plotting scripts are provided in the project repository.
+\lstinputlisting[language=Python]{../scripts/fit_real_penalty.py}
+\end{document}

@@ -3,8 +3,9 @@
 <article class="node"><span class="tag">已验证</span><h2>简单轨迹：直线、抛体与匀加速度</h2><p>M0、M1 依据两次位置预测；M2 用三个位置拟合匀加速度。三个参考结果均通过测试。</p></article>
 <article class="node"><span class="tag">已实现</span><h2>物理仿真：不同受力逐项加入</h2><p>统一方程包含重力、阻力、马格努斯力、风和自旋衰减；检测到达平面与触地。M5 可接入气动系数关系。</p><div class="children"><article class="node"><h2>气动系数</h2><p>支持常数、实测系数表插值和 Linthorne–Patel 论文关系；敏感性扫描已采用论文关系。</p></article></div></article>
 <article class="node"><span class="tag">当前重点</span><h2>真实点球：完整飞行到球门</h2><p>用比赛点球从点球点附近到实际门线的全部追踪位置拟合模型，比较逐帧三维轨迹和球门平面位置。高度单位仍待核实。</p></article>
+<article class="node"><span class="tag">已完成</span><h2>竞赛论文排版</h2><p>参考给定文章的摘要、目录、建模、求解、敏感性分析和模型评价结构，制作英文 LaTeX 论文与 PDF。</p></article>
 <article class="node"><span class="tag">已运行 30 段</span><h2>完整空中轨迹对照</h2><p>从比赛数据选出连续空中片段，用全部帧进行模型拟合并比较三维误差；分别记录模型提前触地的情况。</p></article>
 <article class="node"><span class="tag pending">后续阶段</span><h2>根据早期观测预测</h2><p>此前的短窗口和概率预测保留为探索记录，待物理模型对照完善后再研究。</p></article>
 <article class="node"><span class="tag">已运行</span><h2>敏感性扫描</h2><p>分别改变速度、阻力、自旋与横风，并用固定随机种子扫描组合；参数范围和计算结果均已保存。</p></article>
 <article class="node"><span class="tag pending">待完善</span><h2>更多实际射门</h2><p>核实球高单位及离脚时刻，查找更多带门线记录的真实射门，并比较整段轨迹和门线位置。</p></article>
-</div><p>详细说明：<a href="docs/真实点球完整轨迹对照.md">真实点球对照</a> · <a href="docs/完整空中轨迹拟合验证.md">完整空中轨迹</a> · <a href="docs/物理仿真阶段报告.md">物理仿真</a> · <a href="results/real_penalty_fit/trajectory_fit.svg">点球轨迹图</a></p></body></html>
+</div><p>详细说明：<a href="paper/main.pdf">竞赛论文</a> · <a href="docs/真实点球完整轨迹对照.md">真实点球对照</a> · <a href="docs/完整空中轨迹拟合验证.md">完整空中轨迹</a> · <a href="docs/物理仿真阶段报告.md">物理仿真</a> · <a href="results/real_penalty_fit/trajectory_fit.svg">点球轨迹图</a></p></body></html>
