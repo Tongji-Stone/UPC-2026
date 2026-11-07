@@ -1,0 +1,341 @@
+{
+  "groups": {
+    "0.05_M1_noise": {
+      "cases": 100,
+      "truth_crossing_n": 100,
+      "prediction_crossing_n": 100,
+      "events": {
+        "plane": 100
+      },
+      "paired_crossing_n": 100,
+      "mean_runtime_s": 0.00016484899795614184,
+      "p90_runtime_s": 0.0002407899592071773,
+      "errors": {
+        "n": 100,
+        "mean_m": 0.15197728094310387,
+        "median_m": 0.136138274019605,
+        "p90_m": 0.27056679674337003
+      },
+      "crossing_brier": {
+        "n": 100,
+        "mean": 0.0
+      },
+      "conditional_energy_score": {
+        "n": 100,
+        "mean_m": 0.10858438805762795
+      },
+      "conditional_coverage_68": {
+        "covered": 67,
+        "n": 100,
+        "rate": 0.67
+      },
+      "conditional_coverage_95": {
+        "covered": 92,
+        "n": 100,
+        "rate": 0.92
+      }
+    },
+    "0.1_M1_noise": {
+      "cases": 100,
+      "truth_crossing_n": 100,
+      "prediction_crossing_n": 100,
+      "events": {
+        "plane": 100
+      },
+      "paired_crossing_n": 100,
+      "mean_runtime_s": 0.00017081499914638697,
+      "p90_runtime_s": 0.00020782997598871634,
+      "errors": {
+        "n": 100,
+        "mean_m": 0.07682344884064386,
+        "median_m": 0.06933108231159515,
+        "p90_m": 0.13901762952892152
+      },
+      "crossing_brier": {
+        "n": 100,
+        "mean": 0.0
+      },
+      "conditional_energy_score": {
+        "n": 100,
+        "mean_m": 0.054933112070320506
+      },
+      "conditional_coverage_68": {
+        "covered": 64,
+        "n": 100,
+        "rate": 0.64
+      },
+      "conditional_coverage_95": {
+        "covered": 95,
+        "n": 100,
+        "rate": 0.95
+      }
+    }
+  },
+  "common_cases": {
+    "0.05": {
+      "sample_ids": [
+        "synthetic:0000",
+        "synthetic:0001",
+        "synthetic:0002",
+        "synthetic:0003",
+        "synthetic:0004",
+        "synthetic:0005",
+        "synthetic:0006",
+        "synthetic:0007",
+        "synthetic:0008",
+        "synthetic:0009",
+        "synthetic:0010",
+        "synthetic:0011",
+        "synthetic:0012",
+        "synthetic:0013",
+        "synthetic:0014",
+        "synthetic:0015",
+        "synthetic:0016",
+        "synthetic:0017",
+        "synthetic:0018",
+        "synthetic:0019",
+        "synthetic:0020",
+        "synthetic:0021",
+        "synthetic:0022",
+        "synthetic:0023",
+        "synthetic:0024",
+        "synthetic:0025",
+        "synthetic:0026",
+        "synthetic:0027",
+        "synthetic:0028",
+        "synthetic:0029",
+        "synthetic:0030",
+        "synthetic:0031",
+        "synthetic:0032",
+        "synthetic:0033",
+        "synthetic:0034",
+        "synthetic:0035",
+        "synthetic:0036",
+        "synthetic:0037",
+        "synthetic:0038",
+        "synthetic:0039",
+        "synthetic:0040",
+        "synthetic:0041",
+        "synthetic:0042",
+        "synthetic:0043",
+        "synthetic:0044",
+        "synthetic:0045",
+        "synthetic:0046",
+        "synthetic:0047",
+        "synthetic:0048",
+        "synthetic:0049",
+        "synthetic:0050",
+        "synthetic:0051",
+        "synthetic:0052",
+        "synthetic:0053",
+        "synthetic:0054",
+        "synthetic:0055",
+        "synthetic:0056",
+        "synthetic:0057",
+        "synthetic:0058",
+        "synthetic:0059",
+        "synthetic:0060",
+        "synthetic:0061",
+        "synthetic:0062",
+        "synthetic:0063",
+        "synthetic:0064",
+        "synthetic:0065",
+        "synthetic:0066",
+        "synthetic:0067",
+        "synthetic:0068",
+        "synthetic:0069",
+        "synthetic:0070",
+        "synthetic:0071",
+        "synthetic:0072",
+        "synthetic:0073",
+        "synthetic:0074",
+        "synthetic:0075",
+        "synthetic:0076",
+        "synthetic:0077",
+        "synthetic:0078",
+        "synthetic:0079",
+        "synthetic:0080",
+        "synthetic:0081",
+        "synthetic:0082",
+        "synthetic:0083",
+        "synthetic:0084",
+        "synthetic:0085",
+        "synthetic:0086",
+        "synthetic:0087",
+        "synthetic:0088",
+        "synthetic:0089",
+        "synthetic:0090",
+        "synthetic:0091",
+        "synthetic:0092",
+        "synthetic:0093",
+        "synthetic:0094",
+        "synthetic:0095",
+        "synthetic:0096",
+        "synthetic:0097",
+        "synthetic:0098",
+        "synthetic:0099"
+      ],
+      "n": 100,
+      "models": [
+        "M1_noise"
+      ],
+      "errors": {
+        "M1_noise": {
+          "n": 100,
+          "mean_m": 0.15197728094310387,
+          "median_m": 0.136138274019605,
+          "p90_m": 0.27056679674337003
+        }
+      }
+    },
+    "0.1": {
+      "sample_ids": [
+        "synthetic:0000",
+        "synthetic:0001",
+        "synthetic:0002",
+        "synthetic:0003",
+        "synthetic:0004",
+        "synthetic:0005",
+        "synthetic:0006",
+        "synthetic:0007",
+        "synthetic:0008",
+        "synthetic:0009",
+        "synthetic:0010",
+        "synthetic:0011",
+        "synthetic:0012",
+        "synthetic:0013",
+        "synthetic:0014",
+        "synthetic:0015",
+        "synthetic:0016",
+        "synthetic:0017",
+        "synthetic:0018",
+        "synthetic:0019",
+        "synthetic:0020",
+        "synthetic:0021",
+        "synthetic:0022",
+        "synthetic:0023",
+        "synthetic:0024",
+        "synthetic:0025",
+        "synthetic:0026",
+        "synthetic:0027",
+        "synthetic:0028",
+        "synthetic:0029",
+        "synthetic:0030",
+        "synthetic:0031",
+        "synthetic:0032",
+        "synthetic:0033",
+        "synthetic:0034",
+        "synthetic:0035",
+        "synthetic:0036",
+        "synthetic:0037",
+        "synthetic:0038",
+        "synthetic:0039",
+        "synthetic:0040",
+        "synthetic:0041",
+        "synthetic:0042",
+        "synthetic:0043",
+        "synthetic:0044",
+        "synthetic:0045",
+        "synthetic:0046",
+        "synthetic:0047",
+        "synthetic:0048",
+        "synthetic:0049",
+        "synthetic:0050",
+        "synthetic:0051",
+        "synthetic:0052",
+        "synthetic:0053",
+        "synthetic:0054",
+        "synthetic:0055",
+        "synthetic:0056",
+        "synthetic:0057",
+        "synthetic:0058",
+        "synthetic:0059",
+        "synthetic:0060",
+        "synthetic:0061",
+        "synthetic:0062",
+        "synthetic:0063",
+        "synthetic:0064",
+        "synthetic:0065",
+        "synthetic:0066",
+        "synthetic:0067",
+        "synthetic:0068",
+        "synthetic:0069",
+        "synthetic:0070",
+        "synthetic:0071",
+        "synthetic:0072",
+        "synthetic:0073",
+        "synthetic:0074",
+        "synthetic:0075",
+        "synthetic:0076",
+        "synthetic:0077",
+        "synthetic:0078",
+        "synthetic:0079",
+        "synthetic:0080",
+        "synthetic:0081",
+        "synthetic:0082",
+        "synthetic:0083",
+        "synthetic:0084",
+        "synthetic:0085",
+        "synthetic:0086",
+        "synthetic:0087",
+        "synthetic:0088",
+        "synthetic:0089",
+        "synthetic:0090",
+        "synthetic:0091",
+        "synthetic:0092",
+        "synthetic:0093",
+        "synthetic:0094",
+        "synthetic:0095",
+        "synthetic:0096",
+        "synthetic:0097",
+        "synthetic:0098",
+        "synthetic:0099"
+      ],
+      "n": 100,
+      "models": [
+        "M1_noise"
+      ],
+      "errors": {
+        "M1_noise": {
+          "n": 100,
+          "mean_m": 0.07682344884064386,
+          "median_m": 0.06933108231159515,
+          "p90_m": 0.13901762952892152
+        }
+      }
+    }
+  },
+  "denominators": {
+    "point_errors": "observed and predicted crossing pairs",
+    "coverage_energy": "observed crossings with conditional ensemble/valid region",
+    "brier": "all cases with a crossing probability, including observed noncrossings",
+    "common_cases": "intersection of successful crossings for all available models"
+  },
+  "configuration": {
+    "dataset_kind": "synthetic analytic gravity trajectories",
+    "cases": 100,
+    "seed": 20261107,
+    "ensemble_samples": 256,
+    "true_and_assumed_sigma_m": 0.01,
+    "native_fps": 25,
+    "initial_position_m": [
+      0,
+      0,
+      1.2
+    ],
+    "vx_uniform_m_s": [
+      25,
+      35
+    ],
+    "vy_uniform_m_s": [
+      -4,
+      4
+    ],
+    "vz_uniform_m_s": [
+      2,
+      7
+    ],
+    "gravity_m_s2": 9.81,
+    "plane_x_m": 11.0
+  }
+}

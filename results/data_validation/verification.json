@@ -1,0 +1,27 @@
+{
+  "test_command": "python -m pytest -q --basetemp=.pytest_tmp",
+  "tests_passed": 52,
+  "repeat_command": "python scripts/benchmark_data_validation.py --out .validation_repeat",
+  "excluded_comparison_fields": [
+    "mean_runtime_s",
+    "p90_runtime_s",
+    "runtime_s"
+  ],
+  "non_timing_results_identical": {
+    "summary.json": true,
+    "predictions.json": true
+  },
+  "real_prediction_records": 420,
+  "real_samples": 30,
+  "synthetic_cases": 100,
+  "max_input_times_by_cutoff_s": {
+    "0.05": 0.04,
+    "0.1": 0.08
+  },
+  "runtime_errors": 0,
+  "plots": [
+    "validation.png",
+    "validation.svg"
+  ],
+  "plot_visual_inspection": "passed"
+}

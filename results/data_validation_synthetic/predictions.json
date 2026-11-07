@@ -1,0 +1,5702 @@
+[
+  {
+    "sample_id": "synthetic:0000",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.5031398245406243,
+      1.565321533635857
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.574172604223836,
+      1.5104456241374098
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0003589999978430569,
+    "error_m": 0.08976091149718488,
+    "energy_score_m": 0.06367443928903446,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0000",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.5031398245406243,
+      1.565321533635857
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.5315901197092635,
+      1.5526579408459251
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00017910002497956157,
+    "error_m": 0.031141385286013026,
+    "energy_score_m": 0.02602397917557874,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0001",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.5409846615085839,
+      1.9041023293044317
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.9223397809068804,
+      1.8508866466684097
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013960001524537802,
+    "error_m": 0.38505017331473407,
+    "energy_score_m": 0.30230206134953685,
+    "coverage_68": false,
+    "coverage_95": false,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0001",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.5409846615085839,
+      1.9041023293044317
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.7314290519674799,
+      1.9747215906013202
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014160003047436476,
+    "error_m": 0.20311608976981274,
+    "energy_score_m": 0.16301820457859187,
+    "coverage_68": false,
+    "coverage_95": false,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0002",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.35612137305836605,
+      1.688483110312235
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.09636497782559508,
+      1.7478581202294292
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001653000363148749,
+    "error_m": 0.26645595633610897,
+    "energy_score_m": 0.1847527359486662,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0002",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.35612137305836605,
+      1.688483110312235
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.15449821258416072,
+      1.7087191872233125
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00015890004578977823,
+    "error_m": 0.20263612128235725,
+    "energy_score_m": 0.15676170854708849,
+    "coverage_68": false,
+    "coverage_95": false,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0003",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.7593749080688792,
+      2.876098537317657
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.5790456154910376,
+      2.7251287014111485
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012589996913447976,
+    "error_m": 0.2351819404530519,
+    "energy_score_m": 0.15932155572129164,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0003",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.7593749080688792,
+      2.876098537317657
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.6704184378492035,
+      2.792840617888239
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013470003614202142,
+    "error_m": 0.12184061203744635,
+    "energy_score_m": 0.0840695916522588,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0004",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.30334646555578976,
+      2.1710631290879276
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.08063884446705008,
+      2.1435504303390513
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012820004485547543,
+    "error_m": 0.22440060847388998,
+    "energy_score_m": 0.1482080771583894,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0004",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.30334646555578976,
+      2.1710631290879276
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.2504656201747651,
+      2.151020597595145
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014209997607395053,
+    "error_m": 0.05655163018738742,
+    "energy_score_m": 0.03974447059696016,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0005",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.3332672965585448,
+      1.9382328999754657
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.3884581091381267,
+      1.8695194048057735
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013219995889812708,
+    "error_m": 0.08813381990830674,
+    "energy_score_m": 0.0680997701016517,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0005",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.3332672965585448,
+      1.9382328999754657
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.38280426277063,
+      1.8843151705777528
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0002549000200815499,
+    "error_m": 0.0732190724121951,
+    "energy_score_m": 0.04813726492134822,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0006",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.0684397931947947,
+      2.915554196510825
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.2003359145030066,
+      2.9023166256782527
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014949997421354055,
+    "error_m": 0.1325587420644068,
+    "energy_score_m": 0.09021687579911229,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0006",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.0684397931947947,
+      2.915554196510825
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.0685567248418366,
+      2.945147901535727
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013480003690347075,
+    "error_m": 0.02959393603613714,
+    "energy_score_m": 0.028545960709454872,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0007",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.1399504521344566,
+      2.5213460191514163
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.1201140143801702,
+      2.3863075414885566
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014020001981407404,
+    "error_m": 0.13648763574874587,
+    "energy_score_m": 0.09322098550755711,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0007",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.1399504521344566,
+      2.5213460191514163
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.1301636928269823,
+      2.5049626920127785
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001404000213369727,
+    "error_m": 0.019083869258461707,
+    "energy_score_m": 0.020789973589618885,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0008",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.18452799628834113,
+      2.177527439201998
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.1920584872240531,
+      2.199541607728327
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00011900003300979733,
+    "error_m": 0.023266540560179298,
+    "energy_score_m": 0.05119224955391463,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0008",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.18452799628834113,
+      2.177527439201998
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.14426636391262787,
+      2.1273756042633996
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013880000915378332,
+    "error_m": 0.06431333912389788,
+    "energy_score_m": 0.043228161857708614,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0009",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.8296138865832764,
+      1.3744343459770694
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.6768993142901567,
+      1.4731255562825725
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00011520000407472253,
+    "error_m": 0.18182875345290006,
+    "energy_score_m": 0.11743611879551319,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0009",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.8296138865832764,
+      1.3744343459770694
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.7285636544256244,
+      1.3633784605612682
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001309000072069466,
+    "error_m": 0.10165324402813068,
+    "energy_score_m": 0.06629771627355834,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0010",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.240335610151638,
+      1.327465328032164
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.3162039166231776,
+      1.1312907134907932
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00011690001701936126,
+    "error_m": 0.21033420862359703,
+    "energy_score_m": 0.14328900481621246,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0010",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.240335610151638,
+      1.327465328032164
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.2441430410006842,
+      1.2308308049548367
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014020001981407404,
+    "error_m": 0.09670950098130368,
+    "energy_score_m": 0.065776192506042,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0011",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.17673312928966342,
+      2.3866965853213746
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.12853554004568193,
+      2.367365242773044
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00031890004174783826,
+    "error_m": 0.3058801420205197,
+    "energy_score_m": 0.2243887004435452,
+    "coverage_68": false,
+    "coverage_95": false,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0011",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.17673312928966342,
+      2.3866965853213746
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.06790499099454511,
+      2.363329943868901
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001571999746374786,
+    "error_m": 0.111308416651886,
+    "energy_score_m": 0.0764400670139743,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0012",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.4428898533748964,
+      1.3652068998562514
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.3131010683335071,
+      1.4412306394950611
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012169999536126852,
+    "error_m": 0.15041521768487884,
+    "energy_score_m": 0.10317031876651114,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0012",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.4428898533748964,
+      1.3652068998562514
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.3903417902737873,
+      1.3573299813148005
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00015189999248832464,
+    "error_m": 0.0531351557952623,
+    "energy_score_m": 0.03728067515906899,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0013",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.897996882786184,
+      2.4817598241805126
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.9190306530604753,
+      2.8719729872546753
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001221999991685152,
+    "error_m": 0.39077964651232133,
+    "energy_score_m": 0.29567834872933524,
+    "coverage_68": false,
+    "coverage_95": false,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0013",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.897996882786184,
+      2.4817598241805126
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.8814435452338505,
+      2.637486090016086
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014099996769800782,
+    "error_m": 0.1566035850650081,
+    "energy_score_m": 0.11169910611901805,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0014",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.30982654536338117,
+      2.786069195759374
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.35208434972962493,
+      2.797661320691253
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012649997370317578,
+    "error_m": 0.0438189387170892,
+    "energy_score_m": 0.046708839646749406,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0014",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.30982654536338117,
+      2.786069195759374
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.32066715127707296,
+      2.741841718898152
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012809998588636518,
+    "error_m": 0.045536671442760114,
+    "energy_score_m": 0.031179925428719814,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0015",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.3264836254242367,
+      1.5489051369703521
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.4987417691072864,
+      1.5257210034059983
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013729999773204327,
+    "error_m": 0.17381131181329942,
+    "energy_score_m": 0.11663401902885141,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0015",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.3264836254242367,
+      1.5489051369703521
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.34467818508918,
+      1.5431303172924775
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012829998740926385,
+    "error_m": 0.019089016310778053,
+    "energy_score_m": 0.022698962775079996,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0016",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.6100087357576475,
+      2.7862825812928254
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.6947164190908935,
+      2.9548441007848423
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00015539996093139052,
+    "error_m": 0.18864882048171702,
+    "energy_score_m": 0.12516162397706423,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0016",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.6100087357576475,
+      2.7862825812928254
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.6150978246945368,
+      2.8154743539356906
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012739998055621982,
+    "error_m": 0.029632050489972896,
+    "energy_score_m": 0.026271681976999306,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0017",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.12687131042452823,
+      2.0439498088602828
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.04542493508630091,
+      2.0496066658875947
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0002959999837912619,
+    "error_m": 0.17238908390195523,
+    "energy_score_m": 0.1131762387667195,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0017",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.12687131042452823,
+      2.0439498088602828
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.09125883230023941,
+      2.07916311290019
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00016990001313388348,
+    "error_m": 0.050082186249802374,
+    "energy_score_m": 0.038062011312056804,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0018",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.1966687855666025,
+      3.061922169503259
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.1895716564290584,
+      2.953365731694314
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012889999197795987,
+    "error_m": 0.10878818608544938,
+    "energy_score_m": 0.07638242838164916,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0018",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.1966687855666025,
+      3.061922169503259
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.175373341661117,
+      2.9953955124573874
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001542000100016594,
+    "error_m": 0.06985192931358944,
+    "energy_score_m": 0.04537959835404731,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0019",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.0106023098159618,
+      1.7682742583207245
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.9427435652558618,
+      1.7641569919200824
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001485000248067081,
+    "error_m": 0.06798353547651635,
+    "energy_score_m": 0.054556585806724386,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0019",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.0106023098159618,
+      1.7682742583207245
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.942945171799479,
+      1.7268690774197237
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00016120000509545207,
+    "error_m": 0.07932135481713606,
+    "energy_score_m": 0.05233353631518653,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0020",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.6316430558003315,
+      1.785595423754467
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.7615677426781222,
+      1.8250695221068727
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012159999459981918,
+    "error_m": 0.13578891229046414,
+    "energy_score_m": 0.09096858246261547,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0020",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.6316430558003315,
+      1.785595423754467
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.6418324571348395,
+      1.8210190886618955
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001309000072069466,
+    "error_m": 0.03686000454462079,
+    "energy_score_m": 0.029545854782551333,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0021",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.1966193034255403,
+      2.171134044417537
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.382286178663016,
+      2.206027759922016
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014670001110062003,
+    "error_m": 0.18891733626683363,
+    "energy_score_m": 0.1287977792269071,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0021",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.1966193034255403,
+      2.171134044417537
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.214310399103126,
+      2.226896462668828
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.000130399945192039,
+    "error_m": 0.05850147139607181,
+    "energy_score_m": 0.038438361446982545,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0022",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.4104026771699258,
+      1.6012301796569406
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.31242132785118554,
+      1.6862045077717394
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00025509996339678764,
+    "error_m": 0.12969572565386447,
+    "energy_score_m": 0.08319095536988089,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0022",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.4104026771699258,
+      1.6012301796569406
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.38463115412650384,
+      1.571623319855911
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001534000039100647,
+    "error_m": 0.039252229838003416,
+    "energy_score_m": 0.028193854028449254,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0023",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.49499228685883573,
+      1.3233858582285913
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.4432422700302458,
+      1.422500196221655
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00023740000324323773,
+    "error_m": 0.11181107385926765,
+    "energy_score_m": 0.07980485149102556,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0023",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.49499228685883573,
+      1.3233858582285913
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.42418327494982877,
+      1.425078434888939
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001436000457033515,
+    "error_m": 0.12391648927947628,
+    "energy_score_m": 0.0847549042056097,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0024",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.5262520278772804,
+      1.7946187123395823
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.502287438306974,
+      1.7704339661045718
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012619997141882777,
+    "error_m": 0.03404707775602911,
+    "energy_score_m": 0.054942268088085444,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0024",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.5262520278772804,
+      1.7946187123395823
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.5277470232644412,
+      1.818248115701401
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0003469999646767974,
+    "error_m": 0.023676649138827957,
+    "energy_score_m": 0.028524922041873083,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0025",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.3471725067610463,
+      2.9458655327682304
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.3835654089966558,
+      2.701665464912497
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014439999358728528,
+    "error_m": 0.24689697542472114,
+    "energy_score_m": 0.17333164134325219,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0025",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.3471725067610463,
+      2.9458655327682304
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.3458020456563264,
+      2.886479046303133
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013449997641146183,
+    "error_m": 0.059402297416082786,
+    "energy_score_m": 0.0398677708256117,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0026",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.8741019156347181,
+      2.7815231991838454
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.8867062042220518,
+      2.670839838154064
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001327999634668231,
+    "error_m": 0.11139871857270955,
+    "energy_score_m": 0.07131480898138959,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0026",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.8741019156347181,
+      2.7815231991838454
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.8544890534054589,
+      2.72275335405286
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0003451999509707093,
+    "error_m": 0.06195610592624362,
+    "energy_score_m": 0.04044175755707514,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0027",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.9982315118006603,
+      2.137745167496702
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.0955369365231775,
+      2.068866314672025
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001534000039100647,
+    "error_m": 0.1192167859274564,
+    "energy_score_m": 0.07942919672746378,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0027",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.9982315118006603,
+      2.137745167496702
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.099274649855951,
+      2.096410369307636
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013669999316334724,
+    "error_m": 0.10917088114232353,
+    "energy_score_m": 0.07317705527487849,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0028",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.3680850564886236,
+      1.5329387589454229
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.548819019378925,
+      1.518279996300588
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0002057999954558909,
+    "error_m": 0.1813274514912469,
+    "energy_score_m": 0.11747860409680302,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0028",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.3680850564886236,
+      1.5329387589454229
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.4721486476870886,
+      1.5242259225351722
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014020001981407404,
+    "error_m": 0.10442770001983694,
+    "energy_score_m": 0.06786354843019621,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0029",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.2240432348926347,
+      3.094877626716891
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.2311568400496702,
+      2.858296952086881
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014560000272467732,
+    "error_m": 0.23668759787264076,
+    "energy_score_m": 0.16310094644882622,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0029",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.2240432348926347,
+      3.094877626716891
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.1824053839330533,
+      2.9814463998636462
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013970001600682735,
+    "error_m": 0.12083192400174973,
+    "energy_score_m": 0.08415719784113837,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0030",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.9028345840765991,
+      1.9668986803527413
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.8965322158478696,
+      1.876987945890051
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013190001482143998,
+    "error_m": 0.09013134869129008,
+    "energy_score_m": 0.06514124207719295,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0030",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.9028345840765991,
+      1.9668986803527413
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.0049965909705345,
+      1.9878197468685297
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00016789999790489674,
+    "error_m": 0.10428214936773478,
+    "energy_score_m": 0.07133394357638767,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0031",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.5902878038009383,
+      3.032276958148569
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.6189750592433167,
+      3.1411985024194986
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00015199999324977398,
+    "error_m": 0.1126359686387096,
+    "energy_score_m": 0.07600498509895391,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0031",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.5902878038009383,
+      3.032276958148569
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.7074829639945759,
+      3.1083395460341006
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00015359994722530246,
+    "error_m": 0.13971479108761753,
+    "energy_score_m": 0.09552594780542219,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0032",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.29770657885514334,
+      2.483607144279206
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.4868299857000713,
+      2.606942515110869
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001327999634668231,
+    "error_m": 0.2257859090262632,
+    "energy_score_m": 0.15059628219314583,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0032",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.29770657885514334,
+      2.483607144279206
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.39775814767712037,
+      2.492839950888348
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001477000187151134,
+    "error_m": 0.10047666963838232,
+    "energy_score_m": 0.06630903566404925,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0033",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.9535646770222436,
+      1.5386721088474142
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.0719595406339772,
+      1.852041014537
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012130005052313209,
+    "error_m": 0.3349886785888884,
+    "energy_score_m": 0.24518109103718647,
+    "coverage_68": false,
+    "coverage_95": false,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0033",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.9535646770222436,
+      1.5386721088474142
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.010943853801283,
+      1.6719181490483654
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014760001795366406,
+    "error_m": 0.1450754188588603,
+    "energy_score_m": 0.10188051499502165,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0034",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.8928702734945603,
+      1.5886657069866812
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.9685374830412279,
+      1.7700006523645146
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00011780002387240529,
+    "error_m": 0.1964889030346527,
+    "energy_score_m": 0.1365222239411851,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0034",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.8928702734945603,
+      1.5886657069866812
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.9749279867109869,
+      1.624385123765153
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012739998055621982,
+    "error_m": 0.08949494417733043,
+    "energy_score_m": 0.060135169728344005,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0035",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.3490002101604368,
+      1.8976303620683201
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.6183221518573088,
+      1.946231832773409
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001506999833509326,
+    "error_m": 0.2736720870568844,
+    "energy_score_m": 0.18687247024101772,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0035",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.3490002101604368,
+      1.8976303620683201
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.4388088812490853,
+      1.987793973944547
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013589998707175255,
+    "error_m": 0.12725986920186552,
+    "energy_score_m": 0.08834828590575555,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0036",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.7434244505393636,
+      2.9096929947150496
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.9225544908412783,
+      2.880675857388389
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0002272999845445156,
+    "error_m": 0.1814650533772271,
+    "energy_score_m": 0.12227892683034298,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0036",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.7434244505393636,
+      2.9096929947150496
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.8024146992560823,
+      2.9331202112222945
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013719999697059393,
+    "error_m": 0.06347191439477516,
+    "energy_score_m": 0.04140584755610444,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0037",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.3601694862578086,
+      2.9936319243017113
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.1671334039359182,
+      2.960269670466814
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00017369998386129737,
+    "error_m": 0.1958978536358369,
+    "energy_score_m": 0.13136883490033557,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0037",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.3601694862578086,
+      2.9936319243017113
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.2827108111930545,
+      3.0277626111441855
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.000139000010676682,
+    "error_m": 0.08464484702051392,
+    "energy_score_m": 0.05639293541719985,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0038",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.7207271105690172,
+      3.1842270622192013
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.7621590593378287,
+      2.9709990915135003
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012609997065737844,
+    "error_m": 0.2172159613611594,
+    "energy_score_m": 0.14647041462454802,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0038",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.7207271105690172,
+      3.1842270622192013
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.7926181331179317,
+      3.050759357472831
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00015239999629557133,
+    "error_m": 0.15159797931830352,
+    "energy_score_m": 0.10900617488149031,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0039",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.3890817126002579,
+      2.5348891448311583
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.5722877079626388,
+      2.5126579397795736
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001453000004403293,
+    "error_m": 0.18454989356476567,
+    "energy_score_m": 0.12327569271996507,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0039",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.3890817126002579,
+      2.5348891448311583
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.4144230734057043,
+      2.5802911552567314
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001821999903768301,
+    "error_m": 0.05199545286037668,
+    "energy_score_m": 0.03416259781952183,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0040",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.0735602043109345,
+      1.3570572938417667
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.1322468370632075,
+      1.4641662365130028
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00021039997227489948,
+    "error_m": 0.12213290491898701,
+    "energy_score_m": 0.07973266421878948,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0040",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.0735602043109345,
+      1.3570572938417667
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.1069828345457935,
+      1.4596977820365507
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00018119998276233673,
+    "error_m": 0.1079450880247902,
+    "energy_score_m": 0.07443664130425537,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0041",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.222963241161753,
+      1.6539726356914477
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.4148490020034727,
+      1.6577991251328184
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001544999540783465,
+    "error_m": 0.19192391001449136,
+    "energy_score_m": 0.1245831777267249,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0041",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.222963241161753,
+      1.6539726356914477
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.3070384691043309,
+      1.6708747950285794
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00015929999062791467,
+    "error_m": 0.08575737253352744,
+    "energy_score_m": 0.057432112321293353,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0042",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.4096245641841434,
+      2.937370701864171
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.321397686847317,
+      2.8918838074114754
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013699999544769526,
+    "error_m": 0.09926247756105057,
+    "energy_score_m": 0.06952849877749959,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0042",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.4096245641841434,
+      2.937370701864171
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.3257720563212672,
+      2.974921533988907
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001341000315733254,
+    "error_m": 0.09187659151358327,
+    "energy_score_m": 0.05974248512576778,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0043",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.8282151947345562,
+      1.4290959846753544
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.8129620023589672,
+      1.2536986861793895
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001202999847009778,
+    "error_m": 0.17605928602981816,
+    "energy_score_m": 0.11667811222527581,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0043",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.8282151947345562,
+      1.4290959846753544
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.7842333726935697,
+      1.3904882230557092
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001588000450283289,
+    "error_m": 0.058523157188623616,
+    "energy_score_m": 0.037808797445850785,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0044",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.3781058742329209,
+      1.5954739699279963
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.3807372139141048,
+      1.6695861371689715
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001433999859727919,
+    "error_m": 0.07415886515900885,
+    "energy_score_m": 0.06373760188154858,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0044",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.3781058742329209,
+      1.5954739699279963
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.3933482800017705,
+      1.6191646512739168
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014099996769800782,
+    "error_m": 0.02817053986447914,
+    "energy_score_m": 0.029541786187293424,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0045",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.0439637410481761,
+      2.441289040814195
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.015090802439309,
+      2.422565882836559
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001278999843634665,
+    "error_m": 0.03441225404658809,
+    "energy_score_m": 0.045897411241013056,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0045",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.0439637410481761,
+      2.441289040814195
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.036756437072515,
+      2.43597303329271
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012579996837303042,
+    "error_m": 0.008955733725723608,
+    "energy_score_m": 0.018537790637687762,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0046",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.44437054933659015,
+      1.7987285691922916
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.27421338559526504,
+      1.6734969625147194
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012250000145286322,
+    "error_m": 0.21127331985733147,
+    "energy_score_m": 0.14357821135018778,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0046",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.44437054933659015,
+      1.7987285691922916
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.36675110756402923,
+      1.7393956668955926
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00018530001398175955,
+    "error_m": 0.09769939117534772,
+    "energy_score_m": 0.06569444907190637,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0047",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.3501109989073323,
+      2.5990059921592477
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.2814693722706259,
+      2.6518691916337884
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012049998622387648,
+    "error_m": 0.0866382754099947,
+    "energy_score_m": 0.06495091759329052,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0047",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.3501109989073323,
+      2.5990059921592477
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.3010251572492956,
+      2.6393294940891088
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0003133999998681247,
+    "error_m": 0.06352483497944221,
+    "energy_score_m": 0.04237211993303058,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0048",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.6222203188683795,
+      1.5431590177613161
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.5447152273815883,
+      1.424937202082042
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0006004999740980566,
+    "error_m": 0.1413627847379929,
+    "energy_score_m": 0.09268476754745487,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0048",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.6222203188683795,
+      1.5431590177613161
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.583857201426203,
+      1.45201748595504
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0004476999747566879,
+    "error_m": 0.09888633677043887,
+    "energy_score_m": 0.06715518417207426,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0049",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.6909280708465187,
+      2.8820294798458947
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.6020943109862811,
+      2.9819677378702587
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012959999730810523,
+    "error_m": 0.1337127230589921,
+    "energy_score_m": 0.08678293924734663,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0049",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.6909280708465187,
+      2.8820294798458947
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.6304300242598246,
+      2.935821723566722
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013719999697059393,
+    "error_m": 0.08095442622442998,
+    "energy_score_m": 0.05415347837719203,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0050",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.5387618327737267,
+      1.4593298126457772
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.48555661726784,
+      1.5893547000818806
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001479999627918005,
+    "error_m": 0.14048938148415063,
+    "energy_score_m": 0.09389226289068926,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0050",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.5387618327737267,
+      1.4593298126457772
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.561849733977864,
+      1.5039924894959453
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012969999806955457,
+    "error_m": 0.0502772899571422,
+    "energy_score_m": 0.03477065411932336,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0051",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.3924117239499311,
+      1.755780337151088
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.6461460533221794,
+      1.8487249018125664
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00038079998921602964,
+    "error_m": 0.27022176448631285,
+    "energy_score_m": 0.1902119639331771,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0051",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.3924117239499311,
+      1.755780337151088
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.4634058357088468,
+      1.7441450665503317
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014720001490786672,
+    "error_m": 0.07194124982504985,
+    "energy_score_m": 0.045473207861861244,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0052",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.3510432539484284,
+      1.8613245078876313
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.5568387004956435,
+      1.6606128346415392
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0002704000216908753,
+    "error_m": 0.2874664182070903,
+    "energy_score_m": 0.21484689347108077,
+    "coverage_68": false,
+    "coverage_95": false,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0052",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.3510432539484284,
+      1.8613245078876313
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.42785388328818585,
+      1.8126929649511094
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.000152299995534122,
+    "error_m": 0.0909114940365429,
+    "energy_score_m": 0.06173546817116255,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0053",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.1108701401217002,
+      2.831180648159993
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.07749043473323283,
+      2.835730534437226
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001238000113517046,
+    "error_m": 0.033688368867557675,
+    "energy_score_m": 0.04194103321225888,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0053",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.1108701401217002,
+      2.831180648159993
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.09249521444837276,
+      2.816949398318378
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00016949995188042521,
+    "error_m": 0.023241479418375594,
+    "energy_score_m": 0.021275184836960913,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0054",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.7545931748876993,
+      2.580129454319865
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.8753930981542744,
+      2.235972089711228
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012229999992996454,
+    "error_m": 0.36474225567594004,
+    "energy_score_m": 0.2745729558244722,
+    "coverage_68": false,
+    "coverage_95": false,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0054",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.7545931748876993,
+      2.580129454319865
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.8442035321755325,
+      2.425792560252078
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.000145800004247576,
+    "error_m": 0.17846538320846558,
+    "energy_score_m": 0.13566043744201722,
+    "coverage_68": false,
+    "coverage_95": false,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0055",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.46939113374552177,
+      2.9722238616030605
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.34140014630025717,
+      2.9947973200633764
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00011939997784793377,
+    "error_m": 0.12996635677771953,
+    "energy_score_m": 0.08580778406274366,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0055",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.46939113374552177,
+      2.9722238616030605
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.418619384206619,
+      2.97190127559377
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001466000103391707,
+    "error_m": 0.0507727743281226,
+    "energy_score_m": 0.03671856973749161,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0056",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.5986647630896361,
+      1.8522627505038742
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.5771809001950572,
+      1.766967506231636
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014999997802078724,
+    "error_m": 0.08795928069472755,
+    "energy_score_m": 0.060278385850275895,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0056",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.5986647630896361,
+      1.8522627505038742
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.6467013296889607,
+      1.7546047884543778
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012750003952533007,
+    "error_m": 0.10883285019842226,
+    "energy_score_m": 0.07504691237686212,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0057",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.7945166873346878,
+      1.6864347206751735
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.9987242998668915,
+      1.6817210271327951
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00021680002100765705,
+    "error_m": 0.20426200802624575,
+    "energy_score_m": 0.13641194210660196,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0057",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.7945166873346878,
+      1.6864347206751735
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.8284003955240625,
+      1.6702473095766832
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013950001448392868,
+    "error_m": 0.037551803668189165,
+    "energy_score_m": 0.02871566049739259,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0058",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.1672718528270627,
+      1.765990156926231
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.3117978949123748,
+      2.0532618797386615
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001333000254817307,
+    "error_m": 0.32157863667922226,
+    "energy_score_m": 0.24251267740313365,
+    "coverage_68": false,
+    "coverage_95": false,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0058",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.1672718528270627,
+      1.765990156926231
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.2379820632578058,
+      1.8980922421232527
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014320004265755415,
+    "error_m": 0.14983622650267567,
+    "energy_score_m": 0.11014748415392811,
+    "coverage_68": false,
+    "coverage_95": false,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0059",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.9164064391475744,
+      3.290256062294019
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.8741023745306736,
+      3.159002964282886
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012820004485547543,
+    "error_m": 0.13790217409682493,
+    "energy_score_m": 0.09367491092302316,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0059",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.9164064391475744,
+      3.290256062294019
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.8976165723257558,
+      3.2771243259553913
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001784000196494162,
+    "error_m": 0.02292382154984022,
+    "energy_score_m": 0.02969624979981471,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0060",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.5056270308850159,
+      1.6887687751102685
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.47687147056755075,
+      1.7932077192345957
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001553000183776021,
+    "error_m": 0.10832532159645646,
+    "energy_score_m": 0.0761788974103366,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0060",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.5056270308850159,
+      1.6887687751102685
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.5260253733051676,
+      1.7222179299396299
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00017449998995289207,
+    "error_m": 0.039178289042381,
+    "energy_score_m": 0.03284355476254565,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0061",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.41126773603239586,
+      1.729181667773839
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.15994555011775122,
+      1.7510905377688066
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00016090000281110406,
+    "error_m": 0.25227532522498425,
+    "energy_score_m": 0.17145500613435147,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0061",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.41126773603239586,
+      1.729181667773839
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.25165503067990624,
+      1.7267023132792108
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00016139994841068983,
+    "error_m": 0.15963196079936717,
+    "energy_score_m": 0.11696043241407678,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0062",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.4472595111263374,
+      1.9795123442180567
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.519839255690833,
+      2.011806022508744
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0002391999587416649,
+    "error_m": 0.07943992056006761,
+    "energy_score_m": 0.06673301435173903,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0062",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.4472595111263374,
+      1.9795123442180567
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.5347614807734828,
+      2.030858859392879
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013299996498972178,
+    "error_m": 0.10145471557659712,
+    "energy_score_m": 0.0680045553522921,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0063",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.5275467567738003,
+      1.3861093790577357
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.5443397484600775,
+      1.320226939880355
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00011760002234950662,
+    "error_m": 0.06798897235387986,
+    "energy_score_m": 0.05849828248255505,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0063",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.5275467567738003,
+      1.3861093790577357
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.5266360334485546,
+      1.3130959316403212
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00017259997548535466,
+    "error_m": 0.07301912708839164,
+    "energy_score_m": 0.04859058358584114,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0064",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.41537503133418624,
+      2.598649999744203
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.427184278869423,
+      2.549101474166007
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001238000113517046,
+    "error_m": 0.050936379085302255,
+    "energy_score_m": 0.05462233244282906,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0064",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.41537503133418624,
+      2.598649999744203
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.42942580111321543,
+      2.543033392320893
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00015310000162571669,
+    "error_m": 0.057364023156172186,
+    "energy_score_m": 0.039267706228005836,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0065",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.6669575381037705,
+      1.4423214134909643
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.7974279873223558,
+      1.7370551876840727
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013040000339969993,
+    "error_m": 0.3223205481650428,
+    "energy_score_m": 0.23520938324163088,
+    "coverage_68": false,
+    "coverage_95": false,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0065",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.6669575381037705,
+      1.4423214134909643
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.6800038170492191,
+      1.6128582716548396
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.000132500019390136,
+    "error_m": 0.17103515833514518,
+    "energy_score_m": 0.12467842215058822,
+    "coverage_68": false,
+    "coverage_95": false,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0066",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.00603296192354781,
+      2.0404105791726135
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.042026310004766636,
+      1.892457490904843
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00015440001152455807,
+    "error_m": 0.15226830738557004,
+    "energy_score_m": 0.09672492685057638,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0066",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.00603296192354781,
+      2.0404105791726135
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.049134006784787555,
+      2.022264653880106
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00015259999781847,
+    "error_m": 0.04676510101402399,
+    "energy_score_m": 0.033183364300970554,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0067",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.1999178432959687,
+      1.481132252520415
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.151947424709437,
+      1.3884117193868324
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00015570002142339945,
+    "error_m": 0.10439472364033943,
+    "energy_score_m": 0.07225600119404914,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0067",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.1999178432959687,
+      1.481132252520415
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.1863099278567633,
+      1.3973841442981443
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001471999567002058,
+    "error_m": 0.08484645539685037,
+    "energy_score_m": 0.0574024883566818,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0068",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.7438689575055099,
+      1.4178817117155973
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.8933580854220161,
+      1.499565675337284
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013449997641146183,
+    "error_m": 0.17035043081303491,
+    "energy_score_m": 0.11361350145981046,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0068",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.7438689575055099,
+      1.4178817117155973
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.8168255371533266,
+      1.473332139179774
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001373999984934926,
+    "error_m": 0.0916373964048966,
+    "energy_score_m": 0.06105723581428553,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0069",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.2072763992895004,
+      2.5238461088019437
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.070722331244597,
+      2.6210480274565433
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001200000406242907,
+    "error_m": 0.16761630735029182,
+    "energy_score_m": 0.1076557114567962,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0069",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.2072763992895004,
+      2.5238461088019437
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.085049005707151,
+      2.5899130014271714
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014110002666711807,
+    "error_m": 0.13894016713351084,
+    "energy_score_m": 0.09833836264346266,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0070",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.6797057582020142,
+      1.4107906107799
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.7207704396480895,
+      1.3282444228068524
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012419995618984103,
+    "error_m": 0.09219642732313085,
+    "energy_score_m": 0.06526683326215559,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0070",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.6797057582020142,
+      1.4107906107799
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.6802000102751058,
+      1.3796846174666821
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014810002176091075,
+    "error_m": 0.031109919722071097,
+    "energy_score_m": 0.027492733728868624,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0071",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.5548091132910952,
+      2.643880189044005
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.5342532157462778,
+      2.546250976519121
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012719997903332114,
+    "error_m": 0.09976977529343271,
+    "energy_score_m": 0.06840440221877062,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0071",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.5548091132910952,
+      2.643880189044005
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.5908700033517311,
+      2.6392052191112922
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001238000113517046,
+    "error_m": 0.03636266128650435,
+    "energy_score_m": 0.027666086171652407,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0072",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.435173781354009,
+      3.1365740286454367
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.5180647572379593,
+      3.170186915682257
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012739998055621982,
+    "error_m": 0.08944685605399248,
+    "energy_score_m": 0.06739214125717491,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0072",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.435173781354009,
+      3.1365740286454367
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.4832764469998874,
+      3.0652439729157304
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00015199999324977398,
+    "error_m": 0.08603396592417535,
+    "energy_score_m": 0.05576979952004673,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0073",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.6956717881750001,
+      1.918036155281314
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.6669957383521319,
+      1.9953985422923155
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014270003885030746,
+    "error_m": 0.08250608921457601,
+    "energy_score_m": 0.059903044182453485,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0073",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.6956717881750001,
+      1.918036155281314
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.6815410776172549,
+      1.9307548177896687
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00017150002531707287,
+    "error_m": 0.01901161110658948,
+    "energy_score_m": 0.02509110764036058,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0074",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.5198241090391129,
+      1.8594943978060328
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.4900866528415003,
+      1.786424588144892
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013429997488856316,
+    "error_m": 0.07888924758812368,
+    "energy_score_m": 0.06038566047025913,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0074",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.5198241090391129,
+      1.8594943978060328
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.4830292559500713,
+      1.821244016160584
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014180003199726343,
+    "error_m": 0.05307497442172379,
+    "energy_score_m": 0.03511980112715944,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0075",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.39329295728335995,
+      2.0689085349646428
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.20913938811732316,
+      2.0971646574881255
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012280000373721123,
+    "error_m": 0.18630873703788656,
+    "energy_score_m": 0.12411056781280433,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0075",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.39329295728335995,
+      2.0689085349646428
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.39847194689049387,
+      2.028205020917419
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00025759998243302107,
+    "error_m": 0.04103167056242447,
+    "energy_score_m": 0.030884079750946904,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0076",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.0491774573248507,
+      1.495173324293403
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.9809014142118426,
+      1.4963241168586991
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00017660000594332814,
+    "error_m": 0.06828574072745844,
+    "energy_score_m": 0.05588208313982637,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0076",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.0491774573248507,
+      1.495173324293403
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.0488363758779005,
+      1.4617358050934595
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014840002404525876,
+    "error_m": 0.03343925876570911,
+    "energy_score_m": 0.027293803523977637,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0077",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.3524109666331998,
+      2.13368197238054
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.3718262160260056,
+      2.0717683052018576
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014359998749569058,
+    "error_m": 0.06488647079705809,
+    "energy_score_m": 0.055077960714923865,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0077",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.3524109666331998,
+      2.13368197238054
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.3421885969765292,
+      2.0745447496386715
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00040580000495538116,
+    "error_m": 0.06001423127074913,
+    "energy_score_m": 0.040046225819617656,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0078",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.19150081286254167,
+      2.7723318202839824
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.14279621615109345,
+      2.759843753142382
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00035360001493245363,
+    "error_m": 0.05028011099587924,
+    "energy_score_m": 0.04745790227834011,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0078",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.19150081286254167,
+      2.7723318202839824
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.22837526030035912,
+      2.7512562032899313
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00018630002159625292,
+    "error_m": 0.04247242052820041,
+    "energy_score_m": 0.029380429766044602,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0079",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.204456448681555,
+      1.2895082029672342
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.1448173177989718,
+      1.2624359151917177
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001295000547543168,
+    "error_m": 0.06549606627752748,
+    "energy_score_m": 0.059150071300951304,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0079",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.204456448681555,
+      1.2895082029672342
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.1570857859994315,
+      1.283328922599914
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001634999644011259,
+    "error_m": 0.04777199167714781,
+    "energy_score_m": 0.03470978162740582,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0080",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.734229799093541,
+      2.1092008760385603
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.7572234941291447,
+      2.075497450718896
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001194999786093831,
+    "error_m": 0.04079988835362838,
+    "energy_score_m": 0.04715099535770376,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0080",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.734229799093541,
+      2.1092008760385603
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.7573400548235395,
+      2.1504717437606655
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001460999483242631,
+    "error_m": 0.04730082919401553,
+    "energy_score_m": 0.033225248600898996,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0081",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.9131116097670103,
+      2.7479879239168605
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.0243367309767208,
+      2.648184118720327
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012809998588636518,
+    "error_m": 0.149438372313882,
+    "energy_score_m": 0.09810721534980804,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0081",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.9131116097670103,
+      2.7479879239168605
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.8618650784320866,
+      2.6498779137966335
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013719999697059393,
+    "error_m": 0.11068776382081431,
+    "energy_score_m": 0.0762113960829561,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0082",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.47979505646777726,
+      2.709650261131838
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.3804995123941474,
+      2.880743312606197
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012079998850822449,
+    "error_m": 0.1978192036574962,
+    "energy_score_m": 0.13404984842289358,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0082",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.47979505646777726,
+      2.709650261131838
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.4495970438965188,
+      2.7745604473353414
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013050000416114926,
+    "error_m": 0.07159086698893502,
+    "energy_score_m": 0.046102586204692306,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0083",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.010812343314407566,
+      2.4909289002441968
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.2742462334764189,
+      2.43963862844914
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0005203000036999583,
+    "error_m": 0.26838052549822144,
+    "energy_score_m": 0.18243557052241974,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0083",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.010812343314407566,
+      2.4909289002441968
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.11524410246901128,
+      2.5113914552970162
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0002025999710895121,
+    "error_m": 0.10641761357695832,
+    "energy_score_m": 0.07142766836318296,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0084",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.7519482918962146,
+      2.621292593841174
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.8459141100413367,
+      2.6832946751882627
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001604999997653067,
+    "error_m": 0.1125781198592922,
+    "energy_score_m": 0.07759200350539262,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0084",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.7519482918962146,
+      2.621292593841174
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.7782062333908537,
+      2.6299523827799614
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013130001025274396,
+    "error_m": 0.027649076584946464,
+    "energy_score_m": 0.02676492871757233,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0085",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.14996397870084088,
+      2.8787122343155196
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.21542987305663797,
+      2.8222198671348933
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00026460003573447466,
+    "error_m": 0.08647063590303411,
+    "energy_score_m": 0.061278343730650456,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0085",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.14996397870084088,
+      2.8787122343155196
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.24639313545103822,
+      2.887651213769032
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.000172399973962456,
+    "error_m": 0.09684259199972112,
+    "energy_score_m": 0.06378360492544785,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0086",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.4143596638678888,
+      1.9556649615039827
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.3092875052281656,
+      1.9047297211887584
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00021309999283403158,
+    "error_m": 0.11676710678603291,
+    "energy_score_m": 0.07985821571664724,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0086",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.4143596638678888,
+      1.9556649615039827
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.3471197608871417,
+      1.9702815250707846
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00028709997422993183,
+    "error_m": 0.06881023530960088,
+    "energy_score_m": 0.04497946274353477,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0087",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.9783145511306384,
+      1.2992823447243187
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.067619413123741,
+      1.2280031757167995
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013210001634433866,
+    "error_m": 0.11426319753100561,
+    "energy_score_m": 0.07440323048870152,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0087",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.9783145511306384,
+      1.2992823447243187
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.9914918299648752,
+      1.279079870286239
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001433999859727919,
+    "error_m": 0.024120129578766605,
+    "energy_score_m": 0.024712261950046173,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0088",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.310484725980245,
+      3.1586761036450026
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.38035231214233434,
+      3.0411190150969167
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00015219999477267265,
+    "error_m": 0.13675214317888945,
+    "energy_score_m": 0.09235164766727341,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0088",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.310484725980245,
+      3.1586761036450026
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.31821908274135907,
+      3.0467707475587535
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014899997040629387,
+    "error_m": 0.11217231831115194,
+    "energy_score_m": 0.0747058206917003,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0089",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.4124278612274461,
+      1.6435649849867167
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.3800488116879974,
+      1.677221804813808
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013939995551481843,
+    "error_m": 0.046703151606196286,
+    "energy_score_m": 0.04983723731655881,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0089",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.4124278612274461,
+      1.6435649849867167
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.3795305690355126,
+      1.6953540489849444
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014650000957772136,
+    "error_m": 0.061354209174057255,
+    "energy_score_m": 0.04026829929458785,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0090",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.1201096061234008,
+      2.544469008350566
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.2015388477856515,
+      2.5637923969366403
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0002264000358991325,
+    "error_m": 0.08369058934036516,
+    "energy_score_m": 0.061993951498249225,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0090",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.1201096061234008,
+      2.544469008350566
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.0961797413102021,
+      2.5121443875634992
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00017779995687305927,
+    "error_m": 0.04021839801640074,
+    "energy_score_m": 0.02819191244870909,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0091",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.36675558952099374,
+      1.5946667779861645
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.34872156030515694,
+      1.5527337209888783
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00015049998182803392,
+    "error_m": 0.045646549474142185,
+    "energy_score_m": 0.058921253551442454,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0091",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.36675558952099374,
+      1.5946667779861645
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.3881252427793768,
+      1.5523701043969926
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013499998021870852,
+    "error_m": 0.047388507858894154,
+    "energy_score_m": 0.03536944834299215,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0092",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.059331938485504006,
+      1.9057447415802096
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.16111045494354356,
+      1.9601265459465558
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00011530000483617187,
+    "error_m": 0.11539604437994823,
+    "energy_score_m": 0.07437663252281768,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0092",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.059331938485504006,
+      1.9057447415802096
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.1412431840828061,
+      1.9111401407744526
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0006486000493168831,
+    "error_m": 0.08208874763185743,
+    "energy_score_m": 0.05423869908317909,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0093",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.2755710404782168,
+      2.7354778085237763
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.4575160921029549,
+      2.7427523974247494
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013639999087899923,
+    "error_m": 0.18209042109459453,
+    "energy_score_m": 0.11834654286271813,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0093",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      1.2755710404782168,
+      2.7354778085237763
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      1.3934276186799406,
+      2.6700567569431537
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00015030003851279616,
+    "error_m": 0.13479646514405902,
+    "energy_score_m": 0.09390251369823227,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0094",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.6041446414413796,
+      2.3141198046304003
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.6986689328258894,
+      2.2790148160400325
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00011719996109604836,
+    "error_m": 0.10083254378261795,
+    "energy_score_m": 0.06570378929671758,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0094",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -0.6041446414413796,
+      2.3141198046304003
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.6121604103978516,
+      2.267371400219723
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014489999739453197,
+    "error_m": 0.04743064269971242,
+    "energy_score_m": 0.03242345993276915,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0095",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.0256138062323585,
+      2.2346273308276374
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.1673968027766146,
+      2.1892800920143243
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012229999992996454,
+    "error_m": 0.14885828890948663,
+    "energy_score_m": 0.09533929618591215,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0095",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.0256138062323585,
+      2.2346273308276374
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.0949924416336503,
+      2.14702531251195
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014230003580451012,
+    "error_m": 0.1117475219551979,
+    "energy_score_m": 0.07685314440141301,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0096",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.013968865377106066,
+      1.284212637132962
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.05158990590693327,
+      1.2423482054786739
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0001417000312358141,
+    "error_m": 0.05628475218283785,
+    "energy_score_m": 0.05231075299585487,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0096",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.013968865377106066,
+      1.284212637132962
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.038503832828314516,
+      1.2592882936238126
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.0004743000026792288,
+    "error_m": 0.03497409794682261,
+    "energy_score_m": 0.02886082534955073,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0097",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.6714276350763563,
+      2.319750676083048
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.679308110136859,
+      2.334279915752035
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013589998707175255,
+    "error_m": 0.01652878375858513,
+    "energy_score_m": 0.05249800271404198,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0097",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.6714276350763563,
+      2.319750676083048
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.6666453657606701,
+      2.3164284430754365
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012769998284056783,
+    "error_m": 0.00582300025456104,
+    "energy_score_m": 0.025958456659543584,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0098",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.3386303468877039,
+      2.9126752725032556
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.4586982601018892,
+      3.2021234845312248
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00014600000577047467,
+    "error_m": 0.3133633214493957,
+    "energy_score_m": 0.2231945999350181,
+    "coverage_68": false,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0098",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      -1.3386303468877039,
+      2.9126752725032556
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -1.3320637001514617,
+      3.0130671924998897
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00013639999087899923,
+    "error_m": 0.10060645332168898,
+    "energy_score_m": 0.06539857663317765,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0099",
+    "model": "M1_noise",
+    "duration_s": 0.05,
+    "input_times_s": [
+      0.0,
+      0.04
+    ],
+    "n_observations": 2,
+    "last_observed_s": 0.04,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.006317966363069088,
+      1.8250080826739725
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      -0.1633205222036908,
+      1.773534976329626
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00011500000255182385,
+    "error_m": 0.1772757667588865,
+    "energy_score_m": 0.11676406548489883,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  },
+  {
+    "sample_id": "synthetic:0099",
+    "model": "M1_noise",
+    "duration_s": 0.1,
+    "input_times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "n_observations": 3,
+    "last_observed_s": 0.08,
+    "truth_crossed": true,
+    "truth_yz_m": [
+      0.006317966363069088,
+      1.8250080826739725
+    ],
+    "status": "plane",
+    "prediction_yz_m": [
+      0.022203940470192775,
+      1.8347850695170513
+    ],
+    "crossing_probability": 1.0,
+    "runtime_s": 0.00012229999992996454,
+    "error_m": 0.01865351562204671,
+    "energy_score_m": 0.026833196403844975,
+    "coverage_68": true,
+    "coverage_95": true,
+    "conditional_sample_count": 256
+  }
+]

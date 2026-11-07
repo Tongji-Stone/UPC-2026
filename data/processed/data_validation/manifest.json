@@ -1,0 +1,834 @@
+{
+  "source_filename": "DFL_04_03_positions_raw_observed_DFL-COM-000002_DFL-MAT-J03WOH.xml",
+  "source_sha256": "ec4dcf30200aad694dea263d5289485fcd0ca42badddaeb7c81f5cd5a4229d4f",
+  "selected_tracks_sha256": "74e2e2547dd2ccb98f7178ea215e4263d1c47a31090fa4499aab1c183fe1f82a",
+  "source_bytes": 348945715,
+  "source": "Deutsche Fußball Liga (DFL)",
+  "paper": "https://doi.org/10.1038/s41597-025-04505-y",
+  "dataset": "https://doi.org/10.6084/m9.figshare.28196177",
+  "license": "CC-BY-4.0",
+  "z_unit_status": "assumed metres; consistent with kloppy Sportec parser; source paper gives no explicit Z unit",
+  "z_scale_to_m": 1.0,
+  "position_reference": "source ball height treated as ball centre",
+  "selection_config": {
+    "frames": 21,
+    "count": 30,
+    "frame_interval_s": 0.04,
+    "min_height_m": 0.3,
+    "max_height_m": 15.0,
+    "min_speed_m_s": 2.0,
+    "max_speed_m_s": 45.0,
+    "max_acceleration_m_s2": 80.0,
+    "min_initial_displacement_m": 0.2,
+    "plane_x_m": 11.0,
+    "last_cutoff_s": 0.1,
+    "separation_s": 2.0
+  },
+  "selected_n": 30,
+  "stop_rule": "first count eligible samples in source order; no model errors used",
+  "audit_reason_counts": {
+    "height": 8501,
+    "selected": 30,
+    "separation_skip": 1470,
+    "no_heldout_crossing": 393,
+    "abrupt_velocity_change": 422,
+    "section_or_inactive": 11725,
+    "initial_direction": 137,
+    "speed": 151
+  },
+  "unexamined_start_rows": 114365,
+  "quality": {
+    "counts": {
+      "rows": 137214,
+      "duplicate_frame_keys": 0,
+      "duplicate_timestamp_keys": 0,
+      "missing_or_invalid_rows": 0,
+      "below_ground_rows": 0,
+      "nonpositive_time_steps": 0,
+      "non_25hz_steps": 0,
+      "speed_over_60_m_s": 101
+    },
+    "interval_s": {
+      "n": 137212,
+      "median": 0.04,
+      "min": 0.04,
+      "max": 0.04
+    },
+    "z_scale_to_m": 1.0
+  },
+  "samples": [
+    {
+      "sample_id": "J03WOH:firstHalf:10062",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "10062",
+      "end_frame": "10082",
+      "source_row_index": 62,
+      "source_timestamp": "2022-08-26T16:32:12.200+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        0.8462328400897502,
+        0.5328132696861398
+      ],
+      "translation_xy_m": [
+        -17.32,
+        -0.45
+      ],
+      "truth_time_s": 0.5135645311479671,
+      "truth_yz_m": [
+        0.31891074241988177,
+        5.4485162491837364
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:11982",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "11982",
+      "end_frame": "12002",
+      "source_row_index": 1982,
+      "source_timestamp": "2022-08-26T16:33:29.000+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        0.043437224276310686,
+        -0.9990561583550593
+      ],
+      "translation_xy_m": [
+        44.04,
+        27.66
+      ],
+      "truth_time_s": 0.41542013919366144,
+      "truth_yz_m": [
+        0.6799329779892835,
+        2.450840278387323
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:12779",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "12779",
+      "end_frame": "12799",
+      "source_row_index": 2779,
+      "source_timestamp": "2022-08-26T16:34:00.880+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.24043972405582822,
+        -0.9706640711883577
+      ],
+      "translation_xy_m": [
+        51.98,
+        31.56
+      ],
+      "truth_time_s": 0.42432475381127366,
+      "truth_yz_m": [
+        0.7087352999384011,
+        1.89
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:13921",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "13921",
+      "end_frame": "13941",
+      "source_row_index": 3921,
+      "source_timestamp": "2022-08-26T16:34:46.560+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.18047337080641937,
+        -0.9835798708949715
+      ],
+      "translation_xy_m": [
+        52.1,
+        31.79
+      ],
+      "truth_time_s": 0.43366959473438366,
+      "truth_yz_m": [
+        0.786026746103662,
+        2.921008784203151
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:14522",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "14522",
+      "end_frame": "14542",
+      "source_row_index": 4522,
+      "source_timestamp": "2022-08-26T16:35:10.600+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.9882676029051918,
+        -0.15273226590352876
+      ],
+      "translation_xy_m": [
+        46.05,
+        -19.32
+      ],
+      "truth_time_s": 0.42098378408792453,
+      "truth_yz_m": [
+        -0.6722036469879127,
+        2.6477054062417924
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:14701",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "14701",
+      "end_frame": "14721",
+      "source_row_index": 4701,
+      "source_timestamp": "2022-08-26T16:35:17.760+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        0.8659824578914872,
+        -0.5000743770922668
+      ],
+      "translation_xy_m": [
+        -19.52,
+        -28.52
+      ],
+      "truth_time_s": 0.5942794701788932,
+      "truth_yz_m": [
+        0.41670804468870287,
+        4.445687748260296
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:15764",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "15764",
+      "end_frame": "15784",
+      "source_row_index": 5764,
+      "source_timestamp": "2022-08-26T16:36:00.280+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        0.9586468662780968,
+        -0.284598288426309
+      ],
+      "translation_xy_m": [
+        -30.79,
+        -9.67
+      ],
+      "truth_time_s": 0.7872015312987042,
+      "truth_yz_m": [
+        -0.043211500645248174,
+        6.549207273668845
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:15993",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "15993",
+      "end_frame": "16013",
+      "source_row_index": 5993,
+      "source_timestamp": "2022-08-26T16:36:09.440+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.15596257347301123,
+        -0.987762965329069
+      ],
+      "translation_xy_m": [
+        -10.42,
+        -2.59
+      ],
+      "truth_time_s": 0.5045534709367547,
+      "truth_yz_m": [
+        0.3569882111811393,
+        2.5975220450760754
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:16612",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "16612",
+      "end_frame": "16632",
+      "source_row_index": 6612,
+      "source_timestamp": "2022-08-26T16:36:34.200+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.9994259471398348,
+        0.0338788456657564
+      ],
+      "translation_xy_m": [
+        26.13,
+        -11.4
+      ],
+      "truth_time_s": 0.7423063508115137,
+      "truth_yz_m": [
+        -0.07525883874270506,
+        13.190189289325906
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:18711",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "18711",
+      "end_frame": "18731",
+      "source_row_index": 8711,
+      "source_timestamp": "2022-08-26T16:37:58.160+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.6332377902572642,
+        -0.7739572992033198
+      ],
+      "translation_xy_m": [
+        46.53,
+        -0.34
+      ],
+      "truth_time_s": 0.4839842399968341,
+      "truth_yz_m": [
+        -0.04545905460927658,
+        3.318925139984962
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:19975",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "19975",
+      "end_frame": "19995",
+      "source_row_index": 9975,
+      "source_timestamp": "2022-08-26T16:38:48.720+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.8651400014650148,
+        0.5015304356318909
+      ],
+      "translation_xy_m": [
+        -3.73,
+        -30.91
+      ],
+      "truth_time_s": 0.6136408366157838,
+      "truth_yz_m": [
+        -0.7891822765598442,
+        4.027742928155243
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:20504",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "20504",
+      "end_frame": "20524",
+      "source_row_index": 10504,
+      "source_timestamp": "2022-08-26T16:39:09.880+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.9949117176573008,
+        -0.10075055368681313
+      ],
+      "translation_xy_m": [
+        1.47,
+        29.59
+      ],
+      "truth_time_s": 0.6099433971715129,
+      "truth_yz_m": [
+        0.5945995915623157,
+        3.9872877393931736
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:20629",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "20629",
+      "end_frame": "20649",
+      "source_row_index": 10629,
+      "source_timestamp": "2022-08-26T16:39:14.880+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.24253562503632792,
+        -0.9701425001453332
+      ],
+      "translation_xy_m": [
+        -43.31,
+        20.11
+      ],
+      "truth_time_s": 0.573344921423696,
+      "truth_yz_m": [
+        0.4066717742818901,
+        3.126689842847392
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:22666",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "22666",
+      "end_frame": "22686",
+      "source_row_index": 12666,
+      "source_timestamp": "2022-08-26T16:40:36.360+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        0.967180624684899,
+        -0.25408982512908407
+      ],
+      "translation_xy_m": [
+        -45.74,
+        -5.17
+      ],
+      "truth_time_s": 0.39555755695217093,
+      "truth_yz_m": [
+        -0.1051443733733683,
+        3.9211286233314957
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:23363",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "23363",
+      "end_frame": "23383",
+      "source_row_index": 13363,
+      "source_timestamp": "2022-08-26T16:41:04.240+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.9938837346736191,
+        0.1104315260748453
+      ],
+      "translation_xy_m": [
+        44.99,
+        -8.35
+      ],
+      "truth_time_s": 0.4279869338983999,
+      "truth_yz_m": [
+        0.07221788932431701,
+        2.5989444690681998
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:23888",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "23888",
+      "end_frame": "23908",
+      "source_row_index": 13888,
+      "source_timestamp": "2022-08-26T16:41:25.240+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        0.951444518554411,
+        0.30782028541466366
+      ],
+      "translation_xy_m": [
+        -41.58,
+        0.78
+      ],
+      "truth_time_s": 0.47410819034004076,
+      "truth_yz_m": [
+        0.18309753415644103,
+        7.01635237925051
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:25476",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "25476",
+      "end_frame": "25496",
+      "source_row_index": 15476,
+      "source_timestamp": "2022-08-26T16:42:28.760+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        0.9453729816262721,
+        -0.32599068331940445
+      ],
+      "translation_xy_m": [
+        -29.49,
+        -2.01
+      ],
+      "truth_time_s": 0.39120518010332606,
+      "truth_yz_m": [
+        0.12890009351534024,
+        4.5142505060074285
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:26353",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "26353",
+      "end_frame": "26373",
+      "source_row_index": 16353,
+      "source_timestamp": "2022-08-26T16:43:03.840+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        0.1721483367595543,
+        -0.9850710381241136
+      ],
+      "translation_xy_m": [
+        -1.02,
+        23.29
+      ],
+      "truth_time_s": 0.4626508196308288,
+      "truth_yz_m": [
+        -0.38846676572123395,
+        3.237591393246437
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:27031",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "27031",
+      "end_frame": "27051",
+      "source_row_index": 17031,
+      "source_timestamp": "2022-08-26T16:43:30.960+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        0.9816649588223977,
+        0.19061455511114647
+      ],
+      "translation_xy_m": [
+        -43.41,
+        4.09
+      ],
+      "truth_time_s": 0.4722626867847873,
+      "truth_yz_m": [
+        -0.026256443757122213,
+        4.8281014942782985
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:27312",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "27312",
+      "end_frame": "27332",
+      "source_row_index": 17312,
+      "source_timestamp": "2022-08-26T16:43:42.200+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        0.6479783460383587,
+        0.761658757624038
+      ],
+      "translation_xy_m": [
+        29.17,
+        -26.15
+      ],
+      "truth_time_s": 0.5444457203353419,
+      "truth_yz_m": [
+        0.28223966529002303,
+        1.8294428495808228
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:27966",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "27966",
+      "end_frame": "27986",
+      "source_row_index": 17966,
+      "source_timestamp": "2022-08-26T16:44:08.360+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.6074501075707978,
+        0.7943578329771956
+      ],
+      "translation_xy_m": [
+        40.68,
+        -27.39
+      ],
+      "truth_time_s": 0.374034965774758,
+      "truth_yz_m": [
+        -0.08859262799928629,
+        3.161227277535927
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:28016",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "28016",
+      "end_frame": "28036",
+      "source_row_index": 18016,
+      "source_timestamp": "2022-08-26T16:44:10.360+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.6207029443655623,
+        0.7840458244617604
+      ],
+      "translation_xy_m": [
+        13.92,
+        7.55
+      ],
+      "truth_time_s": 0.7443685122370969,
+      "truth_yz_m": [
+        -0.12830887030732252,
+        4.889881054636692
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:28919",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "28919",
+      "end_frame": "28939",
+      "source_row_index": 18919,
+      "source_timestamp": "2022-08-26T16:44:46.480+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.9541464875877229,
+        0.299340074537325
+      ],
+      "translation_xy_m": [
+        8.88,
+        17.1
+      ],
+      "truth_time_s": 0.4537454978940796,
+      "truth_yz_m": [
+        -0.45855881916915164,
+        1.8903091234205596
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:29982",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "29982",
+      "end_frame": "30002",
+      "source_row_index": 19982,
+      "source_timestamp": "2022-08-26T16:45:29.000+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.9809524507300751,
+        0.1942480100455591
+      ],
+      "translation_xy_m": [
+        50.53,
+        22.41
+      ],
+      "truth_time_s": 0.5013706480120911,
+      "truth_yz_m": [
+        0.43696730881800244,
+        8.133161086160207
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:30208",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "30208",
+      "end_frame": "30228",
+      "source_row_index": 20208,
+      "source_timestamp": "2022-08-26T16:45:38.040+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.5979624408009342,
+        -0.801524122775721
+      ],
+      "translation_xy_m": [
+        9.36,
+        11.27
+      ],
+      "truth_time_s": 0.5873220357177006,
+      "truth_yz_m": [
+        0.7013888143408443,
+        3.391474580364826
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:31387",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "31387",
+      "end_frame": "31407",
+      "source_row_index": 21387,
+      "source_timestamp": "2022-08-26T16:46:25.200+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.5908709418990171,
+        -0.8067660937467366
+      ],
+      "translation_xy_m": [
+        -28.56,
+        28.98
+      ],
+      "truth_time_s": 0.5485419882134732,
+      "truth_yz_m": [
+        0.7895392059877837,
+        3.7427614616937874
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:31483",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "31483",
+      "end_frame": "31503",
+      "source_row_index": 21483,
+      "source_timestamp": "2022-08-26T16:46:29.040+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        0.0142842567828473,
+        -0.9998979747995101
+      ],
+      "translation_xy_m": [
+        -23.43,
+        4.88
+      ],
+      "truth_time_s": 0.6822050094343644,
+      "truth_yz_m": [
+        0.4062221344349342,
+        4.21
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:31686",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "31686",
+      "end_frame": "31706",
+      "source_row_index": 21686,
+      "source_timestamp": "2022-08-26T16:46:37.160+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        0.04932261231063381,
+        0.9987828992903587
+      ],
+      "translation_xy_m": [
+        -40.79,
+        -20.46
+      ],
+      "truth_time_s": 0.5820592105160176,
+      "truth_yz_m": [
+        0.6875039179554323,
+        3.67963322366104
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:32477",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "32477",
+      "end_frame": "32497",
+      "source_row_index": 22477,
+      "source_timestamp": "2022-08-26T16:47:08.800+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.812015371342713,
+        -0.583636048152576
+      ],
+      "translation_xy_m": [
+        -0.63,
+        17.82
+      ],
+      "truth_time_s": 0.4058193977727373,
+      "truth_yz_m": [
+        0.19370869378079392,
+        1.8918227416477649
+      ],
+      "z_scale_to_m": 1.0
+    },
+    {
+      "sample_id": "J03WOH:firstHalf:32779",
+      "match_id": "J03WOH",
+      "section": "firstHalf",
+      "start_frame": "32779",
+      "end_frame": "32799",
+      "source_row_index": 22779,
+      "source_timestamp": "2022-08-26T16:47:20.880+00:00",
+      "plane_kind": "virtual",
+      "plane_x_m": 11.0,
+      "direction_xy": [
+        -0.45074535990063935,
+        0.8926525754895032
+      ],
+      "translation_xy_m": [
+        -37.46,
+        -26.27
+      ],
+      "truth_time_s": 0.42229188428201997,
+      "truth_yz_m": [
+        -0.9272686403772472,
+        2.529010797493535
+      ],
+      "z_scale_to_m": 1.0
+    }
+  ],
+  "acquisition": {
+    "retrieved_utc": "2026-11-07T05:12:17.760931+00:00",
+    "metadata_url": "https://api.figshare.com/v2/articles/28196177",
+    "doi": "10.6084/m9.figshare.28196177.v1",
+    "license": {
+      "value": 52,
+      "name": "CC BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "download_url": "https://huggingface.co/datasets/pysport/idsse-data/resolve/a715a38dfbaf5f58e431727c2b78d174101a703c/DFL_04_03_positions_raw_observed_DFL-COM-000002_DFL-MAT-J03WOH.xml",
+    "attribution": "Deutsche Fußball Liga (DFL); Bassek et al. (2025), doi:10.1038/s41597-025-04505-y",
+    "file": {
+      "id": 51643520,
+      "name": "DFL_04_03_positions_raw_observed_DFL-COM-000002_DFL-MAT-J03WOH.xml",
+      "size": 348945715,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/51643520",
+      "supplied_md5": "3efff25a86a61768e7d253b4bba137a3",
+      "computed_md5": "3efff25a86a61768e7d253b4bba137a3",
+      "mimetype": "text/xml"
+    },
+    "sha256": "ec4dcf30200aad694dea263d5289485fcd0ca42badddaeb7c81f5cd5a4229d4f"
+  }
+}

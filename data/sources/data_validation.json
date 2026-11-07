@@ -1,0 +1,52 @@
+{
+  "checked_on": "2026-11-07",
+  "datasets": [
+    {
+      "name": "DFL / IDSSE",
+      "paper": "https://doi.org/10.1038/s41597-025-04505-y",
+      "dataset": "https://doi.org/10.6084/m9.figshare.28196177",
+      "metadata_api": "https://api.figshare.com/v2/articles/28196177",
+      "official_code": "https://github.com/spoho-datascience/idsse-data",
+      "license": "CC-BY-4.0",
+      "credit": "Deutsche Fußball Liga (DFL); Bassek et al., Scientific Data 12, 195 (2025)",
+      "fields": ["GameSection", "N", "T", "X", "Y", "Z", "BallStatus", "BallPossession"],
+      "native_fps": 25,
+      "xy_units": "m; pitch-centred source coordinates",
+      "z_units": "source paper names height but gives no explicit unit; use explicit scale=1 as working assumption",
+      "z_parser_evidence": "https://github.com/PySport/kloppy/blob/master/kloppy/infra/serializers/tracking/sportec/deserializer.py",
+      "selected_file_id": 51643520,
+      "selected_match": "J03WOH",
+      "file_bytes": 348945715,
+      "official_md5": "3efff25a86a61768e7d253b4bba137a3",
+      "official_download": "https://ndownloader.figshare.com/files/51643520",
+      "acquisition": "official API accessible; official full-file stream stalled; public mirror supports byte ranges, verified against official size and MD5",
+      "mirror_revision": "a715a38dfbaf5f58e431727c2b78d174101a703c"
+    },
+    {
+      "name": "ball3d",
+      "reference": "https://github.com/lukaszgrad/ball3d/blob/main/DATA.md",
+      "download_folder": "https://drive.google.com/drive/folders/1QCrmzZYZt9_tIBqY6AmP7DjDyPXe3AuI",
+      "license": "CC-BY-NC-SA-4.0 for annotations and triangulated trajectories; raw video has separate restrictions",
+      "trajectory_file": "track/ball_3d-gt.csv",
+      "metadata_file": "sequence_metadata.json",
+      "fields": ["file_name", "track_id", "x", "y", "z"],
+      "units": "dm; multiply positions by 0.1",
+      "time": "zero-based source frame index divided by actual clip fps; retain gaps",
+      "native_fps": null,
+      "file_bytes": null,
+      "access_observed": "folder request redirected to Google sign-in; no trajectory file obtained; CSV adapter validated with fixtures"
+    },
+    {
+      "name": "SoccerNet-GAR",
+      "reference": "https://huggingface.co/datasets/OpenSportsLab/SoccerNet-GAR",
+      "license": "custom access terms and personalised NDA",
+      "access": "application and approval required; no application submitted or files downloaded",
+      "full_rate_branch": "tracking-full",
+      "time": "144 native frame slots, approximately 29.97 fps; read actual version timing if obtained",
+      "sparse_branch": "tracking: 16 sampled slots with a nine-frame stride",
+      "units": "dataset card gives positions in m",
+      "fields": "Parquet player 2D and ball 3D coordinates; exact schema and file sizes not inspected",
+      "file_bytes": null
+    }
+  ]
+}
