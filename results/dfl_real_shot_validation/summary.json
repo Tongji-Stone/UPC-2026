@@ -1,0 +1,262 @@
+{
+  "match": "J03WOH",
+  "event_count": 27,
+  "filter_counts": {
+    "event_sync_offset_over_1s": 12,
+    "no_forward_goal_crossing_within_2s": 5,
+    "recorded_height_below_ball_radius": 2,
+    "no_synchronised_frame": 5,
+    "selected": 3
+  },
+  "selection": "CalculatedFrame and CalculatedTimestamp required and within 1 s of event time; start at synchronised frame; first forward crossing of actual +/-52.5 m goal line within 2 s; >=8 frames; all z >=0.11 m under metre assumption; regular 25 Hz; speed 2–45 m/s; continuously goalward x",
+  "interpretation": "all selected samples are fully fitted; reconstruction agreement, not prediction",
+  "height_unit": "assumed metres; dataset paper does not establish unit",
+  "sample_details": [
+    {
+      "event_id": "18232100000487",
+      "event_outcome": "ShotWide",
+      "type_of_shot": "head",
+      "first_frame": "58522",
+      "last_frame": "58536",
+      "frames": 15,
+      "duration_s": 0.56,
+      "goal_x_m": -52.5,
+      "tracking_goal_y_m": 0.6829508196721312,
+      "tracking_goal_z_assumed_m": 2.899180327868853,
+      "event_timestamp": "2022-08-26T19:04:30.648+02:00",
+      "sync_timestamp": "2022-08-26T19:04:30.600+02:00",
+      "event_to_sync_s": -0.048
+    },
+    {
+      "event_id": "18232100000606",
+      "event_outcome": "ShotWide",
+      "type_of_shot": "rightLeg",
+      "first_frame": "70042",
+      "last_frame": "70077",
+      "frames": 36,
+      "duration_s": 1.4,
+      "goal_x_m": 52.5,
+      "tracking_goal_y_m": 4.9736206896551725,
+      "tracking_goal_z_assumed_m": 2.2865517241379307,
+      "event_timestamp": "2022-08-26T19:12:11.487+02:00",
+      "sync_timestamp": "2022-08-26T19:12:11.400+02:00",
+      "event_to_sync_s": -0.087
+    },
+    {
+      "event_id": "18232100000968",
+      "event_outcome": "SuccessfulShot",
+      "type_of_shot": "rightLeg",
+      "first_frame": "120925",
+      "last_frame": "120936",
+      "frames": 12,
+      "duration_s": 0.44,
+      "goal_x_m": 52.5,
+      "tracking_goal_y_m": -3.1212500000000003,
+      "tracking_goal_z_assumed_m": 0.344375,
+      "event_timestamp": "2022-08-26T19:48:54.520+02:00",
+      "sync_timestamp": "2022-08-26T19:48:55.360+02:00",
+      "event_to_sync_s": 0.84
+    }
+  ],
+  "model_results": [
+    {
+      "event_id": "18232100000487",
+      "model": "M0",
+      "event": "completed",
+      "frames_used": 15,
+      "frames_completed": 15,
+      "trajectory_rmse_m": 0.24506235927681475,
+      "plane_error_m": 0.29443924827386514,
+      "goal_y_m": 0.8090732110716599,
+      "goal_z_assumed_m": 3.1652397447511404
+    },
+    {
+      "event_id": "18232100000487",
+      "model": "M1",
+      "event": "completed",
+      "frames_used": 15,
+      "frames_completed": 15,
+      "trajectory_rmse_m": 0.13763155332238372,
+      "plane_error_m": 0.13664365565774675,
+      "goal_y_m": 0.8090732057637466,
+      "goal_z_assumed_m": 2.9517600992459743
+    },
+    {
+      "event_id": "18232100000487",
+      "model": "M2",
+      "event": "completed",
+      "frames_used": 15,
+      "frames_completed": 15,
+      "trajectory_rmse_m": 0.025030456710908585,
+      "plane_error_m": 0.01057973232095637,
+      "goal_y_m": 0.6873162293215325,
+      "goal_z_assumed_m": 2.9088174402255706
+    },
+    {
+      "event_id": "18232100000487",
+      "model": "M3",
+      "event": "completed",
+      "frames_used": 15,
+      "frames_completed": 15,
+      "trajectory_rmse_m": 0.09819393933225472,
+      "plane_error_m": 0.13405478815203264,
+      "goal_y_m": 0.8109662600015348,
+      "goal_z_assumed_m": 2.938963908197366
+    },
+    {
+      "event_id": "18232100000487",
+      "model": "M4",
+      "event": "completed",
+      "frames_used": 15,
+      "frames_completed": 15,
+      "trajectory_rmse_m": 0.04771678732801639,
+      "plane_error_m": 0.061799728729011315,
+      "goal_y_m": 0.7311799262934398,
+      "goal_z_assumed_m": 2.937821753120645
+    },
+    {
+      "event_id": "18232100000487",
+      "model": "M5",
+      "event": "completed",
+      "frames_used": 15,
+      "frames_completed": 15,
+      "trajectory_rmse_m": 0.04340522278413662,
+      "plane_error_m": 0.053686750139848194,
+      "goal_y_m": 0.7202499548366521,
+      "goal_z_assumed_m": 2.9377943364221912
+    },
+    {
+      "event_id": "18232100000606",
+      "model": "M0",
+      "event": "completed",
+      "frames_used": 36,
+      "frames_completed": 36,
+      "trajectory_rmse_m": 1.1794064762202374,
+      "plane_error_m": 1.7626452220151192,
+      "goal_y_m": 3.9214111439007837,
+      "goal_z_assumed_m": 3.700685116189781
+    },
+    {
+      "event_id": "18232100000606",
+      "model": "M1",
+      "event": "completed",
+      "frames_used": 36,
+      "frames_completed": 36,
+      "trajectory_rmse_m": 0.9023126689360604,
+      "plane_error_m": 1.070324991450827,
+      "goal_y_m": 3.9214111355405628,
+      "goal_z_assumed_m": 2.0904633727395185
+    },
+    {
+      "event_id": "18232100000606",
+      "model": "M2",
+      "event": "completed",
+      "frames_used": 36,
+      "frames_completed": 36,
+      "trajectory_rmse_m": 0.062271468154652274,
+      "plane_error_m": 0.11134709913623257,
+      "goal_y_m": 5.06928059669317,
+      "goal_z_assumed_m": 2.2295661235748447
+    },
+    {
+      "event_id": "18232100000606",
+      "model": "M3",
+      "event": "completed",
+      "frames_used": 36,
+      "frames_completed": 36,
+      "trajectory_rmse_m": 0.6267631205334471,
+      "plane_error_m": 1.2138639692355633,
+      "goal_y_m": 3.8880526494829226,
+      "goal_z_assumed_m": 1.7434055504748023
+    },
+    {
+      "event_id": "18232100000606",
+      "model": "M4",
+      "event": "completed",
+      "frames_used": 36,
+      "frames_completed": 36,
+      "trajectory_rmse_m": 0.3420912143561757,
+      "plane_error_m": 0.668181993020663,
+      "goal_y_m": 4.907550761983563,
+      "goal_z_assumed_m": 1.6216442565497455
+    },
+    {
+      "event_id": "18232100000606",
+      "model": "M5",
+      "event": "completed",
+      "frames_used": 36,
+      "frames_completed": 36,
+      "trajectory_rmse_m": 0.3453357347065738,
+      "plane_error_m": 0.6885401585886304,
+      "goal_y_m": 5.060753976113618,
+      "goal_z_assumed_m": 1.6035470825869331
+    },
+    {
+      "event_id": "18232100000968",
+      "model": "M0",
+      "event": "completed",
+      "frames_used": 12,
+      "frames_completed": 12,
+      "trajectory_rmse_m": 0.10097923057038785,
+      "plane_error_m": 0.011177613735321997,
+      "goal_y_m": -3.117068446323424,
+      "goal_z_assumed_m": 0.35474098560996337
+    },
+    {
+      "event_id": "18232100000968",
+      "model": "M1",
+      "event": "completed",
+      "frames_used": 12,
+      "frames_completed": 12,
+      "trajectory_rmse_m": 0.15057705469864208,
+      "plane_error_m": 0.1359947918066328,
+      "goal_y_m": -3.1170684465589558,
+      "goal_z_assumed_m": 0.20844451037626222
+    },
+    {
+      "event_id": "18232100000968",
+      "model": "M2",
+      "event": "completed",
+      "frames_used": 12,
+      "frames_completed": 12,
+      "trajectory_rmse_m": 0.100963158074036,
+      "plane_error_m": 0.009405453576502193,
+      "goal_y_m": -3.118803647913265,
+      "goal_z_assumed_m": 0.3534567354314834
+    },
+    {
+      "event_id": "18232100000968",
+      "model": "M3",
+      "event": "completed",
+      "frames_used": 12,
+      "frames_completed": 12,
+      "trajectory_rmse_m": 0.18785310024057586,
+      "plane_error_m": 0.1503866828197452,
+      "goal_y_m": -3.1170437644639666,
+      "goal_z_assumed_m": 0.19404715177438991
+    },
+    {
+      "event_id": "18232100000968",
+      "model": "M4",
+      "event": "completed",
+      "frames_used": 12,
+      "frames_completed": 12,
+      "trajectory_rmse_m": 0.2075800524204102,
+      "plane_error_m": 0.23580759905106968,
+      "goal_y_m": -2.9471218259553877,
+      "goal_z_assumed_m": 0.1853636709252482
+    },
+    {
+      "event_id": "18232100000968",
+      "model": "M5",
+      "event": "completed",
+      "frames_used": 12,
+      "frames_completed": 12,
+      "trajectory_rmse_m": 0.21218752142761313,
+      "plane_error_m": 0.2553471678472872,
+      "goal_y_m": -2.922369818397704,
+      "goal_z_assumed_m": 0.18422241808678771
+    }
+  ],
+  "source": "DFL Sportec open dataset https://doi.org/10.1038/s41597-025-04505-y, CC BY 4.0"
+}

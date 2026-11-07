@@ -1,0 +1,164 @@
+{
+  "interpretation": "early-frame prediction; later observed positions are retained solely to determine the real goal-plane crossing",
+  "selection": "previously fixed DFL event selection; two matches of one dataset",
+  "window_rule": "25 Hz: observations at 0, 0.04, 0.08 s only (within 0.10 s)",
+  "height_unit": "assumed metres; DFL paper does not confirm unit",
+  "M5_6_prior": {
+    "observation_sigma_m": 0.01,
+    "velocity_prior_mean_m_s": [
+      25,
+      0,
+      5
+    ],
+    "velocity_prior_sd_m_s": [
+      15,
+      15,
+      15
+    ],
+    "spin_prior_mean_rad_s": [
+      0,
+      0,
+      0
+    ],
+    "spin_prior_sd_rad_s": [
+      30,
+      30,
+      30
+    ],
+    "cd0": 0.18
+  },
+  "cases": [
+    {
+      "match": "J03WOH",
+      "event_id": "18232100000487",
+      "outcome": "ShotWide",
+      "shot_type": "head",
+      "truth_y_m": 0.6829508196721312,
+      "truth_z_assumed_m": 2.899180327868853
+    },
+    {
+      "match": "J03WOH",
+      "event_id": "18232100000606",
+      "outcome": "ShotWide",
+      "shot_type": "rightLeg",
+      "truth_y_m": 4.9736206896551725,
+      "truth_z_assumed_m": 2.2865517241379307
+    },
+    {
+      "match": "J03WOH",
+      "event_id": "18232100000968",
+      "outcome": "SuccessfulShot",
+      "shot_type": "rightLeg",
+      "truth_y_m": -3.1212500000000003,
+      "truth_z_assumed_m": 0.344375
+    },
+    {
+      "match": "J03WQQ",
+      "event_id": "18240200001227",
+      "outcome": "ShotWide",
+      "shot_type": "head",
+      "truth_y_m": -3.533999999999998,
+      "truth_z_assumed_m": 6.441999999999999
+    }
+  ],
+  "groups": {
+    "0.1_M0": {
+      "n": 4,
+      "status": {
+        "plane": 4
+      },
+      "valid_n": 4,
+      "mean_error_m": 2.9039075205604363,
+      "median_error_m": 1.869818550055781
+    },
+    "0.1_M1": {
+      "n": 4,
+      "status": {
+        "plane": 3,
+        "ground": 1
+      },
+      "valid_n": 3,
+      "mean_error_m": 2.8300941244086353,
+      "median_error_m": 2.7853285252336715
+    },
+    "0.1_M2": {
+      "n": 4,
+      "status": {
+        "no_plane_crossing": 2,
+        "plane": 2
+      },
+      "valid_n": 2,
+      "mean_error_m": 7.305762637585028,
+      "median_error_m": 7.305762637585028
+    },
+    "0.1_M3": {
+      "n": 4,
+      "status": {
+        "plane": 3,
+        "ground": 1
+      },
+      "valid_n": 3,
+      "mean_error_m": 2.957580811352059,
+      "median_error_m": 2.83465665817581
+    },
+    "0.1_M4": {
+      "n": 4,
+      "status": {
+        "plane": 2,
+        "ground": 2
+      },
+      "valid_n": 2,
+      "mean_error_m": 1.7455939748789315,
+      "median_error_m": 1.7455939748789315
+    },
+    "0.1_M5": {
+      "n": 4,
+      "status": {
+        "plane": 2,
+        "ground": 2
+      },
+      "valid_n": 2,
+      "mean_error_m": 1.7419687932424575,
+      "median_error_m": 1.7419687932424575
+    },
+    "0.1_M5_6_prior": {
+      "n": 4,
+      "status": {
+        "plane": 3,
+        "ground": 1
+      },
+      "valid_n": 3,
+      "mean_error_m": 3.7583130759415138,
+      "median_error_m": 3.3082610234574035
+    }
+  },
+  "common": {
+    "0.1": {
+      "models": [
+        "M0",
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M5_6_prior"
+      ],
+      "cases": [
+        [
+          "J03WQQ",
+          "18240200001227"
+        ]
+      ],
+      "n": 1,
+      "mean_error_m": {
+        "M0": 2.3565721881364414,
+        "M1": 2.7853285252336715,
+        "M2": 13.528238430016597,
+        "M3": 2.83465665817581,
+        "M4": 3.1751786147851058,
+        "M5": 3.2199542571090594,
+        "M5_6_prior": 3.3082610234574035
+      }
+    }
+  }
+}

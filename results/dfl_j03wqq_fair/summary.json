@@ -1,0 +1,110 @@
+{
+  "match": "J03WQQ",
+  "event_count": 27,
+  "filter_counts": {
+    "no_forward_goal_crossing_within_2s": 11,
+    "event_sync_offset_over_1s": 14,
+    "recorded_height_below_ball_radius": 1,
+    "selected": 1
+  },
+  "selection": "CalculatedFrame and CalculatedTimestamp required and within 1 s of event time; start at synchronised frame; first forward crossing of actual +/-52.5 m goal line within 2 s; >=8 frames; all z >=0.11 m under metre assumption; regular 25 Hz; speed 2–45 m/s; continuously goalward x",
+  "interpretation": "all selected samples are fully fitted; reconstruction agreement, not prediction",
+  "height_unit": "assumed metres; dataset paper does not establish unit",
+  "sample_details": [
+    {
+      "event_id": "18240200001227",
+      "event_outcome": "ShotWide",
+      "type_of_shot": "head",
+      "first_frame": "142871",
+      "last_frame": "142887",
+      "frames": 17,
+      "duration_s": 0.64,
+      "goal_x_m": 52.5,
+      "tracking_goal_y_m": -3.533999999999998,
+      "tracking_goal_z_assumed_m": 6.441999999999999,
+      "event_timestamp": "2022-11-05T14:32:28.130+01:00",
+      "sync_timestamp": "2022-11-05T14:32:27.160+01:00",
+      "event_to_sync_s": -0.97
+    }
+  ],
+  "model_results": [
+    {
+      "event_id": "18240200001227",
+      "model": "M0",
+      "event": "completed",
+      "frames_used": 17,
+      "frames_completed": 17,
+      "trajectory_rmse_m": 0.2668223395813298,
+      "plane_error_m": 0.3283874185362259,
+      "goal_y_m": -3.6600242442275928,
+      "goal_z_assumed_m": 6.745242784777725
+    },
+    {
+      "event_id": "18240200001227",
+      "model": "M1",
+      "event": "completed",
+      "frames_used": 17,
+      "frames_completed": 17,
+      "trajectory_rmse_m": 0.17557011541659653,
+      "plane_error_m": 0.14235784513381963,
+      "goal_y_m": -3.6600242359687902,
+      "goal_z_assumed_m": 6.3757908766133635
+    },
+    {
+      "event_id": "18240200001227",
+      "model": "M2",
+      "event": "completed",
+      "frames_used": 17,
+      "frames_completed": 17,
+      "trajectory_rmse_m": 0.11858365499134484,
+      "plane_error_m": 0.03240078775668688,
+      "goal_y_m": -3.5592457691659414,
+      "goal_z_assumed_m": 6.46230916508559
+    },
+    {
+      "event_id": "18240200001227",
+      "model": "M3",
+      "event": "completed",
+      "frames_used": 17,
+      "frames_completed": 17,
+      "trajectory_rmse_m": 0.1490426162712729,
+      "plane_error_m": 0.15877355658834696,
+      "goal_y_m": -3.6614127687545146,
+      "goal_z_assumed_m": 6.347263372289166
+    },
+    {
+      "event_id": "18240200001227",
+      "model": "M4",
+      "event": "completed",
+      "frames_used": 17,
+      "frames_completed": 17,
+      "trajectory_rmse_m": 0.1433326152149224,
+      "plane_error_m": 0.1123208891097759,
+      "goal_y_m": -3.5221615106502524,
+      "goal_z_assumed_m": 6.330304734655731
+    },
+    {
+      "event_id": "18240200001227",
+      "model": "M5",
+      "event": "completed",
+      "frames_used": 17,
+      "frames_completed": 17,
+      "trajectory_rmse_m": 0.14518051214654204,
+      "plane_error_m": 0.11730224980761521,
+      "goal_y_m": -3.5042310940489614,
+      "goal_z_assumed_m": 6.328537979709479
+    },
+    {
+      "event_id": "18240200001227",
+      "model": "M5_6",
+      "event": "completed",
+      "frames_used": 17,
+      "frames_completed": 17,
+      "trajectory_rmse_m": 0.11945092728361037,
+      "plane_error_m": 0.04012082946747703,
+      "goal_y_m": -3.5705098434783142,
+      "goal_z_assumed_m": 6.458634671212477
+    }
+  ],
+  "source": "DFL Sportec open dataset https://doi.org/10.1038/s41597-025-04505-y, CC BY 4.0"
+}

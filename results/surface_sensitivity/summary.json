@@ -1,0 +1,41 @@
+{
+  "comparison": "nonspinning, equal initial velocity and physical parameters, changing drag coefficient laws only",
+  "goal_plane_x_m": 11.0,
+  "kinematic_viscosity_m2_s": 1.5e-05,
+  "initial_position_m": [
+    0.0,
+    0.0,
+    0.11
+  ],
+  "initial_velocity_m_s": [
+    30.246448371164746,
+    8.846140255856023,
+    6.925339152481488
+  ],
+  "sources": {
+    "soccer_ball_drag": "Maponi & Piombin (2025), Table A1, https://doi.org/10.1155/jama/7425581",
+    "smooth_sphere_drag": "Paudel & Yan (2026), Eq. 26, https://doi.org/10.1007/s00466-025-02705-2"
+  },
+  "cases": [
+    {
+      "law": "smooth_sphere_drag",
+      "event": "plane",
+      "time_s": 0.3734378526296096,
+      "goal_y_m": 3.217155998625733,
+      "goal_z_assumed_m": 1.956367163490149,
+      "initial_speed_m_s": 32.26549486483516,
+      "final_speed_m_s": 30.053124953545016,
+      "initial_cd": 0.08583468751445053
+    },
+    {
+      "law": "soccer_ball_drag",
+      "event": "plane",
+      "time_s": 0.38617284272296115,
+      "goal_y_m": 3.217155998625731,
+      "goal_z_assumed_m": 1.9251573544493183,
+      "initial_speed_m_s": 32.26549486483516,
+      "final_speed_m_s": 28.109835499246305,
+      "initial_cd": 0.19226407030810988
+    }
+  ]
+}

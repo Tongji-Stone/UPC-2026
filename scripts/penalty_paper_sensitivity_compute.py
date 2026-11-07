@@ -4,14 +4,15 @@ from dataclasses import replace
 from pathlib import Path
 import numpy as np
 from football.physics import PhysicsConfig, simulate, linthorne_patel_coefficients
+from football.inference.physical_fit import fit_velocity
 
-result=json.loads(Path('results/real_penalty_fit/summary.json').read_text(encoding='utf8'))
-model=result['models']['M5_fitted']; raw=result['source_metadata']
-with Path('results/b_real_penalty/trajectory.csv').open(encoding='utf8',newline='') as f: first=next(csv.DictReader(f))
-pos=np.array([float(first['x_m']),float(first['y_m']),float(first['z_raw'])]); v=np.array(model['velocity_m_s']); spin=np.array(model['spin_rad_s']); cd=model['cd0']
+times=np.array([0.,.05,.10]);obs=np.array([[0,0,.11],[1.50,.45,.44],[2.96,.86,.74]])
+pos=obs[0];spin=np.array([0.,0.,30.]);cd=.18;raw={'goal_plane_x_m':11.}
+reference=replace(PhysicsConfig.for_model('M5'),coefficients=linthorne_patel_coefficients(cd0=cd))
+v=fit_velocity(times,obs,reference,spin=spin)['velocity']
 records=[]
 for factor in ('speed','azimuth_deg','spin_scale','cd0'):
-    values={'speed':[.95,1,1.05],'azimuth_deg':[-2,0,2],'spin_scale':[.5,1,1.5],'cd0':[.10,.15,.20]}[factor]
+    values={'speed':np.linspace(.7,1.3,31),'azimuth_deg':np.linspace(-10,10,41),'spin_scale':np.linspace(0,4,41),'cd0':np.linspace(.05,.40,36)}[factor]
     for val in values:
         vv=v.copy(); ww=spin.copy(); cc=cd
         if factor=='speed':vv*=val
