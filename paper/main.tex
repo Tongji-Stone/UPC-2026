@@ -27,7 +27,7 @@
 \end{center}
 We compare gravity, drag, constant net force and a gravity--drag--Magnus model. M3 estimates constant acceleration from early positions; M4 fits a constant drag coefficient and a lift coefficient proportional to the spin parameter.
 
-Five prescribed kick situations give six initial states and 24 forward flights, illustrating the roles of speed, elevation and spin direction. Three actual match penalties provide 39 original sampled frames. After conversion to penalty-mark coordinates, three selected positions per event enter 12 bounded inversions, whose continuations are compared with later measured samples. Spatial trajectories compare the three penalties, while a detailed J03WOH figure shows predicted and measured coordinates against time. A separate same-state curved-shot calculation quantifies angular damping, shifting the crossing by \TorqueDisplacement\ m. Section 5 uses the competition positions as a reference example for individual parameter effects, crossings compatible with the same early positions, and 100,000 Monte Carlo trajectories with fixed mass and radius.
+Three recorded penalties provide 39 tracking frames. After conversion to penalty-mark coordinates, three selected positions per event enter 12 bounded inversions, compared with later samples. J03WMX and J03WR9 are analyzed as placement shots and J03WOH as a power shot, comparing speed, aerodynamic forces and prediction error. A separate curved-shot calculation examines rotational damping. Section 5 uses the competition positions for individual perturbations, position-constrained crossings and 100,000 Monte Carlo trajectories.
 
 \noindent\textbf{Keywords:} Soccer ball, aerodynamic drag, Magnus effect, inverse prediction, trajectory comparison
 \newpage\begingroup\fontsize{10}{11.5}\selectfont\tableofcontents\endgroup\newpage
@@ -46,20 +46,20 @@ In this problem, the initial position and two early positions are given, whereas
 \subsection{Problem Restatement}
 We study a ball travelling from the penalty mark to a goal 7.32 m wide and 2.44 m high, 11 m away. The motion and prediction problem can be organized into three stages:
 \begin{enumerate}
-\item \textbf{Ball--foot contact.} Contact establishes launch velocity and spin. These initial conditions determine the forward examples and the unknown quantities reconstructed in Section~\ref{sec:solving}.
+\item \textbf{Ball--foot contact.} Contact establishes launch velocity and spin. These initial conditions relate to the unknown motion reconstructed in Section~\ref{sec:solving}.
 \item \textbf{Airborne flight.} Gravity, drag and Magnus lift develop the trajectory according to the governing equations established in Section~\ref{sec:model}.
 \item \textbf{Goal arrival and shot outcome.} The goal-plane crossing connects the flight to the shot result. Variation in initial motion, aerodynamic parameters and environmental conditions can produce a distribution of crossing locations; Section~\ref{sec:sensitivity} examines these sensitivities and joint perturbations.
 \end{enumerate}
-We first compare prescribed kicks, then estimate initial states from three real penalties and compare predictions with later recorded positions. Figure~\ref{fig:workflow} summarizes this physical and computational sequence.
+We estimate initial states from three real penalties and compare placement and power shots with later recorded positions. Figure~\ref{fig:workflow} summarizes this physical and computational sequence.
 \begin{figure}[H]\centering
 \resizebox{\textwidth}{!}{\input{assets/workflow_tikz.tex}}
-\caption{Three-force modeling, prescribed forward scenarios and real-penalty inverse comparison.}\label{fig:workflow}
+\caption{Three-force modeling, inverse prediction and real-penalty validation.}\label{fig:workflow}
 \end{figure}
 
 \section{Preparation of the Models}
 \subsection{Assumptions}
 \begin{itemize}
-\item \textbf{Contact and model start.} Prescribed examples begin just after contact. Real inversions define $t=0$ at the selected starting tracking frame; contact is represented through the initial motion.
+\item \textbf{Contact and model start.} Real inversions define $t=0$ at the selected starting tracking frame; contact is represented through the initial motion.
 \item \textbf{Rigid spherical ball.} The ball is idealized as a rigid sphere with constant mass, radius and cross-sectional area $A=\pi R^2$; its centre of mass coincides with its geometric centre \cite{maponi,bray,myers}. Empirical football coefficients represent the average aerodynamic effect of its surface. Section~\ref{sec:surface} discusses seams and asymmetric geometry.
 \item \textbf{Free-flight motion.} Gravity, aerodynamic drag and spin-induced lift act during free flight \cite{maponi,bray}. The flight considered ends at the first contact with the ground, goal structure or another object; collisions, bouncing and rolling are excluded. Integration also stops at the selected goal plane.
 \item \textbf{Uniform gravity.} Gravitational acceleration is constant, with $g=9.81\,\mathrm{m/s^2}$.
@@ -212,7 +212,7 @@ I_b\dot{\boldsymbol\omega}&=-k_2\omega\boldsymbol\omega.
 \end{equation}
 The torque opposes spin and removes rotational energy. With this isolated quadratic law, $\omega(t)=\omega_0/[1+(k_2/I_b)\omega_0t]$, providing an integration check.
 
-Use the curved shot of Section~\ref{sec:forward}, with initial velocity $(\CurvedVX,0,\CurvedVZ)$ m/s, spin $(0,0,35)$ rad/s and unit force corrections. Holding this state fixed, we compare constant spin with Eq.~\eqref{eq:motion-torque}.
+For a prescribed curved shot, with initial velocity $(\CurvedVX,0,\CurvedVZ)$ m/s, spin $(0,0,35)$ rad/s and unit force corrections. Holding this state fixed, we compare constant spin with Eq.~\eqref{eq:motion-torque}.
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{torque_comparison.pdf}
 \caption{Same-initial-state comparison of constant spin and high-Reynolds-number rotational damping for the prescribed curved shot. The documented angular-drag reference is 1.5, and the ball uses thin-shell inertia.}\label{fig:torque}\end{figure}
 \TorqueResults
@@ -231,13 +231,13 @@ A 5\% limit on the headwind dynamic-pressure change corresponds to $w/v\leq\sqrt
 \section{Conclusions}
 The model separates the mechanisms of gravity, drag and Magnus lift. Gravity produces downward curvature, drag reduces speed, and spin redirects the path. We use constant drag and linear-spin lift.
 
-Five prescribed kick situations provide six initial states and 24 forward flights. The matched top- and backspin pair demonstrates the reversal of vertical Magnus force, while sidespin produces horizontal curvature. In the curved M4 example the goal crossing is $(\CurvedY,\CurvedZ)$ m at $\CurvedTime$ s. The same initial state is used to quantify angular damping, giving a crossing displacement of \TorqueDisplacement\ m under the cited reference setting.
+J03WMX and J03WR9 are placement shots and J03WOH is a power shot. Their M4 speeds at the selected start are 29.20, 29.33 and 32.05 m/s, respectively. Drag decreases as the ball slows, while spin direction determines the direction of Magnus force. The four-model comparison shows that fitting the early positions and predicting the goal crossing are distinct tasks: M4 has a 0.113 m crossing error for J03WOH but predicts ground contact before the goal for J03WR9.
 
-Three actual penalties supply distinct early sampling sequences and held-out trajectories. Coordinate conversion places all three in the competition geometry. The 12 inverse outcomes list fitted initial states, goal crossings, crossing deviations and ground termination separately, connecting the recorded motion to each force assumption. For the competition-position example in Section 5, a one-degree launch-direction change moves the crossing by the displacement shown in the one-factor table. With the early positions fixed, the explored compatible states shift the crossing by up to \SensitivityConditionalShift\ m; joint perturbations are quantified by 100,000 Monte Carlo trajectories with fixed ball mass and radius.
+Three actual penalties supply distinct early sampling sequences and held-out trajectories. Coordinate conversion places all three in the competition geometry. The 12 inverse outcomes connect the recorded motion to the force assumptions through spatial trajectories and the detailed J03WOH comparison. For the competition-position example in Section 5, a one-degree launch-direction change moves the crossing by the displacement shown in the one-factor table. With the early positions fixed, the explored compatible states shift the crossing by up to \SensitivityConditionalShift\ m; joint perturbations are quantified by 100,000 Monte Carlo trajectories with fixed ball mass and radius.
 
 \section{Model Evaluation}
 \subsection{Physical Interpretation and Reproduction}
-The four-model hierarchy makes the role of each force visible under shared initial conditions. Forward and inverse calculations use the same state derivative and coefficient definitions. Original source coordinates, selected frames, transformed coordinates, numerical settings and candidate solutions are saved with the results.
+The four models connect different force assumptions with the recorded flights. Inversion and subsequent prediction use consistent equations. Original source coordinates, selected frames, transformed coordinates, numerical settings and candidate solutions are saved with the results.
 \subsection{Prediction and Further Development}
 The real-penalty comparison evaluates how early motion carries into the later path. Bound-active solutions and residuals identify the influence of the chosen coefficient scale and initial-state search. Ball-specific coefficients, direct spin measurements and higher-rate synchronized tracking would improve these connections. Rotational damping and wind can be included when their effect is relevant to the flight considered.
 \addcontentsline{toc}{section}{References}

@@ -97,6 +97,20 @@ def inverse_overview():
     fig.legend(handles=handles,loc='upper center',ncol=7,frameon=False,fontsize=8)
     save(fig,'penalty_spatial_overview',rect=[0,0,1,.88])
 
+def penalty_dynamics():
+    """Compare inferred M4 speed and forces for the three recorded penalties."""
+    cases=[('J03WMX','#8b5a3c','-'),('J03WR9','#6b8060','--'),('J03WOH','#4d6679','-.')]
+    fig,axes=plt.subplots(1,3,figsize=(7.2,2.6))
+    for case,color,style in cases:
+        data=trace('inverse',case,'M4')
+        for ax,key in zip(axes,['speed_m_s','drag_N','lift_N']):
+            ax.plot(col(data,'time_s'),col(data,key),label=case,color=color,ls=style,lw=1.5)
+    for ax,label in zip(axes,['Speed (m/s)','Drag (N)','Magnus force (N)']):
+        ax.set(xlabel='Time (s)',ylabel=label);ax.grid(alpha=.2);ax.tick_params(labelsize=8)
+    handles,labels=axes[0].get_legend_handles_labels()
+    fig.legend(handles,labels,loc='upper center',ncol=3,frameon=False,fontsize=8)
+    save(fig,'penalty_m4_dynamics',rect=[0,0,1,.87])
+
 def other():
     fig,axes=plt.subplots(1,3,figsize=(6.5,2.7))
     for key,c,s,label in [('constant_spin',COLORS[1],'-','Constant spin'),('inertial_torque',COLORS[2],'--','Quadratic torque')]:
@@ -112,8 +126,8 @@ if __name__=='__main__':
     FIG.mkdir(parents=True,exist_ok=True)
     plt.rcParams.update({'font.family':'serif','font.serif':['Times New Roman'],'font.size':9,'font.weight':'bold','axes.labelweight':'bold','axes.titleweight':'bold',
         'axes.spines.right':False,'axes.spines.top':False,'pdf.fonttype':42,'svg.fonttype':'none'})
-    if args.inverse_only:inverse();inverse_overview()
-    else:forward();inverse();inverse_overview();other()
+    if args.inverse_only:inverse();inverse_overview();penalty_dynamics()
+    else:forward();inverse();inverse_overview();penalty_dynamics();other()
     save_json(FIG/'figure_contract.json',dict(width_inches=6.5,dpi=300,formats=['pdf','svg','png'],
         units='SI',models=list(MODELS),raw_frames=39,
         inverse_input_rule='corrected consecutive source frames; zero time at selected start; original repeated samples retained',

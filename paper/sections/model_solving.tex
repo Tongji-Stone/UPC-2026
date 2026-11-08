@@ -1,5 +1,5 @@
 \section{Model Solving}\label{sec:solving}
-Forward prediction explains how a prescribed kick develops under different force assumptions. Inverse prediction then uses early positions from three actual penalties to estimate motion and predict the continuation. Both calculations use Eq.~\eqref{eq:motion} and the same four-model hierarchy.
+We infer initial motion from three recorded penalties and compare the flight and prediction of placement and power shots.
 \begin{table}[H]\centering\small\caption{Models and inverse quantities}\label{tab:models}
 \begin{tabular}{lll}\toprule
 Model & Assumption & Inverse quantities\\\midrule
@@ -9,43 +9,6 @@ M3 & constant net force & velocity, acceleration (6)\\
 M4 & gravity, drag, Magnus force & velocity, spin direction, $C_D$, $\alpha$ (7)\\\bottomrule
 \end{tabular}\end{table}
 M3 represents the combined net force. M4 uses constant $C_D$ and $\alpha$ during each flight with $C_L=\alpha Sp$. Forward reference values are $C_D^*=\ReferenceCD$ and $\alpha^*=\ReferenceCL$ at a published reference condition \cite{kiratidis2018}.
-
-\subsection{Forward Prediction}\label{sec:forward}
-\subsubsection{Prescribed conditions and solution}
-Five kick situations are represented by six initial states. These are chosen numerical examples: power, placement, sidespin, a paired topspin/backspin comparison, and a chip. For M3, the initial M4 net force is held constant in each forward example. Each begins at $\boldsymbol r_0=(0,0,0.11)$ m with
-\begin{equation}
-\boldsymbol v_0=v_0(\cos\beta,0,\sin\beta),\qquad \alpha_D=\alpha_L=1.
-\end{equation}
-The top- and backspin pair has the same speed and launch angle, isolating the direction of rotation. For every state, all four models are integrated by adaptive Runge--Kutta (DOP853). A forward root of $x-11$ locates the goal crossing and a descending root of $z-R$ locates ground contact. The relative and absolute integration tolerances are $10^{-10}$ and $10^{-12}$, with a maximum step of 0.005 s. The endpoint markers show the first goal-plane crossing or ground contact.
-
-\subsubsection{Case 1: Power shot}
-The ball starts at 27 m/s with an $8^\circ$ elevation and zero spin. A high launch speed leaves little time for downward gravitational deflection. Drag removes forward momentum and increases the time required to reach the goal. With zero spin M2 and M4 have the same drag; M3 holds the initial net force constant.
-\begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_power.pdf}
-\caption{Power shot under the same prescribed initial condition in M1--M4. Endpoint markers denote goal crossing or ground contact.}\label{fig:case-power}\end{figure}
-
-\subsubsection{Case 2: Placement shot}
-The ball starts at 20 m/s with an $11^\circ$ elevation and zero spin. The lower launch speed gives gravity more time to bend the path. The comparison shows how the assumed drag coefficient changes both the travel time and crossing height. The initial direction is common to all models.
-\begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_placement.pdf}
-\caption{Placement shot with zero spin. M2 and M4 have identical drag at zero spin.}\label{fig:case-placement}\end{figure}
-
-\subsubsection{Case 3: Curved shot}
-The ball starts at 24 m/s with a $10^\circ$ elevation and spin $(0,0,35)$ rad/s. Vertical-axis rotation creates a horizontal Magnus force. M1 and M2 preserve the initial horizontal direction; M3 holds the initial force constant while M4 evolves the Magnus force with velocity; both can bend laterally. The M4 goal crossing is $(\CurvedY,\CurvedZ)$ m at $\CurvedTime$ s. This case also supplies the reference state for the rotational-damping comparison in Section~\ref{sec:rotation}.
-\begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_curved.pdf}
-\caption{Sidespin redirects the ball horizontally. The four models share speed, elevation and initial spin.}\label{fig:case-curved}\end{figure}
-
-\subsubsection{Case 4: Topspin and backspin}
-Both shots start at 24 m/s and $12^\circ$, with spin $(0,35,0)$ and $(0,-35,0)$ rad/s, respectively. Changing the sign of $\omega_y$ reverses the vertical Magnus force. Topspin increases downward curvature; backspin opposes the gravitational fall and raises the trajectory. Equal launch speed and angle make this contrast visible directly. The figure shows the paths and endpoints of the models.
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{case_spin.pdf}
-\caption{Matched topspin and backspin examples. Only the sign of transverse spin changes between the two panels.}\label{fig:case-spin}\end{figure}
-
-\subsubsection{Case 5: Chip shot}
-The chip starts at 14 m/s and $20^\circ$, with spin $(0,-15,0)$ rad/s, combining a larger elevation angle, lower speed and backspin. The initial vertical velocity builds an arc, while gravity, drag and upward Magnus lift determine how much height remains near the goal. Its slower flight lengthens the action of gravity and aerodynamic forces.
-\begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_chip.pdf}
-\caption{The prescribed chip illustrates the combined effect of launch angle, slower airflow and backspin.}\label{fig:case-chip}\end{figure}
-
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{forward_dynamics.pdf}
-\caption{Speed, drag and lift magnitudes for the curved and topspin examples. Each curve ends at that model's first goal crossing or ground contact.}\label{fig:forward-dynamics}\end{figure}
-The force histories connect the paths to their causes. Dynamic pressure decreases as drag removes speed. A constant coefficient still gives a changing force through the $v^2$ factor. In M4, lift also depends on spin and relative speed. The spin direction decides whether lift acts chiefly sideways or vertically.
 
 \subsection{Inverse Prediction from Three Real Penalties}\label{sec:inverse}
 \subsubsection{Measurements, coordinate system and input times}
@@ -67,12 +30,22 @@ M4 minimizes the position error over velocity, spin direction, $C_D$ and $\alpha
 \InverseBoundsTable
 Only the product $\alpha\boldsymbol\omega$ enters Magnus force, so spin magnitude and $\alpha$ are not separately identified by positions. A reference spin magnitude of 30 rad/s is assumed. Seven fitted quantities and six later position coordinates leave multiple possible solutions.
 
-\subsubsection{Predicted trajectories, initial states and goal crossings}
-Figure~\ref{fig:penalty-overview} compares the three recorded penalty flights in space. Open circles indicate the three positions used for fitting; the black line and points show tracked positions, and colored line styles show the four model predictions. Crosses mark measured or interpolated goal-plane crossings. Predictions start at the selected frame and stop at first ground contact.
+\subsection{Case Analysis and Validation}\label{sec:case-validation}
+The recorded penalties fall into two kick types: J03WMX and J03WR9 are placement shots, and J03WOH is a power shot. Figure~\ref{fig:penalty-overview} compares their spatial trajectories. Open circles indicate fitting inputs, black lines and points denote tracking, colored lines show the models, and crosses mark measured or interpolated goal crossings. Predictions stop at first ground contact.
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_spatial_overview.pdf}
-\caption{Spatial trajectories and model predictions for the three recorded penalties. Each inversion uses three positions at 0, 0.04 and 0.08 s after the selected start.}\label{fig:penalty-overview}\end{figure}
+\caption{Three recorded penalty trajectories and model predictions. Each inversion uses positions at 0, 0.04 and 0.08 s after the selected start.}\label{fig:penalty-overview}\end{figure}
 
-\paragraph{J03WOH: four-panel comparison.} Figure~\ref{fig:penalty-J03WOH} examines the J03WOH flight in more detail, showing the spatial path and $x$, $y$, $z$ against time. The first three positions are used for fitting; later samples show how the predictions compare with the recorded continuation.
+\subsubsection{Case 1: Placement Shots}
+J03WMX and J03WR9 both travel close to the ground. M4 estimates their initial speeds at the selected frames as 29.20 and 29.33 m/s, respectively. For J03WMX, M4 reaches the goal plane with a 0.360 m error; M1 and M2 hit the ground and M3 does not reach the goal within the calculation horizon. For J03WR9, M1 and M2 have goal-plane errors of 0.550 and 0.541 m, while M3 and M4 predict ground contact before the goal.
+
+A low trajectory is sensitive to vertical forces. Gravity pulls downward, while the vertical Magnus component can raise or lower the path. M1 omits aerodynamic forces, and M2 adds drag without transverse lift. M3 fits a constant acceleration to the early points, but its continuation can deviate as acceleration evolves. M4 allows aerodynamic forces to change with velocity and spin direction; it reaches the goal more accurately for J03WMX but predicts early ground contact for J03WR9. Early tracking and the fitted parameters both influence these differences.
+
+\subsubsection{Case 2: Power Shot}
+M4 estimates the J03WOH speed at the selected start as 32.05 m/s, higher than for the two placement examples. Figure~\ref{fig:penalty-J03WOH} shows its spatial path and $x$, $y$, $z$ against time. The first three positions are fitted; later black points assess the continuation.
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WOH.pdf}
-\caption{J03WOH spatial trajectory and the three coordinates against time. Open circles are fitting inputs; black points are tracked samples.}\label{fig:penalty-J03WOH}\end{figure}
-The $x(t)$ panel compares forward deceleration, while $y(t)$ and $z(t)$ show lateral deflection and vertical curvature. Goal-plane errors for M1, M2, M3 and M4 are 0.684, 0.657, 0.374 and 0.113 m, respectively. The constant-acceleration M3 passes through the three inputs; M4 has the smaller deviation for this flight's later path and goal crossing. Errors compare each model's own goal-plane $(y,z)$ crossing with the recorded crossing.
+\caption{J03WOH power-shot trajectory and coordinates against time. Open circles are fitting inputs and black points are measured samples.}\label{fig:penalty-J03WOH}\end{figure}
+$x(t)$ shows forward deceleration; $y(t)$ and $z(t)$ show lateral and vertical curvature. M1, M2, M3 and M4 have goal-plane errors of 0.684, 0.657, 0.374 and 0.113 m, respectively. M1 uses gravity alone and M2 adds drag; their horizontal directions are mainly set by initial velocity. M3 continues the constant acceleration determined from the three inputs. M4 uses drag and Magnus force to describe evolving curvature and agrees more closely with the later points in this shot. Errors compare each model's own $(y,z)$ crossing with the measured crossing.
+
+\paragraph{Physical picture of speed and aerodynamic forces.} Figure~\ref{fig:penalty-dynamics} compares M4 speed and force magnitudes. Drag scales with relative speed squared: the fitted initial drag is about 7.58 N for J03WOH and 7.05 and 7.11 N for the placement shots, with coefficient values also affecting the comparison. As the ball slows, drag decreases. Magnus force depends on the cross product of spin and relative velocity: spin direction determines whether its effect is chiefly lateral or vertical, and its magnitude changes with the motion. The displayed speeds and forces are computed from the M4 inversions, using a reference spin magnitude of 30 rad/s.
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_m4_dynamics.pdf}
+\caption{M4 speed, drag and Magnus force for the three recorded penalties. Curves end at first model-predicted ground contact or goal-plane crossing.}\label{fig:penalty-dynamics}\end{figure}
