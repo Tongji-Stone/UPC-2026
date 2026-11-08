@@ -1,0 +1,107 @@
+J03WMX M1: ground
+M2 start 1/1: RSS=0.0010385, nfev=7
+J03WMX M2: ground
+M3 start 1/6: RSS=0.00092404, nfev=240
+M3 start 2/6: RSS=0.00088518, nfev=50
+M3 start 3/6: RSS=0.0011514, nfev=240
+M3 start 4/6: RSS=0.00088518, nfev=26
+M3 start 5/6: RSS=0.00088518, nfev=39
+M3 start 6/6: RSS=0.00088518, nfev=43
+M3: coefficient selection
+J03WMX M3: plane
+M4 start 1/19: RSS=0.00063593, nfev=240
+M4 start 2/19: RSS=0.00071697, nfev=240
+M4 start 3/19: RSS=0.00063594, nfev=240
+M4 start 4/19: RSS=0.00069745, nfev=240
+M4 start 5/19: RSS=0.00063579, nfev=240
+M4 start 6/19: RSS=0.00069104, nfev=240
+M4 start 7/19: RSS=0.00064036, nfev=240
+M4 start 8/19: RSS=0.00069387, nfev=240
+M4 start 9/19: RSS=0.0006358, nfev=240
+M4 start 10/19: RSS=0.0007605, nfev=240
+M4 start 11/19: RSS=0.00090358, nfev=240
+M4 start 12/19: RSS=0.00068405, nfev=240
+M4 start 13/19: RSS=0.00070701, nfev=240
+M4 start 14/19: RSS=0.0007326, nfev=240
+M4 start 15/19: RSS=0.00068152, nfev=240
+M4 start 16/19: RSS=0.00083443, nfev=240
+M4 start 17/19: RSS=0.00095557, nfev=240
+M4 start 18/19: RSS=0.00072279, nfev=240
+M4 start 19/19: RSS=0.00067883, nfev=240
+J03WMX M4: fit_limit
+J03WOH M1: plane
+M2 start 1/1: RSS=0.00015544, nfev=10
+J03WOH M2: plane
+M3 start 1/6: RSS=7.8188e-28, nfev=41
+M3 start 2/6: RSS=1.4782e-24, nfev=42
+M3 start 3/6: RSS=3.8248e-06, nfev=240
+M3 start 4/6: RSS=2.6705e-06, nfev=37
+M3 start 5/6: RSS=5.5672e-27, nfev=37
+M3 start 6/6: RSS=1.7731e-20, nfev=45
+M3: coefficient selection
+M3: coefficient selection
+M3: coefficient selection
+M3: coefficient selection
+J03WOH M3: plane
+M4 start 1/19: RSS=1.4258e-26, nfev=37
+M4 start 2/19: RSS=7.1799e-31, nfev=54
+M4 start 3/19: RSS=0.00010056, nfev=240
+M4 start 4/19: RSS=1.3953e-24, nfev=31
+M4 start 5/19: RSS=1.0908e-26, nfev=51
+M4 start 6/19: RSS=1.4831e-22, nfev=35
+M4 start 7/19: RSS=8.5363e-22, nfev=35
+M4 start 8/19: RSS=4.3146e-05, nfev=240
+M4 start 9/19: RSS=1.1575e-22, nfev=38
+M4 start 10/19: RSS=4.4523e-06, nfev=240
+M4 start 11/19: RSS=3.2985e-24, nfev=35
+M4 start 12/19: RSS=2.9737e-26, nfev=51
+M4 start 13/19: RSS=5.2262e-05, nfev=240
+M4 start 14/19: RSS=9.9816e-05, nfev=240
+M4 start 15/19: RSS=2.1512e-06, nfev=240
+M4 start 16/19: RSS=3.3681e-29, nfev=53
+M4 start 17/19: RSS=9.2257e-27, nfev=31
+M4 start 18/19: RSS=1.2937e-22, nfev=42
+M4 start 19/19: RSS=1.5539e-06, nfev=240
+M4: coefficient selection
+M4: coefficient selection
+M4: coefficient selection
+M4: coefficient selection
+M4: spin selection
+J03WOH M4: plane
+J03WR9 M1: plane
+M2 start 1/1: RSS=0.00010758, nfev=8
+J03WR9 M2: plane
+M3 start 1/6: RSS=0.00015237, nfev=240
+M3 start 2/6: RSS=1.3427e-05, nfev=27
+M3 start 3/6: RSS=1.3427e-05, nfev=33
+M3 start 4/6: RSS=4.7236e-05, nfev=240
+M3 start 5/6: RSS=1.3427e-05, nfev=38
+M3 start 6/6: RSS=0.00023538, nfev=240
+M3: coefficient selection
+M3: coefficient selection
+J03WR9 M3: ground
+M4 start 1/19: RSS=3.0394e-08, nfev=240
+M4 start 2/19: RSS=2.6247e-05, nfev=240
+M4 start 3/19: RSS=1.346e-06, nfev=47
+M4 start 4/19: RSS=7.1856e-06, nfev=240
+M4 start 5/19: RSS=1.3466e-06, nfev=240
+M4 start 6/19: RSS=1.7949e-07, nfev=240
+M4 start 7/19: RSS=9.164e-08, nfev=240
+M4 start 8/19: RSS=6.7585e-05, nfev=240
+M4 start 9/19: RSS=1.3575e-06, nfev=240
+M4 start 10/19: RSS=1.3329e-10, nfev=240
+M4 start 11/19: RSS=1.0235e-19, nfev=47
+M4 start 12/19: RSS=5.4459e-20, nfev=49
+M4 start 13/19: RSS=1.346e-06, nfev=240
+M4 start 14/19: RSS=4.7072e-11, nfev=240
+M4 start 15/19: RSS=1.838e-06, nfev=240
+M4 start 16/19: RSS=2.5884e-31, nfev=84
+M4 start 17/19: RSS=5.8321e-06, nfev=240
+M4 start 18/19: RSS=1.3485e-06, nfev=240
+M4 start 19/19: RSS=1.1997e-21, nfev=42
+M4: coefficient selection
+M4: coefficient selection
+M4: coefficient selection
+M4: coefficient selection
+M4: spin selection
+J03WR9 M4: ground

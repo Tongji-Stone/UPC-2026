@@ -1,5 +1,5 @@
 {
-  "source_fingerprint": "810d6ac4b4f09a28c09df446170094f01750cbe472c07b30fb9d5ad6cf6557a7",
+  "source_fingerprint": "45d2ff95b29f3a40b70b13a85c65f65492a35ee1009dfd7c9c59770c2b4a6fdc",
   "record": {
     "case": "J03WMX",
     "model": "M2",
@@ -8,16 +8,16 @@
     "physical_fit_interval": true,
     "event": {
       "type": "ground",
-      "time": 0.09177141962141983,
+      "time": 0.21311039514063376,
       "position": [
-        3.375507090812624,
-        0.6159115540850941,
-        0.11
+        8.759229921564438,
+        1.8950919146836427,
+        0.11000000000000001
       ],
       "velocity": [
-        28.33380187243631,
-        6.015525490829298,
-        -0.9779840578612767
+        25.376874045035365,
+        5.968325905069603,
+        -1.1154444250116708
       ],
       "spin": [
         0.0,
@@ -25,73 +25,73 @@
         0.0
       ]
     },
-    "early_max_residual_m": 0.018068955676967563,
-    "early_rss_m2": 0.0005430772710474699,
+    "early_max_residual_m": 0.026125599665965282,
+    "early_rss_m2": 0.0010385484262857192,
     "initial_state": [
-      29.780201048278318,
-      6.322609275468044,
-      -0.10465431031154995,
+      28.411014520510623,
+      6.681918097995429,
+      0.9667756764788751,
       0.0,
       0.0,
       0.0
     ],
-    "drag_scale": 1.4258289928335777,
+    "drag_scale": 1.4999999999999998,
     "lift_scale": 1.0,
-    "future_sample_count": 0,
-    "future_rmse_3d_m": null,
+    "future_sample_count": 3,
+    "future_rmse_3d_m": 0.13607955853021714,
     "goal_error_m": null,
     "goal_time_error_s": null,
     "scored_goal_error_m": null,
-    "at_parameter_bound": false
+    "at_parameter_bound": true
   },
   "fit": {
     "model": "M2",
     "initial_state": [
-      29.780201048278318,
-      6.322609275468044,
-      -0.10465431031154995,
+      28.411014520510623,
+      6.681918097995429,
+      0.9667756764788751,
       0.0,
       0.0,
       0.0
     ],
-    "drag_scale": 1.4258289928335777,
+    "drag_scale": 1.4999999999999998,
     "lift_scale": 1.0,
-    "rss_m2": 0.0005430772710474699,
-    "minimum_search_rss_m2": 0.0005430772710476094,
-    "max_residual_m": 0.018068955676967563,
+    "rss_m2": 0.0010385484262857192,
+    "minimum_search_rss_m2": 0.0010385484262825152,
+    "max_residual_m": 0.026125599665965282,
     "fitted_positions": [
       [
-        0.7100000000000009,
-        0.05,
-        0.16
+        3.039999999999999,
+        0.55,
+        0.13
       ],
       [
-        1.8881512731173808,
-        0.3001322994844953,
-        0.14806895567696757
+        4.163874400334032,
+        0.8143213141876487,
+        0.16045316480925975
       ],
       [
-        3.040934423420482,
-        0.5448787142885361,
-        0.12086719575409423
+        5.2633477785285905,
+        1.0729038107302735,
+        0.17471889851556172
       ]
     ],
     "active_parameters": 4,
     "spin_representation": "not used",
-    "coefficient_distance": 0.18133033113765915,
+    "coefficient_distance": 0.24999999999999978,
     "rss_allowance_m2": 6e-12,
     "coefficient_distance_allowance": 1e-08,
     "starts": [
       {
         "start": 0,
-        "rss_m2": 0.0005430772710476094,
+        "rss_m2": 0.0010385484262825152,
         "success": true,
-        "nfev": 9,
+        "nfev": 7,
         "parameters": [
-          0.992673368275944,
-          0.21075364251560147,
-          -0.0034884770103849982,
-          1.4258289928335777
+          0.9470338173503541,
+          0.2227306032665143,
+          0.03222585588262917,
+          1.4999999999999998
         ],
         "message": "`ftol` termination condition is satisfied."
       }
@@ -99,15 +99,15 @@
     "stages": [
       {
         "stage": "positions",
-        "rss_m2": 0.0005430772710476094,
-        "coefficient_distance": 0.18133033113765915
+        "rss_m2": 0.0010385484262825152,
+        "coefficient_distance": 0.24999999999999978
       }
     ],
     "position_jacobian_singular_values": [
-      23.91852436407881,
-      23.918507340173257,
-      23.45916766434436,
-      0.07361419313304308
+      23.91446251401395,
+      23.914443846940948,
+      23.450914640193652,
+      0.06763769852229365
     ],
     "position_jacobian_rank": 4,
     "selection": "positions, then coefficients nearest one, then smallest M4 spin",
@@ -119,7 +119,7 @@
       "force_scale_min": 0.5,
       "force_scale_max": 1.5
     },
-    "at_parameter_bound": false
+    "at_parameter_bound": true
   },
   "fit_input": {
     "times_s": [
@@ -129,26 +129,32 @@
     ],
     "positions_m": [
       [
-        0.7100000000000009,
-        0.05,
-        0.16
-      ],
-      [
-        1.8900000000000006,
-        0.29,
-        0.13
-      ],
-      [
         3.039999999999999,
         0.55,
         0.13
+      ],
+      [
+        4.189999999999998,
+        0.82,
+        0.15
+      ],
+      [
+        5.25,
+        1.07,
+        0.18
       ]
     ],
     "frames": [
-      "152600",
-      "152601",
-      "152602"
-    ]
+      "152602",
+      "152603",
+      "152604"
+    ],
+    "sample_ordinals": [
+      3,
+      4,
+      5
+    ],
+    "time_origin_source_s": 0.08
   },
   "configuration": {
     "mass": 0.43,
@@ -158,7 +164,7 @@
     "gravity": 9.81,
     "drag_coefficient": 0.24154511379406454,
     "lift_coefficient": 0.28977661113044667,
-    "drag_scale": 1.4258289928335777,
+    "drag_scale": 1.4999999999999998,
     "lift_scale": 1.0,
     "coefficient_mode": "constant",
     "use_gravity": true,
@@ -194,7 +200,7 @@
     ]
   },
   "validation_target": {
-    "time_s": 0.4,
+    "time_s": 0.32,
     "position": [
       52.5,
       2.75,
@@ -204,6 +210,7 @@
     "frames": [
       "152610"
     ],
+    "source_time_s": 0.4,
     "local_position": [
       11.0,
       2.75,

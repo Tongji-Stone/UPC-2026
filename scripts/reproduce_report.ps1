@@ -14,6 +14,10 @@ try {
         & $Python "scripts/$Script"
         if ($LASTEXITCODE -ne 0) { throw "Script failed: $Script" }
     }
+    if (Test-Path -LiteralPath (Join-Path $ProjectRoot 'paper/sensitivity.tex')) {
+        & "$PSScriptRoot/reproduce_sensitivity.ps1" -Python $Python
+        return
+    }
     Push-Location -LiteralPath paper/assets
     try {
         & xelatex -no-shell-escape -interaction=nonstopmode -halt-on-error workflow_vector.tex

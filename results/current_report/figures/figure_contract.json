@@ -14,7 +14,7 @@
     "M4"
   ],
   "raw_frames": 39,
-  "inverse_input_rule": "summary-selected times, repeated samples retained",
+  "inverse_input_rule": "corrected consecutive source frames; zero time at selected start; original repeated samples retained",
   "forward_claim": "force mechanisms under prescribed initial conditions",
   "inverse_claim": "continuation compared with held-out real samples",
   "status_markers": "asterisk: iteration limit; square: ground; cross: measured/interpolated goal crossing",

@@ -1,0 +1,14 @@
+{
+  "vacuum_analytic_max_difference": 2.6645352591003757e-15,
+  "mechanical_energy_initial_J": 228.59702536578405,
+  "mechanical_energy_final_J": 142.5334867266929,
+  "maximum_sampled_energy_increment_J": -0.15475063188642935,
+  "baseline_initial_CD": 0.3715338642509374,
+  "baseline_final_CD": 0.43153077706480664,
+  "baseline_initial_CL": 0.2738823812220723,
+  "baseline_final_CL": 0.17228378898577165,
+  "baseline_initial_Sp": 0.42720926811617976,
+  "baseline_final_Sp": 0.5568613551676441,
+  "initial_CL_peak_Sp": 0.30067574390500346,
+  "protected_unchanged": true
+}
