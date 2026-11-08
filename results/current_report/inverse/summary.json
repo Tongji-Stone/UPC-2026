@@ -1,0 +1,533 @@
+{
+  "records": [
+    {
+      "case": "J03WMX",
+      "model": "M1",
+      "status": "ground",
+      "fit_converged": true,
+      "physical_fit_interval": true,
+      "event": {
+        "type": "ground",
+        "time": 0.09157363546284171,
+        "position": [
+          3.383950155514977,
+          0.6177565398696183,
+          0.11
+        ],
+        "velocity": [
+          29.19999999999998,
+          6.199999999999999,
+          -0.9951773638904766
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "early_max_residual_m": 0.0182784,
+      "early_rss_m2": 0.000677624883200021,
+      "initial_state": [
+        29.19999999999998,
+        6.199999999999999,
+        -0.09683999999999994,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.0,
+      "lift_scale": 1.0,
+      "future_sample_count": 0,
+      "future_rmse_3d_m": null,
+      "goal_error_m": null,
+      "goal_time_error_s": null,
+      "scored_goal_error_m": null,
+      "at_parameter_bound": false
+    },
+    {
+      "case": "J03WMX",
+      "model": "M2",
+      "status": "ground",
+      "fit_converged": true,
+      "physical_fit_interval": true,
+      "event": {
+        "type": "ground",
+        "time": 0.09177141962141983,
+        "position": [
+          3.375507090812624,
+          0.6159115540850941,
+          0.11
+        ],
+        "velocity": [
+          28.33380187243631,
+          6.015525490829298,
+          -0.9779840578612767
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "early_max_residual_m": 0.018068955676967563,
+      "early_rss_m2": 0.0005430772710474699,
+      "initial_state": [
+        29.780201048278318,
+        6.322609275468044,
+        -0.10465431031154995,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.4258289928335777,
+      "lift_scale": 1.0,
+      "future_sample_count": 0,
+      "future_rmse_3d_m": null,
+      "goal_error_m": null,
+      "goal_time_error_s": null,
+      "scored_goal_error_m": null,
+      "at_parameter_bound": false
+    },
+    {
+      "case": "J03WMX",
+      "model": "M3",
+      "status": "plane",
+      "fit_converged": true,
+      "physical_fit_interval": true,
+      "event": {
+        "type": "plane",
+        "time": 0.38613421321104535,
+        "position": [
+          11.0,
+          2.7631598626667944,
+          0.3447624704876315
+        ],
+        "velocity": [
+          23.744220430855755,
+          7.837917348123195,
+          1.2641517531346198
+        ],
+        "spin": [
+          0.18840008912667183,
+          -0.8482446154558031,
+          0.4949610881345107
+        ]
+      },
+      "early_max_residual_m": 0.006741755010976902,
+      "early_rss_m2": 7.560039617759031e-05,
+      "initial_state": [
+        29.83984171982546,
+        5.954631009603527,
+        -0.7580120973453719,
+        0.18840008912667183,
+        -0.8482446154558031,
+        0.4949610881345107
+      ],
+      "drag_scale": 1.411379221711415,
+      "lift_scale": 1.4999999999999998,
+      "future_sample_count": 7,
+      "future_rmse_3d_m": 0.16104367307430223,
+      "goal_error_m": 0.1852305387513133,
+      "goal_time_error_s": -0.01386578678895467,
+      "scored_goal_error_m": 0.1852305387513133,
+      "at_parameter_bound": true
+    },
+    {
+      "case": "J03WMX",
+      "model": "M4",
+      "status": "plane",
+      "fit_converged": true,
+      "physical_fit_interval": true,
+      "event": {
+        "type": "plane",
+        "time": 0.38807575101181185,
+        "position": [
+          11.0,
+          2.8421899274079454,
+          0.42903775287140866
+        ],
+        "velocity": [
+          23.389195982568737,
+          8.154233507824047,
+          1.7036509501457904
+        ],
+        "spin": [
+          16.417396928101567,
+          -62.83185305532583,
+          38.76533666521288
+        ]
+      },
+      "early_max_residual_m": 0.005836258114839593,
+      "early_rss_m2": 5.3912495924584386e-05,
+      "initial_state": [
+        29.846494702536944,
+        5.905910306564089,
+        -0.8086330734063863,
+        16.417396928101567,
+        -62.83185305532583,
+        38.76533666521288
+      ],
+      "drag_scale": 1.1632749851970976,
+      "lift_scale": 1.4999999999999998,
+      "future_sample_count": 7,
+      "future_rmse_3d_m": 0.17598211563877914,
+      "goal_error_m": 0.2843946117379501,
+      "goal_time_error_s": -0.011924248988188169,
+      "scored_goal_error_m": 0.2843946117379501,
+      "at_parameter_bound": true
+    },
+    {
+      "case": "J03WOH",
+      "model": "M1",
+      "status": "plane",
+      "fit_converged": true,
+      "physical_fit_interval": true,
+      "event": {
+        "type": "plane",
+        "time": 0.47877461706783336,
+        "position": [
+          11.0,
+          2.0666083150984678,
+          1.1416494225780374
+        ],
+        "velocity": [
+          22.85,
+          4.4,
+          -0.19361899343543776
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "early_max_residual_m": 0.20399999999999807,
+      "early_rss_m2": 0.05817432888319914,
+      "initial_state": [
+        22.85,
+        4.4,
+        4.503160000000001,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.0,
+      "lift_scale": 1.0,
+      "future_sample_count": 8,
+      "future_rmse_3d_m": 1.387236062523175,
+      "goal_error_m": 0.8530298848095458,
+      "goal_time_error_s": 0.07446089157763724,
+      "scored_goal_error_m": 0.8530298848095458,
+      "at_parameter_bound": false
+    },
+    {
+      "case": "J03WOH",
+      "model": "M2",
+      "status": "plane",
+      "fit_converged": true,
+      "physical_fit_interval": true,
+      "event": {
+        "type": "plane",
+        "time": 0.49386668604039136,
+        "position": [
+          10.999999999999998,
+          2.066487360819206,
+          1.097109911302337
+        ],
+        "velocity": [
+          21.37771378676717,
+          4.116259953842372,
+          -0.4657750584269441
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "early_max_residual_m": 0.20595825342056218,
+      "early_rss_m2": 0.059409807847166506,
+      "initial_state": [
+        22.968710246298745,
+        4.42260492030593,
+        4.52522976146127,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 0.5000000000000017,
+      "lift_scale": 1.0,
+      "future_sample_count": 8,
+      "future_rmse_3d_m": 1.4997113865586067,
+      "goal_error_m": 0.8562535206148492,
+      "goal_time_error_s": 0.08955296055019524,
+      "scored_goal_error_m": 0.8562535206148492,
+      "at_parameter_bound": true
+    },
+    {
+      "case": "J03WOH",
+      "model": "M3",
+      "status": "plane",
+      "fit_converged": true,
+      "physical_fit_interval": true,
+      "event": {
+        "type": "plane",
+        "time": 0.5118116895022394,
+        "position": [
+          11.0,
+          3.3469968373118877,
+          1.4457561965079049
+        ],
+        "velocity": [
+          19.614783772596343,
+          8.951087345358005,
+          0.7792650817119311
+        ],
+        "spin": [
+          -0.10835721781575726,
+          -0.3146481696037037,
+          0.9430033100219042
+        ]
+      },
+      "early_max_residual_m": 0.20800818002187582,
+      "early_rss_m2": 0.05915068609634665,
+      "initial_state": [
+        23.07766035463263,
+        3.977191030295433,
+        4.389129744597122,
+        -0.10835721781575726,
+        -0.3146481696037037,
+        0.9430033100219042
+      ],
+      "drag_scale": 0.5000000000000001,
+      "lift_scale": 1.4999999941188311,
+      "future_sample_count": 8,
+      "future_rmse_3d_m": 1.463319868407517,
+      "goal_error_m": 0.5045127354529656,
+      "goal_time_error_s": 0.10749796401204331,
+      "scored_goal_error_m": 0.5045127354529656,
+      "at_parameter_bound": true
+    },
+    {
+      "case": "J03WOH",
+      "model": "M4",
+      "status": "fit_limit",
+      "fit_converged": false,
+      "physical_fit_interval": true,
+      "event": {
+        "type": "plane",
+        "time": 0.490178271948385,
+        "position": [
+          11.0,
+          2.2548795325102406,
+          1.168372222876476
+        ],
+        "velocity": [
+          21.721371483218633,
+          5.00204842738612,
+          -0.14527046780514605
+        ],
+        "spin": [
+          -0.3195304454072283,
+          -1.0239924123145123,
+          3.089795961614108
+        ]
+      },
+      "early_max_residual_m": 0.20554468581418184,
+      "early_rss_m2": 0.058899149669373235,
+      "initial_state": [
+        22.941641240815528,
+        4.3462120350756965,
+        4.4962629327162045,
+        -0.3195304454072283,
+        -1.0239924123145123,
+        3.089795961614108
+      ],
+      "drag_scale": 0.5000000000000003,
+      "lift_scale": 1.378287198576441,
+      "future_sample_count": 8,
+      "future_rmse_3d_m": 1.4414922672207113,
+      "goal_error_m": 0.664027800410001,
+      "goal_time_error_s": 0.08586454645818886,
+      "scored_goal_error_m": null,
+      "at_parameter_bound": true
+    },
+    {
+      "case": "J03WR9",
+      "model": "M1",
+      "status": "ground",
+      "fit_converged": true,
+      "physical_fit_interval": true,
+      "event": {
+        "type": "ground",
+        "time": 0.4589656851810976,
+        "position": [
+          9.157675226783395,
+          3.0054850053194766,
+          0.10999999999999997
+        ],
+        "velocity": [
+          16.750000000000018,
+          5.480769230769231,
+          -2.5126841408573344
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "early_max_residual_m": 0.23999999999999755,
+      "early_rss_m2": 0.0925494276726142,
+      "initial_state": [
+        16.750000000000018,
+        5.480769230769231,
+        1.9897692307692307,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.0,
+      "lift_scale": 1.0,
+      "future_sample_count": 7,
+      "future_rmse_3d_m": 1.8157952719168164,
+      "goal_error_m": null,
+      "goal_time_error_s": null,
+      "scored_goal_error_m": null,
+      "at_parameter_bound": false
+    },
+    {
+      "case": "J03WR9",
+      "model": "M2",
+      "status": "ground",
+      "fit_converged": true,
+      "physical_fit_interval": true,
+      "event": {
+        "type": "ground",
+        "time": 0.45839169262555896,
+        "position": [
+          8.99845061050046,
+          2.953385394604474,
+          0.11000000000000007
+        ],
+        "velocity": [
+          16.012419782907664,
+          5.239426153699423,
+          -2.484967373731317
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "early_max_residual_m": 0.24175803019296005,
+      "early_rss_m2": 0.09417243657277172,
+      "initial_state": [
+        16.848414870180118,
+        5.5129722250617945,
+        1.9994204233793766,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 0.5000000000000001,
+      "lift_scale": 1.0,
+      "future_sample_count": 7,
+      "future_rmse_3d_m": 1.878693312302,
+      "goal_error_m": null,
+      "goal_time_error_s": null,
+      "scored_goal_error_m": null,
+      "at_parameter_bound": true
+    },
+    {
+      "case": "J03WR9",
+      "model": "M3",
+      "status": "ground",
+      "fit_converged": true,
+      "physical_fit_interval": true,
+      "event": {
+        "type": "ground",
+        "time": 0.4326780691588088,
+        "position": [
+          8.591056066478174,
+          2.804397072324512,
+          0.10999999999999996
+        ],
+        "velocity": [
+          16.081986702532948,
+          5.143262718655319,
+          -2.560586325753866
+        ],
+        "spin": [
+          -0.9954371747765026,
+          0.03383229995843092,
+          -0.08921998964636374
+        ]
+      },
+      "early_max_residual_m": 0.2416619117570158,
+      "early_rss_m2": 0.09417049182994465,
+      "initial_state": [
+        16.843860049400238,
+        5.511833717871797,
+        2.049845216393316,
+        -0.9954371747765026,
+        0.03383229995843092,
+        -0.08921998964636374
+      ],
+      "drag_scale": 0.5000000000000001,
+      "lift_scale": 0.5571629234349778,
+      "future_sample_count": 7,
+      "future_rmse_3d_m": 1.8796636806511358,
+      "goal_error_m": null,
+      "goal_time_error_s": null,
+      "scored_goal_error_m": null,
+      "at_parameter_bound": true
+    },
+    {
+      "case": "J03WR9",
+      "model": "M4",
+      "status": "ground",
+      "fit_converged": true,
+      "physical_fit_interval": true,
+      "event": {
+        "type": "ground",
+        "time": 0.458626056684811,
+        "position": [
+          9.058963179522376,
+          2.9731857516862794,
+          0.11000000000000003
+        ],
+        "velocity": [
+          16.28793924742852,
+          5.329578592070095,
+          -2.4953527755899123
+        ],
+        "spin": [
+          -5.282680064850424e-07,
+          3.8667122268107706e-07,
+          -3.7040923872255344e-07
+        ]
+      },
+      "early_max_residual_m": 0.24111441891171292,
+      "early_rss_m2": 0.09354402492278727,
+      "initial_state": [
+        16.81062317714743,
+        5.500606834789239,
+        1.9957050058560972,
+        -5.282680064850424e-07,
+        3.8667122268107706e-07,
+        -3.7040923872255344e-07
+      ],
+      "drag_scale": 0.5037302051090236,
+      "lift_scale": 0.9999882800964591,
+      "future_sample_count": 7,
+      "future_rmse_3d_m": 1.8546363994125632,
+      "goal_error_m": null,
+      "goal_time_error_s": null,
+      "scored_goal_error_m": null,
+      "at_parameter_bound": false
+    }
+  ],
+  "source_fingerprint": "810d6ac4b4f09a28c09df446170094f01750cbe472c07b30fb9d5ad6cf6557a7"
+}

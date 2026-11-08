@@ -9,7 +9,7 @@ plt.rcParams.update({'font.family':'Times New Roman','font.weight':'bold',
                      'mathtext.it':'Times New Roman:italic',
                      'mathtext.bf':'Times New Roman:bold', 'mathtext.default':'bf'})
 
-out=Path('results/paper_geometry');out.mkdir(parents=True,exist_ok=True)
+out=Path(__file__).resolve().parents[1]/'paper/assets';out.mkdir(parents=True,exist_ok=True)
 fig, (top,front)=plt.subplots(1,2,figsize=(9,3.5),gridspec_kw={'width_ratios':[1.45,1]},constrained_layout=True)
 
 # Horizontal projection: coordinates are metres; the small circle marks the ball.
@@ -44,5 +44,4 @@ front.annotate('',xy=(1.35,0),xytext=(0,0),arrowprops={'arrowstyle':'->','lw':.9
 front.annotate('',xy=(0,1.15),xytext=(0,0),arrowprops={'arrowstyle':'->','lw':.9})
 front.text(1.4,.1,'$y$',fontsize=11);front.text(.16,1.15,'$z$',fontsize=11)
 front.set(xlim=(-4.8,5.6),ylim=(-1.05,3.2),aspect='equal',title='Goal-plane view');front.axis('off')
-fig.savefig(out/'geometry.png',dpi=240,bbox_inches='tight',facecolor='white')
 fig.savefig(out/'geometry.pdf',bbox_inches='tight',facecolor='white')

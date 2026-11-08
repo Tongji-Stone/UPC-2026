@@ -1,0 +1,28 @@
+{
+  "width_inches": 6.5,
+  "dpi": 300,
+  "formats": [
+    "pdf",
+    "svg",
+    "png"
+  ],
+  "units": "SI",
+  "models": [
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "raw_frames": 39,
+  "inverse_input_rule": "summary-selected times, repeated samples retained",
+  "forward_claim": "force mechanisms under prescribed initial conditions",
+  "inverse_claim": "continuation compared with held-out real samples",
+  "status_markers": "asterisk: iteration limit; square: ground; cross: measured/interpolated goal crossing",
+  "probabilities": "none",
+  "palette": [
+    "#444B49",
+    "#0072B2",
+    "#D55E00",
+    "#009E73"
+  ]
+}

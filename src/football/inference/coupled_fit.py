@@ -1,19 +1,10 @@
 """Unweighted initial velocity/spin fitting with the shared nine-state dynamics."""
 import numpy as np
-from scipy.integrate import solve_ivp
+from football.physics.integration import observed_trajectory
 from scipy.optimize import least_squares
 from football.physics import state_derivative, validate_config
 
 SCALE = np.array([30.,30.,30.,20*np.pi,20*np.pi,20*np.pi])
-
-
-def observed_trajectory(times, position, initial_state, config, rtol=2e-9, atol=1e-11):
-    sol = solve_ivp(lambda t,y:state_derivative(t,y,config),
-                    (times[0],times[-1]), np.r_[position,initial_state],
-                    t_eval=times, method='DOP853', rtol=rtol, atol=atol)
-    if not sol.success or sol.y.shape[1]!=len(times):
-        raise RuntimeError(sol.message)
-    return sol.y.T
 
 
 def fit_initial_state(times, positions, config, starts=None, max_nfev=400):

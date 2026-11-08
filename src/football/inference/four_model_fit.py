@@ -2,7 +2,7 @@
 from dataclasses import dataclass, replace, asdict
 import numpy as np
 from scipy.optimize import least_squares, minimize
-from .coupled_fit import observed_trajectory
+from football.physics.integration import observed_trajectory
 
 RSS_ALLOWANCE = 6e-12  # m^2; numerical selection tolerance, not measurement noise
 COEFFICIENT_ALLOWANCE = 1e-8
@@ -40,7 +40,7 @@ def fit_early(times, positions, config, model, max_nfev=240, bounds=None):
         raise TypeError('bounds must be an InverseBounds instance')
     if model not in ('M1', 'M2', 'M3', 'M4'):
         raise ValueError('model must be M1, M2, M3 or M4')
-    if t.shape != (3,) or p.shape != (3, 3) or np.any(np.diff(t) <= 0):
+    if t.shape != (3,) or p.shape != (3, 3) or not np.isfinite(t).all() or not np.isfinite(p).all() or np.any(np.diff(t) <= 0):
         raise ValueError('exactly three ordered positions are required')
     dt = t[1:] - t[0]
     velocity = np.linalg.lstsq(np.c_[dt, .5*dt**2], p[1:]-p[0], rcond=None)[0][0]
@@ -109,7 +109,7 @@ def fit_early(times, positions, config, model, max_nfev=240, bounds=None):
             rss = float(np.sum(residual(q_opt)**2)*config.radius**2)
             records.append(dict(start=i, rss_m2=rss, success=bool(opt.success),
                 nfev=opt.nfev, parameters=opt.x.tolist(), message=opt.message))
-            solutions.append((rss,opt.x))
+            solutions.append((rss,q_opt.copy()))
             print(f'{model} start {i+1}/{len(guesses)}: RSS={rss:.5g}, nfev={opt.nfev}', flush=True)
         except (ValueError, RuntimeError, FloatingPointError) as exc:
             records.append(dict(start=i, success=False, error=str(exc)))
@@ -135,10 +135,12 @@ def fit_early(times, positions, config, model, max_nfev=240, bounds=None):
             print(f'{model}: coefficient selection', flush=True)
             opt = minimize(distance,q,method='SLSQP',bounds=list(zip(lower,upper)),
                 constraints=[constraint],options={'maxiter':300,'ftol':1e-12})
-            rss = float(np.sum(residual(opt.x)**2)*config.radius**2)
+            q_opt = np.clip(opt.x,lower,upper)
+            rss = float(np.sum(residual(q_opt)**2)*config.radius**2)
+            accepted=bool(rss<=limit and np.isfinite(q_opt).all())
             stages.append(dict(stage='coefficients',success=bool(opt.success),message=opt.message,
-                rss_m2=rss,coefficient_distance=distance(opt.x)))
-            if rss <= limit and np.isfinite(q_opt).all(): admissible.append((distance(q_opt),q_opt))
+                rss_m2=rss,coefficient_distance=distance(q_opt),parameters=q_opt.tolist(),accepted=accepted))
+            if accepted: admissible.append((distance(q_opt),q_opt.copy()))
         admissible.sort(key=lambda x:x[0]); dmin,best=admissible[0]
         if model == 'M4':
             print('M4: spin selection', flush=True)
@@ -149,7 +151,7 @@ def fit_early(times, positions, config, model, max_nfev=240, bounds=None):
             rss=float(np.sum(residual(q_opt)**2)*config.radius**2)
             accepted=bool(rss<=limit and distance(q_opt)<=dmin+COEFFICIENT_ALLOWANCE+1e-12)
             stages.append(dict(stage='spin',success=bool(opt.success),accepted=accepted,
-                message=opt.message,rss_m2=rss,coefficient_distance=distance(q_opt)))
+                message=opt.message,rss_m2=rss,coefficient_distance=distance(q_opt),parameters=q_opt.tolist()))
             if accepted:best=q_opt
     state,cfg=unpack(best)
     pred=observed_trajectory(t,p[0],state,cfg,rtol=1e-11,atol=1e-13)[:,:3]

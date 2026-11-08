@@ -1,2 +1,0 @@
-event_id,event_outcome,type_of_shot,first_frame,last_frame,frames,duration_s,goal_x_m,tracking_goal_y_m,tracking_goal_z_assumed_m,event_timestamp,sync_timestamp,event_to_sync_s
-18240200001227,ShotWide,head,142871,142887,17,0.64,52.5,-3.533999999999998,6.441999999999999,2022-11-05T14:32:28.130+01:00,2022-11-05T14:32:27.160+01:00,-0.97

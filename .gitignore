@@ -21,3 +21,4 @@ paper/*.toc
 results/structure_v2/qa/
 results/structure_v2/*.png
 results/bilingual_report/*.png
+results/current_report/qa/

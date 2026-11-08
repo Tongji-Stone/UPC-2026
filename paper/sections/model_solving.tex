@@ -1,0 +1,96 @@
+\section{Model Solving}\label{sec:solving}
+Forward prediction explains how a prescribed kick develops under different force assumptions. Inverse prediction then uses early positions from three actual penalties to estimate motion and predict the continuation. Both calculations use Eq.~\eqref{eq:motion} and the same four-model hierarchy.
+\begin{table}[H]\centering\small
+\caption{Four-model hierarchy and actual inverse quantities. All models include gravity and constant spin.}\label{tab:models}
+\begin{tabular}{llll}\toprule
+Model & Drag & Magnus lift & Inverse quantities\\\midrule
+M1 & none & none & $\boldsymbol v_0$ (3)\\
+M2 & constant $C_D^*$ & none & $\boldsymbol v_0,\alpha_D$ (4)\\
+M3 & constant $C_D^*$ & constant $C_L^*$ & $\boldsymbol v_0$, spin axis, $\alpha_D,\alpha_L$ (7)\\
+M4 & $C_D(Re,Sp)$ & $C_L(Re,Sp)$ & $\boldsymbol v_0,\boldsymbol\omega_0,\alpha_D,\alpha_L$ (8)\\\bottomrule
+\end{tabular}\end{table}
+The constant coefficients use the published reference point:
+\begin{equation}
+C_D^*=C_D(333793,0.19),\qquad C_L^*=C_L(333793,0.19)=1.15(0.19)^{0.83}.
+\end{equation}
+For the reference ball and air, $C_D^*=\ReferenceCD$ and $C_L^*=\ReferenceCL$. M3 uses a unit vector to represent spin direction; its constant coefficient makes the spin magnitude absent from the force. M4 uses the full spin vector.
+
+\subsection{Forward Prediction}\label{sec:forward}
+\subsubsection{Prescribed conditions and solution}
+Five kick situations are represented by six initial states in Table~\ref{tab:forward-inputs}. These are chosen numerical examples: power, placement, sidespin, a paired topspin/backspin comparison, and a chip. Each begins at $\boldsymbol r_0=(0,0,0.11)$ m with
+\begin{equation}
+\boldsymbol v_0=v_0(\cos\beta,0,\sin\beta),\qquad \alpha_D=\alpha_L=1.
+\end{equation}
+The top- and backspin pair has the same speed and launch angle, isolating the direction of rotation. For every state, all four models are integrated by adaptive Runge--Kutta (DOP853). A forward root of $x-11$ locates the goal crossing and a descending root of $z-R$ locates ground contact. The relative and absolute integration tolerances are $10^{-10}$ and $10^{-12}$, with a maximum step of 0.005 s. Table~\ref{tab:forward-outcomes} gives the resulting endpoint and time.
+\ForwardInputsTable
+\ForwardOutcomesTable
+
+\subsubsection{Case 1: Power shot}
+A high launch speed leaves little time for downward gravitational deflection. Drag removes forward momentum and increases the time required to reach the goal. In the zero-spin condition, M2 and M3 coincide, while M4 changes drag with the decelerating airflow.
+\begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_power.pdf}
+\caption{Power shot under the same prescribed initial condition in M1--M4. Endpoint markers denote goal crossing or ground contact.}\label{fig:case-power}\end{figure}
+
+\subsubsection{Case 2: Placement shot}
+The lower launch speed gives gravity more time to bend the path. The comparison shows how the assumed drag coefficient changes both the travel time and crossing height. The initial direction is common to all models.
+\begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_placement.pdf}
+\caption{Placement shot with zero spin. M2 and M3 have identical forces and overlapping trajectories.}\label{fig:case-placement}\end{figure}
+
+\subsubsection{Case 3: Curved shot}
+Vertical-axis rotation creates a horizontal Magnus force. M1 and M2 preserve the initial horizontal direction; M3 and M4 develop lateral curvature. Their different coefficient descriptions change the amount of bending. The M4 goal crossing is $(\CurvedY,\CurvedZ)$ m at $\CurvedTime$ s. This case also supplies the reference state for the rotational-damping comparison in Section~\ref{sec:rotation}.
+\begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_curved.pdf}
+\caption{Sidespin redirects the ball horizontally. The four models share speed, elevation and initial spin.}\label{fig:case-curved}\end{figure}
+
+\subsubsection{Case 4: Topspin and backspin}
+Changing the sign of $\omega_y$ reverses the vertical Magnus force. Topspin increases downward curvature; backspin opposes the gravitational fall and raises the trajectory. Equal launch speed and angle make this contrast visible directly. Table~\ref{tab:forward-outcomes} records each model's actual termination.
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{case_spin.pdf}
+\caption{Matched topspin and backspin examples. Only the sign of transverse spin changes between the two panels.}\label{fig:case-spin}\end{figure}
+
+\subsubsection{Case 5: Chip shot}
+The chip combines a larger elevation angle, lower speed and backspin. The initial vertical velocity builds an arc, while gravity, drag and upward Magnus lift determine how much height remains near the goal. Its slower airflow also makes the speed-dependent drag transition more relevant.
+\begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_chip.pdf}
+\caption{The prescribed chip illustrates the combined effect of launch angle, slower airflow and backspin.}\label{fig:case-chip}\end{figure}
+
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{forward_dynamics.pdf}
+\caption{Speed, drag and lift magnitudes for the curved and topspin examples. Each curve ends at that model's first goal crossing or ground contact.}\label{fig:forward-dynamics}\end{figure}
+The force histories connect the paths to their causes. Dynamic pressure decreases as drag removes speed. A constant coefficient still gives a changing force through the $v^2$ factor. In M4, changing $Re$ and $Sp$ additionally changes the coefficients. The spin direction decides whether lift acts chiefly sideways or vertically.
+
+\subsection{Inverse Prediction from Three Real Penalties}\label{sec:inverse}
+\subsubsection{Measurements, coordinate system and input times}
+The Sportec Open DFL data associate actual match events with TRACAB Gen5 multi-camera tracking at 25 Hz \cite{bassek,dataset}. We use penalties by Dejan Ljubicic (J03WMX), Dawid Igor Kownacki (J03WOH), and Philipp Klement (J03WR9). The supplied CSV retains 39 source frames, respectively 15, 12 and 12. Positions are used as published; no added observation-noise model is introduced.
+
+The source horizontal origin is the pitch centre. All three shots travel towards $X=52.5$ m. To use the competition's penalty-mark coordinates, we apply
+\begin{equation}
+x=X-41.5,\qquad y=Y,\qquad z=Z_{\rm original},\qquad x_g=11\ \mathrm{m}.
+\label{eq:data-coordinates}\end{equation}
+The nominal penalty mark is the horizontal origin, so each actual first observation retains its measured offset. Released $Z$ values are interpreted as metres and ball-centre height. Mass, radius and air properties use the model reference settings in Section 2; the supplied source leaves per-ball mass and radius unreported.
+
+The first available source frame defines $t=0$ for each fit. Table~\ref{tab:penalty-inputs} lists the actual selected times: J03WMX and J03WOH use 0, 0.04 and 0.08 s; J03WR9 uses 0, 0.08 and 0.12 s because its first two records repeat. That repeated frame remains in the measured curve. Later samples supply the comparison, ending at the observed goal crossing. Original post-goal records remain in the raw CSV. Crossings between frames use linear interpolation, displayed separately from measured sample markers.
+\PenaltyInputsTable
+
+\subsubsection{Bounded inversion and consistent selection}
+For observed positions $\boldsymbol p_1,\boldsymbol p_2$ at $t_1,t_2$, the position objective is
+\begin{equation}
+J_r=\sum_{i=1}^2\|\boldsymbol r(t_i;\boldsymbol\eta)-\boldsymbol p_i\|^2,
+\qquad \boldsymbol\eta_{\rm M4}=(\boldsymbol v_0,\boldsymbol\omega_0,\alpha_D,\alpha_L).
+\end{equation}
+Next we favor force corrections near the published scale,
+\begin{equation}J_\alpha=(\alpha_D-1)^2+(\alpha_L-1)^2,\end{equation}
+using the multipliers present in each model. Among equivalent M4 states, the smallest spin magnitude selects a representative. The numerical objective allowances are $6\times10^{-12}$ m$^2$ for $J_r$ and $10^{-8}$ for $J_\alpha$.
+
+The implemented search uses the component constraints in Table~\ref{tab:inverse-bounds}. These are declared analysis settings. The speed and spin scales refer to the empirical and experimental ranges \cite{kiratidis2018,asai2007}; the component boxes and the force-correction interval specify this inverse calculation. M3's unit spin axis carries direction only.
+\InverseBoundsTable
+M2 uses one displacement-based start, M3 uses six axis-direction starts, and M4 uses 19 starts including zero spin and signed coordinate-axis spins. Least squares allows 240 function evaluations per start. Coefficient and spin selection use the same candidate state when evaluating the residual and the secondary objective. The fitted state and configuration then enter the same dynamics for prediction.
+
+\subsubsection{Predicted and sampled trajectories}
+Figures~\ref{fig:penalty-J03WMX}--\ref{fig:penalty-J03WR9} compare all four models with each sampled flight. Open circles identify the three fit inputs. Time plots end at the measured crossing time or an earlier model termination; squares mark ground contact and an asterisk identifies an iteration-limit candidate. The outcome table retains all 12 calculations.
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WMX.pdf}
+\caption{J03WMX: predicted spatial path and coordinate histories against the published samples.}\label{fig:penalty-J03WMX}\end{figure}
+\WMXDiscussion
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WOH.pdf}
+\caption{J03WOH: the recorded first displacement is shorter than the next; the comparison uses the original selected frames.}\label{fig:penalty-J03WOH}\end{figure}
+\WOHDiscussion
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WR9.pdf}
+\caption{J03WR9: the repeated 0.04 s record remains in the sampled curve, while fitting uses 0, 0.08 and 0.12 s.}\label{fig:penalty-J03WR9}\end{figure}
+\WRDiscussion
+\InverseResultsTable
+The later-position RMSE is computed only at held-out source times within both the observed pre-goal flight and the model's valid flight interval; its sample count is listed. Goal error compares $(y,z)$ at the model's own crossing, and time error compares crossing times. These quantities distinguish early-coordinate reproduction, continuation of the path, and the final interception geometry.

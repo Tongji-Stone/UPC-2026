@@ -1,4 +1,4 @@
-"""Report-v2 constant-spin inverse prediction; explicit model selection."""
+"""Current constant-spin inverse prediction; explicit model selection."""
 import argparse,json
 from pathlib import Path
 import numpy as np
@@ -9,7 +9,7 @@ from football.inference.four_model_fit import fit_early, InverseBounds
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('input')
-    parser.add_argument('--output',default='results/structure_v2/custom_prediction.json')
+    parser.add_argument('--output',default='results/current_report/custom_prediction.json')
     parser.add_argument('--model',choices=['M1','M2','M3','M4'],default='M4')
     args=parser.parse_args();data=json.loads(Path(args.input).read_text(encoding='utf-8'))
     times=data.get('times_s',data.get('times'));positions=data.get('positions_m',data.get('positions'))
