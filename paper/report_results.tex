@@ -12,7 +12,7 @@
 \caption{Frame counts, fitting times and measured local starting positions.}\label{tab:penalty-inputs}
 \setlength{\tabcolsep}{4pt}\begin{tabular}{lrrl}\toprule
 Event & Frames & Fit times (s) & $\boldsymbol r_0$ (m)\\\midrule
-J03WMX & 15 & 0.00,0.04,0.08 & $(3.04,0.55,0.13)$\\
+J03WMX & 15 & 0.00,0.04,0.12 & $(3.04,0.55,0.13)$\\
 J03WOH & 12 & 0.00,0.04,0.08 & $(0.77,0.08,0.24)$\\
 J03WR9 & 12 & 0.00,0.04,0.08 & $(2.57,0.85,0.34)$\\
 \bottomrule\end{tabular}\end{table}}
@@ -32,19 +32,19 @@ $C_D/C_D^*,\alpha/\alpha^*$ & $[0.5,1.5]$\\
 Point & Source frame & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
 $P_0$ & 152602 & 0.00 & 3.040 & 0.550 & 0.130\\
 $P_1$ & 152603 & 0.04 & 4.190 & 0.820 & 0.150\\
-$P_2$ & 152604 & 0.08 & 5.250 & 1.070 & 0.180\\
+$P_2$ & 152605 & 0.12 & 6.260 & 1.340 & 0.160\\
 Goal & 152610 & 0.3200 & 11.000 & 2.7500 & 0.1600\\
 \bottomrule\end{tabular}\end{table}}
 \newcommand{\WMXPredictedTable}{\begin{table}[H]\centering\footnotesize
 \caption{J03WMX: inverse initial states and predicted goal-plane crossings. M4 uses a 30 rad/s reference spin magnitude; M1--M3 do not estimate spin.}\label{tab:predicted-J03WMX}
 \setlength{\tabcolsep}{4pt}\begin{tabular}{llrrccr}\toprule
 Model & Status & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & Spin & $d_g$ (m)\\\midrule
-M1 & ground & --- & --- & $\begin{pmatrix}27.850\\6.550\\0.953\end{pmatrix}$ & --- & ---\\
-M2 & ground & --- & --- & $\begin{pmatrix}28.411\\6.682\\0.967\end{pmatrix}$ & --- & ---\\
-M3 & time limit & --- & --- & $\begin{pmatrix}29.875\\7.000\\0.375\end{pmatrix}$ & --- & ---\\
-M4 & plane & 2.4377 & 0.3390 & $\begin{pmatrix}28.423\\6.667\\0.551\end{pmatrix}$ & $\begin{pmatrix}6.839\\-29.184\\1.239\end{pmatrix}$ & 0.3600\\
+M1 & ground & --- & --- & $\begin{pmatrix}27.025\\6.600\\0.824\end{pmatrix}$ & --- & ---\\
+M2 & ground & --- & --- & $\begin{pmatrix}27.854\\6.802\\0.838\end{pmatrix}$ & --- & ---\\
+M3 & ground & --- & --- & $\begin{pmatrix}29.708\\6.833\\0.625\end{pmatrix}$ & --- & ---\\
+M4 & ground & --- & --- & $\begin{pmatrix}27.954\\6.400\\0.607\end{pmatrix}$ & $\begin{pmatrix}-17.019\\-15.337\\19.368\end{pmatrix}$ & ---\\
 \bottomrule\end{tabular}\end{table}}
-\newcommand{\WMXDiscussion}{The measured low flight requires sustained vertical support from lift. M4's crossing deviation is 0.3600 m. Ground contact precedes the goal for M1, M2.}
+\newcommand{\WMXDiscussion}{The measured low flight requires sustained vertical support from lift. M4 reaches the ground at $x=9.124$ m. Ground contact precedes the goal for M1, M2, M3, M4.}
 \newcommand{\WOHMeasuredTable}{\begin{table}[H]\centering\footnotesize
 \caption{J03WOH: three measured fitting points and observed goal crossing (linear interpolation).}\label{tab:measured-J03WOH}
 \setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrr}\toprule

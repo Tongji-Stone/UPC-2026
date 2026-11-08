@@ -1,88 +1,86 @@
 {
-  "pages": 36,
-  "warnings": [
-    "Overfull \\hbox (8.20964pt too wide) in paragraph at lines 3--4"
-  ],
+  "pages": 31,
+  "warnings": [],
   "out_of_page_text": [],
   "all_fonts_embedded": true,
   "fonts": {
-    "EDJVSN+TimesNewRomanPSMT": {
+    "LEMHTI+TimesNewRomanPSMT": {
       "format": "ttf",
       "embedded": true
     },
-    "DTGWBQ+TimesNewRomanPS-BoldMT": {
+    "IQNUXQ+TimesNewRomanPS-BoldMT": {
       "format": "ttf",
       "embedded": true
     },
-    "ZMZOEW+CMMI12": {
+    "XOLPCA+CMMI12": {
       "format": "cff",
       "embedded": true
     },
-    "NQXWKS+CMR12": {
+    "GEQTDU+CMR12": {
       "format": "cff",
       "embedded": true
     },
-    "KALJBU+CMR10": {
+    "UDLELY+CMR10": {
       "format": "cff",
       "embedded": true
     },
-    "PWYSXL+CMMI8": {
+    "XENQEY+CMMI8": {
       "format": "cff",
       "embedded": true
     },
-    "OWPESD+CMEX9": {
+    "XDPOWX+CMEX9": {
       "format": "cff",
       "embedded": true
     },
-    "RYVZXW+CMMI9": {
+    "WIRLOI+CMMI9": {
       "format": "cff",
       "embedded": true
     },
-    "RQZTNI+CMMI6": {
+    "GHOCND+CMMI6": {
       "format": "cff",
       "embedded": true
     },
-    "EXXIZN+CMR5": {
+    "OBXPCY+CMR5": {
       "format": "cff",
       "embedded": true
     },
-    "GLWOKA+CMMIB7": {
+    "GWKSCE+CMMIB7": {
       "format": "cff",
       "embedded": true
     },
-    "FJHXVW+CMR9": {
+    "QVVHHZ+CMR9": {
       "format": "cff",
       "embedded": true
     },
-    "UNCEKM+CMMIB10": {
+    "TVKROJ+CMMIB10": {
       "format": "cff",
       "embedded": true
     },
-    "CFGQUG+CMSY9": {
+    "HIAUGE+CMSY9": {
       "format": "cff",
       "embedded": true
     },
-    "BEGCNX+CMR6": {
+    "UPQTEO+CMR6": {
       "format": "cff",
       "embedded": true
     },
-    "QVYDYX+CMBX9": {
+    "VYESSZ+CMBX9": {
       "format": "cff",
       "embedded": true
     },
-    "KXDHXD+CMSY10": {
+    "FUXKNW+CMSY10": {
       "format": "cff",
       "embedded": true
     },
-    "SPYPRL+CMR8": {
+    "JWSFKP+CMR8": {
       "format": "cff",
       "embedded": true
     },
-    "PUCGKB+CMMI10": {
+    "QINCKA+CMMI10": {
       "format": "cff",
       "embedded": true
     },
-    "QWOKVZ+CMSY8": {
+    "LUYJAU+CMSY8": {
       "format": "cff",
       "embedded": true
     },
@@ -98,11 +96,11 @@
       "format": "ttf",
       "embedded": true
     },
-    "EGPRTK+CMEX10": {
+    "DLYJEM+CMEX10": {
       "format": "cff",
       "embedded": true
     },
-    "FTRUTB+CMBX12": {
+    "HCWLRT+CMBX12": {
       "format": "cff",
       "embedded": true
     },
@@ -130,19 +128,19 @@
       "format": "ttf",
       "embedded": true
     },
-    "LTITDW+CMR7": {
+    "XVMAIO+CMR7": {
       "format": "cff",
       "embedded": true
     },
-    "OUQJCC+CMMI7": {
+    "HSWZTG+CMMI7": {
       "format": "cff",
       "embedded": true
     },
-    "FIEJNW+CMSY7": {
+    "ZQPOXC+CMSY7": {
       "format": "cff",
       "embedded": true
     },
-    "DIYNXC+TimesNewRomanPS-BoldMT": {
+    "EJZEZG+TimesNewRomanPS-BoldMT": {
       "format": "ttf",
       "embedded": true
     },
@@ -162,19 +160,19 @@
       "format": "ttf",
       "embedded": true
     },
-    "NELKGJ+TimesNewRomanPS-ItalicMT": {
+    "EVJLVE+TimesNewRomanPS-ItalicMT": {
       "format": "ttf",
       "embedded": true
     },
-    "POJFKI+LMMono12-Regular-Identity-H": {
+    "TAWIUB+LMMono12-Regular-Identity-H": {
       "format": "cid",
       "embedded": true
     },
-    "PAUOVQ+LMMono10-Regular-Identity-H": {
+    "YHPAUT+LMMono10-Regular-Identity-H": {
       "format": "cid",
       "embedded": true
     },
-    "JIURWW+LMMonoLt10-Bold-Identity-H": {
+    "LSOTFF+LMMonoLt10-Bold-Identity-H": {
       "format": "cid",
       "embedded": true
     }
@@ -185,5 +183,5 @@
   "fifth_chapter_complete": true,
   "workflow_border_removed": true,
   "workflow_body_font_pt": 12.0,
-  "all_passed": false
+  "all_passed": true
 }

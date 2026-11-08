@@ -51,6 +51,6 @@ test_raw_frames_and_hashes_unchanged (test_report_inputs.CorrectedInputTests.tes
 test_time_origin_and_crossing_roundtrip (test_report_inputs.CorrectedInputTests.test_time_origin_and_crossing_roundtrip) ... ok
 
 ----------------------------------------------------------------------
-Ran 32 tests in 19.219s
+Ran 32 tests in 14.439s
 
 OK

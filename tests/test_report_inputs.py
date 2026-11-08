@@ -11,12 +11,12 @@ class CorrectedInputTests(unittest.TestCase):
 
     def test_exact_selected_points(self):
         expected={
-            'J03WMX':[[3.04,.55,.13],[4.19,.82,.15],[5.25,1.07,.18]],
+            'J03WMX':[[3.04,.55,.13],[4.19,.82,.15],[6.26,1.34,.16]],
             'J03WOH':[[.77,.08,.24],[1.99,.34,.46],[3.18,.62,.65]],
             'J03WR9':[[2.57,.85,.34],[3.64,1.20,.41],[4.71,1.53,.47]]}
         for c in self.data['cases']:
             np.testing.assert_allclose(c['fit_positions_m'],expected[c['case']],atol=1e-12)
-            np.testing.assert_allclose(c['fit_times_s'],[0,.04,.08],atol=1e-12)
+            np.testing.assert_allclose(c['fit_times_s'],[0,.04,.12] if c['case']=='J03WMX' else [0,.04,.08],atol=1e-12)
             selected=[q['frame'] for q in c['samples'] if q['selected_for_current_fit']]
             self.assertEqual(selected,c['fit_frames'])
 

@@ -9,7 +9,7 @@ from football.inference.four_model_fit import InverseBounds
 ROOT=Path(__file__).resolve().parents[2]
 DATA=ROOT/'data/current_report';OUT=ROOT/'results/current_report'
 MODELS=('M1','M2','M3','M4')
-FIT_SAMPLE_ORDINALS={'J03WMX':[3,4,5],'J03WOH':[2,3,4],'J03WR9':[3,4,5]}
+FIT_SAMPLE_ORDINALS={'J03WMX':[3,4,6],'J03WOH':[2,3,4],'J03WR9':[3,4,5]}
 FORWARD=[dict(case=c,speed_m_s=v,elevation_deg=a,spin_rad_s=w) for c,v,a,w in [
     ('power',27,8,[0,0,0]),('placement',20,11,[0,0,0]),('curved',24,10,[0,0,35]),
     ('topspin',24,12,[0,35,0]),('backspin',24,12,[0,-35,0]),('chip',14,20,[0,-15,0])]]
@@ -76,7 +76,7 @@ def prepare_inputs(source=None):
             fit_frames=[r['frame'] for r in fitrows],fit_sample_ordinals=ordinals,
             time_origin_source_s=origin,time_origin_frame=fitrows[0]['frame'],samples=rows,source_summary=s,
             actual_mass_kg=None,actual_radius_m=None,goal=dict(crossing,local_position=[11.,*crossing['position'][1:]])))
-    cfg=dict(version='current-report-three-penalties-v3-wr9-shift',fit_sample_ordinals=FIT_SAMPLE_ORDINALS,
+    cfg=dict(version='current-report-three-penalties-v4-wmx-last-wr9-shift',fit_sample_ordinals=FIT_SAMPLE_ORDINALS,
         position0_m=[0,0,.11],models=list(MODELS),
         forward=FORWARD,physics=dict(mass=.43,radius=.11,air_density=1.2,kinematic_viscosity=1.5e-5,gravity=9.81),
         inverse_bounds=asdict(InverseBounds()),fit=dict(max_nfev=240,rss_allowance_m2=6e-12,coefficient_allowance=1e-8),

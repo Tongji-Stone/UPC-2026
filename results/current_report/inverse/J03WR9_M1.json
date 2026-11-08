@@ -1,5 +1,5 @@
 {
-  "source_fingerprint": "c433016828985589eb399e59207834d29ca870048c16d573df0605d7eff4d4b4",
+  "source_fingerprint": "ff8c5ce3c01668fda04f6aab95d661b3f6898f9eb2c709cfd7b3de1f8b387333",
   "record": {
     "case": "J03WR9",
     "model": "M1",
@@ -190,5 +190,9 @@
       3.0696590909090906,
       0.46568181818181814
     ]
+  },
+  "cache_reuse": {
+    "reason": "unchanged case input and dynamics after WMX last-point change",
+    "previous_source_fingerprint": "c433016828985589eb399e59207834d29ca870048c16d573df0605d7eff4d4b4"
   }
 }

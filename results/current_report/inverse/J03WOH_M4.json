@@ -1,5 +1,5 @@
 {
-  "source_fingerprint": "c433016828985589eb399e59207834d29ca870048c16d573df0605d7eff4d4b4",
+  "source_fingerprint": "ff8c5ce3c01668fda04f6aab95d661b3f6898f9eb2c709cfd7b3de1f8b387333",
   "record": {
     "case": "J03WOH",
     "model": "M4",
@@ -308,8 +308,7 @@
     ]
   },
   "cache_reuse": {
-    "baseline_commit": "13384c5",
-    "reason": "case input, fit settings and dynamics unchanged",
-    "previous_source_fingerprint": "290a251d4f82debb432194ec279965552d5f67cb221a6dc4cb199f73ad6e1c2c"
+    "reason": "unchanged case input and dynamics after WMX last-point change",
+    "previous_source_fingerprint": "c433016828985589eb399e59207834d29ca870048c16d573df0605d7eff4d4b4"
   }
 }

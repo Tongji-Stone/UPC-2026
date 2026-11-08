@@ -57,7 +57,7 @@ x=X-41.5,\qquad y=Y,\qquad z=Z_{\rm original},\qquad x_g=11\ \mathrm{m}.
 \label{eq:data-coordinates}\end{equation}
 The nominal penalty mark is the horizontal origin, so each actual first observation retains its measured offset. Released $Z$ values are interpreted as metres and ball-centre height. Mass, radius and air properties use the model reference settings in Section 2; the supplied source leaves per-ball mass and radius unreported.
 
-Each inversion defines $t=0$ at its selected source frame. J03WMX and J03WR9 use samples 3, 4 and 5 of the original sequence; J03WOH uses samples 2, 3 and 4. All three fitting times are 0, 0.04 and 0.08 s. Their time origins on the original recording are 0.08, 0.04 and 0.08 s, respectively. Table~\ref{tab:penalty-inputs} gives the measured starting positions. Earlier records, repeated frames and post-goal records remain in the raw CSV. Trajectory comparison begins at the selected start, with subsequent samples used only for comparison up to the observed goal crossing. Frame-interpolated crossings are marked separately from measured frames.
+Each inversion defines $t=0$ at its selected source frame. J03WMX uses original samples 3, 4 and 6, at relative times 0, 0.04 and 0.12 s. J03WOH uses samples 2, 3 and 4, while J03WR9 uses samples 3, 4 and 5; both use relative times 0, 0.04 and 0.08 s. Their time origins on the original recording are 0.08, 0.04 and 0.08 s, respectively. Table~\ref{tab:penalty-inputs} gives the measured starts and fitting times. Earlier records, repeated frames and post-goal records remain in the raw CSV. Comparison begins at the selected start and ends at the observed goal crossing. Later samples are used only for comparison; frame-interpolated crossings are marked separately from measured frames.
 \PenaltyInputsTable
 
 \subsubsection{Bounded inversion and selection}
@@ -68,29 +68,11 @@ M4 minimizes the position error over velocity, spin direction, $C_D$ and $\alpha
 Only the product $\alpha\boldsymbol\omega$ enters Magnus force, so spin magnitude and $\alpha$ are not separately identified by positions. A reference spin magnitude of 30 rad/s is assumed. Seven fitted quantities and six later position coordinates leave multiple possible solutions.
 
 \subsubsection{Predicted trajectories, initial states and goal crossings}
-For each penalty we list the three measured fitting positions and observed goal crossing, followed by the initial velocity, spin information and predicted crossing from each model. M1--M3 do not estimate spin; M4 reports the reference angular-velocity vector. The deviation of a predicted crossing from the observed crossing is
-\begin{equation}
-d_g=\sqrt{(y_{\rm pred}-y_{\rm obs})^2+(z_{\rm pred}-z_{\rm obs})^2}\quad\mathrm{m}.
-\label{eq:goal-deviation}\end{equation}
-Deviation is evaluated at each model's own goal-plane crossing. Models terminating on the ground retain their termination status, with crossing and deviation shown as ``---. Open circles mark fit inputs, squares mark ground contact, and an asterisk identifies an iteration-limit candidate. All model paths stop at first ground contact.
+Figure~\ref{fig:penalty-overview} compares the three recorded penalty flights in space. Open circles indicate the three positions used for fitting; the black line and points show tracked positions, and colored line styles show the four model predictions. Crosses mark measured or interpolated goal-plane crossings. Predictions start at the selected frame and stop at first ground contact.
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_spatial_overview.pdf}
+\caption{Spatial trajectories and model predictions for the three recorded penalties. J03WMX uses fitting times 0, 0.04 and 0.12 s; the other two use 0, 0.04 and 0.08 s.}\label{fig:penalty-overview}\end{figure}
 
-\par\needspace{10\baselineskip}\noindent\textbf{J03WMX}\par
-\WMXMeasuredTable
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WMX.pdf}
-\caption{J03WMX: predicted and sampled trajectories from the selected start; fitting inputs are at 0, 0.04 and 0.08 s.}\label{fig:penalty-J03WMX}\end{figure}
-\WMXPredictedTable
-\WMXDiscussion
-
-\par\needspace{10\baselineskip}\noindent\textbf{J03WOH}\par
-\WOHMeasuredTable
+\paragraph{J03WOH: four-panel comparison.} Figure~\ref{fig:penalty-J03WOH} examines the J03WOH flight in more detail, showing the spatial path and $x$, $y$, $z$ against time. The first three positions are used for fitting; later samples show how the predictions compare with the recorded continuation.
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WOH.pdf}
-\caption{J03WOH: predicted and sampled trajectories from the selected start; fitting inputs are at 0, 0.04 and 0.08 s.}\label{fig:penalty-J03WOH}\end{figure}
-\WOHPredictedTable
-\WOHDiscussion
-
-\par\needspace{10\baselineskip}\noindent\textbf{J03WR9}\par
-\WRMeasuredTable
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WR9.pdf}
-\caption{J03WR9: predicted and sampled trajectories from the selected start; fitting inputs are at 0, 0.04 and 0.08 s.}\label{fig:penalty-J03WR9}\end{figure}
-\WRPredictedTable
-\WRDiscussion
+\caption{J03WOH spatial trajectory and the three coordinates against time. Open circles are fitting inputs; black points are tracked samples.}\label{fig:penalty-J03WOH}\end{figure}
+The $x(t)$ panel compares forward deceleration, while $y(t)$ and $z(t)$ show lateral deflection and vertical curvature. Goal-plane errors for M1, M2, M3 and M4 are 0.684, 0.657, 0.374 and 0.113 m, respectively. The constant-acceleration M3 passes through the three inputs; M4 has the smaller deviation for this flight's later path and goal crossing. Errors compare each model's own goal-plane $(y,z)$ crossing with the recorded crossing.

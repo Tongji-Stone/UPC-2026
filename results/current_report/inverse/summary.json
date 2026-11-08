@@ -8,16 +8,16 @@
       "physical_fit_interval": true,
       "event": {
         "type": "ground",
-        "time": 0.21342876288227144,
+        "time": 0.18957385888990788,
         "position": [
-          8.983991046271269,
-          1.9479583968788792,
-          0.10999999999999999
+          8.163233536499764,
+          1.8011874686733893,
+          0.11
         ],
         "velocity": [
-          27.849999999999998,
-          6.55,
-          -1.140576163875083
+          27.024999999999984,
+          6.6,
+          -1.035359555709996
         ],
         "spin": [
           0.0,
@@ -25,20 +25,20 @@
           0.0
         ]
       },
-      "early_max_residual_m": 0.03599999999999781,
-      "early_rss_m2": 0.0018320568831998673,
+      "early_max_residual_m": 0.06899999999999906,
+      "early_rss_m2": 0.005359199974399857,
       "initial_state": [
-        27.849999999999998,
-        6.55,
-        0.95316,
+        27.024999999999984,
+        6.6,
+        0.8243599999999999,
         0.0,
         0.0,
         0.0
       ],
       "drag_scale": 1.0,
       "lift_scale": 1.0,
-      "future_sample_count": 3,
-      "future_rmse_3d_m": 0.243891291648282,
+      "future_sample_count": 1,
+      "future_rmse_3d_m": 0.0883871474602474,
       "goal_error_m": null,
       "goal_time_error_s": null,
       "scored_goal_error_m": null,
@@ -55,16 +55,16 @@
       "physical_fit_interval": true,
       "event": {
         "type": "ground",
-        "time": 0.21311039560826298,
+        "time": 0.19001685310465605,
         "position": [
-          8.759229932057632,
-          1.895091915906775,
+          8.073621577687696,
+          1.7791942294648957,
           0.10999999999999999
         ],
         "velocity": [
-          25.376874033396746,
-          5.968325896809307,
-          -1.1154444270296415
+          25.213855929794384,
+          6.157142672155276,
+          -1.0174885995129754
         ],
         "spin": [
           0.0,
@@ -72,20 +72,20 @@
           0.0
         ]
       },
-      "early_max_residual_m": 0.026125599950788114,
-      "early_rss_m2": 0.0010385484262859063,
+      "early_max_residual_m": 0.047927645815450504,
+      "early_rss_m2": 0.002607003170853128,
       "initial_state": [
-        28.411014513215836,
-        6.6819180900963975,
-        0.9667756790654202,
+        27.85443909243703,
+        6.801964603213813,
+        0.8376219689207842,
         0.0,
         0.0,
         0.0
       ],
       "drag_scale": 1.4999999999999998,
       "lift_scale": 1.0,
-      "future_sample_count": 3,
-      "future_rmse_3d_m": 0.13607955799712995,
+      "future_sample_count": 1,
+      "future_rmse_3d_m": 0.04748459690684566,
       "goal_error_m": null,
       "goal_time_error_s": null,
       "scored_goal_error_m": null,
@@ -97,38 +97,50 @@
     {
       "case": "J03WMX",
       "model": "M3",
-      "status": "none",
+      "status": "ground",
       "fit_converged": true,
       "physical_fit_interval": true,
       "event": {
-        "type": "none",
-        "time": null,
-        "position": null,
-        "velocity": null,
-        "spin": null
+        "type": "ground",
+        "time": 0.22806248474865698,
+        "position": [
+          8.569223578320717,
+          2.0000676104705493,
+          0.11
+        ],
+        "velocity": [
+          18.780339272460356,
+          5.88307298021394,
+          -0.8003905296791052
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
       },
       "early_max_residual_m": 0.0,
       "early_rss_m2": 0.0,
       "initial_state": [
-        29.87499999999992,
-        6.999999999999995,
-        0.37499999999999967,
+        29.708333333333282,
+        6.8333333333333295,
+        0.6249999999999997,
         0.0,
         0.0,
         0.0
       ],
       "drag_scale": 1.0,
       "lift_scale": 1.0,
-      "future_sample_count": 6,
-      "future_rmse_3d_m": 0.8256916292821362,
+      "future_sample_count": 2,
+      "future_rmse_3d_m": 0.20763215336529905,
       "goal_error_m": null,
       "goal_time_error_s": null,
       "scored_goal_error_m": null,
       "at_parameter_bound": false,
       "constant_acceleration": [
-        -56.24999999999769,
-        -12.499999999999872,
-        6.250000000000005
+        -47.91666666666596,
+        -4.166666666666589,
+        -6.249999999999993
       ],
       "fitted_cd": null,
       "fitted_alpha": null
@@ -136,49 +148,49 @@
     {
       "case": "J03WMX",
       "model": "M4",
-      "status": "plane",
+      "status": "ground",
       "fit_converged": true,
       "physical_fit_interval": true,
       "event": {
-        "type": "plane",
-        "time": 0.30389055507863544,
+        "type": "ground",
+        "time": 0.23307429408075805,
         "position": [
-          11.0,
-          2.4377178108073436,
-          0.33904894362927007
+          9.123805635481308,
+          2.134247725189836,
+          0.11000000000000001
         ],
         "velocity": [
-          24.182321230128043,
-          5.8009248495253365,
-          0.735259688039769
+          24.389682195324685,
+          7.14774032472456,
+          -0.7854079880898173
         ],
         "spin": [
-          6.838685754522041,
-          -29.183872191911753,
-          1.2385398810926829
+          -17.018715046009028,
+          -15.337472385514724,
+          19.368151150957054
         ]
       },
-      "early_max_residual_m": 0.025901529985182137,
-      "early_rss_m2": 0.000903448090959355,
+      "early_max_residual_m": 0.0454003399754308,
+      "early_rss_m2": 0.0024460880094107746,
       "initial_state": [
-        28.423333506006028,
-        6.6671663952509075,
-        0.55115923302715,
-        6.838685754522041,
-        -29.183872191911753,
-        1.2385398810926829
+        27.953953917561165,
+        6.4000084627846885,
+        0.606761996006985,
+        -17.018715046009028,
+        -15.337472385514724,
+        19.368151150957054
       ],
       "drag_scale": 1.4999999999999998,
-      "lift_scale": 1.499999999672913,
-      "future_sample_count": 5,
-      "future_rmse_3d_m": 0.23385122916414122,
-      "goal_error_m": 0.3599704014244998,
-      "goal_time_error_s": -0.01610944492136457,
-      "scored_goal_error_m": 0.3599704014244998,
+      "lift_scale": 1.4999999813563685,
+      "future_sample_count": 2,
+      "future_rmse_3d_m": 0.05514260149783818,
+      "goal_error_m": null,
+      "goal_time_error_s": null,
+      "scored_goal_error_m": null,
       "at_parameter_bound": true,
       "constant_acceleration": null,
       "fitted_cd": 0.36231767069109677,
-      "fitted_alpha": 2.287710087373094
+      "fitted_alpha": 2.287710059437798
     },
     {
       "case": "J03WOH",
@@ -565,5 +577,5 @@
       "fitted_alpha": 2.2877100878684202
     }
   ],
-  "source_fingerprint": "c433016828985589eb399e59207834d29ca870048c16d573df0605d7eff4d4b4"
+  "source_fingerprint": "ff8c5ce3c01668fda04f6aab95d661b3f6898f9eb2c709cfd7b3de1f8b387333"
 }

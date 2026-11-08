@@ -1,12 +1,10 @@
 {
-  "all_passed": false,
+  "all_passed": true,
   "checks": {
     "english_compile": {
-      "passed": false,
-      "warnings": [
-        "Overfull \\hbox (8.20964pt too wide) in paragraph at lines 3--4"
-      ],
-      "pages": 36
+      "passed": true,
+      "warnings": [],
+      "pages": 31
     },
     "english_references": {
       "passed": true
@@ -20,16 +18,19 @@
     "english_aggregate_table_removed": {
       "passed": true
     },
-    "english_per_event_tables": {
+    "english_overview_and_detail": {
       "passed": true
     },
     "english_new_time_statement": {
       "passed": true
     },
+    "english_wmx_nonuniform_times": {
+      "passed": true
+    },
     "chinese_compile": {
       "passed": true,
       "warnings": [],
-      "pages": 34
+      "pages": 30
     },
     "chinese_references": {
       "passed": true
@@ -43,10 +44,13 @@
     "chinese_aggregate_table_removed": {
       "passed": true
     },
-    "chinese_per_event_tables": {
+    "chinese_overview_and_detail": {
       "passed": true
     },
     "chinese_new_time_statement": {
+      "passed": true
+    },
+    "chinese_wmx_nonuniform_times": {
       "passed": true
     },
     "song_hei_kai_fonts": {

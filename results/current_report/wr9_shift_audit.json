@@ -31,14 +31,6 @@
     "other/inertial_and_viscous.csv": "2256f6e9b432e530383bf18786faf861ba4352560945572588de7b59e2da56c7",
     "other/inertial_torque.csv": "4d4e13a67fa2beea65c7913f8ad4a1bd6ba6d1ec50be0bbeb9266e9b3d0cf09a",
     "other/summary.json": "17c72f8ecd714fd824dfea474450dc7a4ec08ca3d0d4904adf9d2b3f5a38bc4f",
-    "inverse/J03WMX_M1.csv": "7b4e71f9b84fd2e3267dc79de5e6edac4b1b69c8ef1c9948c2f4fe4991bc38fb",
-    "inverse/J03WMX_M1_validation.csv": "d9dd337bcefb950a0799bbba5bfe9e4c0ddace669a4e3d5c23e696a9c1d4c575",
-    "inverse/J03WMX_M2.csv": "b5b83773e2c1da1dba8213b8624655246dfb21b528f5bb5b4c985dfcf7e11d68",
-    "inverse/J03WMX_M2_validation.csv": "ef38c6366f938acbb07b05dc21ca0d0b0379bcc4fc6ddeda8a63c7d3ef95f1f5",
-    "inverse/J03WMX_M3.csv": "76406db1b324b9653f94afc22550339d6de7348db9d9a12bb282d35b38fea809",
-    "inverse/J03WMX_M3_validation.csv": "93978832d80d191598dea483abf67609c9435d7fe43bbc3b899b4628b6ff798c",
-    "inverse/J03WMX_M4.csv": "a3fc5324e0039cd34463abc293b2165d903a49a58661750b9868787dc1186a64",
-    "inverse/J03WMX_M4_validation.csv": "7020053a42c628f4ec207cacff1d602d92d99c8c055c9c3eb7ed53d0d4aec536",
     "inverse/J03WOH_M1.csv": "a66441020dc4a42d924318e2062bde65ff4a8d949def40edd6c38cc07d00385a",
     "inverse/J03WOH_M1_validation.csv": "d02d099e6fb3cbdbff828d929f17cb7e2acc5916e960d45a665d12cafe200e61",
     "inverse/J03WOH_M2.csv": "d9e3d1fa07ad29372ca3ba84005e58c580e998788b1a424ee8eb6e50c2b2bc8b",
@@ -49,26 +41,6 @@
     "inverse/J03WOH_M4_validation.csv": "2e1f1d9555de7fed80e19fff37d7a720f06929dacb5ed27e4f386fd7d015e622"
   },
   "reused_unchanged_cases": [
-    {
-      "case": "J03WMX",
-      "model": "M1",
-      "record_sha256": "1df3aef82dd2f8cb80db28179f0a8447617fd92184e50a105c7f758bfaddd454"
-    },
-    {
-      "case": "J03WMX",
-      "model": "M2",
-      "record_sha256": "a8156e6ba74818c0f6b0f9723ce616c8f5d11c09d1766228126dbfe38adb280c"
-    },
-    {
-      "case": "J03WMX",
-      "model": "M3",
-      "record_sha256": "b8b05bbfd8aa4d4fb15fc30bbf632bb34cb85ada697983ac6adb94f1311487e3"
-    },
-    {
-      "case": "J03WMX",
-      "model": "M4",
-      "record_sha256": "2a820193439c38057cd66b557876c3c1d3a361c56de9ddadaefbe9b257b612fc"
-    },
     {
       "case": "J03WOH",
       "model": "M1",
@@ -125,5 +97,6 @@
       0.47
     ]
   ],
-  "new_source_fingerprint": "c433016828985589eb399e59207834d29ca870048c16d573df0605d7eff4d4b4"
+  "new_source_fingerprint": "c433016828985589eb399e59207834d29ca870048c16d573df0605d7eff4d4b4",
+  "subsequent_WMX_change": "see wmx_last_point_audit.json"
 }

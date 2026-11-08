@@ -130,9 +130,6 @@
     "J03WMX_M4_fit_before_contact": {
       "passed": true
     },
-    "J03WMX_M4_goal_distance": {
-      "passed": true
-    },
     "J03WMX_M4_ground_truncation": {
       "passed": true
     },

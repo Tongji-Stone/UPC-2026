@@ -15,8 +15,8 @@ def main():
     check('24_forward_12_inverse',len(forward)==24 and len(inverse)==12)
     for case in data['cases']:
         name=case['case'];t=case['fit_times_s'];p=case['fit_positions_m']
-        check(name+'_selected_times',np.allclose(t,[0,.04,.08]))
-        expected={'J03WMX':[152602,152603,152604],'J03WOH':[128955,128956,128957],'J03WR9':[176245,176246,176247]}[name]
+        check(name+'_selected_times',np.allclose(t,[0,.04,.12] if name=='J03WMX' else [0,.04,.08]))
+        expected={'J03WMX':[152602,152603,152605],'J03WOH':[128955,128956,128957],'J03WR9':[176245,176246,176247]}[name]
         check(name+'_selected_source_frames',[int(f) for f in case['fit_frames']]==expected)
         check(name+'_time_roundtrip',all(abs(r['time_s']+case['time_origin_source_s']-r['source_time_s'])<1e-10 for r in case['samples']))
         check(name+'_goal_time_roundtrip',abs(case['goal']['time_s']+case['time_origin_source_s']-case['goal']['source_time_s'])<1e-10)

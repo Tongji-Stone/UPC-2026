@@ -1,40 +1,52 @@
 {
-  "source_fingerprint": "c433016828985589eb399e59207834d29ca870048c16d573df0605d7eff4d4b4",
+  "source_fingerprint": "ff8c5ce3c01668fda04f6aab95d661b3f6898f9eb2c709cfd7b3de1f8b387333",
   "record": {
     "case": "J03WMX",
     "model": "M3",
-    "status": "none",
+    "status": "ground",
     "fit_converged": true,
     "physical_fit_interval": true,
     "event": {
-      "type": "none",
-      "time": null,
-      "position": null,
-      "velocity": null,
-      "spin": null
+      "type": "ground",
+      "time": 0.22806248474865698,
+      "position": [
+        8.569223578320717,
+        2.0000676104705493,
+        0.11
+      ],
+      "velocity": [
+        18.780339272460356,
+        5.88307298021394,
+        -0.8003905296791052
+      ],
+      "spin": [
+        0.0,
+        0.0,
+        0.0
+      ]
     },
     "early_max_residual_m": 0.0,
     "early_rss_m2": 0.0,
     "initial_state": [
-      29.87499999999992,
-      6.999999999999995,
-      0.37499999999999967,
+      29.708333333333282,
+      6.8333333333333295,
+      0.6249999999999997,
       0.0,
       0.0,
       0.0
     ],
     "drag_scale": 1.0,
     "lift_scale": 1.0,
-    "future_sample_count": 6,
-    "future_rmse_3d_m": 0.8256916292821362,
+    "future_sample_count": 2,
+    "future_rmse_3d_m": 0.20763215336529905,
     "goal_error_m": null,
     "goal_time_error_s": null,
     "scored_goal_error_m": null,
     "at_parameter_bound": false,
     "constant_acceleration": [
-      -56.24999999999769,
-      -12.499999999999872,
-      6.250000000000005
+      -47.91666666666596,
+      -4.166666666666589,
+      -6.249999999999993
     ],
     "fitted_cd": null,
     "fitted_alpha": null
@@ -42,17 +54,17 @@
   "fit": {
     "model": "M3",
     "initial_state": [
-      29.87499999999992,
-      6.999999999999995,
-      0.37499999999999967,
+      29.708333333333282,
+      6.8333333333333295,
+      0.6249999999999997,
       0.0,
       0.0,
       0.0
     ],
     "constant_acceleration": [
-      -56.24999999999769,
-      -12.499999999999872,
-      6.250000000000005
+      -47.91666666666596,
+      -4.166666666666589,
+      -6.249999999999993
     ],
     "drag_scale": 1.0,
     "lift_scale": 1.0,
@@ -70,9 +82,9 @@
         0.15
       ],
       [
-        5.25,
-        1.07,
-        0.18
+        6.259999999999998,
+        1.34,
+        0.16
       ]
     ],
     "active_parameters": 6,
@@ -93,7 +105,7 @@
     "times_s": [
       0.0,
       0.04,
-      0.08
+      0.12
     ],
     "positions_m": [
       [
@@ -107,20 +119,20 @@
         0.15
       ],
       [
-        5.25,
-        1.07,
-        0.18
+        6.259999999999998,
+        1.34,
+        0.16
       ]
     ],
     "frames": [
       "152602",
       "152603",
-      "152604"
+      "152605"
     ],
     "sample_ordinals": [
       3,
       4,
-      5
+      6
     ],
     "time_origin_source_s": 0.08
   },
@@ -136,9 +148,9 @@
     "lift_scale": 1.0,
     "coefficient_mode": "constant",
     "constant_acceleration": [
-      -56.24999999999769,
-      -12.499999999999872,
-      6.250000000000005
+      -47.91666666666596,
+      -4.166666666666589,
+      -6.249999999999993
     ],
     "use_gravity": false,
     "use_drag": false,
@@ -189,10 +201,5 @@
       2.75,
       0.16
     ]
-  },
-  "cache_reuse": {
-    "baseline_commit": "13384c5",
-    "reason": "case input, fit settings and dynamics unchanged",
-    "previous_source_fingerprint": "290a251d4f82debb432194ec279965552d5f67cb221a6dc4cb199f73ad6e1c2c"
   }
 }

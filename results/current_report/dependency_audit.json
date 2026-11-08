@@ -15,9 +15,8 @@
       "case_spin.pdf": "results/current_report/figures/case_spin.pdf",
       "case_chip.pdf": "results/current_report/figures/case_chip.pdf",
       "forward_dynamics.pdf": "results/current_report/figures/forward_dynamics.pdf",
-      "penalty_J03WMX.pdf": "results/current_report/figures/penalty_J03WMX.pdf",
+      "penalty_spatial_overview.pdf": "results/current_report/figures/penalty_spatial_overview.pdf",
       "penalty_J03WOH.pdf": "results/current_report/figures/penalty_J03WOH.pdf",
-      "penalty_J03WR9.pdf": "results/current_report/figures/penalty_J03WR9.pdf",
       "one_factor_position_response.pdf": "results/sensitivity_v2/figures/one_factor_position_response.pdf",
       "one_factor_time_response.pdf": "results/sensitivity_v2/figures/one_factor_time_response.pdf",
       "conditional_crossings.pdf": "results/sensitivity_v2/figures/conditional_crossings.pdf",
@@ -26,11 +25,23 @@
       "monte_carlo_convergence.pdf": "results/sensitivity_v2/figures/monte_carlo_convergence.pdf"
     },
     "all_dependencies_resolved": true,
-    "WR9_source_frames": [
-      176245,
-      176246,
-      176247
-    ]
+    "fit_sample_ordinals": {
+      "J03WMX": [
+        3,
+        4,
+        6
+      ],
+      "J03WOH": [
+        2,
+        3,
+        4
+      ],
+      "J03WR9": [
+        3,
+        4,
+        5
+      ]
+    }
   },
   "_中文版": {
     "graphics": {
@@ -48,9 +59,8 @@
       "case_spin.pdf": "results/current_report/figures/case_spin.pdf",
       "case_chip.pdf": "results/current_report/figures/case_chip.pdf",
       "forward_dynamics.pdf": "results/current_report/figures/forward_dynamics.pdf",
-      "penalty_J03WMX.pdf": "results/current_report/figures/penalty_J03WMX.pdf",
+      "penalty_spatial_overview.pdf": "results/current_report/figures/penalty_spatial_overview.pdf",
       "penalty_J03WOH.pdf": "results/current_report/figures/penalty_J03WOH.pdf",
-      "penalty_J03WR9.pdf": "results/current_report/figures/penalty_J03WR9.pdf",
       "one_factor_position_response.pdf": "results/sensitivity_v2/figures/one_factor_position_response.pdf",
       "one_factor_time_response.pdf": "results/sensitivity_v2/figures/one_factor_time_response.pdf",
       "conditional_crossings.pdf": "results/sensitivity_v2/figures/conditional_crossings.pdf",
@@ -59,10 +69,22 @@
       "monte_carlo_convergence.pdf": "results/sensitivity_v2/figures/monte_carlo_convergence.pdf"
     },
     "all_dependencies_resolved": true,
-    "WR9_source_frames": [
-      176245,
-      176246,
-      176247
-    ]
+    "fit_sample_ordinals": {
+      "J03WMX": [
+        3,
+        4,
+        6
+      ],
+      "J03WOH": [
+        2,
+        3,
+        4
+      ],
+      "J03WR9": [
+        3,
+        4,
+        5
+      ]
+    }
   }
 }

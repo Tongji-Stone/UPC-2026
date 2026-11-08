@@ -43,8 +43,10 @@ xelatex -no-shell-escape -interaction=nonstopmode -halt-on-error main.tex
 
 ## 更正起点后的反演
 
-原始两份 CSV 及来源说明保持字节不变。当前选帧以 `inputs.json` 和配置中的 `fit_sample_ordinals` 为准，原始 CSV 的汇总选帧字段保留其源信息。WMX/WR9 使用原第 3–5 点，WOH 使用原第 2–4 点；源时间起点依次平移 0.08、0.04、0.08 s。处理后的样本同时保存 `source_time_s`、新 `time_s`、原序号和当前选择标记；起点前样本的新时间为负，绘图从零时刻开始。
+原始两份 CSV 及来源说明保持字节不变。当前选帧以 `inputs.json` 和配置中的 `fit_sample_ordinals` 为准，原始 CSV 的汇总选帧字段保留其源信息。WMX 使用原第 3、4、6 点，WR9 使用原第 3–5 点，WOH 使用原第 2–4 点；源时间起点依次平移 0.08、0.04、0.08 s。处理后的样本同时保存 `source_time_s`、新 `time_s`、原序号和当前选择标记；起点前样本的新时间为负，绘图从零时刻开始。
 
 按需更新本次反演与图表：`inverse` → `collect` → `four_model_plot.py --inverse-only` → `four_model_paper_values.py`。每例正文使用实测数据表与模型状态/交点表，偏离距离为球门平面上的二维欧氏距离；不报告准确率。M3 自旋列为单位轴，M4 为 rad/s。
 
 J03WR9 最新窗口为源帧176245、176246、176247，原始时间0.08、0.12、0.16 s；该例单独重算与作图使用 `four_model_compute.py inverse --case J03WR9` 和 `four_model_plot.py --inverse-only --case J03WR9`。
+
+J03WMX 最后一个拟合点后移到源帧152605，采用源帧152602、152603、152605，拟合时刻0、0.04、0.12 s。求解直接使用这组非等间隔时刻，未将其当作等间隔数据。
