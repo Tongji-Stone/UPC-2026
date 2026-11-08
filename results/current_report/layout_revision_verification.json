@@ -2,56 +2,43 @@
   "all_passed": true,
   "editions": {
     "en": {
-      "pages": 29,
+      "pages": 28,
       "labels": {
         "tab:penalty-errors": {
           "number": "3",
-          "page": 15
+          "page": 14
         },
-        "fig:placement-example": {
-          "number": "7",
-          "page": 12
+        "fig:shot-photos": {
+          "number": "6",
+          "page": 11
         },
         "fig:placement-photo": {
-          "number": "7a",
-          "page": 12
-        },
-        "fig:placement-paths": {
-          "number": "7b",
-          "page": 12
-        },
-        "fig:penalty-J03WOH": {
-          "number": "8",
-          "page": 14
+          "number": "6a",
+          "page": 11
         },
         "fig:power-photo": {
-          "number": "8a",
-          "page": 14
+          "number": "6b",
+          "page": 11
+        },
+        "fig:placement-paths": {
+          "number": "8",
+          "page": 12
         },
         "fig:power-paths": {
-          "number": "8b",
-          "page": 14
+          "number": "9",
+          "page": 13
         },
         "fig:surface-details": {
-          "number": "16",
-          "page": 22
-        },
-        "fig:surface-geometry": {
-          "number": "16a",
-          "page": 22
-        },
-        "fig:alam-surfaces": {
-          "number": "16b",
-          "page": 22
+          "number": "17",
+          "page": 21
         }
       },
       "review_pages": [
-        2,
+        11,
         12,
+        13,
         14,
-        15,
-        22,
-        25
+        21
       ]
     },
     "zh": {
@@ -61,172 +48,125 @@
           "number": "3",
           "page": 14
         },
-        "fig:placement-example": {
-          "number": "7",
-          "page": 12
+        "fig:shot-photos": {
+          "number": "6",
+          "page": 11
         },
         "fig:placement-photo": {
-          "number": "7a",
-          "page": 12
-        },
-        "fig:placement-paths": {
-          "number": "7b",
-          "page": 12
-        },
-        "fig:penalty-J03WOH": {
-          "number": "8",
-          "page": 13
+          "number": "6a",
+          "page": 11
         },
         "fig:power-photo": {
-          "number": "8a",
-          "page": 13
+          "number": "6b",
+          "page": 11
+        },
+        "fig:placement-paths": {
+          "number": "8",
+          "page": 12
         },
         "fig:power-paths": {
-          "number": "8b",
+          "number": "9",
           "page": 13
         },
         "fig:surface-details": {
-          "number": "16",
-          "page": 21
-        },
-        "fig:surface-geometry": {
-          "number": "16a",
-          "page": 21
-        },
-        "fig:alam-surfaces": {
-          "number": "16b",
+          "number": "17",
           "page": 21
         }
       },
       "review_pages": [
-        2,
+        11,
         12,
         13,
         14,
-        21,
-        24
+        21
       ]
     }
   },
   "checks": {
-    "en_toc_body_size": {
+    "en_photos_equal_side_by_side": {
       "passed": true,
-      "observed_pdf_pt": [
-        11.9552
-      ],
-      "nominal_tex_pt": 12
+      "rectangles_pdf_pt": [
+        [
+          72.0,
+          72.00277709960938,
+          296.642333984375,
+          221.7570037841797
+        ],
+        [
+          315.364990234375,
+          71.99949645996094,
+          539.9970703125,
+          221.7570037841797
+        ]
+      ]
     },
-    "en_label_tab:penalty-errors": {
+    "en_photos_at_case_start": {
       "passed": true
     },
-    "en_label_fig:placement-example": {
-      "passed": true
-    },
-    "en_label_fig:placement-photo": {
-      "passed": true
-    },
-    "en_label_fig:placement-paths": {
-      "passed": true
-    },
-    "en_label_fig:penalty-J03WOH": {
-      "passed": true
-    },
-    "en_label_fig:power-photo": {
-      "passed": true
-    },
-    "en_label_fig:power-paths": {
-      "passed": true
-    },
-    "en_label_fig:surface-details": {
-      "passed": true
-    },
-    "en_label_fig:surface-geometry": {
-      "passed": true
-    },
-    "en_label_fig:alam-surfaces": {
+    "en_four_subfigures": {
       "passed": true
     },
     "en_error_table_body_size": {
       "passed": true,
       "observed_pdf_pt": [
         11.9552
-      ],
-      "cells": 9
+      ]
     },
-    "en_rotation_no_display_derivation": {
-      "passed": true
-    },
-    "en_child_figure_references": {
-      "passed": true
-    },
-    "en_six_subfigures": {
-      "passed": true
-    },
-    "en_chapter8_strengths_weaknesses": {
-      "passed": true
-    },
-    "zh_toc_body_size": {
+    "en_toc_body_size": {
       "passed": true,
       "observed_pdf_pt": [
         11.9552
-      ],
-      "nominal_tex_pt": 12
+      ]
     },
-    "zh_label_tab:penalty-errors": {
+    "zh_photos_equal_side_by_side": {
+      "passed": true,
+      "rectangles_pdf_pt": [
+        [
+          72.0,
+          72.00277709960938,
+          296.642333984375,
+          221.7570037841797
+        ],
+        [
+          315.364990234375,
+          71.99949645996094,
+          539.9970703125,
+          221.7570037841797
+        ]
+      ]
+    },
+    "zh_photos_at_case_start": {
       "passed": true
     },
-    "zh_label_fig:placement-example": {
-      "passed": true
-    },
-    "zh_label_fig:placement-photo": {
-      "passed": true
-    },
-    "zh_label_fig:placement-paths": {
-      "passed": true
-    },
-    "zh_label_fig:penalty-J03WOH": {
-      "passed": true
-    },
-    "zh_label_fig:power-photo": {
-      "passed": true
-    },
-    "zh_label_fig:power-paths": {
-      "passed": true
-    },
-    "zh_label_fig:surface-details": {
-      "passed": true
-    },
-    "zh_label_fig:surface-geometry": {
-      "passed": true
-    },
-    "zh_label_fig:alam-surfaces": {
+    "zh_four_subfigures": {
       "passed": true
     },
     "zh_error_table_body_size": {
       "passed": true,
       "observed_pdf_pt": [
         11.9552
+      ]
+    },
+    "zh_toc_body_size": {
+      "passed": true,
+      "observed_pdf_pt": [
+        11.9552
+      ]
+    },
+    "power_plot_labels_nonoverlapping": {
+      "passed": true,
+      "figsize_inches": [
+        7.2,
+        6.2
       ],
-      "cells": 9
-    },
-    "zh_rotation_no_display_derivation": {
-      "passed": true
-    },
-    "zh_child_figure_references": {
-      "passed": true
-    },
-    "zh_six_subfigures": {
-      "passed": true
-    },
-    "zh_chapter8_strengths_weaknesses": {
-      "passed": true
-    },
-    "original_photos_preserved": {
-      "passed": true
+      "horizontal_label_gap_pixels": 43.3231447157155,
+      "labels_nonoverlapping": true,
+      "source_case": "J03WOH",
+      "data": "unchanged saved measurements and model traces"
     },
     "calculations_unchanged": {
       "passed": true,
-      "baseline_commit": "f10a33c"
+      "baseline_commit": "06cc234"
     }
   }
 }

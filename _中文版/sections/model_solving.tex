@@ -23,40 +23,35 @@ M4 以初速度、旋转方向、$C_D$、$\alpha$ 为变量，最小化两个后
 马格努斯力包含乘积 $\alpha\boldsymbol\omega$，仅由位置不能分别唯一确定 $\alpha$ 和自旋大小。为选择代表解，令 $\|\boldsymbol\omega\|=30$ rad/s；三个初速度、两个方向角和两个系数共有七项，而两个后续位置提供六个坐标，因此结果仍受边界与选解条件影响。
 
 \subsection{案例分析与验证}\label{sec:case-validation}
+如图~\ref{fig:shot-photos} 所示，精准推射示例中的足球靠近草地，而大力射门示例中的足球腾空较高。两张照片分别呈现后续讨论的踢法特征。
+\begin{figure}[H]\centering
+\begin{subfigure}[t]{.48\textwidth}\centering
+\includegraphics[width=\linewidth,height=.666667\linewidth]{placement_shot_example.png}
+\caption{精准推射示例。}\label{fig:placement-photo}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{.48\textwidth}\centering
+\includegraphics[width=\linewidth,height=.666667\linewidth]{power_shot_example.png}
+\caption{大力射门示例。}\label{fig:power-photo}
+\end{subfigure}
+\caption{两类射门的实景示例：精准推射与大力射门。}\label{fig:shot-photos}
+\end{figure}
+
 三次点球包括两次精准推射（推射 1、推射 2）和一次大力抽射。图~\ref{fig:penalty-overview} 汇总三次实测空间轨迹及模型预测。空心圆表示反演输入，黑线和黑点表示实测位置，彩色线表示四种模型，叉号表示实测或插值得到的球门交点；预测在首次触地时结束。
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_spatial_overview.pdf}
 \caption{三次真实点球的空间轨迹与模型预测，从左到右依次为推射 1、大力抽射、推射 2。各例的拟合时刻均为 0、0.04、0.08 s。}\label{fig:penalty-overview}\end{figure}
 
 \subsubsection{案例一：精准推射}
 如图~\ref{fig:placement-photo} 所示，精准推射示例中的足球贴近草地。图~\ref{fig:placement-paths} 对照两次实测推射的空间轨迹与四模型预测。
-\begin{figure}[H]\centering
-\begin{subfigure}{\textwidth}\centering
-\includegraphics[width=.56\linewidth]{placement_shot_example.png}
-\caption{精准推射示例。}\label{fig:placement-photo}
-\end{subfigure}\par\vspace{.5em}
-\begin{subfigure}{\textwidth}\centering
-\includegraphics[width=.98\linewidth]{placement_spatial_comparison.pdf}
-\caption{两次精准推射的实测轨迹与模型预测。}\label{fig:placement-paths}
-\end{subfigure}
-\caption{精准推射示例与两次实测低空轨迹的对照。}\label{fig:placement-example}
-\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=.98\textwidth]{placement_spatial_comparison.pdf}
+\caption{两次精准推射的实测轨迹与模型预测。}\label{fig:placement-paths}\label{fig:placement-example}\end{figure}
 推射 1 和推射 2 的实测轨迹均贴近草地飞行。M4 在两个反演起点给出的球速分别为 29.20 和 28.34 m/s。推射 1 中 M4 到达球门平面，交点误差为 0.360 m；M1、M2 提前触地，M3 在计算时限内未到达球门。推射 2 中 M1、M2、M3、M4 均到达球门平面，交点误差分别为 0.475、0.475、0.155 和 0.146 m。
 
 低空轨迹对竖直受力较敏感：重力持续使球下落，竖直方向的马格努斯力则可抬高或压低轨迹。M1 忽略气动力，M2 加入减速阻力，却没有横向升力；M3 用三个点给出恒加速度，能够通过早期位置，但后续加速度随速度变化时，其外推轨迹可能偏离。M4 允许气动力随速度和旋转方向变化；推射 1 的结果到达球门平面，推射 2 的交点误差也较小。具体误差还受到早期位置和拟合参数共同影响。
 
 \subsubsection{案例二：大力抽射}
 如图~\ref{fig:power-photo} 所示，大力射门示例中的足球具有较高的腾空位置。大力抽射的 M4 反演起点球速为 32.05 m/s，高于上述两次推射。图~\ref{fig:power-paths} 展示该实测算例的空间轨迹及 $x$、$y$、$z$ 坐标随时间的变化；前三个位置用于拟合，后续黑点用于检验预测。
-\begin{figure}[H]\centering
-\begin{subfigure}{\textwidth}\centering
-\includegraphics[width=.43\linewidth]{power_shot_example.png}
-\caption{大力射门示例。}\label{fig:power-photo}
-\end{subfigure}\par\vspace{.5em}
-\begin{subfigure}{\textwidth}\centering
-\includegraphics[width=.95\linewidth]{penalty_J03WOH.pdf}
-\caption{实测大力抽射的空间轨迹及坐标时间曲线。}\label{fig:power-paths}
-\end{subfigure}
-\caption{大力射门示例与实测轨迹的对照。空心圆为拟合输入，黑点为实测采样。}\label{fig:penalty-J03WOH}
-\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WOH.pdf}
+\caption{大力抽射的空间轨迹及坐标时间曲线。空心圆为拟合输入，黑点为实测采样。}\label{fig:power-paths}\label{fig:penalty-J03WOH}\end{figure}
 $x(t)$ 体现前进方向的减速，$y(t)$ 与 $z(t)$ 分别体现横向偏转和竖直弯曲。M1、M2、M3、M4 的球门交点误差依次为 0.684、0.657、0.374 和 0.113 m。M1 只考虑重力，M2 进一步计入阻力，两者的横向方向主要由初速度决定；M3 延续三点确定的恒加速度；M4 则通过阻力与马格努斯力描述随速度变化的弯曲，在该次射门中与后续实测更接近。交点误差按模型各自穿越球门平面时的 $(y,z)$ 与实测交点计算。
 
 \paragraph{速度与气动力的物理图像。} 图~\ref{fig:penalty-dynamics} 对比三次射门的 M4 球速和气动力。阻力与相对速度平方成正比；大力抽射的反演起点速度较高，其初始阻力约 7.58 N，两次推射约为 7.05 和 2.21 N，其中系数取值也会影响大小。随足球减速，阻力逐渐减小。马格努斯力与旋转、相对速度的叉乘有关：旋转方向决定它使球向侧方还是竖直方向弯曲，其大小随速度和旋转条件改变。图中力与速度来自 M4 的反演及数值计算，旋转模长采用 30 rad/s 的参考设定。

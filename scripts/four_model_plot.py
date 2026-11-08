@@ -10,9 +10,11 @@ FIG=OUT/'figures';COLORS=['#444B49','#0072B2','#D55E00','#009E73'];STYLES=['-','
 CASE_LABELS={'J03WMX':'Placement 1','J03WR9':'Placement 2','J03WOH':'Power shot'}
 def col(rows,key):return np.array([float(r[key]) for r in rows])
 def trace(group,case,model):return read_csv(OUT/f'{group}/{case}_{model}.csv')
-def save(fig,name,rect=None):
-    fig.tight_layout(rect=rect)
-    for ext in ['pdf','svg','png']:fig.savefig(FIG/f'{name}.{ext}',dpi=300)
+def save(fig,name,rect=None,manual_layout=False):
+    if not manual_layout:fig.tight_layout(rect=rect)
+    for ext in ['pdf','svg','png']:
+        path=FIG/f'{name}.{ext}';fig.savefig(path,dpi=300)
+        if ext=='svg':path.write_text('\n'.join(line.rstrip() for line in path.read_text(encoding='utf-8').splitlines())+'\n',encoding='utf-8')
     plt.close(fig)
 def goal(ax):
     ax.plot([11]*5,[-3.66,3.66,3.66,-3.66,-3.66],[0,0,2.44,2.44,0],color='#8B8B83',lw=.8)
@@ -40,10 +42,18 @@ def forward():
             ax.set(xlabel='Time (s)',ylabel=label,title=case.title());ax.tick_params(labelsize=8)
     axes[0,0].legend(frameon=False,fontsize=7);save(fig,'forward_dynamics')
 
-def inverse():
+def inverse(only=None):
     for case in read_json(DATA/'inputs.json')['cases']:
-        fig=plt.figure(figsize=(6.5,5.3));ax3=fig.add_subplot(2,2,1,projection='3d')
-        axes=[fig.add_subplot(2,2,i) for i in [2,3,4]]
+        if only and case['case']!=only:continue
+        power=case['case']=='J03WOH'
+        if power:
+            fig=plt.figure(figsize=(7.2,6.2))
+            grid=fig.add_gridspec(2,2,left=.09,right=.975,bottom=.10,top=.84,wspace=.44,hspace=.48)
+            ax3=fig.add_subplot(grid[0,0],projection='3d')
+            axes=[fig.add_subplot(grid[0,1]),fig.add_subplot(grid[1,0]),fig.add_subplot(grid[1,1])]
+        else:
+            fig=plt.figure(figsize=(6.5,5.3));ax3=fig.add_subplot(2,2,1,projection='3d')
+            axes=[fig.add_subplot(2,2,i) for i in [2,3,4]]
         actual=case['goal'];tend=actual['time_s']
         rows=[r for r in case['samples'] if 0<=r['time_s']<=tend+1e-10 and r['X_m']<=52.5+1e-10]
         xyz=np.array([[r[k] for k in ['x_m','y_m','z_m']] for r in rows]);times=np.array([r['time_s'] for r in rows])
@@ -67,9 +77,30 @@ def inverse():
                     ax.scatter([float(rows[-1]['time_s'])],[float(rows[-1][field])],color=c,marker='s',s=13)
         goal(ax3);ax3.set_title(CASE_LABELS[case['case']],fontsize=10)
         for ax,field in zip(axes,['x','y','z']):ax.set(xlabel='Time (s)',ylabel=field+' (m)',xlim=(0,tend*1.025));ax.tick_params(labelsize=8)
+        if power:
+            ax3.set_xlabel('x (m)',labelpad=1,fontsize=10)
+            ax3.set_ylabel('y (m)',labelpad=1,fontsize=10)
+            ax3.set_zlabel('z (m)',labelpad=2,fontsize=10)
+            ax3.tick_params(labelsize=8,pad=1)
+            for ax in axes:
+                ax.xaxis.label.set_fontsize(10);ax.yaxis.label.set_fontsize(10)
+                ax.tick_params(labelsize=9)
         handles,labels=axes[0].get_legend_handles_labels()
-        fig.legend(handles,labels,loc='upper center',ncol=3,frameon=False,fontsize=8)
-        save(fig,'penalty_'+case['case'],rect=[0,0,1,.90])
+        fig.legend(handles,labels,loc='upper center',ncol=3,frameon=False,fontsize=9.5 if power else 8)
+        if power:
+            fig.canvas.draw();renderer=fig.canvas.get_renderer()
+            left=[axis.label for axis in [ax3.xaxis,ax3.yaxis,ax3.zaxis]]
+            for axis,limits in [(ax3.xaxis,ax3.get_xlim()),(ax3.yaxis,ax3.get_ylim()),(ax3.zaxis,ax3.get_zlim())]:
+                lo,hi=sorted(limits)
+                left.extend(tick.label1 for tick in axis.get_major_ticks() if lo<=tick.get_loc()<=hi)
+            right=[axes[0].yaxis.label]+axes[0].get_yticklabels()
+            left_edge=max(t.get_window_extent(renderer).x1 for t in left if t.get_text())
+            right_edge=min(t.get_window_extent(renderer).x0 for t in right if t.get_text())
+            gap=right_edge-left_edge
+            if gap<8:raise ValueError(f'Power-shot panel labels overlap: gap={gap}')
+            save_json(FIG/'power_panel_layout.json',dict(figsize_inches=[7.2,6.2],horizontal_label_gap_pixels=float(gap),
+                labels_nonoverlapping=True,source_case='J03WOH',data='unchanged saved measurements and model traces'))
+        save(fig,'penalty_'+case['case'],rect=[0,0,1,.90],manual_layout=power)
 
 def inverse_overview(case_names=None,basename='penalty_spatial_overview'):
     """Show all three spatial paths together using the saved fit and tracking data."""
@@ -126,17 +157,21 @@ def other():
 if __name__=='__main__':
     import argparse
     parser=argparse.ArgumentParser();parser.add_argument('--inverse-only',action='store_true')
-    parser.add_argument('--placement-only',action='store_true');args=parser.parse_args()
+    parser.add_argument('--placement-only',action='store_true')
+    parser.add_argument('--case',choices=['J03WMX','J03WOH','J03WR9']);args=parser.parse_args()
     FIG.mkdir(parents=True,exist_ok=True)
     plt.rcParams.update({'font.family':'serif','font.serif':['Times New Roman'],'font.size':9,'font.weight':'bold','axes.labelweight':'bold','axes.titleweight':'bold',
         'axes.spines.right':False,'axes.spines.top':False,'pdf.fonttype':42,'svg.fonttype':'none'})
-    if args.placement_only:
+    if args.case:
+        inverse(args.case)
+    elif args.placement_only:
         inverse_overview(['J03WMX','J03WR9'],'placement_spatial_comparison')
     else:
         if args.inverse_only:inverse();inverse_overview();penalty_dynamics()
         else:forward();inverse();inverse_overview();penalty_dynamics();other()
         inverse_overview(['J03WMX','J03WR9'],'placement_spatial_comparison')
     save_json(FIG/'figure_contract.json',dict(width_inches=6.5,dpi=300,formats=['pdf','svg','png'],
+        panel_layout_overrides={'penalty_J03WOH':dict(figsize_inches=[7.2,6.2],horizontal_spacing=.44,vertical_spacing=.48)},
         units='SI',models=list(MODELS),raw_frames=39,
         inverse_input_rule='corrected consecutive source frames; zero time at selected start; original repeated samples retained',
         forward_claim='force mechanisms under prescribed initial conditions',inverse_claim='continuation compared with held-out real samples',

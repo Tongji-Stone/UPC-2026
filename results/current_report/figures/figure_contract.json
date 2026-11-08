@@ -24,5 +24,15 @@
     "#0072B2",
     "#D55E00",
     "#009E73"
-  ]
+  ],
+  "panel_layout_overrides": {
+    "penalty_J03WOH": {
+      "figsize_inches": [
+        7.2,
+        6.2
+      ],
+      "horizontal_spacing": 0.44,
+      "vertical_spacing": 0.48
+    }
+  }
 }

@@ -23,9 +23,10 @@
       "monte_carlo_parallel_coordinates.pdf": "results/sensitivity_linear/figures/monte_carlo_parallel_coordinates.pdf",
       "monte_carlo_convergence.pdf": "results/sensitivity_linear/figures/monte_carlo_convergence.pdf"
     },
-    "subfigures": 6,
+    "subfigures": 4,
     "chapter8": "strengths and weaknesses",
-    "toc_and_error_table_size_tex_pt": 12
+    "toc_and_error_table_size_tex_pt": 12,
+    "photo_layout": "equal-size side-by-side subfigures at start of case analysis"
   },
   "_中文版": {
     "all_dependencies_resolved": true,
@@ -51,8 +52,9 @@
       "monte_carlo_parallel_coordinates.pdf": "results/sensitivity_linear/figures/monte_carlo_parallel_coordinates.pdf",
       "monte_carlo_convergence.pdf": "results/sensitivity_linear/figures/monte_carlo_convergence.pdf"
     },
-    "subfigures": 6,
+    "subfigures": 4,
     "chapter8": "strengths and weaknesses",
-    "toc_and_error_table_size_tex_pt": 12
+    "toc_and_error_table_size_tex_pt": 12,
+    "photo_layout": "equal-size side-by-side subfigures at start of case analysis"
   }
 }
