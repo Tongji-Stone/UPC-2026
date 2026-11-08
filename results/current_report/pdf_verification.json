@@ -1,94 +1,114 @@
 {
-  "pages": 28,
+  "pages": 31,
   "warnings": [],
   "out_of_page_text": [],
   "all_fonts_embedded": true,
   "fonts": {
-    "FZZGGA+TimesNewRomanPSMT": {
+    "UWFYPW+TimesNewRomanPSMT": {
       "format": "ttf",
       "embedded": true
     },
-    "XYDNBQ+TimesNewRomanPS-BoldMT": {
+    "IVQDIE+TimesNewRomanPS-BoldMT": {
       "format": "ttf",
       "embedded": true
     },
-    "EDJINB+CMMI12": {
+    "SEDKCZ+CMMI12": {
       "format": "cff",
       "embedded": true
     },
-    "IXIGGF+CMR12": {
+    "EPWALQ+CMR12": {
       "format": "cff",
       "embedded": true
     },
-    "NVTEYR+CMR10": {
+    "SMNFMK+CMR10": {
       "format": "cff",
       "embedded": true
     },
-    "RGOCUL+CMMI8": {
+    "QRXCTJ+CMMI8": {
       "format": "cff",
       "embedded": true
     },
-    "ZQHMPU+CMEX10": {
+    "SVNOGJ+CMEX9": {
       "format": "cff",
       "embedded": true
     },
-    "RKTQKS+CMMI10": {
+    "YIOVSL+CMMI9": {
       "format": "cff",
       "embedded": true
     },
-    "BTXWZA+CMMI7": {
+    "NBTZGC+CMMI6": {
       "format": "cff",
       "embedded": true
     },
-    "XPGNSN+CMR5": {
+    "BSZLBH+CMR5": {
       "format": "cff",
       "embedded": true
     },
-    "PPNKFS+CMMIB7": {
+    "YGAKSQ+CMMIB7": {
       "format": "cff",
       "embedded": true
     },
-    "PUAFBW+CMMIB10": {
+    "POIZSV+CMR9": {
       "format": "cff",
       "embedded": true
     },
-    "UHFDSG+CMSY10": {
+    "ZDFUPA+CMMIB10": {
       "format": "cff",
       "embedded": true
     },
-    "WTMRMJ+CMSY7": {
+    "ORASYJ+CMSY9": {
       "format": "cff",
       "embedded": true
     },
-    "KHEDQZ+CMBX10": {
+    "GKBIQI+CMSY6": {
       "format": "cff",
       "embedded": true
     },
-    "SLWZCU+CMR7": {
+    "HHBTLT+CMBX9": {
       "format": "cff",
       "embedded": true
     },
-    "MVQXKE+CMR8": {
+    "OCMWXA+CMR6": {
       "format": "cff",
       "embedded": true
     },
-    "QMMPCD+CMSY8": {
+    "BJDXXN+CMSY10": {
       "format": "cff",
       "embedded": true
     },
-    "FHXFSG+TimesNewRomanPS-BoldMT": {
-      "format": "Type3 embedded glyph programs",
-      "embedded": true
-    },
-    "ZBAGNJ+CMBX12": {
+    "OOKZAR+CMR8": {
       "format": "cff",
       "embedded": true
     },
-    "CBZIEE+CMBX8": {
+    "CAZDRM+CMMI10": {
       "format": "cff",
       "embedded": true
     },
-    "CUSXBA+CMBSY10": {
+    "OSHOCD+CMSY8": {
+      "format": "cff",
+      "embedded": true
+    },
+    "SZCAWF+CMBX12": {
+      "format": "cff",
+      "embedded": true
+    },
+    "TGNGZY+CMBX8": {
+      "format": "cff",
+      "embedded": true
+    },
+    "FLEUWY+TimesNewRomanPS-BoldMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "HLHDOK+DejaVuSans-BoldOblique": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "YCGPIR+CMEX10": {
+      "format": "cff",
+      "embedded": true
+    },
+    "XXLCXO+CMBSY10": {
       "format": "cff",
       "embedded": true
     },
@@ -100,12 +120,24 @@
       "format": "ttf",
       "embedded": true
     },
+    "FUWOQM+TimesNewRomanPS-BoldMT": {
+      "format": "ttf",
+      "embedded": true
+    },
     "WEGTXO+TimesNewRomanPSMT": {
       "format": "ttf",
       "embedded": true
     },
     "DIRUKW+DejaVuSans-Oblique": {
       "format": "ttf",
+      "embedded": true
+    },
+    "NYLJZF+CMR7": {
+      "format": "cff",
+      "embedded": true
+    },
+    "OSZELY+CMSY7": {
+      "format": "cff",
       "embedded": true
     },
     "DMHJTZ+TimesNewRomanPSMT": {
@@ -136,6 +168,10 @@
       "format": "ttf",
       "embedded": true
     },
+    "MNUOMH+CMMI7": {
+      "format": "cff",
+      "embedded": true
+    },
     "HYYHOH+TimesNewRomanPSMT": {
       "format": "ttf",
       "embedded": true
@@ -148,7 +184,7 @@
       "format": "ttf",
       "embedded": true
     },
-    "RKGDNU+TimesNewRomanPS-ItalicMT": {
+    "CIPDCT+TimesNewRomanPS-ItalicMT": {
       "format": "ttf",
       "embedded": true
     },
@@ -156,28 +192,28 @@
       "format": "ttf",
       "embedded": true
     },
-    "CGHMPJ+LMMono12-Regular-Identity-H": {
+    "YUAASH+LMMono12-Regular-Identity-H": {
       "format": "cid",
       "embedded": true
     },
-    "KXUPZW+LMMono10-Regular-Identity-H": {
+    "RPYBNW+LMMono10-Regular-Identity-H": {
       "format": "cid",
       "embedded": true
     },
-    "UVROEH+LMMonoLt10-Bold-Identity-H": {
+    "BIRZKI+LMMonoLt10-Bold-Identity-H": {
       "format": "cid",
       "embedded": true
     },
-    "KLUGJJ+LMMono10-Italic-Identity-H": {
+    "YNZXCQ+LMMono10-Italic-Identity-H": {
       "format": "cid",
       "embedded": true
     }
   },
   "has_eight_chapters": true,
   "no_unresolved_references": true,
-  "no_old_results": false,
+  "no_old_results": true,
   "fifth_chapter_pending": true,
   "workflow_border_removed": true,
   "workflow_body_font_pt": 12.0,
-  "all_passed": false
+  "all_passed": true
 }

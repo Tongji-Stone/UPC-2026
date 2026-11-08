@@ -101,8 +101,8 @@ $\boldsymbol Q,I_b$ & 阻尼力矩与转动惯量（第六章） & N\,m; kg\,m$^
 通过选择纳入的气动力项，同一组牛顿运动方程可形成四类模型。以下先描述几何关系，再将受力与周围流动和球体自旋联系起来。
 \subsection{几何与球门平面}
 局部坐标原点位于名义点球点，$x$ 朝向球门，$y$ 水平横向，$z$ 竖直向上。球门平面为 $x=11$ m，开口为 $-3.66\le y\le3.66$ m、$0\le z\le2.44$ m。实测球场中心坐标的转换见第~\ref{sec:inverse} 节。
-\begin{figure}[H]\centering\includegraphics[width=0.94\textwidth]{geometry.pdf}
-\caption{点球局部坐标几何。虚线及点 $P$ 表示示意交点。}\label{fig:geometry}\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=0.78\textwidth]{penalty_geometry_new.png}
+\caption{点球局部坐标几何；$O$ 为名义点球点，$C$ 为球门平面上的示意点。}\label{fig:geometry}\end{figure}
 当球心满足 $|y|\le3.66-R$、$R\le z\le2.44-R$ 时，足球可完整通过球门开口。下降球心到达 $z=R$ 时视为触地，所有模型统一采用此判据。
 
 \subsection{受力分析}
@@ -111,8 +111,27 @@ $\boldsymbol Q,I_b$ & 阻尼力矩与转动惯量（第六章） & N\,m; kg\,m$^
 \begin{equation}\boldsymbol F_g=-mg\boldsymbol e_z,\end{equation}
 其中 $\boldsymbol e_z$ 为竖直向上的单位向量。即使不计气动力，重力也会使轨迹向下弯曲。
 
+依据阿基米德原理，足球排开空气受到的浮力竖直向上。球体积为 $V_b=\frac43\pi R^3$，因而
+\begin{equation}
+\boldsymbol F_B=\rho V_b g\,\boldsymbol e_z
+=\frac43\pi R^3\rho g\,\boldsymbol e_z.
+\label{eq:buoyancy}\end{equation}
+浮力与重力合并后为 $\boldsymbol F_g+\boldsymbol F_B=-(m-\rho V_b)g\boldsymbol e_z$。对表中参考参数，浮力约为重力的 $1.56\%$，使竖直向下的有效加速度由 $g$ 变为 $g(1-\rho V_b/m)$。
+
+浮力量级为重力的 1.56\%，本文四类主模型在上述重力项下统一求解三力运动。
+
+图~\ref{fig:force-schematic} 从球体参考系说明相对气流和受力方向。右图取自旋轴垂直纸面向外的例子，力的方向由叉乘确定。
+\begin{figure}[H]\centering
+\includegraphics[width=.88\textwidth]{force_schematic.pdf}
+\caption{足球周围的相对气流及受力方向示意。$\odot$ 表示自旋轴指向纸面外；左图中的 $\boldsymbol u$ 是足球相对于空气的速度。}\label{fig:force-schematic}\end{figure}
+
 \subsubsection{空气阻力}\label{sec:drag}
-运动足球向尾流中的空气传递动量。通过面积 $A$ 的空气质量流率与 $\rho Av$ 成正比，速度变化量与 $v$ 同阶，因此气动力尺度为 $\rho Av^2$。引入动压 $q=\rho v^2/2$，得到常用阻力表达式\cite{goff2009,kiratidis2018}：
+在足球参考系中，远处空气的速度为 $-\boldsymbol u$。把球的最大截面近似为迎风圆盘，截面积为 $A=\pi R^2$。均匀来流从速度 $v$ 减缓至停滞时，伯努利关系给出停滞点与远处的压强差尺度
+\begin{equation}
+\Delta p_{\mathrm{stag}}=\tfrac12\rho v^2,\qquad
+F_{\mathrm{scale}}=\Delta p_{\mathrm{stag}}A=\tfrac12\rho Av^2.
+\label{eq:drag-scale}\end{equation}
+实际球面上的压强和黏性剪切应力随位置变化，故用无量纲阻力系数 $C_D$ 表示球面受力积分相对于这一尺度的比例。阻力方向与球相对空气的速度相反，因此得到\cite{goff2009,kiratidis2018}：
 \begin{equation}
 \boldsymbol F_D=-\tfrac12\rho A\alpha_D C_D(Re,Sp)v\boldsymbol u,
 \qquad \boldsymbol u=\boldsymbol v-\boldsymbol v_{\rm wind},\quad v=\|\boldsymbol u\|.
@@ -165,6 +184,12 @@ Asai 等\cite{asai2007} 在日本东海大学低速回流风洞中利用六分�
 \end{figure}
 
 \subsubsection{马格努斯升力}\label{sec:lift}
+
+图~\ref{fig:magnus-flow} 给出球体参考系中的定性流线。以图示自旋为例，上方球面运动与相对气流同向，下方则反向，旋转使两侧流动不对称，产生横向力。此图采用带环量的二维理想绕流绘制，用于说明方向。
+\begin{figure}[H]\centering
+\includegraphics[width=.78\textwidth]{magnus_streamlines.pdf}
+\caption{旋转足球周围的理想化相对流线。箭头表示相对气流、自旋与马格努斯力的方向；颜色表示此示意流场的相对速度大小。}\label{fig:magnus-flow}\end{figure}
+
 旋转改变球体两侧的流动，形成横向压力作用。采用与阻力相同的动压尺度，横向旋转时有 $F_L=qAC_L$\cite{goff2009,kiratidis2018}。对于三维旋转轴，本文采用
 \begin{equation}
 \begin{aligned}
@@ -174,6 +199,14 @@ Asai 等\cite{asai2007} 在日本东海大学低速回流风洞中利用六分�
 \end{aligned}\label{eq:lift-force}
 \end{equation}
 自旋为零、来流速度为零，或旋转轴与来流平行时，升力取零。
+
+当 $\omega>0$ 且 $v>0$ 时，将叉乘方向及夹角的定义代入式~\eqref{eq:lift-force}，可得到等价形式
+\begin{equation}
+\boldsymbol F_L=\tfrac12\rho A\alpha_L C_L(Re,Sp)\frac{v}{\omega}
+(\boldsymbol\omega\times\boldsymbol u).
+\label{eq:lift-cross}\end{equation}
+该形式直接显示升力垂直于自旋轴和相对速度。由于 $C_L$ 也随自旋变化，式中包含 $1/\omega$ 不代表零自旋时升力发散；零自旋或零相对速度时按零升力单独处理。
+
 \begin{enumerate}
 \item \textbf{动压与面积尺度\boldmath$\rho Av^2/2$。} 密度、迎风面积和速度的含义与阻力表达式相同。
 \item \textbf{马格努斯力方向\boldmath$\boldsymbol e_L$。} 该单位向量垂直于来流。上旋使轨迹向下弯曲，下旋使其向上弯曲，侧旋使其在水平方向偏转。
@@ -221,6 +254,15 @@ m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L,\\
 \dot{\boldsymbol\omega}&=\boldsymbol0.
 \end{aligned}\right.\label{eq:motion}
 \end{equation}
+将阻力和式~\eqref{eq:lift-cross} 代入牛顿第二定律，可得便于数值积分的三维分量。定义 $k_D=\rho A\alpha_D C_Dv/(2m)$，并令 $k_L=\rho A\alpha_L C_Lv/(2m\omega)$。在 $\omega>0$ 且 $v>0$ 时，
+\begin{equation}
+\begin{aligned}
+\dot v_x&=-k_Du_x+k_L(\omega_yu_z-\omega_zu_y),\\
+\dot v_y&=-k_Du_y+k_L(\omega_zu_x-\omega_xu_z),\\
+\dot v_z&=-g-k_Du_z+k_L(\omega_xu_y-\omega_yu_x).
+\end{aligned}\label{eq:motion-components}\end{equation}
+积分时同时使用 $\dot{\boldsymbol r}=\boldsymbol v$；当自旋或相对速度为零时，直接令升力分量为零。
+
 相应初始条件为
 \begin{equation}
 \left\{\begin{aligned}
@@ -231,6 +273,9 @@ m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L,\\
 \end{equation}
 已知初始位置确定飞行起点，三个初速度分量与三个自旋分量描述初始运动。在静止空气中，阻力消耗机械能，马格努斯力沿速度方向不做功，重力使动能与势能相互转换。
 
+
+
+
 \input{sections/model_solving.tex}
 
 \section{灵敏性分析}\label{sec:sensitivity}
@@ -240,6 +285,19 @@ m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L,\\
 主模型突出重力、阻力和马格努斯升力，以下分析其在几何、自旋演化和环境来流中省略的因素。
 \subsection{足球表面的非对称几何}\label{sec:surface}
 Paudel 和 Yan\cite{paudel} 利用真实足球几何进行全程流动模拟，并与光滑球比较。在初速度 10、15、20 m/s，自旋 31.5、63、94.5 rad/s 的工况下，接缝和表面结构会改变流动分离、尾流演化及马格努斯力。九组对照中光滑球的横向弯曲均更强，较高速度和转速下竖直飞行时间的差异也更明显。
+
+\begin{figure}[H]\centering\includegraphics[width=.60\textwidth]{surface_comparison.png}
+\caption{有面板接缝的足球与光滑球体示意图，参考 Paudel 和 Yan 的比较\cite{paudel}；原研究中两球直径均为 0.22 m、质量均为 0.436 kg。图中面板形状仅作示意。}\label{fig:surface-geometry}\end{figure}
+
+Alam 等\cite{alam2012} 测量了六种足球及光滑球在不同雷诺数下的阻力系数。图~\ref{fig:alam-surfaces} 展示这些足球的球片和表面纹理，图~\ref{fig:alam-drag} 给出对应的阻力系数对比；不同表面结构的阻力变化体现了球型对气动力的影响。
+
+\begin{figure}[H]\centering
+\includegraphics[width=.86\textwidth]{alam_ball_surfaces.png}
+\caption{六种足球及其表面细节，原图为 Alam 等\cite{alam2012} 的图 1--3。}\label{fig:alam-surfaces}\end{figure}
+
+\begin{figure}[H]\centering
+\includegraphics[width=.76\textwidth]{alam_drag_comparison.png}
+\caption{不同足球和光滑球的阻力系数随雷诺数变化，来源：Alam 等\cite{alam2012}，图 5。}\label{fig:alam-drag}\end{figure}
 
 本文的球形几何描述质心运动与迎风面积，气动力系数来自足球实验，因此表面的平均作用已进入 $C_D$、$C_L$。当侧向力细节更为重要时，可进一步描述面板朝向与非对称尾流波动。这些文献结果说明，在球形轨迹模型中保留足球专用气动系数具有物理依据。
 
@@ -318,6 +376,7 @@ I_b\dot{\boldsymbol\omega}&=-k_2\omega\boldsymbol\omega.
 \bibitem{grad2026} \L{}. Grad, K. M. Czajkowski and A. Varashylau, ``Physics-Based 3D Ball Trajectory Reconstruction from Monocular Soccer Video: A Multi-Model Benchmark,'' \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops}, 9940--9948, 2026. \href{https://openaccess.thecvf.com/content/CVPR2026W/CVsports/supplemental/Grad_Physics-Based_3D_Ball_CVPRW_2026_supplemental.pdf}{补充材料}, 第 8.4 节.
 \bibitem{mujoco381} MuJoCo developers, MuJoCo 3.8.1, ellipsoid fluid model, \texttt{mj\_viscousForces} in \texttt{src/engine/engine\_passive.c}. \href{https://github.com/google-deepmind/mujoco/blob/3.8.1/src/engine/engine_passive.c}{3.8.1 版源代码}; 默认旋转阻力： \href{https://mujoco.readthedocs.io/en/stable/XMLreference.html#body-geom-fluidcoef}{XML 参考，geom/fluidcoef}. 访问日期：2026 年 11 月 8 日。
 \bibitem{goff2009} J. E. Goff and M. J. Carr\'e, ``Trajectory analysis of a soccer ball,'' \emph{American Journal of Physics}, 77, 1020--1027, 2009. \url{https://doi.org/10.1119/1.3197187}.
+\bibitem{alam2012} F. Alam, H. Chowdhury, M. Stemmer, Z. Wang and J. Yang, ``Effects of surface structure on soccer ball aerodynamics,'' \emph{Procedia Engineering}, 34, 146--151, 2012. \url{https://doi.org/10.1016/j.proeng.2012.04.026}.
 \end{thebibliography}
 
 \newpage\addcontentsline{toc}{section}{复现代码}

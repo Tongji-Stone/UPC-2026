@@ -4,7 +4,7 @@
     "english_compile": {
       "passed": true,
       "warnings": [],
-      "pages": 28
+      "pages": 31
     },
     "english_references": {
       "passed": true
@@ -18,7 +18,7 @@
     "chinese_compile": {
       "passed": true,
       "warnings": [],
-      "pages": 26
+      "pages": 30
     },
     "chinese_references": {
       "passed": true
