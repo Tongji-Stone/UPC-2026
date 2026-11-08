@@ -205,7 +205,7 @@ def config_record(config):
     record.update(dynamic_viscosity=config.dynamic_viscosity,
                   moment_of_inertia=config.moment_of_inertia,
                   coefficient_callback='custom' if config.coefficients else 'model default',
-                  sources={'CD_CL': ('Kiratidis & Leinweber 2018 reference point; fixed constants' if config.coefficient_mode == 'constant' else 'Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1'),
+                  sources={'CD_CL': ('Fixed CD and linear CL=alpha*Sp, anchored to Kiratidis & Leinweber 2018 reference point' if config.coefficient_mode == 'linear_spin' else 'Kiratidis & Leinweber 2018 reference point; fixed constants' if config.coefficient_mode == 'constant' else 'Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1'),
                            'mass_radius_gravity':'Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2',
                            'torque':'Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid',
                            'angular_drag':'MuJoCo default 1.5, a declared reference setting',

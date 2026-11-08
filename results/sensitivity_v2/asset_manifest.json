@@ -1,0 +1,22 @@
+{
+  "fixed_mass_kg": 0.43,
+  "fixed_radius_m": 0.11,
+  "one_factor_parameters": 9,
+  "one_factor_runs": 369,
+  "monte_carlo_primary_count": 100000,
+  "monte_carlo_seed": 20261108,
+  "sources": {
+    "results/sensitivity_v2/comparison.csv": "19fa9d934a2c602fc7c5f35c6fe6aa82cd92c7dc263cae9a6b909823a275c7dd",
+    "results/sensitivity_v2/one_factor.csv": "d92437b12a1b5e8fca4698d05a6fa5a2645086bf6b6721906b8cff540858f13b",
+    "results/sensitivity_v2/refinement_summary.json": "54604d52b0ebb65d5a710da6484267d6692c56e04b47b42a83cfa1103d3238f0",
+    "results/sensitivity_v2/profile.csv": "020394dc4b439cf71dad3bb350d803fc475e1333a934a681b956ccc1cddce655",
+    "results/sensitivity_v2/extrema.csv": "b32fae942f4c8257ab493a762e34dbe130ec65d9a7dd377eda8889b19e8f3068",
+    "results/monte_carlo/summary.json": "17b5ef366080cf974263046b0e19bbb22e81ea9d28dd8fb7b5c109168ec0980d",
+    "results/monte_carlo/verification.json": "1dc6b8d98a65cc4b0af832343261afd1de2b687f36ddd060025f527cb8d2edb3",
+    "results/monte_carlo/samples.npz": "d6d509cfd898ffcaf02340e5057af8ff8031ca2ce7796846dd5f2e929c4ea8f9",
+    "results/monte_carlo/convergence.json": "a919e801b0e734279d34aec366fa4d660e4eecfae89683bf9775a78ed12314df",
+    "data/sensitivity_v2/parallel_display.json": "f5fddcfbdc990daf6e9e8c0365aced2d222ddead4cff6031189a2838d8c20148"
+  },
+  "policy": "Publication assets reuse reviewed computations; no refitting or new samples",
+  "provenance": "Saved deterministic M4 sensitivity and seeded Monte Carlo results"
+}

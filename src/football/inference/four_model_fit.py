@@ -51,7 +51,8 @@ def fit_early(times, positions, config, model, max_nfev=240, bounds=None):
             constant_acceleration=acceleration.tolist(), drag_scale=1., lift_scale=1.,
             rss_m2=0., max_residual_m=0., fitted_positions=p.tolist(), active_parameters=6,
             spin_representation='not used', starts=[], stages=[], success=True,
-            fit_bounds=asdict(bounds), selection='exact constant-acceleration interpolation')
+            fit_bounds=asdict(bounds), at_parameter_bound=False,
+            selection='exact constant-acceleration interpolation')
     if model == 'M1':
         offset = p[1:]-p[0] + np.c_[np.zeros(2), np.zeros(2), .5*config.gravity*dt**2]
         v = np.clip(np.sum(dt[:, None]*offset, axis=0)/np.sum(dt**2),

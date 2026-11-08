@@ -1,0 +1,63 @@
+{
+  "all_passed": true,
+  "checks": {
+    "english_compile": {
+      "passed": true,
+      "warnings": [],
+      "pages": 42
+    },
+    "english_references": {
+      "passed": true
+    },
+    "english_shared_figures": {
+      "passed": true
+    },
+    "english_removed_examples": {
+      "passed": true
+    },
+    "english_aggregate_table_removed": {
+      "passed": true
+    },
+    "english_per_event_tables": {
+      "passed": true
+    },
+    "english_new_time_statement": {
+      "passed": true
+    },
+    "chinese_compile": {
+      "passed": true,
+      "warnings": [],
+      "pages": 39
+    },
+    "chinese_references": {
+      "passed": true
+    },
+    "chinese_shared_figures": {
+      "passed": true
+    },
+    "chinese_removed_examples": {
+      "passed": true
+    },
+    "chinese_aggregate_table_removed": {
+      "passed": true
+    },
+    "chinese_per_event_tables": {
+      "passed": true
+    },
+    "chinese_new_time_statement": {
+      "passed": true
+    },
+    "song_hei_kai_fonts": {
+      "passed": true
+    },
+    "identical_equations": {
+      "passed": true
+    },
+    "identical_citations": {
+      "passed": true
+    },
+    "identical_table_numbers": {
+      "passed": true
+    }
+  }
+}

@@ -3,7 +3,7 @@ import json,re
 from pathlib import Path
 import pymupdf
 from PIL import Image,ImageDraw
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'results/structure_v2';QA=OUT/'qa'
+ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'results/current_report';QA=OUT/'qa'
 def main():
     QA.mkdir(exist_ok=True);doc=pymupdf.open(ROOT/'paper/main.pdf')
     text='\n'.join(p.get_text() for p in doc)
@@ -47,11 +47,11 @@ def main():
         has_eight_chapters=all(t in text for t in ['Introduction','Preparation of the Models','Model Establishment',
             'Model Solving','Sensitivity Analysis','Discussion of Other Factors','Conclusions','Model Evaluation']),
         no_unresolved_references='??' not in text,no_old_results=all(s not in text for s in ['600 samples','495 trajectories','Linthorne']),
-        fifth_chapter_pending='To be completed.' in text,
+        fifth_chapter_complete='To be completed.' not in text and 'Joint perturbations and Monte Carlo simulation' in text,
         workflow_border_removed='draw=wfBorder,dashed' not in (ROOT/'paper/assets/workflow_tikz.tex').read_text(),
-        workflow_body_font_pt=12.,unit_tests=json.loads((OUT/'unit_test_record.json').read_text()))
+        workflow_body_font_pt=12.)
     result['all_passed']=not warnings and not out_of_bounds and all(result[k] for k in
-        ['all_fonts_embedded','has_eight_chapters','no_unresolved_references','no_old_results','fifth_chapter_pending','workflow_border_removed'])
+        ['all_fonts_embedded','has_eight_chapters','no_unresolved_references','no_old_results','fifth_chapter_complete','workflow_border_removed'])
     (OUT/'pdf_verification.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
     print(json.dumps(dict(all_passed=result['all_passed'],pages=len(doc),warnings=warnings,bounds=len(out_of_bounds))))
     if not result['all_passed']:raise SystemExit(1)

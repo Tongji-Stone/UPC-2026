@@ -1,0 +1,130 @@
+{
+  "version": "current-report-three-penalties-v2-corrected-starts",
+  "fit_sample_ordinals": {
+    "J03WMX": [
+      3,
+      4,
+      5
+    ],
+    "J03WOH": [
+      2,
+      3,
+      4
+    ],
+    "J03WR9": [
+      2,
+      3,
+      4
+    ]
+  },
+  "position0_m": [
+    0,
+    0,
+    0.11
+  ],
+  "models": [
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "forward": [
+    {
+      "case": "power",
+      "speed_m_s": 27,
+      "elevation_deg": 8,
+      "spin_rad_s": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "case": "placement",
+      "speed_m_s": 20,
+      "elevation_deg": 11,
+      "spin_rad_s": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "case": "curved",
+      "speed_m_s": 24,
+      "elevation_deg": 10,
+      "spin_rad_s": [
+        0,
+        0,
+        35
+      ]
+    },
+    {
+      "case": "topspin",
+      "speed_m_s": 24,
+      "elevation_deg": 12,
+      "spin_rad_s": [
+        0,
+        35,
+        0
+      ]
+    },
+    {
+      "case": "backspin",
+      "speed_m_s": 24,
+      "elevation_deg": 12,
+      "spin_rad_s": [
+        0,
+        -35,
+        0
+      ]
+    },
+    {
+      "case": "chip",
+      "speed_m_s": 14,
+      "elevation_deg": 20,
+      "spin_rad_s": [
+        0,
+        -15,
+        0
+      ]
+    }
+  ],
+  "physics": {
+    "mass": 0.43,
+    "radius": 0.11,
+    "air_density": 1.2,
+    "kinematic_viscosity": 1.5e-05,
+    "gravity": 9.81
+  },
+  "inverse_bounds": {
+    "velocity_component_max_m_s": 35.0,
+    "spin_component_max_rad_s": 62.83185307179586,
+    "force_scale_min": 0.5,
+    "force_scale_max": 1.5
+  },
+  "fit": {
+    "max_nfev": 240,
+    "rss_allowance_m2": 6e-12,
+    "coefficient_allowance": 1e-08
+  },
+  "integration": {
+    "method": "DOP853",
+    "rtol": 1e-10,
+    "atol": 1e-12,
+    "max_step_s": 0.005,
+    "horizon_s": 5
+  },
+  "coordinates": {
+    "x": "X-41.5",
+    "y": "Y",
+    "z": "Z_original interpreted as metres and centre height",
+    "goal_x_m": 11
+  },
+  "parameter_role": "ball and air values are model reference settings, not per-ball measurements",
+  "original_file_sha256": {
+    "点球信息汇总.csv": "a890079fb7d0364e004bf93f8f4f666d6f3c4e6d35857b85a3a698879a665c56",
+    "完整位置采样.csv": "236b9a3acb00ed53b4e1d579b2480dd57c48fc45248bb4e277a7bc7df5d2be61",
+    "数据来源与必要说明.md": "daf5271d5dbdb47e36f624c8452d0a518833813da6a755b6d3ac0f34a357a721"
+  }
+}

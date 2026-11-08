@@ -1,0 +1,194 @@
+{
+  "source_fingerprint": "290a251d4f82debb432194ec279965552d5f67cb221a6dc4cb199f73ad6e1c2c",
+  "record": {
+    "case": "J03WR9",
+    "model": "M1",
+    "status": "plane",
+    "fit_converged": true,
+    "physical_fit_interval": true,
+    "event": {
+      "type": "plane",
+      "time": 0.3503676470588228,
+      "position": [
+        11.0,
+        3.6082720588235278,
+        0.5749743296658746
+      ],
+      "velocity": [
+        27.200000000000024,
+        8.9,
+        -0.7339466176470496
+      ],
+      "spin": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "early_max_residual_m": 0.012000000000000899,
+    "early_rss_m2": 0.00031813688320002565,
+    "initial_state": [
+      27.200000000000024,
+      8.9,
+      2.7031599999999996,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "drag_scale": 1.0,
+    "lift_scale": 1.0,
+    "future_sample_count": 6,
+    "future_rmse_3d_m": 0.36564647623130975,
+    "goal_error_m": 0.5495896489855783,
+    "goal_time_error_s": -0.01917780748663178,
+    "scored_goal_error_m": 0.5495896489855783,
+    "at_parameter_bound": false,
+    "constant_acceleration": null,
+    "fitted_cd": null,
+    "fitted_alpha": null
+  },
+  "fit": {
+    "model": "M1",
+    "initial_state": [
+      27.200000000000024,
+      8.9,
+      2.7031599999999996,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "drag_scale": 1.0,
+    "lift_scale": 1.0,
+    "rss_m2": 0.00031813688320002565,
+    "max_residual_m": 0.012000000000000899,
+    "fitted_positions": [
+      [
+        1.4699999999999989,
+        0.49,
+        0.23
+      ],
+      [
+        2.5579999999999994,
+        0.8460000000000001,
+        0.33027839999999997
+      ],
+      [
+        3.646000000000001,
+        1.2020000000000004,
+        0.4148607999999999
+      ]
+    ],
+    "active_parameters": 3,
+    "spin_representation": "not used",
+    "coefficient_distance": 0.0,
+    "starts": [],
+    "stages": [],
+    "selection": "bounded gravity-only linear least squares",
+    "success": true,
+    "fit_bounds": {
+      "velocity_component_max_m_s": 35.0,
+      "spin_component_max_rad_s": 62.83185307179586,
+      "force_scale_min": 0.5,
+      "force_scale_max": 1.5
+    },
+    "at_parameter_bound": false
+  },
+  "fit_input": {
+    "times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "positions_m": [
+      [
+        1.4699999999999989,
+        0.49,
+        0.23
+      ],
+      [
+        2.5700000000000003,
+        0.85,
+        0.34
+      ],
+      [
+        3.6400000000000006,
+        1.2,
+        0.41
+      ]
+    ],
+    "frames": [
+      "176244",
+      "176245",
+      "176246"
+    ],
+    "sample_ordinals": [
+      2,
+      3,
+      4
+    ],
+    "time_origin_source_s": 0.04
+  },
+  "configuration": {
+    "mass": 0.43,
+    "radius": 0.11,
+    "air_density": 1.2,
+    "kinematic_viscosity": 1.5e-05,
+    "gravity": 9.81,
+    "drag_coefficient": 0.25,
+    "lift_coefficient": 0.2,
+    "drag_scale": 1.0,
+    "lift_scale": 1.0,
+    "coefficient_mode": "constant",
+    "constant_acceleration": null,
+    "use_gravity": true,
+    "use_drag": false,
+    "use_magnus": false,
+    "wind": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "spin_decay": 0.0,
+    "use_rotational_drag": false,
+    "use_viscous_torque": true,
+    "angular_drag_coefficient": 1.5,
+    "inertia_coefficient": 0.6666666666666666,
+    "model_id": "four-model-v2-M1",
+    "dynamic_viscosity": 1.8e-05,
+    "moment_of_inertia": 0.003468666666666666,
+    "coefficient_callback": "model default",
+    "sources": {
+      "CD_CL": "Kiratidis & Leinweber 2018 reference point; fixed constants",
+      "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+      "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+      "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+      "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+      "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+    },
+    "assumptions": [
+      "still air reference unless wind is supplied",
+      "constant spin unless rotational torque is enabled",
+      "isotropic thin shell",
+      "sin(theta) oblique-spin extension"
+    ]
+  },
+  "validation_target": {
+    "time_s": 0.36954545454545457,
+    "position": [
+      52.5,
+      3.0696590909090906,
+      0.46568181818181814
+    ],
+    "source": "linear interpolation",
+    "frames": [
+      "176253",
+      "176254"
+    ],
+    "source_time_s": 0.40954545454545455,
+    "local_position": [
+      11.0,
+      3.0696590909090906,
+      0.46568181818181814
+    ]
+  }
+}

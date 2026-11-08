@@ -1,0 +1,25 @@
+第四章通过给定初始条件和三次真实点球说明预测过程。本章沿用队友设计的单因素、受早期位置约束的参数扫描及联合蒙特卡洛结构，使用当前 M4 公式。题目观测为 $\boldsymbol r(0)=(0,0,0.11)$ m、$\boldsymbol r(0.05)=(1.50,0.45,0.44)$ m、$\boldsymbol r(0.10)=(2.96,0.86,0.74)$ m。质量与半径固定为 0.43 kg、0.11 m。
+
+参考反演状态取 $\boldsymbol v_0=(30.3784,9.4074,6.8974)$ m/s、$\boldsymbol\omega_0=(19.7434,1.2060,-22.5553)$ rad/s，$C_D=0.3623$、$\alpha=2.2877$；球门交点为 $(2.6159,1.9526)$ m，到达时间为 0.398967 s。角速度模长 30 rad/s 是选定的参考值，早期最大坐标残差约 0.000784 m，两个系数均位于反演上界。
+
+\subsection{单参数对飞行的影响}\label{sec:sensitivity-local}
+每次只改变一项，球速变化 $\pm5\%$，自旋大小、阻力系数、升力参数及空气密度各变化 $\pm10\%$，速度与旋转轴的方位角、仰角各变化 $\pm2^\circ$。每项取 41 个值，共 \SensitivityFixedRuns{} 条轨迹。表中比较方向变化 $\pm1^\circ$ 和其他参数变化 $\pm5\%$ 的交点位移与到达时间变化。
+\SensitivityOneFactorTable
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{one_factor_position_response.pdf}\caption{九项单参数对球门交点坐标的影响。}\label{fig:sensitivity-one-position}\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{one_factor_time_response.pdf}\caption{九项单参数对到达时间的影响；横轴归一化为各自扫描半宽。}\label{fig:sensitivity-one-time}\end{figure}
+自旋大小与 $\alpha$ 均以乘积进入马格努斯力；两者同方向同比例变化会增强该力，反向变化则可互相抵消。不同参数对应的数值响应见表和图。
+
+\subsection{早期位置约束下的交点变化}\label{sec:sensitivity-constrained}
+以参考系数 $C_D^*,\alpha^*$ 为尺度，在两个倍数各取 $[1.2,1.8]$ 的 $17\times17$ 网格，每个节点重新拟合初速度和自旋分量。要求总速度不超过 35 m/s、自旋分量绝对值不超过 60 rad/s，最大早期坐标残差不超过 0.002 m。内层范围为 $[1.35,1.65]^2$；所得是所扫描候选的范围。
+\SensitivityProfileTable
+较宽范围的候选相对参考交点最大位移为 \SensitivityConditionalShift\ m。
+\begin{figure}[H]\centering\includegraphics[width=.86\textwidth]{conditional_crossings.pdf}\caption{满足 2 mm 早期残差条件的扫描交点；颜色表示阻力系数倍数。}\label{fig:sensitivity-constrained}\end{figure}
+
+\subsection{联合扰动与蒙特卡洛模拟}\label{sec:sensitivity-mc}
+在单因素扫描的范围内独立均匀抽样九个参数，质量、半径和初始位置固定。用种子 \MCSeed{} 生成 \MCCount{} 条轨迹；这里发射状态和系数一起变化，不再强制匹配早期位置。
+\SensitivityMonteCarloTable
+交点均值为 $(\MCMeanY,\MCMeanZ)$ m，横向与高度标准差分别为 \MCStdY\ m、\MCStdZ\ m。依据球心净空判据，\MCClearCount{} 条（\MCClearPercent\%）可完整通过开口；其余 \MCOverCount{} 条超出上界。
+\begin{figure}[H]\centering\includegraphics[width=.96\textwidth]{monte_carlo_crossings.pdf}\caption{10 万次联合扰动的交点分布；椭圆覆盖 95\% 的模拟样本。}\label{fig:sensitivity-mc}\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{monte_carlo_parallel_coordinates.pdf}\caption{随机展示 400 条轨迹，连接九项输入和三个输出。}\label{fig:sensitivity-mc-parallel}\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=.96\textwidth]{monte_carlo_convergence.pdf}\caption{联合扰动样本量对交点分布的影响。}\label{fig:sensitivity-mc-convergence}\end{figure}
+积分采用四阶龙格--库塔法，并与自适应积分及步长减半结果比较。这里的比例和范围对应所设定的独立均匀扰动范围。

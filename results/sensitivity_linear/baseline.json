@@ -1,0 +1,118 @@
+{
+  "state": [
+    30.378416145444383,
+    9.407401486754244,
+    6.897403854543288,
+    19.743418594384465,
+    1.20601281800855,
+    -22.55533097273708
+  ],
+  "config": {
+    "mass": 0.43,
+    "radius": 0.11,
+    "rho": 1.2,
+    "nu": 1.5e-05,
+    "ad": 1.4999999999999998,
+    "al": 1.4999999999088134
+  },
+  "position": [
+    0.0,
+    0.0,
+    0.11
+  ],
+  "times": [
+    0.05,
+    0.1
+  ],
+  "observations": [
+    [
+      1.5,
+      0.45,
+      0.44
+    ],
+    [
+      2.96,
+      0.86,
+      0.74
+    ]
+  ],
+  "event": {
+    "event": "plane",
+    "y": 2.6159065106451926,
+    "z": 1.9525955601720943,
+    "t": 0.3989670112412276,
+    "end_x": 10.999999999999995,
+    "clear": true
+  },
+  "source": "results\\structure_linear_spin\\problem\\problem_b_M4.json",
+  "source_sha256": "b4b53989fd464e73603c5072a8042acd64737b475d441275291e7d12e54f5d8f",
+  "parameters": [
+    {
+      "key": "speed",
+      "label": "初速度大小",
+      "unit": "relative",
+      "comparison": 0.05
+    },
+    {
+      "key": "yaw",
+      "label": "初速度水平角",
+      "unit": "degree",
+      "comparison": 1.0
+    },
+    {
+      "key": "pitch",
+      "label": "初速度仰角",
+      "unit": "degree",
+      "comparison": 1.0
+    },
+    {
+      "key": "spin",
+      "label": "自旋大小",
+      "unit": "relative",
+      "comparison": 0.05
+    },
+    {
+      "key": "spin_yaw",
+      "label": "旋转轴方位角",
+      "unit": "degree",
+      "comparison": 1.0
+    },
+    {
+      "key": "spin_pitch",
+      "label": "旋转轴仰角",
+      "unit": "degree",
+      "comparison": 1.0
+    },
+    {
+      "key": "ad",
+      "label": "阻力修正系数",
+      "unit": "relative",
+      "comparison": 0.05
+    },
+    {
+      "key": "al",
+      "label": "升力修正系数",
+      "unit": "relative",
+      "comparison": 0.05
+    },
+    {
+      "key": "rho",
+      "label": "空气密度",
+      "unit": "relative",
+      "comparison": 0.05
+    }
+  ],
+  "choices": {
+    "profile_scales": [
+      1.2,
+      1.8
+    ],
+    "profile_grid": 17,
+    "total_spin_max": 200,
+    "total_speed_max": 35,
+    "residual_tolerance_m": 0.002,
+    "position_coordinates_exact": false,
+    "random_sampling": false,
+    "mass_radius_fixed": true
+  }
+}

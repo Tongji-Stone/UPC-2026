@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import Normalize
 from matplotlib.patches import Circle, FancyArrowPatch
 
-plt.rcParams.update({'font.family': 'Times New Roman', 'font.weight': 'bold',
+plt.rcParams.update({'pdf.fonttype':42,'font.family': 'Times New Roman', 'font.weight': 'bold',
                      'mathtext.fontset': 'custom', 'mathtext.rm': 'Times New Roman',
                      'mathtext.it': 'Times New Roman:italic',
                      'mathtext.bf': 'Times New Roman:bold', 'mathtext.default': 'bf'})
@@ -44,4 +44,3 @@ ax.set(xlim=(-3.7, 3.7), ylim=(-2.1, 2.1), aspect='equal')
 ax.axis('off')
 out=Path('paper/assets');out.mkdir(parents=True,exist_ok=True)
 fig.savefig(out/'magnus_streamlines.pdf', bbox_inches='tight', facecolor='white')
-fig.savefig(out/'magnus_streamlines.png', dpi=240, bbox_inches='tight', facecolor='white')

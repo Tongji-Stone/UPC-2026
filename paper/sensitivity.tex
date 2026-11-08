@@ -1,0 +1,25 @@
+We retain the individual-parameter, early-position-constrained and Monte Carlo structure for the current M4 equations. The reference observations are $(0,0,0.11)$ m at 0 s, $(1.50,0.45,0.44)$ m at 0.05 s, and $(2.96,0.86,0.74)$ m at 0.10 s. Mass and radius are fixed at 0.43 kg and 0.11 m.
+
+The fitted reference uses $\boldsymbol v_0=(30.3784,9.4074,6.8974)$ m/s, $\boldsymbol\omega_0=(19.7434,1.2060,-22.5553)$ rad/s, $C_D=0.3623$ and $\alpha=2.2877$. The crossing is $(2.6159,1.9526)$ m at 0.398967 s. The 30 rad/s spin magnitude is a reference setting; the maximum early-coordinate residual is 0.000784 m and both coefficients reach the fitted upper bounds.
+
+\subsection{Effects of individual parameters}\label{sec:sensitivity-local}
+One parameter changes at a time: speed by $\pm5\%$; spin magnitude, drag coefficient, lift parameter and air density by $\pm10\%$; velocity and spin-axis angles by $\pm2^\circ$. Each uses 41 values, totaling \SensitivityFixedRuns{} flights. The table compares $\pm1^\circ$ angles and $\pm5\%$ scalar changes.
+\SensitivityOneFactorTable
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{one_factor_position_response.pdf}\caption{Goal-plane coordinate responses to the nine individual parameters.}\label{fig:sensitivity-one-position}\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{one_factor_time_response.pdf}\caption{Arrival-time response, with perturbations normalized by each scan half-width.}\label{fig:sensitivity-one-time}\end{figure}
+Spin magnitude and $\alpha$ enter Magnus force as a product, so changes in opposite directions can compensate.
+
+\subsection{Crossing variation under early-position constraints}\label{sec:sensitivity-constrained}
+We scan a $17\times17$ grid of the two coefficient multipliers over $[1.2,1.8]^2$, refitting velocity and spin components at each node. Total speed is at most 35 m/s, individual spin components at most 60 rad/s in magnitude, and maximum early-coordinate residual at most 0.002 m. The inner range is $[1.35,1.65]^2$. Reported ranges describe the sampled feasible candidates.
+\SensitivityProfileTable
+The largest crossing displacement in the wider scan is \SensitivityConditionalShift\ m.
+\begin{figure}[H]\centering\includegraphics[width=.86\textwidth]{conditional_crossings.pdf}\caption{Scanned crossings with early residual at most 2 mm. Colour indicates the drag multiplier.}\label{fig:sensitivity-constrained}\end{figure}
+
+\subsection{Joint perturbations and Monte Carlo simulation}\label{sec:sensitivity-mc}
+Nine parameters are sampled independently and uniformly over the individual scan ranges, with mass, radius and initial position fixed. Seed \MCSeed{} generates \MCCount{} trajectories; the early positions are allowed to change.
+\SensitivityMonteCarloTable
+The crossing mean is $(\MCMeanY,\MCMeanZ)$ m and standard deviations are \MCStdY\ m and \MCStdZ\ m. Under the ball-centre clearance rule, \MCClearCount{} trajectories (\MCClearPercent\%) pass fully through the opening and \MCOverCount{} pass above it.
+\begin{figure}[H]\centering\includegraphics[width=.96\textwidth]{monte_carlo_crossings.pdf}\caption{Joint-perturbation crossings; the ellipse covers 95\% of simulated samples.}\label{fig:sensitivity-mc}\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{monte_carlo_parallel_coordinates.pdf}\caption{A random display of 400 flights connects the nine inputs to three outputs.}\label{fig:sensitivity-mc-parallel}\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=.96\textwidth]{monte_carlo_convergence.pdf}\caption{Effect of sample count on the simulated crossing distribution.}\label{fig:sensitivity-mc-convergence}\end{figure}
+Fourth-order Runge--Kutta integration is compared with adaptive integration and a halved step. These ranges and fractions correspond to the stated uniform sampling assumptions.

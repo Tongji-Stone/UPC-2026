@@ -1,114 +1,137 @@
-% Generated from results/structure_linear_spin; do not edit numerical values manually.
-\newcommand{\ProblemY}{2.616}
-\newcommand{\ProblemZ}{1.953}
-\newcommand{\ProblemTime}{0.3990}
-\newcommand{\ProblemAlphaD}{0.3623}
-\newcommand{\ProblemAlphaL}{2.2877}
-\newcommand{\ProblemSpin}{30.00}
-\newcommand{\ProblemResidual}{0.00078}
-\newcommand{\ProblemSpeedMin}{25.55}
-\newcommand{\ProblemSpeedMax}{32.54}
-\newcommand{\ProblemReMin}{3.75}
-\newcommand{\ProblemReMax}{4.77}
-\newcommand{\ProblemSpMin}{0.101}
-\newcommand{\ProblemSpMax}{0.129}
-\newcommand{\ProblemVX}{30.378}
-\newcommand{\ProblemVY}{9.407}
-\newcommand{\ProblemVZ}{6.897}
-\newcommand{\ProblemWX}{19.743}
-\newcommand{\ProblemWY}{1.206}
-\newcommand{\ProblemWZ}{-22.555}
+% Generated exclusively from results/current_report.
 \newcommand{\ReferenceCD}{0.2415}
 \newcommand{\ReferenceCL}{1.5251}
-\newcommand{\ForwardInitialTable}{\begin{table}[H]\centering\small
-\caption{按正文方法重建的受控正向算例初始条件。}\label{tab:forward-initial}
-\begin{tabular}{lrrrrr}\toprule
-发射 & $x_0$ (m) & $z_0$ (m) & $v_{x0}$ (m/s) & $v_{z0}$ (m/s) & $\omega_{y0}$ (rad/s)\\\midrule
-无旋转 & 0.0001 & 0.8501 & 16.689 & 6.743 & 0.00\\
-上旋 a & 0.0001 & 0.8499 & 16.825 & 7.366 & 82.57\\
-上旋 b & 0.0001 & 0.8499 & 18.194 & 6.810 & 44.56\\
-上旋 c & -0.0070 & 0.8526 & 17.383 & 8.188 & 125.16\\
-上旋 d & -0.0067 & 0.8500 & 18.770 & 10.863 & 47.75\\
-\bottomrule\end{tabular}\end{table}
-}
-\newcommand{\ForwardMFourRange}{20.656}
-\newcommand{\ForwardMFourError}{-1.244}
-\newcommand{\ForwardRangeTable}{\begin{table}[H]\centering\small
-\caption{无旋转受控发射的预测射程与带符号误差；文献实测射程为 21.9 m。}\label{tab:forward-range}
-\begin{tabular}{lrr}\toprule
-模型 & 射程（m） & 预测减去实测（m）\\\midrule
-M1 & 24.650 & +2.750\\
-M2 & 20.656 & -1.244\\
-M4 & 20.656 & -1.244\\
-\bottomrule\end{tabular}\end{table}
-}
-\newcommand{\ForwardSpinTable}{\begin{table}[H]\centering\small
-\caption{四组上旋片段在实测水平位置处的高度均方根误差（m）。}\label{tab:forward-spin}
-\begin{tabular}{lrrr}\toprule
-发射 & M1 & M2 & M4\\\midrule
-a & 0.0119 & 0.0118 & 0.0036\\
-b & 0.0396 & 0.0397 & 0.0480\\
-c & 0.0100 & 0.0100 & 0.0139\\
-d & 0.0171 & 0.0170 & 0.0069\\
-\bottomrule\end{tabular}\end{table}
-}
-\newcommand{\ProblemResultsTable}{\begin{table}[H]\centering\small
-\caption{题目给定观测的逆向预测；残差为早期坐标最大绝对差。}\label{tab:problem}
-\begin{tabular}{lrrrrrr}\toprule
-模型 & $C_D$ & $\alpha$ & 残差（m） & $y_g$ (m) & $z_g$ (m) & $t_g$ (s)\\\midrule
-M1 & --- & --- & 0.016 & 3.217 & 1.957 & 0.3706\\
-M2 & --- & --- & 0.011 & 3.217 & 1.883 & 0.4041\\
-M3 & --- & --- & 0 & 2.495 & 1.920 & 0.4050\\
-M4 & 0.3623 & 2.2877 & 0.00078 & 2.616 & 1.953 & 0.3990\\
-\bottomrule\end{tabular}\end{table}
-}
-\newcommand{\MatchResultsTable}{\begin{table}[H]\centering\small
-\caption{五组实测飞行与四类逆向模型的完整结果；误差为球门平面 $(y,z)$ 的欧氏距离。}\label{tab:match-results}
-\begin{tabular}{lllrr}\toprule
-事件 & 模型 & 终止状态 & 早期残差（m） & 交点误差（m）\\\midrule
-WOH 0487 （头球） & M1 & 到达平面 & 0.036 & 0.717\\
-WOH 0487 （头球） & M2 & 到达平面 & 0.0317 & 0.700\\
-WOH 0487 （头球） & M3 & 触地 & 0 & ---\\
-WOH 0487 （头球） & M4 & 到达平面 & 0.0313 & 1.392\\
-WOH 0606 （脚部） & M1 & 到达平面 & 0.0263 & 4.988\\
-WOH 0606 （脚部） & M2 & 触地 & 0.0283 & ---\\
-WOH 0606 （脚部） & M3 & time limit & 0 & ---\\
-WOH 0606 （脚部） & M4 & 到达平面 & 0.0228 & 8.815\\
-WOH 0968 （脚部） & M1 & 触地 & 0.124 & ---\\
-WOH 0968 （脚部） & M2 & 触地 & 0.125 & ---\\
-WOH 0968 （脚部） & M3 & 到达平面 & 0 & 1.083\\
-WOH 0968 （脚部） & M4 & 触地 & 0.121 & ---\\
-WQQ 1227 （头球） & M1 & 到达平面 & 0.18 & 2.785\\
-WQQ 1227 （头球） & M2 & 到达平面 & 0.178 & 2.860\\
-WQQ 1227 （头球） & M3 & 到达平面 & 0 & 13.528\\
-WQQ 1227 （头球） & M4 & 到达平面 & 0.174 & 3.700\\
-点球 & M1 & 到达平面 & 0.204 & 0.853\\
-点球 & M2 & 到达平面 & 0.206 & 0.856\\
-点球 & M3 & 到达平面 & 0 & 0.968\\
-点球 & M4 & 到达平面 & 0.207 & 0.207\\
-\bottomrule\end{tabular}\end{table}
-}
-\newcommand{\MatchAggregateTable}{\begin{table}[H]\centering\small
-\caption{到达球门平面算例的误差与各终止状态计数，逐事件误差见前表。}\label{tab:match-aggregate}
-\begin{tabular}{lrrrrr}\toprule
-模型 & 到达 & 触地 & 其他 & 拟合失败 & 平均误差（m）\\\midrule
-M1 & 4/5 & 1 & 0 & 0 & 2.336\\
-M2 & 3/5 & 2 & 0 & 0 & 1.472\\
-M3 & 3/5 & 1 & 1 & 0 & 5.193\\
-M4 & 4/5 & 1 & 0 & 0 & 3.529\\
-\bottomrule\end{tabular}\end{table}
-}
-\newcommand{\MatchDiscussion}{五组既有比赛飞行的逐事件误差和终止状态见上表。}
-\newcommand{\TorqueViscousRatio}{0.00041}
-\newcommand{\TorqueDisplacement}{0.039}
-\newcommand{\TorqueResults}{加入阻尼后，球门交点为 $(2.541,1.996)$ m，恒定自旋时为 $(2.683,1.959)$ m。交点位移为 0.147 m，占 11 m 飞行距离的 1.34\%；自旋减小 41.24\%，到达球门的时间变化为 $-1.60$\%。再加入较弱的黏性项后，阻尼交点变化为 $6.5\times10^{-6}$ m。因此，该参考力矩明显改变自旋，同时使短程飞行终点发生较小而可量化的变化。}
-\newcommand{\WindResultsTable}{\begin{table}[H]\centering\small
-\caption{反演初速度下的示例风速估算；百分比表示气动系数固定时的动压变化。}\label{tab:wind}
-\begin{tabular}{rrrrr}\toprule
-$w$ (m/s) & 逆风（\%） & 顺风（\%） & 横风（\%） & 来流夹角（$^\circ$）\\\midrule
-1 & +6.24 & -6.05 & +0.09 & 1.76\\
-3 & +19.29 & -17.59 & +0.85 & 5.27\\
-5 & +33.09 & -28.37 & +2.36 & 8.74\\
-\bottomrule\end{tabular}\end{table}
-}
-\newcommand{\WindThreshold}{0.80}
+\newcommand{\ForwardReMin}{2.05}
+\newcommand{\ForwardReMax}{3.96}
+\newcommand{\ForwardInputsTable}{\begin{table}[H]\centering\footnotesize
+\caption{自设初始条件。}\label{tab:forward-inputs}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{lrrl}\toprule
+踢法 & $v_0$ (m/s) & $\beta$ ($^\circ$) & $\boldsymbol\omega_0$ (rad/s)\\\midrule
+大力射门 & 27 & 8 & $(0,0,0)$\\
+推射 & 20 & 11 & $(0,0,0)$\\
+弧线球 & 24 & 10 & $(0,0,35)$\\
+上旋 & 24 & 12 & $(0,35,0)$\\
+下旋 & 24 & 12 & $(0,-35,0)$\\
+挑射 & 14 & 20 & $(0,-15,0)$\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\ForwardOutcomesTable}{\begin{table}[H]\centering\footnotesize
+\caption{24 次飞行的首次球门平面或触地终点。}\label{tab:forward-outcomes}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{lllrrrr}\toprule
+踢法 & 模型 & 终止 & $x$ (m) & $y$ (m) & $z$ (m) & $t$ (s)\\\midrule
+大力射门 & M1 & 球门 & 11.000 & 0.000 & 0.826 & 0.4114\\
+大力射门 & M2 & 球门 & 11.000 & 0.000 & 0.741 & 0.4420\\
+大力射门 & M3 & 球门 & 11.000 & 0.000 & 0.681 & 0.4458\\
+大力射门 & M4 & 球门 & 11.000 & 0.000 & 0.741 & 0.4420\\
+推射 & M1 & 球门 & 11.000 & 0.000 & 0.708 & 0.5603\\
+推射 & M2 & 球门 & 11.000 & 0.000 & 0.551 & 0.6020\\
+推射 & M3 & 球门 & 11.000 & 0.000 & 0.437 & 0.6076\\
+推射 & M4 & 球门 & 11.000 & 0.000 & 0.551 & 0.6020\\
+弧线球 & M1 & 球门 & 11.000 & 0.000 & 0.987 & 0.4654\\
+弧线球 & M2 & 球门 & 11.000 & 0.000 & 0.879 & 0.5000\\
+弧线球 & M3 & 球门 & 11.000 & 0.937 & 0.801 & 0.5045\\
+弧线球 & M4 & 球门 & 11.000 & 0.841 & 0.877 & 0.5022\\
+上旋 & M1 & 球门 & 11.000 & 0.000 & 1.371 & 0.4686\\
+上旋 & M2 & 球门 & 11.000 & 0.000 & 1.261 & 0.5036\\
+上旋 & M3 & 球门 & 11.000 & 0.000 & 0.279 & 0.4986\\
+上旋 & M4 & 球门 & 11.000 & 0.000 & 0.426 & 0.5001\\
+下旋 & M1 & 球门 & 11.000 & 0.000 & 1.371 & 0.4686\\
+下旋 & M2 & 球门 & 11.000 & 0.000 & 1.261 & 0.5036\\
+下旋 & M3 & 球门 & 11.000 & 0.000 & 2.156 & 0.5189\\
+下旋 & M4 & 球门 & 11.000 & 0.000 & 2.118 & 0.5117\\
+挑射 & M1 & 球门 & 11.000 & 0.000 & 0.684 & 0.8361\\
+挑射 & M2 & 球门 & 11.000 & 0.000 & 0.328 & 0.8994\\
+挑射 & M3 & 球门 & 11.000 & 0.000 & 0.688 & 0.9360\\
+挑射 & M4 & 球门 & 11.000 & 0.000 & 0.941 & 0.9089\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\CurvedY}{0.8415}
+\newcommand{\CurvedZ}{0.8769}
+\newcommand{\CurvedTime}{0.5022}
+\newcommand{\CurvedVX}{23.6354}
+\newcommand{\CurvedVZ}{4.1676}
+\newcommand{\PenaltyInputsTable}{\begin{table}[H]\centering\footnotesize
+\caption{原始帧数、反演时刻与实测局部起点。}\label{tab:penalty-inputs}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{lrrl}\toprule
+事件 & 帧数 & 反演时刻 (s) & $\boldsymbol r_0$ (m)\\\midrule
+J03WMX & 15 & 0.00,0.04,0.08 & $(3.04,0.55,0.13)$\\
+J03WOH & 12 & 0.00,0.04,0.08 & $(0.77,0.08,0.24)$\\
+J03WR9 & 12 & 0.00,0.04,0.08 & $(1.47,0.49,0.23)$\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\InverseBoundsTable}{\begin{table}[H]\centering\footnotesize
+\caption{反演分量边界与气动力修正设定。}\label{tab:inverse-bounds}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{ll}\toprule
+物理量 & 搜索区间\\\midrule
+$v_{x0}$ (M1, M2, M4) & $[0,35]$ m/s\\
+$v_{y0},v_{z0}$ (M1, M2, M4) & $[-35,35]$ m/s\\
+$\|\boldsymbol\omega_0\|$ (M4) & $30$ rad/s\\
+方位角、仰角 (M4) & $[-\pi,\pi],[-\pi/2,\pi/2]$ rad\\
+$C_D/C_D^*,\alpha/\alpha^*$ & $[0.5,1.5]$\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WMXMeasuredTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WMX：三个实测拟合点与实测球门交点（源帧直接记录）。}\label{tab:measured-J03WMX}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrr}\toprule
+点 & 源帧号 & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+$P_0$ & 152602 & 0.00 & 3.040 & 0.550 & 0.130\\
+$P_1$ & 152603 & 0.04 & 4.190 & 0.820 & 0.150\\
+$P_2$ & 152604 & 0.08 & 5.250 & 1.070 & 0.180\\
+球门 & 152610 & 0.3200 & 11.000 & 2.7500 & 0.1600\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WMXPredictedTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WMX：反演初始状态与预测球门交点。M4 使用 30 rad/s 参考自旋大小；M1--M3 不反演自旋。}\label{tab:predicted-J03WMX}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrccr}\toprule
+模型 & 状态 & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & 自旋 & $d_g$ (m)\\\midrule
+M1 & 触地 & --- & --- & $\begin{pmatrix}27.850\\6.550\\0.953\end{pmatrix}$ & --- & ---\\
+M2 & 触地 & --- & --- & $\begin{pmatrix}28.411\\6.682\\0.967\end{pmatrix}$ & --- & ---\\
+M3 & 时间上限 & --- & --- & $\begin{pmatrix}29.875\\7.000\\0.375\end{pmatrix}$ & --- & ---\\
+M4 & 平面 & 2.4377 & 0.3390 & $\begin{pmatrix}28.423\\6.667\\0.551\end{pmatrix}$ & $\begin{pmatrix}6.839\\-29.184\\1.239\end{pmatrix}$ & 0.3600\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WMXDiscussion}{实测低空飞行中，升力影响足球能否持续保持在草地上方。 M4 的交点偏离距离为 0.3600 m。 M1、M2 在球门前触地。}
+\newcommand{\WOHMeasuredTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WOH：三个实测拟合点与实测球门交点（帧间线性插值）。}\label{tab:measured-J03WOH}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrr}\toprule
+点 & 源帧号 & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+$P_0$ & 128955 & 0.00 & 0.770 & 0.080 & 0.240\\
+$P_1$ & 128956 & 0.04 & 1.990 & 0.340 & 0.460\\
+$P_2$ & 128957 & 0.08 & 3.180 & 0.620 & 0.650\\
+球门 & 128964--128965 & 0.3643 & 11.000 & 2.9188 & 1.1789\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WOHPredictedTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WOH：反演初始状态与预测球门交点。M4 使用 30 rad/s 参考自旋大小；M1--M3 不反演自旋。}\label{tab:predicted-J03WOH}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrccr}\toprule
+模型 & 状态 & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & 自旋 & $d_g$ (m)\\\midrule
+M1 & 平面 & 2.3496 & 1.5583 & $\begin{pmatrix}30.200\\6.700\\5.553\end{pmatrix}$ & --- & 0.6841\\
+M2 & 平面 & 2.3494 & 1.5059 & $\begin{pmatrix}30.794\\6.831\\5.658\end{pmatrix}$ & --- & 0.6567\\
+M3 & 平面 & 3.2890 & 1.1262 & $\begin{pmatrix}30.875\\6.250\\5.875\end{pmatrix}$ & --- & 0.3739\\
+M4 & 平面 & 2.9344 & 1.2906 & $\begin{pmatrix}30.857\\6.408\\5.819\end{pmatrix}$ & $\begin{pmatrix}-6.829\\9.510\\27.621\end{pmatrix}$ & 0.1127\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WOHDiscussion}{实测上升弧线体现了初始竖直速度，以及重力和升力对后续路径的共同作用。 M4 的交点偏离距离为 0.1127 m。}
+\newcommand{\WRMeasuredTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WR9：三个实测拟合点与实测球门交点（帧间线性插值）。}\label{tab:measured-J03WR9}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrr}\toprule
+点 & 源帧号 & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+$P_0$ & 176244 & 0.00 & 1.470 & 0.490 & 0.230\\
+$P_1$ & 176245 & 0.04 & 2.570 & 0.850 & 0.340\\
+$P_2$ & 176246 & 0.08 & 3.640 & 1.200 & 0.410\\
+球门 & 176253--176254 & 0.3695 & 11.000 & 3.0697 & 0.4657\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WRPredictedTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WR9：反演初始状态与预测球门交点。M4 使用 30 rad/s 参考自旋大小；M1--M3 不反演自旋。}\label{tab:predicted-J03WR9}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrccr}\toprule
+模型 & 状态 & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & 自旋 & $d_g$ (m)\\\midrule
+M1 & 平面 & 3.6083 & 0.5750 & $\begin{pmatrix}27.200\\8.900\\2.703\end{pmatrix}$ & --- & 0.5496\\
+M2 & 平面 & 3.6083 & 0.5147 & $\begin{pmatrix}27.747\\9.079\\2.753\end{pmatrix}$ & --- & 0.5408\\
+M3 & 触地 & --- & --- & $\begin{pmatrix}27.875\\9.125\\3.250\end{pmatrix}$ & --- & ---\\
+M4 & 触地 & --- & --- & $\begin{pmatrix}27.711\\9.071\\3.170\end{pmatrix}$ & $\begin{pmatrix}-9.311\\28.518\\-0.241\end{pmatrix}$ & ---\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WRDiscussion}{实测路径具有明显横向运动，拟合自旋方向影响了朝向球门的后续轨迹。 M4 在 $x=9.917$ m 触地。 M3、M4 在球门前触地。}
+\newcommand{\TorqueViscousRatio}{$3.54\times10^{-4}$}
+\newcommand{\TorqueDisplacement}{0.0616}
+\newcommand{\TorqueResults}{阻尼交点为 $(0.7799,0.8772)$ m，恒定自旋为 $(0.8415,0.8769)$ m。位移为 0.0616 m，占 11 m 的 0.560\%。自旋降低 19.740\%，到达时间变化 -0.066\%。再加入黏性力矩使阻尼交点改变 2.1e-05 m。短程交点的变化小于自旋幅值的变化。}
+\newcommand{\WindResultsTable}{\begin{table}[H]\centering\footnotesize
+\caption{24 m/s 弧线球初速下的示例风况：固定系数时的动压变化。}\label{tab:wind}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{rrrrr}\toprule
+$w$ (m/s) & 逆风 (\%) & 顺风 (\%) & 侧风 (\%) & 偏角 ($^\circ$)\\\midrule
+1 & +8.51 & -8.16 & +0.17 & 2.39\\
+3 & +26.56 & -23.44 & +1.56 & 7.13\\
+5 & +46.01 & -37.33 & +4.34 & 11.77\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WindThreshold}{0.59}

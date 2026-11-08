@@ -1,50 +1,58 @@
-"""Physical, traceability and numerical checks for the restructured report."""
-import csv,json,hashlib
-from pathlib import Path
-from dataclasses import replace
+"""Audit source frames, selection states, physical endpoints and convergence."""
+import hashlib
 import numpy as np
-from football.physics import PhysicsConfig,simulate,state_derivative,forces
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'results/structure_v2'
-def read(p):return json.loads(p.read_text(encoding='utf-8'))
+from football.reporting import ROOT,DATA,OUT,MODELS,read_json,read_csv,save_json,fingerprint
+from football.physics import PhysicsConfig,simulate
+from football.physics.integration import observed_trajectory
+
 def main():
-    checks={};a=read(OUT/'problem/problem_b_M4.json');r=a['record'];state=np.array(r['initial_state'])
-    cfg=PhysicsConfig.for_model('M4',**read(ROOT/'data/report_v2/problem_b.json')['physics'])
-    cfg=replace(cfg,drag_scale=r['drag_scale'],lift_scale=r['lift_scale'])
-    f=[]
-    for step,rtol,atol in [(.01,1e-10,1e-12),(.0025,1e-12,1e-14)]:
-        f.append(simulate(a['input']['positions_m'][0],state[:3],state[3:],cfg,
-            t_span=(0,3),plane_x=11,rtol=rtol,atol=atol,max_step=step))
-    delta=float(np.linalg.norm(f[0].event['position']-f[1].event['position']))
-    checks['goal_convergence']=dict(passed=delta<1e-6,difference_m=delta)
-    loss=np.sum(f[0].forces['drag']*f[0].velocity,axis=1)
-    lift=np.sum(f[0].forces['magnus']*f[0].velocity,axis=1)
-    checks['drag_dissipation']=dict(passed=bool(np.max(loss)<=1e-10),max_power_W=float(np.max(loss)))
-    checks['magnus_work']=dict(passed=bool(np.max(abs(lift))<1e-10),max_absolute_power_W=float(np.max(abs(lift))))
-    checks['constant_spin']=dict(passed=bool(np.max(abs(f[0].spin-state[3:]))<1e-12))
-    checks['shared_rhs']=dict(passed=True,forward='football.physics.model.state_derivative',
-        inverse='coupled_fit.observed_trajectory -> same state_derivative',force_scales=[r['drag_scale'],r['lift_scale']])
-    for model in ['M1','M2','M3','M4']:
-        c=PhysicsConfig.for_model(model)
-        checks[model+'_hierarchy']=dict(passed=not c.use_rotational_drag and c.spin_decay==0,
-            gravity=c.use_gravity,drag=c.use_drag,lift=c.use_magnus,coefficient_mode=c.coefficient_mode)
-    checks['previous_coupled_results_preserved']=dict(passed=all((ROOT/p).exists() and
-        hashlib.sha256((ROOT/p).read_bytes()).hexdigest()==h for p,h in read(OUT/'previous_results_hashes.json').items()))
-    for case in read(ROOT/'data/report_v2/match_cases.json'):
-        for model in ['M1','M2','M3','M4']:
-            record=read(OUT/f"matches/{case['case']}_{model}.json")
-            good=('input' not in record or
-                  (record['input']['times_s']==case['times_s'][:3] and
-                   np.allclose(record['input']['positions_m'],case['positions_m'][:3])))
-            checks[f"early_only_{case['case']}_{model}"]=dict(passed=bool(good))
-    # Count the two unique data series from the independently generated coefficient source CSV.
-    checks['coefficient_comparisons']=dict(passed=(ROOT/'paper/aerodynamics/cd_comparison.pdf').exists()
-        and (ROOT/'paper/aerodynamics/cl_comparison.pdf').exists(),curves_per_figure=2,
-        references='Kiratidis-Leinweber complete relation; five Asai measured points at Re455172')
-    source=(ROOT/'paper/main.tex').read_text(encoding='utf-8')
-    checks['eight_report_sections']=dict(passed=source.count('\\section{')==8)
-    checks['fifth_chapter_pending']=dict(passed='\\textit{To be completed.}' in source)
-    result=dict(all_passed=all(r['passed'] for r in checks.values()),checks=checks)
-    (OUT/'verification.json').write_text(json.dumps(result,indent=2,ensure_ascii=False),encoding='utf-8')
-    print(json.dumps(dict(all_passed=result['all_passed'],checks=len(checks),goal_convergence_m=delta)))
-    if not result['all_passed']:raise SystemExit(1)
+    data=read_json(DATA/'inputs.json');checks={}
+    def check(name,ok,**details):checks[name]=dict(passed=bool(ok),**details)
+    check('39_original_frames',sum(len(c['samples']) for c in data['cases'])==39)
+    for name,h in data['config']['original_file_sha256'].items():
+        check('source_'+name,hashlib.sha256((DATA/name).read_bytes()).hexdigest()==h)
+    forward=read_json(OUT/'forward/summary.json')['records'];inverse=read_json(OUT/'inverse/summary.json')['records']
+    check('24_forward_12_inverse',len(forward)==24 and len(inverse)==12)
+    for case in data['cases']:
+        name=case['case'];t=case['fit_times_s'];p=case['fit_positions_m']
+        check(name+'_selected_times',np.allclose(t,[0,.04,.08]))
+        expected={'J03WMX':[152602,152603,152604],'J03WOH':[128955,128956,128957],'J03WR9':[176244,176245,176246]}[name]
+        check(name+'_selected_source_frames',[int(f) for f in case['fit_frames']]==expected)
+        check(name+'_time_roundtrip',all(abs(r['time_s']+case['time_origin_source_s']-r['source_time_s'])<1e-10 for r in case['samples']))
+        check(name+'_goal_time_roundtrip',abs(case['goal']['time_s']+case['time_origin_source_s']-case['goal']['source_time_s'])<1e-10)
+        check(name+'_coordinate_roundtrip',all(abs(r['x_m']+41.5-r['X_m'])<1e-12 and r['y_m']==r['Y_m'] and r['z_m']==r['Z_original'] for r in case['samples']))
+        for m in MODELS:
+            a=read_json(OUT/f'inverse/{name}_{m}.json');r=a['record'];fit=a['fit'];key=name+'_'+m
+            check(key+'_fingerprint',a['source_fingerprint']==fingerprint())
+            check(key+'_only_early_input',np.array_equal(a['fit_input']['times_s'],t) and np.array_equal(a['fit_input']['positions_m'],p))
+            c=PhysicsConfig.for_model(m,**data['config']['physics'],drag_scale=r['drag_scale'],lift_scale=r['lift_scale'])
+            pred=observed_trajectory(t,p[0],r['initial_state'],c,rtol=1e-11,atol=1e-13)[:,:3]
+            check(key+'_saved_fit_matches_state',np.max(abs(pred-np.array(fit['fitted_positions'])))<1e-8)
+            check(key+'_parameter_count',fit['active_parameters']==dict(M1=3,M2=4,M3=7,M4=8)[m])
+            for i,stage in enumerate(fit['stages']):
+                if 'parameters' not in stage:continue
+                q=np.array(stage['parameters']);indices=[5,6] if m=='M3' else [6,7]
+                check(key+f'_selection_state_{i}',abs(np.sum((q[indices]-1)**2)-stage['coefficient_distance'])<1e-12)
+            trace=read_csv(OUT/f'inverse/{name}_{m}.csv');end=float(trace[-1]['time_s'])
+            check(key+'_fit_interval',r['physical_fit_interval']==(end>=t[-1]-1e-9))
+            check(key+'_fit_before_contact',r['physical_fit_interval'])
+            if r['event']['type']=='plane':
+                distance=np.linalg.norm(np.asarray(r['event']['position'])[1:]-np.asarray(case['goal']['local_position'])[1:])
+                check(key+'_goal_distance',abs(distance-r['goal_error_m'])<1e-12)
+            check(key+'_ground_truncation',r['event']['type']!='ground' or abs(float(trace[-1]['z_m'])-.11)<1e-8)
+            check(key+'_limit_marked',fit['success'] or r['status'] in ['fit_limit','early_contact'])
+            path=OUT/f'inverse/{name}_{m}_validation.csv';valid=read_csv(path) if path.exists() else []
+            check(key+'_heldout_only',len(valid)==r['future_sample_count'] and all(t[-1]<float(v['time_s'])<=min(end,case['goal']['time_s'])+1e-9 for v in valid))
+    check('WR9_repeated_frame_preserved',data['cases'][2]['samples'][1]['repeated']==1)
+    c=PhysicsConfig.for_model('M4');s=next(r['initial_state'] for r in forward if r['case']=='curved' and r['model']=='M4')
+    fs=[simulate([0,0,.11],s[:3],s[3:],c,plane_x=11,t_span=(0,5),rtol=tol,atol=tol/100,max_step=step) for tol,step in [(1e-10,.005),(1e-12,.0025)]]
+    delta=np.linalg.norm(fs[0].event['position']-fs[1].event['position'])
+    check('endpoint_convergence',delta<1e-7,difference_m=float(delta))
+    check('drag_dissipation',np.max(np.sum(fs[0].forces['drag']*fs[0].velocity,axis=1))<1e-10)
+    check('lift_no_work',np.max(abs(np.sum(fs[0].forces['magnus']*fs[0].velocity,axis=1)))<1e-10)
+    check('constant_spin',np.max(abs(fs[0].spin-np.array(s[3:])))<1e-12)
+    save_json(OUT/'verification.json',dict(all_passed=all(v['passed'] for v in checks.values()),checks=checks))
+    failed=[k for k,v in checks.items() if not v['passed']];print(dict(checks=len(checks),failed=failed))
+    if failed:raise SystemExit(1)
+
 if __name__=='__main__':main()

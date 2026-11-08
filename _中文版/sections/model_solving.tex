@@ -1,0 +1,98 @@
+\section{模型求解}\label{sec:solving}
+正向预测说明给定初始条件的足球在不同受力假设下如何运动；逆向预测利用三次真实点球的早期位置估计初始运动，再计算后续路径。两者统一采用式~\eqref{eq:motion} 和相同的四模型体系。
+\begin{table}[H]\centering\small\caption{四模型体系及实际反演量}\label{tab:models}
+\begin{tabular}{lll}\toprule
+模型 & 受力或运动假设 & 反演量\\\midrule
+M1 & 重力 & 初速度（3项）\\
+M2 & 重力、空气阻力 & 初速度、阻力系数（4项）\\
+M3 & 恒合力、匀加速度 & 初速度、加速度（6项）\\
+M4 & 重力、阻力、马格努斯力 & 初速度、旋转方向、$C_D$、$\alpha$（7项）\\\bottomrule
+\end{tabular}\end{table}
+M3 的恒合力包含重力及其他力的共同作用。M4 中 $C_D$ 和 $\alpha$ 固定于每次飞行，升力系数 $C_L=\alpha Sp$ 随运动变化。正向参考值为 $C_D^*=\ReferenceCD$、$\alpha^*=\ReferenceCL$，取自文献参考工况\cite{kiratidis2018}。
+
+\subsection{正向预测}\label{sec:forward}
+\subsubsection{自设初始条件与求解}
+表~\ref{tab:forward-inputs} 用六组初始条件表示五类射门：大力射门、推射、侧旋弧线球、成对的上旋与下旋，以及挑射。这些数值用于展示不同踢法的物理过程。M3 在每个正向案例取 M4 初始合力作为恒力；各算例均从 $\boldsymbol r_0=(0,0,0.11)$ m 出发，取
+\begin{equation}
+\boldsymbol v_0=v_0(\cos\beta,0,\sin\beta),\qquad \alpha_D=\alpha_L=1.
+\end{equation}
+上、下旋采用相同速度和仰角，直接比较旋转方向的作用。每组初始条件均用自适应龙格--库塔方法 DOP853 求解 M1--M4。$x-11$ 的前向零点确定球门交点，$z-R$ 的下降零点确定触地。相对和绝对积分容差分别为 $10^{-10}$、$10^{-12}$，最大时间步长为 0.005 s。表~\ref{tab:forward-outcomes} 汇总终点及时间。
+\ForwardInputsTable
+\ForwardOutcomesTable
+
+\subsubsection{案例一：大力射门}
+较高初速度缩短了重力使足球向下偏转的时间；阻力消耗前进动量，使到达球门的时间增加。无旋转时 M2 与 M4 的阻力相同；M3 保持初始合力不变。
+\begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_power.pdf}
+\caption{相同自设初始条件下 M1--M4 的大力射门轨迹，终点标记表示球门交点或触地。}\label{fig:case-power}\end{figure}
+
+\subsubsection{案例二：推射}
+较低初速度使重力有更长时间改变路径。不同阻力系数同时改变到达时间与交点高度，四模型的初始运动方向保持相同。
+\begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_placement.pdf}
+\caption{零自旋推射。M2 与 M4 在无旋转条件下采用相同阻力。}\label{fig:case-placement}\end{figure}
+
+\subsubsection{案例三：弧线球}
+竖直轴旋转产生水平马格努斯力。M1、M2 保持初始水平方向，M3 保持初始合力，M4 的马格努斯力随速度变化，两者均可形成侧向弯曲。M4 在 $\CurvedTime$ s 到达球门平面，交点为 $(\CurvedY,\CurvedZ)$ m。第~\ref{sec:rotation} 节也用该初始状态比较旋转阻尼。
+\begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_curved.pdf}
+\caption{侧旋使足球水平偏转，四模型采用相同速度、仰角和初始自旋。}\label{fig:case-curved}\end{figure}
+
+\subsubsection{案例四：上旋与下旋}
+改变 $\omega_y$ 的符号会反转竖直马格努斯力。上旋增强向下弯曲，下旋抵消部分重力下落并抬高路径。相同初速度和仰角使这种差别直接呈现，各模型的实际终止状态见表~\ref{tab:forward-outcomes}。
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{case_spin.pdf}
+\caption{同条件上、下旋对照，两图仅改变横向自旋的符号。}\label{fig:case-spin}\end{figure}
+
+\subsubsection{案例五：挑射}
+挑射结合较大仰角、较低速度和下旋。初始竖直速度形成弧线，重力、阻力及向上马格努斯力共同决定球门附近的剩余高度。较慢飞行使重力和气动力作用的时间增加。
+\begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_chip.pdf}
+\caption{自设挑射展示仰角、较慢来流与下旋的共同作用。}\label{fig:case-chip}\end{figure}
+
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{forward_dynamics.pdf}
+\caption{弧线球与上旋算例的速度、阻力和升力大小，各曲线截至该模型首次到达球门或触地。}\label{fig:forward-dynamics}\end{figure}
+受力曲线解释轨迹的形成：阻力减小球速，动压随之下降；即使系数恒定，$v^2$ 项仍使气动力变化。M4 的升力还与自旋和相对速度有关，自旋方向决定升力主要作用于侧向还是竖直方向。
+
+\subsection{三次真实点球的逆向预测}\label{sec:inverse}
+\subsubsection{测量背景、坐标与输入时刻}
+Sportec Open DFL 数据将比赛事件与 TRACAB Gen5 多相机光学追踪关联，采样频率为 25 Hz\cite{bassek,dataset}。本文采用 Dejan Ljubicic（J03WMX）、Dawid Igor Kownacki（J03WOH）及 Philipp Klement（J03WR9）的点球。所给 CSV 共保留 39 个源帧，三例分别为 15、12、12 帧。计算沿用发布位置，不另加观测噪声模型。
+
+源水平坐标以球场中心为原点，三例均朝向 $X=52.5$ m。为统一到题目的点球点坐标，采用
+\begin{equation}
+x=X-41.5,\qquad y=Y,\qquad z=Z_{\rm original},\qquad x_g=11\ \mathrm{m}.
+\label{eq:data-coordinates}\end{equation}
+名义点球点为水平原点，各次首个实测位置保留自身偏移。发布的 Z 原值按米及球心高度解释；质量、半径和空气参数采用第二章的模型参考设定，数据来源未给出逐球实测质量和半径。
+
+每次反演以所选起始源帧为 $t=0$。J03WMX 使用原序列第 3、4、5 个采样点，J03WOH 与 J03WR9 使用第 2、3、4 个点。三例相对拟合时刻均为 0、0.04、0.08 s，所选起点在原时间轴上分别为 0.08、0.04、0.04 s。表~\ref{tab:penalty-inputs} 列出新的实测起点。此前记录、重复帧和门线后记录均保留在原始 CSV；轨迹对照从所选起点开始，后续采样仅用于比较，窗口截至实测门线穿越。帧间交点采用线性插值，与实测帧分开标记。
+\PenaltyInputsTable
+
+\subsubsection{有界反演与选解}
+M3 使用三个位置直接解出恒加速度：
+\begin{equation}\boldsymbol r(t)=\boldsymbol r_0+\boldsymbol v_0t+\tfrac12\boldsymbol a t^2.\end{equation}
+M4 以初速度、旋转方向、$C_D$、$\alpha$ 为变量，最小化两个后续位置的平方误差。确定性六组初值的最小残差对应代表解；各参数范围列于表~\ref{tab:inverse-bounds}。
+\InverseBoundsTable
+马格努斯力包含乘积 $\alpha\boldsymbol\omega$，仅由位置不能分别唯一确定 $\alpha$ 和自旋大小。为选择代表解，令 $\|\boldsymbol\omega\|=30$ rad/s；三个初速度、两个方向角和两个系数共有七项，而两个后续位置提供六个坐标，因此结果仍受边界与选解条件影响。
+
+\subsubsection{预测曲线、反演状态与球门交点}
+以下分别列出每次点球的三个实测拟合点、实测球门交点，以及四模型反演的初速度、自旋信息和预测交点。M1--M3 不反演自旋；M4 给出角速度参考向量。预测交点与实测交点的偏离距离定义为
+\begin{equation}
+d_g=\sqrt{(y_{\rm pred}-y_{\rm obs})^2+(z_{\rm pred}-z_{\rm obs})^2}\quad\mathrm{m}.
+\label{eq:goal-deviation}\end{equation}
+偏离距离在模型自身穿越球门平面时计算。提前触地的模型列出终止状态，交点及偏离距离留为“---”。图中空心圆表示拟合输入，方形标记触地，星号标明迭代上限候选；所有模型均在首次触地时截断。
+
+\par\needspace{10\baselineskip}\noindent\textbf{J03WMX}\par
+\WMXMeasuredTable
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WMX.pdf}
+\caption{J03WMX：从更正起点开始的预测轨迹与实测采样对照，拟合输入相对时刻为 0、0.04、0.08 s。}\label{fig:penalty-J03WMX}\end{figure}
+\WMXPredictedTable
+\WMXDiscussion
+
+\par\needspace{10\baselineskip}\noindent\textbf{J03WOH}\par
+\WOHMeasuredTable
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WOH.pdf}
+\caption{J03WOH：从更正起点开始的预测轨迹与实测采样对照，拟合输入相对时刻为 0、0.04、0.08 s。}\label{fig:penalty-J03WOH}\end{figure}
+\WOHPredictedTable
+\WOHDiscussion
+
+\par\needspace{10\baselineskip}\noindent\textbf{J03WR9}\par
+\WRMeasuredTable
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WR9.pdf}
+\caption{J03WR9：从更正起点开始的预测轨迹与实测采样对照，拟合输入相对时刻为 0、0.04、0.08 s。}\label{fig:penalty-J03WR9}\end{figure}
+\WRPredictedTable
+\WRDiscussion

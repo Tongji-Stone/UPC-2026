@@ -4,7 +4,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle, Ellipse
 
-plt.rcParams.update({'font.family': 'Times New Roman', 'font.weight': 'bold',
+plt.rcParams.update({'pdf.fonttype':42,'font.family': 'Times New Roman', 'font.weight': 'bold',
                      'mathtext.fontset': 'custom', 'mathtext.rm': 'Times New Roman',
                      'mathtext.it': 'Times New Roman:italic',
                      'mathtext.bf': 'Times New Roman:bold', 'mathtext.default': 'bf'})
@@ -42,4 +42,3 @@ b.text(0, -1.55, r'(b) Example: spin out of the page', ha='center', fontsize=10)
 out = Path('paper/assets')
 out.mkdir(parents=True, exist_ok=True)
 fig.savefig(out/'force_schematic.pdf', bbox_inches='tight', facecolor='white')
-fig.savefig(out/'force_schematic.png', dpi=240, bbox_inches='tight', facecolor='white')

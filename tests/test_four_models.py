@@ -3,7 +3,7 @@ from dataclasses import replace
 import numpy as np
 from football.physics import PhysicsConfig,simulate,forces,state_derivative,rotational_torque
 from football.inference.four_model_fit import fit_early, InverseBounds
-from football.inference.coupled_fit import observed_trajectory
+from football.physics.integration import observed_trajectory
 
 class FourModelTests(unittest.TestCase):
     def test_inverse_bounds_on_all_models_and_custom_limits(self):
@@ -57,6 +57,19 @@ class FourModelTests(unittest.TestCase):
         r=fit_early(t,p,c,'M1')
         np.testing.assert_allclose(r['initial_state'][:3],s[:3],atol=1e-10)
         self.assertEqual(r['active_parameters'],3)
+
+    def test_nonuniform_times_and_early_ground(self):
+        c=PhysicsConfig.for_model('M1');t=np.array([0,.08,.12]);state=[25,2,-1,0,0,0]
+        p=observed_trajectory(t,[1.47,.49,.23],state,c)[:,:3]
+        r=fit_early(t,p,c,'M1')
+        np.testing.assert_allclose(r['initial_state'][:3],state[:3],atol=1e-10)
+        flight=simulate(p[0],r['initial_state'][:3],config=c,plane_x=11,t_span=(0,1))
+        self.assertEqual(flight.event['type'],'ground')
+        self.assertLess(flight.t[-1],t[-1])
+
+    def test_nonfinite_input_rejected(self):
+        c=PhysicsConfig.for_model('M1')
+        with self.assertRaises(ValueError):fit_early([0,.04,np.nan],np.zeros((3,3)),c,'M1')
 
     def test_constant_lift_axis_invariance(self):
         c=PhysicsConfig.for_model('M3')

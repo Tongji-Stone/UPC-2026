@@ -1,0 +1,52 @@
+% Generated from reviewed sensitivity data; keep mass and radius fixed.
+\newcommand{\SensitivityFixedRuns}{369}
+\newcommand{\SensitivityMaxDirection}{20.218}
+\newcommand{\SensitivityConditionalShift}{0.1052}
+\newcommand{\SensitivityConditionalResidual}{1.86\times10^{-3}}
+\newcommand{\MCCount}{100000}
+\newcommand{\MCSeed}{20261108}
+\newcommand{\MCMeanY}{2.6170}
+\newcommand{\MCMeanZ}{1.9511}
+\newcommand{\MCStdY}{0.2455}
+\newcommand{\MCStdZ}{0.2360}
+\newcommand{\MCMaxDisplacement}{0.801}
+\newcommand{\MCClearCount}{95772}
+\newcommand{\MCOverCount}{4228}
+\newcommand{\MCClearPercent}{95.77}
+\newcommand{\MCOverPercent}{4.23}
+\newcommand{\MCJointThreshold}{4.5916}
+\newcommand{\MCAdaptiveError}{1.19\times10^{-12}}
+\newcommand{\MCHalfStepError}{1.43\times10^{-12}}
+\newcommand{\MCCheckCount}{70}
+\newcommand{\MCConvergenceY}{0.264}
+\newcommand{\MCConvergenceZ}{0.506}
+\newcommand{\MCConvergenceT}{0.138}
+\newcommand{\SensitivityOneFactorTable}{\begin{table}[H]\centering\small
+\caption{Goal-plane displacement and arrival-time change under one-factor perturbations.}\label{tab:sensitivity-one-factor}
+\begin{tabular}{p{.32\textwidth}crr}\toprule
+Parameter & Perturbation & $\max D_g$ (cm) & $\max|\Delta t_g|$ (ms)\\\midrule
+Launch speed & $\pm5\%$ & 8.356 & 20.659\\
+Velocity azimuth & $\pm1^\circ$ & 20.070 & 1.965\\
+Velocity elevation & $\pm1^\circ$ & 20.218 & 1.692\\
+Spin magnitude & $\pm5\%$ & 3.873 & 0.287\\
+Spin-axis azimuth & $\pm1^\circ$ & 1.002 & 0.071\\
+Spin-axis elevation & $\pm1^\circ$ & 0.852 & 0.084\\
+Drag multiplier & $\pm5\%$ & 0.620 & 2.274\\
+Lift multiplier & $\pm5\%$ & 3.873 & 0.287\\
+Air density & $\pm5\%$ & 4.142 & 1.990\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\SensitivityProfileTable}{\begin{table}[H]\centering\small
+\caption{Ranges of goal-plane crossings compatible with the early positions.}\label{tab:sensitivity-profile}
+\begin{tabular}{lrrr}\toprule
+Range of each multiplier & $y_g$ (m) & $z_g$ (m) & $t_g$ (s)\\\midrule
+$[1.35,1.65]$ & 2.5538--2.6550 & 1.9122--2.0307 & 0.3973--0.4025\\
+$[1.2,1.8]$ & 2.5478--2.6601 & 1.9075--2.0368 & 0.3973--0.4043\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\SensitivityMonteCarloTable}{\begin{table}[H]\centering\small
+\caption{Monte Carlo crossing positions and arrival times (100,000 trajectories).}\label{tab:sensitivity-mc}
+\begin{tabular}{lrr}\toprule
+Output & Sample minimum--maximum & Central 95\% interval, one coordinate\\\midrule
+$y_g$ (m) & 1.9633--3.2143 & 2.1858--3.0505\\
+$z_g$ (m) & 1.4381--2.4646 & 1.5534--2.3535\\
+$t_g$ (s) & 0.3685--0.4346 & 0.3783--0.4218\\
+\bottomrule\end{tabular}\end{table}}

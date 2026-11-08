@@ -1,0 +1,92 @@
+test_analytic_spin_decay (test_coupled_model.CoupledTests.test_analytic_spin_decay) ... ok
+test_energy_identity (test_coupled_model.CoupledTests.test_energy_identity) ... ok
+test_forward_inverse_same_rhs_and_recovery (test_coupled_model.CoupledTests.test_forward_inverse_same_rhs_and_recovery) ... ok
+test_integrator_convergence (test_coupled_model.CoupledTests.test_integrator_convergence) ... ok
+test_no_double_damping (test_coupled_model.CoupledTests.test_no_double_damping) ... ok
+test_reference_and_limits (test_coupled_model.CoupledTests.test_reference_and_limits) ... ok
+test_torque_normalization (test_coupled_model.CoupledTests.test_torque_normalization) ... ok
+test_constant_lift_axis_invariance (test_four_models.FourModelTests.test_constant_lift_axis_invariance) ... ok
+test_hierarchy_and_scales (test_four_models.FourModelTests.test_hierarchy_and_scales) ... ok
+test_invalid_inverse_bounds_rejected (test_four_models.FourModelTests.test_invalid_inverse_bounds_rejected) ... ok
+M2 start 1/1: RSS=8.1033, nfev=1
+M3 start 1/6: RSS=8.1009, nfev=1
+M3 start 2/6: RSS=8.0691, nfev=1
+M3 start 3/6: RSS=8.1108, nfev=1
+M3 start 4/6: RSS=8.1556, nfev=1
+M3 start 5/6: RSS=8.3775, nfev=1
+M3 start 6/6: RSS=7.8498, nfev=1
+M4 start 1/19: RSS=7.9964, nfev=1
+M4 start 2/19: RSS=8.0251, nfev=1
+M4 start 3/19: RSS=8.0214, nfev=1
+M4 start 4/19: RSS=8.0404, nfev=1
+M4 start 5/19: RSS=8.0079, nfev=1
+M4 start 6/19: RSS=7.9236, nfev=1
+M4 start 7/19: RSS=8.1253, nfev=1
+M4 start 8/19: RSS=8.0419, nfev=1
+M4 start 9/19: RSS=8.0366, nfev=1
+M4 start 10/19: RSS=8.0639, nfev=1
+M4 start 11/19: RSS=8.0181, nfev=1
+M4 start 12/19: RSS=7.8997, nfev=1
+M4 start 13/19: RSS=8.1837, nfev=1
+M4 start 14/19: RSS=8.0419, nfev=1
+M4 start 15/19: RSS=8.0366, nfev=1
+M4 start 16/19: RSS=8.0639, nfev=1
+M4 start 17/19: RSS=8.0181, nfev=1
+M4 start 18/19: RSS=7.8997, nfev=1
+M4 start 19/19: RSS=8.1837, nfev=1
+test_inverse_bounds_on_all_models_and_custom_limits (test_four_models.FourModelTests.test_inverse_bounds_on_all_models_and_custom_limits) ... ok
+M3 start 1/6: RSS=0.37325, nfev=1
+M3 start 2/6: RSS=0.35657, nfev=1
+M3 start 3/6: RSS=0.35404, nfev=1
+M3 start 4/6: RSS=0.37262, nfev=1
+M3 start 5/6: RSS=0.34614, nfev=1
+M3 start 6/6: RSS=0.38604, nfev=1
+test_iteration_limit_is_a_fit_failure (test_four_models.FourModelTests.test_iteration_limit_is_a_fit_failure) ... ok
+test_main_model_spin_and_work (test_four_models.FourModelTests.test_main_model_spin_and_work) ... ok
+test_nonfinite_input_rejected (test_four_models.FourModelTests.test_nonfinite_input_rejected) ... ok
+test_nonuniform_times_and_early_ground (test_four_models.FourModelTests.test_nonuniform_times_and_early_ground) ... ok
+test_rotational_analytic (test_four_models.FourModelTests.test_rotational_analytic) ... ok
+test_synthetic_gravity_inverse (test_four_models.FourModelTests.test_synthetic_gravity_inverse) ... ok
+M4 start 1/19: RSS=1.437e-26, nfev=80
+M4 start 2/19: RSS=5.0579e-29, nfev=39
+M4 start 3/19: RSS=3.4567e-26, nfev=40
+M4 start 4/19: RSS=4.4017e-26, nfev=35
+M4 start 5/19: RSS=2.8665e-25, nfev=29
+M4 start 6/19: RSS=5.0465e-23, nfev=35
+M4 start 7/19: RSS=2.7089e-05, nfev=80
+M4 start 8/19: RSS=1.8721e-22, nfev=31
+M4 start 9/19: RSS=2.1189e-29, nfev=36
+M4 start 10/19: RSS=4.9768e-27, nfev=35
+M4 start 11/19: RSS=1.4891e-21, nfev=44
+M4 start 12/19: RSS=1.7667e-27, nfev=50
+M4 start 13/19: RSS=6.0024e-14, nfev=80
+M4 start 14/19: RSS=2.2589e-26, nfev=69
+M4 start 15/19: RSS=3.4815e-22, nfev=42
+M4 start 16/19: RSS=1.7399e-22, nfev=42
+M4 start 17/19: RSS=1.3172e-23, nfev=37
+M4 start 18/19: RSS=2.2858e-24, nfev=51
+M4 start 19/19: RSS=3.4154e-05, nfev=80
+M4: coefficient selection
+M4: coefficient selection
+M4: coefficient selection
+M4: coefficient selection
+M4: spin selection
+test_synthetic_variable_model_regularized_fit (test_four_models.FourModelTests.test_synthetic_variable_model_regularized_fit) ... ok
+test_zero_speed_spin_and_invalid_scales (test_four_models.FourModelTests.test_zero_speed_spin_and_invalid_scales) ... ok
+test_coefficient_callback_and_spin_decay (test_physics.PhysicsTests.test_coefficient_callback_and_spin_decay) ... ok
+test_drag_loses_energy (test_physics.PhysicsTests.test_drag_loses_energy) ... ok
+test_gravity_and_start_on_ground (test_physics.PhysicsTests.test_gravity_and_start_on_ground) ... ok
+test_magnus_vanishes_continuously_for_parallel_axis (test_physics.PhysicsTests.test_magnus_vanishes_continuously_for_parallel_axis) ... ok
+test_no_event (test_physics.PhysicsTests.test_no_event) ... ok
+test_published_coefficients_and_units (test_physics.PhysicsTests.test_published_coefficients_and_units) ... ok
+test_tables_interpolate_and_reject_outside (test_physics.PhysicsTests.test_tables_interpolate_and_reject_outside) ... ok
+test_uniform_and_plane (test_physics.PhysicsTests.test_uniform_and_plane) ... ok
+test_zero_and_parallel_spin (test_physics.PhysicsTests.test_zero_and_parallel_spin) ... ok
+test_exact_selected_points (test_report_inputs.CorrectedInputTests.test_exact_selected_points) ... ok
+test_raw_frames_and_hashes_unchanged (test_report_inputs.CorrectedInputTests.test_raw_frames_and_hashes_unchanged) ... ok
+test_time_origin_and_crossing_roundtrip (test_report_inputs.CorrectedInputTests.test_time_origin_and_crossing_roundtrip) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 22.447s
+
+OK

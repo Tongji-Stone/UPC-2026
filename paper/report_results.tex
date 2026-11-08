@@ -1,114 +1,137 @@
-% Generated from results/structure_linear_spin; do not edit numerical values manually.
-\newcommand{\ProblemY}{2.616}
-\newcommand{\ProblemZ}{1.953}
-\newcommand{\ProblemTime}{0.3990}
-\newcommand{\ProblemAlphaD}{0.3623}
-\newcommand{\ProblemAlphaL}{2.2877}
-\newcommand{\ProblemSpin}{30.00}
-\newcommand{\ProblemResidual}{0.00078}
-\newcommand{\ProblemSpeedMin}{25.55}
-\newcommand{\ProblemSpeedMax}{32.54}
-\newcommand{\ProblemReMin}{3.75}
-\newcommand{\ProblemReMax}{4.77}
-\newcommand{\ProblemSpMin}{0.101}
-\newcommand{\ProblemSpMax}{0.129}
-\newcommand{\ProblemVX}{30.378}
-\newcommand{\ProblemVY}{9.407}
-\newcommand{\ProblemVZ}{6.897}
-\newcommand{\ProblemWX}{19.743}
-\newcommand{\ProblemWY}{1.206}
-\newcommand{\ProblemWZ}{-22.555}
+% Generated exclusively from results/current_report.
 \newcommand{\ReferenceCD}{0.2415}
 \newcommand{\ReferenceCL}{1.5251}
-\newcommand{\ForwardInitialTable}{\begin{table}[H]\centering\small
-\caption{Initial conditions for the controlled forward examples, reconstructed as described above.}\label{tab:forward-initial}
-\begin{tabular}{lrrrrr}\toprule
-Launch & $x_0$ (m) & $z_0$ (m) & $v_{x0}$ (m/s) & $v_{z0}$ (m/s) & $\omega_{y0}$ (rad/s)\\\midrule
-Zero spin & 0.0001 & 0.8501 & 16.689 & 6.743 & 0.00\\
-Topspin a & 0.0001 & 0.8499 & 16.825 & 7.366 & 82.57\\
-Topspin b & 0.0001 & 0.8499 & 18.194 & 6.810 & 44.56\\
-Topspin c & -0.0070 & 0.8526 & 17.383 & 8.188 & 125.16\\
-Topspin d & -0.0067 & 0.8500 & 18.770 & 10.863 & 47.75\\
-\bottomrule\end{tabular}\end{table}
-}
-\newcommand{\ForwardMFourRange}{20.656}
-\newcommand{\ForwardMFourError}{-1.244}
-\newcommand{\ForwardRangeTable}{\begin{table}[H]\centering\small
-\caption{Nonspinning controlled launch: predicted landing and signed range error. The reported range is 21.9 m.}\label{tab:forward-range}
-\begin{tabular}{lrr}\toprule
-Model & Range (m) & Prediction minus measurement (m)\\\midrule
-M1 & 24.650 & +2.750\\
-M2 & 20.656 & -1.244\\
-M4 & 20.656 & -1.244\\
-\bottomrule\end{tabular}\end{table}
-}
-\newcommand{\ForwardSpinTable}{\begin{table}[H]\centering\small
-\caption{Height RMSE (m) at digitized horizontal positions for the four topspin segments.}\label{tab:forward-spin}
-\begin{tabular}{lrrr}\toprule
-Launch & M1 & M2 & M4\\\midrule
-a & 0.0119 & 0.0118 & 0.0036\\
-b & 0.0396 & 0.0397 & 0.0480\\
-c & 0.0100 & 0.0100 & 0.0139\\
-d & 0.0171 & 0.0170 & 0.0069\\
-\bottomrule\end{tabular}\end{table}
-}
-\newcommand{\ProblemResultsTable}{\begin{table}[H]\centering\small
-\caption{Inverse predictions for the competition observations. Residual is the maximum absolute early-coordinate difference.}\label{tab:problem}
-\begin{tabular}{lrrrrrr}\toprule
-Model & $C_D$ & $\alpha$ & Residual (m) & $y_g$ (m) & $z_g$ (m) & $t_g$ (s)\\\midrule
-M1 & --- & --- & 0.016 & 3.217 & 1.957 & 0.3706\\
-M2 & --- & --- & 0.011 & 3.217 & 1.883 & 0.4041\\
-M3 & --- & --- & 0 & 2.495 & 1.920 & 0.4050\\
-M4 & 0.3623 & 2.2877 & 0.00078 & 2.616 & 1.953 & 0.3990\\
-\bottomrule\end{tabular}\end{table}
-}
-\newcommand{\MatchResultsTable}{\begin{table}[H]\centering\small
-\caption{All five recorded flights and all four inverse models. Error is the Euclidean difference in goal-plane $(y,z)$.}\label{tab:match-results}
-\begin{tabular}{lllrr}\toprule
-Event & Model & Termination & Early residual (m) & Plane error (m)\\\midrule
-WOH 0487 (head) & M1 & plane & 0.036 & 0.717\\
-WOH 0487 (head) & M2 & plane & 0.0317 & 0.700\\
-WOH 0487 (head) & M3 & ground & 0 & ---\\
-WOH 0487 (head) & M4 & plane & 0.0313 & 1.392\\
-WOH 0606 (foot) & M1 & plane & 0.0263 & 4.988\\
-WOH 0606 (foot) & M2 & ground & 0.0283 & ---\\
-WOH 0606 (foot) & M3 & time limit & 0 & ---\\
-WOH 0606 (foot) & M4 & plane & 0.0228 & 8.815\\
-WOH 0968 (foot) & M1 & ground & 0.124 & ---\\
-WOH 0968 (foot) & M2 & ground & 0.125 & ---\\
-WOH 0968 (foot) & M3 & plane & 0 & 1.083\\
-WOH 0968 (foot) & M4 & ground & 0.121 & ---\\
-WQQ 1227 (head) & M1 & plane & 0.18 & 2.785\\
-WQQ 1227 (head) & M2 & plane & 0.178 & 2.860\\
-WQQ 1227 (head) & M3 & plane & 0 & 13.528\\
-WQQ 1227 (head) & M4 & plane & 0.174 & 3.700\\
-Penalty & M1 & plane & 0.204 & 0.853\\
-Penalty & M2 & plane & 0.206 & 0.856\\
-Penalty & M3 & plane & 0 & 0.968\\
-Penalty & M4 & plane & 0.207 & 0.207\\
-\bottomrule\end{tabular}\end{table}
-}
-\newcommand{\MatchAggregateTable}{\begin{table}[H]\centering\small
-\caption{Reached-case errors and termination counts. Individual errors are retained in the preceding table.}\label{tab:match-aggregate}
-\begin{tabular}{lrrrrr}\toprule
-Model & Reached & Ground & Other & Fit failures & Mean error (m)\\\midrule
-M1 & 4/5 & 1 & 0 & 0 & 2.336\\
-M2 & 3/5 & 2 & 0 & 0 & 1.472\\
-M3 & 3/5 & 1 & 1 & 0 & 5.193\\
-M4 & 4/5 & 1 & 0 & 0 & 3.529\\
-\bottomrule\end{tabular}\end{table}
-}
-\newcommand{\MatchDiscussion}{M1 reaches the goal plane in 4 of five cases; M2 reaches the goal plane in 3 of five cases; M3 reaches the goal plane in 3 of five cases; M4 reaches the goal plane in 4 of five cases. M1 gives the largest number of goal-plane predictions in these five recorded flights. The table reports each reached-case mean together with its contributing count. Large force corrections and iteration-limit cases reveal a strong dependence on the early recorded motion. Fit failures denote numerical iteration limits; their candidate trajectories are retained in the calculation records.}
-\newcommand{\TorqueViscousRatio}{0.00041}
-\newcommand{\TorqueDisplacement}{0.039}
-\newcommand{\TorqueResults}{The damped goal-plane centre is $(2.654,1.949)$ m, compared with $(2.616,1.953)$ m at constant spin. The displacement is 0.039 m, or 0.35\% of the 11 m flight distance. Spin decreases by 14.36\%, and the goal-crossing time changes by +0.07\%. Adding the much weaker viscous term changes the damped crossing by 1.5e-05 m. Thus this reference torque has a visible effect on spin and a smaller, measurable effect on the short-flight endpoint.}
-\newcommand{\WindResultsTable}{\begin{table}[H]\centering\small
-\caption{Illustrative wind estimates at the fitted launch speed. Percentages describe dynamic pressure at fixed aerodynamic coefficients.}\label{tab:wind}
-\begin{tabular}{rrrrr}\toprule
-$w$ (m/s) & Headwind (\%) & Tailwind (\%) & Crosswind (\%) & Airflow angle ($^\circ$)\\\midrule
-1 & +6.24 & -6.05 & +0.09 & 1.76\\
-3 & +19.29 & -17.59 & +0.85 & 5.27\\
-5 & +33.09 & -28.37 & +2.36 & 8.74\\
-\bottomrule\end{tabular}\end{table}
-}
-\newcommand{\WindThreshold}{0.80}
+\newcommand{\ForwardReMin}{2.05}
+\newcommand{\ForwardReMax}{3.96}
+\newcommand{\ForwardInputsTable}{\begin{table}[H]\centering\footnotesize
+\caption{Prescribed initial conditions.}\label{tab:forward-inputs}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{lrrl}\toprule
+Kick & $v_0$ (m/s) & $\beta$ ($^\circ$) & $\boldsymbol\omega_0$ (rad/s)\\\midrule
+Power & 27 & 8 & $(0,0,0)$\\
+Placement & 20 & 11 & $(0,0,0)$\\
+Curved & 24 & 10 & $(0,0,35)$\\
+Topspin & 24 & 12 & $(0,35,0)$\\
+Backspin & 24 & 12 & $(0,-35,0)$\\
+Chip & 14 & 20 & $(0,-15,0)$\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\ForwardOutcomesTable}{\begin{table}[H]\centering\footnotesize
+\caption{First goal-plane or ground endpoint for all 24 flights.}\label{tab:forward-outcomes}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{lllrrrr}\toprule
+Kick & Model & End & $x$ (m) & $y$ (m) & $z$ (m) & $t$ (s)\\\midrule
+Power & M1 & goal & 11.000 & 0.000 & 0.826 & 0.4114\\
+Power & M2 & goal & 11.000 & 0.000 & 0.741 & 0.4420\\
+Power & M3 & goal & 11.000 & 0.000 & 0.681 & 0.4458\\
+Power & M4 & goal & 11.000 & 0.000 & 0.741 & 0.4420\\
+Placement & M1 & goal & 11.000 & 0.000 & 0.708 & 0.5603\\
+Placement & M2 & goal & 11.000 & 0.000 & 0.551 & 0.6020\\
+Placement & M3 & goal & 11.000 & 0.000 & 0.437 & 0.6076\\
+Placement & M4 & goal & 11.000 & 0.000 & 0.551 & 0.6020\\
+Curved & M1 & goal & 11.000 & 0.000 & 0.987 & 0.4654\\
+Curved & M2 & goal & 11.000 & 0.000 & 0.879 & 0.5000\\
+Curved & M3 & goal & 11.000 & 0.937 & 0.801 & 0.5045\\
+Curved & M4 & goal & 11.000 & 0.841 & 0.877 & 0.5022\\
+Topspin & M1 & goal & 11.000 & 0.000 & 1.371 & 0.4686\\
+Topspin & M2 & goal & 11.000 & 0.000 & 1.261 & 0.5036\\
+Topspin & M3 & goal & 11.000 & 0.000 & 0.279 & 0.4986\\
+Topspin & M4 & goal & 11.000 & 0.000 & 0.426 & 0.5001\\
+Backspin & M1 & goal & 11.000 & 0.000 & 1.371 & 0.4686\\
+Backspin & M2 & goal & 11.000 & 0.000 & 1.261 & 0.5036\\
+Backspin & M3 & goal & 11.000 & 0.000 & 2.156 & 0.5189\\
+Backspin & M4 & goal & 11.000 & 0.000 & 2.118 & 0.5117\\
+Chip & M1 & goal & 11.000 & 0.000 & 0.684 & 0.8361\\
+Chip & M2 & goal & 11.000 & 0.000 & 0.328 & 0.8994\\
+Chip & M3 & goal & 11.000 & 0.000 & 0.688 & 0.9360\\
+Chip & M4 & goal & 11.000 & 0.000 & 0.941 & 0.9089\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\CurvedY}{0.8415}
+\newcommand{\CurvedZ}{0.8769}
+\newcommand{\CurvedTime}{0.5022}
+\newcommand{\CurvedVX}{23.6354}
+\newcommand{\CurvedVZ}{4.1676}
+\newcommand{\PenaltyInputsTable}{\begin{table}[H]\centering\footnotesize
+\caption{Frame counts, fitting times and measured local starting positions.}\label{tab:penalty-inputs}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{lrrl}\toprule
+Event & Frames & Fit times (s) & $\boldsymbol r_0$ (m)\\\midrule
+J03WMX & 15 & 0.00,0.04,0.08 & $(3.04,0.55,0.13)$\\
+J03WOH & 12 & 0.00,0.04,0.08 & $(0.77,0.08,0.24)$\\
+J03WR9 & 12 & 0.00,0.04,0.08 & $(1.47,0.49,0.23)$\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\InverseBoundsTable}{\begin{table}[H]\centering\footnotesize
+\caption{Component bounds and force-correction settings for inversion.}\label{tab:inverse-bounds}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{ll}\toprule
+Quantity & Search interval\\\midrule
+$v_{x0}$ (M1, M2, M4) & $[0,35]$ m/s\\
+$v_{y0},v_{z0}$ (M1, M2, M4) & $[-35,35]$ m/s\\
+$\|\boldsymbol\omega_0\|$ (M4) & $30$ rad/s\\
+Azimuth, elevation (M4) & $[-\pi,\pi],[-\pi/2,\pi/2]$ rad\\
+$C_D/C_D^*,\alpha/\alpha^*$ & $[0.5,1.5]$\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WMXMeasuredTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WMX: three measured fitting points and observed goal crossing (direct source frame).}\label{tab:measured-J03WMX}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrr}\toprule
+Point & Source frame & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+$P_0$ & 152602 & 0.00 & 3.040 & 0.550 & 0.130\\
+$P_1$ & 152603 & 0.04 & 4.190 & 0.820 & 0.150\\
+$P_2$ & 152604 & 0.08 & 5.250 & 1.070 & 0.180\\
+Goal & 152610 & 0.3200 & 11.000 & 2.7500 & 0.1600\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WMXPredictedTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WMX: inverse initial states and predicted goal-plane crossings. M4 uses a 30 rad/s reference spin magnitude; M1--M3 do not estimate spin.}\label{tab:predicted-J03WMX}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrccr}\toprule
+Model & Status & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & Spin & $d_g$ (m)\\\midrule
+M1 & ground & --- & --- & $\begin{pmatrix}27.850\\6.550\\0.953\end{pmatrix}$ & --- & ---\\
+M2 & ground & --- & --- & $\begin{pmatrix}28.411\\6.682\\0.967\end{pmatrix}$ & --- & ---\\
+M3 & time limit & --- & --- & $\begin{pmatrix}29.875\\7.000\\0.375\end{pmatrix}$ & --- & ---\\
+M4 & plane & 2.4377 & 0.3390 & $\begin{pmatrix}28.423\\6.667\\0.551\end{pmatrix}$ & $\begin{pmatrix}6.839\\-29.184\\1.239\end{pmatrix}$ & 0.3600\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WMXDiscussion}{The measured low flight requires sustained vertical support from lift. M4's crossing deviation is 0.3600 m. Ground contact precedes the goal for M1, M2.}
+\newcommand{\WOHMeasuredTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WOH: three measured fitting points and observed goal crossing (linear interpolation).}\label{tab:measured-J03WOH}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrr}\toprule
+Point & Source frame & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+$P_0$ & 128955 & 0.00 & 0.770 & 0.080 & 0.240\\
+$P_1$ & 128956 & 0.04 & 1.990 & 0.340 & 0.460\\
+$P_2$ & 128957 & 0.08 & 3.180 & 0.620 & 0.650\\
+Goal & 128964--128965 & 0.3643 & 11.000 & 2.9188 & 1.1789\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WOHPredictedTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WOH: inverse initial states and predicted goal-plane crossings. M4 uses a 30 rad/s reference spin magnitude; M1--M3 do not estimate spin.}\label{tab:predicted-J03WOH}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrccr}\toprule
+Model & Status & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & Spin & $d_g$ (m)\\\midrule
+M1 & plane & 2.3496 & 1.5583 & $\begin{pmatrix}30.200\\6.700\\5.553\end{pmatrix}$ & --- & 0.6841\\
+M2 & plane & 2.3494 & 1.5059 & $\begin{pmatrix}30.794\\6.831\\5.658\end{pmatrix}$ & --- & 0.6567\\
+M3 & plane & 3.2890 & 1.1262 & $\begin{pmatrix}30.875\\6.250\\5.875\end{pmatrix}$ & --- & 0.3739\\
+M4 & plane & 2.9344 & 1.2906 & $\begin{pmatrix}30.857\\6.408\\5.819\end{pmatrix}$ & $\begin{pmatrix}-6.829\\9.510\\27.621\end{pmatrix}$ & 0.1127\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WOHDiscussion}{The rising measured arc connects vertical launch velocity with the subsequent action of gravity and lift. M4's crossing deviation is 0.1127 m.}
+\newcommand{\WRMeasuredTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WR9: three measured fitting points and observed goal crossing (linear interpolation).}\label{tab:measured-J03WR9}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrr}\toprule
+Point & Source frame & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+$P_0$ & 176244 & 0.00 & 1.470 & 0.490 & 0.230\\
+$P_1$ & 176245 & 0.04 & 2.570 & 0.850 & 0.340\\
+$P_2$ & 176246 & 0.08 & 3.640 & 1.200 & 0.410\\
+Goal & 176253--176254 & 0.3695 & 11.000 & 3.0697 & 0.4657\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WRPredictedTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WR9: inverse initial states and predicted goal-plane crossings. M4 uses a 30 rad/s reference spin magnitude; M1--M3 do not estimate spin.}\label{tab:predicted-J03WR9}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrccr}\toprule
+Model & Status & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & Spin & $d_g$ (m)\\\midrule
+M1 & plane & 3.6083 & 0.5750 & $\begin{pmatrix}27.200\\8.900\\2.703\end{pmatrix}$ & --- & 0.5496\\
+M2 & plane & 3.6083 & 0.5147 & $\begin{pmatrix}27.747\\9.079\\2.753\end{pmatrix}$ & --- & 0.5408\\
+M3 & ground & --- & --- & $\begin{pmatrix}27.875\\9.125\\3.250\end{pmatrix}$ & --- & ---\\
+M4 & ground & --- & --- & $\begin{pmatrix}27.711\\9.071\\3.170\end{pmatrix}$ & $\begin{pmatrix}-9.311\\28.518\\-0.241\end{pmatrix}$ & ---\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WRDiscussion}{The measured path bends laterally, so fitted spin direction affects the continuation towards the goal. M4 reaches the ground at $x=9.917$ m. Ground contact precedes the goal for M3, M4.}
+\newcommand{\TorqueViscousRatio}{$3.54\times10^{-4}$}
+\newcommand{\TorqueDisplacement}{0.0616}
+\newcommand{\TorqueResults}{The damped crossing is $(0.7799,0.8772)$ m, compared with $(0.8415,0.8769)$ m at constant spin. The displacement is 0.0616 m (0.560\% of 11 m). Spin falls by 19.740\%, and crossing time changes by -0.066\%. Adding viscous torque shifts the damped crossing by 2.1e-05 m. The short-flight endpoint is less sensitive than spin magnitude to this reference torque.}
+\newcommand{\WindResultsTable}{\begin{table}[H]\centering\footnotesize
+\caption{Illustrative wind at the 24 m/s curved-shot launch: dynamic-pressure changes at fixed coefficients.}\label{tab:wind}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{rrrrr}\toprule
+$w$ (m/s) & Headwind (\%) & Tailwind (\%) & Crosswind (\%) & Angle ($^\circ$)\\\midrule
+1 & +8.51 & -8.16 & +0.17 & 2.39\\
+3 & +26.56 & -23.44 & +1.56 & 7.13\\
+5 & +46.01 & -37.33 & +4.34 & 11.77\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WindThreshold}{0.59}

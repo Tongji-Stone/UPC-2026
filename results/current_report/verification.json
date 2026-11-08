@@ -1,0 +1,480 @@
+{
+  "all_passed": true,
+  "checks": {
+    "39_original_frames": {
+      "passed": true
+    },
+    "source_点球信息汇总.csv": {
+      "passed": true
+    },
+    "source_完整位置采样.csv": {
+      "passed": true
+    },
+    "source_数据来源与必要说明.md": {
+      "passed": true
+    },
+    "24_forward_12_inverse": {
+      "passed": true
+    },
+    "J03WMX_selected_times": {
+      "passed": true
+    },
+    "J03WMX_selected_source_frames": {
+      "passed": true
+    },
+    "J03WMX_time_roundtrip": {
+      "passed": true
+    },
+    "J03WMX_goal_time_roundtrip": {
+      "passed": true
+    },
+    "J03WMX_coordinate_roundtrip": {
+      "passed": true
+    },
+    "J03WMX_M1_fingerprint": {
+      "passed": true
+    },
+    "J03WMX_M1_only_early_input": {
+      "passed": true
+    },
+    "J03WMX_M1_saved_fit_matches_state": {
+      "passed": true
+    },
+    "J03WMX_M1_parameter_count": {
+      "passed": true
+    },
+    "J03WMX_M1_fit_interval": {
+      "passed": true
+    },
+    "J03WMX_M1_fit_before_contact": {
+      "passed": true
+    },
+    "J03WMX_M1_ground_truncation": {
+      "passed": true
+    },
+    "J03WMX_M1_limit_marked": {
+      "passed": true
+    },
+    "J03WMX_M1_heldout_only": {
+      "passed": true
+    },
+    "J03WMX_M2_fingerprint": {
+      "passed": true
+    },
+    "J03WMX_M2_only_early_input": {
+      "passed": true
+    },
+    "J03WMX_M2_saved_fit_matches_state": {
+      "passed": true
+    },
+    "J03WMX_M2_parameter_count": {
+      "passed": true
+    },
+    "J03WMX_M2_fit_interval": {
+      "passed": true
+    },
+    "J03WMX_M2_fit_before_contact": {
+      "passed": true
+    },
+    "J03WMX_M2_ground_truncation": {
+      "passed": true
+    },
+    "J03WMX_M2_limit_marked": {
+      "passed": true
+    },
+    "J03WMX_M2_heldout_only": {
+      "passed": true
+    },
+    "J03WMX_M3_fingerprint": {
+      "passed": true
+    },
+    "J03WMX_M3_only_early_input": {
+      "passed": true
+    },
+    "J03WMX_M3_saved_fit_matches_state": {
+      "passed": true
+    },
+    "J03WMX_M3_parameter_count": {
+      "passed": true
+    },
+    "J03WMX_M3_selection_state_1": {
+      "passed": true
+    },
+    "J03WMX_M3_fit_interval": {
+      "passed": true
+    },
+    "J03WMX_M3_fit_before_contact": {
+      "passed": true
+    },
+    "J03WMX_M3_goal_distance": {
+      "passed": true
+    },
+    "J03WMX_M3_ground_truncation": {
+      "passed": true
+    },
+    "J03WMX_M3_limit_marked": {
+      "passed": true
+    },
+    "J03WMX_M3_heldout_only": {
+      "passed": true
+    },
+    "J03WMX_M4_fingerprint": {
+      "passed": true
+    },
+    "J03WMX_M4_only_early_input": {
+      "passed": true
+    },
+    "J03WMX_M4_saved_fit_matches_state": {
+      "passed": true
+    },
+    "J03WMX_M4_parameter_count": {
+      "passed": true
+    },
+    "J03WMX_M4_fit_interval": {
+      "passed": true
+    },
+    "J03WMX_M4_fit_before_contact": {
+      "passed": true
+    },
+    "J03WMX_M4_goal_distance": {
+      "passed": true
+    },
+    "J03WMX_M4_ground_truncation": {
+      "passed": true
+    },
+    "J03WMX_M4_limit_marked": {
+      "passed": true
+    },
+    "J03WMX_M4_heldout_only": {
+      "passed": true
+    },
+    "J03WOH_selected_times": {
+      "passed": true
+    },
+    "J03WOH_selected_source_frames": {
+      "passed": true
+    },
+    "J03WOH_time_roundtrip": {
+      "passed": true
+    },
+    "J03WOH_goal_time_roundtrip": {
+      "passed": true
+    },
+    "J03WOH_coordinate_roundtrip": {
+      "passed": true
+    },
+    "J03WOH_M1_fingerprint": {
+      "passed": true
+    },
+    "J03WOH_M1_only_early_input": {
+      "passed": true
+    },
+    "J03WOH_M1_saved_fit_matches_state": {
+      "passed": true
+    },
+    "J03WOH_M1_parameter_count": {
+      "passed": true
+    },
+    "J03WOH_M1_fit_interval": {
+      "passed": true
+    },
+    "J03WOH_M1_fit_before_contact": {
+      "passed": true
+    },
+    "J03WOH_M1_goal_distance": {
+      "passed": true
+    },
+    "J03WOH_M1_ground_truncation": {
+      "passed": true
+    },
+    "J03WOH_M1_limit_marked": {
+      "passed": true
+    },
+    "J03WOH_M1_heldout_only": {
+      "passed": true
+    },
+    "J03WOH_M2_fingerprint": {
+      "passed": true
+    },
+    "J03WOH_M2_only_early_input": {
+      "passed": true
+    },
+    "J03WOH_M2_saved_fit_matches_state": {
+      "passed": true
+    },
+    "J03WOH_M2_parameter_count": {
+      "passed": true
+    },
+    "J03WOH_M2_fit_interval": {
+      "passed": true
+    },
+    "J03WOH_M2_fit_before_contact": {
+      "passed": true
+    },
+    "J03WOH_M2_goal_distance": {
+      "passed": true
+    },
+    "J03WOH_M2_ground_truncation": {
+      "passed": true
+    },
+    "J03WOH_M2_limit_marked": {
+      "passed": true
+    },
+    "J03WOH_M2_heldout_only": {
+      "passed": true
+    },
+    "J03WOH_M3_fingerprint": {
+      "passed": true
+    },
+    "J03WOH_M3_only_early_input": {
+      "passed": true
+    },
+    "J03WOH_M3_saved_fit_matches_state": {
+      "passed": true
+    },
+    "J03WOH_M3_parameter_count": {
+      "passed": true
+    },
+    "J03WOH_M3_selection_state_1": {
+      "passed": true
+    },
+    "J03WOH_M3_selection_state_2": {
+      "passed": true
+    },
+    "J03WOH_M3_selection_state_3": {
+      "passed": true
+    },
+    "J03WOH_M3_selection_state_4": {
+      "passed": true
+    },
+    "J03WOH_M3_fit_interval": {
+      "passed": true
+    },
+    "J03WOH_M3_fit_before_contact": {
+      "passed": true
+    },
+    "J03WOH_M3_goal_distance": {
+      "passed": true
+    },
+    "J03WOH_M3_ground_truncation": {
+      "passed": true
+    },
+    "J03WOH_M3_limit_marked": {
+      "passed": true
+    },
+    "J03WOH_M3_heldout_only": {
+      "passed": true
+    },
+    "J03WOH_M4_fingerprint": {
+      "passed": true
+    },
+    "J03WOH_M4_only_early_input": {
+      "passed": true
+    },
+    "J03WOH_M4_saved_fit_matches_state": {
+      "passed": true
+    },
+    "J03WOH_M4_parameter_count": {
+      "passed": true
+    },
+    "J03WOH_M4_selection_state_1": {
+      "passed": true
+    },
+    "J03WOH_M4_selection_state_2": {
+      "passed": true
+    },
+    "J03WOH_M4_selection_state_3": {
+      "passed": true
+    },
+    "J03WOH_M4_selection_state_4": {
+      "passed": true
+    },
+    "J03WOH_M4_selection_state_5": {
+      "passed": true
+    },
+    "J03WOH_M4_fit_interval": {
+      "passed": true
+    },
+    "J03WOH_M4_fit_before_contact": {
+      "passed": true
+    },
+    "J03WOH_M4_goal_distance": {
+      "passed": true
+    },
+    "J03WOH_M4_ground_truncation": {
+      "passed": true
+    },
+    "J03WOH_M4_limit_marked": {
+      "passed": true
+    },
+    "J03WOH_M4_heldout_only": {
+      "passed": true
+    },
+    "J03WR9_selected_times": {
+      "passed": true
+    },
+    "J03WR9_selected_source_frames": {
+      "passed": true
+    },
+    "J03WR9_time_roundtrip": {
+      "passed": true
+    },
+    "J03WR9_goal_time_roundtrip": {
+      "passed": true
+    },
+    "J03WR9_coordinate_roundtrip": {
+      "passed": true
+    },
+    "J03WR9_M1_fingerprint": {
+      "passed": true
+    },
+    "J03WR9_M1_only_early_input": {
+      "passed": true
+    },
+    "J03WR9_M1_saved_fit_matches_state": {
+      "passed": true
+    },
+    "J03WR9_M1_parameter_count": {
+      "passed": true
+    },
+    "J03WR9_M1_fit_interval": {
+      "passed": true
+    },
+    "J03WR9_M1_fit_before_contact": {
+      "passed": true
+    },
+    "J03WR9_M1_goal_distance": {
+      "passed": true
+    },
+    "J03WR9_M1_ground_truncation": {
+      "passed": true
+    },
+    "J03WR9_M1_limit_marked": {
+      "passed": true
+    },
+    "J03WR9_M1_heldout_only": {
+      "passed": true
+    },
+    "J03WR9_M2_fingerprint": {
+      "passed": true
+    },
+    "J03WR9_M2_only_early_input": {
+      "passed": true
+    },
+    "J03WR9_M2_saved_fit_matches_state": {
+      "passed": true
+    },
+    "J03WR9_M2_parameter_count": {
+      "passed": true
+    },
+    "J03WR9_M2_fit_interval": {
+      "passed": true
+    },
+    "J03WR9_M2_fit_before_contact": {
+      "passed": true
+    },
+    "J03WR9_M2_goal_distance": {
+      "passed": true
+    },
+    "J03WR9_M2_ground_truncation": {
+      "passed": true
+    },
+    "J03WR9_M2_limit_marked": {
+      "passed": true
+    },
+    "J03WR9_M2_heldout_only": {
+      "passed": true
+    },
+    "J03WR9_M3_fingerprint": {
+      "passed": true
+    },
+    "J03WR9_M3_only_early_input": {
+      "passed": true
+    },
+    "J03WR9_M3_saved_fit_matches_state": {
+      "passed": true
+    },
+    "J03WR9_M3_parameter_count": {
+      "passed": true
+    },
+    "J03WR9_M3_selection_state_1": {
+      "passed": true
+    },
+    "J03WR9_M3_selection_state_2": {
+      "passed": true
+    },
+    "J03WR9_M3_fit_interval": {
+      "passed": true
+    },
+    "J03WR9_M3_fit_before_contact": {
+      "passed": true
+    },
+    "J03WR9_M3_ground_truncation": {
+      "passed": true
+    },
+    "J03WR9_M3_limit_marked": {
+      "passed": true
+    },
+    "J03WR9_M3_heldout_only": {
+      "passed": true
+    },
+    "J03WR9_M4_fingerprint": {
+      "passed": true
+    },
+    "J03WR9_M4_only_early_input": {
+      "passed": true
+    },
+    "J03WR9_M4_saved_fit_matches_state": {
+      "passed": true
+    },
+    "J03WR9_M4_parameter_count": {
+      "passed": true
+    },
+    "J03WR9_M4_selection_state_1": {
+      "passed": true
+    },
+    "J03WR9_M4_selection_state_2": {
+      "passed": true
+    },
+    "J03WR9_M4_selection_state_3": {
+      "passed": true
+    },
+    "J03WR9_M4_selection_state_4": {
+      "passed": true
+    },
+    "J03WR9_M4_selection_state_5": {
+      "passed": true
+    },
+    "J03WR9_M4_fit_interval": {
+      "passed": true
+    },
+    "J03WR9_M4_fit_before_contact": {
+      "passed": true
+    },
+    "J03WR9_M4_ground_truncation": {
+      "passed": true
+    },
+    "J03WR9_M4_limit_marked": {
+      "passed": true
+    },
+    "J03WR9_M4_heldout_only": {
+      "passed": true
+    },
+    "WR9_repeated_frame_preserved": {
+      "passed": true
+    },
+    "endpoint_convergence": {
+      "passed": true,
+      "difference_m": 1.88411095042053e-15
+    },
+    "drag_dissipation": {
+      "passed": true
+    },
+    "lift_no_work": {
+      "passed": true
+    },
+    "constant_spin": {
+      "passed": true
+    }
+  }
+}

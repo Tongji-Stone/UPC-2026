@@ -1,86 +1,99 @@
-"""Generate all numerical report tables and macros from saved result JSON."""
-import json
-from pathlib import Path
+"""Build both editions' tables from the same saved current results."""
 import numpy as np
+from football.reporting import ROOT,OUT,DATA,read_json
 from football.physics import PhysicsConfig
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'results/structure_linear_spin'
-def js(p):return json.loads((OUT/p).read_text(encoding='utf-8'))
-def scientific(value,precision=2):
-    text=f'{value:.{precision}g}'
-    if 'e' in text:
-        a,b=text.split('e');return r'\ensuremath{'+a+r'\times10^{'+str(int(b))+'}}'
-    return text
+
+def scientific(x):
+    if x is None:return '---'
+    a,b=f'{x:.2e}'.split('e')
+    return '$'+a+r'\times10^{'+str(int(b))+'}$'
+
 def table(caption,label,columns,head,rows):
-    return ('\\begin{table}[H]\\centering\\small\n\\caption{'+caption+'}\\label{'+label+'}\n'
-        '\\begin{tabular}{'+columns+'}\\toprule\n'+head+r'\\\midrule'+'\n'+'\n'.join(rows)+
-        '\n\\bottomrule\\end{tabular}\\end{table}\n')
+    return (r'\begin{table}[H]\centering\footnotesize'+'\n'+r'\caption{'+caption+r'}\label{'+label+'}\n'
+        r'\setlength{\tabcolsep}{4pt}\begin{tabular}{'+columns+r'}\toprule'+'\n'+head+r'\\\midrule'+'\n'+
+        '\n'.join(row+r'\\' for row in rows)+'\n'+r'\bottomrule\end{tabular}\end{table}')
+
 def main():
-    commands=[]
-    def macro(name,value):commands.append('\\newcommand{\\'+name+'}{'+str(value)+'}\n')
-    p=js('problem/problem_b_M4.json')['record'];s=np.array(p['initial_state']);c=p['coverage'];q=p['event']
-    for name,value in dict(ProblemY=f"{q['position'][1]:.3f}",ProblemZ=f"{q['position'][2]:.3f}",
-        ProblemTime=f"{q['time']:.4f}",ProblemAlphaD=f"{p['fitted_cd']:.4f}",ProblemAlphaL=f"{p['fitted_alpha']:.4f}",
-        ProblemSpin=f'{np.linalg.norm(s[3:]):.2f}',ProblemResidual=scientific(p['max_residual_m']),
-        ProblemSpeedMin=f"{c['speed_range'][0]:.2f}",ProblemSpeedMax=f"{c['speed_range'][1]:.2f}",
-        ProblemReMin=f"{c['Re_range'][0]/1e5:.2f}",ProblemReMax=f"{c['Re_range'][1]/1e5:.2f}",
-        ProblemSpMin=f"{c['Sp_range'][0]:.3f}",ProblemSpMax=f"{c['Sp_range'][1]:.3f}").items():macro(name,value)
-    for name,value in zip(['ProblemVX','ProblemVY','ProblemVZ','ProblemWX','ProblemWY','ProblemWZ'],s):macro(name,f'{value:.3f}')
-    cfg=PhysicsConfig.for_model('M4');macro('ReferenceCD',f'{cfg.drag_coefficient:.4f}');macro('ReferenceCL',f'{cfg.lift_coefficient:.4f}')
-    forward=js('forward/summary.json');f=forward['records'];rows=[]
-    for c in forward['cases']:
-        label='Zero spin' if c['case']=='zero_spin' else 'Topspin '+c['case'][-1]
-        rows.append(f"{label} & {c['position'][0]:.4f} & {c['position'][2]:.4f} & {c['velocity'][0]:.3f} & {c['velocity'][2]:.3f} & {c['spin'][1]:.2f}"+r'\\')
-    macro('ForwardInitialTable',table('Initial conditions for the controlled forward examples, reconstructed as described above.','tab:forward-initial','lrrrrr',r'Launch & $x_0$ (m) & $z_0$ (m) & $v_{x0}$ (m/s) & $v_{z0}$ (m/s) & $\omega_{y0}$ (rad/s)',rows))
-    rows=[]
-    for r in f:
-        if r['case']=='zero_spin':
-            rows.append(f"{r['model']} & {r['predicted_range_m']:.3f} & {r['range_error_m']:+.3f}"+r'\\')
-            if r['model']=='M4':macro('ForwardMFourRange',f"{r['predicted_range_m']:.3f}");macro('ForwardMFourError',f"{r['range_error_m']:+.3f}")
-    macro('ForwardRangeTable',table('Nonspinning controlled launch: predicted landing and signed range error. The reported range is 21.9 m.','tab:forward-range','lrr','Model & Range (m) & Prediction minus measurement (m)',rows))
-    rows=[]
-    for case in ['topspin_a','topspin_b','topspin_c','topspin_d']:
-        rr=[next(r for r in f if r['case']==case and r['model']==m) for m in ['M1','M2','M4']]
-        rows.append(case[-1]+' & '+' & '.join(f"{r['spatial_rmse_m']:.4f}" for r in rr)+r'\\')
-    macro('ForwardSpinTable',table('Height RMSE (m) at digitized horizontal positions for the four topspin segments.','tab:forward-spin','lrrr','Launch & M1 & M2 & M4',rows))
-    rows=[]
-    for m in ['M1','M2','M3','M4']:
-        r=js(f'problem/problem_b_{m}.json')['record'];e=r['event']
-        rows.append(f"{m} & {r['fitted_cd']:.4f}" if m=='M4' else f'{m} & ---')
-        rows[-1]+=(f" & {r['fitted_alpha']:.4f}" if m == 'M4' else ' & ---')
-        rows[-1]+=' & '+scientific(r['max_residual_m'])+f" & {e['position'][1]:.3f} & {e['position'][2]:.3f} & {e['time']:.4f}"+r'\\'
-    macro('ProblemResultsTable',table('Inverse predictions for the competition observations. Residual is the maximum absolute early-coordinate difference.','tab:problem','lrrrrrr',r'Model & $C_D$ & $\alpha$ & Residual (m) & $y_g$ (m) & $z_g$ (m) & $t_g$ (s)',rows))
-    matches=js('matches/summary.json')['records'];rows=[]
-    names={'J03WOH_18232100000487':'WOH 0487 (head)','J03WOH_18232100000606':'WOH 0606 (foot)',
-        'J03WOH_18232100000968':'WOH 0968 (foot)','J03WQQ_18232200001227':'WQQ 1227 (head)',
-        'penalty_18232100000995':'Penalty'}
-    # Derive the actual WQQ identifier from the frozen input rather than assume it.
-    for r in matches:
-        label=names.get(r['case'],'WQQ '+r['case'][-4:]+' ('+r.get('shot_type','shot')+')')
-        err=f"{r['error_m']:.3f}" if r.get('error_m') is not None else '---'
-        status={'plane':'plane','ground':'ground','none':'time limit',
-            'terminated_before_last_observation':'early termination','fit_failure':'fit failure'}[r['status']]
-        residual=scientific(r['max_residual_m'],3) if 'max_residual_m' in r else '---'
-        rows.append(f"{label} & {r['model']} & {status} & {residual} & {err}"+r'\\')
-    macro('MatchResultsTable',table('All five recorded flights and all four inverse models. Error is the Euclidean difference in goal-plane $(y,z)$.','tab:match-results','lllrr','Event & Model & Termination & Early residual (m) & Plane error (m)',rows))
-    rows=[];discussion=[]
-    for m in ['M1','M2','M3','M4']:
-        rs=[r for r in matches if r['model']==m];errors=[r['error_m'] for r in rs if r.get('error_m') is not None]
-        mean=f'{np.mean(errors):.3f}' if errors else '---';ground=sum(r['status']=='ground' for r in rs);failure=sum(r['status']=='fit_failure' for r in rs)
-        other_count=len(rs)-len(errors)-ground-failure
-        rows.append(f'{m} & {len(errors)}/5 & {ground} & {other_count} & {failure} & {mean}'+r'\\')
-        discussion.append(f'{m} reaches the goal plane in {len(errors)} of five cases')
-    macro('MatchAggregateTable',table('Reached-case errors and termination counts. Individual errors are retained in the preceding table.','tab:match-aggregate','lrrrrr','Model & Reached & Ground & Other & Fit failures & Mean error (m)',rows))
-    best_coverage=max(['M1','M2','M3','M4'],key=lambda m:sum(r['error_m'] is not None for r in matches if r['model']==m))
-    macro('MatchDiscussion','; '.join(discussion)+f'. {best_coverage} gives the largest number of goal-plane predictions in these five recorded flights. The table reports each reached-case mean together with its contributing count. Large force corrections and iteration-limit cases reveal a strong dependence on the early recorded motion. Fit failures denote numerical iteration limits; their candidate trajectories are retained in the calculation records.')
-    other=js('other/summary.json');macro('TorqueViscousRatio',scientific(other['viscous_to_inertial_torque_ratio_at_launch']))
-    macro('TorqueDisplacement',f"{other['goal_displacement_m']:.3f}")
-    ref,high,both=[r['event'] for r in other['records']]
-    macro('TorqueResults',f"The damped goal-plane centre is $({high['position'][1]:.3f},{high['position'][2]:.3f})$ m, compared with $({ref['position'][1]:.3f},{ref['position'][2]:.3f})$ m at constant spin. The displacement is {other['goal_displacement_m']:.3f} m, or {other['displacement_pct_of_11m']:.2f}\\% of the 11 m flight distance. Spin decreases by {other['spin_loss_pct']:.2f}\\%, and the goal-crossing time changes by {other['time_change_pct']:+.2f}\\%. Adding the much weaker viscous term changes the damped crossing by {other['viscous_goal_difference_m']:.2g} m. Thus this reference torque has a visible effect on spin and a smaller, measurable effect on the short-flight endpoint.")
-    rows=[]
-    for r in other['wind_estimates']:
-        rows.append(f"{r['wind_m_s']:.0f} & {r['headwind_q_change_pct']:+.2f} & {r['tailwind_q_change_pct']:+.2f} & {r['crosswind_q_change_pct']:+.2f} & {r['crosswind_airflow_angle_deg']:.2f}"+r'\\')
-    macro('WindResultsTable',table('Illustrative wind estimates at the fitted launch speed. Percentages describe dynamic pressure at fixed aerodynamic coefficients.','tab:wind','rrrrr',r'$w$ (m/s) & Headwind (\%) & Tailwind (\%) & Crosswind (\%) & Airflow angle ($^\circ$)',rows))
-    macro('WindThreshold',f"{other['five_percent_dynamic_pressure_wind_threshold_m_s']:.2f}")
-    (ROOT/'paper/report_results.tex').write_text('% Generated from results/structure_linear_spin; do not edit numerical values manually.\n'+''.join(commands),encoding='utf-8')
-    print('paper numerical macros and tables refreshed')
+    data=read_json(DATA/'inputs.json');forward=read_json(OUT/'forward/summary.json')['records']
+    inverse=read_json(OUT/'inverse/summary.json')['records'];other=read_json(OUT/'other/summary.json')
+    for zh,folder in [(False,'paper'),(True,'_中文版')]:
+        if not (ROOT/folder).exists():continue
+        commands=[]
+        def macro(name,value):commands.append('\\newcommand{\\'+name+'}{'+str(value)+'}\n')
+        def tr(en,cn):return cn if zh else en
+        names=dict(zip([c['case'] for c in data['config']['forward']],
+            ['大力射门','推射','弧线球','上旋','下旋','挑射'] if zh else ['Power','Placement','Curved','Topspin','Backspin','Chip']))
+        c=PhysicsConfig.for_model('M4');macro('ReferenceCD',f'{c.drag_coefficient:.4f}');macro('ReferenceCL',f'{c.lift_coefficient:.4f}')
+        macro('ForwardReMin',f'{14*2*.11/1.5e-5/1e5:.2f}');macro('ForwardReMax',f'{27*2*.11/1.5e-5/1e5:.2f}')
+        rows=[]
+        for c in data['config']['forward']:
+            rows.append(f"{names[c['case']]} & {c['speed_m_s']} & {c['elevation_deg']} & $({','.join(map(str,c['spin_rad_s']))})$")
+        macro('ForwardInputsTable',table(tr('Prescribed initial conditions.','自设初始条件。'),'tab:forward-inputs','lrrl',
+            tr(r'Kick & $v_0$ (m/s) & $\beta$ ($^\circ$) & $\boldsymbol\omega_0$ (rad/s)',r'踢法 & $v_0$ (m/s) & $\beta$ ($^\circ$) & $\boldsymbol\omega_0$ (rad/s)'),rows))
+        rows=[]
+        for r in forward:
+            e=r['event'];status=tr('goal','球门') if e['type']=='plane' else tr('ground','触地')
+            rows.append(f"{names[r['case']]} & {r['model']} & {status} & "+' & '.join(f'{x:.3f}' for x in e['position'])+f" & {e['time']:.4f}")
+        macro('ForwardOutcomesTable',table(tr('First goal-plane or ground endpoint for all 24 flights.','24 次飞行的首次球门平面或触地终点。'),'tab:forward-outcomes','lllrrrr',
+            tr(r'Kick & Model & End & $x$ (m) & $y$ (m) & $z$ (m) & $t$ (s)',r'踢法 & 模型 & 终止 & $x$ (m) & $y$ (m) & $z$ (m) & $t$ (s)'),rows))
+        r=next(r for r in forward if r['case']=='curved' and r['model']=='M4');e=r['event']
+        for name,val in dict(CurvedY=e['position'][1],CurvedZ=e['position'][2],CurvedTime=e['time'],CurvedVX=r['initial_state'][0],CurvedVZ=r['initial_state'][2]).items():macro(name,f'{val:.4f}')
+        rows=[]
+        for c in data['cases']:
+            rows.append(c['case']+' & '+str(len(c['samples']))+' & '+','.join(f'{t:.2f}' for t in c['fit_times_s'])+' & $('+','.join(f'{v:.2f}' for v in c['fit_positions_m'][0])+')$')
+        macro('PenaltyInputsTable',table(tr('Frame counts, fitting times and measured local starting positions.','原始帧数、反演时刻与实测局部起点。'),'tab:penalty-inputs','lrrl',
+            tr(r'Event & Frames & Fit times (s) & $\boldsymbol r_0$ (m)',r'事件 & 帧数 & 反演时刻 (s) & $\boldsymbol r_0$ (m)'),rows))
+        rows=[r'$v_{x0}$ (M1, M2, M4) & $[0,35]$ m/s',r'$v_{y0},v_{z0}$ (M1, M2, M4) & $[-35,35]$ m/s',
+            r'$\|\boldsymbol\omega_0\|$ (M4) & $30$ rad/s',
+            tr(r'Azimuth, elevation (M4) & $[-\pi,\pi],[-\pi/2,\pi/2]$ rad',r'方位角、仰角 (M4) & $[-\pi,\pi],[-\pi/2,\pi/2]$ rad'),r'$C_D/C_D^*,\alpha/\alpha^*$ & $[0.5,1.5]$']
+        macro('InverseBoundsTable',table(tr('Component bounds and force-correction settings for inversion.','反演分量边界与气动力修正设定。'),'tab:inverse-bounds','ll',tr('Quantity & Search interval','物理量 & 搜索区间'),rows))
+        statuses={'plane':tr('plane','平面'),'ground':tr('ground','触地'),'none':tr('time limit','时间上限'),'fit_limit':tr('limit','迭代上限'),'early_contact':tr('early ground','过早触地'),'fit_failure':tr('failure','失败')}
+        def vector(values,axis=False):
+            v=r'$\begin{pmatrix}'+r'\\'.join(f'{x:.3f}' for x in values)+r'\end{pmatrix}'+('^{*}' if axis else '')+'$'
+            return v
+        for case,command in [('J03WMX','WMX'),('J03WOH','WOH'),('J03WR9','WR')]:
+            observed=next(c for c in data['cases'] if c['case']==case);rr=[r for r in inverse if r['case']==case]
+            rows=[]
+            for i,(t,pos,frame) in enumerate(zip(observed['fit_times_s'],observed['fit_positions_m'],observed['fit_frames'])):
+                rows.append(f'$P_{i}$ & {frame} & {t:.2f} & '+' & '.join(f'{x:.3f}' for x in pos))
+            goal=observed['goal'];source=tr('direct source frame','源帧直接记录') if goal['source']=='measured' else tr('linear interpolation','帧间线性插值')
+            rows.append(tr('Goal','球门')+' & '+'--'.join(goal['frames'])+f" & {goal['time_s']:.4f} & 11.000 & {goal['local_position'][1]:.4f} & {goal['local_position'][2]:.4f}")
+            macro(command+'MeasuredTable',table(tr(f'{case}: three measured fitting points and observed goal crossing ({source}).',f'{case}：三个实测拟合点与实测球门交点（{source}）。'),'tab:measured-'+case,'llrrrr',
+                tr(r'Point & Source frame & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)',r'点 & 源帧号 & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)'),rows))
+            rows=[]
+            for r in rr:
+                q=r.get('initial_state');event=r.get('event',{});reached=event.get('type')=='plane'
+                yz=[f'{x:.4f}' for x in event['position'][1:]] if reached else ['---','---']
+                spin=vector(q[3:]) if q is not None and r['model']=='M4' else '---'
+                vel=vector(q[:3]) if q is not None else '---'
+                distance=f"{r['goal_error_m']:.4f}" if reached else '---'
+                rows.append(f"{r['model']} & {statuses[r['status']]} & "+' & '.join(yz)+f' & {vel} & {spin} & {distance}')
+            cap=tr(f'{case}: inverse initial states and predicted goal-plane crossings. M4 uses a 30 rad/s reference spin magnitude; M1--M3 do not estimate spin.',
+                f'{case}：反演初始状态与预测球门交点。M4 使用 30 rad/s 参考自旋大小；M1--M3 不反演自旋。')
+            macro(command+'PredictedTable',table(cap,'tab:predicted-'+case,'llrrccr',
+                tr(r'Model & Status & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & Spin & $d_g$ (m)',
+                   r'模型 & 状态 & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & 自旋 & $d_g$ (m)'),rows))
+            text=tr('The measured low flight requires sustained vertical support from lift.','实测低空飞行中，升力影响足球能否持续保持在草地上方。') if case=='J03WMX' else tr('The rising measured arc connects vertical launch velocity with the subsequent action of gravity and lift.','实测上升弧线体现了初始竖直速度，以及重力和升力对后续路径的共同作用。') if case=='J03WOH' else tr('The measured path bends laterally, so fitted spin direction affects the continuation towards the goal.','实测路径具有明显横向运动，拟合自旋方向影响了朝向球门的后续轨迹。')
+            m4=rr[-1]
+            if m4.get('goal_error_m') is not None:
+                text+=tr(f" M4's crossing deviation is {m4['goal_error_m']:.4f} m.",f" M4 的交点偏离距离为 {m4['goal_error_m']:.4f} m。")
+            elif m4.get('event',{}).get('type')=='ground':
+                text+=tr(f" M4 reaches the ground at $x={m4['event']['position'][0]:.3f}$ m.",f" M4 在 $x={m4['event']['position'][0]:.3f}$ m 触地。")
+            limits=[r['model'] for r in rr if r['status']=='fit_limit']
+            if limits:text+=tr(' The iteration-limit candidates are '+', '.join(limits)+'.',' 达到迭代上限的候选为 '+ '、'.join(limits)+'。')
+            ground=[r['model'] for r in rr if r.get('event',{}).get('type')=='ground']
+            if ground:text+=tr(' Ground contact precedes the goal for '+', '.join(ground)+'.',' '+ '、'.join(ground)+' 在球门前触地。')
+            macro(command+'Discussion',text)
+        macro('TorqueViscousRatio',scientific(other['viscous_to_inertial_ratio']));macro('TorqueDisplacement',f"{other['goal_displacement_m']:.4f}")
+        a,b=[r['event'] for r in other['records'][:2]]
+        text=tr(f"The damped crossing is $({b['position'][1]:.4f},{b['position'][2]:.4f})$ m, compared with $({a['position'][1]:.4f},{a['position'][2]:.4f})$ m at constant spin. The displacement is {other['goal_displacement_m']:.4f} m ({other['displacement_pct_of_11m']:.3f}\\% of 11 m). Spin falls by {other['spin_loss_pct']:.3f}\\%, and crossing time changes by {other['time_change_pct']:+.3f}\\%. Adding viscous torque shifts the damped crossing by {other['viscous_goal_difference_m']:.2g} m. The short-flight endpoint is less sensitive than spin magnitude to this reference torque.",
+            f"阻尼交点为 $({b['position'][1]:.4f},{b['position'][2]:.4f})$ m，恒定自旋为 $({a['position'][1]:.4f},{a['position'][2]:.4f})$ m。位移为 {other['goal_displacement_m']:.4f} m，占 11 m 的 {other['displacement_pct_of_11m']:.3f}\\%。自旋降低 {other['spin_loss_pct']:.3f}\\%，到达时间变化 {other['time_change_pct']:+.3f}\\%。再加入黏性力矩使阻尼交点改变 {other['viscous_goal_difference_m']:.2g} m。短程交点的变化小于自旋幅值的变化。")
+        macro('TorqueResults',text)
+        rows=[' & '.join([f"{r['wind_m_s']:.0f}",f"{r['head_pct']:+.2f}",f"{r['tail_pct']:+.2f}",f"{r['cross_pct']:+.2f}",f"{r['angle_deg']:.2f}"]) for r in other['wind']]
+        macro('WindResultsTable',table(tr('Illustrative wind at the 24 m/s curved-shot launch: dynamic-pressure changes at fixed coefficients.','24 m/s 弧线球初速下的示例风况：固定系数时的动压变化。'),'tab:wind','rrrrr',
+            tr(r'$w$ (m/s) & Headwind (\%) & Tailwind (\%) & Crosswind (\%) & Angle ($^\circ$)',r'$w$ (m/s) & 逆风 (\%) & 顺风 (\%) & 侧风 (\%) & 偏角 ($^\circ$)'),rows))
+        macro('WindThreshold',f"{other['wind_threshold_m_s']:.2f}")
+        (ROOT/folder/'report_results.tex').write_text('% Generated exclusively from results/current_report.\n'+''.join(commands),encoding='utf-8')
+    print('bilingual tables refreshed from 24 forward and 12 inverse results')
+
 if __name__=='__main__':main()

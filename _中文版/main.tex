@@ -24,8 +24,8 @@
 \setlength{\parindent}{2em}
 \setlength{\parskip}{0pt}
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,numbers=left,numberstyle=\tiny,numbersep=8pt,columns=fullflexible,showstringspaces=false,frame=none}
-\graphicspath{{../results/structure_linear_spin/figures/}{aerodynamics/}{assets/}{figures/}}
-\input{report_results.tex}
+\graphicspath{{../paper/aerodynamics/}{../paper/assets/}{../results/current_report/figures/}{../results/sensitivity_linear/figures/}}
+\input{report_results.tex}\input{sensitivity_results.tex}
 
 \begin{document}
 \begin{center}
@@ -33,12 +33,12 @@
 \vspace{2mm}{\bfseries 题目 B\par}
 \vspace{3mm}{\bfseries 摘要\par}
 \end{center}
-本研究比较仅受重力、加入阻力、恒力和包含马格努斯力四种模型。M3 根据三个位置求取恒加速度；M4 采用恒定阻力系数和与自旋参数成正比的升力系数，反演初速度与气动参数。五组比赛飞行用于对照；题目算例的 M4 球门平面交点为 $(y,z)=(\ProblemY,\ProblemZ)$ m。
+本文比较仅考虑重力、加入空气阻力、恒合力以及重力与气动力共同作用四类模型。M3 根据早期位置反演恒加速度；M4 采用恒定阻力系数和与自旋参数成正比的升力系数，并拟合气动参数。
 
-
+五类自设踢法对应六组初始状态和 24 次正向飞行，用于分析速度、仰角与自旋方向的作用。三次真实比赛点球提供 39 个原始采样帧；坐标统一到点球点后，利用各例指定的三个位置完成 12 组有界反演，并与后续真实采样曲线比较。各例表格列出实测拟合位置、反演初始状态、预测交点及其偏离距离，并标明终止状态。另用同一弧线球初始条件比较旋转阻尼，其球门交点位移为 \TorqueDisplacement\ m。第五章以题目三点为参考算例，在质量与半径固定时比较单参数响应、相同位置约束下的交点及十万条蒙特卡洛轨迹的落点分布。
 
 \noindent\textbf{关键词：}足球；空气阻力；马格努斯效应；逆向预测；轨迹对照
-\newpage\tableofcontents\newpage
+\newpage\begingroup\fontsize{10}{11.5}\selectfont\tableofcontents\endgroup\newpage
 \section{引言}
 \subsection{问题背景}
 点球是一个受到严格时空条件约束的拦截问题。守门员需要在合适的时间到达合适的位置，同时决定何时以及向哪个方向移动。点球预判研究讨论了这一时机问题，并表明射门速度和踢球技术会影响射门方向的可预测性\cite{kamp2018,hunter2018}。这些研究也考虑球员触球前的动作线索；本题则关注足球离脚后，根据已测位置预测其后续位置。
@@ -52,24 +52,29 @@
 本题给出了初始位置及其后的两个早期位置，但没有直接给出初速度、自旋等量。因此，本文利用运动方程寻找与早期观测相符的运动状态，并计算其球门平面交点。DFL 开放数据集同时提供职业比赛事件和光学追踪数据\cite{bassek,dataset}，可用于将预测交点与之后记录的位置进行比较。
 
 \subsection{问题重述}
-本文研究足球从点球点附近飞向球门的三维运动。球门宽 7.32 m、高 2.44 m，点球点距球门线 11 m。我们建立包含重力、浮力、阻力与马格努斯效应的模型，求解飞行轨迹及球门平面交点，并与实测点球飞行对照。题目预测使用初始位置及 0.05、0.10 s 的位置，后续位置用于验证。第二章介绍假设与符号，第三章建立受力和运动方程，第四章比较正向与逆向预测，第五章预留灵敏性分析，第六章讨论表面几何、旋转阻尼和风，第七、八章给出小结与模型评价。
+本文研究足球从点球点飞向球门的运动，球门宽 7.32 m、高 2.44 m，距点球点 11 m。运动与预测问题可分为三个阶段：
+\begin{enumerate}
+\item \textbf{触球阶段。} 触球决定足球离脚后的初速度与自旋，这些初始条件构成第~\ref{sec:solving} 章正向算例的输入，也是逆向预测需要反演的未知量。
+\item \textbf{空中飞行阶段。} 重力、空气阻力和马格努斯升力共同决定轨迹，其演化由第~\ref{sec:model} 章的控制方程描述。
+\item \textbf{射门阶段。} 球门交点将飞行运动与射门结果联系起来。初始运动、气动参数和环境条件的变化可形成落点分布，第~\ref{sec:sensitivity} 章分析相应灵敏性与联合扰动。
+\end{enumerate}
+下文先比较自设初始条件的不同踢法，再通过三次真实点球反演初始状态，并与后续实测位置对照。图~\ref{fig:workflow} 概述这一物理与计算过程。
 \begin{figure}[H]\centering
-\resizebox{\textwidth}{!}{\input{assets/workflow_tikz.tex}}
-\caption{含浮力的受力模型、四类基准模型比较与球门交点预测。}\label{fig:workflow}
+\resizebox{\textwidth}{!}{\input{../paper/assets/workflow_tikz.tex}}
+\caption{三力建模、自设初值正向情景与真实点球逆向对照。}\label{fig:workflow}
 \end{figure}
-
 
 \section{模型准备}
 \subsection{基本假设}
 \begin{itemize}
-\item \textbf{球与脚的作用。} 取足球刚脱离球员脚部、开始自由飞行的时刻为 $t=0$；不对接触期间的冲击过程及球体变形建模。
+\item \textbf{触球与建模起点。} 自设正向算例从离脚后的初始状态开始；实测反演以选定的起始追踪帧定义 $t=0$，触球作用通过初始运动条件体现。
 \item \textbf{刚性球体。} 参照已有足球飞行模型\cite{maponi,bray,myers}，将足球视为质量、半径和迎风面积 $A=\pi R^2$ 恒定的刚性球体，质心与几何中心重合。经验足球气动系数表征表面的平均影响，第~\ref{sec:surface} 节进一步讨论接缝和非对称几何的作用。
-\item \textbf{自由飞行。} 自由飞行中考虑重力、空气浮力、空气阻力与自旋升力\cite{maponi,bray}。所研究的飞行在足球首次接触地面、球门结构或其他物体时结束，不考虑碰撞、弹跳和滚动；数值积分在到达指定球门平面时也停止。
+\item \textbf{自由飞行。} 自由飞行中考虑重力、空气阻力与自旋升力\cite{maponi,bray}。所研究的飞行在足球首次接触地面、球门结构或其他物体时结束，不考虑碰撞、弹跳和滚动；数值积分在到达指定球门平面时也停止。
 \item \textbf{均匀重力场。} 重力加速度为常量，取 $g=9.81\,\mathrm{m/s^2}$。
 \item \textbf{大气性质。} 单次飞行中空气密度和动力黏度在空间中保持均匀，气动力通过经验阻力系数和升力系数描述。
 \item \textbf{风。} 主计算采用静止空气；考虑风时，单次飞行的风速矢量在空间和时间上保持恒定，忽略小尺度湍流及快速变化的阵风。第~\ref{sec:wind} 节讨论不同风况对相对气流和气动力的影响。
 \item \textbf{飞行中的自旋。} 主模型忽略气动力矩，因此自旋向量保持恒定。第~\ref{sec:rotation} 节通过在同一初始状态下加入旋转阻尼，分析这一近似的影响。
-\item \textbf{观测与未知参数。} 将题目给出的位置坐标视为准确值。初始位置和随后两个早期位置构成逆向输入，DFL 追踪记录中的后续位置用于比较\cite{bassek,dataset}。在有界不确定性分析中，将无法唯一确定的初速度、自旋、气动参数和环境条件限制在明确的合理范围内；预测不确定性来自这些未确定量和模型假设，而非测量噪声。DFL 记录的竖直坐标按以米为单位的高度处理。
+\item \textbf{观测与未知量。} 真实点球的三个指定位置用于有界确定性反演，随后位置用于比较。Z 原值按米及球心高度解释。初速度、自旋和气动力修正的搜索范围在第四章列明；第五章以题目三点算例考察参数变化对落点的影响。
 \end{itemize}
 \subsection{符号说明}
 \begin{table}[H]\centering\small
@@ -90,20 +95,22 @@ $\theta,\boldsymbol e_L$ & 自旋与来流夹角、升力方向 & rad；单位�
 $X_g$ & 局部球门平面坐标 & 11 m\\
 $\boldsymbol Q,I_b$ & 阻尼力矩与转动惯量（第六章） & N\,m; kg\,m$^2$\\\bottomrule
 \end{tabular}\end{table}
-题目工况的质量、半径与重力加速度采用 Maponi 和 Piombin 的参考值\cite{maponi}，空气密度取自 Asai 等\cite{asai2007}。运动黏度作为参考空气条件给定，动力黏度按 $\mu=\rho\nu$ 统一计算。受控实验采用各自报告的质量、直径及空气参数。
+题目工况的质量、半径与重力加速度采用 Maponi 和 Piombin 的参考值\cite{maponi}，空气密度取自 Asai 等\cite{asai2007}。运动黏度作为参考空气条件给定，动力黏度按 $\mu=\rho\nu$ 统一计算。三次比赛点球统一采用上述声明的参考设定。
 
-\section{模型建立}
+\section{模型建立}\label{sec:model}
 通过选择纳入的气动力项，同一组牛顿运动方程可形成四类模型。以下先描述几何关系，再将受力与周围流动和球体自旋联系起来。
 \subsection{几何与球门平面}
-以球场中心为原点、球场长 105 m 时，两条球门线位于 $x=\pm52.50$ m。所选踢球方向朝向正 $x$ 球门。题目局部坐标中，球门开口范围为 $-3.66\le y\le3.66$ m、$0\le z\le2.44$ m。球门交点定义为球心沿前进方向首次到达 $x=X_g$ 时的位置。
+局部坐标原点位于名义点球点，$x$ 朝向球门，$y$ 水平横向，$z$ 竖直向上。球门平面为 $x=11$ m，开口为 $-3.66\le y\le3.66$ m、$0\le z\le2.44$ m。实测球场中心坐标的转换见第~\ref{sec:inverse} 节。
 \begin{figure}[H]\centering\includegraphics[width=0.78\textwidth]{penalty_geometry_new.png}
-\caption{点球局部坐标几何示意。$O$ 为点球点，$C$ 为球门平面上的示意点。}\label{fig:geometry}\end{figure}
-题目采用以点球点为原点的局部坐标，球门平面为 $x=11$ m；比赛记录采用球场中心坐标，球门位于 $X_g=52.50$ m。
-
-在 $x=X_g$ 处，若球心满足 $|y|\leq3.66-R$ 和 $R\leq z\leq2.44-R$，足球可完整通过球门开口。球心下降至 $z=R$ 时视为触地。四种模型统一采用上述事件判据。
+\caption{点球局部坐标几何；$O$ 为名义点球点，$C$ 为球门平面上的示意点。}\label{fig:geometry}\end{figure}
+当球心满足 $|y|\le3.66-R$、$R\le z\le2.44-R$ 时，足球可完整通过球门开口。下降球心到达 $z=R$ 时视为触地，所有模型统一采用此判据。
 
 \subsection{受力分析}
-\subsubsection{空气浮力}
+\subsubsection{重力}
+重力提供恒定的竖直向下作用力，
+\begin{equation}\boldsymbol F_g=-mg\boldsymbol e_z,\end{equation}
+其中 $\boldsymbol e_z$ 为竖直向上的单位向量。即使不计气动力，重力也会使轨迹向下弯曲。
+
 依据阿基米德原理，足球排开空气受到的浮力竖直向上。球体积为 $V_b=\frac43\pi R^3$，因而
 \begin{equation}
 \boldsymbol F_B=\rho V_b g\,\boldsymbol e_z
@@ -111,25 +118,22 @@ $\boldsymbol Q,I_b$ & 阻尼力矩与转动惯量（第六章） & N\,m; kg\,m$^
 \label{eq:buoyancy}\end{equation}
 浮力与重力合并后为 $\boldsymbol F_g+\boldsymbol F_B=-(m-\rho V_b)g\boldsymbol e_z$。对表中参考参数，浮力约为重力的 $1.56\%$，使竖直向下的有效加速度由 $g$ 变为 $g(1-\rho V_b/m)$。
 
-\subsubsection{重力}
-重力提供恒定的竖直向下作用力，
-\begin{equation}\boldsymbol F_g=-mg\boldsymbol e_z,\end{equation}
-其中 $\boldsymbol e_z$ 为竖直向上的单位向量。即使不计气动力，重力也会使轨迹向下弯曲。
+浮力量级为重力的 1.56\%，本文四类主模型在上述重力项下统一求解三力运动。
 
+图~\ref{fig:force-schematic} 从球体参考系说明相对气流和受力方向。右图取自旋轴垂直纸面向外的例子，力的方向由叉乘确定。
 \begin{figure}[H]\centering
 \includegraphics[width=.88\textwidth]{force_schematic.pdf}
 \caption{足球周围的相对气流及受力方向示意。$\odot$ 表示自旋轴指向纸面外；左图中的 $\boldsymbol u$ 是足球相对于空气的速度。}\label{fig:force-schematic}\end{figure}
 
 \subsubsection{空气阻力}\label{sec:drag}
-足球相对空气的速度为 $\boldsymbol u=\boldsymbol v-\boldsymbol v_{\rm wind}$，令 $u=\|\boldsymbol u\|$、迎风面积 $A=\pi R^2$。阻力与相对速度方向相反，其大小与速度平方成正比\cite{goff2009,kiratidis2018}：
+足球相对空气的速度为 $\boldsymbol u=\boldsymbol v-\boldsymbol v_{\rm wind}$，令 $u=\|\boldsymbol u\|$，迎风面积 $A=\pi R^2$。阻力与相对速度方向相反，大小与速度平方成正比\cite{goff2009,kiratidis2018}：
 \begin{equation}\boldsymbol F_D=-\tfrac12\rho A C_D u\boldsymbol u.\label{eq:drag-force}\end{equation}
-其中 $C_D$ 为无量纲阻力系数，主模型中取常数；静止空气时 $\boldsymbol u=\boldsymbol v$。
+主模型中 $C_D$ 为恒定系数，静止空气时 $\boldsymbol u=\boldsymbol v$。
 \subsubsection{马格努斯升力}\label{sec:lift}
-\begin{figure}[H]\centering\includegraphics[width=.78\textwidth]{magnus_streamlines.pdf}
-\caption{旋转足球周围的理想化相对流线。}\label{fig:magnus-flow}\end{figure}
-旋转足球受到垂直于自旋和相对速度的马格努斯力。令 $Sp=R\|\boldsymbol\omega\|/u$，采用简化关系 $C_L=\alpha Sp$，其中 $\alpha$ 为待定常数。代入升力表达式并对斜置旋转轴作投影，得到
+\begin{figure}[H]\centering\includegraphics[width=.78\textwidth]{magnus_streamlines.pdf}\caption{旋转足球周围的理想化相对流线。}\label{fig:magnus-flow}\end{figure}
+令 $Sp=R\|\boldsymbol\omega\|/u$，使用简化关系 $C_L=\alpha Sp$，其中 $\alpha$ 为待定常数。对旋转轴作方向投影，得到
 \begin{equation}\boldsymbol F_L=\tfrac12\rho A R\alpha(\boldsymbol\omega\times\boldsymbol u).\label{eq:lift-force}\end{equation}
-该式在自旋为零或相对速度为零时自然为零。叉乘方向依据本文坐标约定；采用相反的叉乘顺序时须同时调整符号。
+自旋为零或相对速度为零时，该力自然为零。换用相反的叉乘顺序须同时改变符号。
 \subsection{动力学方程}\label{sec:dynamics}
 牛顿第二定律与角动量定律给出
 \begin{equation}
@@ -140,7 +144,7 @@ m\dot{\boldsymbol v}=\sum\boldsymbol F,\qquad
 \begin{equation}
 \left\{\begin{aligned}
 \dot{\boldsymbol r}&=\boldsymbol v,\\
-m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_B+\boldsymbol F_D+\boldsymbol F_L,\\
+m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L,\\
 \dot{\boldsymbol\omega}&=\boldsymbol0.
 \end{aligned}\right.\label{eq:motion}
 \end{equation}
@@ -154,148 +158,23 @@ m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_B+\boldsymbol F_D+\boldsymbo
 \end{equation}
 已知初始位置确定飞行起点，三个初速度分量与三个自旋分量描述初始运动。在静止空气中，阻力消耗机械能，马格努斯力沿速度方向不做功，重力使动能与势能相互转换。
 
-本节给出加入浮力的扩展方程。第~\ref{sec:solving} 节及后续已列数值、图表沿用原有的重力、阻力和马格努斯力计算，即对应 $\boldsymbol F_B=\boldsymbol 0$ 的基准结果；加入浮力后的结果尚未重算。
 
-\section{模型求解}\label{sec:solving}
-下面各算例沿用未计浮力的三力基准结果。通过逐步增加气动描述，比较各作用对轨迹的影响。表~\ref{tab:models} 定义四类模型。正向预测采用实测或重建的发射条件，气动力修正系数取一；逆向预测利用两个后续位置反演初始运动与气动力修正，再将该状态推进至球门。
-\begin{table}[H]\centering\small
-\caption{四类模型与反演量}\label{tab:models}
-\begin{tabular}{lll}\toprule
-模型 & 运动假设 & 反演量\\\midrule
-M1 & 重力 & 初速度 (3)\\
-M2 & 重力和阻力 & 初速度、阻力系数 (4)\\
-M3 & 恒合力、匀加速度 & 初速度、加速度 (6)\\
-M4 & 重力、阻力和马格努斯力 & 初速度、旋转轴、$C_D$、$\alpha$ (7)\\\bottomrule
-\end{tabular}\end{table}
-M3 的合力包括重力与其他力的合效果。M4 中 $C_D$ 与 $\alpha$ 为常数，$C_L=\alpha Sp$ 随运动变化。正向参考值为 $C_D=\ReferenceCD$、$\alpha=\ReferenceCL$，参考值取自文献参考工况\cite{kiratidis2018}。
 
-\subsection{正向预测}\label{sec:forward}
-\subsubsection{求解方法与实验条件}
-正向对照使用 M1、M2 和 M4 的给定初始状态与参考气动系数。M3 的恒加速度须由位置反演，故不纳入这些给定初速度的正向对照。
 
-我们选用五组受控飞行：一组无旋转发射，实测射程为 21.9 m；另有四组上旋轨迹。各组初始状态见表~\ref{tab:forward-initial}。
-
-\begin{quote}\small\textbf{数据来源与提取。} Goff 和 Carr\'e\cite{goff2009} 使用质量 0.424 kg、直径 0.218 m 的 32 块面板足球及两台高速相机；报告空气密度为 1.2 kg/m$^3$、运动黏度为 $1.54\times10^{-5}$ m$^2$/s，射程误差不超过 $\pm0.05$ m。我们从其图 3、4、11、14 的矢量 PDF 提取红色实测标记。无旋转案例初速度约 18 m/s、仰角约 $22^\circ$、初始球心高度约 0.85 m，早期标记间隔为 0.005 s；四组旋转案例用已发表的 $Re$、$Sp$ 确定速度与自旋，并以前三个数字化位置确定空间切线，沿 $z(x)$ 比较。\end{quote}
-
-表~\ref{tab:forward-initial} 列出正向输入。各算例位于 $x$--$z$ 平面，$y_0=v_{y0}=0$、$\omega_{x0}=\omega_{z0}=0$，因此表中的 $v_{x0}$、$v_{z0}$、$\omega_{y0}$ 补全了六个初速度和自旋分量。首个标记给出初始位置。
-\ForwardInitialTable
-
-\subsubsection{计算轨迹与物理分析}
-\ForwardRangeTable
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{forward_range.pdf}
-\caption{Goff 和 Carr\'e 无旋转实验的正向预测\cite{goff2009}。左图为计算路径、数字化早期位置及实测落点；右图将各模型射程与实测 21.9 m 比较。初始自旋为零时 M2、M4 重合。}\label{fig:forward-range}\end{figure}
-仅受重力时射程较远；阻力降低水平速度。无旋转时 M2 和 M4 的参考阻力相同，计算轨迹重合。M4 预测射程与实测之差为 \ForwardMFourError\ m。
-
-\ForwardSpinTable
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{forward_topspin.pdf}
-\caption{从 Goff 和 Carr\'e 原文图 14 提取的四组上旋轨迹\cite{goff2009}。黑点为实测标记中心，各模型采用单位气动力修正和已列初始条件，显示范围为公开的早期空间片段。}\label{fig:forward-spin}\end{figure}
-上旋产生向下的马格努斯力。表~\ref{tab:forward-spin} 给出实测水平位置处的高度均方根误差。
-
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{forward_dynamics.pdf}
-\caption{无旋转与上旋 b 正向算例中的速度、阻力和升力。力的大小由同一组方程计算；即使系数恒定，动压随速度变化仍使气动力变化。}\label{fig:forward-dynamics}\end{figure}
-球速较高时阻力较强；上旋的向下升力改变竖直运动与飞行时间。固定系数时，气动力大小仍随速度变化。
-
-\subsection{逆向预测}\label{sec:inverse}
-\subsubsection{早期位置反演与代表解}
-M3 利用三个位置求解恒定加速度：
-\begin{equation}\boldsymbol r(t)=\boldsymbol r_0+\boldsymbol v_0t+\tfrac12\boldsymbol a t^2.\end{equation}
-M4 则以初速度、旋转方向、$C_D$ 和 $\alpha$ 为变量，最小化两个后续位置的平方误差。为展示一个代表解，计算将角速度大小设为 30 rad/s，旋转轴以两个角度表示，并在选定范围内用多个初值寻找解。由于马格努斯力取决于 $\alpha\boldsymbol\omega$，仅凭位置不能分别唯一确定 $\alpha$ 和角速度；七个待定量对应六个后续位置坐标，结果应理解为所选范围内的代表解。
-
-本次反演将 $C_D$ 和 $\alpha$ 分别限制在各自参考值的 $0.5$--$1.5$ 倍。题目算例中两者均达到上界，说明所得代表解受所选范围影响；若要判断参数和交点的稳定性，应进一步扩大范围并比较多组可行解。
-
-\subsubsection{比赛实测飞行对照}\label{sec:real-validation}
-Sportec Open DFL 数据集将光学追踪与比赛事件关联\cite{bassek,dataset}。本文分析 J03WOH、J03WQQ 两场比赛中的四段飞行，以及一组点球记录；筛选依据为可识别的射门事件和跨越实际球门线平面的连续追踪。四段飞行包括两次头球和两次脚部射门。逆向计算使用 0、0.04、0.08 s 的前三个位置，随后追踪坐标用于确定实测球门交点。点球片段的首次位移较小，之后运动较快，计算沿用原始早期坐标。
-
-\MatchResultsTable
-\MatchAggregateTable
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{inverse_errors.pdf}
-\caption{五组比赛飞行各模型的球门交点误差，每个标记对应一个事件和模型。零线下的叉号表示未给出有效球门交点，具体状态见表~\ref{tab:match-results}。}\label{fig:inverse-errors}\end{figure}
-\MatchDiscussion
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_prediction.pdf}
-\caption{点球记录的已收敛逆向预测及全部追踪位置。前三个位置用于反演，其余位置展示实测后续运动；各模型状态见表~\ref{tab:match-results}。}\label{fig:penalty}\end{figure}
-这一对照将早期加速度与后续飞行联系起来。较大的阻力修正会造成较快的动量损失，升力修正则改变轨迹弯曲方向。因此，早期记录位移的变化会明显影响终点预测，各事件结果展示了不同模型对实际记录片段的响应。
-
-另外，我们使用队友更正起始帧后的三例点球记录重新计算。表中数值为球门平面交点误差（m）；触地、提前终止或拟合未收敛时不列误差。
-\begin{table}[H]\centering\small
-\caption{更正起点后的三例点球：球门交点误差（m）}\begin{tabular}{lrrrr}\toprule
-Case & M1 & M2 & M3 & M4\\\midrule
-J03WMX & --- & --- & --- & 0.360\\
-J03WOH & 0.684 & 0.657 & 0.374 & 0.113\\
-J03WR9 & 0.550 & 0.541 & --- & ---\\
-\bottomrule\end{tabular}\end{table}
-
-\subsubsection{题目 B 算例}\label{sec:example}
-题目给出的观测为
-\begin{equation}
-\begin{array}{c|ccc}
-t\ (\mathrm{s})&x\ (\mathrm{m})&y\ (\mathrm{m})&z\ (\mathrm{m})\\\hline
-0&0&0&0.11\\0.05&1.50&0.45&0.44\\0.10&2.96&0.86&0.74
-\end{array}
-\end{equation}
-采用相同逆向流程得到表~\ref{tab:problem}，所选 M4 初始条件为
-\begin{equation}
-\begin{aligned}
-\boldsymbol v_0&=(\ProblemVX,\ProblemVY,\ProblemVZ)\ \mathrm{m/s},\\
-\boldsymbol\omega_0&=(\ProblemWX,\ProblemWY,\ProblemWZ)\ \mathrm{rad/s},\\
-(C_D,\alpha)&=(\ProblemAlphaD,\ProblemAlphaL).
-\end{aligned}
-\end{equation}
-\ProblemResultsTable
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{problem_prediction.pdf}
-\caption{题目 B 的四类逆向预测：水平路径、竖直路径和球门平面球心位置。黑点为题目给定的早期位置。}\label{fig:problem-prediction}\end{figure}
-重力和阻力保持水平速度分量之比，M1、M2 预测近似相同的水平方向。M3 延续由三点确定的恒加速度，M4 通过马格努斯力描述弯曲。M4 球心于 $\ProblemTime$ s 到达球门平面，交点为 $(\ProblemY,\ProblemZ)$ m，早期最大坐标残差为 \ProblemResidual\ m。所列自旋大小是参考设定。
-
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{problem_dynamics.pdf}
-\caption{题目 B 四类反演模型的速度与气动力大小。同一组观测在不同受力假设下给出不同后续路径。}\label{fig:problem-dynamics}\end{figure}
-
-\subsection{案例分析：不同点球射门方式}\label{sec:kick-cases}
-面对技法各异的点球，守门员只看到足球刚离脚时的几个位置，应该怎样判断球最终会飞向哪里？我们设置五类示意射门：大力、推射、侧旋弧线、上旋／后旋和挑射，并用同一套方法比较。每条轨迹先由 M4 生成，再只取 0、0.05、0.10 s 的三个位置，用 M1 和假定零自旋的 M4 预测球门交点。图中蓝色实线为模拟飞行，棕色虚线为零自旋 M4 预测，黑点是输入位置。所有数值是情景设定，不是球员统计均值\cite{alcock2012,hunteraccuracy,ravenscroft2015,carre2002}；不加入风和观测噪声。
-
-\subsubsection*{Case 1：大力射门}
-设初速度为 27 m/s、仰角 $8^\circ$，足球不自旋。球较快到达球门，本例中 M1 的球门交点误差为 0.060 m，零自旋 M4 的误差小于 0.001 m。球速快会压缩守门员的反应时间；在这组假设下，其弯曲较小，位置变化也相对容易沿早期运动方向判断。
-\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases_linear_spin/power_3d.pdf}\caption{Case 1：大力射门的三维轨迹。}\end{figure}
-
-\subsubsection*{Case 2：精准推射}
-设初速度为 20 m/s、仰角 $11^\circ$，自旋为零。模拟球心到达球门平面的高度为 0.551 m；M1 的误差为 0.123 m，零自旋 M4 的误差小于 0.001 m。相较大力射门，球飞得较慢，守门员有更多时间观察轨迹逐步展开。
-\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases_linear_spin/placement_3d.pdf}\caption{Case 2：精准推射的三维轨迹。}\end{figure}
-
-\subsubsection*{Case 3：侧旋弧线球}
-设初速度为 24 m/s、仰角 $10^\circ$，初始角速度为 $(0,0,35)$ rad/s。球在飞行中向侧方弯曲，模拟交点为 $(y,z)=(0.841,0.877)$ m；如果预测时忽略自旋，M4 的交点误差为 0.688 m。守门员看到的早期横向运动可能同时包含初始方向和旋转效应，因此需要给后续弯曲留出判断余地。
-\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases_linear_spin/curved_3d.pdf}\caption{Case 3：侧旋弧线球的三维轨迹。}\end{figure}
-
-\subsubsection*{Case 4：上旋与后旋}
-两种情况的初速度均为 24 m/s。上旋取仰角 $12^\circ$、角速度 $(0,35,0)$ rad/s；后旋取仰角 $10^\circ$、角速度 $(0,-35,0)$ rad/s。两者的模拟球门高度分别为 0.426 m 和 1.723 m；若预测时假定零自旋，M4 的误差分别为 0.682 m 和 0.692 m。旋转方向改变了竖直弯曲，守门员除了判断左右位置，还需要关注球的高度变化。
-\begin{figure}[H]\centering\includegraphics[width=.48\textwidth]{../results/kick_cases_linear_spin/topspin_3d.pdf}\hfill\includegraphics[width=.48\textwidth]{../results/kick_cases_linear_spin/backspin_3d.pdf}\caption{Case 4：上旋（左）与后旋（右）。}\end{figure}
-
-\subsubsection*{Case 5：挑射}
-设初速度为 14 m/s、仰角 $20^\circ$，并赋予 $(0,-15,0)$ rad/s 的后旋。相对较低的速度和较大的仰角使轨迹先升后降，模拟球门高度为 0.941 m；M1 与零自旋 M4 的误差分别为 0.250 m 和 0.555 m。面对挑射，守门员需要判断球经过上升阶段后的下落位置。
-\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases_linear_spin/chip_3d.pdf}\caption{Case 5：挑射的三维轨迹。}\end{figure}
-
-\paragraph{案例汇总。} 表~\ref{tab:kick-cases} 汇总六条轨迹。已知自旋的 M4 是条件对照：它额外使用仿真真值中的自旋；生成和预测采用同一方程，因此误差接近零。这里每类只选一条合成轨迹，用于展示自旋可能造成的影响；真实比赛射门的独立对照仍见第~\ref{sec:real-validation} 节。案例使用固定 $C_D$ 和 $\alpha$。
-\begin{table}[H]\centering\small\caption{六条示意射门的三点预测汇总；误差为球门平面距离}\label{tab:kick-cases}
-\begin{tabular}{lrrrrrr}\toprule
-案例 & $v_0$ & 仰角 & 自旋 $(\omega_y,\omega_z)$ & M1 & M4 零自旋 & M4 已知自旋\\
- & (m/s) & (度) & (rad/s) & (m) & (m) & (m)\\\midrule
-大力射门 & 27 & 8 & $(0,0)$ & 0.060 & $<0.001$ & $<0.001$\\
-精准推射 & 20 & 11 & $(0,0)$ & 0.123 & $<0.001$ & $<0.001$\\
-侧旋弧线 & 24 & 10 & $(0,35)$ & 0.693 & 0.688 & $<0.001$\\
-上旋 & 24 & 12 & $(35,0)$ & 0.764 & 0.682 & $<0.001$\\
-后旋 & 24 & 10 & $(-35,0)$ & 0.610 & 0.692 & $<0.001$\\
-挑射 & 14 & 20 & $(-15,0)$ & 0.250 & 0.555 & $<0.001$\\\bottomrule
-\end{tabular}\end{table}
+\input{sections/model_solving.tex}
 
 \section{灵敏性分析}\label{sec:sensitivity}
-\textit{待完成。}
+\input{sensitivity.tex}
 
 \section{其他因素讨论}\label{sec:other}
-本节讨论表面几何、自旋演化和环境来流的影响。
+主模型突出重力、阻力和马格努斯升力，以下分析其在几何、自旋演化和环境来流中省略的因素。
 \subsection{足球表面的非对称几何}\label{sec:surface}
 Paudel 和 Yan\cite{paudel} 利用真实足球几何进行全程流动模拟，并与光滑球比较。在初速度 10、15、20 m/s，自旋 31.5、63、94.5 rad/s 的工况下，接缝和表面结构会改变流动分离、尾流演化及马格努斯力。九组对照中光滑球的横向弯曲均更强，较高速度和转速下竖直飞行时间的差异也更明显。
 
 \begin{figure}[H]\centering\includegraphics[width=.60\textwidth]{surface_comparison.png}
 \caption{有面板接缝的足球与光滑球体示意图，参考 Paudel 和 Yan 的比较\cite{paudel}；原研究中两球直径均为 0.22 m、质量均为 0.436 kg。图中面板形状仅作示意。}\label{fig:surface-geometry}\end{figure}
 
-Alam 等\cite{alam2012} 的风洞实验表明，不同足球表面结构会影响阻力系数。
+Alam 等\cite{alam2012} 测量了六种足球及光滑球在不同雷诺数下的阻力系数。图~\ref{fig:alam-surfaces} 展示这些足球的球片和表面纹理，图~\ref{fig:alam-drag} 给出对应的阻力系数对比；不同表面结构的阻力变化体现了球型对气动力的影响。
 
 \begin{figure}[H]\centering
 \includegraphics[width=.86\textwidth]{alam_ball_surfaces.png}
@@ -308,7 +187,38 @@ Alam 等\cite{alam2012} 的风洞实验表明，不同足球表面结构会影�
 本文的球形几何描述质心运动与迎风面积，气动力系数来自足球实验，因此表面的平均作用已进入 $C_D$、$C_L$。当侧向力细节更为重要时，可进一步描述面板朝向与非对称尾流波动。这些文献结果说明，在球形轨迹模型中保留足球专用气动系数具有物理依据。
 
 \subsection{足球旋转与气动阻尼}\label{sec:rotation}
-空气阻力矩会使自旋减弱\cite{grad2026,mujoco381}；本节主模型取恒定自旋。线性自旋升力公式可以用于后续比较不同自旋大小和阻尼作用。
+旋转影响马格努斯力，因此自旋衰减会改变弧线球的后续运动。依据 Grad 等的补充材料第 8.4 节\cite{grad2026}和 MuJoCo 椭球流体模型\cite{mujoco381}，球形化简后的惯性与黏性阻尼力矩为
+\begin{equation}
+\boldsymbol Q=-k_2\omega\boldsymbol\omega-k_1\boldsymbol\omega,
+\quad k_2=\frac{8\pi}{15}\rho C_{\rm angular}R^5,\quad k_1=8\pi\mu R^3.
+\label{eq:torque-dimensional}
+\end{equation}
+二次项描述高雷诺数旋转阻力，线性项为黏性阻力。本文采用 MuJoCo 文档给出的参考值 $C_{\rm angular}=1.5$\cite{mujoco381}。定义 $q=\rho v^2/2$、$C_{Q,v}=\|\boldsymbol Q\|/(qAR)$，得到
+\begin{equation}
+C_{Q,v}=\frac{16}{15}C_{\rm angular}Sp^2+\frac{32Sp}{Re},\qquad
+C_{Q,\omega}=\frac{C_{Q,v}}{Sp^2}=\frac{16}{15}C_{\rm angular}+\frac{32}{Re\,Sp}.
+\label{eq:cq-full}
+\end{equation}
+$C_{Q,\omega}$ 采用球面旋转速度 $R\omega$ 定义参考动压，$1/Sp^2$ 用于两种归一化之间的换算。黏性力矩与惯性力矩之比为
+\begin{equation}
+\frac{Q_{\rm viscous}}{Q_{\rm inertial}}=
+\frac{30}{C_{\rm angular}Re\,Sp}=
+\frac{15\nu}{C_{\rm angular}R^2\omega}.
+\end{equation}
+在自设弧线球初始状态下，该比值为 \TorqueViscousRatio，二次项占主导。采用 Maponi 和 Piombin 的薄球壳转动惯量\cite{maponi}，$I_b=2mR^2/3$。加入高雷诺数阻尼后，动力学方程为
+\begin{equation}
+\left\{\begin{aligned}
+\dot{\boldsymbol r}&=\boldsymbol v,\\
+m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L,\\
+I_b\dot{\boldsymbol\omega}&=-k_2\omega\boldsymbol\omega.
+\end{aligned}\right.\label{eq:motion-torque}
+\end{equation}
+力矩方向与自旋相反，消耗旋转动能。单独考虑二次阻尼时，$\omega(t)=\omega_0/[1+(k_2/I_b)\omega_0t]$，可用于校验转动积分。
+
+取第~\ref{sec:forward} 节的弧线球，初速度为 $(\CurvedVX,0,\CurvedVZ)$ m/s，自旋为 $(0,0,35)$ rad/s，气动力修正均为一。保持这些初始条件相同，比较恒定自旋与式~\eqref{eq:motion-torque} 的旋转阻尼。
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{torque_comparison.pdf}
+\caption{自设弧线球相同初始状态下恒定自旋与高雷诺数旋转阻尼的对照。旋转阻力参考系数为 1.5，转动惯量采用薄球壳近似。}\label{fig:torque}\end{figure}
+\TorqueResults
 
 \subsection{风速与气动力估算}\label{sec:wind}
 风通过 $\boldsymbol u=\boldsymbol v-\boldsymbol v_{\rm wind}$ 改变相对来流\cite{maponi}。暂保持气动系数不变，沿飞行方向大小为 $w$ 的风使动压尺度变为
@@ -317,22 +227,22 @@ Alam 等\cite{alam2012} 的风洞实验表明，不同足球表面结构会影�
 \frac{q_{\rm tail}}{q_0}=(1-w/v)^2,\qquad
 \frac{q_{\rm cross}}{q_0}=1+(w/v)^2.
 \end{equation}
-横风还使来流转过 $\arctan(w/v)$，从而改变气动力方向。表~\ref{tab:wind} 在反演初速度下给出上述粗略估算，列示风速作为比较工况。
+横风还使来流转过 $\arctan(w/v)$，从而改变气动力方向。表~\ref{tab:wind} 在弧线球初速度下给出上述粗略估算，列示风速作为比较工况。
 \WindResultsTable
 将逆风动压增幅限制在 5\% 时，有 $w/v\leq\sqrt{1.05}-1$，对应本算例的 $w\leq\WindThreshold$ m/s。静止空气近似更适合室内或弱风飞行；风速较大时应通过相对速度纳入计算。
 
 \section{小结}
-模型将足球飞行与重力、浮力、阻力和马格努斯升力联系起来；本文所列数值采用未计浮力的三力基准计算。M4 使用固定阻力系数与线性自旋升力，以减少待拟合参数。
+模型分别呈现重力、阻力与马格努斯升力的作用：重力使路径向下弯曲，阻力降低速度，自旋改变运动方向。采用恒定阻力系数与线性自旋升力，简化气动力描述。
 
-受控无旋转算例说明，阻力对射程预测十分重要；M4 预测 \ForwardMFourRange\ m，文献实测为 21.9 m。旋转轨迹片段展示了上旋造成的向下弯曲，以及同一系数关系在不同算例中的表现差异。比赛记录对照则说明早期位移和拟合修正系数如何影响后续预测。
+五类自设踢法给出六组初始状态和 24 次正向飞行。成对上、下旋展示竖直马格努斯力的反转，侧旋产生水平弯曲。M4 弧线球在 $\CurvedTime$ s 到达球门，交点为 $(\CurvedY,\CurvedZ)$ m；同一初始状态也用于量化旋转阻尼，在所引参考设定下交点移动 \TorqueDisplacement\ m。
 
-对于题目 B，M4 的球门交点为 $(y,z)=(\ProblemY,\ProblemZ)$ m。马格努斯力解释了其与仅含重力、阻力模型之间明显的水平差别。风的估算给出了静止空气近似对应的弱风条件，灵敏性分析结论将在第五章完成后补充。
+三次真实点球提供不同的早期采样序列及后续轨迹，坐标转换将三例统一到题目几何。12 组逆向结果分别列出反演初始状态、球门交点、偏离距离和触地状态，将记录运动与受力假设联系起来。题目三点的独立灵敏性算例表明，改变初速度方向会影响球门交点；早期位置约束下的搜索使交点最多移动 \SensitivityConditionalShift\ m，联合扰动则通过十万条蒙特卡洛轨迹给出落点分布。
 
 \section{模型评价}
-\subsection{物理解释与计算应用}
-模型层级使各力的作用清晰可见，同一套动力学支持正向求解、早期位置反演和终点预测。气动力修正系数直接联系实测轨迹差异，各实验与数值输入均保留相应来源。
-\subsection{预测表现与改进方向}
-风洞系数、受控发射和比赛飞行分别考察系数趋势、曲率与射程、以及依据早期位置进行预测的表现。逐事件误差展示了经验足球系数与早期轨迹对后续运动的描述情况。球型专用气动测量、直接自旋测量和同步高频位置记录有助于改善预测，具体应用还可纳入表面朝向、旋转阻尼与风。
+\subsection{物理解释与复现}
+四模型体系在相同初始条件下展示各力的作用，正向与逆向计算采用同一状态导数和系数定义。原始坐标、选定源帧、转换坐标、数值设定与候选解均随结果保存。
+\subsection{预测表现与后续改进}
+真实点球对照考察早期运动如何影响后续路径，边界取值及残差体现系数尺度与初始状态搜索的作用。球型专用系数、直接自旋测量和高频同步追踪有助于改善预测；具体飞行还可按其影响程度纳入旋转阻尼与风。
 \addcontentsline{toc}{section}{参考文献}
 \begin{thebibliography}{99}
 \raggedright
@@ -341,14 +251,9 @@ Alam 等\cite{alam2012} 的风洞实验表明，不同足球表面结构会影�
 \bibitem{griffiths2005} I. Griffiths, C. Evans and N. Griffiths, ``Tracking the flight of a spinning football in three dimensions,'' \emph{Measurement Science and Technology}, 16, 2056--2065, 2005. \url{https://doi.org/10.1088/0957-0233/16/10/022}.
 \bibitem{goff2017} J. E. Goff, J. Kelley, C. M. Hobson, K. Seo, T. Asai and S. B. Choppin, ``Creating drag and lift curves from soccer trajectories,'' \emph{European Journal of Physics}, 38, 044003, 2017. \url{https://doi.org/10.1088/1361-6404/aa6fcd}.
 \bibitem{bray} K. Bray and D. G. Kerwin, ``Modelling the flight of a soccer ball in a direct free kick,'' \emph{Journal of Sports Sciences}, 21, 75--85, 2003. \url{https://doi.org/10.1080/0264041031000070994}.
-\bibitem{alcock2012} A. Alcock, W. Gilleard, N. A. T. Brown, J. Baker and A. Hunter, ``Initial ball flight characteristics of curve and instep kicks in elite women's football,'' \emph{Journal of Applied Biomechanics}, 28, 70--77, 2012. \url{https://doi.org/10.1123/jab.28.1.70}.
-\bibitem{ravenscroft2015} J. C. Ravenscroft and N. P. Linthorne, ``Effect of the location of the foot impact point on ball velocity in a soccer penalty kick,'' \emph{33 International Conference of Biomechanics in Sports}, 2015. \url{https://ojs.ub.uni-konstanz.de/cpa/article/view/6595}.
-\bibitem{carre2002} M. J. Carr\'e, T. Asai, T. Akatsuka and S. J. Haake, ``The curve kick of a football II: flight through the air,'' \emph{Sports Engineering}, 5, 193--200, 2002. \url{https://doi.org/10.1046/j.1460-2687.2002.00109.x}.
-\bibitem{hunteraccuracy} A. H. Hunter, M. J. Angilletta Jr., T. Pavlic, G. Lichtwark and R. S. Wilson, ``Modeling the two-dimensional accuracy of soccer kicks,'' \emph{Journal of Biomechanics}, 72, 159--166, 2018. \url{https://doi.org/10.1016/j.jbiomech.2018.03.003}.
 \bibitem{bassek} M. Bassek, R. Rein, H. Weber and D. Memmert, ``An integrated dataset of spatiotemporal and event data in elite soccer,'' \emph{Scientific Data}, 12, 195, 2025. \url{https://doi.org/10.1038/s41597-025-04505-y}.
 \bibitem{dataset} DFL, ``Sportec Open DFL Dataset,'' CC BY 4.0. 数据镜像： \url{https://huggingface.co/datasets/pysport/idsse-data}.
 \bibitem{maponi} P. Maponi and R. Piombin, ``A computational framework to predict the soccer ball trajectory,'' \emph{Journal of Applied Mathematics}, 2025, 7425581. \url{https://doi.org/10.1155/jama/7425581}.
-\bibitem{alam2012} F. Alam, H. Chowdhury, M. Stemmer, Z. Wang and J. Yang, ``Effects of surface structure on soccer ball aerodynamics,'' \emph{Procedia Engineering}, 34, 146--151, 2012. \url{https://doi.org/10.1016/j.proeng.2012.04.026}.
 \bibitem{paudel} S. Paudel and J. Yan, ``High-fidelity simulations of full-flight soccer ball aerodynamics using a monolithic overset approach,'' \emph{Computational Mechanics}, 77, 1245--1265, 2026. \url{https://doi.org/10.1007/s00466-025-02705-2}.
 \bibitem{myers} T. G. Myers and S. L. Mitchell, ``A mathematical analysis of the motion of an in-flight soccer ball,'' \emph{Sports Engineering}, 16, 29--41, 2013. \url{https://doi.org/10.1007/s12283-012-0105-8}.
 \bibitem{asai2007} T. Asai, K. Seo, O. Kobayashi and R. Sakashita, ``Fundamental aerodynamics of the soccer ball,'' \emph{Sports Engineering}, 10, 101--110, 2007. \url{https://doi.org/10.1007/BF02844207}.
@@ -356,11 +261,12 @@ Alam 等\cite{alam2012} 的风洞实验表明，不同足球表面结构会影�
 \bibitem{grad2026} \L{}. Grad, K. M. Czajkowski and A. Varashylau, ``Physics-Based 3D Ball Trajectory Reconstruction from Monocular Soccer Video: A Multi-Model Benchmark,'' \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops}, 9940--9948, 2026. \href{https://openaccess.thecvf.com/content/CVPR2026W/CVsports/supplemental/Grad_Physics-Based_3D_Ball_CVPRW_2026_supplemental.pdf}{补充材料}, 第 8.4 节.
 \bibitem{mujoco381} MuJoCo developers, MuJoCo 3.8.1, ellipsoid fluid model, \texttt{mj\_viscousForces} in \texttt{src/engine/engine\_passive.c}. \href{https://github.com/google-deepmind/mujoco/blob/3.8.1/src/engine/engine_passive.c}{3.8.1 版源代码}; 默认旋转阻力： \href{https://mujoco.readthedocs.io/en/stable/XMLreference.html#body-geom-fluidcoef}{XML 参考，geom/fluidcoef}. 访问日期：2026 年 11 月 8 日。
 \bibitem{goff2009} J. E. Goff and M. J. Carr\'e, ``Trajectory analysis of a soccer ball,'' \emph{American Journal of Physics}, 77, 1020--1027, 2009. \url{https://doi.org/10.1119/1.3197187}.
+\bibitem{alam2012} F. Alam, H. Chowdhury, M. Stemmer, Z. Wang and J. Yang, ``Effects of surface structure on soccer ball aerodynamics,'' \emph{Procedia Engineering}, 34, 146--151, 2012. \url{https://doi.org/10.1016/j.proeng.2012.04.026}.
 \end{thebibliography}
 
 \newpage\addcontentsline{toc}{section}{复现代码}
 \section*{复现代码}
-随附项目包含固定输入、矢量标记提取、四模型计算、结果表及制图脚本。以下节选展示统一状态方程和受力计算。逆向求解按第~\ref{sec:inverse} 节的所述多初值方法调用同一状态导数。计算与制图分别执行，可直接利用保存结果更新图表。
+随附项目保存原始点球 CSV、坐标转换、统一反演、预测结果和制图脚本。以下节选展示共享状态方程和受力计算，正文与程序采用同一组系数及边界设定。计算、制图和中英文数值表生成分别执行。
 \lstinputlisting[language=Python,firstline=177,lastline=181]{../src/football/physics/model.py}
 \lstinputlisting[language=Python,firstline=217,lastline=237]{../src/football/physics/model.py}
 \end{document}

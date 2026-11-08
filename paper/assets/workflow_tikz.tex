@@ -44,7 +44,7 @@
 \node[wftitle,font=\fontsize{16.5}{18.5}\selectfont\bfseries] at (6.445,0.95)
   {Sparse Early Observations};
 \node[wfprior,font=\fontsize{15.5}{17.5}\selectfont] at (6.445,1.97)
-  {$r(0),\ r(0.05\,s),\ r(0.10\,s)$};
+  {$r(0),\ r(t_1),\ r(t_2)$};
 \path[wfbox,fill=wfWarm] (12.00,0.55) rectangle (25.20,1.60);
 \node[wftitle,font=\fontsize{16.5}{18.5}\selectfont\bfseries] at (18.60,0.83)
   {Physical Inputs \& Model Settings};
@@ -67,9 +67,8 @@
 \node[wftext,text width=5.1cm,font=\fontsize{9.2}{10.5}\selectfont] at (0.92,6.385)
   {\setlength{\jot}{2pt}$\displaystyle\left\{
    \begin{array}{@{}l@{}}
-   m\frac{d^2\boldsymbol r}{dt^2}=\boldsymbol F_g+\boldsymbol F_B+\boldsymbol F_D+\boldsymbol F_L\\
+   m\frac{d^2\boldsymbol r}{dt^2}=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L\\
    \boldsymbol F_g=-mg\,\boldsymbol e_z\\
-   \boldsymbol F_B=\frac43\pi R^3\rho g\,\boldsymbol e_z\\
    \boldsymbol F_D=-qA\alpha_D C_D\frac{\boldsymbol u}{\|\boldsymbol u\|}\\
    \boldsymbol F_L=qA\alpha_L C_L\sin\theta\,\boldsymbol e_L\\
    \dot{\boldsymbol\omega}=\boldsymbol0\\
@@ -119,7 +118,7 @@
 \path[fill=white,fill opacity=.52,rounded corners=9pt]
   (0.85,11.65) rectangle (7.70,14.98);
 \node[wftext,text width=6.45cm,font=\fontsize{12}{12}\selectfont] at (1.17,11.78)
-  {M1: gravity (baseline)\\[-2pt]
+  {M1: gravity\\[-2pt]
    \hspace*{.14cm}$\downarrow$\\[-2pt]
    M2: gravity and constant drag\\[-2pt]
    \hspace*{.14cm}$\downarrow$\\[-2pt]

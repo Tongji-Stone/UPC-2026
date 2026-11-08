@@ -1,0 +1,310 @@
+{
+  "source_fingerprint": "290a251d4f82debb432194ec279965552d5f67cb221a6dc4cb199f73ad6e1c2c",
+  "record": {
+    "case": "J03WOH",
+    "model": "M4",
+    "status": "plane",
+    "fit_converged": true,
+    "physical_fit_interval": true,
+    "event": {
+      "type": "plane",
+      "time": 0.3690829190495884,
+      "position": [
+        11.0,
+        2.934373718950482,
+        1.2905782246068416
+      ],
+      "velocity": [
+        24.82873574287397,
+        8.862133868221932,
+        0.09969550370568311
+      ],
+      "spin": [
+        -6.828525794913638,
+        9.509518979578525,
+        27.62137368497872
+      ]
+    },
+    "early_max_residual_m": 0.002902443396721077,
+    "early_rss_m2": 1.2395178849280752e-05,
+    "initial_state": [
+      30.856659139531107,
+      6.407831878869256,
+      5.818992025515035,
+      -6.828525794913638,
+      9.509518979578525,
+      27.62137368497872
+    ],
+    "drag_scale": 1.3404054196562607,
+    "lift_scale": 1.4999999999994733,
+    "future_sample_count": 7,
+    "future_rmse_3d_m": 0.09275341938749809,
+    "goal_error_m": 0.11273427703759856,
+    "goal_time_error_s": 0.00476919355939226,
+    "scored_goal_error_m": 0.11273427703759856,
+    "at_parameter_bound": true,
+    "constant_acceleration": null,
+    "fitted_cd": 0.3237683796210523,
+    "fitted_alpha": 2.287710087871144
+  },
+  "fit": {
+    "model": "M4",
+    "initial_state": [
+      30.856659139531107,
+      6.407831878869256,
+      5.818992025515035,
+      -6.828525794913638,
+      9.509518979578525,
+      27.62137368497872
+    ],
+    "drag_scale": 1.3404054196562607,
+    "lift_scale": 1.4999999999994733,
+    "rss_m2": 1.2395178849280752e-05,
+    "minimum_search_rss_m2": 1.2395178848893981e-05,
+    "max_residual_m": 0.002902443396721077,
+    "fitted_positions": [
+      [
+        0.7700000000000031,
+        0.08,
+        0.24
+      ],
+      [
+        1.989540705616272,
+        0.3429024433967211,
+        0.4588872526724054
+      ],
+      [
+        3.1802442283390118,
+        0.6185358862407386,
+        0.6505644170891114
+      ]
+    ],
+    "active_parameters": 7,
+    "spin_representation": "30 rad/s reference magnitude; alpha and spin magnitude are not separately identified",
+    "coefficient_distance": 0.36587584973082826,
+    "rss_allowance_m2": 6e-12,
+    "coefficient_distance_allowance": 1e-08,
+    "starts": [
+      {
+        "start": 0,
+        "rss_m2": 1.2395178849012254e-05,
+        "success": true,
+        "nfev": 52,
+        "parameters": [
+          1.028555303113699,
+          0.21359439813109646,
+          0.19396640698465373,
+          2.1935466661533467,
+          1.1699021772646752,
+          1.3404054220203336,
+          1.4999999999988547
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 1,
+        "rss_m2": 1.2395178848906951e-05,
+        "success": true,
+        "nfev": 54,
+        "parameters": [
+          1.0285553125444513,
+          0.21359439673017397,
+          0.19396639996281126,
+          2.1935502674865677,
+          1.1699021743333111,
+          1.3404059117234548,
+          1.499999999998422
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 2,
+        "rss_m2": 9.256477974400672e-05,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          1.0231176515178255,
+          0.2223320177730919,
+          0.19120230154880186,
+          3.1136772316925936,
+          0.16875929478995194,
+          1.0890753022029174,
+          1.3666792237923089
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 3,
+        "rss_m2": 0.00024027825308859836,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          1.0231420153533488,
+          0.2262777717722571,
+          0.17805850144697283,
+          -1.581904955350442,
+          0.03047225131665059,
+          1.0039131210624372,
+          0.9919055760190544
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 4,
+        "rss_m2": 1.2395178848893981e-05,
+        "success": true,
+        "nfev": 44,
+        "parameters": [
+          1.028555304651037,
+          0.21359439596230856,
+          0.19396640085050118,
+          2.1935489106600485,
+          1.1699022503992829,
+          1.3404054196562607,
+          1.4999999999994733
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 5,
+        "rss_m2": 1.2395178849125147e-05,
+        "success": true,
+        "nfev": 48,
+        "parameters": [
+          1.0285553040805888,
+          0.21359439959606502,
+          0.19396641045543717,
+          2.1935460657333197,
+          1.169902038812835,
+          1.3404055403137423,
+          1.4999999999973004
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      }
+    ],
+    "stages": [
+      {
+        "stage": "positions",
+        "rss_m2": 1.2395178848893981e-05,
+        "coefficient_distance": 0.36587584973082826
+      }
+    ],
+    "position_jacobian_singular_values": [
+      23.926312183751833,
+      23.92434084016216,
+      23.469421944450247,
+      0.08125104897799607,
+      0.07500041529441877,
+      0.054223777731816386
+    ],
+    "position_jacobian_rank": 6,
+    "selection": "minimum position residual across deterministic starts",
+    "success": true,
+    "position_stage_converged": true,
+    "fit_bounds": {
+      "velocity_component_max_m_s": 35.0,
+      "spin_component_max_rad_s": 62.83185307179586,
+      "force_scale_min": 0.5,
+      "force_scale_max": 1.5
+    },
+    "at_parameter_bound": true
+  },
+  "fit_input": {
+    "times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "positions_m": [
+      [
+        0.7700000000000031,
+        0.08,
+        0.24
+      ],
+      [
+        1.990000000000002,
+        0.34,
+        0.46
+      ],
+      [
+        3.1799999999999997,
+        0.62,
+        0.65
+      ]
+    ],
+    "frames": [
+      "128955",
+      "128956",
+      "128957"
+    ],
+    "sample_ordinals": [
+      2,
+      3,
+      4
+    ],
+    "time_origin_source_s": 0.04
+  },
+  "configuration": {
+    "mass": 0.43,
+    "radius": 0.11,
+    "air_density": 1.2,
+    "kinematic_viscosity": 1.5e-05,
+    "gravity": 9.81,
+    "drag_coefficient": 0.24154511379406454,
+    "lift_coefficient": 1.5251400585812982,
+    "drag_scale": 1.3404054196562607,
+    "lift_scale": 1.4999999999994733,
+    "coefficient_mode": "linear_spin",
+    "constant_acceleration": null,
+    "use_gravity": true,
+    "use_drag": true,
+    "use_magnus": true,
+    "wind": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "spin_decay": 0.0,
+    "use_rotational_drag": false,
+    "use_viscous_torque": true,
+    "angular_drag_coefficient": 1.5,
+    "inertia_coefficient": 0.6666666666666666,
+    "model_id": "four-model-v2-M4",
+    "dynamic_viscosity": 1.8e-05,
+    "moment_of_inertia": 0.003468666666666666,
+    "coefficient_callback": "model default",
+    "sources": {
+      "CD_CL": "Fixed CD and linear CL=alpha*Sp, anchored to Kiratidis & Leinweber 2018 reference point",
+      "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+      "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+      "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+      "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+      "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+    },
+    "assumptions": [
+      "still air reference unless wind is supplied",
+      "constant spin unless rotational torque is enabled",
+      "isotropic thin shell",
+      "sin(theta) oblique-spin extension"
+    ]
+  },
+  "validation_target": {
+    "time_s": 0.36431372549019614,
+    "position": [
+      52.5,
+      2.9188235294117644,
+      1.178921568627451
+    ],
+    "source": "linear interpolation",
+    "frames": [
+      "128964",
+      "128965"
+    ],
+    "source_time_s": 0.4043137254901961,
+    "local_position": [
+      11.0,
+      2.9188235294117644,
+      1.178921568627451
+    ]
+  }
+}
