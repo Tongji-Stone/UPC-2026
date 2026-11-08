@@ -38,3 +38,11 @@ M3 解出三维恒加速度，六个反演量；M4 采用恒定 CD、CL=alpha Sp
 four_model_verify.py 核查输入、源帧、拟合、后续评分及物理恒等式；four_model_pdf_check.py 检查编译、字体与页面边界；verify_bilingual_reports.py 比较两版公式、引用和数值表；verify_sensitivity_integration.py 核查线性模型的第五章数据、图件、数字与引用。
 
 package_report.py 生成完整项目包及散列清单，排除缓存、编译辅助文件和 QA 页面图。写作规则和内部资料核查分别保存在 docs/文章表述修改依据.md、check.md。
+
+## 排版与示例照片
+
+目录与球门交点误差表采用正文的 `normalsize`（12 pt）。两张用户提供的射门照片保存在 `assets/`，来源文件与SHA256见 `shot_photo_sources.json`。照片在案例分析开头组成等宽等高的左右子图，分别展示精准推射与大力射门；各例轨迹图独立排列。大力射门四面板图采用更宽面板间距、全正文宽度及放大的标注；两次精准推射对照图可用 `python scripts/four_model_plot.py --placement-only` 从现有结果生成。接缝球示意与六种足球表面细节采用左右子图，共用图号；旋转阻尼小节保留模型来源与物理结论，数值沿用既有计算。
+
+第八章按“Model Strengths / Model Weaknesses”重写，中文对应“模型优点 / 模型缺点”，两版保持相同论述结构。
+
+最终排版核验：`results/current_report/layout_revision_verification.json` 记录两版12 pt字号、子图编号和第八章结构；`pdf_verification.json`、`bilingual_verification.json` 保存编译、引用及字体核查。当前英文成品为 `main.pdf`，旧备用构建 `main_local.pdf` 已移除。

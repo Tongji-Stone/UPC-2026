@@ -31,11 +31,26 @@ E_g&=\sqrt{(\widehat y_g-y_g)^2+(\widehat z_g-z_g)^2}.
 Path comparisons use observations after the fitted times and before first contact or the goal crossing, with sample count $n$ listed in the table. $E_g$ is evaluated when a model crosses the goal plane; its observed counterpart comes from a source frame or interpolation between frames.
 
 \subsection{Case Analysis and Validation}\label{sec:case-validation}
+Figure~\ref{fig:shot-photos} illustrates the two shot styles.
+\begin{figure}[H]\centering
+\begin{subfigure}[t]{.48\textwidth}\centering
+\includegraphics[width=\linewidth,height=.666667\linewidth]{placement_shot_example.png}
+\caption{Illustrative placement shot.}\label{fig:placement-photo}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{.48\textwidth}\centering
+\includegraphics[width=\linewidth,height=.666667\linewidth]{power_shot_example.png}
+\caption{Illustrative power shot.}\label{fig:power-photo}
+\end{subfigure}
+\caption{Photographic examples of placement and power shots.}\label{fig:shot-photos}
+\end{figure}
+
 Figure~\ref{fig:penalty-overview} summarizes the spatial paths. Open circles are inverse inputs, black points and lines are observations, coloured lines are predictions, and crosses are observed goal crossings.
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_spatial_overview.pdf}
 \caption{Observed and predicted paths for placement 1, the power shot and placement 2, from left to right. Fitting times are 0, 0.04 and 0.08 s in each case.}\label{fig:penalty-overview}\end{figure}
 
 \subsubsection{Case 1: Placement shots}
+\begin{figure}[H]\centering\includegraphics[width=.98\textwidth]{placement_spatial_comparison.pdf}
+\caption{Measured and predicted trajectories for the two placement cases.}\label{fig:placement-paths}\label{fig:placement-example}\end{figure}
 Both placement shots travel close to the ground. M4 gives starting speeds of \WMXSpeed\ m/s and \WRSpeed\ m/s. For placement 1, M1 and M2 reach the ground before the goal. M3 gives $a_x=-56.25$ m/s$^2$; Eq.~\eqref{eq:m3-interpolation} then gives a maximum $x=\WMXMThreeMaxX$ m, short of the goal. M4 reaches the plane with a crossing error of \WMXMFourGoalError\ m and a subsequent path RMSE of \WMXMFourPathRMSE\ m.
 
 All four models reach the goal for placement 2, with crossing errors \WRMOneGoalError, \WRMTwoGoalError, \WRMThreeGoalError\ and \WRMFourGoalError\ m. Constant acceleration carries forward the early curvature in this case; M4 reduces the path RMSE from M3's \WRMThreePathRMSE\ m to \WRMFourPathRMSE\ m. Gravity draws a low flight downward, while the vertical Magnus component raises or lowers it according to spin direction. Together they determine whether the ball reaches the goal before contact.
@@ -43,7 +58,7 @@ All four models reach the goal for placement 2, with crossing errors \WRMOneGoal
 \subsubsection{Case 2: Power shot}
 M4 gives a starting speed of \WOHSpeed\ m/s. Figure~\ref{fig:penalty-J03WOH} displays the spatial path and coordinate histories.
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WOH.pdf}
-\caption{Power-shot path and coordinate histories. Open circles are inverse inputs, black points are observations, and coloured curves are predictions.}\label{fig:penalty-J03WOH}\end{figure}
+\caption{Power-shot path and coordinate histories. Open circles are inverse inputs, black points are observations, and coloured curves are predictions.}\label{fig:power-paths}\label{fig:penalty-J03WOH}\end{figure}
 M1--M4 have crossing errors of \WOHMOneGoalError, \WOHMTwoGoalError, \WOHMThreeGoalError\ and \WOHMFourGoalError\ m, and subsequent path RMSE values of \WOHMOnePathRMSE, \WOHMTwoPathRMSE, \WOHMThreePathRMSE\ and \WOHMFourPathRMSE\ m. Lateral motion in M1 and M2 follows the initial velocity; M3 extends constant acceleration. M4 curves the path through changing drag and Magnus forces, giving the smallest values of both errors for this shot.
 
 \paragraph{Speed and aerodynamic forces.} Figure~\ref{fig:penalty-dynamics} gives the M4 speed and force histories. Initial drag is \WOHDrag\ N for the power shot and \WMXDrag\ N and \WRDrag\ N for the placement shots. Drag depends on $C_Dv^2$, combining speed with the fitted coefficient, and decreases as the flight slows. Linear lift depends on $\alpha(\boldsymbol\omega\times\boldsymbol v)$; the angle and direction between spin and velocity determine its lateral and vertical effects.

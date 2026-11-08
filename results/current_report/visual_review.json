@@ -3,12 +3,12 @@
   "rendering": "Poppler complete contact sheets, final bilingual page renders and selected 100--110 dpi pages",
   "documents": {
     "paper": {
-      "pages": 28,
-      "sha256": "5033b4387c5dab13118127bd01ad46b5c49d1a4544b509a6993d2308b079467d"
+      "pages": 27,
+      "sha256": "bca86c78bd0a461fc58a81ac505bae246f970a8d6e94382d478b9719fddae732"
     },
     "_中文版": {
       "pages": 27,
-      "sha256": "17cb6bcce293bc65696041bcbb8d887206243ecae716667539e655f00beb9882"
+      "sha256": "008d0c96f8c5d42fe64ffea6b38f17c163ee16def9e892a2edf2f742e98c000b"
     }
   },
   "reviewed": [
@@ -18,7 +18,11 @@
     "one-axis nine-parameter time plot",
     "Monte Carlo and parallel coordinates with 385 clear and 15 high display traces",
     "one-page data and parameter appendix",
-    "references, page boundaries and embedded fonts"
+    "references, page boundaries and embedded fonts",
+    "remote illustrative photographs, placement comparison and power-shot panels",
+    "combined surface-geometry subfigures",
+    "12 pt contents and 12-row error tables after merge"
   ],
-  "code_and_data_unchanged_during_final_layout": true
+  "code_and_data_unchanged_during_final_layout": true,
+  "merge_layout_revision": "366021b"
 }

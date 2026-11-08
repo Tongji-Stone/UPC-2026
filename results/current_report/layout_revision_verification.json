@@ -1,0 +1,186 @@
+{
+  "all_passed": true,
+  "editions": {
+    "en": {
+      "pages": 27,
+      "labels": {
+        "tab:penalty-errors": {
+          "number": "3",
+          "page": 13
+        },
+        "fig:shot-photos": {
+          "number": "6",
+          "page": 10
+        },
+        "fig:placement-photo": {
+          "number": "6a",
+          "page": 10
+        },
+        "fig:power-photo": {
+          "number": "6b",
+          "page": 10
+        },
+        "fig:placement-paths": {
+          "number": "8",
+          "page": 11
+        },
+        "fig:power-paths": {
+          "number": "9",
+          "page": 12
+        },
+        "fig:surface-details": {
+          "number": "17",
+          "page": 20
+        }
+      },
+      "review_pages": [
+        10,
+        11,
+        12,
+        13,
+        20
+      ]
+    },
+    "zh": {
+      "pages": 27,
+      "labels": {
+        "tab:penalty-errors": {
+          "number": "3",
+          "page": 13
+        },
+        "fig:shot-photos": {
+          "number": "6",
+          "page": 10
+        },
+        "fig:placement-photo": {
+          "number": "6a",
+          "page": 10
+        },
+        "fig:power-photo": {
+          "number": "6b",
+          "page": 10
+        },
+        "fig:placement-paths": {
+          "number": "8",
+          "page": 11
+        },
+        "fig:power-paths": {
+          "number": "9",
+          "page": 12
+        },
+        "fig:surface-details": {
+          "number": "17",
+          "page": 20
+        }
+      },
+      "review_pages": [
+        10,
+        11,
+        12,
+        13,
+        20
+      ]
+    }
+  },
+  "checks": {
+    "en_photos_equal_side_by_side": {
+      "passed": true,
+      "rectangles_pdf_pt": [
+        [
+          72.0,
+          123.94877624511719,
+          296.642333984375,
+          273.7030029296875
+        ],
+        [
+          315.364990234375,
+          123.94549560546875,
+          539.9970703125,
+          273.7030029296875
+        ]
+      ]
+    },
+    "en_photos_at_case_start": {
+      "passed": true
+    },
+    "en_four_subfigures": {
+      "passed": true
+    },
+    "en_error_table_body_size": {
+      "passed": true,
+      "observed_pdf_pt": [
+        11.9552
+      ]
+    },
+    "en_toc_body_size": {
+      "passed": true,
+      "tex_pt": 12,
+      "contents_pages": [
+        2
+      ]
+    },
+    "en_strengths_and_weaknesses": {
+      "passed": true
+    },
+    "en_single_page_contents": {
+      "passed": true
+    },
+    "zh_photos_equal_side_by_side": {
+      "passed": true,
+      "rectangles_pdf_pt": [
+        [
+          72.0,
+          72.00277709960938,
+          296.642333984375,
+          221.7570037841797
+        ],
+        [
+          315.364990234375,
+          71.99949645996094,
+          539.9970703125,
+          221.7570037841797
+        ]
+      ]
+    },
+    "zh_photos_at_case_start": {
+      "passed": true
+    },
+    "zh_four_subfigures": {
+      "passed": true
+    },
+    "zh_error_table_body_size": {
+      "passed": true,
+      "observed_pdf_pt": [
+        11.9552
+      ]
+    },
+    "zh_toc_body_size": {
+      "passed": true,
+      "tex_pt": 12,
+      "contents_pages": [
+        2
+      ]
+    },
+    "zh_strengths_and_weaknesses": {
+      "passed": true
+    },
+    "zh_single_page_contents": {
+      "passed": true
+    },
+    "power_plot_labels_nonoverlapping": {
+      "figsize_inches": [
+        7.2,
+        6.2
+      ],
+      "horizontal_label_gap_pixels": 44.75464318731349,
+      "labels_nonoverlapping": true,
+      "source_case": "J03WOH",
+      "data": "unchanged saved measurements and model traces",
+      "passed": true
+    },
+    "calculations_unchanged": {
+      "passed": true,
+      "baseline_commit": "9d0ffe6d694e716968564595fd785b531b54cef9"
+    }
+  }
+}

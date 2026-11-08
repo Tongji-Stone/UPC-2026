@@ -23,12 +23,12 @@
   "all_final_checks_passed": true,
   "documents": {
     "paper": {
-      "pages": 28,
-      "sha256": "5033b4387c5dab13118127bd01ad46b5c49d1a4544b509a6993d2308b079467d"
+      "pages": 27,
+      "sha256": "bca86c78bd0a461fc58a81ac505bae246f970a8d6e94382d478b9719fddae732"
     },
     "_中文版": {
       "pages": 27,
-      "sha256": "17cb6bcce293bc65696041bcbb8d887206243ecae716667539e655f00beb9882"
+      "sha256": "008d0c96f8c5d42fe64ffea6b38f17c163ee16def9e892a2edf2f742e98c000b"
     }
   },
   "real_penalty_M4": [
@@ -56,5 +56,10 @@
   ],
   "writing_guidance": "docs/文章表述修改依据.md",
   "internal_notes": "check.md",
-  "original_version_archive": "../论文_本地归档/复算前_f10a33c_20261108_155316/原版本.zip"
+  "original_version_archive": "../论文_本地归档/复算前_f10a33c_20261108_155316/原版本.zip",
+  "publication_merge": {
+    "local_calculation_commit": "9d0ffe6",
+    "remote_layout_commit": "366021b981bd1f02c7c7a18dc63a5778bea8ee13",
+    "numerical_results_preserved": true
+  }
 }

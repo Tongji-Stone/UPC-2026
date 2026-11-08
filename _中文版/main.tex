@@ -5,6 +5,8 @@
 \usepackage{microtype,needspace,fontspec}
 \usepackage[UTF8,fontset=none,scheme=plain]{ctex}
 \usepackage{capt-of}
+\usepackage{subcaption}
+\captionsetup[subfigure]{font=normalsize,labelfont=bf,justification=centering}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
 \setmainfont{Times New Roman}
@@ -38,7 +40,7 @@
 三次真实点球共提供 39 个采样帧。每例用三个早期位置反演，再与后续实测轨迹比较。M4 在两次推射和一次大力抽射中的球门交点误差分别为 \WMXMFourGoalError、\WRMFourGoalError、\WOHMFourGoalError\ m；大力抽射的后续路径 RMSE 为 \WOHMFourPathRMSE\ m。题目三点算例进一步用于分析参数变化：方向改变 $1^\circ$ 引起约 0.20 m 的交点位移，2 mm 早期位置约束下的网格搜索最大位移为 \SensitivityConditionalShift\ m。固定质量与半径的十万次联合扰动中，\MCClearPercent\% 的轨迹完整通过球门。另以同一弧线球初始条件量化旋转阻尼，并通过相对气流分析风的影响。
 
 \noindent\textbf{关键词：}足球；空气阻力；马格努斯效应；逆向预测；轨迹对照
-\newpage\begingroup\fontsize{11}{13}\selectfont\tableofcontents\endgroup\newpage
+\newpage\begingroup\normalfont\normalsize\setlength{\baselineskip}{13.2pt}\tableofcontents\endgroup\newpage
 \section{引言}
 \subsection{问题背景}
 点球是一个受到严格时空条件约束的拦截问题。守门员需要在合适的时间到达合适的位置，同时决定何时以及向哪个方向移动。点球预判研究讨论了这一时机问题，并表明射门速度和踢球技术会影响射门方向的可预测性\cite{kamp2018,hunter2018}。这些研究也考虑球员触球前的动作线索；本题则关注足球离脚后，根据已测位置预测其后续位置。
@@ -174,14 +176,24 @@ m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L,\\
 \subsection{足球表面的非对称几何}\label{sec:surface}
 一项全程流动模拟比较了真实足球几何与光滑球\cite{paudel}。在初速度 10、15、20 m/s，自旋 31.5、63、94.5 rad/s 的工况下，接缝和表面结构会改变流动分离、尾流演化及马格努斯力。九组对照中光滑球的横向弯曲均更强，较高速度和转速下竖直飞行时间的差异也更明显。
 
-\begin{figure}[H]\centering\includegraphics[width=.60\textwidth]{surface_comparison.png}
-\caption{有面板接缝的足球与光滑球体示意图，参考已有比较研究\cite{paudel}；原研究中两球直径均为 0.22 m、质量均为 0.436 kg。}\label{fig:surface-geometry}\end{figure}
+\begin{figure}[H]\centering
+\begin{subfigure}[t]{.40\textwidth}\centering
+\begin{minipage}[c][3.5in][c]{\linewidth}\centering
+\includegraphics[width=\linewidth]{surface_comparison.png}
+\end{minipage}
+\caption{接缝足球与光滑球的示意对照\cite{paudel}。}\label{fig:surface-geometry}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{.57\textwidth}\centering
+\begin{minipage}[c][3.5in][c]{\linewidth}\centering
+\includegraphics[width=\linewidth]{alam_ball_surfaces.png}
+\end{minipage}
+\caption{六种足球及表面细节，原图来自文献\cite{alam2012} 的图 1--3。}\label{fig:alam-surfaces}
+\end{subfigure}
+\caption{足球几何与表面结构的对照。}\label{fig:surface-details}
+\end{figure}
 
 风洞实验测量了六种足球及光滑球在不同雷诺数下的阻力系数\cite{alam2012}。图~\ref{fig:alam-surfaces} 展示这些足球的球片和表面纹理，图~\ref{fig:alam-drag} 给出对应的阻力系数对比；不同表面结构的阻力变化体现了球型对气动力的影响。
 
-\begin{figure}[H]\centering
-\includegraphics[width=.86\textwidth]{alam_ball_surfaces.png}
-\caption{六种足球及其表面细节，原图来自文献\cite{alam2012} 的图 1--3。}\label{fig:alam-surfaces}\end{figure}
 
 \begin{figure}[H]\centering
 \includegraphics[width=.76\textwidth]{alam_drag_comparison.png}
@@ -190,37 +202,11 @@ m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L,\\
 本文的球形几何描述质心运动与迎风面积，气动力系数来自足球实验，因此表面的平均作用已进入 $C_D$、$C_L$。当侧向力细节更为重要时，可进一步描述面板朝向与非对称尾流波动。这些文献结果说明，在球形轨迹模型中保留足球专用气动系数具有物理依据。
 
 \subsection{足球旋转与气动阻尼}\label{sec:rotation}
-旋转影响马格努斯力，因此自旋衰减会改变弧线球的后续运动。依据已有旋转阻尼关系\cite{grad2026,mujoco381}，球形化简后的惯性与黏性阻尼力矩为
-\begin{equation}
-\boldsymbol Q=-k_2\omega\boldsymbol\omega-k_1\boldsymbol\omega,
-\quad k_2=\frac{8\pi}{15}\rho C_{\rm angular}R^5,\quad k_1=8\pi\mu R^3.
-\label{eq:torque-dimensional}
-\end{equation}
-二次项描述高雷诺数旋转阻力，线性项为黏性阻力。本文采用文献给出的参考值 $C_{\rm angular}=1.5$\cite{mujoco381}。定义 $q=\rho v^2/2$、$C_{Q,v}=\|\boldsymbol Q\|/(qAR)$，得到
-\begin{equation}
-C_{Q,v}=\frac{16}{15}C_{\rm angular}Sp^2+\frac{32Sp}{Re},\qquad
-C_{Q,\omega}=\frac{C_{Q,v}}{Sp^2}=\frac{16}{15}C_{\rm angular}+\frac{32}{Re\,Sp}.
-\label{eq:cq-full}
-\end{equation}
-$C_{Q,\omega}$ 采用球面旋转速度 $R\omega$ 定义参考动压，$1/Sp^2$ 用于两种归一化之间的换算。黏性力矩与惯性力矩之比为
-\begin{equation}
-\frac{Q_{\rm viscous}}{Q_{\rm inertial}}=
-\frac{30}{C_{\rm angular}Re\,Sp}=
-\frac{15\nu}{C_{\rm angular}R^2\omega}.
-\end{equation}
-在弧线球参考状态下，该比值为 \TorqueViscousRatio，二次项占主导。采用文献中的薄球壳转动惯量\cite{maponi}，$I_b=2mR^2/3$。加入高雷诺数阻尼后，动力学方程为
-\begin{equation}
-\left\{\begin{aligned}
-\dot{\boldsymbol r}&=\boldsymbol v,\\
-m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L,\\
-I_b\dot{\boldsymbol\omega}&=-k_2\omega\boldsymbol\omega.
-\end{aligned}\right.\label{eq:motion-torque}
-\end{equation}
-力矩方向与自旋相反，消耗旋转动能。单独考虑二次阻尼时，$\omega(t)=\omega_0/[1+(k_2/I_b)\omega_0t]$，可用于校验转动积分。
+空气阻尼力矩与自旋方向相反，使足球旋转逐渐减弱，并通过马格努斯力影响弯曲轨迹。本文采用 Grad 等及 MuJoCo 给出的高雷诺数旋转阻尼模型\cite{grad2026,mujoco381}，阻尼强度随自旋增大而增强；旋转阻力参数取软件参考值 $C_{\rm angular}=1.5$。转动惯量沿用薄球壳近似\cite{maponi}。本算例中黏性阻尼远小于惯性阻尼，因此主要比较后者的影响。
 
-取弧线球参考状态，初速度为 $(\CurvedVX,0,\CurvedVZ)$ m/s，自旋为 $(0,0,35)$ rad/s，气动力修正均为一。保持这些初始条件相同，比较恒定自旋与式~\eqref{eq:motion-torque} 的旋转阻尼。
+为观察它对短程飞行的实际作用，保持同一弧线球的初始速度、自旋和气动系数，分别计算恒定自旋和加入旋转阻尼后的运动。图~\ref{fig:torque} 同时展示自旋变化与轨迹差别。
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{torque_comparison.pdf}
-\caption{自设弧线球相同初始状态下恒定自旋与高雷诺数旋转阻尼的对照。旋转阻力参考系数为 1.5，转动惯量采用薄球壳近似。}\label{fig:torque}\end{figure}
+\caption{同一弧线球初始条件下，恒定自旋与旋转阻尼的对照。}\label{fig:torque}\end{figure}
 \TorqueResults
 
 \subsection{风速与气动力估算}\label{sec:wind}
@@ -249,10 +235,20 @@ I_b\dot{\boldsymbol\omega}&=-k_2\omega\boldsymbol\omega.
 同一弧线球加入旋转阻尼后，交点移动 \TorqueDisplacement\ m。风通过相对速度改变阻力与升力，沿球速方向的风使阻力按速度比的平方变化，线性马格努斯力按速度比变化。
 
 \section{模型评价}
-\subsection{模型表现}
-恒合力模型直接连接早期位置与加速度，三力模型进一步把减速和弯曲分解为不同受力。两次推射与大力抽射给出了相应的轨迹对照，路径误差、交点误差和触地状态分别描述预测过程与终点。
-\subsection{改进方向}
-增加早期位置的采样密度可约束加速度与旋转方向，直接测量自旋可进一步确定升力参数。针对具体球型测量阻力和升力关系，可减少统一系数对不同射门的偏差。旋转阻尼与风分别通过角动量方程和相对速度纳入，保留同一套积分与事件判据。
+\subsection{模型优点}
+\textbf{物理含义清晰。} 模型将足球轨迹与三种直观作用联系起来：重力使路径下弯，阻力降低速度，马格努斯力改变旋转足球的运动方向。四模型对照进一步区分这些受力机制与恒加速度描述，使低空推射和较高抽射的轨迹差异更容易解释。
+
+\textbf{反演与预测框架统一。} 利用三个早期位置估计初始运动，再通过同一组控制方程推进后续飞行，球速、气动力和球门交点可以相互印证。统一坐标系及终止判据，也使不同模型、不同实测射门之间的比较保持一致。
+
+\textbf{具有实测对照依据。} 已发表的气动力测量支持系数选取，三次真实点球的后续位置用于检验预测。误差表、轨迹图与灵敏性分析将模型假设和可观测差异联系起来；风与旋转阻尼的对照，则进一步说明简化飞行假设的适用工况。
+
+\subsection{模型缺点}
+\textbf{反演结果对早期数据敏感。} 初速度、旋转方向和气动参数的拟合受追踪位置、选帧及搜索边界影响。短时间间隔内的位置差会显著影响加速度估计，低空轨迹尤其容易改变触地判断。参考自旋大小，以及自旋与升力参数之间的耦合，也会影响 M4 代表状态的选择。
+
+\textbf{气动与环境描述有所简化。} 单次飞行内采用恒定系数，会平滑实际的流动转捩、面板朝向与尾流波动。球形、无风和恒定自旋近似也平均了部分影响；在较强风场、持续自旋或较长飞行中，这些因素的重要性可能提高，其影响程度随球型和工况改变。
+
+\textbf{实测工况覆盖有限。} 三次点球涉及的踢法、用球和环境范围较窄。后续可优先补充球型专用气动数据、直接自旋测量及更多早期追踪位置，以改善初始状态估计，并判断何时需要在主预测中加入风和旋转阻尼。
+
 \addcontentsline{toc}{section}{参考文献}
 \begin{thebibliography}{99}
 \raggedright
@@ -276,7 +272,7 @@ I_b\dot{\boldsymbol\omega}&=-k_2\omega\boldsymbol\omega.
 
 \newpage\section*{附录 A：数据来源、选帧与参数设定}\label{app:data}
 \addcontentsline{toc}{section}{附录 A：数据来源、选帧与参数设定}
-\begingroup\def\small{\fontsize{10}{11.5}\selectfont}\small\setlength{\intextsep}{4pt}
+\begingroup\def\small{\fontsize{10}{11}\selectfont}\small\setlength{\intextsep}{3pt}\captionsetup{font=small,skip=3pt}\renewcommand{\arraystretch}{.95}
 三次点球来自 Sportec Open DFL 数据集，比赛事件与 TRACAB Gen5 多相机光学追踪数据关联，采样频率为 25 Hz\cite{bassek,dataset}。原始 CSV 共保留 39 个源帧，三个事件分别为 15、12、12 帧。
 \begin{table}[H]\centering\small\caption{案例称呼与数据记录的对应关系}\label{tab:data-provenance}
 \begin{tabular}{llll}\toprule

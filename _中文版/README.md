@@ -7,3 +7,5 @@
 当前 M3 为恒合力模型，M4 采用恒定阻力和线性升力。三次真实点球的源帧、输入、反演状态及后续误差随 results/current_report/ 保存；题目三点的灵敏性与蒙特卡洛结果分别保存于 results/sensitivity_linear/、results/monte_carlo_linear/。
 
 完整说明见 ../paper/README.md。表述规则见 ../docs/文章表述修改依据.md，内部资料核查见 ../check.md。
+
+两版目录和误差汇总表统一为正文 12 pt。射门照片并排展示，精准推射增加双例轨迹合图，大力射门保留加宽间距的四面板图。几何比较图使用左右子图，第八章按模型优点和缺点组织。图源记录见 paper/assets/shot_photo_sources.json，排版核查见 results/current_report/layout_revision_verification.json。

@@ -31,11 +31,26 @@ E_g&=\sqrt{(\widehat y_g-y_g)^2+(\widehat z_g-z_g)^2}.
 路径比较使用拟合时刻之后、首次触地或球门交点之前的实测位置，表中同时给出点数 $n$。$E_g$ 在模型穿过球门平面时计算，实测交点由源帧或相邻帧插值得到。
 
 \subsection{案例分析与验证}\label{sec:case-validation}
+图~\ref{fig:shot-photos} 展示精准射门和大力射门两种射门方式。
+\begin{figure}[H]\centering
+\begin{subfigure}[t]{.48\textwidth}\centering
+\includegraphics[width=\linewidth,height=.666667\linewidth]{placement_shot_example.png}
+\caption{精准推射示例。}\label{fig:placement-photo}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{.48\textwidth}\centering
+\includegraphics[width=\linewidth,height=.666667\linewidth]{power_shot_example.png}
+\caption{大力射门示例。}\label{fig:power-photo}
+\end{subfigure}
+\caption{两类射门的实景示例：精准推射与大力射门。}\label{fig:shot-photos}
+\end{figure}
+
 图~\ref{fig:penalty-overview} 汇总三例的空间轨迹。空心圆为反演输入，黑线和黑点为实测位置，彩色线为模型预测，叉号为实测球门交点。
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_spatial_overview.pdf}
 \caption{三次真实点球的空间轨迹与模型预测。从左到右为推射 1、大力抽射、推射 2；各例的反演时刻均为 0、0.04、0.08 s。}\label{fig:penalty-overview}\end{figure}
 
 \subsubsection{案例一：精准推射}
+\begin{figure}[H]\centering\includegraphics[width=.98\textwidth]{placement_spatial_comparison.pdf}
+\caption{两次精准推射的实测轨迹与模型预测。}\label{fig:placement-paths}\label{fig:placement-example}\end{figure}
 两次推射均贴近草地飞行。M4 在选定起点的球速分别为 \WMXSpeed\ m/s 和 \WRSpeed\ m/s。推射 1 中，M1、M2 在球门前触地；M3 给出的 $a_x=-56.25$ m/s$^2$ 使前进速度持续减小，按式~\eqref{eq:m3-interpolation} 得到最大 $x=\WMXMThreeMaxX$ m，未达到球门。M4 到达球门平面，交点误差为 \WMXMFourGoalError\ m，后续路径 RMSE 为 \WMXMFourPathRMSE\ m。
 
 推射 2 的四个模型均到达球门平面，M1--M4 的交点误差依次为 \WRMOneGoalError、\WRMTwoGoalError、\WRMThreeGoalError、\WRMFourGoalError\ m。该例中恒加速度能够延续早期弯曲，M4 的后续路径 RMSE 进一步由 M3 的 \WRMThreePathRMSE\ m 降至 \WRMFourPathRMSE\ m。低空飞行中，重力持续使球下落，竖直马格努斯力则随旋转方向抬高或压低轨迹；两者共同决定能否在触地前到达球门。
@@ -43,7 +58,7 @@ E_g&=\sqrt{(\widehat y_g-y_g)^2+(\widehat z_g-z_g)^2}.
 \subsubsection{案例二：大力抽射}
 大力抽射的 M4 起点球速为 \WOHSpeed\ m/s。图~\ref{fig:penalty-J03WOH} 显示空间轨迹及三个坐标随时间的变化。
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WOH.pdf}
-\caption{大力抽射的空间轨迹及坐标变化。空心圆为反演输入，黑点为实测位置，彩色曲线为模型预测。}\label{fig:penalty-J03WOH}\end{figure}
+\caption{大力抽射的空间轨迹及坐标变化。空心圆为反演输入，黑点为实测位置，彩色曲线为模型预测。}\label{fig:power-paths}\label{fig:penalty-J03WOH}\end{figure}
 M1--M4 的球门交点误差依次为 \WOHMOneGoalError、\WOHMTwoGoalError、\WOHMThreeGoalError、\WOHMFourGoalError\ m，后续路径 RMSE 分别为 \WOHMOnePathRMSE、\WOHMTwoPathRMSE、\WOHMThreePathRMSE、\WOHMFourPathRMSE\ m。M1、M2 的横向运动主要由初速度决定，M3 延续恒加速度；M4 通过随速度变化的阻力和马格努斯力弯曲轨迹，在这次射门中得到最小的两项误差。
 
 \paragraph{速度与气动力。} 图~\ref{fig:penalty-dynamics} 给出三次射门的 M4 球速及气动力。大力抽射的初始阻力为 \WOHDrag\ N，两次推射分别为 \WMXDrag\ N 和 \WRDrag\ N。阻力由 $C_Dv^2$ 决定，既随球速变化，也受到拟合系数影响；随飞行减速，阻力减小。线性升力由 $\alpha(\boldsymbol\omega\times\boldsymbol v)$ 决定，旋转轴与速度的夹角和方向共同影响轨迹的横向及竖直弯曲。

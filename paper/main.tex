@@ -4,6 +4,8 @@
 \usepackage{amsmath,amssymb,graphicx,booktabs,array,float,fancyhdr,lastpage,hyperref,listings,xcolor}
 \usepackage{microtype,needspace,fontspec}
 \usepackage{capt-of}
+\usepackage{subcaption}
+\captionsetup[subfigure]{font=normalsize,labelfont=bf,justification=centering}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
 \setmainfont{Times New Roman}
@@ -31,7 +33,7 @@ Gravity bends a football's path downward, drag reduces its speed, and Magnus for
 Three actual penalties supply 39 sampled frames. Three early positions per flight enter inversion, with subsequent measurements used for comparison. M4 gives goal-plane errors of \WMXMFourGoalError, \WRMFourGoalError\ and \WOHMFourGoalError\ m for the two placement shots and the power shot; the latter has a subsequent path RMSE of \WOHMFourPathRMSE\ m. A separate competition-position example quantifies parameter effects: a $1^\circ$ direction change moves the crossing by about 0.20 m, and the largest grid-search shift under a 2 mm early-position constraint is \SensitivityConditionalShift\ m. Among 100,000 joint perturbations with fixed mass and radius, \MCClearPercent\% clear the goal. A same-state curved-shot calculation quantifies rotational damping, while relative airflow describes wind effects.
 
 \noindent\textbf{Keywords:} Soccer ball, aerodynamic drag, Magnus effect, inverse prediction, trajectory comparison
-\newpage\begingroup\fontsize{11}{13}\selectfont\tableofcontents\endgroup\newpage
+\newpage\begingroup\normalfont\normalsize\setlength{\baselineskip}{13.2pt}\tableofcontents\endgroup\newpage
 \section{Introduction}
 \subsection{Problem Background}
 A penalty kick places stringent spatial and temporal demands on the goalkeeper. The goalkeeper must reach an appropriate location at the right time, while deciding when and in which direction to move. Studies of penalty anticipation discuss this timing problem and show that shot speed and kicking technique affect the predictability of shot direction \cite{kamp2018,hunter2018}. Such work also considers cues from the kicker before contact; the present problem instead focuses on predicting the ball's later position from its measured positions after launch.
@@ -167,14 +169,24 @@ The main model isolates gravity, drag and Magnus lift. We now examine the physic
 \subsection{Asymmetric Surface Geometry}\label{sec:surface}
 A full-flight simulation compares realistic football geometry with a smooth sphere \cite{paudel}. For launch speeds of 10, 15 and 20 m/s and spin rates of 31.5, 63 and 94.5 rad/s, their results show that seams and surface structure alter separation, wake dynamics and Magnus force. The smooth sphere produces greater lateral bending in their nine comparisons, and vertical flight-time differences become more visible at higher speed and rotation.
 
-\begin{figure}[H]\centering\includegraphics[width=.60\textwidth]{surface_comparison.png}
-\caption{Illustrative comparison of a paneled football and a smooth sphere, based on a published comparison \cite{paudel}. Their compared bodies had diameter 0.22 m and mass 0.436 kg. The panel geometry shown here is schematic.}\label{fig:surface-geometry}\end{figure}
+\begin{figure}[H]\centering
+\begin{subfigure}[t]{.40\textwidth}\centering
+\begin{minipage}[c][3.5in][c]{\linewidth}\centering
+\includegraphics[width=\linewidth]{surface_comparison.png}
+\end{minipage}
+\caption{Illustrative seamed-football and smooth-sphere comparison \cite{paudel}.}\label{fig:surface-geometry}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{.57\textwidth}\centering
+\begin{minipage}[c][3.5in][c]{\linewidth}\centering
+\includegraphics[width=\linewidth]{alam_ball_surfaces.png}
+\end{minipage}
+\caption{Six footballs and surface details, reproduced from Figures 1--3 of Alam et al.\ \cite{alam2012}.}\label{fig:alam-surfaces}
+\end{subfigure}
+\caption{Football geometry, panels and surface textures.}\label{fig:surface-details}
+\end{figure}
 
 Wind-tunnel experiments measured drag coefficients over a range of Reynolds numbers for six footballs and a smooth sphere \cite{alam2012}. Figure~\ref{fig:alam-surfaces} shows the panels and surface textures of these footballs, while Figure~\ref{fig:alam-drag} compares their drag coefficients. The differences illustrate the influence of ball surface structure on aerodynamic drag.
 
-\begin{figure}[H]\centering
-\includegraphics[width=.86\textwidth]{alam_ball_surfaces.png}
-\caption{Six footballs and details of their surfaces, reproduced from Figures 1--3 of the source\cite{alam2012}.}\label{fig:alam-surfaces}\end{figure}
 
 \begin{figure}[H]\centering
 \includegraphics[width=.76\textwidth]{alam_drag_comparison.png}
@@ -183,37 +195,11 @@ Wind-tunnel experiments measured drag coefficients over a range of Reynolds numb
 The spherical geometry in the present report describes the centre-of-mass motion and projected area. Its force coefficients come from football measurements, so the average surface influence enters through $C_D$ and $C_L$. Explicit panel orientation and asymmetric wake fluctuations provide a further level of description when lateral-force details are important. These published results support retaining football-specific coefficients in a spherical trajectory model.
 
 \subsection{Rotation and Aerodynamic Damping}\label{sec:rotation}
-Rotation changes Magnus force, so a declining spin can change the continuation of a curved shot. Using published rotational-damping relations \cite{grad2026,mujoco381}, the spherical inertial and viscous damping torques are
-\begin{equation}
-\boldsymbol Q=-k_2\omega\boldsymbol\omega-k_1\boldsymbol\omega,
-\quad k_2=\frac{8\pi}{15}\rho C_{\rm angular}R^5,\quad k_1=8\pi\mu R^3.
-\label{eq:torque-dimensional}
-\end{equation}
-The quadratic term describes high-Reynolds-number angular drag; the linear term is viscous resistance. We use the published reference value $C_{\rm angular}=1.5$ \cite{mujoco381}. Defining $q=\rho v^2/2$ and $C_{Q,v}=\|\boldsymbol Q\|/(qAR)$ gives
-\begin{equation}
-C_{Q,v}=\frac{16}{15}C_{\rm angular}Sp^2+\frac{32Sp}{Re},\qquad
-C_{Q,\omega}=\frac{C_{Q,v}}{Sp^2}=\frac{16}{15}C_{\rm angular}+\frac{32}{Re\,Sp}.
-\label{eq:cq-full}
-\end{equation}
-$C_{Q,\omega}$ uses rotating surface speed $R\omega$ in its reference pressure. The factor $1/Sp^2$ converts between the two normalizations. The viscous-to-inertial torque ratio is
-\begin{equation}
-\frac{Q_{\rm viscous}}{Q_{\rm inertial}}=
-\frac{30}{C_{\rm angular}Re\,Sp}=
-\frac{15\nu}{C_{\rm angular}R^2\omega}.
-\end{equation}
-It is \TorqueViscousRatio\ at the prescribed curved-shot launch, so the quadratic term dominates. Using the thin-shell inertia \cite{maponi}, $I_b=2mR^2/3$. Adding the high-Reynolds-number torque gives
-\begin{equation}
-\left\{\begin{aligned}
-\dot{\boldsymbol r}&=\boldsymbol v,\\
-m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L,\\
-I_b\dot{\boldsymbol\omega}&=-k_2\omega\boldsymbol\omega.
-\end{aligned}\right.\label{eq:motion-torque}
-\end{equation}
-The torque opposes spin and removes rotational energy. With this isolated quadratic law, $\omega(t)=\omega_0/[1+(k_2/I_b)\omega_0t]$, providing an integration check.
+Aerodynamic torque opposes spin, gradually weakening rotation and changing the Magnus force. We use the high-Reynolds-number rotational-damping model described by Grad et al.\ and MuJoCo \cite{grad2026,mujoco381}, in which stronger spin produces stronger resistance. The angular-drag parameter is the software reference value $C_{\rm angular}=1.5$, with the thin-shell inertia approximation \cite{maponi}. Viscous damping is much weaker than the inertial contribution in this example, so the comparison focuses on the latter.
 
-Use a reference curved shot with initial velocity $(\CurvedVX,0,\CurvedVZ)$ m/s, spin $(0,0,35)$ rad/s and unit force corrections. Holding this state fixed, we compare constant spin with Eq.~\eqref{eq:motion-torque}.
+The reference curved shot has initial velocity $(\CurvedVX,0,\CurvedVZ)$ m/s, spin $(0,0,35)$ rad/s and unit force corrections. Holding this state fixed, we and compare constant spin with rotational damping. Figure~\ref{fig:torque} shows both the spin evolution and the resulting trajectory difference.
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{torque_comparison.pdf}
-\caption{Same-initial-state comparison of constant spin and high-Reynolds-number rotational damping for the prescribed curved shot. The documented angular-drag reference is 1.5, and the ball uses thin-shell inertia.}\label{fig:torque}\end{figure}
+\caption{Constant spin and rotational damping under the same initial curved-shot conditions.}\label{fig:torque}\end{figure}
 \TorqueResults
 
 \subsection{Wind Speed and Force Estimates}\label{sec:wind}
@@ -242,10 +228,20 @@ In the competition-position example, a $1^\circ$ launch-direction change moves t
 Rotational damping shifts the reference curved-shot crossing by \TorqueDisplacement\ m. Wind enters through relative velocity: along the flight direction, drag changes with the squared speed ratio and linear Magnus force with the speed ratio.
 
 \section{Model Evaluation}
-\subsection{Model behaviour}
-The constant-force model links early positions directly to acceleration. The three-force model separates slowing from curvature through physical forces. The placement and power shots provide trajectory comparisons; path error, crossing error and ground termination describe the continuation and endpoint separately.
-\subsection{Further development}
-Denser early sampling can constrain acceleration and spin direction, while measured spin can determine the lift parameter more directly. Ball-specific drag and lift relations can reduce deviations associated with shared coefficients. Rotational damping and wind enter through angular momentum and relative velocity, preserving the common integration and event definitions.
+\subsection{Model Strengths}
+\textbf{Physical interpretation.} The model connects the path to three familiar effects: gravity bends it downward, drag reduces speed, and Magnus force redirects a spinning ball. The four-model comparison separates these mechanisms from a constant-acceleration description, making the differences between low placement shots and a higher power shot easier to explain.
+
+\textbf{A common framework for inference and prediction.} Three early positions provide the input for estimating initial motion and continuing the flight with the same governing equations. Speed, force histories and goal-plane crossings can therefore be interpreted together. The common coordinate system and termination rules also make comparisons between models and recorded shots consistent.
+
+\textbf{Comparison with measurements.} Published aerodynamic measurements support the coefficient choices, while later positions from three actual penalties assess the predicted continuation. The error table, trajectory plots and sensitivity study link the physical assumptions to observable differences. The wind and rotational-damping comparisons further identify when the simpler flight assumptions give useful approximations.
+
+\subsection{Model Weaknesses}
+\textbf{Sensitivity of the inferred state.} The fitted velocity, spin direction and aerodynamic parameters depend on the early tracking positions, frame selection and search bounds. Position differences over short time intervals strongly influence estimated acceleration, especially for flights close to the ground. The reference spin magnitude and the coupling between spin and lift parameter also affect the selected M4 state.
+
+\textbf{Simplified aerodynamics and environment.} Constant coefficients during a flight smooth over flow transitions, panel orientation and fluctuating wakes. The spherical, still-air and constant-spin assumptions likewise average effects that may become more important for stronger winds, sustained spin or longer flight. Their relative importance changes with the ball and operating conditions.
+
+\textbf{Limited coverage of recorded conditions.} The three penalties cover a modest range of shot types, balls and environments. Broader comparison would benefit from ball-specific aerodynamic data, directly measured spin and more early tracking positions. These additions would strengthen the initial-state estimate and help determine when wind and rotational damping should enter the main prediction.
+
 \addcontentsline{toc}{section}{References}
 \begin{thebibliography}{99}
 \raggedright
@@ -269,7 +265,7 @@ Denser early sampling can constrain acceleration and spin direction, while measu
 
 \newpage\section*{Appendix A: Data Sources, Frame Selection and Parameter Bounds}\label{app:data}
 \addcontentsline{toc}{section}{Appendix A: Data Sources, Frame Selection and Parameter Bounds}
-\begingroup\def\small{\fontsize{10}{11.5}\selectfont}\small\setlength{\intextsep}{4pt}
+\begingroup\def\small{\fontsize{10}{11}\selectfont}\small\setlength{\intextsep}{3pt}\captionsetup{font=small,skip=3pt}\renewcommand{\arraystretch}{.95}
 The three penalties come from the Sportec Open DFL dataset, which associates match events with TRACAB Gen5 multi-camera tracking at 25 Hz\cite{bassek,dataset}. The supplied CSV retains 39 source frames, with 15, 12 and 12 frames for the three events.
 \begin{table}[H]\centering\small\caption{Correspondence between case labels and source records}\label{tab:data-provenance}
 \begin{tabular}{llll}\toprule
