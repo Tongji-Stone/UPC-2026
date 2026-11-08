@@ -1,11 +1,11 @@
 """Compute the restructured report from frozen inputs; never draws figures."""
 import argparse,csv,json,shutil,hashlib
 from pathlib import Path
-from dataclasses import replace
+from dataclasses import replace, asdict
 import numpy as np
 from scipy.integrate import solve_ivp
 from football.physics import PhysicsConfig,simulate,coefficients,config_record,state_derivative
-from football.inference.four_model_fit import fit_early
+from football.inference.four_model_fit import fit_early, InverseBounds
 from coupled_compute import save_json,save_csv,trace_rows
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -14,6 +14,11 @@ DATA=ROOT/'data/report_v2'
 MODELS=('M1','M2','M3','M4')
 
 def read(path):return json.loads(path.read_text(encoding='utf-8'))
+def compatible_inverse_cache(path):
+    cached=read(path)
+    if cached.get('fit',{}).get('fit_bounds',cached.get('fit_bounds')) != asdict(InverseBounds()):
+        raise RuntimeError(f'Inverse cache {path} lacks the current bounds; use --output-dir for new results')
+    return cached
 def csvread(path):
     with path.open(encoding='utf-8-sig') as f:return list(csv.DictReader(f))
 
@@ -152,7 +157,7 @@ def inverse(group,only_case=None):
         for model in MODELS:
             path=OUT/f"{group}/{case['case']}_{model}.json"
             if path.exists():
-                records.append(read(path)['record']);continue
+                records.append(compatible_inverse_cache(path)['record']);continue
             config=cfg(model,case['physics'])
             try:
                 fit=fit_early(t,p,config,model)
@@ -174,12 +179,12 @@ def inverse(group,only_case=None):
                     validation_rule='Only first three positions supplied to fit_early; subsequent data used for scoring'))
             except (ValueError,RuntimeError,FloatingPointError) as exc:
                 record=dict(case=case['case'],model=model,status='fit_failure',error_m=None,error=str(exc))
-                save_json(path,dict(record=record))
+                save_json(path,dict(record=record,fit_bounds=asdict(InverseBounds())))
             records.append(record);print(json.dumps(record,default=lambda x:x.tolist(),ensure_ascii=True),flush=True)
         if only_case is None:save_json(OUT/f'{group}/summary.json',dict(records=records))
 
 def other():
-    a=read(OUT/'problem/problem_b_M4.json');r=a['record'];state=np.array(r['initial_state']);p=a['input']['positions_m'][0]
+    a=compatible_inverse_cache(OUT/'problem/problem_b_M4.json');r=a['record'];state=np.array(r['initial_state']);p=a['input']['positions_m'][0]
     base=cfg('M4',read(DATA/'problem_b.json')['physics'])
     base=replace(base,drag_scale=r['drag_scale'],lift_scale=r['lift_scale'])
     records=[]
@@ -209,6 +214,8 @@ def other():
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('task',choices=['prepare','forward','problem','matches','other'])
     parser.add_argument('--case',help='optional single inverse case; aggregate is refreshed separately')
+    parser.add_argument('--output-dir',help='separate result directory; existing results are preserved')
     args=parser.parse_args();task=args.task
+    if args.output_dir: OUT=Path(args.output_dir).resolve()
     {'prepare':prepare,'forward':controlled,'problem':lambda:inverse('problem'),
      'matches':lambda:inverse('matches',args.case),'other':other}[task]()

@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 from dataclasses import replace
 from football.physics import PhysicsConfig,simulate,config_record
-from football.inference.four_model_fit import fit_early
+from football.inference.four_model_fit import fit_early, InverseBounds
 
 
 def main():
@@ -14,7 +14,7 @@ def main():
     args=parser.parse_args();data=json.loads(Path(args.input).read_text(encoding='utf-8'))
     times=data.get('times_s',data.get('times'));positions=data.get('positions_m',data.get('positions'))
     cfg=PhysicsConfig.for_model(args.model,**data.get('physics',{}))
-    fitted=fit_early(times,positions,cfg,args.model)
+    fitted=fit_early(times,positions,cfg,args.model,bounds=InverseBounds(**data.get('inverse_bounds',{})))
     cfg=replace(cfg,drag_scale=fitted['drag_scale'],lift_scale=fitted['lift_scale'])
     q=fitted['initial_state']
     f=simulate(positions[0],q[:3],q[3:],cfg,plane_x=data.get('plane_x_m',11.),

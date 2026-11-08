@@ -2,10 +2,28 @@ import unittest
 from dataclasses import replace
 import numpy as np
 from football.physics import PhysicsConfig,simulate,forces,state_derivative,rotational_torque
-from football.inference.four_model_fit import fit_early
+from football.inference.four_model_fit import fit_early, InverseBounds
 from football.inference.coupled_fit import observed_trajectory
 
 class FourModelTests(unittest.TestCase):
+    def test_inverse_bounds_on_all_models_and_custom_limits(self):
+        t=[0,.05,.1]; p=[[0,0,1],[2.5,1,1.2],[5,2,1.4]]
+        limits=InverseBounds(velocity_component_max_m_s=25,spin_component_max_rad_s=20,
+                             force_scale_min=.8,force_scale_max=1.2)
+        for model in ['M1','M2','M3','M4']:
+            r=fit_early(t,p,PhysicsConfig.for_model(model),model,max_nfev=1,bounds=limits)
+            velocity=np.asarray(r['initial_state'][:3]);spin=np.asarray(r['initial_state'][3:])
+            self.assertTrue(0 <= velocity[0] <= 25)
+            self.assertTrue(np.all(np.abs(velocity[1:]) <= 25))
+            if model=='M4': self.assertTrue(np.all(np.abs(spin) <= 20))
+            if model in ('M2','M3','M4'): self.assertTrue(.8 <= r['drag_scale'] <= 1.2)
+            if model in ('M3','M4'): self.assertTrue(.8 <= r['lift_scale'] <= 1.2)
+            self.assertEqual(r['fit_bounds']['velocity_component_max_m_s'],25)
+
+    def test_invalid_inverse_bounds_rejected(self):
+        with self.assertRaises(ValueError): InverseBounds(velocity_component_max_m_s=np.inf)
+        with self.assertRaises(ValueError): InverseBounds(force_scale_min=2,force_scale_max=1)
+
     def test_hierarchy_and_scales(self):
         for m,drag,lift in [('M1',False,False),('M2',True,False),('M3',True,True),('M4',True,True)]:
             cfg=PhysicsConfig.for_model(m)

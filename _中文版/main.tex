@@ -41,9 +41,15 @@
 \newpage\tableofcontents\newpage
 \section{引言}
 \subsection{问题背景}
-足球踢出后的轨迹通常会发生弯曲。重力使轨迹向下弯曲，空气阻力使足球减速，自旋还会产生侧向或竖直方向的气动力。这些作用共同决定足球到达球门平面的位置。已有研究将牛顿运动定律与实验气动关系结合，用于描述足球飞行\cite{bray,maponi,kiratidis2018}；高精度模拟也揭示了接缝等表面特征对流动与轨迹的影响\cite{paudel}。
+点球是一个受到严格时空条件约束的拦截问题。守门员需要在合适的时间到达合适的位置，同时决定何时以及向哪个方向移动。点球预判研究讨论了这一时机问题，并表明射门速度和踢球技术会影响射门方向的可预测性\cite{kamp2018,hunter2018}。这些研究也考虑球员触球前的动作线索；本题则关注足球离脚后，根据已测位置预测其后续位置。
 
-将计算轨迹与真实踢球过程中记录的位置比较，可以检验物理模型的预测表现。DFL 开放数据集同时提供职业比赛事件和光学追踪数据\cite{bassek,dataset}，可据此识别点球事件、追踪空中飞行，并比较足球在实际球门平面的位置。
+足球踢出后的轨迹通常会发生弯曲。重力使轨迹向下弯曲，空气阻力使足球减速，自旋还会产生侧向或竖直方向的气动力。Bray 和 Kerwin 将空气动力与运动方程结合，并与实际任意球轨迹进行比较\cite{bray}；Myers 和 Mitchell 分析了旋转足球的三维运动及阻力、自旋的影响\cite{myers}；Maponi 和 Piombin 则建立了可考虑风速的数值计算框架\cite{maponi}。
+
+足球表面也会影响气动力。Asai 等通过风洞测量研究了流动条件与足球受力的关系\cite{asai2007}；Paudel 和 Yan 的数值模拟比较了具有真实接缝几何的足球与光滑球体\cite{paudel}。这些研究为先将足球几何形状理想化为球体、再考察气动系数对预测轨迹的影响提供了依据。
+
+真实飞行测量为模型对照提供了基础。Griffiths 等通过球面标记，在场地条件下追踪足球的三维运动与自旋\cite{griffiths2005}。Goff 和 Carr\'e 使用相机记录的飞行轨迹估计气动系数\cite{goff2009}；Goff 等后续结合 29 条飞行轨迹，构建了随速度变化的阻力和升力系数曲线\cite{goff2017}。
+
+本题给出了初始位置及其后的两个早期位置，但没有直接给出初速度、自旋等量。因此，本文利用运动方程寻找与早期观测相符的运动状态，并计算其球门平面交点。DFL 开放数据集同时提供职业比赛事件和光学追踪数据\cite{bassek,dataset}，可用于将预测交点与之后记录的位置进行比较。
 
 \subsection{问题重述}
 本文研究足球从点球点附近飞向球门的三维运动。球门宽 7.32 m、高 2.44 m，点球点距球门线 11 m。我们建立包含重力、阻力与马格努斯效应的模型，求解飞行轨迹及球门平面交点，并与实测点球飞行对照。题目预测使用初始位置及 0.05、0.10 s 的位置，后续位置用于验证。图~\ref{fig:workflow} 概述受力模型与逆向问题：早期位置确定初始状态和气动力修正系数，后续位置提供比较目标。第二章介绍假设与符号，第三章建立受力和运动方程，第四章比较正向与逆向预测，第五章预留灵敏性分析，第六章讨论表面几何、旋转阻尼和风，第七、八章给出小结与模型评价。
@@ -56,11 +62,14 @@
 \section{模型准备}
 \subsection{基本假设}
 \begin{itemize}
-\item 参照已有足球飞行模型\cite{maponi,bray,myers}，将足球视为质量和半径恒定的刚性球体，迎风面积为 $A=\pi R^2$，位置取球心位置。经验足球气动系数表征表面的平均影响，第~\ref{sec:surface} 节进一步讨论接缝和非对称几何的作用。
-\item 自由飞行中考虑重力、空气阻力与自旋升力\cite{maponi,bray}；到达地面或指定球门平面时停止积分。
-\item 主模型忽略气动力矩，因此自旋向量保持恒定。第~\ref{sec:rotation} 节通过在同一初始状态下加入旋转阻尼，分析这一近似的影响。
-\item 空气密度与黏度均匀，主计算采用静止空气。第~\ref{sec:wind} 节估算风对相对来流和气动力的影响。
-\item 初始位置和随后两个早期位置构成逆向输入，DFL 追踪记录中的后续位置用于比较\cite{bassek,dataset}。记录的竖直坐标按以米为单位的高度处理。
+\item \textbf{球与脚的作用。} 取足球刚脱离球员脚部、开始自由飞行的时刻为 $t=0$；不对接触期间的冲击过程及球体变形建模。
+\item \textbf{刚性球体。} 参照已有足球飞行模型\cite{maponi,bray,myers}，将足球视为质量、半径和迎风面积 $A=\pi R^2$ 恒定的刚性球体，质心与几何中心重合。经验足球气动系数表征表面的平均影响，第~\ref{sec:surface} 节进一步讨论接缝和非对称几何的作用。
+\item \textbf{自由飞行。} 自由飞行中考虑重力、空气阻力与自旋升力\cite{maponi,bray}。所研究的飞行在足球首次接触地面、球门结构或其他物体时结束，不考虑碰撞、弹跳和滚动；数值积分在到达指定球门平面时也停止。
+\item \textbf{均匀重力场。} 重力加速度为常量，取 $g=9.81\,\mathrm{m/s^2}$。
+\item \textbf{大气性质。} 单次飞行中空气密度和动力黏度在空间中保持均匀，气动力通过经验阻力系数和升力系数描述。
+\item \textbf{风。} 主计算采用静止空气；考虑风时，单次飞行的风速矢量在空间和时间上保持恒定，忽略小尺度湍流及快速变化的阵风。第~\ref{sec:wind} 节讨论不同风况对相对气流和气动力的影响。
+\item \textbf{飞行中的自旋。} 主模型忽略气动力矩，因此自旋向量保持恒定。第~\ref{sec:rotation} 节通过在同一初始状态下加入旋转阻尼，分析这一近似的影响。
+\item \textbf{观测与未知参数。} 将题目给出的位置坐标视为准确值。初始位置和随后两个早期位置构成逆向输入，DFL 追踪记录中的后续位置用于比较\cite{bassek,dataset}。在有界不确定性分析中，将无法唯一确定的初速度、自旋、气动参数和环境条件限制在明确的合理范围内；预测不确定性来自这些未确定量和模型假设，而非测量噪声。DFL 记录的竖直坐标按以米为单位的高度处理。
 \end{itemize}
 \subsection{符号说明}
 \begin{table}[H]\centering\small
@@ -240,9 +249,9 @@ C_D^*=C_D(333793,0.19),\qquad C_L^*=C_L(333793,0.19)=1.15(0.19)^{0.83}.
 \subsubsection{求解方法与实验条件}
 给定 $\boldsymbol r_0$、$\boldsymbol v_0$、$\boldsymbol\omega_0$，取 $\alpha_D=\alpha_L=1$，采用自适应龙格--库塔方法积分式~\eqref{eq:motion}。通过 $x-X_g$ 的零点确定球门交点，通过 $z-R$ 的下降零点确定触地。计算同时记录飞行速度和气动力大小。
 
-Goff 和 Carr\'e\cite{goff2009} 用独立驱动轮发射 32 块面板足球，并由两台高速相机记录运动。实验球质量为 0.424 kg、直径为 0.218 m，空气密度为 1.2 kg/m$^3$，运动黏度为 $1.54\times10^{-5}$ m$^2$/s。通过球面标记测量旋转，利用地面标记测量落点射程，报告的射程误差不超过 $\pm0.05$ m。
+我们选用五组受控飞行：一组无旋转发射，实测射程为 21.9 m；另有四组上旋轨迹。各组初始状态见表~\ref{tab:forward-initial}。
 
-本文采用其图 3、4、11 的无旋转算例：初速度约 18 m/s、仰角约 $22^\circ$、初始球心高度约 0.85 m，实测射程 21.9 m。其图 14 中的四组上旋实验提供额外空间轨迹片段。已发表的初始 $Re$、$Sp$ 用于确定速度与自旋，前三个数字化位置确定初始空间切线。五组对照均直接提取原矢量 PDF 的红色实测标记中心。无旋转早期标记间隔为 0.005 s；旋转片段按 $z(x)$ 空间曲线与公开坐标比较。
+\begin{quote}\small\textbf{数据来源与提取。} Goff 和 Carr\'e\cite{goff2009} 使用质量 0.424 kg、直径 0.218 m 的 32 块面板足球及两台高速相机；报告空气密度为 1.2 kg/m$^3$、运动黏度为 $1.54\times10^{-5}$ m$^2$/s，射程误差不超过 $\pm0.05$ m。我们从其图 3、4、11、14 的矢量 PDF 提取红色实测标记。无旋转案例初速度约 18 m/s、仰角约 $22^\circ$、初始球心高度约 0.85 m，早期标记间隔为 0.005 s；四组旋转案例用已发表的 $Re$、$Sp$ 确定速度与自旋，并以前三个数字化位置确定空间切线，沿 $z(x)$ 比较。\end{quote}
 
 表~\ref{tab:forward-initial} 列出正向输入。各算例位于 $x$--$z$ 平面，$y_0=v_{y0}=0$、$\omega_{x0}=\omega_{z0}=0$，因此表中的 $v_{x0}$、$v_{z0}$、$\omega_{y0}$ 补全了六个初速度和自旋分量。首个标记给出初始位置。
 \ForwardInitialTable
@@ -312,6 +321,42 @@ t\ (\mathrm{s})&x\ (\mathrm{m})&y\ (\mathrm{m})&z\ (\mathrm{m})\\\hline
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{problem_coefficients.pdf}
 \caption{题目 B 中 M4 的完整气动系数与自旋参数。自旋恒定、速度下降使 $Sp$ 增大，完整经验关系决定相应阻力与升力系数。}\label{fig:problem-coefficients}\end{figure}
 图~\ref{fig:problem-coefficients} 说明了自旋恒定时气动力仍会变化的原因：足球减速使球面速度与来流速度之比增大，阻力缩放也随之改变升力系数。
+
+\subsection{案例分析：不同点球射门方式}\label{sec:kick-cases}
+面对技法各异的点球，守门员只看到足球刚离脚时的几个位置，应该怎样判断球最终会飞向哪里？我们设置五类示意射门：大力、推射、侧旋弧线、上旋／后旋和挑射，并用同一套方法比较。每条轨迹先由 M4 生成，再只取 0、0.05、0.10 s 的三个位置，用 M1 和假定零自旋的 M4 预测球门交点。图中蓝色实线为模拟飞行，棕色虚线为零自旋 M4 预测，黑点是输入位置。所有数值是情景设定，不是球员统计均值\cite{alcock2012,hunteraccuracy,ravenscroft2015,carre2002}；不加入风和观测噪声。
+
+\subsubsection*{Case 1：大力射门}
+设初速度为 27 m/s、仰角 $8^\circ$，足球不自旋。球较快到达球门，本例中 M1 的球门交点误差为 0.035 m，零自旋 M4 的误差小于 0.001 m。球速快会压缩守门员的反应时间；在这组假设下，其弯曲较小，位置变化也相对容易沿早期运动方向判断。
+\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases/power_3d.pdf}\caption{Case 1：大力射门的三维轨迹。}\end{figure}
+
+\subsubsection*{Case 2：精准推射}
+设初速度为 20 m/s、仰角 $11^\circ$，自旋为零。模拟球心到达球门平面的高度为 0.617 m；M1 的误差为 0.071 m，零自旋 M4 的误差小于 0.001 m。相较大力射门，球飞得较慢，守门员有更多时间观察轨迹逐步展开。
+\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases/placement_3d.pdf}\caption{Case 2：精准推射的三维轨迹。}\end{figure}
+
+\subsubsection*{Case 3：侧旋弧线球}
+设初速度为 24 m/s、仰角 $10^\circ$，初始角速度为 $(0,0,35)$ rad/s。球在飞行中向侧方弯曲，模拟交点为 $(y,z)=(0.892,0.882)$ m；如果预测时忽略自旋，M4 的交点误差为 0.727 m。守门员看到的早期横向运动可能同时包含初始方向和旋转效应，因此需要给后续弯曲留出判断余地。
+\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases/curved_3d.pdf}\caption{Case 3：侧旋弧线球的三维轨迹。}\end{figure}
+
+\subsubsection*{Case 4：上旋与后旋}
+两种情况的初速度均为 24 m/s。上旋取仰角 $12^\circ$、角速度 $(0,35,0)$ rad/s；后旋取仰角 $10^\circ$、角速度 $(0,-35,0)$ rad/s。两者的模拟球门高度分别为 0.382 m 和 1.778 m；若预测时假定零自旋，M4 的误差分别为 0.750 m 和 0.698 m。旋转方向改变了竖直弯曲，守门员除了判断左右位置，还需要关注球的高度变化。
+\begin{figure}[H]\centering\includegraphics[width=.48\textwidth]{../results/kick_cases/topspin_3d.pdf}\hfill\includegraphics[width=.48\textwidth]{../results/kick_cases/backspin_3d.pdf}\caption{Case 4：上旋（左）与后旋（右）。}\end{figure}
+
+\subsubsection*{Case 5：挑射}
+设初速度为 14 m/s、仰角 $20^\circ$，并赋予 $(0,-15,0)$ rad/s 的后旋。相对较低的速度和较大的仰角使轨迹先升后降，模拟球门高度为 0.368 m；M1 与零自旋 M4 的误差分别为 0.305 m 和 0.086 m。面对挑射，守门员需要判断球经过上升阶段后的下落位置。
+\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases/chip_3d.pdf}\caption{Case 5：挑射的三维轨迹。}\end{figure}
+
+\paragraph{案例汇总。} 表~\ref{tab:kick-cases} 汇总六条轨迹。已知自旋的 M4 是条件对照：它额外使用仿真真值中的自旋；生成和预测采用同一方程，因此误差接近零。这里每类只选一条合成轨迹，用于展示自旋可能造成的影响；真实比赛射门的独立对照仍见第~\ref{sec:real-validation} 节。案例的气动系数固定在参考值，与前文联合反演多项参数的过程不同。
+\begin{table}[H]\centering\small\caption{六条示意射门的三点预测汇总；误差为球门平面距离}\label{tab:kick-cases}
+\begin{tabular}{lrrrrrr}\toprule
+案例 & $v_0$ & 仰角 & 自旋 $(\omega_y,\omega_z)$ & M1 & M4 零自旋 & M4 已知自旋\\
+ & (m/s) & (度) & (rad/s) & (m) & (m) & (m)\\\midrule
+大力射门 & 27 & 8 & $(0,0)$ & 0.035 & $<0.001$ & $<0.001$\\
+精准推射 & 20 & 11 & $(0,0)$ & 0.071 & $<0.001$ & $<0.001$\\
+侧旋弧线 & 24 & 10 & $(0,35)$ & 0.730 & 0.727 & $<0.001$\\
+上旋 & 24 & 12 & $(35,0)$ & 0.797 & 0.750 & $<0.001$\\
+后旋 & 24 & 10 & $(-35,0)$ & 0.651 & 0.698 & $<0.001$\\
+挑射 & 14 & 20 & $(-15,0)$ & 0.305 & 0.086 & $<0.001$\\\bottomrule
+\end{tabular}\end{table}
 
 \section{灵敏性分析}\label{sec:sensitivity}
 \textit{待完成。}
@@ -383,7 +428,15 @@ I_b\dot{\boldsymbol\omega}&=-k_2\omega\boldsymbol\omega.
 \addcontentsline{toc}{section}{参考文献}
 \begin{thebibliography}{99}
 \raggedright
+\bibitem{kamp2018} J. van der Kamp, M. Dicks, J. A. Navia and B. No\"el, ``Goalkeeping in the soccer penalty kick,'' \emph{German Journal of Exercise and Sport Research}, 48, 169--175, 2018. \url{https://doi.org/10.1007/s12662-018-0506-3}.
+\bibitem{hunter2018} A. H. Hunter, S. C. Murphy, M. J. Angilletta Jr. and R. S. Wilson, ``Anticipating the direction of soccer penalty shots depends on the speed and technique of the kick,'' \emph{Sports}, 6, 73, 2018. \url{https://doi.org/10.3390/sports6030073}.
+\bibitem{griffiths2005} I. Griffiths, C. Evans and N. Griffiths, ``Tracking the flight of a spinning football in three dimensions,'' \emph{Measurement Science and Technology}, 16, 2056--2065, 2005. \url{https://doi.org/10.1088/0957-0233/16/10/022}.
+\bibitem{goff2017} J. E. Goff, J. Kelley, C. M. Hobson, K. Seo, T. Asai and S. B. Choppin, ``Creating drag and lift curves from soccer trajectories,'' \emph{European Journal of Physics}, 38, 044003, 2017. \url{https://doi.org/10.1088/1361-6404/aa6fcd}.
 \bibitem{bray} K. Bray and D. G. Kerwin, ``Modelling the flight of a soccer ball in a direct free kick,'' \emph{Journal of Sports Sciences}, 21, 75--85, 2003. \url{https://doi.org/10.1080/0264041031000070994}.
+\bibitem{alcock2012} A. Alcock, W. Gilleard, N. A. T. Brown, J. Baker and A. Hunter, ``Initial ball flight characteristics of curve and instep kicks in elite women's football,'' \emph{Journal of Applied Biomechanics}, 28, 70--77, 2012. \url{https://doi.org/10.1123/jab.28.1.70}.
+\bibitem{ravenscroft2015} J. C. Ravenscroft and N. P. Linthorne, ``Effect of the location of the foot impact point on ball velocity in a soccer penalty kick,'' \emph{33 International Conference of Biomechanics in Sports}, 2015. \url{https://ojs.ub.uni-konstanz.de/cpa/article/view/6595}.
+\bibitem{carre2002} M. J. Carr\'e, T. Asai, T. Akatsuka and S. J. Haake, ``The curve kick of a football II: flight through the air,'' \emph{Sports Engineering}, 5, 193--200, 2002. \url{https://doi.org/10.1046/j.1460-2687.2002.00109.x}.
+\bibitem{hunteraccuracy} A. H. Hunter, M. J. Angilletta Jr., T. Pavlic, G. Lichtwark and R. S. Wilson, ``Modeling the two-dimensional accuracy of soccer kicks,'' \emph{Journal of Biomechanics}, 72, 159--166, 2018. \url{https://doi.org/10.1016/j.jbiomech.2018.03.003}.
 \bibitem{bassek} M. Bassek, R. Rein, H. Weber and D. Memmert, ``An integrated dataset of spatiotemporal and event data in elite soccer,'' \emph{Scientific Data}, 12, 195, 2025. \url{https://doi.org/10.1038/s41597-025-04505-y}.
 \bibitem{dataset} DFL, ``Sportec Open DFL Dataset,'' CC BY 4.0. 数据镜像： \url{https://huggingface.co/datasets/pysport/idsse-data}.
 \bibitem{maponi} P. Maponi and R. Piombin, ``A computational framework to predict the soccer ball trajectory,'' \emph{Journal of Applied Mathematics}, 2025, 7425581. \url{https://doi.org/10.1155/jama/7425581}.

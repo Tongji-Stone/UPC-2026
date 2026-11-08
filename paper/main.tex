@@ -33,9 +33,15 @@ Forward calculations are compared with controlled launch experiments, including 
 \newpage\tableofcontents\newpage
 \section{Introduction}
 \subsection{Problem Background}
-The path of a kicked soccer ball is not generally a straight line. Gravity bends the trajectory downwards, air resistance slows the ball, and its rotation can produce a sideways or vertical aerodynamic force. The combination of these effects determines where the ball reaches the plane of the goal. Mathematical models of soccer-ball flight have therefore been developed using Newton's law together with experimental aerodynamic relationships \cite{bray,maponi,kiratidis2018}. High-fidelity simulations have also shown how seams and other surface features can alter the flow and the trajectory \cite{paudel}.
+A penalty kick places stringent spatial and temporal demands on the goalkeeper. The goalkeeper must reach an appropriate location at the right time, while deciding when and in which direction to move. Studies of penalty anticipation discuss this timing problem and show that shot speed and kicking technique affect the predictability of shot direction \cite{kamp2018,hunter2018}. Such work also considers cues from the kicker before contact; the present problem instead focuses on predicting the ball's later position from its measured positions after launch.
 
-An effective way to examine a physical model is to compare its calculated path with positions recorded during a real kick. The DFL open dataset combines match events and optical tracking data for professional matches \cite{bassek,dataset}. These records make it possible to identify a penalty event, follow the ball through the flight, and compare the model with its position at the actual goal plane.
+The path of a kicked soccer ball is not generally a straight line. Gravity bends the trajectory downwards, air resistance slows the ball, and rotation can produce a sideways or vertical aerodynamic force. Bray and Kerwin combined aerodynamic forces with equations of motion and compared the resulting trajectories with experimental free kicks \cite{bray}. Myers and Mitchell analyzed three-dimensional spinning-ball motion and the influence of drag and spin \cite{myers}; Maponi and Piombin developed a numerical framework that also accommodates wind \cite{maponi}.
+
+The aerodynamic behavior is also affected by the ball's surface. Wind-tunnel measurements by Asai et al. examined the relationship between flow conditions and soccer-ball forces \cite{asai2007}, while Paudel and Yan's simulations compared a football with realistic seam geometry against a smooth sphere \cite{paudel}. These studies motivate a spherical geometric approximation together with an examination of how aerodynamic coefficients affect the predicted flight.
+
+Measurements of real flights provide a basis for evaluating such models. Griffiths et al. tracked the three-dimensional motion and spin of a marked football in field conditions \cite{griffiths2005}. Goff and Carr\'e used camera-recorded trajectories to estimate aerodynamic coefficients \cite{goff2009}; subsequent work by Goff et al. combined measurements from 29 flights to construct speed-dependent drag and lift curves \cite{goff2017}.
+
+In this problem, the initial position and two early positions are given, whereas the initial velocity and spin are not directly specified. We therefore use the equations of motion to find states compatible with the early observations and calculate their goal-plane crossings. The DFL open dataset combines match events and optical tracking data for professional matches \cite{bassek,dataset}, allowing predicted crossings to be compared with later recorded positions.
 
 \subsection{Problem Restatement}
 We model a soccer ball travelling in three dimensions from the vicinity of the penalty mark to the goal. The goal is 7.32 m wide and 2.44 m high; the penalty mark is 11 m from the goal line. We establish a model incorporating gravity, drag and the Magnus effect, solve for its trajectory and the point at which it crosses the goal plane, and compare the calculated positions with a recorded penalty flight. The prediction uses the initial position and the positions at 0.05 and 0.10 s; subsequent positions are reserved for validation. Figure~\ref{fig:workflow} summarizes the force models and inverse problem: early positions determine initial conditions and force corrections, while later positions provide validation targets. Section 2 states the assumptions and notation. Section 3 establishes the forces and equations. Section 4 compares forward and inverse predictions. Section 5 is reserved for sensitivity analysis. Section 6 discusses surface geometry, spin damping and wind, followed by conclusions and model evaluation in Sections 7 and 8.
@@ -48,11 +54,14 @@ We model a soccer ball travelling in three dimensions from the vicinity of the p
 \section{Preparation of the Models}
 \subsection{Assumptions}
 \begin{itemize}
-\item The ball is idealized as a rigid sphere of constant mass and radius, with cross-sectional area $A=\pi R^2$ and position at its centre, following common soccer-ball flight models \cite{maponi,bray,myers}. Empirical football coefficients represent the average aerodynamic effect of its surface. Section~\ref{sec:surface} discusses the effect of seams and asymmetric geometry.
-\item Gravity, aerodynamic drag and spin-induced lift act during free flight \cite{maponi,bray}. Integration ends at ground contact or the selected goal plane.
-\item The main model neglects aerodynamic torque, so its spin vector remains constant. Section~\ref{sec:rotation} examines this approximation by adding rotational damping to the same initial state.
-\item Air density and viscosity are uniform, and the main calculation uses still air. Section~\ref{sec:wind} estimates how wind changes relative airflow and force magnitude.
-\item The initial position and the next two early positions determine the inverse input. Subsequent positions from the DFL tracking records are used for comparison \cite{bassek,dataset}. The recorded vertical coordinate is interpreted as height in metres.
+\item \textbf{Ball--foot interaction.} Free flight begins at $t=0$ immediately after the ball leaves the player's foot. The impact process and deformation during contact are not modeled.
+\item \textbf{Rigid spherical ball.} The ball is idealized as a rigid sphere with constant mass, radius and cross-sectional area $A=\pi R^2$; its centre of mass coincides with its geometric centre \cite{maponi,bray,myers}. Empirical football coefficients represent the average aerodynamic effect of its surface. Section~\ref{sec:surface} discusses seams and asymmetric geometry.
+\item \textbf{Free-flight motion.} Gravity, aerodynamic drag and spin-induced lift act during free flight \cite{maponi,bray}. The flight considered ends at the first contact with the ground, goal structure or another object; collisions, bouncing and rolling are excluded. Integration also stops at the selected goal plane.
+\item \textbf{Uniform gravity.} Gravitational acceleration is constant, with $g=9.81\,\mathrm{m/s^2}$.
+\item \textbf{Atmospheric properties.} Air density and dynamic viscosity are spatially uniform during each flight. Aerodynamic forces are represented using empirical drag and lift coefficients.
+\item \textbf{Wind.} The main calculation uses still air. When wind is included, its velocity vector is spatially and temporally constant during each flight; small-scale turbulence and rapidly varying gusts are neglected. Section~\ref{sec:wind} examines how different wind conditions affect relative airflow and force magnitude.
+\item \textbf{Spin during flight.} The main model neglects aerodynamic torque, so its spin vector remains constant. Section~\ref{sec:rotation} examines this approximation by adding rotational damping to the same initial state.
+\item \textbf{Observations and unknown parameters.} The position coordinates supplied in the problem are treated as exact. The initial position and the next two early positions are the inverse input; subsequent DFL tracking positions are reserved for comparison \cite{bassek,dataset}. For bounded uncertainty analysis, unresolved initial velocity, spin, aerodynamic parameters and environmental conditions are constrained to stated physically reasonable ranges. Prediction uncertainty is attributed to these unresolved quantities and model assumptions rather than measurement noise. The recorded DFL vertical coordinate is interpreted as height in metres.
 \end{itemize}
 \subsection{Notations}
 \begin{table}[H]\centering\small
@@ -232,9 +241,9 @@ For the competition air and ball parameters, $C_D^*=\ReferenceCD$ and $C_L^*=\Re
 \subsubsection{Prediction procedure and experimental conditions}
 Given $\boldsymbol r_0$, $\boldsymbol v_0$ and $\boldsymbol\omega_0$, we set $\alpha_D=\alpha_L=1$ and integrate Eq.~\eqref{eq:motion} using an adaptive Runge--Kutta method. A root of $x-X_g$ locates the goal-plane crossing, and a descending root of $z-R$ locates ground contact. The calculation records speed and aerodynamic force magnitudes along the flight.
 
-Goff and Carr\'e \cite{goff2009} launched a 32-panel soccer ball using independently driven wheels and recorded its motion with two high-speed cameras. The reported ball mass is 0.424 kg, diameter 0.218 m, air density 1.2 kg/m$^3$ and kinematic viscosity $1.54\times10^{-5}$ m$^2$/s. Rotation was measured by tracking marks on the ball. Ground markers provided landing ranges with a reported error of at most $\pm0.05$ m.
+We compare five controlled flights: one nonspinning launch, with a measured range of 21.9 m, and four topspin trajectories. Their initial states are listed in Table~\ref{tab:forward-initial}.
 
-We use the nonspinning launch in their Figures 3, 4 and 11: approximate initial speed 18 m/s, elevation $22^\circ$, initial centre height about 0.85 m, and measured range 21.9 m. Four topspin launches from their Figure 14 provide additional spatial trajectory segments. Their published initial $Re$ and $Sp$ determine speed and spin; the first three digitized positions determine the initial spatial tangent. All five comparisons use red measurement-marker centres extracted from the vector PDF. The nonspinning early markers have 0.005 s spacing. Rotating segments are compared as $z(x)$ curves, matching their published spatial coordinates.
+\begin{quote}\small\textbf{Data source and processing.} Goff and Carr\'e \cite{goff2009} used a 32-panel ball (mass 0.424 kg; diameter 0.218 m) and two high-speed cameras, reporting air density 1.2 kg/m$^3$, kinematic viscosity $1.54\times10^{-5}$ m$^2$/s and landing-range error at most $\pm0.05$ m. We extract the red markers in their Figures 3, 4, 11 and 14 from the vector PDF. The nonspinning case uses approximately 18 m/s, $22^\circ$ and 0.85 m initial height; its early marker spacing is 0.005 s. For the four spinning cases, published $Re$ and $Sp$ determine speed and spin, and the first three extracted positions determine the initial spatial tangent; comparison uses the spatial curve $z(x)$.\end{quote}
 
 Table~\ref{tab:forward-initial} specifies the forward inputs. All examples lie in the $x$--$z$ plane, with $y_0=v_{y0}=0$ and $\omega_{x0}=\omega_{z0}=0$; the listed $v_{x0}$, $v_{z0}$ and $\omega_{y0}$ therefore complete the six initial velocity and spin components. Each first marker fixes the initial position.
 \ForwardInitialTable
@@ -304,6 +313,42 @@ M1 and M2 predict nearly the same horizontal direction because gravity and drag 
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{problem_coefficients.pdf}
 \caption{The complete M4 aerodynamic coefficients and spin parameter during the Problem B flight. Constant spin combined with decreasing speed raises $Sp$; the coupled empirical relations determine the resulting drag and lift coefficients.}\label{fig:problem-coefficients}\end{figure}
 The coefficient evolution in Figure~\ref{fig:problem-coefficients} shows why constant spin still produces changing aerodynamics. The surface-to-air speed ratio increases as the ball slows, while the drag-dependent scaling also changes the lift coefficient.
+
+\subsection{Case Studies: Different Penalty-Kick Techniques}\label{sec:kick-cases}
+What happens when a goalkeeper faces not one textbook kick but a repertoire of different techniques? We examine five illustrative situations using the same three early positions at 0, 0.05 and 0.10 s. Each reference flight is generated with M4; its first three positions feed M1 and M4 with zero assumed spin. The figures show the generated flight, the zero-spin M4 continuation and the input points. The chosen values describe examples, not statistical means or individual players \cite{alcock2012,hunteraccuracy,ravenscroft2015,carre2002}. No observation noise or wind is added.
+
+\subsubsection*{Case 1: Power Shot}
+The ball leaves at 27 m/s with an $8^\circ$ elevation and zero spin. It reaches the goal quickly; in this example the M1 goal-plane error is 0.035 m, and the zero-spin M4 result is within 0.001 m. A goalkeeper has little time to react, although the weakly curved path is relatively straightforward under these assumed conditions.
+\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases/power_3d.pdf}\caption{Case 1: power shot.}\end{figure}
+
+\subsubsection*{Case 2: Placement Shot}
+For a more controlled shot, we choose 20 m/s, an $11^\circ$ elevation and zero spin. The simulated ball crosses the goal plane at a height of 0.617 m. M1 has a 0.071 m error, while zero-spin M4 is within 0.001 m. A lower speed leaves more flight time, so the goalkeeper can use the developing path to refine the expected position.
+\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases/placement_3d.pdf}\caption{Case 2: placement shot.}\end{figure}
+
+\subsubsection*{Case 3: Curved Shot}
+The curved kick uses 24 m/s, a $10^\circ$ elevation and vertical-axis spin $(0,0,35)$ rad/s. The flight bends sideways: its simulated goal crossing is $y=0.892$ m, $z=0.882$ m. When the prediction assumes zero spin, M4 misses this crossing by 0.727 m. The first positions alone can make the sideways motion appear partly attributable to initial direction, so a goalkeeper should allow for subsequent curvature.
+\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases/curved_3d.pdf}\caption{Case 3: sidespin curve.}\end{figure}
+
+\subsubsection*{Case 4: Topspin and Backspin}
+Both examples use 24 m/s. The topspin case takes $12^\circ$ and $(0,35,0)$ rad/s; the backspin case takes $10^\circ$ and $(0,-35,0)$ rad/s. Their simulated goal heights are 0.382 m and 1.778 m, respectively. Zero-spin M4 incurs errors of 0.750 m and 0.698 m. Opposite spin changes the vertical path, making height an important part of the goalkeeper's assessment.
+\begin{figure}[H]\centering\includegraphics[width=.48\textwidth]{../results/kick_cases/topspin_3d.pdf}\hfill\includegraphics[width=.48\textwidth]{../results/kick_cases/backspin_3d.pdf}\caption{Case 4: topspin (left) and backspin (right).}\end{figure}
+
+\subsubsection*{Case 5: Chip Shot}
+The chip uses 14 m/s, a $20^\circ$ elevation and $(0,-15,0)$ rad/s backspin. Its higher launch angle and lower speed produce a longer, arcing flight; the simulated goal height is 0.368 m. M1 and zero-spin M4 have errors of 0.305 m and 0.086 m, respectively. Unlike a power kick, the goalkeeper must account for a slower ball that rises before descending.
+\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases/chip_3d.pdf}\caption{Case 5: chip shot.}\end{figure}
+
+\paragraph{Comparison.} Table~\ref{tab:kick-cases} collects the six trajectories. M4 with the generating spin supplied is a conditional control, not a three-position-only prediction: its near-zero error follows from using the same equations to generate and predict the trajectory. These single synthetic examples illustrate possible effects of spin; the recorded-match comparison remains a separate evaluation. Coefficients are fixed in these cases, unlike the multi-parameter inverse procedure above.
+\begin{table}[H]\centering\small\caption{Summary of illustrative three-point cases; goal-plane errors in metres}\label{tab:kick-cases}
+\begin{tabular}{lrrrrrr}\toprule
+Case & $v_0$ & Angle & Spin $(\omega_y,\omega_z)$ & M1 & M4 zero & M4 known\\
+ & (m/s) & (deg) & (rad/s) & (m) & (m) & (m)\\\midrule
+Power & 27 & 8 & $(0,0)$ & 0.035 & $<0.001$ & $<0.001$\\
+Placement & 20 & 11 & $(0,0)$ & 0.071 & $<0.001$ & $<0.001$\\
+Curved & 24 & 10 & $(0,35)$ & 0.730 & 0.727 & $<0.001$\\
+Topspin & 24 & 12 & $(35,0)$ & 0.797 & 0.750 & $<0.001$\\
+Backspin & 24 & 10 & $(-35,0)$ & 0.651 & 0.698 & $<0.001$\\
+Chip & 14 & 20 & $(-15,0)$ & 0.305 & 0.086 & $<0.001$\\\bottomrule
+\end{tabular}\end{table}
 
 \section{Sensitivity Analysis}\label{sec:sensitivity}
 \textit{To be completed.}
@@ -375,7 +420,15 @@ The wind-tunnel comparisons, controlled launches and recorded match flights exam
 \addcontentsline{toc}{section}{References}
 \begin{thebibliography}{99}
 \raggedright
+\bibitem{kamp2018} J. van der Kamp, M. Dicks, J. A. Navia and B. No\"el, ``Goalkeeping in the soccer penalty kick,'' \emph{German Journal of Exercise and Sport Research}, 48, 169--175, 2018. \url{https://doi.org/10.1007/s12662-018-0506-3}.
+\bibitem{hunter2018} A. H. Hunter, S. C. Murphy, M. J. Angilletta Jr. and R. S. Wilson, ``Anticipating the direction of soccer penalty shots depends on the speed and technique of the kick,'' \emph{Sports}, 6, 73, 2018. \url{https://doi.org/10.3390/sports6030073}.
+\bibitem{griffiths2005} I. Griffiths, C. Evans and N. Griffiths, ``Tracking the flight of a spinning football in three dimensions,'' \emph{Measurement Science and Technology}, 16, 2056--2065, 2005. \url{https://doi.org/10.1088/0957-0233/16/10/022}.
+\bibitem{goff2017} J. E. Goff, J. Kelley, C. M. Hobson, K. Seo, T. Asai and S. B. Choppin, ``Creating drag and lift curves from soccer trajectories,'' \emph{European Journal of Physics}, 38, 044003, 2017. \url{https://doi.org/10.1088/1361-6404/aa6fcd}.
 \bibitem{bray} K. Bray and D. G. Kerwin, ``Modelling the flight of a soccer ball in a direct free kick,'' \emph{Journal of Sports Sciences}, 21, 75--85, 2003. \url{https://doi.org/10.1080/0264041031000070994}.
+\bibitem{alcock2012} A. Alcock, W. Gilleard, N. A. T. Brown, J. Baker and A. Hunter, ``Initial ball flight characteristics of curve and instep kicks in elite women's football,'' \emph{Journal of Applied Biomechanics}, 28, 70--77, 2012. \url{https://doi.org/10.1123/jab.28.1.70}.
+\bibitem{ravenscroft2015} J. C. Ravenscroft and N. P. Linthorne, ``Effect of the location of the foot impact point on ball velocity in a soccer penalty kick,'' \emph{33 International Conference of Biomechanics in Sports}, 2015. \url{https://ojs.ub.uni-konstanz.de/cpa/article/view/6595}.
+\bibitem{carre2002} M. J. Carr\'e, T. Asai, T. Akatsuka and S. J. Haake, ``The curve kick of a football II: flight through the air,'' \emph{Sports Engineering}, 5, 193--200, 2002. \url{https://doi.org/10.1046/j.1460-2687.2002.00109.x}.
+\bibitem{hunteraccuracy} A. H. Hunter, M. J. Angilletta Jr., T. Pavlic, G. Lichtwark and R. S. Wilson, ``Modeling the two-dimensional accuracy of soccer kicks,'' \emph{Journal of Biomechanics}, 72, 159--166, 2018. \url{https://doi.org/10.1016/j.jbiomech.2018.03.003}.
 \bibitem{bassek} M. Bassek, R. Rein, H. Weber and D. Memmert, ``An integrated dataset of spatiotemporal and event data in elite soccer,'' \emph{Scientific Data}, 12, 195, 2025. \url{https://doi.org/10.1038/s41597-025-04505-y}.
 \bibitem{dataset} DFL, ``Sportec Open DFL Dataset,'' CC BY 4.0. Data mirror: \url{https://huggingface.co/datasets/pysport/idsse-data}.
 \bibitem{maponi} P. Maponi and R. Piombin, ``A computational framework to predict the soccer ball trajectory,'' \emph{Journal of Applied Mathematics}, 2025, 7425581. \url{https://doi.org/10.1155/jama/7425581}.
