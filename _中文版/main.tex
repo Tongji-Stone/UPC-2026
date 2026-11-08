@@ -269,13 +269,13 @@ $t_g$ (s) & 0.3685--0.4346 & 0.3783--0.4218\\
 \vspace{2mm}{\bfseries 题目 B\par}
 \vspace{3mm}{\bfseries 摘要\par}
 \end{center}
-\noindent\hspace*{\parindent}本文根据足球起始位置及随后两次位置观测，预测球门交点及其不确定性。比较重力、重力与阻力、恒合力，以及重力、阻力和马格努斯力四种模型。其中，重力、阻力和马格努斯力模型采用恒定阻力系数与线性升力关系，由早期位置反演初速度、旋转方向及气动参数，再数值积分得到后续轨迹。
+\noindent\hspace*{\parindent}点球飞行时间短、轨迹变化快，准确预测足球的位置有助于守门员及时判断来球方向。本文根据足球的初始位置和早期位置观测，建立并比较了重力、空气阻力、恒合力以及马格努斯力四类运动模型。其中，综合考虑重力、阻力和马格努斯力的模型采用恒定阻力系数和线性升力关系，通过早期位置反演足球的初始运动状态与气动参数，再利用数值积分预测后续轨迹。
 
-随后选取两次推射和一次大力抽射的真实数据作为代表性样本，分别覆盖不同击球力度和初始条件，用于检验模型在不同射门情形下的预测能力。以后续实测位置检验预测，重力、阻力和马格努斯力模型的球门交点误差分别为 0.360、0.146 和 0.113 m。对题给算例，参考交点为（11，2.616，1.953）m，到达时间约为 0.399 s。
+对于题目给定的位置数据，综合模型预测足球到达球门平面的时间约为 0.399 s，球心坐标为 $(11,\,2.616,\,1.953)$ m。为检验模型的预测效果，本文从真实点球数据集中筛选出贴合本题情境的轨迹，并将轨迹数据划分为条件点和验证点：利用条件点进行参数反演，再用验证点检验预测结果。根据击球方式，将射门分为精准推射和大力抽射两类，结合真实轨迹讨论不同情形下的运动特征与模型预测效果，验证综合模型的物理准确性。
 
-灵敏性分析考察初始运动、气动参数和空气密度的影响。发射方向改变 $1^\circ$，交点位移约为 0.20 m；球速改变 5\%，到达时间最多变化约 0.021 s；自旋大小与升力参数通过乘积共同决定旋转偏转。不同气动参数与初始运动组合可在 2 mm 坐标容差内重现早期位置，而在给定气动参数范围内，其交点相对基准轨迹的最大偏移可达 \SensitivityConditionalShift\ m。接下来进一步对九项参数进行独立均匀扰动，十万次蒙特卡洛模拟给出交点分布及联合 95\% 区域，其中 95.772\% 的模拟轨迹完整通过球门开口。
+灵敏性分析表明，初始运动方向对球门交点影响较大：方向改变 $1^\circ$ 时，交点位置约变化 0.20 m。进一步考虑初始运动状态和气动参数的不确定性，分析球门交点的变化范围。研究结果可为点球轨迹预测和守门员判断来球方向提供参考。
 
-\noindent\textbf{关键词：}点球轨迹；空气阻力；马格努斯效应；参数反演；不确定性分析
+\noindent\textbf{关键词：}点球轨迹；运动模型；马格努斯力；参数反演；不确定性分析
 \newpage\begingroup\normalfont\normalsize\setlength{\baselineskip}{13.2pt}\tableofcontents\endgroup\newpage
 \section{引言}
 \subsection{问题背景}
@@ -476,7 +476,7 @@ $\theta,\boldsymbol e_L$ & 自旋与来流夹角、升力方向 & rad；单位�
 $q,v$ & 动压与球速 & Pa；m/s\\
 $\boldsymbol Q,I_b$ & 阻尼力矩与转动惯量 & N\,m; kg\,m$^2$\\\bottomrule
 \end{tabular}\end{table}
-我们参考 Maponi 与 Piombin\cite{maponi} 选取球体参数，并参考 Asai 等\cite{asai2007} 选取空气密度与动力黏度 $\mu=\rho\nu$。
+球体参数和空气参数分别参考相关研究\cite{maponi,asai2007}，其中动力黏度为 $\mu=\rho\nu$。
 
 \section{模型建立}\label{sec:model}
 
@@ -517,7 +517,7 @@ p_\infty+\dfrac{1}{2}\rho v^2=p_s.
 \[
 q=p_s-p_\infty=\dfrac{1}{2}\rho v^2.
 \]
-我们参考 Goff 与 Carr\'e\cite{goff2009} 的气动力表示方法，空气阻力与空气密度、相对速度、迎风面积，以及球体的流动和表面特征有关。后两类特征通过阻力系数 $C_D$ 体现，因而阻力大小为
+根据已有气动力模型\cite{goff2009}，空气阻力与空气密度、相对速度、迎风面积，以及球体的流动和表面特征有关。后两类特征通过阻力系数 $C_D$ 体现，因而阻力大小为
 \[
 F_D=C_DqA.
 \]
@@ -528,7 +528,7 @@ F_D=C_DqA.
 \subsubsection{马格努斯升力}\label{sec:lift}
 旋转足球会改变周围气流，并受到横向的马格努斯力。如图~\ref{fig:magnus-flow} 所示，旋转使相对气流呈现非对称性。令 $\boldsymbol\omega$ 为角速度矢量。
 \begin{figure}[H]\centering\includegraphics[width=.78\textwidth]{magnus_streamlines.pdf}\caption{旋转足球周围的理想化相对流线。}\label{fig:magnus-flow}\end{figure}
-我们参考 Goff 与 Carr\'e\cite{goff2009} 的表示方法，以动压与迎风面积描述横向升力大小。自旋轴与相对速度夹角为 $\theta$ 时，升力大小为
+根据已有气动力模型\cite{goff2009}，以动压与迎风面积描述横向升力大小。自旋轴与相对速度夹角为 $\theta$ 时，升力大小为
 \[
 F_L=qAC_L\sin\theta.
 \]
@@ -593,19 +593,14 @@ E_g=\sqrt{(\widehat y_g-y_g)^2+(\widehat z_g-z_g)^2},
 其中 $(y_g,z_g)$ 为实测交点，带帽坐标为预测值。参数与来源记录见\hyperref[app:data]{附录 A}。
 
 \subsubsection{数据集}
-为了验证模型的普适性，我们采用 Bassek 等~\cite{bassek} 介绍、由 DFL 发布的 Sportec Open DFL 数据集~\cite{dataset}，其中包含比赛事件与 25 Hz 多摄像机追踪数据。其中选取以下三次点球，依次称为案例1、案例2和案例3：
-\begin{enumerate}
-\item \textbf{案例1：} 2023 年 5 月 27 日科隆对拜仁比赛中 Dejan Ljubicic 的点球。
-\item \textbf{案例2：} 2022 年 11 月 11 日杜塞尔多夫对凯泽斯劳滕比赛中 Philipp Klement 的点球。
-\item \textbf{案例3：} 2022 年 8 月 26 日杜塞尔多夫对雷根斯堡比赛中 Dawid Kownacki 的点球。
-\end{enumerate}
+为检验模型的预测效果，本文从真实点球数据集\cite{bassek,dataset}中选取三条轨迹，分别记为案例1、案例2和案例3。三条轨迹包括两次精准推射和一次大力抽射，具体数据来源见\hyperref[app:data]{附录 A}。
 
 案例1、案例2、案例3 的已知起始位置依次为 $\boldsymbol r_0=\WMXPositionZero$ m、$\WRPositionZero$ m 与 $\WOHPositionZero$ m，分别以该位置对应时刻为 $t=0$。如表~\ref{tab:penalty-observations} 所示，两次后续输入位于 0.04 s 与 0.08 s。
 
 \PenaltyObservationTable
 
 \subsection{案例分析}\label{sec:case-validation}
-根据 Hunter 等~\cite{hunter2018} 的研究，点球踢法与球速会影响射门精度及守门员对方向的判断。研究球员的踢球姿态将有助于点球模型的预测。我们将常见踢法分为以下两类：
+已有研究表明\cite{hunter2018}，点球踢法与球速会影响射门精度及守门员对方向的判断。研究球员的踢球姿态将有助于点球模型的预测。我们将常见踢法分为以下两类：
 
 \begin{enumerate}
 \item \textbf{精准推射。} 通常以脚内侧触球，注重方向控制与落点精度；较低的飞行轨迹使足球贴近草皮向球门侧方运行。
@@ -667,52 +662,11 @@ $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
 
 \section{灵敏性分析}\label{sec:sensitivity}
 
-% BEGIN SENSITIVITY_BODY
-\noindent\hspace*{\parindent}本章以第~\ref{sec:problem-inverse} 节反演的 M4 状态为参考，分析初始运动、气动参数和空气密度对球门交点及到达时间的影响。计算采用重力、阻力和马格努斯力模型，空气保持静止，自旋保持恒定，足球质量固定为 0.43 kg，半径固定为 0.11 m。表~\ref{tab:sensitivity-reference} 中的早期位置也作为下文比较不同轨迹时的约束。
+点球的初速度、自旋以及空气条件发生变化时，足球到达球门的位置和时间也会随之改变。本节以题目算例的综合模型预测为基准，分别考察单个因素、不同参数组合以及多种因素同时变化时的影响。具体计算方法和参数范围见\hyperref[app:sensitivity]{附录 B}。
 
-参考交点记为 $(y_g^*,z_g^*)=(\SensitivityReferenceY,\SensitivityReferenceZ)$ m，到达时间为 $t_g^*=\SensitivityReferenceTime$ s。对应阻力系数为 $C_D=0.3623$，线性升力参数为 $\alpha=2.2877$，最大早期坐标残差为 0.784 mm。
+\subsection{单个因素的影响}\label{sec:sensitivity-local}
 
-下文以该轨迹为基准，先逐项改变参数，识别各因素对交点和到达时间的影响；再保留早期位置约束，考察不同参数组合产生的预测差异；最后通过多参数联合扰动，获得交点分布及其统计范围。
-
-\FloatBarrier
-\subsection{单参数对交点和到达时间的影响}\label{sec:sensitivity-local}
-
-\noindent\hspace*{\parindent}每次改变一项参数，其余参数保持基准值。九项参数的扫描范围见表~\ref{tab:sensitivity-scan-ranges}；百分比表示相对基准值的变化，方向角以基准方向为中心增减。每项参数取 41 个等间隔值，共计算 369 条轨迹。
-
-\begin{table}[H]\centering\small
-\renewcommand{\arraystretch}{1.15}
-\caption{九项参数的扫描范围}
-\begin{tabular}{lc}\toprule
-参数 & 扰动范围\\\midrule
-初速度大小 & $\pm$5\%\\
-初速度水平角 & $\pm$$2^\circ$\\
-初速度仰角 & $\pm$$2^\circ$\\
-自旋大小 & $\pm$10\%\\
-旋转轴方位角 & $\pm$$2^\circ$\\
-旋转轴仰角 & $\pm$$2^\circ$\\
-阻力系数 & $\pm$10\%\\
-升力参数 & $\pm$10\%\\
-空气密度 & $\pm$10\%\\
-\bottomrule\end{tabular}\label{tab:sensitivity-scan-ranges}
-\end{table}
-
-
-\Needspace{5\baselineskip}
-以交点和到达时间相对基准轨迹的变化衡量参数影响，定义
-
-
-\begin{equation}
-\begin{aligned}
-\Delta y_g&=y_g-y_g^*,\qquad
-\Delta z_g=z_g-z_g^*,\qquad
-\Delta t_g=t_g-t_g^*,\\
-D_g&=\sqrt{(\Delta y_g)^2+(\Delta z_g)^2}.
-\end{aligned}
-\label{eq:sensitivity-displacement}
-\end{equation}
-
-图~\ref{fig:sensitivity-one-position}、图~\ref{fig:sensitivity-one-time} 分别展示九项参数的交点响应和到达时间响应。表~\ref{tab:sensitivity-one-factor} 从扫描结果中取方向角的 $\pm$$1^\circ$ 扰动和其余参数的 $\pm$5\% 扰动，列出正、负两次变化中较大的交点位移与到达时间变化。
-
+首先每次改变一个因素，观察球门交点和到达时间的变化。表~\ref{tab:sensitivity-one-factor} 给出各因素在选定变化幅度下造成的最大影响，其中 $D_g$ 表示交点相对基准位置的距离，$\Delta t_g$ 表示到达时间的变化。
 
 \begin{table}[H]
 \centering
@@ -737,29 +691,10 @@ D_g&=\sqrt{(\Delta y_g)^2+(\Delta z_g)^2}.
 \label{tab:sensitivity-one-factor}
 \end{table}
 
-在表~\ref{tab:sensitivity-one-factor} 的比较幅度下，初速度方向的变化主要体现在交点位置上：水平角或仰角改变 $1^\circ$，交点移动约 0.20 m。球速的变化则显著影响到达时间，$\pm$5\% 的扰动使到达时间最多改变 20.659 ms，同时产生最大 8.356 cm 的交点位移。这是因为速度方向直接决定横向和竖直运动，而球速改变了足球到达球门所需的时间，从而改变重力和气动力累积作用的结果。
+初速度方向对交点位置的影响最明显：水平角或仰角改变 $1^\circ$，交点约移动 0.20 m。球速则明显影响到达时间：改变 5\% 时，到达时间最多变化约 0.021 s。这是因为速度方向直接影响足球飞向球门的位置，而球速决定了重力和气动力作用的时间。
 
+自旋越强，足球通常偏转得越明显。在本模型中，自旋大小与升力参数共同决定旋转产生的作用；当两者的改变相互补偿时，可能得到相同的轨迹。空气密度则同时影响阻力和马格努斯力，进而影响足球的减速和弯曲。各因素对到达时间的影响见图~\ref{fig:sensitivity-one-time}。
 
-自旋大小和升力参数的响应曲线重合，源于线性马格努斯力中二者的乘积关系：$\boldsymbol F_L$ 与 $\alpha\boldsymbol\omega$ 成正比。分别将自旋大小或 $\alpha$ 改变相同比例，会产生相同的力和轨迹变化；若二者按相反比例调整，则有
-
-
-\begin{equation}
-\boldsymbol\omega_0'=k\boldsymbol\omega_0,\qquad
-\alpha'=\alpha/k
-\quad\Longrightarrow\quad
-\boldsymbol F_L'=\boldsymbol F_L,\qquad k>0.
-\label{eq:sensitivity-spin-compensation}
-\end{equation}
-
-因此，不同的自旋大小与升力参数可以对应相同的轨迹。旋转轴方向则通过改变 $\boldsymbol\omega\times\boldsymbol v$ 影响偏转方向和大小。空气密度同时缩放阻力与马格努斯力，因而其变化会共同影响减速和弯曲过程。
-
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[clip,width=\textwidth]{one_factor_position_response.pdf}
-\caption{九项单参数的球门位置响应。蓝色实线表示横向变化 $\Delta y_g$，橙色虚线表示高度变化 $\Delta z_g$，单位为 cm。各子图纵轴分别定标。}
-\label{fig:sensitivity-one-position}
-\end{figure}
 
 
 \begin{figure}[!htbp]
@@ -769,62 +704,26 @@ D_g&=\sqrt{(\Delta y_g)^2+(\Delta z_g)^2}.
 \label{fig:sensitivity-one-time}
 \end{figure}
 
-
 \FloatBarrier
-\subsection{早期位置约束下的预测差异}\label{sec:sensitivity-constrained}
+\subsection{早期位置相近时的预测差异}\label{sec:sensitivity-constrained}
 
-\noindent\hspace*{\parindent}上一节在其余参数固定时考察单项变化。本节进一步考察：当不同参数组合都能近似重现同一组早期位置时，后续球门交点会相差多少。
-
-
-以第四章的气动参考值 $C_D^*$ 和 $\alpha^*$ 为尺度，定义
+不同的初始速度、自旋和气动参数有时会产生十分相近的早期轨迹。那么，仅凭早期位置，这些轨迹在到达球门时还会相差多少？我们保留能够接近题目早期位置的轨迹，比较其球门交点，结果见图~\ref{fig:sensitivity-constrained}。
 
 
-\begin{equation}
-\lambda_D=C_D/C_D^*,\qquad
-\lambda_\alpha=\alpha/\alpha^*.
-\label{eq:sensitivity-coefficient-ratios}
-\end{equation}
 
-两个系数倍数分别在 $[1.2,1.8]$ 内取 17 个等间隔值，形成 $17\times17$ 个组合。对每个组合，将初始自旋分量 $\omega_{x0}$ 在 $[-60,60]$ rad/s 内取 33 个等间隔值，再拟合三个初速度分量及其余两个自旋分量，使轨迹匹配表~\ref{tab:sensitivity-reference} 的早期位置。搜索中总速度不超过 35 m/s，各自旋分量的绝对值不超过 60 rad/s，并以最大早期坐标残差不超过 2 mm 为约束条件。
-
-
-补充搜索在 153 个气动参数组合下得到 5049 条满足约束的轨迹。其中，将两个系数倍数的范围收窄到 $[1.35,1.65]$，即两项气动参数在基准值附近各变化 $\pm$10\%，相应得到 63 个参数组合、2079 条轨迹。对应的交点与到达时间范围见表~\ref{tab:sensitivity-profile}，交点分布见图~\ref{fig:sensitivity-constrained}。
-
-
-\begin{table}[H]
-\centering
-\small
-\renewcommand{\arraystretch}{1.16}
-\caption{早期位置约束下的球门交点范围}
-\begin{tabular}{lccc}
-\toprule
-两个系数倍数的范围 & $y_g$（m） & $z_g$（m） & $t_g$（s）\\
-\midrule
-$[1.35,1.65]$ & 2.5538--2.6550 & 1.9061--2.0369 & 0.3972--0.4025\\
-$[1.2,1.8]$ & 2.5478--2.6601 & 1.8972--2.0430 & 0.3972--0.4043\\
-\bottomrule
-\end{tabular}
-\label{tab:sensitivity-profile}
-\end{table}
-
-\Needspace{5\baselineskip}
-
-在较宽的参数范围内，所搜索轨迹的球门交点相对基准轨迹最大偏移 0.1074 m。每组气动参数的最小残差解集中在自旋分量边界，单独绘制这些解会形成两簇；满足 2 mm 位置约束的中间自旋状态则形成连接两簇的交点带，如图~\ref{fig:sensitivity-constrained} 所示。这表明，初始速度与自旋可以补偿气动参数对短时位置的影响，而不同受力过程在后续飞行中累积，形成交点差异。
-
+\textbf{在设定的参数范围内，即使各轨迹与早期观测位置的坐标误差均不超过 2 mm，所搜索的球门交点相对基准交点仍最大偏移约 0.107 m。这表明，仅凭早期位置预测球门交点仍存在不确定性。}
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[clip,width=.88\textwidth]{conditional_crossings.pdf}
-\caption{2 mm 早期位置约束下补充搜索得到的 5049 个交点。颜色表示 $\lambda_D$，橙色星号为基准轨迹。}
+\caption{满足 2 mm 早期位置约束的球门交点。图中展示 700 个抽样点，灰度表示阻力系数倍数，星号为基准交点；计算共得到 5049 个交点。}
 \label{fig:sensitivity-constrained}
 \end{figure}
 
-
 \FloatBarrier
-\subsection{联合扰动下的交点分布}\label{sec:sensitivity-mc}
+\subsection{多种因素同时变化的影响}\label{sec:sensitivity-mc}
 
-\noindent\hspace*{\parindent}为考察多项条件同时变化的结果，在第 5.1 节的扫描范围内独立均匀抽取九项参数，生成 100000 组输入。质量、半径和初始位置保持不变，将各组输入代入运动方程，计算发射条件与气动参数共同变化产生的交点分布。
-
+实际射门中，球速、方向、自旋和空气条件可能同时变化。为观察这些变化共同作用的结果，我们在设定范围内随机生成十万组条件，计算足球通过球门平面时的位置和时间，结果见表~\ref{tab:sensitivity-mc} 和图~\ref{fig:sensitivity-mc}。
 
 \begin{table}[H]
 \centering
@@ -843,98 +742,49 @@ $t_g$（s） & 0.3685--0.4346 & 0.3783--0.4218\\
 \label{tab:sensitivity-mc}
 \end{table}
 
-表~\ref{tab:sensitivity-mc} 中的中心 95\% 区间由各输出的 2.5\% 和 97.5\% 分位数确定。模拟交点的均值为 $(2.6170,1.9511)$ m，横向和高度标准差分别为 0.2455 m、0.2360 m；相对基准交点的最大位移为 0.801 m。
-
-
-为同时描述横向和高度的变化，记 $\boldsymbol q_i=(y_{g,i},z_{g,i})^{\mathsf T}$，\newline 以样本均值 $\bar{\boldsymbol q}$ 和协方差矩阵 $\widehat\Sigma$ 定义
-
-
-\begin{equation}
-d_i^2=(\boldsymbol q_i-\bar{\boldsymbol q})^{\mathsf T}
-\widehat\Sigma^{-1}(\boldsymbol q_i-\bar{\boldsymbol q}).
-\label{eq:sensitivity-standardized-distance}
-\end{equation}
-
-\Needspace{5\baselineskip}
-
-取 $d_i^2$ 的样本 95\% 分位数 $c_{0.95}=4.5916$，构造联合区域
-
-
-\begin{equation}
-\mathcal E_{0.95}=\left\{\boldsymbol q:
-(\boldsymbol q-\bar{\boldsymbol q})^{\mathsf T}\widehat\Sigma^{-1}
-(\boldsymbol q-\bar{\boldsymbol q})\le c_{0.95}\right\}.
-\label{eq:sensitivity-joint-region}
-\end{equation}
-
-集合 $\mathcal E_{0.95}$ 对应图~\ref{fig:sensitivity-mc} 中椭圆边界及其内部，椭圆线是该区域的边界，区域内包含 95\% 的模拟交点。球门高 2.44 m，考虑球半径 0.11 m，足球完整通过球门时球心高度应在 0.11--2.33 m 之间，横向位置应满足 $|y_g|\le3.55$ m。按此条件，95772 条轨迹完整通过球门开口，占 95.772\%；其余 4228 条因球心高度超过 2.33 m 而越界，占 4.228\%。
-
+图中椭圆内包含 95\% 的模拟交点。在设定的变化范围和抽样方式下，95.772\% 的模拟轨迹完整通过球门，其余轨迹从横梁上方越过。交点分布说明，与单一位置相比，给出一片可能经过的区域更有助于描述预测结果的变化。
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[clip,width=\textwidth]{monte_carlo_crossings.pdf}
-\caption{十万次联合扰动的球门交点。六边形颜色表示样本数，椭圆表示联合 95\% 区域，虚线为球心高度上限 $z_g=2.33$ m。}
+\caption{联合扰动下的球门交点。图中展示 1200 个抽样点，灰度越深表示该区域交点越密集；椭圆由全部十万次模拟确定，包含 95\% 的模拟交点，虚线为球心高度上限 $z_g=2.33$ m。}
 \label{fig:sensitivity-mc}
 \end{figure}
 
-
-图~\ref{fig:sensitivity-mc-parallel} 随机展示其中 400 条轨迹，将九项输入与交点坐标、到达时间连接起来。输入按扰动边界缩放至 0--1，输出按十万条轨迹的样本极值缩放至同一区间。展示样本中，385 条蓝色曲线对应完整通过球门的轨迹，15 条橙色曲线对应过高轨迹；每条曲线都给出一组发射条件、气动参数及其预测结果的对应关系。
-
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[clip,width=\textwidth]{monte_carlo_parallel_coordinates.pdf}
-\caption{输入扰动与球门交点、到达时间的平行坐标图。左侧九轴为输入，右侧三轴为输出；展示样本中有 385 条完整通过球门、15 条过高。}
-\label{fig:sensitivity-mc-parallel}
-\end{figure}
-
-
-图~\ref{fig:sensitivity-mc-convergence} 用于检验落点统计结果随模拟次数增加是否趋于稳定，从而判断采用十万次模拟是否足以估计中心 95\% 区间。随着样本增加，蓝色样本极值会因新增的极端轨迹而向外扩展，橙色分位区间则逐渐稳定，反映了两类统计量对样本量的不同响应。当样本量由 50000 增至 100000 时，横向、高度中心 95\% 区间端点的变化分别不超过 0.264 mm、0.506 mm，到达时间区间端点的变化不超过 0.138 ms。另用两个独立随机种子各生成 10000 条轨迹，相应区间端点与主样本的最大差分别为横向 5.425 mm、高度 4.320 mm、时间 0.328 ms。这些比较表明，增加样本对中心区间估计的影响已较小。
-
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[clip,width=\textwidth]{monte_carlo_convergence.pdf}
-\caption{模拟样本量与落点统计量的收敛。蓝色阴影及点线为样本极值，橙色曲线为各坐标的中心 95\% 区间，用于观察区间估计随样本量增加的稳定程度。}
-\label{fig:sensitivity-mc-convergence}
-\end{figure}
-
 \FloatBarrier
-% END SENSITIVITY_BODY
-
 
 \section{其他因素讨论}\label{sec:other}
 主模型突出重力、阻力和马格努斯升力，以下分析其在几何、自旋演化和环境来流中省略的因素。
 \subsection{足球表面的非对称几何}\label{sec:surface}
-根据 Paudel 与 Yan\cite{paudel} 的全程流动模拟，真实足球几何与光滑球的运动存在差异。如图~\ref{fig:surface-details} 所示，几何示意与实际球片纹理分别体现表面结构的不同层次；如图~\ref{fig:surface-geometry} 所示，接缝球与光滑球具有不同的表面几何。在初速度 10、15、20 m/s，自旋 31.5、63、94.5 rad/s 的工况下，接缝和表面结构会改变流动分离、尾流演化及马格努斯力。九组对照中光滑球的横向弯曲均更强，较高速度和转速下竖直飞行时间的差异也更明显。
+已有全程流动模拟表明\cite{paudel}，真实足球几何与光滑球的运动存在差异。如图~\ref{fig:surface-details} 所示，几何示意与实际球片纹理分别体现表面结构的不同层次；如图~\ref{fig:surface-geometry} 所示，接缝球与光滑球具有不同的表面几何。在初速度 10、15、20 m/s，自旋 31.5、63、94.5 rad/s 的工况下，接缝和表面结构会改变流动分离、尾流演化及马格努斯力。九组对照中光滑球的横向弯曲均更强，较高速度和转速下竖直飞行时间的差异也更明显。
 
 \begin{figure}[H]\centering
 \begin{subfigure}[t]{.40\textwidth}\centering
 \begin{minipage}[c][3.5in][c]{\linewidth}\centering
 \includegraphics[width=\linewidth]{surface_comparison.png}
 \end{minipage}
-\caption{参考 Paudel 与 Yan\cite{paudel} 的接缝足球与光滑球示意对照。}\label{fig:surface-geometry}
+\caption{接缝足球与光滑球示意对照，参考文献\cite{paudel}。}\label{fig:surface-geometry}
 \end{subfigure}\hfill
 \begin{subfigure}[t]{.57\textwidth}\centering
 \begin{minipage}[c][3.5in][c]{\linewidth}\centering
 \includegraphics[width=\linewidth]{alam_ball_surfaces.png}
 \end{minipage}
-\caption{六种足球及表面细节，转载自 Alam 等\cite{alam2012} 的图 1--3。}\label{fig:alam-surfaces}
+\caption{六种足球及表面细节，转载自文献\cite{alam2012} 的图 1--3。}\label{fig:alam-surfaces}
 \end{subfigure}
 \caption{足球几何与表面结构的对照。}\label{fig:surface-details}
 \end{figure}
 
-根据 Alam 等\cite{alam2012} 的风洞实验，六种足球与光滑球在不同雷诺数下具有不同的阻力系数。如图~\ref{fig:alam-surfaces} 所示，球片和表面纹理存在差异；如图~\ref{fig:alam-drag} 所示，相应阻力系数也有所不同，不同表面结构的阻力变化体现了球型对气动力的影响。
+风洞实验表明\cite{alam2012}，六种足球与光滑球在不同雷诺数下具有不同的阻力系数。如图~\ref{fig:alam-surfaces} 所示，球片和表面纹理存在差异；如图~\ref{fig:alam-drag} 所示，相应阻力系数也有所不同，不同表面结构的阻力变化体现了球型对气动力的影响。
 
 
 \begin{figure}[H]\centering
 \includegraphics[width=.76\textwidth]{alam_drag_comparison.png}
-\caption{不同足球和光滑球的阻力系数随雷诺数变化，转载自 Alam 等\cite{alam2012} 的图 5。}\label{fig:alam-drag}\end{figure}
+\caption{不同足球和光滑球的阻力系数随雷诺数变化，转载自文献\cite{alam2012} 的图 5。}\label{fig:alam-drag}\end{figure}
 
 本文的球形几何描述质心运动与迎风面积，气动力系数来自足球实验，因此表面的平均作用已进入 $C_D$、$C_L$。当侧向力细节更为重要时，可进一步描述面板朝向与非对称尾流波动。这些文献结果说明，在球形轨迹模型中保留足球专用气动系数具有物理依据。
 
 \subsection{足球旋转与气动阻尼}\label{sec:rotation}
-空气阻尼力矩与自旋方向相反，使足球旋转逐渐减弱，并通过马格努斯力影响弯曲轨迹。我们参考 Grad 等与 MuJoCo 模型\cite{grad2026,mujoco381}，采用高雷诺数旋转阻尼描述，旋转越强则阻尼越强。无量纲旋转阻力参数 $C_{\rm angular}=1.5$ 采用软件参考值；我们参考 Maponi 与 Piombin\cite{maponi}，以薄球壳近似确定转动惯量。本算例中黏性阻尼远小于惯性阻尼，因此主要比较后者的影响。
+空气阻尼力矩与自旋方向相反，使足球旋转逐渐减弱，并通过马格努斯力影响弯曲轨迹。参考已有研究与 MuJoCo 模型\cite{grad2026,mujoco381}，采用高雷诺数旋转阻尼描述，旋转越强则阻尼越强。无量纲旋转阻力参数 $C_{\rm angular}=1.5$ 采用软件参考值；参考文献\cite{maponi}，以薄球壳近似确定转动惯量。本算例中黏性阻尼远小于惯性阻尼，因此主要比较后者的影响。
 
 参考弧线球的初速度为 $(\CurvedVX,0,\CurvedVZ)$ m/s，自旋为 $(0,0,35)$ rad/s，两项气动力修正均为 1。保持这一初始状态不变，比较恒定自旋和旋转阻尼下的飞行。如图~\ref{fig:torque} 所示，自旋减弱使轨迹曲率与球门交点发生小幅变化。
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{torque_comparison.pdf}
@@ -942,7 +792,7 @@ d_i^2=(\boldsymbol q_i-\bar{\boldsymbol q})^{\mathsf T}
 \TorqueResults
 
 \subsection{风速与气动力估算}\label{sec:wind}
-我们参考 Maponi 与 Piombin\cite{maponi} 对相对气流的处理，在本节引入相对空气速度 $\boldsymbol u=\boldsymbol v-\boldsymbol v_{\rm wind}$，其中 $\boldsymbol v_{\rm wind}$ 为空气速度，$u=\|\boldsymbol u\|$ 为相对空气速率。有风时，将第三章气动力关系中的 $\boldsymbol v$ 与 $v$ 分别替换为 $\boldsymbol u$ 与 $u$。令 $w$ 为风速，单位为 m/s，$v$ 为球速；固定气动系数，以 $q_0$ 表示静止空气中的动压，$q_{\rm head}$、$q_{\rm tail}$、$q_{\rm cross}$ 分别表示逆风、顺风和横风时的动压。由相对速度的平方关系，
+参考已有研究对相对气流的处理\cite{maponi}，在本节引入相对空气速度 $\boldsymbol u=\boldsymbol v-\boldsymbol v_{\rm wind}$，其中 $\boldsymbol v_{\rm wind}$ 为空气速度，$u=\|\boldsymbol u\|$ 为相对空气速率。有风时，将第三章气动力关系中的 $\boldsymbol v$ 与 $v$ 分别替换为 $\boldsymbol u$ 与 $u$。令 $w$ 为风速，单位为 m/s，$v$ 为球速；固定气动系数，以 $q_0$ 表示静止空气中的动压，$q_{\rm head}$、$q_{\rm tail}$、$q_{\rm cross}$ 分别表示逆风、顺风和横风时的动压。由相对速度的平方关系，
 \begin{equation}
 \dfrac{q_{\rm head}}{q_0}=(1+\dfrac{w}{v})^2,\qquad
 \dfrac{q_{\rm tail}}{q_0}=(1-\dfrac{w}{v})^2,\qquad
@@ -958,13 +808,11 @@ d_i^2=(\boldsymbol q_i-\bar{\boldsymbol q})^{\mathsf T}
 将逆风动压增幅限制在 5\% 时，有 $\dfrac{w}{v}\leq\sqrt{1.05}-1$，对应本算例的 $w\leq\WindThreshold$ m/s。静止空气近似更适合室内或弱风飞行；风速较大时应通过相对速度纳入计算。
 
 \section{小结}
-本文用四类模型比较足球的重力下落、减速、恒合力近似和旋转偏转。M3 从三个早期位置解出恒加速度；M4 将恒定 $C_D$ 与 $C_L=\alpha Sp$ 代入运动方程，随飞行速度更新阻力和马格努斯力。
+本文针对点球轨迹预测问题，以足球的初始位置和早期位置观测为条件，建立并比较了四类运动模型。其中，综合模型考虑重力、空气阻力和马格努斯力，通过反演初始运动状态与气动参数，预测足球的后续轨迹。对于题目给定的数据，该模型预测足球约在 0.399 s 到达球门平面，球心坐标为 $(11,\,2.616,\,1.953)$ m。
 
-三次真实点球中，M4 的球门交点误差分别为 \WMXMFourGoalError、\WRMFourGoalError、\WOHMFourGoalError\ m。大力抽射的交点误差和后续路径 RMSE 均在四模型中最小。案例1 的 M3 虽通过三个早期位置，其最大前进位置为 \WMXMThreeMaxX\ m，未到达球门；M4 则完成这一低空飞行的球门预测。
+为检验模型在不同射门情形下的预测效果，本文从真实点球数据集中筛选轨迹，将早期位置作为条件点、后续位置作为验证点，并结合精准推射和大力抽射两类射门进行分析。两类射门的初始速度和旋转状态有所不同，空气阻力与马格努斯力对轨迹的影响也随之变化。真实轨迹与预测结果的比较表明，综合考虑空气动力的模型能够描述足球飞行中的主要运动特征。
 
-题目三点的单参数扫描表明，发射方向改变 $1^\circ$ 会使交点移动约 0.20 m；速度变化主要影响飞行时间。在线性升力中，$\alpha$ 与自旋大小互为补偿。2 mm 早期位置约束下，网格搜索的最大交点位移为 \SensitivityConditionalShift\ m；九项条件联合扰动时，\MCClearPercent\% 的十万条轨迹完整通过球门。
-
-同一弧线球加入旋转阻尼后，交点移动 \TorqueDisplacement\ m。风通过相对速度改变阻力与升力，沿球速方向的风使阻力按速度比的平方变化，线性马格努斯力按速度比变化。
+灵敏性分析显示，初始运动方向对球门交点具有较大影响：方向改变 $1^\circ$ 时，交点位置约变化 0.20 m。初始运动状态和气动参数的不同取值也会使预测交点形成一定范围。因此，在实际应用中，除了关注单一预测位置，还应结合参数不确定性判断足球可能经过的区域，为守门员预判来球方向提供参考。
 
 \section{模型评价}
 
@@ -1056,4 +904,173 @@ def forces(velocity, spin, config):
             magnus = q_area * config.lift_scale * cl * sin_angle * cross / norm
     return {"gravity": weight, "drag": drag, "magnus": magnus}
 \end{lstlisting}
+\newpage\section*{附录 B：灵敏性分析计算细节}\label{app:sensitivity}
+\addcontentsline{toc}{section}{附录 B：灵敏性分析计算细节}
+
+\noindent\hspace*{\parindent}本章以第~\ref{sec:problem-inverse} 节反演的 M4 状态为参考，分析初始运动、气动参数和空气密度对球门交点及到达时间的影响。计算采用重力、阻力和马格努斯力模型，空气保持静止，自旋保持恒定，足球质量固定为 0.43 kg，半径固定为 0.11 m。表~\ref{tab:sensitivity-reference} 中的早期位置也作为下文比较不同轨迹时的约束。
+
+参考交点记为 $(y_g^*,z_g^*)=(\SensitivityReferenceY,\SensitivityReferenceZ)$ m，到达时间为 $t_g^*=\SensitivityReferenceTime$ s。对应阻力系数为 $C_D=0.3623$，线性升力参数为 $\alpha=2.2877$，最大早期坐标残差为 0.784 mm。
+
+下文以该轨迹为基准，先逐项改变参数，识别各因素对交点和到达时间的影响；再保留早期位置约束，考察不同参数组合产生的预测差异；最后通过多参数联合扰动，获得交点分布及其统计范围。
+
+\FloatBarrier
+\subsection*{单参数对交点和到达时间的影响}
+
+\noindent\hspace*{\parindent}每次改变一项参数，其余参数保持基准值。九项参数的扫描范围见表~\ref{tab:sensitivity-scan-ranges}；百分比表示相对基准值的变化，方向角以基准方向为中心增减。每项参数取 41 个等间隔值，共计算 369 条轨迹。
+
+\begin{table}[H]\centering\small
+\renewcommand{\arraystretch}{1.15}
+\caption{九项参数的扫描范围}
+\begin{tabular}{lc}\toprule
+参数 & 扰动范围\\\midrule
+初速度大小 & $\pm$5\%\\
+初速度水平角 & $\pm$$2^\circ$\\
+初速度仰角 & $\pm$$2^\circ$\\
+自旋大小 & $\pm$10\%\\
+旋转轴方位角 & $\pm$$2^\circ$\\
+旋转轴仰角 & $\pm$$2^\circ$\\
+阻力系数 & $\pm$10\%\\
+升力参数 & $\pm$10\%\\
+空气密度 & $\pm$10\%\\
+\bottomrule\end{tabular}\label{tab:sensitivity-scan-ranges}
+\end{table}
+
+
+\Needspace{5\baselineskip}
+以交点和到达时间相对基准轨迹的变化衡量参数影响，定义
+
+
+\begin{equation}
+\begin{aligned}
+\Delta y_g&=y_g-y_g^*,\qquad
+\Delta z_g=z_g-z_g^*,\qquad
+\Delta t_g=t_g-t_g^*,\\
+D_g&=\sqrt{(\Delta y_g)^2+(\Delta z_g)^2}.
+\end{aligned}
+\label{eq:sensitivity-displacement}
+\end{equation}
+
+图~\ref{fig:sensitivity-one-time} 展示九项参数的到达时间响应。表~\ref{tab:sensitivity-one-factor} 从扫描结果中取方向角的 $\pm$$1^\circ$ 扰动和其余参数的 $\pm$5\% 扰动，列出正、负两次变化中较大的交点位移与到达时间变化。
+
+
+
+
+在表~\ref{tab:sensitivity-one-factor} 的比较幅度下，初速度方向的变化主要体现在交点位置上：水平角或仰角改变 $1^\circ$，交点移动约 0.20 m。球速的变化则显著影响到达时间，$\pm$5\% 的扰动使到达时间最多改变 20.659 ms，同时产生最大 8.356 cm 的交点位移。这是因为速度方向直接决定横向和竖直运动，而球速改变了足球到达球门所需的时间，从而改变重力和气动力累积作用的结果。
+
+
+自旋大小和升力参数的响应曲线重合，源于线性马格努斯力中二者的乘积关系：$\boldsymbol F_L$ 与 $\alpha\boldsymbol\omega$ 成正比。分别将自旋大小或 $\alpha$ 改变相同比例，会产生相同的力和轨迹变化；若二者按相反比例调整，则有
+
+
+\begin{equation}
+\boldsymbol\omega_0'=k\boldsymbol\omega_0,\qquad
+\alpha'=\alpha/k
+\quad\Longrightarrow\quad
+\boldsymbol F_L'=\boldsymbol F_L,\qquad k>0.
+\label{eq:sensitivity-spin-compensation}
+\end{equation}
+
+因此，不同的自旋大小与升力参数可以对应相同的轨迹。旋转轴方向则通过改变 $\boldsymbol\omega\times\boldsymbol v$ 影响偏转方向和大小。空气密度同时缩放阻力与马格努斯力，因而其变化会共同影响减速和弯曲过程。
+
+
+
+
+
+
+
+
+\FloatBarrier
+\subsection*{早期位置约束下的预测差异}
+
+\noindent\hspace*{\parindent}上一节在其余参数固定时考察单项变化。本节进一步考察：当不同参数组合都能近似重现同一组早期位置时，后续球门交点会相差多少。
+
+
+以第四章的气动参考值 $C_D^*$ 和 $\alpha^*$ 为尺度，定义
+
+
+\begin{equation}
+\lambda_D=C_D/C_D^*,\qquad
+\lambda_\alpha=\alpha/\alpha^*.
+\label{eq:sensitivity-coefficient-ratios}
+\end{equation}
+
+两个系数倍数分别在 $[1.2,1.8]$ 内取 17 个等间隔值，形成 $17\times17$ 个组合。对每个组合，将初始自旋分量 $\omega_{x0}$ 在 $[-60,60]$ rad/s 内取 33 个等间隔值，再拟合三个初速度分量及其余两个自旋分量，使轨迹匹配表~\ref{tab:sensitivity-reference} 的早期位置。搜索中总速度不超过 35 m/s，各自旋分量的绝对值不超过 60 rad/s，并以最大早期坐标残差不超过 2 mm 为约束条件。
+
+
+补充搜索在 153 个气动参数组合下得到 5049 条满足约束的轨迹。其中，将两个系数倍数的范围收窄到 $[1.35,1.65]$，即两项气动参数在基准值附近各变化 $\pm$10\%，相应得到 63 个参数组合、2079 条轨迹。交点分布见图~\ref{fig:sensitivity-constrained}。
+
+
+
+
+\Needspace{5\baselineskip}
+
+在较宽的参数范围内，所搜索轨迹的球门交点相对基准轨迹最大偏移 0.1074 m。每组气动参数的最小残差解集中在自旋分量边界，单独绘制这些解会形成两簇；满足 2 mm 位置约束的中间自旋状态则形成连接两簇的交点带，如图~\ref{fig:sensitivity-constrained} 所示。这表明，初始速度与自旋可以补偿气动参数对短时位置的影响，而不同受力过程在后续飞行中累积，形成交点差异。
+
+
+
+
+
+\FloatBarrier
+\subsection*{联合扰动下的交点分布}
+
+\noindent\hspace*{\parindent}为考察多项条件同时变化的结果，在第 5.1 节的扫描范围内独立均匀抽取九项参数，生成 100000 组输入。质量、半径和初始位置保持不变，将各组输入代入运动方程，计算发射条件与气动参数共同变化产生的交点分布。
+
+
+
+
+表~\ref{tab:sensitivity-mc} 中的中心 95\% 区间由各输出的 2.5\% 和 97.5\% 分位数确定。模拟交点的均值为 $(2.6170,1.9511)$ m，横向和高度标准差分别为 0.2455 m、0.2360 m；相对基准交点的最大位移为 0.801 m。
+
+
+为同时描述横向和高度的变化，记 $\boldsymbol q_i=(y_{g,i},z_{g,i})^{\mathsf T}$，\newline 以样本均值 $\bar{\boldsymbol q}$ 和协方差矩阵 $\widehat\Sigma$ 定义
+
+
+\begin{equation}
+d_i^2=(\boldsymbol q_i-\bar{\boldsymbol q})^{\mathsf T}
+\widehat\Sigma^{-1}(\boldsymbol q_i-\bar{\boldsymbol q}).
+\label{eq:sensitivity-standardized-distance}
+\end{equation}
+
+\Needspace{5\baselineskip}
+
+取 $d_i^2$ 的样本 95\% 分位数 $c_{0.95}=4.5916$，构造联合区域
+
+
+\begin{equation}
+\mathcal E_{0.95}=\left\{\boldsymbol q:
+(\boldsymbol q-\bar{\boldsymbol q})^{\mathsf T}\widehat\Sigma^{-1}
+(\boldsymbol q-\bar{\boldsymbol q})\le c_{0.95}\right\}.
+\label{eq:sensitivity-joint-region}
+\end{equation}
+
+集合 $\mathcal E_{0.95}$ 对应图~\ref{fig:sensitivity-mc} 中椭圆边界及其内部，椭圆线是该区域的边界，区域内包含 95\% 的模拟交点。球门高 2.44 m，考虑球半径 0.11 m，足球完整通过球门时球心高度应在 0.11--2.33 m 之间，横向位置应满足 $|y_g|\le3.55$ m。按此条件，95772 条轨迹完整通过球门开口，占 95.772\%；其余 4228 条因球心高度超过 2.33 m 而越界，占 4.228\%。
+
+
+
+
+
+图~\ref{fig:sensitivity-mc-parallel} 随机展示其中 400 条轨迹，将九项输入与交点坐标、到达时间连接起来。输入按扰动边界缩放至 0--1，输出按十万条轨迹的样本极值缩放至同一区间。展示样本中，385 条蓝色曲线对应完整通过球门的轨迹，15 条橙色曲线对应过高轨迹；每条曲线都给出一组发射条件、气动参数及其预测结果的对应关系。
+
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[clip,width=\textwidth]{monte_carlo_parallel_coordinates.pdf}
+\caption{输入扰动与球门交点、到达时间的平行坐标图。左侧九轴为输入，右侧三轴为输出；展示样本中有 385 条完整通过球门、15 条过高。}
+\label{fig:sensitivity-mc-parallel}
+\end{figure}
+
+
+图~\ref{fig:sensitivity-mc-convergence} 用于检验落点统计结果随模拟次数增加是否趋于稳定，从而判断采用十万次模拟是否足以估计中心 95\% 区间。随着样本增加，蓝色样本极值会因新增的极端轨迹而向外扩展，橙色分位区间则逐渐稳定，反映了两类统计量对样本量的不同响应。当样本量由 50000 增至 100000 时，横向、高度中心 95\% 区间端点的变化分别不超过 0.264 mm、0.506 mm，到达时间区间端点的变化不超过 0.138 ms。另用两个独立随机种子各生成 10000 条轨迹，相应区间端点与主样本的最大差分别为横向 5.425 mm、高度 4.320 mm、时间 0.328 ms。这些比较表明，增加样本对中心区间估计的影响已较小。
+
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[clip,width=\textwidth]{monte_carlo_convergence.pdf}
+\caption{模拟样本量与落点统计量的收敛。蓝色阴影及点线为样本极值，橙色曲线为各坐标的中心 95\% 区间，用于观察区间估计随样本量增加的稳定程度。}
+\label{fig:sensitivity-mc-convergence}
+\end{figure}
+
+\FloatBarrier
+
+
+
+
 \end{document}

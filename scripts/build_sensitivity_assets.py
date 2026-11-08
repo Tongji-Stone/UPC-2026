@@ -151,25 +151,8 @@ def main():
             fig.supylabel('Goal-plane position change (cm)',fontsize=10)
         else:fig.supylabel('Arrival-time change (ms)',fontsize=10)
         save(fig,'one_factor_'+quantity+'_response')
-    base=js(DATA/'baseline.json')['event']
-    for extension in ['pdf','png']:
-        shutil.copy2(refined_dir/('conditional_crossings_review.'+extension),
-                     figdir/('conditional_crossings.'+extension))
-    sample=np.load(MC/'samples.npz');p=sample['point'][sample['event']==0,1:3]
-    fig,ax=plt.subplots(figsize=(6.4,3.7),layout='constrained')
-    hb=ax.hexbin(p[:,0],p[:,1],gridsize=55,mincnt=1,bins='log',cmap='cividis',linewidths=0)
-    ax.scatter([base['y']],[base['z']],marker='*',s=85,color=ORANGE,
-               edgecolor='white',linewidth=.4,label='Paper representative',zorder=5)
-    e=summary['ellipse_95'];values,vectors=np.linalg.eigh(e['covariance']);order=values.argsort()[::-1]
-    values=values[order];vectors=vectors[:,order]
-    angle=np.degrees(np.arctan2(vectors[1,0],vectors[0,0]))
-    ax.add_patch(Ellipse(e['center'],2*np.sqrt(e['empirical_d2_threshold']*values[0]),
-        2*np.sqrt(e['empirical_d2_threshold']*values[1]),angle=angle,fill=False,lw=1.2,color=GRAY,label='95% joint sample ellipse'))
-    ax.axhline(2.33,color=ORANGE,ls='--',lw=1,label='Ball-centre upper clearance')
-    ax.set(xlabel='Goal y (m)',ylabel='Goal z (m)')
-    fig.colorbar(hb,ax=ax,label='Samples per hexagon (log scale)')
-    fig.legend(loc='outside upper center',ncol=2,frameon=False,fontsize=8)
-    save(fig,'monte_carlo_crossings')
+    from plot_sensitivity_grayscale import draw as draw_grayscale
+    draw_grayscale()
     fig,axes=plt.subplots(1,2,figsize=(6.4,2.6),layout='constrained')
     ns=np.array([r['n'] for r in convergence])
     for ax,key in zip(axes,['y','z']):
