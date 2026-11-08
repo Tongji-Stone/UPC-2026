@@ -1,0 +1,23 @@
+{
+  "backup_directory": "D:\\知识库\\作业\\竞赛\\美赛\\论文_本地归档\\第五章批注修改前_20261108_214553",
+  "original_paper_hashes": {
+    "D:\\知识库\\作业\\竞赛\\美赛\\论文\\paper\\main.tex": "9298289884ac93870e3d4cd88f38cb57712a0f631cf3f0ff452137dab029e411",
+    "D:\\知识库\\作业\\竞赛\\美赛\\论文\\paper\\main.pdf": "d9a1e5a8198667da65b1ba469a2b7976c6fcf181eb04d5bffb466208e73aeae6",
+    "D:\\知识库\\作业\\竞赛\\美赛\\论文\\_中文版\\main.tex": "e28d9944cf4408167f2f7f8459192e1562b70f93604175057fb87247c511f4ba",
+    "D:\\知识库\\作业\\竞赛\\美赛\\论文\\_中文版\\main.pdf": "614d755aba641b462a92de9d3adc9cf0102b9d2f7b8b4d58d3638f0c5c861039"
+  },
+  "figure13_source": "results/chapter5_review/fig13/summary.json",
+  "comments_addressed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "first_paragraph_indent_em": 2,
+  "updated_max_profile_shift_m": 0.1074,
+  "review_only": true,
+  "original_paper_unchanged": true
+}

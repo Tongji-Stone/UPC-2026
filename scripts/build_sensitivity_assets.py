@@ -34,7 +34,11 @@ def main():
     comparison=[r for r in csvrows(DATA/'comparison.csv') if r['parameter'] not in ('mass','radius')]
     assert len(comparison)==9
     summary=js(MC/'summary.json');verification=js(MC/'verification.json')
-    profile=js(DATA/'profile_summary.json');convergence=js(MC/'convergence.json')
+    refined_dir=ROOT/'results/chapter5_review/fig13'
+    refined=js(refined_dir/'summary.json')
+    profile={'wide':dict(refined['groups']['wide'],max_residual_m=refined['max_coordinate_residual_m']),
+             'inner':refined['groups']['narrow']}
+    convergence=js(MC/'convergence.json')
     baseline=js(DATA/'baseline.json');q=baseline['state']
     display=js(ROOT/'data/sensitivity_v2/parallel_display.json')
     samples=np.load(MC/'samples.npz');ids=np.array(display['selected_ids'],dtype=int)
@@ -147,15 +151,10 @@ def main():
             fig.supylabel('Goal-plane position change (cm)',fontsize=10)
         else:fig.supylabel('Arrival-time change (ms)',fontsize=10)
         save(fig,'one_factor_'+quantity+'_response')
-    points=[r for r in csvrows(DATA/'profile.csv') if r['event']=='plane']
     base=js(DATA/'baseline.json')['event']
-    fig,ax=plt.subplots(figsize=(6.4,2.9),layout='constrained')
-    sc=ax.scatter([float(r['y']) for r in points],[float(r['z']) for r in points],
-        c=[float(r['ad']) for r in points],cmap='cividis',s=18)
-    ax.scatter([base['y']],[base['z']],marker='*',s=90,color=ORANGE,zorder=5)
-    ax.set(xlabel='Goal y (m)',ylabel='Goal z (m)')
-    fig.colorbar(sc,ax=ax,label='Drag multiplier')
-    save(fig,'conditional_crossings')
+    for extension in ['pdf','png']:
+        shutil.copy2(refined_dir/('conditional_crossings_review.'+extension),
+                     figdir/('conditional_crossings.'+extension))
     sample=np.load(MC/'samples.npz');p=sample['point'][sample['event']==0,1:3]
     fig,ax=plt.subplots(figsize=(6.4,3.7),layout='constrained')
     hb=ax.hexbin(p[:,0],p[:,1],gridsize=55,mincnt=1,bins='log',cmap='cividis',linewidths=0)
@@ -185,7 +184,8 @@ def main():
     save(fig,'monte_carlo_convergence')
     from build_monte_carlo_parallel import build_parallel_coordinates
     build_parallel_coordinates(ROOT)
-    sources=[DATA/'comparison.csv',DATA/'one_factor.csv',DATA/'profile_summary.json',DATA/'profile.csv',
+    sources=[DATA/'comparison.csv',DATA/'one_factor.csv',refined_dir/'summary.json',refined_dir/'feasible_crossings.csv',
+             refined_dir/'conditional_crossings_review.pdf',
              MC/'summary.json',MC/'verification.json',MC/'samples.npz',MC/'convergence.json',MC/'independent_seeds.json',
              ROOT/'data/sensitivity_v2/parallel_display.json',DATA/'baseline.json',DATA/'verification.json',ROOT/'configs/sensitivity_v2.json',ROOT/js(ROOT/'configs/sensitivity_v2.json')['baseline_result']]
     record=dict(fixed_mass_kg=.43,fixed_radius_m=.11,one_factor_parameters=9,

@@ -1,0 +1,47 @@
+{
+  "backup_directory": "D:\\知识库\\作业\\竞赛\\美赛\\论文_本地归档\\第五章写回前_20261108_221131",
+  "review_source_sha256": "96f88df6461f987799b57133ada901765a34098cf5d3276f899e5f92828395eb",
+  "chapter_equations_identical": true,
+  "files": {
+    "_中文版": {
+      "previous_source_sha256": "e28d9944cf4408167f2f7f8459192e1562b70f93604175057fb87247c511f4ba"
+    },
+    "paper": {
+      "previous_source_sha256": "9298289884ac93870e3d4cd88f38cb57712a0f631cf3f0ff452137dab029e411"
+    }
+  },
+  "all_checks_passed": true,
+  "documents": {
+    "en": {
+      "pages": 29,
+      "chapter5_start": 13,
+      "chapter6_start": 21,
+      "compile_warnings": [],
+      "all_fonts_embedded": true,
+      "source_refs_resolved": true,
+      "other_sections_preserved": true,
+      "source_sha256": "b0f620b5fa0f1392a0562b0440c45b6059aef902d4a125b821d6106411307980",
+      "pdf_sha256": "b8d8fb6cea3bb1f7d33b7fb58a6b4379fa80b7eb4d1e9014b65e1abf83048ad7"
+    },
+    "zh": {
+      "pages": 28,
+      "chapter5_start": 13,
+      "chapter6_start": 21,
+      "compile_warnings": [],
+      "all_fonts_embedded": true,
+      "source_refs_resolved": true,
+      "other_sections_preserved": true,
+      "source_sha256": "b8ed595cd177b509ce0e0714c0941782c1d407d08f4510f6ab26cbd674a03ca5",
+      "pdf_sha256": "c0b28302734ff0704ff10f474ba8bcc88791ef6d51072964ad75a237719c6313"
+    }
+  },
+  "bilingual_equations_identical": true,
+  "bilingual_table_values_identical": true,
+  "english_abstract_words": 242,
+  "figure13_is_accepted_refinement": true,
+  "visual_review_pending": false,
+  "visual_review": {
+    "full_document_contact_sheets": true,
+    "chapter5_formulas_tables_and_figures": true
+  }
+}

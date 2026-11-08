@@ -1,0 +1,10 @@
+{
+  "points": 5049,
+  "old_spin_x_at_boundary": 153,
+  "old_points": 153,
+  "points_filling_old_gap": 4008,
+  "x": "goal-plane lateral coordinate (m)",
+  "y": "goal-plane centre height (m)",
+  "color": "drag coefficient multiplier",
+  "interpretation": "The former blank band is populated by states satisfying the unchanged 2 mm constraint; one optimum per coefficient pair selected spin-boundary solutions."
+}

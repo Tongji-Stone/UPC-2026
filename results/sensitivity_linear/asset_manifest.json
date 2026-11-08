@@ -8,8 +8,9 @@
   "sources": {
     "results/sensitivity_linear/comparison.csv": "c247b2137b6b29060f5d0cb398c541747ccc0feb668a86fd89e31f22b8b3fd3f",
     "results/sensitivity_linear/one_factor.csv": "1b3b8e0e33e511399f20d52495d16177aa5704e1a70c015202b22d24ea4314ab",
-    "results/sensitivity_linear/profile_summary.json": "3b23ad4d769af608385b455191377716a33b4631210fa8256f44f74eefd95f4c",
-    "results/sensitivity_linear/profile.csv": "f67f784c4a94dfce1c85f28feb54f98605e614b68a3c23e94a7ea403dabe779a",
+    "results/chapter5_review/fig13/summary.json": "4c93fd9beffdb0c67b8d458b5a44f060128bfdeb92b1d7728e1b7fbb9399c1af",
+    "results/chapter5_review/fig13/feasible_crossings.csv": "6dbe7b3d15b96e0b73eaebabc787b3e892832d561dedffdb8032ae2bf44115f0",
+    "results/chapter5_review/fig13/conditional_crossings_review.pdf": "37a166a76c4abc209114bb1a640063661f007b764fbf566f48d8765d0f0271f2",
     "results/monte_carlo_linear/summary.json": "d667706f43dfd4a79899c7e9908ec90ec2654a7274238eea894e5cfe3199bc86",
     "results/monte_carlo_linear/verification.json": "af97765c6ac78b0b79093ceb94e560956b77338aabc7390768b855b6e415a5ff",
     "results/monte_carlo_linear/samples.npz": "e96d8c6c6bacc2d9a53dd525fec6e17ebee948c540c7b994f4c7c2a16d5db7b3",

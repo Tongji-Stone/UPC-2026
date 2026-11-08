@@ -47,7 +47,9 @@ def main():
     overlay=js(OUT/'time_response_overlay_record.json')
     check('time_one_axes_nine_curves',overlay['layout']=='one axes; nine overlaid curves' and len(overlay['curves'])==9)
     check('time_all_scan_points_preserved',all(c['points']==41 and all(abs(x-float(r['delta'])/c['half_width'])<1e-12 and abs(y-1000*float(r['dt']))<1e-10 for x,y,r in zip(c['x'],c['arrival_time_change_ms'],sorted(groups[c['parameter']],key=lambda r:float(r['delta'])))) for c in overlay['curves']))
-    profile=rows(OUT/'profile.csv');pr=cfg['profile']
+    refined=ROOT/'results/chapter5_review/fig13'
+    profile=rows(refined/'feasible_crossings.csv');pr=cfg['profile']
+    check('refined_profile_count',len(profile)==js(refined/'summary.json')['groups']['wide']['states']==5049)
     check('profile_tolerance',all(float(r['residual_m'])<=pr['coordinate_tolerance_m'] for r in profile))
     check('profile_bounds',all(pr['force_multiplier_bounds'][0]-1e-9<=float(r[k])<=pr['force_multiplier_bounds'][1]+1e-9 for r in profile for k in ['ad','al']))
     check('profile_velocity_spin_bounds',all(float(r['speed'])<=pr['max_speed_m_s'] and max(abs(float(r[f's{i}'])) for i in [3,4,5])<=pr['spin_component_max_rad_s']+1e-8 for r in profile))
@@ -78,7 +80,7 @@ def main():
         check(folder+'_citation_keys_defined',cites<=set(re.findall(r'\\bibitem\{([^}]+)\}',main)))
         check(folder+'_current_result_paths','results/sensitivity_linear/figures/' in main and 'results/current_report/figures/' in main)
         check(folder+'_chapter_complete',all(x not in expanded for x in ['To be completed.','待完成。','沿用队友','We retain the individual-parameter']))
-        check(folder+'_new_results_present',all(x in text for x in [f"{summary['y_range'][0]:.4f}",f"{summary['y_range'][1]:.4f}",f"{100*summary['clear_fraction']:.3f}",f"{js(OUT/'profile_summary.json')['wide']['max_displacement']:.4f}"]))
+        check(folder+'_new_results_present',all(x in text for x in [f"{summary['y_range'][0]:.4f}",f"{summary['y_range'][1]:.4f}",f"{100*summary['clear_fraction']:.3f}",f"{js(refined/'summary.json')['groups']['wide']['max_displacement']:.4f}"]))
         check(folder+'_no_old_results',all(x not in text for x in ['0.1183','94.87','2.6826','0.3007']))
         path_line=next(x for x in main.splitlines() if x.startswith(r'\graphicspath'))
         paths=[ROOT/folder]+[ROOT/folder/x for x in re.findall(r'\{([^{}]+/)\}',path_line)]

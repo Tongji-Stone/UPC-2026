@@ -1,0 +1,45 @@
+{
+  "backup_directory": "D:\\知识库\\作业\\竞赛\\美赛\\论文_本地归档\\第八章写回前_20261108_231258",
+  "approved_markdown_sha256": "c21f97fe51b3adf740d9d72a934e77fe7657718d40c5611f9e4c9e4f95b509e6",
+  "scope": "chapter 8 only; Chinese approved text and corresponding English translation",
+  "files": {
+    "_中文版": {
+      "previous_source_sha256": "b8ed595cd177b509ce0e0714c0941782c1d407d08f4510f6ab26cbd674a03ca5",
+      "source_sha256": "e1e565d2a9150449ed02c41150051ab5a0eb217f8fd94ba3989123f2fa67aaef",
+      "other_source_content_unchanged": true
+    },
+    "paper": {
+      "previous_source_sha256": "b0f620b5fa0f1392a0562b0440c45b6059aef902d4a125b821d6106411307980",
+      "source_sha256": "e5fdb8d105554205f8a31f24af6753fbb97ae6131eb886fbc4713ec4bb629179",
+      "other_source_content_unchanged": true
+    }
+  },
+  "all_checks_passed": true,
+  "documents": {
+    "zh": {
+      "pages": 28,
+      "chapter8_page": 24,
+      "bibliography_page": 25,
+      "original_chapters_outside_8_unchanged": true,
+      "all_six_paragraphs_present": true,
+      "compile_warnings": [],
+      "all_fonts_embedded": true,
+      "source_sha256": "26ba46006f02a50d85c5661e41cf430fc4fc6383e92e36d957ed2bac8595fee5",
+      "pdf_sha256": "fd16af5ed98fb1bec9872b9a824aa2089498cabb7e58fd6641a4c18c4c4fbc30"
+    },
+    "en": {
+      "pages": 29,
+      "chapter8_page": 25,
+      "bibliography_page": 26,
+      "original_chapters_outside_8_unchanged": true,
+      "all_six_paragraphs_present": true,
+      "compile_warnings": [],
+      "all_fonts_embedded": true,
+      "source_sha256": "3ddc265489ba9aaefd7f9597e9d39f126a9a4a3c7b7e9a6c10183735374aeb87",
+      "pdf_sha256": "3927b8932d735b36a1d16b6f736f2da55f4e10bbd4f2047106ac8aee882fedad"
+    }
+  },
+  "bilingual_equations_and_table_values_match": true,
+  "visual_review_pending": false,
+  "chapter8_and_bibliography_pages_visually_checked": true
+}

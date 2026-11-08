@@ -1,0 +1,46 @@
+{
+  "english_body_words": 242,
+  "english_words_with_keywords": 252,
+  "english_limit": 300,
+  "chinese_han_characters": 405,
+  "chinese_non_whitespace_characters": 514,
+  "backup_directory": "D:\\知识库\\作业\\竞赛\\美赛\\论文_本地归档\\摘要连接词修改前_20261108_204654",
+  "body_outside_abstract_unchanged": true,
+  "files": {
+    "_中文版": {
+      "source_sha256": "e28d9944cf4408167f2f7f8459192e1562b70f93604175057fb87247c511f4ba",
+      "previous_source_sha256": "f2c98a2a819be94c6bf313cceef1bab054a29c9264f0a824cf93eaa7bd5ab957",
+      "pdf_sha256": "614d755aba641b462a92de9d3adc9cf0102b9d2f7b8b4d58d3638f0c5c861039"
+    },
+    "paper": {
+      "source_sha256": "9298289884ac93870e3d4cd88f38cb57712a0f631cf3f0ff452137dab029e411",
+      "previous_source_sha256": "aac83971d7906315959adfe486071abd50424b2d26a78e29491a1e3febcbfbee",
+      "pdf_sha256": "d9a1e5a8198667da65b1ba469a2b7976c6fcf181eb04d5bffb466208e73aeae6"
+    }
+  },
+  "pdf_checks": {
+    "paper": {
+      "pages": 27,
+      "abstract_on_one_page": true,
+      "expected_values_present": true,
+      "remaining_source_unchanged": true,
+      "remaining_pdf_text_identical": true,
+      "compile_warnings": [],
+      "out_of_page_words": []
+    },
+    "_中文版": {
+      "pages": 27,
+      "abstract_on_one_page": true,
+      "expected_values_present": true,
+      "remaining_source_unchanged": true,
+      "remaining_pdf_text_identical": true,
+      "compile_warnings": [],
+      "out_of_page_words": []
+    }
+  },
+  "all_checks_passed": true,
+  "abstract_pages_visually_checked": true,
+  "previous_backup_directory": "D:\\知识库\\作业\\竞赛\\美赛\\论文_本地归档\\摘要替换前_20261108_203848",
+  "revision": "user-approved punctuation and connectives; aerodynamic parameter range clarified",
+  "first_paragraph_indentation_verified": true
+}

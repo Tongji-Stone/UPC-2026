@@ -1,0 +1,55 @@
+{
+  "backup_directory": "D:\\知识库\\作业\\竞赛\\美赛\\论文_本地归档\\第五章批注修改前_20261108_214553",
+  "original_paper_hashes": {
+    "D:\\知识库\\作业\\竞赛\\美赛\\论文\\paper\\main.tex": "9298289884ac93870e3d4cd88f38cb57712a0f631cf3f0ff452137dab029e411",
+    "D:\\知识库\\作业\\竞赛\\美赛\\论文\\paper\\main.pdf": "d9a1e5a8198667da65b1ba469a2b7976c6fcf181eb04d5bffb466208e73aeae6",
+    "D:\\知识库\\作业\\竞赛\\美赛\\论文\\_中文版\\main.tex": "e28d9944cf4408167f2f7f8459192e1562b70f93604175057fb87247c511f4ba",
+    "D:\\知识库\\作业\\竞赛\\美赛\\论文\\_中文版\\main.pdf": "614d755aba641b462a92de9d3adc9cf0102b9d2f7b8b4d58d3638f0c5c861039"
+  },
+  "figure13_source": "results/chapter5_review/fig13/summary.json",
+  "comments_addressed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "first_paragraph_indent_em": 2,
+  "updated_max_profile_shift_m": 0.1074,
+  "review_only": true,
+  "original_paper_unchanged": true,
+  "pdf_pages": 7,
+  "tables": 5,
+  "figures": 6,
+  "all_checks_passed": true,
+  "first_paragraph_positions": {
+    "本章以": 95.91,
+    "每次改变": 95.91,
+    "上一节": 95.91,
+    "为考察多项": 95.91
+  },
+  "figure13_repository_checks": [
+    {
+      "index": 0,
+      "repository_crossing_difference_m": 1.88411095042053e-15
+    },
+    {
+      "index": 528,
+      "repository_crossing_difference_m": 4.440892098500626e-16
+    },
+    {
+      "index": 2524,
+      "repository_crossing_difference_m": 1.3506446028928519e-15
+    },
+    {
+      "index": 5048,
+      "repository_crossing_difference_m": 1.3322676295501878e-15
+    }
+  ],
+  "visual_review_pending": false,
+  "pdf_sha256": "1ac2fbc5f9fe815ea43843d75194de343e307d09935c09089d130ad8724a30df",
+  "all_pages_visually_checked": true,
+  "all_fonts_embedded": true
+}

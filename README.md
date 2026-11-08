@@ -8,7 +8,8 @@
 - 模型与计算设置：configs/current_report.json、configs/sensitivity_v2.json。
 - 正向、反演及阻尼结果：results/current_report/。
 - 题目三点参考反演：results/structure_linear_spin/problem/。
-- 单参数和位置约束搜索：results/sensitivity_linear/。
+- 单参数扫描：results/sensitivity_linear/。
+- 图13的位置约束补充搜索：results/chapter5_review/fig13/，采用17×17组气动系数与33个自旋分量切片，共5049条满足约束的轨迹。
 - 十万次联合扰动：results/monte_carlo_linear/。
 
 ## 重新计算

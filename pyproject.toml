@@ -9,7 +9,7 @@ requires-python = ">=3.10"
 dependencies = ["numpy", "scipy", "matplotlib", "pandas"]
 
 [project.optional-dependencies]
-report = ["pymupdf", "pypdf"]
+report = ["pymupdf", "pypdf", "numba"]
 test = ["pytest"]
 
 [tool.pytest.ini_options]

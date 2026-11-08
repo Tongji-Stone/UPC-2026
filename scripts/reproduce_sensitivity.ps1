@@ -5,7 +5,7 @@ Push-Location -LiteralPath $ProjectRoot
 try {
     $env:PYTHONPATH = "$ProjectRoot\src;$env:PYTHONPATH"
     if ($Recompute) {
-        foreach ($Script in @('sensitivity_reference_compute.py','sensitivity_v2_compute.py','sensitivity_v2_check.py','sensitivity_monte_carlo_compute.py')) {
+        foreach ($Script in @('sensitivity_reference_compute.py','sensitivity_v2_compute.py','sensitivity_v2_check.py','sensitivity_monte_carlo_compute.py','review_fig13_compute.py','review_fig13_plot.py')) {
             & $Python -B "scripts/$Script"
             if ($LASTEXITCODE -ne 0) { throw "Calculation failed: $Script" }
         }

@@ -1,0 +1,21 @@
+{
+  "pages": 1,
+  "original_paper_unchanged": true,
+  "all_draft_paragraphs_present": true,
+  "first_paragraph_indent_x": {
+    "受力机制": 95.91,
+    "初始运动与气动参数": 95.91
+  },
+  "all_fonts_embedded": true,
+  "no_overflow_or_missing_glyphs": true,
+  "all_checks_passed": true,
+  "visual_review_pending": false,
+  "pdf_sha256": "52bd03ec334baa5ec3ed78243c2da75b208b8d75af5be6582868ada5c8f2380d",
+  "all_pages_visually_checked": true,
+  "protected_original_hashes": {
+    "D:\\知识库\\作业\\竞赛\\美赛\\论文\\paper\\main.tex": "b0f620b5fa0f1392a0562b0440c45b6059aef902d4a125b821d6106411307980",
+    "D:\\知识库\\作业\\竞赛\\美赛\\论文\\paper\\main.pdf": "b8d8fb6cea3bb1f7d33b7fb58a6b4379fa80b7eb4d1e9014b65e1abf83048ad7",
+    "D:\\知识库\\作业\\竞赛\\美赛\\论文\\_中文版\\main.tex": "b8ed595cd177b509ce0e0714c0941782c1d407d08f4510f6ab26cbd674a03ca5",
+    "D:\\知识库\\作业\\竞赛\\美赛\\论文\\_中文版\\main.pdf": "c0b28302734ff0704ff10f474ba8bcc88791ef6d51072964ad75a237719c6313"
+  }
+}

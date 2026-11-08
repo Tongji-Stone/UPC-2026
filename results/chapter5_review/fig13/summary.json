@@ -1,0 +1,334 @@
+{
+  "groups": {
+    "wide": {
+      "states": 5049,
+      "coefficient_nodes": 153,
+      "y_range": [
+        2.5478184240295714,
+        2.6601413580595636
+      ],
+      "z_range": [
+        1.8972369374519455,
+        2.042980821479511
+      ],
+      "t_range": [
+        0.39724431128539256,
+        0.4043180040231141
+      ],
+      "max_displacement": 0.10741352657550023
+    },
+    "narrow": {
+      "states": 2079,
+      "coefficient_nodes": 63,
+      "y_range": [
+        2.5537603559026865,
+        2.6549964804343182
+      ],
+      "z_range": [
+        1.9061013170541425,
+        2.036930567586991
+      ],
+      "t_range": [
+        0.39724431128539256,
+        0.40254508019181984
+      ],
+      "max_displacement": 0.10054086995863935
+    }
+  },
+  "total_attempts": 9537,
+  "spin_x_slices": 33,
+  "original_points": 153,
+  "old_max_adjacent_y_gap_m": [
+    2.566904382740737,
+    2.6375967331964687
+  ],
+  "new_points_in_old_y_gap": 4008,
+  "baseline": {
+    "event": "plane",
+    "y": 2.6159065106451926,
+    "z": 1.9525955601720943,
+    "t": 0.3989670112412276,
+    "end_x": 10.999999999999995,
+    "clear": true
+  },
+  "initial_rk4_check_m": 8.560929742884582e-13,
+  "alternate_start_residual_differences": [
+    9.641387198203188e-09,
+    1.2549882277034792e-08,
+    2.1722849708504813e-09,
+    4.691409251807255e-09,
+    4.817561708399715e-09,
+    1.0670308872444704e-08,
+    6.456874740937003e-09,
+    1.559569336054076e-08,
+    1.0405820762450152e-08
+  ],
+  "integrator_checks": [
+    {
+      "index": 0,
+      "rk4_vs_dop853_m": 5.062616992290714e-14,
+      "dop853_max_coordinate_residual_m": 0.001669718899683037
+    },
+    {
+      "index": 107,
+      "rk4_vs_dop853_m": 3.774758283725532e-14,
+      "dop853_max_coordinate_residual_m": 0.0016695287523216251
+    },
+    {
+      "index": 214,
+      "rk4_vs_dop853_m": 4.285460875053104e-14,
+      "dop853_max_coordinate_residual_m": 0.0016693004070065243
+    },
+    {
+      "index": 322,
+      "rk4_vs_dop853_m": 3.8746783559417963e-14,
+      "dop853_max_coordinate_residual_m": 0.0016689996282304165
+    },
+    {
+      "index": 429,
+      "rk4_vs_dop853_m": 6.350475700855895e-14,
+      "dop853_max_coordinate_residual_m": 0.0016698884198400599
+    },
+    {
+      "index": 528,
+      "rk4_vs_dop853_m": 6.750155989720952e-14,
+      "dop853_max_coordinate_residual_m": 0.0016699276795626439
+    },
+    {
+      "index": 537,
+      "rk4_vs_dop853_m": 3.9968028886505635e-14,
+      "dop853_max_coordinate_residual_m": 0.0016695756564397701
+    },
+    {
+      "index": 560,
+      "rk4_vs_dop853_m": 4.39648317751562e-14,
+      "dop853_max_coordinate_residual_m": 0.0016686729499644226
+    },
+    {
+      "index": 644,
+      "rk4_vs_dop853_m": 4.929390229335695e-14,
+      "dop853_max_coordinate_residual_m": 0.0012267056884747163
+    },
+    {
+      "index": 751,
+      "rk4_vs_dop853_m": 4.529709940470639e-14,
+      "dop853_max_coordinate_residual_m": 0.0012264581961876075
+    },
+    {
+      "index": 859,
+      "rk4_vs_dop853_m": 5.684341886080802e-14,
+      "dop853_max_coordinate_residual_m": 0.0012272426742747644
+    },
+    {
+      "index": 966,
+      "rk4_vs_dop853_m": 4.39648317751562e-14,
+      "dop853_max_coordinate_residual_m": 0.0012269885325646435
+    },
+    {
+      "index": 1074,
+      "rk4_vs_dop853_m": 4.8405723873656825e-14,
+      "dop853_max_coordinate_residual_m": 0.0012266562055160968
+    },
+    {
+      "index": 1181,
+      "rk4_vs_dop853_m": 4.984901380566953e-14,
+      "dop853_max_coordinate_residual_m": 0.0007841681988516314
+    },
+    {
+      "index": 1288,
+      "rk4_vs_dop853_m": 6.261657858885883e-14,
+      "dop853_max_coordinate_residual_m": 0.0007849097215224532
+    },
+    {
+      "index": 1396,
+      "rk4_vs_dop853_m": 4.75175454539567e-14,
+      "dop853_max_coordinate_residual_m": 0.0007846458206155482
+    },
+    {
+      "index": 1503,
+      "rk4_vs_dop853_m": 5.3512749786932545e-14,
+      "dop853_max_coordinate_residual_m": 0.0007843725157301584
+    },
+    {
+      "index": 1611,
+      "rk4_vs_dop853_m": 4.4853010194856324e-14,
+      "dop853_max_coordinate_residual_m": 0.0007840202471540714
+    },
+    {
+      "index": 1718,
+      "rk4_vs_dop853_m": 6.128431095930864e-14,
+      "dop853_max_coordinate_residual_m": 0.0003428259560465108
+    },
+    {
+      "index": 1825,
+      "rk4_vs_dop853_m": 5.062616992290714e-14,
+      "dop853_max_coordinate_residual_m": 0.00034261704580007546
+    },
+    {
+      "index": 1933,
+      "rk4_vs_dop853_m": 5.96189764223709e-14,
+      "dop853_max_coordinate_residual_m": 0.00034233410395789754
+    },
+    {
+      "index": 2040,
+      "rk4_vs_dop853_m": 4.884981308350689e-14,
+      "dop853_max_coordinate_residual_m": 0.00034204114431557464
+    },
+    {
+      "index": 2148,
+      "rk4_vs_dop853_m": 7.149836278586008e-14,
+      "dop853_max_coordinate_residual_m": 0.00034294144316726616
+    },
+    {
+      "index": 2255,
+      "rk4_vs_dop853_m": 5.750955267558311e-14,
+      "dop853_max_coordinate_residual_m": 9.916164612588929e-05
+    },
+    {
+      "index": 2362,
+      "rk4_vs_dop853_m": 6.483702463810914e-14,
+      "dop853_max_coordinate_residual_m": 9.93896626568791e-05
+    },
+    {
+      "index": 2470,
+      "rk4_vs_dop853_m": 5.728750807065808e-14,
+      "dop853_max_coordinate_residual_m": 9.969161559419959e-05
+    },
+    {
+      "index": 2577,
+      "rk4_vs_dop853_m": 7.549516567451064e-14,
+      "dop853_max_coordinate_residual_m": 9.882978339659232e-05
+    },
+    {
+      "index": 2685,
+      "rk4_vs_dop853_m": 5.684341886080802e-14,
+      "dop853_max_coordinate_residual_m": 9.914450541415043e-05
+    },
+    {
+      "index": 2792,
+      "rk4_vs_dop853_m": 6.472600233564663e-14,
+      "dop853_max_coordinate_residual_m": 9.946446923558838e-05
+    },
+    {
+      "index": 2899,
+      "rk4_vs_dop853_m": 6.317169010117141e-14,
+      "dop853_max_coordinate_residual_m": 0.0005411093836649172
+    },
+    {
+      "index": 3007,
+      "rk4_vs_dop853_m": 7.460698725481052e-14,
+      "dop853_max_coordinate_residual_m": 0.0005403566986736941
+    },
+    {
+      "index": 3114,
+      "rk4_vs_dop853_m": 6.306066779870889e-14,
+      "dop853_max_coordinate_residual_m": 0.0005406109835237594
+    },
+    {
+      "index": 3222,
+      "rk4_vs_dop853_m": 7.049916206369744e-14,
+      "dop853_max_coordinate_residual_m": 0.0005409452701328199
+    },
+    {
+      "index": 3329,
+      "rk4_vs_dop853_m": 6.483702463810914e-14,
+      "dop853_max_coordinate_residual_m": 0.0005412859603430853
+    },
+    {
+      "index": 3436,
+      "rk4_vs_dop853_m": 7.949196856316121e-14,
+      "dop853_max_coordinate_residual_m": 0.0009815700657247461
+    },
+    {
+      "index": 3544,
+      "rk4_vs_dop853_m": 7.105427357601002e-14,
+      "dop853_max_coordinate_residual_m": 0.0009818317319369996
+    },
+    {
+      "index": 3651,
+      "rk4_vs_dop853_m": 7.605027718682322e-14,
+      "dop853_max_coordinate_residual_m": 0.0009821056505230352
+    },
+    {
+      "index": 3759,
+      "rk4_vs_dop853_m": 7.416289804496046e-14,
+      "dop853_max_coordinate_residual_m": 0.0009824604924013602
+    },
+    {
+      "index": 3866,
+      "rk4_vs_dop853_m": 8.748557434046234e-14,
+      "dop853_max_coordinate_residual_m": 0.00098147373379609
+    },
+    {
+      "index": 3973,
+      "rk4_vs_dop853_m": 7.72715225139109e-14,
+      "dop853_max_coordinate_residual_m": 0.0014227378605957686
+    },
+    {
+      "index": 4081,
+      "rk4_vs_dop853_m": 8.248957072964913e-14,
+      "dop853_max_coordinate_residual_m": 0.0014230190717809954
+    },
+    {
+      "index": 4188,
+      "rk4_vs_dop853_m": 8.215650382226158e-14,
+      "dop853_max_coordinate_residual_m": 0.0014233136826762305
+    },
+    {
+      "index": 4296,
+      "rk4_vs_dop853_m": 9.237055564881302e-14,
+      "dop853_max_coordinate_residual_m": 0.0014224428498850195
+    },
+    {
+      "index": 4403,
+      "rk4_vs_dop853_m": 7.793765632868599e-14,
+      "dop853_max_coordinate_residual_m": 0.0014227443315091293
+    },
+    {
+      "index": 4510,
+      "rk4_vs_dop853_m": 9.00390872971002e-14,
+      "dop853_max_coordinate_residual_m": 0.0018636167225336564
+    },
+    {
+      "index": 4618,
+      "rk4_vs_dop853_m": 8.748557434046234e-14,
+      "dop853_max_coordinate_residual_m": 0.00186391807201014
+    },
+    {
+      "index": 4725,
+      "rk4_vs_dop853_m": 9.459100169806334e-14,
+      "dop853_max_coordinate_residual_m": 0.0018630919357893738
+    },
+    {
+      "index": 4833,
+      "rk4_vs_dop853_m": 8.637535131583718e-14,
+      "dop853_max_coordinate_residual_m": 0.0018634061211297848
+    },
+    {
+      "index": 4940,
+      "rk4_vs_dop853_m": 8.870681966755001e-14,
+      "dop853_max_coordinate_residual_m": 0.0018637283756963718
+    },
+    {
+      "index": 5016,
+      "rk4_vs_dop853_m": 1.212363542890671e-13,
+      "dop853_max_coordinate_residual_m": 0.0018627510343067755
+    },
+    {
+      "index": 5048,
+      "rk4_vs_dop853_m": 1.0080825063596421e-13,
+      "dop853_max_coordinate_residual_m": 0.0018641383185595828
+    }
+  ],
+  "old_max_crossing_reproduction_m": 3.66205343881779e-15,
+  "max_coordinate_residual_m": 0.0018641383185040716,
+  "protected_hashes": {
+    "D:\\知识库\\作业\\竞赛\\美赛\\论文\\paper\\main.tex": "9298289884ac93870e3d4cd88f38cb57712a0f631cf3f0ff452137dab029e411",
+    "D:\\知识库\\作业\\竞赛\\美赛\\论文\\paper\\main.pdf": "d9a1e5a8198667da65b1ba469a2b7976c6fcf181eb04d5bffb466208e73aeae6",
+    "D:\\知识库\\作业\\竞赛\\美赛\\论文\\_中文版\\main.tex": "e28d9944cf4408167f2f7f8459192e1562b70f93604175057fb87247c511f4ba",
+    "D:\\知识库\\作业\\竞赛\\美赛\\论文\\_中文版\\main.pdf": "614d755aba641b462a92de9d3adc9cf0102b9d2f7b8b4d58d3638f0c5c861039"
+  },
+  "original_paper_unchanged": true,
+  "source_sha256": "247d2cf80b479295923e4ba4f00180959ff29f3c600c5b228373cf609e4c8190",
+  "elapsed_seconds": 30.860688999993727
+}

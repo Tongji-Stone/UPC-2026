@@ -1,0 +1,35 @@
+{
+  "backup_directory": "D:\\知识库\\作业\\竞赛\\美赛\\论文_本地归档\\摘要首段缩进前_20261108_205547",
+  "scope": "abstract first-paragraph indentation only",
+  "abstract_text_unchanged": true,
+  "chapter_five_source_unchanged": true,
+  "english_body_words": 242,
+  "chinese_indent_em": 2,
+  "english_indent_em": 1.5,
+  "checks": {
+    "_中文版": {
+      "pages": 27,
+      "first_two_paragraph_x": {
+        "本文根据": 95.91,
+        "随后选取": 95.91
+      },
+      "abstract_words_unchanged": true,
+      "chapter_five_unchanged": true,
+      "remaining_pdf_text_identical": true,
+      "compile_warnings": []
+    },
+    "paper": {
+      "pages": 27,
+      "first_two_paragraph_x": {
+        "This": 89.933,
+        "Subsequently,": 89.933
+      },
+      "abstract_words_unchanged": true,
+      "chapter_five_unchanged": true,
+      "remaining_pdf_text_identical": true,
+      "compile_warnings": []
+    }
+  },
+  "all_checks_passed": true,
+  "abstract_pages_visually_checked": true
+}
