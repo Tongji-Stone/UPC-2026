@@ -22,10 +22,7 @@
       "alam_drag_comparison.png": "paper/assets/alam_drag_comparison.png",
       "torque_comparison.pdf": "results/current_report/figures/torque_comparison.pdf"
     },
-    "all_dependencies_resolved": true,
-    "tex_source": "paper/main.tex",
-    "external_tex_inputs": [],
-    "external_code_listings": []
+    "all_dependencies_resolved": true
   },
   "_中文版": {
     "graphics": {
@@ -50,9 +47,6 @@
       "alam_drag_comparison.png": "paper/assets/alam_drag_comparison.png",
       "torque_comparison.pdf": "results/current_report/figures/torque_comparison.pdf"
     },
-    "all_dependencies_resolved": true,
-    "tex_source": "_中文版/main.tex",
-    "external_tex_inputs": [],
-    "external_code_listings": []
+    "all_dependencies_resolved": true
   }
 }

@@ -2,185 +2,336 @@
   "all_passed": true,
   "editions": {
     "en": {
-      "pages": 27,
+      "pages": 29,
       "labels": {
-        "tab:penalty-errors": {
-          "number": "3",
-          "page": 13
+        "fig:workflow": {
+          "number": "1",
+          "page": 4
         },
-        "fig:shot-photos": {
-          "number": "6",
+        "tab:notations": {
+          "number": "1",
+          "page": 5
+        },
+        "fig:geometry": {
+          "number": "2",
+          "page": 6
+        },
+        "fig:force-schematic": {
+          "number": "3",
+          "page": 7
+        },
+        "fig:magnus-flow": {
+          "number": "4",
+          "page": 8
+        },
+        "fig:ball-force-summary": {
+          "number": "5",
+          "page": 9
+        },
+        "tab:models": {
+          "number": "2",
           "page": 10
         },
         "fig:placement-photo": {
           "number": "6a",
-          "page": 10
+          "page": 11
         },
         "fig:power-photo": {
           "number": "6b",
-          "page": 10
+          "page": 11
+        },
+        "fig:shot-photos": {
+          "number": "6",
+          "page": 11
+        },
+        "fig:penalty-overview": {
+          "number": "7",
+          "page": 12
         },
         "fig:placement-paths": {
           "number": "8",
-          "page": 11
+          "page": 12
+        },
+        "fig:placement-example": {
+          "number": "8",
+          "page": 12
         },
         "fig:power-paths": {
           "number": "9",
-          "page": 12
+          "page": 13
+        },
+        "fig:penalty-J03WOH": {
+          "number": "9",
+          "page": 13
+        },
+        "fig:penalty-dynamics": {
+          "number": "10",
+          "page": 14
+        },
+        "tab:penalty-errors": {
+          "number": "3",
+          "page": 14
+        },
+        "tab:sensitivity-reference": {
+          "number": "4",
+          "page": 15
+        },
+        "tab:sensitivity-one-factor": {
+          "number": "5",
+          "page": 15
+        },
+        "fig:sensitivity-one-position": {
+          "number": "11",
+          "page": 16
+        },
+        "fig:sensitivity-one-time": {
+          "number": "12",
+          "page": 17
+        },
+        "tab:sensitivity-profile": {
+          "number": "6",
+          "page": 18
+        },
+        "fig:sensitivity-constrained": {
+          "number": "13",
+          "page": 18
+        },
+        "tab:sensitivity-mc": {
+          "number": "7",
+          "page": 19
+        },
+        "fig:sensitivity-mc": {
+          "number": "14",
+          "page": 19
+        },
+        "fig:sensitivity-mc-parallel": {
+          "number": "15",
+          "page": 20
+        },
+        "fig:sensitivity-mc-convergence": {
+          "number": "16",
+          "page": 21
+        },
+        "fig:surface-geometry": {
+          "number": "17a",
+          "page": 22
+        },
+        "fig:alam-surfaces": {
+          "number": "17b",
+          "page": 22
         },
         "fig:surface-details": {
           "number": "17",
-          "page": 20
+          "page": 22
+        },
+        "fig:alam-drag": {
+          "number": "18",
+          "page": 23
+        },
+        "fig:torque": {
+          "number": "19",
+          "page": 24
+        },
+        "tab:wind": {
+          "number": "8",
+          "page": 24
+        },
+        "tab:data-provenance": {
+          "number": "9",
+          "page": 28
+        },
+        "tab:penalty-observations": {
+          "number": "10",
+          "page": 28
+        },
+        "tab:inverse-bounds": {
+          "number": "11",
+          "page": 28
+        },
+        "tab:m4-parameters": {
+          "number": "12",
+          "page": 28
         }
-      },
-      "review_pages": [
-        10,
-        11,
-        12,
-        13,
-        20
-      ]
+      }
     },
     "zh": {
-      "pages": 27,
+      "pages": 28,
       "labels": {
-        "tab:penalty-errors": {
-          "number": "3",
-          "page": 13
+        "fig:workflow": {
+          "number": "1",
+          "page": 4
         },
-        "fig:shot-photos": {
-          "number": "6",
+        "tab:notations": {
+          "number": "1",
+          "page": 5
+        },
+        "fig:geometry": {
+          "number": "2",
+          "page": 6
+        },
+        "fig:force-schematic": {
+          "number": "3",
+          "page": 7
+        },
+        "fig:magnus-flow": {
+          "number": "4",
+          "page": 8
+        },
+        "fig:ball-force-summary": {
+          "number": "5",
+          "page": 9
+        },
+        "tab:models": {
+          "number": "2",
           "page": 10
         },
         "fig:placement-photo": {
           "number": "6a",
-          "page": 10
+          "page": 11
         },
         "fig:power-photo": {
           "number": "6b",
-          "page": 10
+          "page": 11
+        },
+        "fig:shot-photos": {
+          "number": "6",
+          "page": 11
+        },
+        "fig:penalty-overview": {
+          "number": "7",
+          "page": 11
         },
         "fig:placement-paths": {
           "number": "8",
-          "page": 11
+          "page": 12
+        },
+        "fig:placement-example": {
+          "number": "8",
+          "page": 12
         },
         "fig:power-paths": {
           "number": "9",
-          "page": 12
+          "page": 13
+        },
+        "fig:penalty-J03WOH": {
+          "number": "9",
+          "page": 13
+        },
+        "fig:penalty-dynamics": {
+          "number": "10",
+          "page": 14
+        },
+        "tab:penalty-errors": {
+          "number": "3",
+          "page": 14
+        },
+        "tab:sensitivity-reference": {
+          "number": "4",
+          "page": 15
+        },
+        "tab:sensitivity-one-factor": {
+          "number": "5",
+          "page": 15
+        },
+        "fig:sensitivity-one-position": {
+          "number": "11",
+          "page": 16
+        },
+        "fig:sensitivity-one-time": {
+          "number": "12",
+          "page": 17
+        },
+        "tab:sensitivity-profile": {
+          "number": "6",
+          "page": 18
+        },
+        "fig:sensitivity-constrained": {
+          "number": "13",
+          "page": 18
+        },
+        "tab:sensitivity-mc": {
+          "number": "7",
+          "page": 18
+        },
+        "fig:sensitivity-mc": {
+          "number": "14",
+          "page": 19
+        },
+        "fig:sensitivity-mc-parallel": {
+          "number": "15",
+          "page": 20
+        },
+        "fig:sensitivity-mc-convergence": {
+          "number": "16",
+          "page": 20
+        },
+        "fig:surface-geometry": {
+          "number": "17a",
+          "page": 21
+        },
+        "fig:alam-surfaces": {
+          "number": "17b",
+          "page": 21
         },
         "fig:surface-details": {
           "number": "17",
-          "page": 20
+          "page": 21
+        },
+        "fig:alam-drag": {
+          "number": "18",
+          "page": 22
+        },
+        "fig:torque": {
+          "number": "19",
+          "page": 23
+        },
+        "tab:wind": {
+          "number": "8",
+          "page": 23
+        },
+        "tab:data-provenance": {
+          "number": "9",
+          "page": 27
+        },
+        "tab:penalty-observations": {
+          "number": "10",
+          "page": 27
+        },
+        "tab:inverse-bounds": {
+          "number": "11",
+          "page": 27
+        },
+        "tab:m4-parameters": {
+          "number": "12",
+          "page": 27
         }
-      },
-      "review_pages": [
-        10,
-        11,
-        12,
-        13,
-        20
-      ]
+      }
     }
   },
   "checks": {
-    "en_photos_equal_side_by_side": {
-      "passed": true,
-      "rectangles_pdf_pt": [
-        [
-          72.0,
-          123.94877624511719,
-          296.642333984375,
-          273.7030029296875
-        ],
-        [
-          315.364990234375,
-          123.94549560546875,
-          539.9970703125,
-          273.7030029296875
-        ]
-      ]
-    },
-    "en_photos_at_case_start": {
+    "en_workflow_unchanged": {
       "passed": true
     },
-    "en_four_subfigures": {
+    "en_equal_side_by_side_photos": {
       "passed": true
     },
-    "en_error_table_body_size": {
-      "passed": true,
-      "observed_pdf_pt": [
-        11.9552
-      ]
-    },
-    "en_toc_body_size": {
-      "passed": true,
-      "tex_pt": 12,
-      "contents_pages": [
-        2
-      ]
-    },
-    "en_strengths_and_weaknesses": {
+    "en_error_table_12pt": {
       "passed": true
     },
-    "en_single_page_contents": {
+    "en_toc_12pt": {
       "passed": true
     },
-    "zh_photos_equal_side_by_side": {
-      "passed": true,
-      "rectangles_pdf_pt": [
-        [
-          72.0,
-          72.00277709960938,
-          296.642333984375,
-          221.7570037841797
-        ],
-        [
-          315.364990234375,
-          71.99949645996094,
-          539.9970703125,
-          221.7570037841797
-        ]
-      ]
-    },
-    "zh_photos_at_case_start": {
+    "zh_workflow_unchanged": {
       "passed": true
     },
-    "zh_four_subfigures": {
+    "zh_equal_side_by_side_photos": {
       "passed": true
     },
-    "zh_error_table_body_size": {
-      "passed": true,
-      "observed_pdf_pt": [
-        11.9552
-      ]
-    },
-    "zh_toc_body_size": {
-      "passed": true,
-      "tex_pt": 12,
-      "contents_pages": [
-        2
-      ]
-    },
-    "zh_strengths_and_weaknesses": {
+    "zh_error_table_12pt": {
       "passed": true
     },
-    "zh_single_page_contents": {
+    "zh_toc_12pt": {
       "passed": true
-    },
-    "power_plot_labels_nonoverlapping": {
-      "figsize_inches": [
-        7.2,
-        6.2
-      ],
-      "horizontal_label_gap_pixels": 44.75464318731349,
-      "labels_nonoverlapping": true,
-      "source_case": "J03WOH",
-      "data": "unchanged saved measurements and model traces",
-      "passed": true
-    },
-    "calculations_unchanged": {
-      "passed": true,
-      "baseline_commit": "9d0ffe6d694e716968564595fd785b531b54cef9"
     }
   }
 }

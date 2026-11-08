@@ -1,0 +1,166 @@
+{
+  "all_passed": true,
+  "baseline_commit": "5799e1a",
+  "editions": {
+    "en": {
+      "pages": 29,
+      "figure_table_groups": 35,
+      "equation_numbers": {
+        "eq:drag-force": "3",
+        "eq:lift-force": "4",
+        "eq:newton-angular": "5",
+        "eq:motion": "6",
+        "eq:initial": "7"
+      },
+      "tex_sha256": "289d1419a74bd654f71161f0107f80efab16a64ceb462319ecb4014bc3019b3a",
+      "pdf_sha256": "3ccf0f80a809b5542f4659c2d9bca0e105e0525703000745a52aad8ded05c349"
+    },
+    "zh": {
+      "pages": 28,
+      "figure_table_groups": 35,
+      "equation_numbers": {
+        "eq:drag-force": "3",
+        "eq:lift-force": "4",
+        "eq:newton-angular": "5",
+        "eq:motion": "6",
+        "eq:initial": "7"
+      },
+      "tex_sha256": "c7f6ed813c5fef5538bd768da58722c5b1576c9757890f3aa5c325de994fedfd",
+      "pdf_sha256": "766192487580cad7517a432fc9b5ec0f6f5327ff295dbb2535c5505f90f74f78"
+    }
+  },
+  "checks": {
+    "en_all_rendered_figures_tables_referenced_in_body": {
+      "passed": true,
+      "missing": [],
+      "groups": 35
+    },
+    "en_all_bibliography_entries_used_in_body": {
+      "passed": true,
+      "unused": [],
+      "undefined": []
+    },
+    "en_background_is_context_only": {
+      "passed": true
+    },
+    "en_restatement_complete": {
+      "passed": true
+    },
+    "en_assumptions_are_physical": {
+      "passed": true
+    },
+    "en_old_three_stages_removed": {
+      "passed": true
+    },
+    "en_workflow_unchanged": {
+      "passed": true
+    },
+    "en_numbered_physical_equations_unchanged": {
+      "passed": true
+    },
+    "en_no_give_sentence": {
+      "passed": true
+    },
+    "en_omega_before_lift_formula": {
+      "passed": true
+    },
+    "en_rigid_body_before_newton": {
+      "passed": true
+    },
+    "en_eq:drag-force_number": {
+      "passed": true
+    },
+    "en_eq:lift-force_number": {
+      "passed": true
+    },
+    "en_eq:newton-angular_number": {
+      "passed": true
+    },
+    "en_eq:motion_number": {
+      "passed": true
+    },
+    "en_eq:initial_number": {
+      "passed": true
+    },
+    "en_single_tex": {
+      "passed": true
+    },
+    "en_equal_side_by_side_photos": {
+      "passed": true
+    },
+    "en_error_table_12pt": {
+      "passed": true
+    },
+    "en_toc_12pt": {
+      "passed": true
+    },
+    "zh_all_rendered_figures_tables_referenced_in_body": {
+      "passed": true,
+      "missing": [],
+      "groups": 35
+    },
+    "zh_all_bibliography_entries_used_in_body": {
+      "passed": true,
+      "unused": [],
+      "undefined": []
+    },
+    "zh_background_is_context_only": {
+      "passed": true
+    },
+    "zh_restatement_complete": {
+      "passed": true
+    },
+    "zh_assumptions_are_physical": {
+      "passed": true
+    },
+    "zh_old_three_stages_removed": {
+      "passed": true
+    },
+    "zh_workflow_unchanged": {
+      "passed": true
+    },
+    "zh_numbered_physical_equations_unchanged": {
+      "passed": true
+    },
+    "zh_no_give_sentence": {
+      "passed": true
+    },
+    "zh_omega_before_lift_formula": {
+      "passed": true
+    },
+    "zh_rigid_body_before_newton": {
+      "passed": true
+    },
+    "zh_eq:drag-force_number": {
+      "passed": true
+    },
+    "zh_eq:lift-force_number": {
+      "passed": true
+    },
+    "zh_eq:newton-angular_number": {
+      "passed": true
+    },
+    "zh_eq:motion_number": {
+      "passed": true
+    },
+    "zh_eq:initial_number": {
+      "passed": true
+    },
+    "zh_single_tex": {
+      "passed": true
+    },
+    "zh_equal_side_by_side_photos": {
+      "passed": true
+    },
+    "zh_error_table_12pt": {
+      "passed": true
+    },
+    "zh_toc_12pt": {
+      "passed": true
+    },
+    "physics_inputs_and_calculations_unchanged": {
+      "passed": true,
+      "changed": []
+    }
+  }
+}
