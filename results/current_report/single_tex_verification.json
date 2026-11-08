@@ -3,17 +3,17 @@
   "editions": {
     "paper": {
       "passed": true,
-      "pages": 29,
+      "pages": 31,
       "no_external_tex_or_code_inputs": true,
-      "tex_sha256": "289d1419a74bd654f71161f0107f80efab16a64ceb462319ecb4014bc3019b3a",
-      "pdf_sha256": "3ccf0f80a809b5542f4659c2d9bca0e105e0525703000745a52aad8ded05c349"
+      "tex_sha256": "faf499062058207656345329a2445b0fd9797afca9451a2840b9ed7bc43c4638",
+      "pdf_sha256": "9e45d343bab402d2c22903b70025434a08cfb138a1946cfc8e819723c4b6f162"
     },
     "_中文版": {
       "passed": true,
-      "pages": 28,
+      "pages": 29,
       "no_external_tex_or_code_inputs": true,
-      "tex_sha256": "c7f6ed813c5fef5538bd768da58722c5b1576c9757890f3aa5c325de994fedfd",
-      "pdf_sha256": "766192487580cad7517a432fc9b5ec0f6f5327ff295dbb2535c5505f90f74f78"
+      "tex_sha256": "6a2f7d930a8a31d1de9f7893cd45887986656fda2aadf59caa2fab848c5b57a6",
+      "pdf_sha256": "8c31b3918cde9865f9f6d3622ff70f0aaa4e8a4096833727ba4c26e44a759998"
     }
   },
   "content_policy": "Intentional bilingual narrative revision; numbered physical equations and calculations unchanged"

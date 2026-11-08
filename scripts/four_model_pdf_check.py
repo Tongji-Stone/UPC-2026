@@ -47,7 +47,7 @@ def main():
         has_eight_chapters=all(t in text for t in ['Introduction','Preparation of the Models','Model Establishment',
             'Model Solving','Sensitivity Analysis','Discussion of Other Factors','Conclusions','Model Evaluation']),
         no_unresolved_references='??' not in text,no_old_results=all(s not in text for s in ['600 samples','495 trajectories','Linthorne']),
-        fifth_chapter_complete='To be completed.' not in text and 'Joint perturbations and Monte Carlo simulation' in text,
+        fifth_chapter_complete='To be completed.' not in text and 'Crossing Distribution under Joint Perturbations' in text and all(label in (ROOT/'paper/main.tex').read_text(encoding='utf-8') for label in ['sec:sensitivity-local','sec:sensitivity-constrained','sec:sensitivity-mc']),
         workflow_border_removed='draw=wfBorder,dashed' not in (ROOT/'paper/main.tex').read_text(encoding='utf-8'),
         workflow_body_font_pt=12.)
     result['all_passed']=not warnings and not out_of_bounds and all(result[k] for k in

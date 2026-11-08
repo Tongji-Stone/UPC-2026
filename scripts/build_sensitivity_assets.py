@@ -95,7 +95,7 @@ def main():
         body='\n'.join(labels[r['parameter']][int(zh)]+' & '+
                        (r'$\pm1^\circ$' if r['unit']=='degree' else r'$\pm5\%$')+
                        f" & {100*float(r['max_displacement']):.3f} & {float(r['max_time_ms']):.3f}"+r'\\' for r in comparison)
-        text+=r'\newcommand{\SensitivityOneFactorTable}{\begin{table}[H]\centering\small'+'\n'+r'\caption{'+caption+r'}\label{tab:sensitivity-one-factor}'+'\n'+r'\begin{tabular}{p{.32\textwidth}crr}\toprule'+'\n'+header+r'\\\midrule'+'\n'+body+'\n'+r'\bottomrule\end{tabular}\end{table}}'+'\n'
+        text+=r'\newcommand{\SensitivityOneFactorTable}{\begin{table}[H]\centering\small'+'\n'+r'\caption{'+caption+r'}\label{tab:sensitivity-one-factor-template}'+'\n'+r'\begin{tabular}{p{.32\textwidth}crr}\toprule'+'\n'+header+r'\\\midrule'+'\n'+body+'\n'+r'\bottomrule\end{tabular}\end{table}}'+'\n'
         caption=('早期位置约束下的球门交点范围。' if zh else
                  'Ranges of goal-plane crossings compatible with the early positions.')
         header=('系数倍数范围 & $y_g$ (m) & $z_g$ (m) & $t_g$ (s)' if zh else
@@ -105,7 +105,7 @@ def main():
             r=profile[key]
             body.append('$'+title+'$ & '+' & '.join(f'{r[k][0]:.4f}--{r[k][1]:.4f}' for k in
                                               ['y_range','z_range','t_range'])+r'\\')
-        text+=r'\newcommand{\SensitivityProfileTable}{\begin{table}[H]\centering\small'+'\n'+r'\caption{'+caption+r'}\label{tab:sensitivity-profile}'+'\n'+r'\begin{tabular}{lrrr}\toprule'+'\n'+header+r'\\\midrule'+'\n'+'\n'.join(body)+'\n'+r'\bottomrule\end{tabular}\end{table}}'+'\n'
+        text+=r'\newcommand{\SensitivityProfileTable}{\begin{table}[H]\centering\small'+'\n'+r'\caption{'+caption+r'}\label{tab:sensitivity-profile-template}'+'\n'+r'\begin{tabular}{lrrr}\toprule'+'\n'+header+r'\\\midrule'+'\n'+'\n'.join(body)+'\n'+r'\bottomrule\end{tabular}\end{table}}'+'\n'
         caption=('10 万条蒙特卡洛轨迹的交点与到达时间。' if zh else
                  'Monte Carlo crossing positions and arrival times (100,000 trajectories).')
         header=(r'输出量 & 样本最小值--最大值 & 单坐标中心 95\% 区间' if zh else
@@ -113,7 +113,7 @@ def main():
         body=[]
         for name,key in [('$y_g$ (m)','y'),('$z_g$ (m)','z'),('$t_g$ (s)','t')]:
             body.append(name+' & '+' & '.join(f'{summary[k][0]:.4f}--{summary[k][1]:.4f}' for k in [key+'_range',key+'_central_95'])+r'\\')
-        text+=r'\newcommand{\SensitivityMonteCarloTable}{\begin{table}[H]\centering\small'+'\n'+r'\caption{'+caption+r'}\label{tab:sensitivity-mc}'+'\n'+r'\begin{tabular}{lrr}\toprule'+'\n'+header+r'\\\midrule'+'\n'+'\n'.join(body)+'\n'+r'\bottomrule\end{tabular}\end{table}}'+'\n'
+        text+=r'\newcommand{\SensitivityMonteCarloTable}{\begin{table}[H]\centering\small'+'\n'+r'\caption{'+caption+r'}\label{tab:sensitivity-mc-template}'+'\n'+r'\begin{tabular}{lrr}\toprule'+'\n'+header+r'\\\midrule'+'\n'+'\n'.join(body)+'\n'+r'\bottomrule\end{tabular}\end{table}}'+'\n'
         write_block(directory/'main.tex','SENSITIVITY_RESULTS',text)
     plt.rcParams.update({'font.family':'serif','font.serif':['Times New Roman'],'font.size':10,'font.weight':'bold','axes.labelweight':'bold','axes.titleweight':'bold',
         'axes.spines.top':False,'axes.spines.right':False,'pdf.fonttype':42,'svg.fonttype':'none'})

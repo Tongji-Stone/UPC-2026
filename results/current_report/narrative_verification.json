@@ -1,39 +1,38 @@
 {
   "all_passed": true,
-  "baseline_commit": "5799e1a",
+  "baseline_commit": "d86d90c",
+  "approved_revision": "30d0dea",
   "editions": {
     "en": {
-      "pages": 29,
-      "figure_table_groups": 35,
+      "pages": 31,
+      "figure_table_groups": 36,
       "equation_numbers": {
         "eq:drag-force": "3",
         "eq:lift-force": "4",
-        "eq:newton-angular": "5",
-        "eq:motion": "6",
-        "eq:initial": "7"
+        "eq:motion": "7",
+        "eq:initial": "8"
       },
-      "tex_sha256": "289d1419a74bd654f71161f0107f80efab16a64ceb462319ecb4014bc3019b3a",
-      "pdf_sha256": "3ccf0f80a809b5542f4659c2d9bca0e105e0525703000745a52aad8ded05c349"
+      "tex_sha256": "faf499062058207656345329a2445b0fd9797afca9451a2840b9ed7bc43c4638",
+      "pdf_sha256": "9e45d343bab402d2c22903b70025434a08cfb138a1946cfc8e819723c4b6f162"
     },
     "zh": {
-      "pages": 28,
-      "figure_table_groups": 35,
+      "pages": 29,
+      "figure_table_groups": 36,
       "equation_numbers": {
         "eq:drag-force": "3",
         "eq:lift-force": "4",
-        "eq:newton-angular": "5",
-        "eq:motion": "6",
-        "eq:initial": "7"
+        "eq:motion": "7",
+        "eq:initial": "8"
       },
-      "tex_sha256": "c7f6ed813c5fef5538bd768da58722c5b1576c9757890f3aa5c325de994fedfd",
-      "pdf_sha256": "766192487580cad7517a432fc9b5ec0f6f5327ff295dbb2535c5505f90f74f78"
+      "tex_sha256": "6a2f7d930a8a31d1de9f7893cd45887986656fda2aadf59caa2fab848c5b57a6",
+      "pdf_sha256": "8c31b3918cde9865f9f6d3622ff70f0aaa4e8a4096833727ba4c26e44a759998"
     }
   },
   "checks": {
     "en_all_rendered_figures_tables_referenced_in_body": {
       "passed": true,
       "missing": [],
-      "groups": 35
+      "groups": 36
     },
     "en_all_bibliography_entries_used_in_body": {
       "passed": true,
@@ -49,7 +48,7 @@
     "en_assumptions_are_physical": {
       "passed": true
     },
-    "en_old_three_stages_removed": {
+    "en_remote_restatement_preserved": {
       "passed": true
     },
     "en_workflow_unchanged": {
@@ -58,7 +57,16 @@
     "en_numbered_physical_equations_unchanged": {
       "passed": true
     },
-    "en_no_give_sentence": {
+    "en_approved_abstract_preserved": {
+      "passed": true
+    },
+    "en_approved_chapter8_preserved": {
+      "passed": true
+    },
+    "en_approved_sensitivity_analysis_preserved": {
+      "passed": true
+    },
+    "en_remote_chapter4_preserved": {
       "passed": true
     },
     "en_omega_before_lift_formula": {
@@ -71,9 +79,6 @@
       "passed": true
     },
     "en_eq:lift-force_number": {
-      "passed": true
-    },
-    "en_eq:newton-angular_number": {
       "passed": true
     },
     "en_eq:motion_number": {
@@ -97,7 +102,7 @@
     "zh_all_rendered_figures_tables_referenced_in_body": {
       "passed": true,
       "missing": [],
-      "groups": 35
+      "groups": 36
     },
     "zh_all_bibliography_entries_used_in_body": {
       "passed": true,
@@ -113,7 +118,7 @@
     "zh_assumptions_are_physical": {
       "passed": true
     },
-    "zh_old_three_stages_removed": {
+    "zh_remote_restatement_preserved": {
       "passed": true
     },
     "zh_workflow_unchanged": {
@@ -122,7 +127,16 @@
     "zh_numbered_physical_equations_unchanged": {
       "passed": true
     },
-    "zh_no_give_sentence": {
+    "zh_approved_abstract_preserved": {
+      "passed": true
+    },
+    "zh_approved_chapter8_preserved": {
+      "passed": true
+    },
+    "zh_approved_sensitivity_analysis_preserved": {
+      "passed": true
+    },
+    "zh_remote_chapter4_preserved": {
       "passed": true
     },
     "zh_omega_before_lift_formula": {
@@ -135,9 +149,6 @@
       "passed": true
     },
     "zh_eq:lift-force_number": {
-      "passed": true
-    },
-    "zh_eq:newton-angular_number": {
       "passed": true
     },
     "zh_eq:motion_number": {
@@ -159,6 +170,10 @@
       "passed": true
     },
     "physics_inputs_and_calculations_unchanged": {
+      "passed": true,
+      "changed": []
+    },
+    "approved_figure13_calculations_preserved": {
       "passed": true,
       "changed": []
     }

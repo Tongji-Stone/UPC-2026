@@ -13,6 +13,7 @@
     "zero_perturbation_reference": true,
     "time_one_axes_nine_curves": true,
     "time_all_scan_points_preserved": true,
+    "refined_profile_count": true,
     "profile_tolerance": true,
     "profile_bounds": true,
     "profile_velocity_spin_bounds": true,
@@ -54,12 +55,12 @@
   },
   "documents": {
     "paper": {
-      "pages": 29,
-      "sha256": "3ccf0f80a809b5542f4659c2d9bca0e105e0525703000745a52aad8ded05c349"
+      "pages": 31,
+      "sha256": "9e45d343bab402d2c22903b70025434a08cfb138a1946cfc8e819723c4b6f162"
     },
     "_中文版": {
-      "pages": 28,
-      "sha256": "766192487580cad7517a432fc9b5ec0f6f5327ff295dbb2535c5505f90f74f78"
+      "pages": 29,
+      "sha256": "8c31b3918cde9865f9f6d3622ff70f0aaa4e8a4096833727ba4c26e44a759998"
     }
   },
   "model": "constant CD and linear CL=alpha*Sp",

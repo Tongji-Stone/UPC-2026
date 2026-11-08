@@ -1,0 +1,17 @@
+{
+  "compiler": "Codex desktop built-in LaTeX editor",
+  "editions": {
+    "_中文版": {
+      "kind": "success",
+      "path": "D:\\LYT\\大二上\\国际大学生物理竞赛\\2026\\UPC2026_ProblemB_叙述修订\\_中文版\\main.tex",
+      "source_sha256": "7d857ea1e6f9aa8b059eeb0a8dcf430a25ee174a38b5c7f71b909772a58530e6"
+    },
+    "paper": {
+      "kind": "success",
+      "path": "D:\\LYT\\大二上\\国际大学生物理竞赛\\2026\\UPC2026_ProblemB_叙述修订\\paper\\main.tex",
+      "source_sha256": "ee4d5fccb7811080ed7e4a737aefcaed40b0c055e44465e387f575ddb5713bdf"
+    }
+  },
+  "scope": "Current Chinese narrative synchronized to English; both saved sources compiled successfully.",
+  "exported_pdf": false
+}

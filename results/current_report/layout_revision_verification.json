@@ -2,7 +2,7 @@
   "all_passed": true,
   "editions": {
     "en": {
-      "pages": 29,
+      "pages": 31,
       "labels": {
         "fig:workflow": {
           "number": "1",
@@ -16,19 +16,19 @@
           "number": "2",
           "page": 6
         },
-        "fig:force-schematic": {
+        "fig:ball-force-summary": {
           "number": "3",
+          "page": 6
+        },
+        "fig:force-schematic": {
+          "number": "4",
           "page": 7
         },
         "fig:magnus-flow": {
-          "number": "4",
+          "number": "5",
           "page": 8
         },
-        "fig:ball-force-summary": {
-          "number": "5",
-          "page": 9
-        },
-        "tab:models": {
+        "tab:penalty-observations": {
           "number": "2",
           "page": 10
         },
@@ -44,15 +44,15 @@
           "number": "6",
           "page": 11
         },
-        "fig:penalty-overview": {
+        "fig:placement-paths": {
           "number": "7",
           "page": 12
         },
-        "fig:placement-paths": {
-          "number": "8",
+        "fig:placement-example": {
+          "number": "7",
           "page": 12
         },
-        "fig:placement-example": {
+        "fig:placement-dynamics": {
           "number": "8",
           "page": 12
         },
@@ -64,124 +64,128 @@
           "number": "9",
           "page": 13
         },
-        "fig:penalty-dynamics": {
+        "fig:power-dynamics": {
           "number": "10",
           "page": 14
         },
-        "tab:penalty-errors": {
+        "tab:power-crossings": {
           "number": "3",
           "page": 14
         },
         "tab:sensitivity-reference": {
           "number": "4",
-          "page": 15
+          "page": 14
         },
-        "tab:sensitivity-one-factor": {
-          "number": "5",
-          "page": 15
-        },
-        "fig:sensitivity-one-position": {
+        "fig:problem-m4": {
           "number": "11",
+          "page": 15
+        },
+        "tab:sensitivity-scan-ranges": {
+          "number": "5",
           "page": 16
         },
-        "fig:sensitivity-one-time": {
+        "tab:sensitivity-one-factor": {
+          "number": "6",
+          "page": 16
+        },
+        "fig:sensitivity-one-position": {
           "number": "12",
-          "page": 17
+          "page": 18
+        },
+        "fig:sensitivity-one-time": {
+          "number": "13",
+          "page": 19
         },
         "tab:sensitivity-profile": {
-          "number": "6",
-          "page": 18
-        },
-        "fig:sensitivity-constrained": {
-          "number": "13",
-          "page": 18
-        },
-        "tab:sensitivity-mc": {
           "number": "7",
-          "page": 19
-        },
-        "fig:sensitivity-mc": {
-          "number": "14",
-          "page": 19
-        },
-        "fig:sensitivity-mc-parallel": {
-          "number": "15",
           "page": 20
         },
-        "fig:sensitivity-mc-convergence": {
-          "number": "16",
+        "fig:sensitivity-constrained": {
+          "number": "14",
+          "page": 20
+        },
+        "tab:sensitivity-mc": {
+          "number": "8",
           "page": 21
         },
-        "fig:surface-geometry": {
-          "number": "17a",
+        "fig:sensitivity-mc": {
+          "number": "15",
           "page": 22
         },
-        "fig:alam-surfaces": {
-          "number": "17b",
+        "fig:sensitivity-mc-parallel": {
+          "number": "16",
           "page": 22
         },
-        "fig:surface-details": {
+        "fig:sensitivity-mc-convergence": {
           "number": "17",
-          "page": 22
-        },
-        "fig:alam-drag": {
-          "number": "18",
           "page": 23
         },
-        "fig:torque": {
-          "number": "19",
+        "fig:surface-geometry": {
+          "number": "18a",
           "page": 24
+        },
+        "fig:alam-surfaces": {
+          "number": "18b",
+          "page": 24
+        },
+        "fig:surface-details": {
+          "number": "18",
+          "page": 24
+        },
+        "fig:alam-drag": {
+          "number": "19",
+          "page": 25
+        },
+        "fig:torque": {
+          "number": "20",
+          "page": 26
         },
         "tab:wind": {
-          "number": "8",
-          "page": 24
+          "number": "9",
+          "page": 27
         },
         "tab:data-provenance": {
-          "number": "9",
-          "page": 28
-        },
-        "tab:penalty-observations": {
           "number": "10",
-          "page": 28
+          "page": 30
         },
         "tab:inverse-bounds": {
           "number": "11",
-          "page": 28
+          "page": 30
         },
         "tab:m4-parameters": {
           "number": "12",
-          "page": 28
+          "page": 30
         }
       }
     },
     "zh": {
-      "pages": 28,
+      "pages": 29,
       "labels": {
         "fig:workflow": {
           "number": "1",
-          "page": 4
+          "page": 3
         },
         "tab:notations": {
           "number": "1",
-          "page": 5
+          "page": 4
         },
         "fig:geometry": {
           "number": "2",
+          "page": 5
+        },
+        "fig:ball-force-summary": {
+          "number": "3",
           "page": 6
         },
         "fig:force-schematic": {
-          "number": "3",
+          "number": "4",
           "page": 7
         },
         "fig:magnus-flow": {
-          "number": "4",
+          "number": "5",
           "page": 8
         },
-        "fig:ball-force-summary": {
-          "number": "5",
-          "page": 9
-        },
-        "tab:models": {
+        "tab:penalty-observations": {
           "number": "2",
           "page": 10
         },
@@ -197,15 +201,15 @@
           "number": "6",
           "page": 11
         },
-        "fig:penalty-overview": {
+        "fig:placement-paths": {
           "number": "7",
           "page": 11
         },
-        "fig:placement-paths": {
-          "number": "8",
-          "page": 12
-        },
         "fig:placement-example": {
+          "number": "7",
+          "page": 11
+        },
+        "fig:placement-dynamics": {
           "number": "8",
           "page": 12
         },
@@ -217,93 +221,97 @@
           "number": "9",
           "page": 13
         },
-        "fig:penalty-dynamics": {
+        "fig:power-dynamics": {
           "number": "10",
           "page": 14
         },
-        "tab:penalty-errors": {
+        "tab:power-crossings": {
           "number": "3",
           "page": 14
         },
         "tab:sensitivity-reference": {
           "number": "4",
-          "page": 15
+          "page": 14
         },
-        "tab:sensitivity-one-factor": {
-          "number": "5",
-          "page": 15
-        },
-        "fig:sensitivity-one-position": {
+        "fig:problem-m4": {
           "number": "11",
+          "page": 15
+        },
+        "tab:sensitivity-scan-ranges": {
+          "number": "5",
           "page": 16
         },
-        "fig:sensitivity-one-time": {
+        "tab:sensitivity-one-factor": {
+          "number": "6",
+          "page": 16
+        },
+        "fig:sensitivity-one-position": {
           "number": "12",
           "page": 17
         },
-        "tab:sensitivity-profile": {
-          "number": "6",
-          "page": 18
-        },
-        "fig:sensitivity-constrained": {
+        "fig:sensitivity-one-time": {
           "number": "13",
           "page": 18
         },
-        "tab:sensitivity-mc": {
+        "tab:sensitivity-profile": {
           "number": "7",
           "page": 18
         },
-        "fig:sensitivity-mc": {
+        "fig:sensitivity-constrained": {
           "number": "14",
           "page": 19
         },
-        "fig:sensitivity-mc-parallel": {
+        "tab:sensitivity-mc": {
+          "number": "8",
+          "page": 19
+        },
+        "fig:sensitivity-mc": {
           "number": "15",
           "page": 20
         },
-        "fig:sensitivity-mc-convergence": {
+        "fig:sensitivity-mc-parallel": {
           "number": "16",
-          "page": 20
-        },
-        "fig:surface-geometry": {
-          "number": "17a",
           "page": 21
         },
-        "fig:alam-surfaces": {
-          "number": "17b",
-          "page": 21
-        },
-        "fig:surface-details": {
+        "fig:sensitivity-mc-convergence": {
           "number": "17",
           "page": 21
         },
-        "fig:alam-drag": {
+        "fig:surface-geometry": {
+          "number": "18a",
+          "page": 22
+        },
+        "fig:alam-surfaces": {
+          "number": "18b",
+          "page": 22
+        },
+        "fig:surface-details": {
           "number": "18",
           "page": 22
         },
-        "fig:torque": {
+        "fig:alam-drag": {
           "number": "19",
           "page": 23
         },
+        "fig:torque": {
+          "number": "20",
+          "page": 24
+        },
         "tab:wind": {
-          "number": "8",
-          "page": 23
+          "number": "9",
+          "page": 24
         },
         "tab:data-provenance": {
-          "number": "9",
-          "page": 27
-        },
-        "tab:penalty-observations": {
           "number": "10",
-          "page": 27
+          "page": 28
         },
         "tab:inverse-bounds": {
           "number": "11",
-          "page": 27
+          "page": 28
         },
         "tab:m4-parameters": {
           "number": "12",
-          "page": 27
+          "page": 28
         }
       }
     }

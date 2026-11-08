@@ -1,3 +1,4 @@
+% !TeX program = xelatex
 \RequirePackage{fix-cm}
 \documentclass[12pt,letterpaper]{article}
 \usepackage[margin=1in,headheight=15pt,headsep=15pt]{geometry}
@@ -72,32 +73,56 @@
 \newcommand{\WRDrag}{2.21}
 \newcommand{\WRCD}{0.1208}
 \newcommand{\WRAlpha}{2.2877}
-\newcommand{\PenaltyErrorSummaryTable}{\begin{table}[H]\centering\normalfont\normalsize
+\newcommand{\PlacementCrossingTable}{\begin{table}[H]\centering\normalfont\normalsize
 \renewcommand{\arraystretch}{1.12}
-\caption{Early maximum coordinate residual, subsequent path RMSE/sample count, goal-plane error and termination.}\label{tab:penalty-errors}
-\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrl}\toprule
-Event & Model & Residual (mm) & RMSE (m)/$n$ & Goal (m) & Status\\\midrule
-Placement 1 & M1 & 36.00 & 0.244/3 & --- & ground\\
-Placement 1 & M2 & 26.13 & 0.136/3 & --- & ground\\
-Placement 1 & M3 & 0.00 & 0.826/6 & --- & no crossing\\
-Placement 1 & M4 & 25.90 & 0.234/5 & 0.360 & goal\\
-Power shot & M1 & 12.00 & 0.412/6 & 0.684 & goal\\
-Power shot & M2 & 10.28 & 0.356/7 & 0.657 & goal\\
-Power shot & M3 & 0.00 & 0.190/7 & 0.374 & goal\\
-Power shot & M4 & 2.90 & 0.093/7 & 0.113 & goal\\
-Placement 2 & M1 & 8.00 & 0.300/5 & 0.475 & goal\\
-Placement 2 & M2 & 7.01 & 0.320/6 & 0.475 & goal\\
-Placement 2 & M3 & 0.00 & 0.151/5 & 0.155 & goal\\
-Placement 2 & M4 & 1.12 & 0.132/5 & 0.146 & goal\\
+\caption{Placement-shot goal crossings and distance errors (m).}\label{tab:placement-crossings}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrr}\toprule
+Case & Model & Observed $(y,z)$ & Predicted $(y,z)$ & Distance\\\midrule
+Case 1 & M1 & $(2.750,0.160)$ & --- & ---\\
+Case 1 & M2 & $(2.750,0.160)$ & --- & ---\\
+Case 1 & M3 & $(2.750,0.160)$ & --- & ---\\
+Case 1 & M4 & $(2.750,0.160)$ & $(2.438,0.339)$ & 0.360\\
+Case 2 & M1 & $(3.070,0.466)$ & $(3.544,0.484)$ & 0.475\\
+Case 2 & M2 & $(3.070,0.466)$ & $(3.544,0.471)$ & 0.475\\
+Case 2 & M3 & $(3.070,0.466)$ & $(3.066,0.621)$ & 0.155\\
+Case 2 & M4 & $(3.070,0.466)$ & $(3.119,0.603)$ & 0.146\\
 \bottomrule\end{tabular}\end{table}}
+\newcommand{\PowerCrossingTable}{\begin{table}[H]\centering\normalfont\normalsize
+\renewcommand{\arraystretch}{1.12}
+\caption{Power-shot goal crossings and distance errors (m).}\label{tab:power-crossings}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrr}\toprule
+Case & Model & Observed $(y,z)$ & Predicted $(y,z)$ & Distance\\\midrule
+Case 3 & M1 & $(2.919,1.179)$ & $(2.350,1.558)$ & 0.684\\
+Case 3 & M2 & $(2.919,1.179)$ & $(2.349,1.506)$ & 0.657\\
+Case 3 & M3 & $(2.919,1.179)$ & $(3.289,1.126)$ & 0.374\\
+Case 3 & M4 & $(2.919,1.179)$ & $(2.934,1.291)$ & 0.113\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WMXPositionZero}{(3.04,0.55,0.13)}
+\newcommand{\WMXElevation}{1.08}
+\newcommand{\WMXVerticalSpeed}{0.55}
+\newcommand{\WMXLift}{5.03}
+\newcommand{\WMXVerticalLift}{+5.02}
+\newcommand{\WRPositionZero}{(2.57,0.85,0.34)}
+\newcommand{\WRElevation}{3.83}
+\newcommand{\WRVerticalSpeed}{1.89}
+\newcommand{\WRLift}{4.88}
+\newcommand{\WRVerticalLift}{+1.47}
+\newcommand{\WOHPositionZero}{(0.77,0.08,0.24)}
+\newcommand{\WOHElevation}{10.46}
+\newcommand{\WOHVerticalSpeed}{5.82}
+\newcommand{\WOHLift}{5.52}
+\newcommand{\WOHVerticalLift}{-1.94}
+\newcommand{\ProblemSpeed}{32.54}
+\newcommand{\ProblemElevation}{12.24}
 \newcommand{\WMXMThreeMaxX}{10.973}
+\newcommand{\WMXMThreeAX}{-56.25}
 \newcommand{\MFourParameterTable}{\begin{table}[H]\centering\small
 \caption{Fitted M4 states at the selected starting frames.}\label{tab:m4-parameters}
 \setlength{\tabcolsep}{4pt}\begin{tabular}{lrrrrrr}\toprule
 Event & $v_0$ (m/s) & $C_D$ & $\alpha$ & $n_x$ & $n_y$ & $n_z$\\\midrule
-J03WMX & 29.20 & 0.3623 & 2.2877 & 0.2280 & -0.9728 & 0.0413\\
-J03WR9 & 28.34 & 0.1208 & 2.2877 & 0.1439 & -0.2711 & -0.9517\\
-J03WOH & 32.05 & 0.3238 & 2.2877 & -0.2276 & 0.3170 & 0.9207\\
+Case 1 & 29.20 & 0.3623 & 2.2877 & 0.2280 & -0.9728 & 0.0413\\
+Case 2 & 28.34 & 0.1208 & 2.2877 & 0.1439 & -0.2711 & -0.9517\\
+Case 3 & 32.05 & 0.3238 & 2.2877 & -0.2276 & 0.3170 & 0.9207\\
 \bottomrule\end{tabular}\end{table}}
 \newcommand{\ReferenceCD}{0.2415}
 \newcommand{\ReferenceCL}{1.5251}
@@ -108,22 +133,16 @@ J03WOH & 32.05 & 0.3238 & 2.2877 & -0.2276 & 0.3170 & 0.9207\\
 \newcommand{\CurvedTime}{0.5022}
 \newcommand{\CurvedVX}{23.6354}
 \newcommand{\CurvedVZ}{4.1676}
-\newcommand{\PenaltyObservationTable}{\begin{table}[H]\centering\small
-\caption{Selected early positions and observed goal crossings in local coordinates.}\label{tab:penalty-observations}
-\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrr}\toprule
-Event & Source frame & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
-Placement 1 & 152602 & 0.00 & 3.040 & 0.550 & 0.130\\
-Placement 1 & 152603 & 0.04 & 4.190 & 0.820 & 0.150\\
-Placement 1 & 152604 & 0.08 & 5.250 & 1.070 & 0.180\\
-Placement 1 goal & 152610 & 0.3200 & 11.0000 & 2.7500 & 0.1600\\
-Placement 2 & 176245 & 0.00 & 2.570 & 0.850 & 0.340\\
-Placement 2 & 176246 & 0.04 & 3.640 & 1.200 & 0.410\\
-Placement 2 & 176247 & 0.08 & 4.710 & 1.530 & 0.470\\
-Placement 2 goal & 176253--176254 & 0.3295 & 11.0000 & 3.0697 & 0.4657\\
-Power shot & 128955 & 0.00 & 0.770 & 0.080 & 0.240\\
-Power shot & 128956 & 0.04 & 1.990 & 0.340 & 0.460\\
-Power shot & 128957 & 0.08 & 3.180 & 0.620 & 0.650\\
-Power shot goal & 128964--128965 & 0.3643 & 11.0000 & 2.9188 & 1.1789\\
+\newcommand{\PenaltyObservationTable}{\begin{table}[H]\centering\normalsize
+\caption{Two later input positions and observed goal crossings; coordinates in m.}\label{tab:penalty-observations}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{lrrr}\toprule
+Case & $t$ (s) & $(x,y,z)$ & Observed $(y_g,z_g)$\\\midrule
+Case 1 & 0.04 & $(4.19,0.82,0.15)$ & $(2.7500,0.1600)$\\
+Case 1 & 0.08 & $(5.25,1.07,0.18)$ & \\
+Case 2 & 0.04 & $(3.64,1.20,0.41)$ & $(3.0697,0.4657)$\\
+Case 2 & 0.08 & $(4.71,1.53,0.47)$ & \\
+Case 3 & 0.04 & $(1.99,0.34,0.46)$ & $(2.9188,1.1789)$\\
+Case 3 & 0.08 & $(3.18,0.62,0.65)$ & \\
 \bottomrule\end{tabular}\end{table}}
 \newcommand{\InverseBoundsTable}{\begin{table}[H]\centering\footnotesize
 \caption{Component bounds and force-correction settings for inversion.}\label{tab:inverse-bounds}
@@ -205,7 +224,7 @@ $w$ (m/s) & Headwind (\%) & Tailwind (\%) & Crosswind (\%) & Angle ($^\circ$)\\\
 \newcommand{\MCReplicaT}{0.328}
 \newcommand{\MCConvergenceT}{0.138}
 \newcommand{\SensitivityOneFactorTable}{\begin{table}[H]\centering\small
-\caption{Goal-plane displacement and arrival-time change under one-factor perturbations.}\label{tab:sensitivity-one-factor}
+\caption{Goal-plane displacement and arrival-time change under one-factor perturbations.}\label{tab:sensitivity-one-factor-template}
 \begin{tabular}{p{.32\textwidth}crr}\toprule
 Parameter & Perturbation & $\max D_g$ (cm) & $\max|\Delta t_g|$ (ms)\\\midrule
 Launch speed & $\pm5\%$ & 8.356 & 20.659\\
@@ -219,14 +238,14 @@ Lift parameter & $\pm5\%$ & 3.873 & 0.287\\
 Air density & $\pm5\%$ & 4.142 & 1.990\\
 \bottomrule\end{tabular}\end{table}}
 \newcommand{\SensitivityProfileTable}{\begin{table}[H]\centering\small
-\caption{Ranges of goal-plane crossings compatible with the early positions.}\label{tab:sensitivity-profile}
+\caption{Ranges of goal-plane crossings compatible with the early positions.}\label{tab:sensitivity-profile-template}
 \begin{tabular}{lrrr}\toprule
 Range of each multiplier & $y_g$ (m) & $z_g$ (m) & $t_g$ (s)\\\midrule
 $[1.35,1.65]$ & 2.5538--2.6550 & 1.9061--2.0369 & 0.3972--0.4025\\
 $[1.2,1.8]$ & 2.5478--2.6601 & 1.8972--2.0430 & 0.3972--0.4043\\
 \bottomrule\end{tabular}\end{table}}
 \newcommand{\SensitivityMonteCarloTable}{\begin{table}[H]\centering\small
-\caption{Monte Carlo crossing positions and arrival times (100,000 trajectories).}\label{tab:sensitivity-mc}
+\caption{Monte Carlo crossing positions and arrival times (100,000 trajectories).}\label{tab:sensitivity-mc-template}
 \begin{tabular}{lrr}\toprule
 Output & Sample minimum--maximum & Central 95\% interval, one coordinate\\\midrule
 $y_g$ (m) & 1.9633--3.2143 & 2.1858--3.0505\\
@@ -539,39 +558,49 @@ Let $\boldsymbol r_0$, $\boldsymbol v_0$ and $\boldsymbol\omega_0$ be the initia
 
 % BEGIN MODEL_SOLVING
 \section{Model Solving}\label{sec:solving}
-Early positions from three actual penalties determine inverse states whose continuations are compared with later observations. Two placement shots and one power shot provide different speeds, curvature directions and flight heights. As shown in Table~\ref{tab:models}, the four descriptions distinguish gravitational fall, drag-induced slowing, constant acceleration and spin-induced curvature.
-\begin{table}[H]\centering\small\caption{Four-model hierarchy and inverse quantities.}\label{tab:models}
-\begin{tabular}{lll}\toprule
-Model & Force or motion assumption & Inverse quantities\\\midrule
-M1 & gravity & initial velocity (3)\\
-M2 & gravity and drag & velocity and drag coefficient (4)\\
-M3 & constant resultant force & velocity and acceleration (6)\\
-M4 & gravity, drag and Magnus force & velocity, spin direction, $C_D$, $\alpha$ (7)\\\bottomrule
-\end{tabular}\end{table}
-The M3 resultant includes gravity and the other forces together. In M4, $C_D$ and $\alpha$ remain constant during a flight, while $C_L=\alpha Sp$ changes with speed. According to the coefficient relation of Kiratidis and Leinweber~\cite{kiratidis2018}, we describe the flow regime by the Reynolds number $Re=\dfrac{2Rv}{\nu}$, where $\nu$ is kinematic viscosity, and evaluate the reference coefficients at $Re^*=333793$ and $Sp^*=0.19$. The superscript $*$ denotes this reference condition: $C_D^*=\ReferenceCD$ and $\alpha^*=\dfrac{C_L(Re^*,Sp^*)}{Sp^*}=\ReferenceCL$. These values anchor the constant-coefficient approximation.
+This chapter develops models and an algorithm for inferring the initial motion from early ball positions and predicting the goal-plane crossing.
 
-\subsection{Inverse Prediction from Three Real Penalties}\label{sec:inverse}
-\subsubsection{Observations and numerical method}
-We use the Sportec Open DFL dataset described by Bassek et al.\ \cite{bassek} and released by DFL~\cite{dataset}. It combines match events with 25 Hz multi-camera ball tracking. As shown in Table~\ref{tab:data-provenance}, the three selected events comprise two placement shots and one power shot. For each flight, the first selected position after ball--foot separation defines a new time origin; the three inputs occur at $t=0,0.04,0.08$ s. As shown in Table~\ref{tab:penalty-observations}, their actual starting positions are retained, and the measured goal crossing supplies the later comparison. The penalty mark is the horizontal origin, with $x$ towards the goal, $y$ lateral and $z$ the centre height. The goal plane is $x=11$ m. The source records, observed positions and parameter ranges are collected in \hyperref[app:data]{Appendix A}.
+\subsection{Solution Method}\label{sec:inverse}
+\subsubsection{Model selection}
+Based on the force analysis in Chapter 3, we compare four models with different force assumptions:
+\begin{enumerate}
+\item \textbf{M1: gravity.} With $\boldsymbol a=(0,0,-g)$, only the three components of $\boldsymbol v_0$ are estimated. Spin has no effect on the trajectory.
+\item \textbf{M2: gravity and constant-coefficient drag.} Only weight and drag opposite to velocity are considered. The estimated parameters are the initial velocity and constant $C_D$, for four unknowns in total.
+\item \textbf{M3: constant resultant force.} All forces are represented by a constant resultant acceleration $\boldsymbol a$. The three components of $\boldsymbol v_0$ and three of $\boldsymbol a$ form six unknowns. Gravity is included in this resultant.
+\item \textbf{M4: gravity, drag and Magnus force.} The force relations of Section~\ref{sec:model} determine the motion. We estimate three initial velocity components, two spin-direction angles, $C_D$ and the linear lift parameter $\alpha$: seven unknowns.
+\end{enumerate}
 
-Integration uses DOP853 with a maximum step of 0.005 s, relative tolerance $10^{-10}$ and absolute tolerance $10^{-12}$. Forward roots of $x-11=0$ and descending roots of $z-R=0$ locate the goal crossing and first ground contact.
+\subsubsection{Inverse method}
+For measured positions $\boldsymbol r_i$ at times $t_i$ ($i=0,1,2$), let $\widehat{\boldsymbol r}(t_i;\boldsymbol p)$ denote the prediction associated with the unknown parameter vector $\boldsymbol p$. We minimize the six coordinate residuals through
+\[
+J(\boldsymbol p)=\sum_{i=1}^{2}\left\|\widehat{\boldsymbol r}(t_i;\boldsymbol p)-\boldsymbol r_i\right\|^2.
+\]
+The parameter bounds for the four models appear in \hyperref[app:data]{Appendix A}.
 
-\subsubsection{Inversion and reference states}
-M1 fits velocity, while M2 fits velocity and drag coefficient. For M3, let $\boldsymbol a$ be the constant acceleration in m/s$^2$. The three positions satisfy
+After fitting, the inferred state is integrated to the goal plane $x=11$ m. The goal-crossing distance error is
 \begin{equation}
-\boldsymbol r(t)=\boldsymbol r_0+\boldsymbol v_0t+\dfrac{1}{2}\boldsymbol a t^2.
-\label{eq:m3-interpolation}\end{equation}
-M4 fits three velocity components, two spin-direction angles and two coefficients by minimizing squared coordinate errors at the two later positions. Six deterministic starts are optimized and the smallest-residual result is selected. As shown in Table~\ref{tab:inverse-bounds}, the search intervals specify the allowed velocity, spin direction and coefficient ratios. Since $\alpha\boldsymbol\omega$ determines rotational deflection, we use a 30 rad/s reference magnitude and fit direction and $\alpha$. Define the unit spin axis $\boldsymbol n=\dfrac{\boldsymbol\omega}{\|\boldsymbol\omega\|}$, with components $n_x,n_y,n_z$. As shown in Table~\ref{tab:m4-parameters}, the fitted speed, coefficients and axis distinguish the initial states of the three shots.
+E_g=\sqrt{(\widehat y_g-y_g)^2+(\widehat z_g-z_g)^2},
+\label{eq:prediction-errors}\end{equation}
+where $(y_g,z_g)$ is the observed crossing and hats denote the prediction. Further parameter and source records appear in \hyperref[app:data]{Appendix A}.
 
-Let $\boldsymbol r_i$ be a measured centre position at time $t_i$ and $\widehat{\boldsymbol r}(t_i)$ its prediction; $n$ is the number of later positions compared. Hats on the goal coordinates similarly distinguish predictions from observations. The three-dimensional root-mean-square path error $\mathrm{RMSE}_{3D}$ and goal-plane error $E_g$, both in metres, are
-\begin{equation}\begin{aligned}
-\mathrm{RMSE}_{3D}&=\sqrt{\dfrac{1}{n}\sum_{i=1}^{n}\|\widehat{\boldsymbol r}(t_i)-\boldsymbol r_i\|^2},\\
-E_g&=\sqrt{(\widehat y_g-y_g)^2+(\widehat z_g-z_g)^2}.
-\end{aligned}\label{eq:prediction-errors}\end{equation}
-Path comparisons use observations after the fitted times and before first contact or the goal crossing, with sample count $n$ listed in the table. $E_g$ is evaluated when a model crosses the goal plane; its observed counterpart comes from a source frame or interpolation between frames.
+\subsubsection{Dataset}
+To assess the general applicability of the models, we use the Sportec Open DFL dataset described by Bassek et al.\ \cite{bassek} and released by DFL~\cite{dataset}, which combines match events with 25 Hz multi-camera tracking. We select the following three penalties, referred to as Cases 1, 2 and 3:
+\begin{enumerate}
+\item \textbf{Case 1:} Dejan Ljubicic's penalty in 1. FC Köln--FC Bayern München on 27 May 2023.
+\item \textbf{Case 2:} Philipp Klement's penalty in Fortuna Düsseldorf--1. FC Kaiserslautern on 11 November 2022.
+\item \textbf{Case 3:} Dawid Kownacki's penalty in Fortuna Düsseldorf--SSV Jahn Regensburg on 26 August 2022.
+\end{enumerate}
 
-\subsection{Case Analysis and Validation}\label{sec:case-validation}
-As shown in Figure~\ref{fig:shot-photos}, the photographs illustrate the two shot styles: Figure~\ref{fig:placement-photo} shows the placement shot close to the turf, while Figure~\ref{fig:power-photo} shows the power shot higher in the air.
+The selected starting positions are $\boldsymbol r_0=\WMXPositionZero$ m, $\WRPositionZero$ m and $\WOHPositionZero$ m for Case 1, Case 2 and Case 3, respectively; each defines $t=0$. As shown in Table~\ref{tab:penalty-observations}, the next two positions occur at 0.04 and 0.08 s.
+\PenaltyObservationTable
+
+\subsection{Case Analysis}\label{sec:case-validation}
+According to Hunter et al.\ \cite{hunter2018}, penalty technique and ball speed affect accuracy and the goalkeeper's anticipation. Studying the kicker's technique helps interpret and predict penalty trajectories. We distinguish two common approaches:
+\begin{enumerate}
+\item \textbf{Precise placement shot.} A side-foot contact favours control of direction and accurate placement. A low trajectory can carry the ball towards a lateral target while keeping it close to the turf.
+\item \textbf{Power instep shot.} An instep contact emphasizes a fast strike, shortening the goalkeeper's available response time. The launch direction can produce a higher flight towards the goal.
+\end{enumerate}
+Reviewing the match footage, we classify Case 1 and Case 2 as placement shots and Case 3 as a power shot. As shown in Figure~\ref{fig:shot-photos}, Figures~\ref{fig:placement-photo} and~\ref{fig:power-photo} illustrate the low placement and higher power-shot flight patterns, respectively.
 \begin{figure}[H]\centering
 \begin{subfigure}[t]{.48\textwidth}\centering
 \includegraphics[width=\linewidth,height=.666667\linewidth]{placement_shot_example.png}
@@ -584,71 +613,55 @@ As shown in Figure~\ref{fig:shot-photos}, the photographs illustrate the two sho
 \caption{Photographic examples of placement and power shots.}\label{fig:shot-photos}
 \end{figure}
 
-As shown in Figure~\ref{fig:penalty-overview}, the three spatial paths differ in height and curvature. Open circles are inverse inputs, black points and lines are observations, coloured lines are predictions, and crosses are observed goal crossings.
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_spatial_overview.pdf}
-\caption{Observed and predicted paths for placement 1, the power shot and placement 2, from left to right. Fitting times are 0, 0.04 and 0.08 s in each case.}\label{fig:penalty-overview}\end{figure}
+\subsubsection{Precise placement shots}
+As shown in Figure~\ref{fig:placement-paths}, both placement shots remain low.
 
-\subsubsection{Case 1: Placement shots}
-As shown in Figure~\ref{fig:placement-paths}, the four descriptions produce different continuations of the two low flights.
-\begin{figure}[H]\centering\includegraphics[width=.98\textwidth]{placement_spatial_comparison.pdf}
-\caption{Measured and predicted trajectories for the two placement cases.}\label{fig:placement-paths}\label{fig:placement-example}\end{figure}
-Both placement shots travel close to the ground. From the M4 initial states, the starting speeds are \WMXSpeed\ m/s and \WRSpeed\ m/s. For placement 1, M1 and M2 reach the ground before the goal. For M3, the longitudinal acceleration is $a_x=-56.25$ m/s$^2$; from Eq.~\eqref{eq:m3-interpolation}, the maximum forward position is $x=\WMXMThreeMaxX$ m, short of the goal. M4 reaches the plane with a crossing error of \WMXMFourGoalError\ m and a subsequent path RMSE of \WMXMFourPathRMSE\ m.
+\begin{figure}[H]\centering\includegraphics[width=.96\textwidth]{placement_spatial_comparison.pdf}
+\caption{Measured and predicted trajectories for the two placement shots.}\label{fig:placement-paths}\label{fig:placement-example}\end{figure}
+In M4, the initial vertical velocities are \WMXVerticalSpeed\ and \WRVerticalSpeed\ m/s for the two cases. As shown in Figures~\ref{fig:placement-paths} and~\ref{fig:placement-dynamics}, M1 and M2 touch the ground early in Case 1, and M3 does not reach the goal plane, while M4 stays closer to the measured flight. Comparing the four models suggests that the upward Magnus force associated with spin partly offsets gravitational fall and allows the ball to continue towards the goal along a low trajectory. In Case 2, both M3 and M4 reproduce bending in the $y$ direction, with M4 providing the most accurate prediction. Thus, the small upward velocity keeps a placement shot low, while Magnus force plays a key role in maintaining its height.
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_placement_dynamics.pdf}
+\caption{M4 speed, drag and Magnus-force magnitude for the two placement shots. Axis scales match Figure~\ref{fig:power-dynamics}.}\label{fig:placement-dynamics}\end{figure}
 
-All four models reach the goal for placement 2, with crossing errors \WRMOneGoalError, \WRMTwoGoalError, \WRMThreeGoalError\ and \WRMFourGoalError\ m. Constant acceleration carries forward the early curvature in this case; M4 reduces the path RMSE from M3's \WRMThreePathRMSE\ m to \WRMFourPathRMSE\ m. Gravity draws a low flight downward, while the vertical Magnus component raises or lowers it according to spin direction. Together they determine whether the ball reaches the goal before contact.
-
-\subsubsection{Case 2: Power shot}
-From the M4 initial state, the starting speed is \WOHSpeed\ m/s. As shown in Figure~\ref{fig:penalty-J03WOH}, the spatial path and coordinate histories connect forward deceleration with lateral and vertical curvature.
+\subsubsection{Power instep shot}
+As shown in Figure~\ref{fig:power-paths}, Case 3 rises substantially higher than the two placement shots.
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WOH.pdf}
-\caption{Power-shot path and coordinate histories. Open circles are inverse inputs, black points are observations, and coloured curves are predictions.}\label{fig:power-paths}\label{fig:penalty-J03WOH}\end{figure}
-M1--M4 have crossing errors of \WOHMOneGoalError, \WOHMTwoGoalError, \WOHMThreeGoalError\ and \WOHMFourGoalError\ m, and subsequent path RMSE values of \WOHMOnePathRMSE, \WOHMTwoPathRMSE, \WOHMThreePathRMSE\ and \WOHMFourPathRMSE\ m. Lateral motion in M1 and M2 follows the initial velocity; M3 extends constant acceleration. M4 curves the path through changing drag and Magnus forces, giving the smallest values of both errors for this shot.
+\caption{Case 3: spatial trajectory, $x(t)$, $y(t)$ and $z(t)$ in a $2\times2$ layout. Symbols follow Figure~\ref{fig:placement-paths}.}\label{fig:power-paths}\label{fig:penalty-J03WOH}\end{figure}
+The M4 initial speed is \WOHSpeed\ m/s, exceeding the two placement values of \WMXSpeed\ and \WRSpeed\ m/s. Its elevation is \WOHElevation$^\circ$ and initial vertical velocity \WOHVerticalSpeed\ m/s, producing a higher flight. As shown in Figure~\ref{fig:power-dynamics} and Table~\ref{tab:power-crossings}, M1 and M2 do not adequately capture the lateral bending. The M3 and M4 trajectories show how the upward initial velocity raises the ball, while gravity and the downward Magnus component in M4 bend the flight back. Magnus force therefore plays a key role in the lateral curvature of this power shot.
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_power_dynamics.pdf}
+\caption{M4 speed, drag and Magnus-force magnitude for the power shot, on the same axes as Figure~\ref{fig:placement-dynamics}.}\label{fig:power-dynamics}\end{figure}
+\PowerCrossingTable
+Considering both a valid goal-plane prediction and its distance error, accounting for drag and spin, especially the changing Magnus force during flight, makes \textbf{M4 the better model for these three cases.}
 
-\paragraph{Speed and aerodynamic forces.} As shown in Figure~\ref{fig:penalty-dynamics}, the M4 speed and force histories explain how the fitted states develop during flight. Initial drag is \WOHDrag\ N for the power shot and \WMXDrag\ N and \WRDrag\ N for the placement shots. Drag depends on $C_Dv^2$, combining speed with the fitted coefficient, and decreases as the flight slows. Linear lift depends on $\alpha(\boldsymbol\omega\times\boldsymbol v)$; the angle and direction between spin and velocity determine its lateral and vertical effects.
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_m4_dynamics.pdf}
-\caption{M4 speeds, drag and Magnus force for the three penalties. Curves end at first ground contact or the goal plane.}\label{fig:penalty-dynamics}\end{figure}
-As shown in Table~\ref{tab:penalty-errors}, early fitting residuals, subsequent path errors and goal-plane errors describe different aspects of prediction. The termination status identifies shots that reach the ground or fail to reach the goal plane.
-\PenaltyErrorSummaryTable
+\subsection{M4 Inversion for the Problem B Observations}\label{sec:problem-inverse}
+The initial centre is $(0,0,0.11)$ m. As shown in Table~\ref{tab:sensitivity-reference}, Problem B specifies two later positions at 0.05 and 0.10 s. We apply the same M4 inverse method and parameter settings to these inputs.
+\begin{table}[H]\centering\normalsize
+\caption{Initial position and two observations specified in Problem B.}\label{tab:sensitivity-reference}
+\begin{tabular}{crrr}\toprule
+$t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+0 & 0 & 0 & 0.11\\
+0.05 & 1.50 & 0.45 & 0.44\\
+0.10 & 2.96 & 0.86 & 0.74\\\bottomrule
+\end{tabular}\end{table}
+The inferred initial motion is
+\begin{equation}\begin{aligned}
+\boldsymbol v_0&=(\SensitivityReferenceVX,\SensitivityReferenceVY,\SensitivityReferenceVZ)\;\mathrm{m/s},\\
+\boldsymbol\omega_0&=(\SensitivityReferenceWX,\SensitivityReferenceWY,\SensitivityReferenceWZ)\;\mathrm{rad/s}.
+\end{aligned}\label{eq:sensitivity-reference-state}\end{equation}
+As shown in Figure~\ref{fig:problem-m4}, \textbf{the predicted goal-plane crossing is $(y_g,z_g)=(\SensitivityReferenceY,\SensitivityReferenceZ)$ m}. The inferred speed of \ProblemSpeed\ m/s, elevation of \ProblemElevation$^\circ$ and pronounced lateral bending indicate that \textbf{this trajectory more closely resembles the power-shot type studied in this chapter.}
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{problem_b_M4.pdf}
+\caption{M4 prediction for Problem B, showing the three input positions, goal and predicted crossing.}\label{fig:problem-m4}\end{figure}
+Section~\ref{sec:sensitivity} uses this inferred state to study changes in the goal crossing and its distribution.
 % END MODEL_SOLVING
 
 
 \section{Sensitivity Analysis}\label{sec:sensitivity}
 
 % BEGIN SENSITIVITY_BODY
-\noindent\hspace*{\parindent}This chapter uses the three early positions supplied in the problem to examine how initial motion, aerodynamic parameters and air density affect the goal-plane crossing and arrival time. The model includes gravity, drag and Magnus force, with still air, constant spin, a fixed mass of 0.43 kg and a fixed radius of 0.11 m.
+\noindent\hspace*{\parindent}This chapter uses the M4 state inferred in Section~\ref{sec:problem-inverse} to examine how initial motion, aerodynamic parameters and air density affect the goal-plane crossing and arrival time. The model includes gravity, drag and Magnus force, with still air, constant spin, a fixed mass of 0.43 kg and a fixed radius of 0.11 m. The early positions in Table~\ref{tab:sensitivity-reference} also constrain the alternative trajectories considered below.
 
+The reference crossing is $(y_g^*,z_g^*)=(\SensitivityReferenceY,\SensitivityReferenceZ)$ m, with arrival time $t_g^*=\SensitivityReferenceTime$ s. The corresponding coefficients are $C_D=0.3623$ and $\alpha=2.2877$, and the maximum early-coordinate residual is 0.784 mm.
 
-\begin{table}[H]
-\centering
-\small
-\renewcommand{\arraystretch}{1.16}
-\caption{Early positions for the supplied example}
-\begin{tabular}{lccc}
-\toprule
-Time $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\
-\midrule
-0 & 0 & 0 & 0.11\\
-0.05 & 1.50 & 0.45 & 0.44\\
-0.10 & 2.96 & 0.86 & 0.74\\
-\bottomrule
-\end{tabular}
-\label{tab:sensitivity-reference}
-\end{table}
-
-Applying the inverse method of Section 4 with a reference spin magnitude of 30 rad/s gives the initial state
-
-
-\begin{equation}
-\begin{aligned}
-\boldsymbol v_0&=(30.3784,\ 9.4074,\ 6.8974)\ \mathrm{m/s},\\
-\boldsymbol\omega_0&=(19.7434,\ 1.2060,\ -22.5553)\ \mathrm{rad/s}.
-\end{aligned}
-\label{eq:sensitivity-reference-state}
-\end{equation}
-
-The corresponding drag coefficient is $C_D=0.3623$ and the linear lift parameter is $\alpha=2.2877$. The maximum early-coordinate residual is 0.784 mm. The trajectory reaches the goal plane at $t_g^*=0.398967$ s, with crossing coordinates $(y_g^*,z_g^*)=(2.6159,1.9526)$ m.
-
-
-Taking this trajectory as the reference, we first vary individual parameters to identify their effects on position and arrival time. We then retain the early-position constraints and examine predictions from different parameter combinations. Finally, joint perturbations provide the crossing distribution and its statistical ranges.
-
+We first vary one parameter at a time to identify its effect on the crossing and arrival time, then retain the early-position constraints to compare predictions from different parameter combinations. Finally, joint perturbations generate the crossing distribution and its statistical ranges.
 
 \FloatBarrier
 \subsection{Effects of Individual Parameters on Crossing Position and Arrival Time}\label{sec:sensitivity-local}
@@ -936,12 +949,13 @@ A 5\% limit on the headwind dynamic-pressure change corresponds to $\dfrac{w}{v}
 \section{Conclusions}
 The four models describe gravitational fall, deceleration, a constant resultant force and rotational deflection. M3 obtains constant acceleration from three positions. M4 inserts constant $C_D$ and $C_L=\alpha Sp$ into the motion equations, updating drag and Magnus force as speed changes.
 
-For M4, the crossing errors are \WMXMFourGoalError, \WRMFourGoalError\ and \WOHMFourGoalError\ m for the three penalties. Its power-shot crossing error and subsequent path RMSE are the smallest among the four models. For placement 1, M3 passes through the early positions but reaches a maximum $x=\WMXMThreeMaxX$ m, short of the goal; M4 supplies a goal-plane prediction for this low flight.
+For M4, the crossing errors are \WMXMFourGoalError, \WRMFourGoalError\ and \WOHMFourGoalError\ m for the three penalties. Its power-shot crossing error and subsequent path RMSE are the smallest among the four models. For Case 1, M3 passes through the early positions but reaches a maximum $x=\WMXMThreeMaxX$ m, short of the goal; M4 supplies a goal-plane prediction for this low flight.
 
 In the competition-position example, a $1^\circ$ launch-direction change moves the crossing by about 0.20 m, while speed strongly affects arrival time. Spin magnitude and $\alpha$ compensate through the linear lift law. The largest grid-search shift under the 2 mm position constraint is \SensitivityConditionalShift\ m; \MCClearPercent\% of 100,000 jointly perturbed flights clear the opening.
 
 Rotational damping shifts the reference curved-shot crossing by \TorqueDisplacement\ m. Wind enters through relative velocity: along the flight direction, drag changes with the squared speed ratio and linear Magnus force with the speed ratio.
 
+\Needspace{24\baselineskip}
 \section{Model Evaluation}
 
 \subsection{Model Strengths}
@@ -974,23 +988,24 @@ Rotational damping shifts the reference curved-shot crossing by \TorqueDisplacem
 \bibitem{mujoco381} MuJoCo developers, MuJoCo 3.8.1, ellipsoid fluid model, \texttt{mj\_viscousForces} in \texttt{src/engine/engine\_passive.c}. \href{https://github.com/google-deepmind/mujoco/blob/3.8.1/src/engine/engine_passive.c}{Version 3.8.1 source}; default angular drag: \href{https://mujoco.readthedocs.io/en/stable/XMLreference.html#body-geom-fluidcoef}{XML reference, geom/fluidcoef}. Accessed 8 November 2026.
 \bibitem{goff2009} J. E. Goff and M. J. Carr\'e, ``Trajectory analysis of a soccer ball,'' \emph{American Journal of Physics}, 77, 1020--1027, 2009. \url{https://doi.org/10.1119/1.3197187}.
 \bibitem{alam2012} F. Alam, H. Chowdhury, M. Stemmer, Z. Wang and J. Yang, ``Effects of surface structure on soccer ball aerodynamics,'' \emph{Procedia Engineering}, 34, 146--151, 2012. \url{https://doi.org/10.1016/j.proeng.2012.04.026}.
+\bibitem{hunter2018} A. H. Hunter, S. C. Murphy, M. J. Angilletta Jr. and R. S. Wilson, ``Anticipating the Direction of Soccer Penalty Shots Depends on the Speed and Technique of the Kick,'' \emph{Sports}, 6(3), 73, 2018. \url{https://doi.org/10.3390/sports6030073}.
 \end{thebibliography}
 
 \newpage\section*{Appendix A: Data Sources, Frame Selection and Parameter Bounds}\label{app:data}
 \addcontentsline{toc}{section}{Appendix A: Data Sources, Frame Selection and Parameter Bounds}
 \begingroup\def\small{\fontsize{10}{11}\selectfont}\small\setlength{\intextsep}{3pt}\captionsetup{font=small,skip=3pt}\renewcommand{\arraystretch}{.95}
-Following the dataset description by Bassek et al.\ \cite{bassek} and the DFL release~\cite{dataset}, we retain the source event and frame identifiers. The three selected penalties contain 39 records, with 15, 12 and 12 for the respective events. As shown in Table~\ref{tab:data-provenance}, each case is associated with its player, event identifier and selected samples.
+Following the dataset description by Bassek et al.\ \cite{bassek} and the DFL release~\cite{dataset}, we retain the source event and frame identifiers. The three selected penalties contain 39 records, with 15, 12 and 12 for the respective events. As shown in Table~\ref{tab:data-provenance}, each case is associated with its player and selected samples.
 \begin{table}[H]\centering\small\caption{Correspondence between case labels and source records}\label{tab:data-provenance}
-\begin{tabular}{llll}\toprule
-Case & Event ID & Player & Selected samples\\\midrule
-Placement 1 & J03WMX & Dejan Ljubicic & 3, 4, 5\\
-Placement 2 & J03WR9 & Philipp Klement & 3, 4, 5\\
-Power shot & J03WOH & Dawid Igor Kownacki & 2, 3, 4\\\bottomrule
+\begin{tabular}{lll}\toprule
+Case & Player & Selected samples\\\midrule
+Case 1 & Dejan Ljubicic & 3, 4, 5\\
+Case 2 & Philipp Klement & 3, 4, 5\\
+Case 3 & Dawid Igor Kownacki & 2, 3, 4\\\bottomrule
 \end{tabular}\end{table}
 The first selected position is the time origin and the fitting times are 0, 0.04 and 0.08 s. Their source-time origins are 0.08, 0.08 and 0.04 s in the table's order. Repeated and post-goal records are retained; later positions are used only for validation. The observed goal crossing uses a source frame or interpolation. Let $(X,Y,Z_{\rm original})$ denote the published pitch-centred coordinates. The height is interpreted in metres as ball-centre height, and the local coordinates follow from $x=X-41.5$, $y=Y$ and $z=Z_{\rm original}$.
 
 As shown in Table~\ref{tab:penalty-observations}, the retained inputs and observed crossings share one local coordinate system. As shown in Table~\ref{tab:inverse-bounds}, the inverse variables have specified search ranges.
-\PenaltyObservationTable
+
 \InverseBoundsTable
 As shown in Table~\ref{tab:m4-parameters}, the M4 states differ in speed, coefficients and unit spin axis $\boldsymbol n=\dfrac{\boldsymbol\omega}{\|\boldsymbol\omega\|}$.
 \MFourParameterTable

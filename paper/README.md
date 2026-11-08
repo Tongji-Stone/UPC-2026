@@ -18,6 +18,7 @@
     python -B scripts/four_model_compute.py inverse --force
     python -B scripts/four_model_compute.py other
     python -B scripts/four_model_compute.py collect
+    python -B scripts/chapter4_compute.py
     python -B scripts/sensitivity_reference_compute.py
     python -B scripts/sensitivity_v2_compute.py
     python -B scripts/sensitivity_v2_check.py
@@ -41,7 +42,7 @@ package_report.py 生成完整项目包及散列清单，排除缓存、编译�
 
 ## 排版与示例照片
 
-目录与球门交点误差表采用正文的 `normalsize`（12 pt）。两张用户提供的射门照片保存在 `assets/`，来源文件与SHA256见 `shot_photo_sources.json`。照片在案例分析开头组成等宽等高的左右子图，分别展示精准推射与大力射门；各例轨迹图独立排列。大力射门四面板图采用更宽面板间距、全正文宽度及放大的标注；两次精准推射对照图可用 `python scripts/four_model_plot.py --placement-only` 从现有结果生成。接缝球示意与六种足球表面细节采用左右子图，共用图号；旋转阻尼小节保留模型来源与物理结论，数值沿用既有计算。
+目录与球门交点误差表采用正文的 `normalsize`（12 pt）。两张用户提供的射门照片保存在 `assets/`，来源文件与SHA256见 `shot_photo_sources.json`。照片在案例分析开头组成等宽等高的左右子图，分别展示精准推射与大力射门；各例轨迹图独立排列。大力射门四面板图采用 2×2 排列、加宽面板间距及放大的标注；两次精准推射三维图左右并排，可用 `python scripts/four_model_plot.py --placement-only` 从现有结果生成。接缝球示意与六种足球表面细节采用左右子图，共用图号；旋转阻尼小节保留模型来源与物理结论，数值沿用既有计算。
 
 第八章按“Model Strengths / Model Weaknesses”重写，中文对应“模型优点 / 模型缺点”，两版保持相同论述结构。
 
@@ -55,4 +56,10 @@ package_report.py 生成完整项目包及散列清单，排除缓存、编译�
 
 两版重写问题背景、完整赛题重述和物理假设，保留四模型及全部计算结果。阻力与马格努斯力各增加无编号推导，最终式（3）至式（7）保持不变。正文明确介绍附录数据来源及表格；所有实际出现的图表均在正文引用，参考文献均在正文使用。未调用的分案例重复表格宏已从生成脚本删除。
 
-仓库内运行 `python scripts/verify_report_narrative.py`，可核对实际编译图表的正文引用、文献使用、假设术语、单文件结构、路线图不变及相对 5799e1a 的物理公式和数值文件不变。结果保存于 results/current_report/narrative_verification.json。
+仓库内运行 `python scripts/verify_report_narrative.py`，可核对实际编译图表的正文引用、文献使用、假设术语、单文件结构、路线图，以及相对 d86d90c 的物理公式和原始数值结果；同时核对已确认提交30d0dea中的摘要、第五章分析、第八章和图13复算结果得到保留。第五章开头改为引用第四章题给算例。结果保存于 results/current_report/narrative_verification.json。
+
+## 第四章两类点球对照
+
+当前章节、最终图件布局、题设重算与核验入口见 [第四章两类点球对照](../docs/第四章两类点球对照.md)。新增 `chapter4_compute.py` 重新核验题设 M4；`four_model_plot.py --chapter4-only` 仅重画第四章；`verify_chapter4.py` 执行 101 项源文件与数值检查。最终在编辑器编译中英文 `main.tex`，不以旧导出 PDF 作为本轮编译依据。
+
+2026-11-09合并后已重新导出并核对中英文PDF，分别为29页和31页。题给位置与反演状态在第四章呈现，第五章引用该结果；新版发布核对记录见 `results/current_report/github_publication_verification.json`。

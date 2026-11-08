@@ -1,0 +1,55 @@
+{
+  "all_passed": true,
+  "editions": {
+    "paper": {
+      "pages": 31,
+      "tex_sha256": "faf499062058207656345329a2445b0fd9797afca9451a2840b9ed7bc43c4638",
+      "pdf_sha256": "9e45d343bab402d2c22903b70025434a08cfb138a1946cfc8e819723c4b6f162",
+      "pdf_newer_than_source": true,
+      "no_unresolved_references": true,
+      "compile_errors": [],
+      "out_of_page_text": [],
+      "all_fonts_embedded": true
+    },
+    "_中文版": {
+      "pages": 29,
+      "tex_sha256": "6a2f7d930a8a31d1de9f7893cd45887986656fda2aadf59caa2fab848c5b57a6",
+      "pdf_sha256": "8c31b3918cde9865f9f6d3622ff70f0aaa4e8a4096833727ba4c26e44a759998",
+      "pdf_newer_than_source": true,
+      "no_unresolved_references": true,
+      "compile_errors": [],
+      "out_of_page_text": [],
+      "all_fonts_embedded": true
+    }
+  },
+  "remote_revision": "d86d90c56eec778dcbb0e3cf7c974f0a577fb3d0",
+  "approved_revision": "30d0dea",
+  "unit_tests": {
+    "passed": 42,
+    "failed": 0
+  },
+  "checks": {
+    "chapter4": 101,
+    "sensitivity_integration": 51,
+    "narrative_and_preservation": 46
+  },
+  "merge_decisions": [
+    "Preserve the approved bilingual abstracts and chapter 8 verbatim.",
+    "Preserve all approved chapter 5 analysis subsections and the 5049-trajectory Figure 13 recalculation.",
+    "Retain remote chapter 4 verbatim; reference its problem table and inferred initial state from the chapter 5 introduction.",
+    "Keep all remote physics derivations, still-air notation, figures and references."
+  ],
+  "visual_review": {
+    "contact_sheets": true,
+    "chapter4_to_5_transition": true,
+    "refined_crossing_figure": true,
+    "chapter8": true
+  },
+  "validation_records": [
+    "results/current_report/bilingual_verification.json",
+    "results/current_report/narrative_verification.json",
+    "results/sensitivity_linear/integration_verification.json",
+    "results/current_report/pdf_verification.json",
+    "results/current_report/chapter4/verification.json"
+  ]
+}

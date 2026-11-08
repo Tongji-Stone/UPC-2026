@@ -1,0 +1,272 @@
+{
+  "all_passed": true,
+  "checks": {
+    "39_source_frames": true,
+    "J03WMX_times": true,
+    "J03WMX_M1_current_source": true,
+    "J03WMX_M1_selected_inputs": true,
+    "J03WMX_M1_fit_interval": true,
+    "J03WMX_M1_selection": true,
+    "J03WMX_M1_no_false_goal": true,
+    "J03WMX_M2_current_source": true,
+    "J03WMX_M2_selected_inputs": true,
+    "J03WMX_M2_fit_interval": true,
+    "J03WMX_M2_selection": true,
+    "J03WMX_M2_no_false_goal": true,
+    "J03WMX_M3_current_source": true,
+    "J03WMX_M3_selected_inputs": true,
+    "J03WMX_M3_fit_interval": true,
+    "J03WMX_M3_selection": true,
+    "J03WMX_M3_no_false_goal": true,
+    "J03WMX_M4_current_source": true,
+    "J03WMX_M4_selected_inputs": true,
+    "J03WMX_M4_fit_interval": true,
+    "J03WMX_M4_selection": true,
+    "J03WMX_M4_crossing_error": true,
+    "J03WOH_times": true,
+    "J03WOH_M1_current_source": true,
+    "J03WOH_M1_selected_inputs": true,
+    "J03WOH_M1_fit_interval": true,
+    "J03WOH_M1_selection": true,
+    "J03WOH_M1_crossing_error": true,
+    "J03WOH_M2_current_source": true,
+    "J03WOH_M2_selected_inputs": true,
+    "J03WOH_M2_fit_interval": true,
+    "J03WOH_M2_selection": true,
+    "J03WOH_M2_crossing_error": true,
+    "J03WOH_M3_current_source": true,
+    "J03WOH_M3_selected_inputs": true,
+    "J03WOH_M3_fit_interval": true,
+    "J03WOH_M3_selection": true,
+    "J03WOH_M3_crossing_error": true,
+    "J03WOH_M4_current_source": true,
+    "J03WOH_M4_selected_inputs": true,
+    "J03WOH_M4_fit_interval": true,
+    "J03WOH_M4_selection": true,
+    "J03WOH_M4_crossing_error": true,
+    "J03WR9_times": true,
+    "J03WR9_M1_current_source": true,
+    "J03WR9_M1_selected_inputs": true,
+    "J03WR9_M1_fit_interval": true,
+    "J03WR9_M1_selection": true,
+    "J03WR9_M1_crossing_error": true,
+    "J03WR9_M2_current_source": true,
+    "J03WR9_M2_selected_inputs": true,
+    "J03WR9_M2_fit_interval": true,
+    "J03WR9_M2_selection": true,
+    "J03WR9_M2_crossing_error": true,
+    "J03WR9_M3_current_source": true,
+    "J03WR9_M3_selected_inputs": true,
+    "J03WR9_M3_fit_interval": true,
+    "J03WR9_M3_selection": true,
+    "J03WR9_M3_crossing_error": true,
+    "J03WR9_M4_current_source": true,
+    "J03WR9_M4_selected_inputs": true,
+    "J03WR9_M4_fit_interval": true,
+    "J03WR9_M4_selection": true,
+    "J03WR9_M4_crossing_error": true,
+    "paper_references": true,
+    "paper_unique_labels": true,
+    "paper_bibliography_in_body": true,
+    "paper_single_file": true,
+    "paper_removed_outputs": true,
+    "paper_observation_table_once": true,
+    "paper_PlacementCrossingTable_rows": true,
+    "paper_PowerCrossingTable_rows": true,
+    "paper_cites_placement-paths": true,
+    "paper_cites_placement-dynamics": true,
+    "paper_cites_power-paths": true,
+    "paper_cites_power-dynamics": true,
+    "paper_cites_problem-m4": true,
+    "paper_images_exist": true,
+    "paper_section_count": true,
+    "_中文版_references": true,
+    "_中文版_unique_labels": true,
+    "_中文版_bibliography_in_body": true,
+    "_中文版_single_file": true,
+    "_中文版_removed_outputs": true,
+    "_中文版_observation_table_once": true,
+    "_中文版_PlacementCrossingTable_rows": true,
+    "_中文版_PowerCrossingTable_rows": true,
+    "_中文版_cites_placement-paths": true,
+    "_中文版_cites_placement-dynamics": true,
+    "_中文版_cites_power-paths": true,
+    "_中文版_cites_power-dynamics": true,
+    "_中文版_cites_problem-m4": true,
+    "_中文版_images_exist": true,
+    "_中文版_section_count": true,
+    "bilingual_numbered_equations": true,
+    "bilingual_numeric_macros": true,
+    "problem_same_entry": true,
+    "problem_same_reference": true,
+    "shared_physics_and_fit_unchanged": true,
+    "sensitivity_and_real_results_unchanged": true,
+    "shared_dynamics_axes": true
+  },
+  "crossings": [
+    {
+      "case": "J03WMX",
+      "model": "M1",
+      "status": "ground",
+      "observed": [
+        2.75,
+        0.16
+      ],
+      "predicted": null,
+      "distance_m": null
+    },
+    {
+      "case": "J03WMX",
+      "model": "M2",
+      "status": "ground",
+      "observed": [
+        2.75,
+        0.16
+      ],
+      "predicted": null,
+      "distance_m": null
+    },
+    {
+      "case": "J03WMX",
+      "model": "M3",
+      "status": "none",
+      "observed": [
+        2.75,
+        0.16
+      ],
+      "predicted": null,
+      "distance_m": null
+    },
+    {
+      "case": "J03WMX",
+      "model": "M4",
+      "status": "plane",
+      "observed": [
+        2.75,
+        0.16
+      ],
+      "predicted": [
+        2.4377178108073436,
+        0.33904894362927007
+      ],
+      "distance_m": 0.3599704014244998
+    },
+    {
+      "case": "J03WOH",
+      "model": "M1",
+      "status": "plane",
+      "observed": [
+        2.9188235294117644,
+        1.178921568627451
+      ],
+      "predicted": [
+        2.349569536423846,
+        1.5582580751502109
+      ],
+      "distance_m": 0.684066000992288
+    },
+    {
+      "case": "J03WOH",
+      "model": "M2",
+      "status": "plane",
+      "observed": [
+        2.9188235294117644,
+        1.178921568627451
+      ],
+      "predicted": [
+        2.349375413479552,
+        1.5059200544016134
+      ],
+      "distance_m": 0.6566575716744164
+    },
+    {
+      "case": "J03WOH",
+      "model": "M3",
+      "status": "plane",
+      "observed": [
+        2.9188235294117644,
+        1.178921568627451
+      ],
+      "predicted": [
+        3.2890187193660054,
+        1.126193739721134
+      ],
+      "distance_m": 0.373931414308066
+    },
+    {
+      "case": "J03WOH",
+      "model": "M4",
+      "status": "plane",
+      "observed": [
+        2.9188235294117644,
+        1.178921568627451
+      ],
+      "predicted": [
+        2.934373718950482,
+        1.2905782246068416
+      ],
+      "distance_m": 0.11273427703759856
+    },
+    {
+      "case": "J03WR9",
+      "model": "M1",
+      "status": "plane",
+      "observed": [
+        3.0696590909090906,
+        0.46568181818181814
+      ],
+      "predicted": [
+        3.5444485981308302,
+        0.48414429682941795
+      ],
+      "distance_m": 0.475148333981795
+    },
+    {
+      "case": "J03WR9",
+      "model": "M2",
+      "status": "plane",
+      "observed": [
+        3.0696590909090906,
+        0.46568181818181814
+      ],
+      "predicted": [
+        3.544493962153395,
+        0.4711876545057858
+      ],
+      "distance_m": 0.4748667909879794
+    },
+    {
+      "case": "J03WR9",
+      "model": "M3",
+      "status": "plane",
+      "observed": [
+        3.0696590909090906,
+        0.46568181818181814
+      ],
+      "predicted": [
+        3.065553323434357,
+        0.6205336710629766
+      ],
+      "distance_m": 0.1549062738151187
+    },
+    {
+      "case": "J03WR9",
+      "model": "M4",
+      "status": "plane",
+      "observed": [
+        3.0696590909090906,
+        0.46568181818181814
+      ],
+      "predicted": [
+        3.1188839901116028,
+        0.6034907230872545
+      ],
+      "distance_m": 0.14633654694823534
+    }
+  ],
+  "source_sha256": {
+    "paper": "7fc064496a91c66a8360916d60eb7c3ad104dedb7cbc342bea2a9bdadf116c6e",
+    "_中文版": "6a2f7d930a8a31d1de9f7893cd45887986656fda2aadf59caa2fab848c5b57a6"
+  },
+  "compilation": "Use the desktop editor compiler on each saved main.tex; exported PDFs are separate artifacts."
+}

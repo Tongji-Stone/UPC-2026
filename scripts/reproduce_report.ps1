@@ -12,7 +12,7 @@ try {
             if ($LASTEXITCODE -ne 0) { throw "Calculation failed: $Task" }
         }
     }
-    foreach ($Script in @('four_model_verify.py','four_model_plot.py','four_model_paper_values.py')) {
+    foreach ($Script in @('four_model_verify.py','chapter4_compute.py','four_model_plot.py','four_model_paper_values.py','verify_chapter4.py')) {
         & $Python -B "scripts/$Script"
         if ($LASTEXITCODE -ne 0) { throw "Report update failed: $Script" }
     }

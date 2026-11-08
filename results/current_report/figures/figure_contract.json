@@ -9,12 +9,36 @@
   "panel_layout_overrides": {
     "penalty_J03WOH": {
       "figsize_inches": [
-        7.2,
-        6.2
+        7.5,
+        6.5
       ],
-      "horizontal_spacing": 0.44,
-      "vertical_spacing": 0.48
+      "layout": "2 by 2: 3D and three time histories"
+    },
+    "placement_spatial_comparison": {
+      "figsize_inches": [
+        8,
+        3.8
+      ],
+      "layout": "two side-by-side 3D paths"
     }
+  },
+  "dynamics_axes": {
+    "time_s": [
+      0,
+      0.4
+    ],
+    "speed_m_s": [
+      20,
+      33
+    ],
+    "drag_N": [
+      0,
+      8
+    ],
+    "lift_N": [
+      0,
+      6
+    ]
   },
   "units": "SI",
   "models": [

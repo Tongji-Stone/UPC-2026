@@ -9,7 +9,7 @@
 - 正向、反演及阻尼结果：results/current_report/。
 - 题目三点参考反演：results/structure_linear_spin/problem/。
 - 单参数扫描：results/sensitivity_linear/。
-- 图13的位置约束补充搜索：results/chapter5_review/fig13/，采用17×17组气动系数与33个自旋分量切片，共5049条满足约束的轨迹。
+- 位置约束补充搜索（旧图13，合并后图14）：results/chapter5_review/fig13/，采用17×17组气动系数与33个自旋分量切片，共5049条满足约束的轨迹。
 - 十万次联合扰动：results/monte_carlo_linear/。
 
 ## 重新计算
@@ -32,3 +32,5 @@
 三次真实点球共有 39 个源帧。WMX、WR9 选原第 3--5 点，WOH 选第 2--4 点，拟合时刻均为 0、0.04、0.08 s。源 CSV 保留原字节和来源署名：Deutsche Fußball Liga (DFL)，CC BY 4.0；Bassek 等 (2025)，DOI 10.1038/s41597-025-04505-y。
 
 论文质量固定为 0.43 kg，半径固定为 0.11 m。写作修改依据见 [文章表述修改依据](docs/文章表述修改依据.md)，资料核查及内部说明见 [check.md](check.md)。复现步骤见 [论文说明](paper/README.md)，模型和结果见 [复算记录](docs/linear_spin_recalculation.md)，探索过程见 [探索树](探索树.html)。
+
+2026-11-09已合并最新第四章，并保留确认后的摘要、第五章分析与第八章。中文成品29页，英文31页；合并决策与核对见[发布记录](docs/GitHub合并与发布核对.md)。

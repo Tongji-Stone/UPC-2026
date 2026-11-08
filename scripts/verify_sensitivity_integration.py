@@ -52,7 +52,7 @@ def main():
     check('refined_profile_count',len(profile)==js(refined/'summary.json')['groups']['wide']['states']==5049)
     check('profile_tolerance',all(float(r['residual_m'])<=pr['coordinate_tolerance_m'] for r in profile))
     check('profile_bounds',all(pr['force_multiplier_bounds'][0]-1e-9<=float(r[k])<=pr['force_multiplier_bounds'][1]+1e-9 for r in profile for k in ['ad','al']))
-    check('profile_velocity_spin_bounds',all(float(r['speed'])<=pr['max_speed_m_s'] and max(abs(float(r[f's{i}'])) for i in [3,4,5])<=pr['spin_component_max_rad_s']+1e-8 for r in profile))
+    check('profile_velocity_spin_bounds',all(np.linalg.norm([float(r[f's{i}']) for i in range(3)])<=pr['max_speed_m_s']+1e-8 and max(abs(float(r[f's{i}'])) for i in [3,4,5])<=pr['spin_component_max_rad_s']+1e-8 for r in profile))
     check('density_only_compensation',all(r['parameter']=='rho' and float(r['displacement'])<1e-8 for r in rows(OUT/'compensation.csv')))
     sample=np.load(MC/'samples.npz')
     check('MC_count_and_seed',len(sample['time'])==cfg['monte_carlo']['samples']==summary['count']==100000 and mv['seed']==cfg['monte_carlo']['seed'])
