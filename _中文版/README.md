@@ -1,6 +1,6 @@
 # 中文论文
 
-入口 main.tex，第四章为 sections/model_solving.tex，第五章为 sensitivity.tex。数值表与英文版由相同结果生成，图件直接引用共享目录。正文使用宋体，粗体为黑体，斜体映射为楷体，西文使用 Times New Roman。
+唯一入口 main.tex，全部正文、表格定义、参考文献、TikZ 路线图及附录代码均直接包含于本文件，不引用其他 tex 文件。数值更新脚本直接刷新 main.tex 中的标记区域，与英文版由相同结果生成，图件直接引用共享目录。正文使用宋体，粗体为黑体，斜体映射为楷体，西文使用 Times New Roman。
 
 在仓库根目录运行 ./scripts/reproduce_report.ps1 -Recompute，可重新计算并生成中英文 PDF。只重算第五章使用 ./scripts/reproduce_sensitivity.ps1 -Recompute。各编译目录执行三遍 XeLaTeX，随后进行双语、数据和 PDF 核查。
 

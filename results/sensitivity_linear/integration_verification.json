@@ -26,6 +26,7 @@
     "parallel_original_display_ids": true,
     "parallel_actual_clearance_counts": true,
     "parallel_scaling": true,
+    "paper_single_tex": true,
     "paper_clean_compile": true,
     "paper_references_resolved": true,
     "paper_source_refs_defined": true,
@@ -36,6 +37,7 @@
     "paper_no_old_results": true,
     "paper_graphics_resolved": true,
     "paper_inputs_resolved": true,
+    "_中文版_single_tex": true,
     "_中文版_clean_compile": true,
     "_中文版_references_resolved": true,
     "_中文版_source_refs_defined": true,
@@ -53,12 +55,13 @@
   "documents": {
     "paper": {
       "pages": 27,
-      "sha256": "bca86c78bd0a461fc58a81ac505bae246f970a8d6e94382d478b9719fddae732"
+      "sha256": "f90da7bb5825e72a6a3d60a7cc565aa594d88fb3ab10daa68a85e940ea1ee14b"
     },
     "_中文版": {
       "pages": 27,
-      "sha256": "008d0c96f8c5d42fe64ffea6b38f17c163ee16def9e892a2edf2f742e98c000b"
+      "sha256": "10eb3b21ef16ae58c8f561e81a6dc477fd3f27a3229c34920ce6f5fdd8407bb0"
     }
   },
-  "model": "constant CD and linear CL=alpha*Sp"
+  "model": "constant CD and linear CL=alpha*Sp",
+  "text_source_hash_policy": "Exact hash or LF/CRLF-equivalent text; binary files require exact hash"
 }

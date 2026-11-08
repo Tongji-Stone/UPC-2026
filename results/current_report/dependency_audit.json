@@ -5,10 +5,6 @@
       "force_schematic.pdf": "paper/assets/force_schematic.pdf",
       "magnus_streamlines.pdf": "paper/assets/magnus_streamlines.pdf",
       "ball_force_diagram_times_xlarge.pdf": "paper/assets/ball_force_diagram_times_xlarge.pdf",
-      "surface_comparison.png": "paper/assets/surface_comparison.png",
-      "alam_ball_surfaces.png": "paper/assets/alam_ball_surfaces.png",
-      "alam_drag_comparison.png": "paper/assets/alam_drag_comparison.png",
-      "torque_comparison.pdf": "results/current_report/figures/torque_comparison.pdf",
       "placement_shot_example.png": "paper/assets/placement_shot_example.png",
       "power_shot_example.png": "paper/assets/power_shot_example.png",
       "penalty_spatial_overview.pdf": "results/current_report/figures/penalty_spatial_overview.pdf",
@@ -20,9 +16,16 @@
       "conditional_crossings.pdf": "results/sensitivity_linear/figures/conditional_crossings.pdf",
       "monte_carlo_crossings.pdf": "results/sensitivity_linear/figures/monte_carlo_crossings.pdf",
       "monte_carlo_parallel_coordinates.pdf": "results/sensitivity_linear/figures/monte_carlo_parallel_coordinates.pdf",
-      "monte_carlo_convergence.pdf": "results/sensitivity_linear/figures/monte_carlo_convergence.pdf"
+      "monte_carlo_convergence.pdf": "results/sensitivity_linear/figures/monte_carlo_convergence.pdf",
+      "surface_comparison.png": "paper/assets/surface_comparison.png",
+      "alam_ball_surfaces.png": "paper/assets/alam_ball_surfaces.png",
+      "alam_drag_comparison.png": "paper/assets/alam_drag_comparison.png",
+      "torque_comparison.pdf": "results/current_report/figures/torque_comparison.pdf"
     },
-    "all_dependencies_resolved": true
+    "all_dependencies_resolved": true,
+    "tex_source": "paper/main.tex",
+    "external_tex_inputs": [],
+    "external_code_listings": []
   },
   "_中文版": {
     "graphics": {
@@ -30,10 +33,6 @@
       "force_schematic.pdf": "paper/assets/force_schematic.pdf",
       "magnus_streamlines.pdf": "paper/assets/magnus_streamlines.pdf",
       "ball_force_diagram_times_xlarge.pdf": "paper/assets/ball_force_diagram_times_xlarge.pdf",
-      "surface_comparison.png": "paper/assets/surface_comparison.png",
-      "alam_ball_surfaces.png": "paper/assets/alam_ball_surfaces.png",
-      "alam_drag_comparison.png": "paper/assets/alam_drag_comparison.png",
-      "torque_comparison.pdf": "results/current_report/figures/torque_comparison.pdf",
       "placement_shot_example.png": "paper/assets/placement_shot_example.png",
       "power_shot_example.png": "paper/assets/power_shot_example.png",
       "penalty_spatial_overview.pdf": "results/current_report/figures/penalty_spatial_overview.pdf",
@@ -45,8 +44,15 @@
       "conditional_crossings.pdf": "results/sensitivity_linear/figures/conditional_crossings.pdf",
       "monte_carlo_crossings.pdf": "results/sensitivity_linear/figures/monte_carlo_crossings.pdf",
       "monte_carlo_parallel_coordinates.pdf": "results/sensitivity_linear/figures/monte_carlo_parallel_coordinates.pdf",
-      "monte_carlo_convergence.pdf": "results/sensitivity_linear/figures/monte_carlo_convergence.pdf"
+      "monte_carlo_convergence.pdf": "results/sensitivity_linear/figures/monte_carlo_convergence.pdf",
+      "surface_comparison.png": "paper/assets/surface_comparison.png",
+      "alam_ball_surfaces.png": "paper/assets/alam_ball_surfaces.png",
+      "alam_drag_comparison.png": "paper/assets/alam_drag_comparison.png",
+      "torque_comparison.pdf": "results/current_report/figures/torque_comparison.pdf"
     },
-    "all_dependencies_resolved": true
+    "all_dependencies_resolved": true,
+    "tex_source": "_中文版/main.tex",
+    "external_tex_inputs": [],
+    "external_code_listings": []
   }
 }

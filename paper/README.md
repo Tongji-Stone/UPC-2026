@@ -1,6 +1,6 @@
 # 论文编译与复现
 
-英文入口为 paper/main.tex，中文入口为 _中文版/main.tex。两版分别维护正文、sections/model_solving.tex 和 sensitivity.tex；report_results.tex 与 sensitivity_results.tex 由相同结果生成。图件共用 paper/assets/、paper/aerodynamics/、results/current_report/figures/ 和 results/sensitivity_linear/figures/。
+英文入口为 paper/main.tex，中文入口为 _中文版/main.tex。两版各自只有一个 main.tex，内嵌全部章节、数值表定义、参考文献、TikZ 路线图和附录代码；无外部 tex 或代码摘录依赖。数值更新脚本直接写入 main.tex 中的注释标记区，不再生成子 tex 文件。图件共用 paper/assets/、paper/aerodynamics/、results/current_report/figures/ 和 results/sensitivity_linear/figures/。
 
 ## 完整运行
 
@@ -46,3 +46,7 @@ package_report.py 生成完整项目包及散列清单，排除缓存、编译�
 第八章按“Model Strengths / Model Weaknesses”重写，中文对应“模型优点 / 模型缺点”，两版保持相同论述结构。
 
 最终排版核验：`results/current_report/layout_revision_verification.json` 记录两版12 pt字号、子图编号和第八章结构；`pdf_verification.json`、`bilingual_verification.json` 保存编译、引用及字体核查。当前英文成品为 `main.pdf`，旧备用构建 `main_local.pdf` 已移除。
+
+## 单文件 LaTeX
+
+分别进入 paper/ 与 _中文版/，运行三遍 `xelatex -no-shell-escape -interaction=nonstopmode -halt-on-error main.tex` 即可。图片仍引用项目内共享文件，全部正文均可在各自 main.tex 中直接编辑。注释标记用于定位自动生成的数值表区域，不是外部模块。核查记录见 results/current_report/single_tex_verification.json。

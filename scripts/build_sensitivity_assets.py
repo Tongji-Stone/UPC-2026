@@ -8,6 +8,7 @@ import hashlib
 import json
 import shutil
 from pathlib import Path
+from latex_blocks import write_block
 
 import numpy as np
 import matplotlib
@@ -109,7 +110,7 @@ def main():
         for name,key in [('$y_g$ (m)','y'),('$z_g$ (m)','z'),('$t_g$ (s)','t')]:
             body.append(name+' & '+' & '.join(f'{summary[k][0]:.4f}--{summary[k][1]:.4f}' for k in [key+'_range',key+'_central_95'])+r'\\')
         text+=r'\newcommand{\SensitivityMonteCarloTable}{\begin{table}[H]\centering\small'+'\n'+r'\caption{'+caption+r'}\label{tab:sensitivity-mc}'+'\n'+r'\begin{tabular}{lrr}\toprule'+'\n'+header+r'\\\midrule'+'\n'+'\n'.join(body)+'\n'+r'\bottomrule\end{tabular}\end{table}}'+'\n'
-        (directory/'sensitivity_results.tex').write_text(text,encoding='utf-8')
+        write_block(directory/'main.tex','SENSITIVITY_RESULTS',text)
     plt.rcParams.update({'font.family':'serif','font.serif':['Times New Roman'],'font.size':10,'font.weight':'bold','axes.labelweight':'bold','axes.titleweight':'bold',
         'axes.spines.top':False,'axes.spines.right':False,'pdf.fonttype':42,'svg.fonttype':'none'})
     def save(fig,name):

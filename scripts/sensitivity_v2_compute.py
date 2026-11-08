@@ -37,7 +37,7 @@ W0 = np.linalg.norm(BASE[3:])
 SCALE = np.array([30., 30., 30., 120., 120., 120.])
 PROFILE = INPUT['profile']
 PROTECTED = ['_中文版/main.tex', '_中文版/main.pdf', 'paper/main.tex',
-             'paper/main.pdf', '_中文版/report_results.tex', 'paper/report_results.tex',
+             'paper/main.pdf',
              'src/football/physics/model.py', 'src/football/inference/four_model_fit.py',
              'data/sensitivity_v2/representative_state.json', '探索树.html']
 

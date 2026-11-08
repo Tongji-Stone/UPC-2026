@@ -1,6 +1,9 @@
 {
   "all_passed": true,
   "checks": {
+    "english_single_tex": {
+      "passed": true
+    },
     "english_compile": {
       "passed": true,
       "warnings": [],
@@ -25,6 +28,9 @@
       "passed": true
     },
     "english_wmx_three_frame_times": {
+      "passed": true
+    },
+    "chinese_single_tex": {
       "passed": true
     },
     "chinese_compile": {

@@ -3,14 +3,15 @@ import re
 import pymupdf
 from PIL import Image,ImageDraw
 from football.reporting import ROOT,OUT,save_json
+from latex_blocks import read_block
 
 def main():
     qa=OUT/'qa';qa.mkdir(exist_ok=True);checks={};texts={}
     def check(k,ok,**detail):checks[k]=dict(passed=bool(ok),**detail)
     for lang,folder in [('english','paper'),('chinese','_中文版')]:
         root=ROOT/folder;s=(root/'main.tex').read_text(encoding='utf-8')
-        s=s.replace(r'\input{sections/model_solving.tex}',(root/'sections/model_solving.tex').read_text(encoding='utf-8'))
-        s=s.replace(r'\input{sensitivity.tex}',(root/'sensitivity.tex').read_text(encoding='utf-8'));texts[lang]=s
+        texts[lang]=s
+        check(lang+'_single_tex',not re.search(r'\\(?:input|include|lstinputlisting)\b',s))
         d=pymupdf.open(root/'main.pdf');text='\n'.join(p.get_text() for p in d)
         log=(root/'main.log').read_text(encoding='utf-8',errors='replace')
         warnings=[l for l in log.splitlines() if any(x in l for x in ['Overfull','Missing character','undefined','LaTeX Error'])]
@@ -38,7 +39,8 @@ def main():
     check('identical_citations',cites(texts['english'])==cites(texts['chinese']))
     blocks=lambda s:re.findall(r'\\begin\{tabular\}.*?\\end\{tabular\}',s,re.S)
     numbers=lambda s:re.findall(r'(?<![A-Za-z])[-+]?\d+(?:\.\d+)?',s)
-    en=(ROOT/'paper/report_results.tex').read_text(encoding='utf-8')+(ROOT/'paper/sensitivity_results.tex').read_text(encoding='utf-8');zh=(ROOT/'_中文版/report_results.tex').read_text(encoding='utf-8')+(ROOT/'_中文版/sensitivity_results.tex').read_text(encoding='utf-8')
+    en=''.join(read_block(texts['english'],name) for name in ['REPORT_RESULTS','SENSITIVITY_RESULTS'])
+    zh=''.join(read_block(texts['chinese'],name) for name in ['REPORT_RESULTS','SENSITIVITY_RESULTS'])
     check('identical_table_numbers',[numbers(x) for x in blocks(en)]==[numbers(x) for x in blocks(zh)])
     result=dict(all_passed=all(v['passed'] for v in checks.values()),checks=checks);save_json(OUT/'bilingual_verification.json',result)
     print(dict(all_passed=result['all_passed'],failed=[k for k,v in checks.items() if not v['passed']]))

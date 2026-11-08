@@ -4,83 +4,83 @@
   "out_of_page_text": [],
   "all_fonts_embedded": true,
   "fonts": {
-    "GGTMCZ+TimesNewRomanPSMT": {
+    "UNVYQE+TimesNewRomanPSMT": {
       "format": "ttf",
       "embedded": true
     },
-    "YYLXXS+TimesNewRomanPS-BoldMT": {
+    "YQGYPJ+TimesNewRomanPS-BoldMT": {
       "format": "ttf",
       "embedded": true
     },
-    "NUQDZC+CMMI12": {
+    "GKNZMV+CMMI12": {
       "format": "cff",
       "embedded": true
     },
-    "THWCMG+CMMI8": {
+    "OADJUV+CMMI8": {
       "format": "cff",
       "embedded": true
     },
-    "WMBEHC+CMR12": {
+    "JUKNMQ+CMR12": {
       "format": "cff",
       "embedded": true
     },
-    "ATRDLA+CMSY8": {
+    "UNIQLJ+CMSY8": {
       "format": "cff",
       "embedded": true
     },
-    "YRZBVQ+CMR10": {
+    "JKHGXK+CMR10": {
       "format": "cff",
       "embedded": true
     },
-    "OJXIJY+CMEX9": {
+    "WHDOIO+CMEX9": {
       "format": "cff",
       "embedded": true
     },
-    "HEISCV+CMMI9": {
+    "INZGDS+CMMI9": {
       "format": "cff",
       "embedded": true
     },
-    "TCLVGE+CMMI6": {
+    "NUQVNJ+CMMI6": {
       "format": "cff",
       "embedded": true
     },
-    "RTLIIT+CMR5": {
+    "ZXONGK+CMR5": {
       "format": "cff",
       "embedded": true
     },
-    "WTHAVP+CMMIB7": {
+    "OWRVYB+CMMIB7": {
       "format": "cff",
       "embedded": true
     },
-    "TXOWGB+CMR9": {
+    "DZPYOV+CMR9": {
       "format": "cff",
       "embedded": true
     },
-    "IYXDFI+CMMIB10": {
+    "XBINXH+CMMIB10": {
       "format": "cff",
       "embedded": true
     },
-    "JOCSFM+CMSY9": {
+    "RXUHRJ+CMSY9": {
       "format": "cff",
       "embedded": true
     },
-    "GYHEPZ+CMR6": {
+    "PTNJJJ+CMR6": {
       "format": "cff",
       "embedded": true
     },
-    "VDNXKA+CMBX9": {
+    "AVIXRH+CMBX9": {
       "format": "cff",
       "embedded": true
     },
-    "YSUEOE+CMSY10": {
+    "KDABLZ+CMSY10": {
       "format": "cff",
       "embedded": true
     },
-    "NFCKZF+CMR8": {
+    "DVNKPU+CMR8": {
       "format": "cff",
       "embedded": true
     },
-    "WRNEBX+CMMI10": {
+    "UYKDBJ+CMMI10": {
       "format": "cff",
       "embedded": true
     },
@@ -96,11 +96,11 @@
       "format": "ttf",
       "embedded": true
     },
-    "DVRBHS+CMEX10": {
+    "OITHQR+CMEX10": {
       "format": "cff",
       "embedded": true
     },
-    "MLRVRF+CMBX12": {
+    "NIYZST+CMBX12": {
       "format": "cff",
       "embedded": true
     },
@@ -140,35 +140,35 @@
       "format": "ttf",
       "embedded": true
     },
-    "ITXBUF+CMSY7": {
+    "PPALLH+CMSY7": {
       "format": "cff",
       "embedded": true
     },
-    "MSZUVN+TimesNewRomanPS-ItalicMT": {
+    "IJRHXQ+TimesNewRomanPS-ItalicMT": {
       "format": "ttf",
       "embedded": true
     },
-    "ADGIKV+LMMono12-Regular-Identity-H": {
+    "SQSFJU+LMMono12-Regular-Identity-H": {
       "format": "cid",
       "embedded": true
     },
-    "UCDPRE+CMMI7": {
+    "JKPKPI+CMMI7": {
       "format": "cff",
       "embedded": true
     },
-    "UQNLZS+CMR7": {
+    "HEJNPN+CMR7": {
       "format": "cff",
       "embedded": true
     },
-    "DUESAD+LMMono10-Regular-Identity-H": {
+    "PZRZXD+LMMonoLt10-Bold-Identity-H": {
       "format": "cid",
       "embedded": true
     },
-    "ZDNYOO+LMMonoLt10-Bold-Identity-H": {
+    "AQNPAK+LMMono10-Regular-Identity-H": {
       "format": "cid",
       "embedded": true
     },
-    "XQIWUS+LMMono10-Italic-Identity-H": {
+    "YTBNDB+LMMono10-Italic-Identity-H": {
       "format": "cid",
       "embedded": true
     }

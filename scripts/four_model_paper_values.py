@@ -2,6 +2,7 @@
 import numpy as np
 from football.reporting import ROOT,OUT,DATA,read_json
 from football.physics import PhysicsConfig
+from latex_blocks import write_block
 
 def scientific(x):
     if x is None:return '---'
@@ -135,7 +136,7 @@ def main():
         macro('WindResultsTable',table(tr('Illustrative wind at the 24 m/s curved-shot launch: dynamic-pressure changes at fixed coefficients.','24 m/s 弧线球初速下的示例风况：固定系数时的动压变化。'),'tab:wind','rrrrr',
             tr(r'$w$ (m/s) & Headwind (\%) & Tailwind (\%) & Crosswind (\%) & Angle ($^\circ$)',r'$w$ (m/s) & 逆风 (\%) & 顺风 (\%) & 侧风 (\%) & 偏角 ($^\circ$)'),rows))
         macro('WindThreshold',f"{other['wind_threshold_m_s']:.2f}")
-        (ROOT/folder/'report_results.tex').write_text('% Generated exclusively from results/current_report.\n'+''.join(commands),encoding='utf-8')
+        write_block(ROOT/folder/'main.tex','REPORT_RESULTS','% Generated exclusively from results/current_report.\n'+''.join(commands))
     print('bilingual tables refreshed from 24 forward and 12 inverse results')
 
 if __name__=='__main__':main()

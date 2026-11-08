@@ -6,7 +6,7 @@ import re
 from pathlib import Path
 
 import numpy as np
-from pypdf import PdfReader
+import pymupdf
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'results/sensitivity_linear'
@@ -15,6 +15,14 @@ MC=ROOT/'results/monte_carlo_linear'
 def read(p): return p.read_text(encoding='utf-8')
 def js(p): return json.loads(read(p))
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def recorded_hash_matches(p, expected):
+    data=p.read_bytes()
+    if hashlib.sha256(data).hexdigest()==expected:return True
+    # Git checkouts may change text line endings; retain the recorded source hashes.
+    if p.suffix in {'.json','.py','.csv'}:
+        lf=data.replace(b'\r\n',b'\n')
+        return expected in {hashlib.sha256(lf).hexdigest(),hashlib.sha256(lf.replace(b'\n',b'\r\n')).hexdigest()}
+    return False
 def rows(p):
     with p.open(encoding='utf-8-sig') as f: return list(csv.DictReader(f))
 def equations(s): return [re.sub(r'\s+','',x) for x in re.findall(r'\\begin\{equation\}(.*?)\\end\{equation\}',s,re.S)]
@@ -27,9 +35,9 @@ def main():
     reference=js(ROOT/cfg['baseline_result']);summary=js(MC/'summary.json');mv=js(MC/'verification.json')
     check('constant_CD_linear_CL_model',reference['configuration']['coefficient_mode']=='linear_spin')
     check('fixed_mass_radius',cfg['physics']['mass']==.43 and cfg['physics']['radius']==.11 and mv['mass_kg']==.43 and mv['radius_m']==.11)
-    check('reference_recomputed_from_current_sources',all(sha(ROOT/p)==h for p,h in reference['source_sha256'].items()))
+    check('reference_recomputed_from_current_sources',all(recorded_hash_matches(ROOT/p,h) for p,h in reference['source_sha256'].items()))
     check('baseline_source_matches',baseline['source_sha256']==sha(ROOT/cfg['baseline_result']))
-    check('publication_source_hashes_match',all(sha(ROOT/p)==h for p,h in assets['sources'].items()))
+    check('publication_source_hashes_match',all(recorded_hash_matches(ROOT/p,h) for p,h in assets['sources'].items()))
     check('shared_rhs_matches',verification['max_rhs_difference']<1e-10 and verification['fast_vs_repository_m']<1e-7)
     check('physical_limits_and_compensation',physical['all_passed'])
     scans=rows(OUT/'one_factor.csv');groups={k:[r for r in scans if r['parameter']==k] for k in cfg['one_factor_half_widths']}
@@ -58,10 +66,9 @@ def main():
     check('parallel_scaling',parallel['all_scaled_values_within_unit_interval'])
     documents={};dependencies={};sources={}
     for folder in ['paper','_中文版']:
-        main=read(ROOT/folder/'main.tex');section=read(ROOT/folder/'sections/model_solving.tex');sensitivity=read(ROOT/folder/'sensitivity.tex')
-        tables=read(ROOT/folder/'report_results.tex')+read(ROOT/folder/'sensitivity_results.tex')
-        expanded=main+section+sensitivity+tables;sources[folder]=expanded
-        log=read(ROOT/folder/'main.log');doc=PdfReader(ROOT/folder/'main.pdf');text='\n'.join(p.extract_text() or '' for p in doc.pages)
+        main=read(ROOT/folder/'main.tex');expanded=main;sources[folder]=expanded
+        check(folder+'_single_tex',not re.search(r'\\(?:input|include|lstinputlisting)\b',main))
+        log=read(ROOT/folder/'main.log');doc=pymupdf.open(ROOT/folder/'main.pdf');text='\n'.join(p.get_text() for p in doc)
         check(folder+'_clean_compile',not any(x in log for x in ['Overfull','Missing character','undefined references','LaTeX Error']) and 'Output written' in log)
         check(folder+'_references_resolved','??' not in text)
         labels=set(re.findall(r'\\label\{([^}]+)\}',expanded))|{'LastPage'}
@@ -82,13 +89,13 @@ def main():
         check(folder+'_graphics_resolved',all(graphics.values()))
         check(folder+'_inputs_resolved',all((ROOT/folder/p).is_file() for p in re.findall(r'\\input\{([^}]+)\}',main)))
         dependencies[folder]=dict(graphics=graphics,all_dependencies_resolved=all(graphics.values()))
-        documents[folder]=dict(pages=len(doc.pages),sha256=sha(ROOT/folder/'main.pdf'))
+        documents[folder]=dict(pages=len(doc),sha256=sha(ROOT/folder/'main.pdf'))
     check('bilingual_display_equations',equations(sources['paper'])==equations(sources['_中文版']))
     table_blocks=lambda s:re.findall(r'\\begin\{tabular\}.*?\\end\{tabular\}',s,re.S)
     numbers=lambda s:re.findall(r'(?<![A-Za-z])[-+]?\d+(?:\.\d+)?',s)
     check('bilingual_table_values',[numbers(x) for x in table_blocks(sources['paper'])]==[numbers(x) for x in table_blocks(sources['_中文版'])])
     check('writing_guidance_and_internal_notes',(ROOT/'docs/文章表述修改依据.md').is_file() and (ROOT/'check.md').is_file())
-    result=dict(all_passed=all(checks.values()),checks=checks,documents=documents,model='constant CD and linear CL=alpha*Sp')
+    result=dict(all_passed=all(checks.values()),checks=checks,documents=documents,model='constant CD and linear CL=alpha*Sp',text_source_hash_policy='Exact hash or LF/CRLF-equivalent text; binary files require exact hash')
     (OUT/'integration_verification.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
     (ROOT/'results/current_report/dependency_audit.json').write_text(json.dumps(dependencies,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps(dict(all_passed=result['all_passed'],checks=len(checks),failed=[k for k,v in checks.items() if not v],documents=documents),ensure_ascii=True,indent=2))

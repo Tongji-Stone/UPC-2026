@@ -1,0 +1,38 @@
+{
+  "baseline_commit": "e4e6f91",
+  "editions": {
+    "paper": {
+      "passed": true,
+      "pages": 27,
+      "baseline_pages": 27,
+      "text_changed_pages": [
+        27
+      ],
+      "render_changed_pages": [
+        27
+      ],
+      "source_content_equivalent": true,
+      "no_external_tex_or_code_inputs": true,
+      "tex_lines": 896,
+      "tex_sha256": "adb57418b95dbd3cd7f75b78bf21cd5d5c9aefc1a8063fb89587a1eadedb93d2",
+      "pdf_sha256": "f90da7bb5825e72a6a3d60a7cc565aa594d88fb3ab10daa68a85e940ea1ee14b"
+    },
+    "_中文版": {
+      "passed": true,
+      "pages": 27,
+      "baseline_pages": 27,
+      "text_changed_pages": [],
+      "render_changed_pages": [
+        27
+      ],
+      "source_content_equivalent": true,
+      "no_external_tex_or_code_inputs": true,
+      "tex_lines": 903,
+      "tex_sha256": "07007064dcadd83b75b7989e07f007bfc34aac9c7880737f228277fce8737ec7",
+      "pdf_sha256": "10eb3b21ef16ae58c8f561e81a6dc477fd3f27a3229c34920ce6f5fdd8407bb0"
+    }
+  },
+  "all_passed": true,
+  "render_note": "External code excerpts are embedded as lstlisting; appendix line numbering and input-file separator artifacts may differ. All preceding pages render identically.",
+  "generated_table_update_idempotent": true
+}
