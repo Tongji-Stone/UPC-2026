@@ -14,7 +14,15 @@ fig, (top,front)=plt.subplots(1,2,figsize=(9,3.5),gridspec_kw={'width_ratios':[1
 
 # Horizontal projection: coordinates are metres; the small circle marks the ball.
 top.plot([11,11],[-3.66,3.66],color='black',lw=1.8)
-top.add_patch(Circle((0,0),.11,edgecolor='black',facecolor='white',lw=1.1,zorder=3))
+top.add_patch(Circle((0,0),.42,edgecolor='black',facecolor='white',lw=1.25,zorder=4))
+# Enlarged panel details and horizontal projections of the launch vectors.
+top.plot([-.17,0,.17,.11,-.11,-.17],[.06,.18,.06,-.14,-.14,.06],color='black',lw=.65,zorder=5)
+for a,b,c,d in [(-.17,.06,-.36,.20),(.17,.06,.36,.20),(-.11,-.14,-.23,-.34),(.11,-.14,.23,-.34),(0,.18,0,.41)]:
+    top.plot([a,c],[b,d],color='black',lw=.65,zorder=5)
+top.annotate('',xy=(2.9,.70),xytext=(.40,.10),arrowprops={'arrowstyle':'->','lw':1.15},zorder=6)
+top.text(2.75,.94,r'$\mathbf{v}_{0,xy}$',fontsize=10)
+top.annotate('',xy=(-1.05,1.10),xytext=(-.29,.30),arrowprops={'arrowstyle':'->','lw':1.15},zorder=6)
+top.text(-1.4,1.22,r'$\boldsymbol{\omega}_{0,xy}$',fontsize=10)
 top.plot([0,11],[0,2.65],color='0.38',lw=1.1,ls='--')
 top.annotate('',xy=(11,-4.55),xytext=(0,-4.55),arrowprops={'arrowstyle':'<->','lw':.9,'color':'black'})
 top.plot([0,0],[-4.3,-4.75],color='black',lw=.6);top.plot([11,11],[-4.3,-4.75],color='black',lw=.6)
@@ -22,9 +30,19 @@ top.text(5.5,-4.35,'11 m',ha='center',va='bottom',fontsize=10)
 top.annotate('',xy=(4.0,0),xytext=(0,0),arrowprops={'arrowstyle':'->','lw':.9})
 top.annotate('',xy=(0,1.7),xytext=(0,0),arrowprops={'arrowstyle':'->','lw':.9})
 top.text(4.08,-.15,'$x$',fontsize=11);top.text(-.3,1.75,'$y$',fontsize=11)
-top.text(-.05,-.55,'Penalty mark',ha='center',va='top',fontsize=9)
+top.text(-.05,-.65,'Penalty mark',ha='center',va='top',fontsize=9)
 top.text(11.2,.1,'Goal plane\n$x=11$ m',ha='left',va='center',fontsize=9)
-top.set(xlim=(-1.5,14),ylim=(-5.2,4.6),aspect='equal',title='Top view');top.axis('off')
+top.set(xlim=(-1.8,14),ylim=(-5.2,7.4),aspect='equal',title='Top view');top.axis('off')
+# Elevation is measured in a vertical plane, illustrated separately.
+inset=top.inset_axes([.38,.67,.48,.28]);inset.set_xlim(-.4,4.1);inset.set_ylim(-.45,2.15);inset.set_aspect('equal');inset.axis('off')
+inset.text(0,1.9,'Launch elevation (side view)',fontsize=8,fontweight='bold')
+inset.add_patch(Circle((.18,.05),.18,fill=False,lw=.9))
+inset.annotate('',xy=(3.35,.05),xytext=(.18,.05),arrowprops={'arrowstyle':'->','lw':.8})
+inset.text(3.4,-.03,r'$\mathrm{horizontal}$',fontsize=8)
+inset.annotate('',xy=(2.75,1.36),xytext=(.18,.05),arrowprops={'arrowstyle':'->','lw':1.1})
+inset.text(2.78,1.34,r'$\mathbf{v}_0$',fontsize=10)
+inset.add_patch(Arc((.18,.05),1.45,1.45,theta1=0,theta2=27,lw=.9))
+inset.text(1.03,.14,r'$\alpha$',fontsize=10)
 
 # Front view of the goal, with axes through the centre of the goal line.
 for x in [i*3.66/8 for i in range(-7,8)]:

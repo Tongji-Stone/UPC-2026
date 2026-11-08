@@ -64,11 +64,12 @@
 \node[wftitle] at (3.375,5.205) {Forces \&\\Governing Equations};
 \path[fill=white,fill opacity=.52,rounded corners=9pt]
   (0.73,6.215) rectangle (6.02,9.555);
-\node[wftext,text width=5.1cm,font=\fontsize{10.5}{12.5}\selectfont] at (0.92,6.385)
+\node[wftext,text width=5.1cm,font=\fontsize{9.2}{10.5}\selectfont] at (0.92,6.385)
   {\setlength{\jot}{2pt}$\displaystyle\left\{
    \begin{array}{@{}l@{}}
-   m\frac{d^2\boldsymbol r}{dt^2}=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L\\
+   m\frac{d^2\boldsymbol r}{dt^2}=\boldsymbol F_g+\boldsymbol F_B+\boldsymbol F_D+\boldsymbol F_L\\
    \boldsymbol F_g=-mg\,\boldsymbol e_z\\
+   \boldsymbol F_B=\frac43\pi R^3\rho g\,\boldsymbol e_z\\
    \boldsymbol F_D=-qA\alpha_D C_D\frac{\boldsymbol u}{\|\boldsymbol u\|}\\
    \boldsymbol F_L=qA\alpha_L C_L\sin\theta\,\boldsymbol e_L\\
    \dot{\boldsymbol\omega}=\boldsymbol0\\
@@ -118,7 +119,7 @@
 \path[fill=white,fill opacity=.52,rounded corners=9pt]
   (0.85,11.65) rectangle (7.70,14.98);
 \node[wftext,text width=6.45cm,font=\fontsize{12}{12}\selectfont] at (1.17,11.78)
-  {M1: gravity\\[-2pt]
+  {M1: gravity (baseline)\\[-2pt]
    \hspace*{.14cm}$\downarrow$\\[-2pt]
    M2: gravity and constant drag\\[-2pt]
    \hspace*{.14cm}$\downarrow$\\[-2pt]

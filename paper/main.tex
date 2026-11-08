@@ -25,7 +25,7 @@
 \vspace{2mm}{\bfseries Problem B\par}
 \vspace{3mm}{\bfseries Abstract\par}
 \end{center}
-Gravity bends a soccer ball's path, drag reduces its speed, and Magnus lift redirects a spinning ball. We formulate a three-dimensional model with these three forces and constant spin. Four models distinguish gravity alone, constant drag, constant drag and lift, and complete speed- and spin-dependent aerodynamic coefficients. Published Teamgeist relations reproduce the selected 2007 wind-tunnel drag and lift curves with coefficient RMSE values of 0.0113 and 0.0504.
+Gravity bends a soccer ball's path, buoyancy acts upward, drag reduces its speed, and Magnus lift redirects a spinning ball. We formulate a three-dimensional model including buoyancy and compare four models using existing three-force calculations: gravity alone, constant drag, constant drag and lift, and complete speed- and spin-dependent aerodynamic coefficients. Published Teamgeist relations reproduce the selected 2007 wind-tunnel drag and lift curves with coefficient RMSE values of 0.0113 and 0.0504.
 
 Forward calculations are compared with controlled launch experiments, including a measured range of 21.9 m and four rotating-ball trajectory segments. The variable-coefficient model predicts a range of \ForwardMFourRange\ m in the nonspinning experiment. Inverse calculations estimate initial motion and nonnegative force corrections from two later positions, selecting corrections close to unity. Five recorded match flights provide subsequent positions for comparison. For the competition data, the variable-coefficient model predicts the goal-plane centre $(y,z)=(\ProblemY,\ProblemZ)$ m at $t=\ProblemTime$ s. A separate same-initial-state calculation quantifies rotational damping, while surface geometry and wind are discussed through published flow results and force estimates.
 
@@ -44,10 +44,10 @@ Measurements of real flights provide a basis for evaluating such models. Griffit
 In this problem, the initial position and two early positions are given, whereas the initial velocity and spin are not directly specified. We therefore use the equations of motion to find states compatible with the early observations and calculate their goal-plane crossings. The DFL open dataset combines match events and optical tracking data for professional matches \cite{bassek,dataset}, allowing predicted crossings to be compared with later recorded positions.
 
 \subsection{Problem Restatement}
-We model a soccer ball travelling in three dimensions from the vicinity of the penalty mark to the goal. The goal is 7.32 m wide and 2.44 m high; the penalty mark is 11 m from the goal line. We establish a model incorporating gravity, drag and the Magnus effect, solve for its trajectory and the point at which it crosses the goal plane, and compare the calculated positions with a recorded penalty flight. The prediction uses the initial position and the positions at 0.05 and 0.10 s; subsequent positions are reserved for validation. Figure~\ref{fig:workflow} summarizes the force models and inverse problem: early positions determine initial conditions and force corrections, while later positions provide validation targets. Section 2 states the assumptions and notation. Section 3 establishes the forces and equations. Section 4 compares forward and inverse predictions. Section 5 is reserved for sensitivity analysis. Section 6 discusses surface geometry, spin damping and wind, followed by conclusions and model evaluation in Sections 7 and 8.
+We model a soccer ball travelling in three dimensions from the vicinity of the penalty mark to the goal. The goal is 7.32 m wide and 2.44 m high; the penalty mark is 11 m from the goal line. We establish a model incorporating gravity, buoyancy, drag and the Magnus effect, solve for its trajectory and the point at which it crosses the goal plane, and compare the calculated positions with a recorded penalty flight. The prediction uses the initial position and the positions at 0.05 and 0.10 s; subsequent positions are reserved for validation. Figure~\ref{fig:workflow} summarizes the force models and inverse problem: early positions determine initial conditions and force corrections, while later positions provide validation targets. Section 2 states the assumptions and notation. Section 3 establishes the forces and equations. Section 4 compares forward and inverse predictions. Section 5 is reserved for sensitivity analysis. Section 6 discusses surface geometry, spin damping and wind, followed by conclusions and model evaluation in Sections 7 and 8.
 \begin{figure}[H]\centering
 \resizebox{\textwidth}{!}{\input{assets/workflow_tikz.tex}}
-\caption{Three-force modeling, four-model comparison and goal-plane validation.}\label{fig:workflow}
+\caption{Force model including buoyancy, four-model baseline comparison and goal-plane validation.}\label{fig:workflow}
 \end{figure}
 
 
@@ -56,7 +56,7 @@ We model a soccer ball travelling in three dimensions from the vicinity of the p
 \begin{itemize}
 \item \textbf{Ball--foot interaction.} Free flight begins at $t=0$ immediately after the ball leaves the player's foot. The impact process and deformation during contact are not modeled.
 \item \textbf{Rigid spherical ball.} The ball is idealized as a rigid sphere with constant mass, radius and cross-sectional area $A=\pi R^2$; its centre of mass coincides with its geometric centre \cite{maponi,bray,myers}. Empirical football coefficients represent the average aerodynamic effect of its surface. Section~\ref{sec:surface} discusses seams and asymmetric geometry.
-\item \textbf{Free-flight motion.} Gravity, aerodynamic drag and spin-induced lift act during free flight \cite{maponi,bray}. The flight considered ends at the first contact with the ground, goal structure or another object; collisions, bouncing and rolling are excluded. Integration also stops at the selected goal plane.
+\item \textbf{Free-flight motion.} Gravity, air buoyancy, aerodynamic drag and spin-induced lift act during free flight \cite{maponi,bray}. The flight considered ends at the first contact with the ground, goal structure or another object; collisions, bouncing and rolling are excluded. Integration also stops at the selected goal plane.
 \item \textbf{Uniform gravity.} Gravitational acceleration is constant, with $g=9.81\,\mathrm{m/s^2}$.
 \item \textbf{Atmospheric properties.} Air density and dynamic viscosity are spatially uniform during each flight. Aerodynamic forces are represented using empirical drag and lift coefficients.
 \item \textbf{Wind.} The main calculation uses still air. When wind is included, its velocity vector is spatially and temporally constant during each flight; small-scale turbulence and rapidly varying gusts are neglected. Section~\ref{sec:wind} examines how different wind conditions affect relative airflow and force magnitude.
@@ -88,20 +88,38 @@ The competition mass, radius and gravity follow the reference values of Maponi a
 The same Newtonian equations generate all four models by selecting the included aerodynamic terms. We first describe the geometry, then connect the forces to the surrounding flow and ball rotation.
 \subsection{Geometry and Goal Plane}
 For a pitch 105 m long with its origin at the centre, the two goal lines are located at $x=\pm52.50$ m. The selected kick travels towards the positive-$x$ goal. For the competition geometry the valid goal opening is $-3.66\le y\le3.66$ m and $0\le z\le2.44$ m. The goal-plane position is the ball centre's first forward intersection with $x=X_g$.
-\begin{figure}[H]\centering\includegraphics[width=0.94\textwidth]{geometry.pdf}
-\caption{Penalty-kick geometry in local coordinates. The dashed line and point $P$ indicate an illustrative crossing.}\label{fig:geometry}\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=0.78\textwidth]{penalty_geometry_new.png}
+\caption{Penalty-kick geometry in local coordinates. $O$ is the penalty mark and $C$ is an illustrative point on the goal plane.}\label{fig:geometry}\end{figure}
 Figure~\ref{fig:geometry} uses the penalty mark as the local origin and places the goal plane at $x=11$ m. For the match record below, the pitch-centred coordinate system instead places the goal at $X_g=52.50$ m.
 
 The ball crosses the opening cleanly when its centre satisfies $|y|\leq3.66-R$ and $R\leq z\leq2.44-R$ at $x=X_g$. Ground contact occurs when the descending centre reaches $z=R$. These event definitions are used consistently for all four models.
 
 \subsection{Force Analysis}
+\subsubsection{Air Buoyancy}
+By Archimedes' principle the displaced air exerts an upward force on the ball. Its volume is $V_b=\frac43\pi R^3$, giving
+\begin{equation}
+\boldsymbol F_B=\rho V_b g\,\boldsymbol e_z
+=\frac43\pi R^3\rho g\,\boldsymbol e_z.
+\label{eq:buoyancy}\end{equation}
+Together, gravity and buoyancy give $\boldsymbol F_g+\boldsymbol F_B=-(m-\rho V_b)g\boldsymbol e_z$. For the reference parameters in the table, buoyancy is about $1.56\%$ of the ball's weight and changes the downward acceleration from $g$ to $g(1-\rho V_b/m)$.
+
 \subsubsection{Gravity}
 Gravity supplies a constant downward force,
 \begin{equation}\boldsymbol F_g=-mg\boldsymbol e_z,\end{equation}
 where $\boldsymbol e_z$ is the upward vertical unit vector. It produces downward curvature even when all aerodynamic forces are removed.
 
+Figure~\ref{fig:force-schematic} illustrates the relative airflow in the ball frame and the corresponding force directions. The right-hand example takes the spin axis out of the page; the lift direction follows the cross product.
+\begin{figure}[H]\centering
+\includegraphics[width=.88\textwidth]{force_schematic.pdf}
+\caption{Relative airflow and force directions. The symbol $\odot$ denotes spin out of the page; $\boldsymbol u$ in the left panel is the velocity of the ball relative to the air.}\label{fig:force-schematic}\end{figure}
+
 \subsubsection{Aerodynamic Drag}\label{sec:drag}
-A moving ball transfers momentum to the air in its wake. The mass flow through area $A$ scales as $\rho Av$, and the velocity change scales as $v$, giving a force scale $\rho Av^2$. Introducing dynamic pressure $q=\rho v^2/2$ gives the conventional drag expression \cite{goff2009,kiratidis2018},
+In the ball frame, the far-field air velocity is $-\boldsymbol u$. Approximate the maximum cross-section by a disk of area $A=\pi R^2$ facing the oncoming air. For a uniform stream decelerated from speed $v$ to rest, Bernoulli's relation gives the stagnation-to-far-field pressure difference and a corresponding force scale,
+\begin{equation}
+\Delta p_{\mathrm{stag}}=\tfrac12\rho v^2,\qquad
+F_{\mathrm{scale}}=\Delta p_{\mathrm{stag}}A=\tfrac12\rho Av^2.
+\label{eq:drag-scale}\end{equation}
+Pressure and viscous shear vary across the actual ball, so the dimensionless coefficient $C_D$ expresses the integrated drag relative to this scale. Drag opposes the velocity of the ball relative to the air, giving \cite{goff2009,kiratidis2018}
 \begin{equation}
 \boldsymbol F_D=-\tfrac12\rho A\alpha_D C_D(Re,Sp)v\boldsymbol u,
 \qquad \boldsymbol u=\boldsymbol v-\boldsymbol v_{\rm wind},\quad v=\|\boldsymbol u\|.
@@ -154,6 +172,12 @@ Figure~\ref{fig:cd-comparison} reproduces the increase of drag with $Sp$: the co
 \end{figure}
 
 \subsubsection{Magnus Lift}\label{sec:lift}
+
+Figure~\ref{fig:magnus-flow} illustrates relative streamlines in the ball frame. For the spin shown, the upper surface moves with the relative airflow while the lower surface moves against it. Rotation makes the flow asymmetric and produces a transverse force. The figure uses a two-dimensional ideal flow with circulation to illustrate the directions.
+\begin{figure}[H]\centering
+\includegraphics[width=.78\textwidth]{magnus_streamlines.pdf}
+\caption{Idealized relative streamlines around a spinning football. Arrows show the directions of relative airflow, spin and Magnus force; colours indicate relative speed in this illustrative flow field.}\label{fig:magnus-flow}\end{figure}
+
 Rotation changes the flow on opposite sides of the ball and creates a transverse pressure force. Using the drag dynamic-pressure scale gives $F_L=qAC_L$ for transverse spin \cite{goff2009,kiratidis2018}. For a three-dimensional spin axis, we adopt
 \begin{equation}
 \begin{aligned}
@@ -163,6 +187,14 @@ Rotation changes the flow on opposite sides of the ball and creates a transverse
 \end{aligned}\label{eq:lift-force}
 \end{equation}
 Lift is zero for zero spin, zero airspeed or parallel spin and airflow.
+
+For $\omega>0$ and $v>0$, substituting the definitions of direction and angle into Eq.~\eqref{eq:lift-force} yields the equivalent form
+\begin{equation}
+\boldsymbol F_L=\tfrac12\rho A\alpha_L C_L(Re,Sp)\frac{v}{\omega}
+(\boldsymbol\omega\times\boldsymbol u).
+\label{eq:lift-cross}\end{equation}
+This form makes the direction perpendicular to both spin and relative velocity explicit. Since $C_L$ also depends on spin, the factor $1/\omega$ does not imply divergent lift at zero spin; zero spin or zero relative speed is handled separately by setting lift to zero.
+
 \begin{enumerate}
 \item \textbf{Dynamic-pressure and area scale \boldmath$\rho Av^2/2$.} Density, projected area and speed have the same meanings as in the drag force.
 \item \textbf{Magnus direction \boldmath$\boldsymbol e_L$.} This unit vector is perpendicular to airflow. Topspin bends the path downward, backspin upward, and sidespin horizontally.
@@ -206,10 +238,19 @@ With zero applied torque and constant spherical inertia, the main model is
 \begin{equation}
 \left\{\begin{aligned}
 \dot{\boldsymbol r}&=\boldsymbol v,\\
-m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L,\\
+m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_B+\boldsymbol F_D+\boldsymbol F_L,\\
 \dot{\boldsymbol\omega}&=\boldsymbol0.
 \end{aligned}\right.\label{eq:motion}
 \end{equation}
+Substituting drag and Eq.~\eqref{eq:lift-cross} into Newton's second law gives the components used for numerical integration. Define $k_D=\rho A\alpha_D C_Dv/(2m)$ and $k_L=\rho A\alpha_L C_Lv/(2m\omega)$. For $\omega>0$ and $v>0$,
+\begin{equation}
+\begin{aligned}
+\dot v_x&=-k_Du_x+k_L(\omega_yu_z-\omega_zu_y),\\
+\dot v_y&=-k_Du_y+k_L(\omega_zu_x-\omega_xu_z),\\
+\dot v_z&=-g(1-\rho V_b/m)-k_Du_z+k_L(\omega_xu_y-\omega_yu_x).
+\end{aligned}\label{eq:motion-components}\end{equation}
+The components are integrated together with $\dot{\boldsymbol r}=\boldsymbol v$; at zero spin or relative speed the lift components are set to zero.
+
 Its initial conditions are
 \begin{equation}
 \left\{\begin{aligned}
@@ -220,8 +261,10 @@ Its initial conditions are
 \end{equation}
 The observed initial position fixes the origin of the flight. The six velocity and spin components determine its initial motion. In still air, drag removes mechanical energy while Magnus lift does no work along the velocity; gravity converts kinetic and potential energy during flight.
 
+This section presents the equations extended to include buoyancy. The existing numerical results and figures in Section~\ref{sec:solving} and later sections were calculated using gravity, drag and Magnus lift, corresponding to the baseline $\boldsymbol F_B=\boldsymbol0$; the buoyancy-inclusive results have not been recomputed.
+
 \section{Model Solving}\label{sec:solving}
-We compare increasing levels of aerodynamic description to identify which effects control the trajectory. Table~\ref{tab:models} defines the four models. Forward prediction uses measured or reconstructed launch conditions and unit force corrections. Inverse prediction uses two later positions to estimate the initial motion and force corrections, then propagates the fitted state to the goal.
+The following examples retain the existing three-force baseline, without buoyancy. We compare increasing levels of aerodynamic description to identify which effects control the trajectory. Table~\ref{tab:models} defines the four models. Forward prediction uses measured or reconstructed launch conditions and unit force corrections. Inverse prediction uses two later positions to estimate the initial motion and force corrections, then propagates the fitted state to the goal.
 \begin{table}[H]\centering\small
 \caption{Four-model hierarchy. Gravity and constant spin are common to all models.}\label{tab:models}
 \begin{tabular}{llll}\toprule
@@ -354,9 +397,22 @@ Chip & 14 & 20 & $(-15,0)$ & 0.305 & 0.086 & $<0.001$\\\bottomrule
 \textit{To be completed.}
 
 \section{Discussion of Other Factors}\label{sec:other}
-The main model isolates gravity, drag and Magnus lift. We now examine the physical effects omitted from its geometry, spin evolution and ambient airflow.
+We now examine surface geometry, spin evolution and ambient airflow.
 \subsection{Asymmetric Surface Geometry}\label{sec:surface}
 Paudel and Yan \cite{paudel} performed full-flight flow simulations using realistic football geometry and a smooth-sphere comparison. For launch speeds of 10, 15 and 20 m/s and spin rates of 31.5, 63 and 94.5 rad/s, their results show that seams and surface structure alter separation, wake dynamics and Magnus force. The smooth sphere produces greater lateral bending in their nine comparisons, and vertical flight-time differences become more visible at higher speed and rotation.
+
+\begin{figure}[H]\centering\includegraphics[width=.60\textwidth]{surface_comparison.png}
+\caption{Illustrative comparison of a paneled football and a smooth sphere, inspired by Paudel and Yan \cite{paudel}. Their compared bodies had diameter 0.22 m and mass 0.436 kg. The panel geometry shown here is schematic.}\label{fig:surface-geometry}\end{figure}
+
+Alam et al.~\cite{alam2012} measured drag coefficients over a range of Reynolds numbers for six footballs and a smooth sphere. Figure~\ref{fig:alam-surfaces} shows the panels and surface textures of these footballs, while Figure~\ref{fig:alam-drag} compares their drag coefficients. The differences illustrate the influence of ball surface structure on aerodynamic drag.
+
+\begin{figure}[H]\centering
+\includegraphics[width=.86\textwidth]{alam_ball_surfaces.png}
+\caption{Six footballs and details of their surfaces, reproduced from Figures 1--3 of Alam et al.~\cite{alam2012}.}\label{fig:alam-surfaces}\end{figure}
+
+\begin{figure}[H]\centering
+\includegraphics[width=.76\textwidth]{alam_drag_comparison.png}
+\caption{Drag coefficient against Reynolds number for different footballs and a smooth sphere, reproduced from Figure 5 of Alam et al.~\cite{alam2012}.}\label{fig:alam-drag}\end{figure}
 
 The spherical geometry in the present report describes the centre-of-mass motion and projected area. Its force coefficients come from football measurements, so the average surface influence enters through $C_D$ and $C_L$. Explicit panel orientation and asymmetric wake fluctuations provide a further level of description when lateral-force details are important. These published results support retaining football-specific coefficients in a spherical trajectory model.
 
@@ -383,7 +439,7 @@ It is \TorqueViscousRatio\ at the fitted competition launch, so the quadratic te
 \begin{equation}
 \left\{\begin{aligned}
 \dot{\boldsymbol r}&=\boldsymbol v,\\
-m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L,\\
+m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_B+\boldsymbol F_D+\boldsymbol F_L,\\
 I_b\dot{\boldsymbol\omega}&=-k_2\omega\boldsymbol\omega.
 \end{aligned}\right.\label{eq:motion-torque}
 \end{equation}
@@ -406,7 +462,7 @@ Crosswind also rotates the airflow by $\arctan(w/v)$, changing the force directi
 A 5\% limit on the headwind dynamic-pressure change corresponds to $w/v\leq\sqrt{1.05}-1$, or $w\leq\WindThreshold$ m/s at this launch. The still-air approximation is most suitable for indoor or weak-wind flight; stronger wind should enter through the relative-velocity calculation.
 
 \section{Conclusions}
-The three-force model connects soccer-ball flight to three distinct mechanisms: gravity produces downward curvature, drag removes momentum, and Magnus lift changes direction. The complete Teamgeist coefficient relations represent flow-state and spin changes, while the matched 2007 wind-tunnel comparison gives a closer reproduction for drag than for lift.
+The model relates soccer-ball flight to gravity, buoyancy, drag and Magnus lift; the numerical results presented here use the three-force baseline without buoyancy. The complete Teamgeist coefficient relations represent flow-state and spin changes, while the matched 2007 wind-tunnel comparison gives a closer reproduction for drag than for lift.
 
 The controlled nonspinning example shows that including drag is essential for range prediction. Its M4 range is \ForwardMFourRange\ m against the published 21.9 m. The rotating trajectory segments display the downward curvature of topspin and variation in the accuracy of the common coefficient law. Recorded match comparisons show how early displacement and fitted force corrections affect subsequent prediction.
 
@@ -432,6 +488,7 @@ The wind-tunnel comparisons, controlled launches and recorded match flights exam
 \bibitem{bassek} M. Bassek, R. Rein, H. Weber and D. Memmert, ``An integrated dataset of spatiotemporal and event data in elite soccer,'' \emph{Scientific Data}, 12, 195, 2025. \url{https://doi.org/10.1038/s41597-025-04505-y}.
 \bibitem{dataset} DFL, ``Sportec Open DFL Dataset,'' CC BY 4.0. Data mirror: \url{https://huggingface.co/datasets/pysport/idsse-data}.
 \bibitem{maponi} P. Maponi and R. Piombin, ``A computational framework to predict the soccer ball trajectory,'' \emph{Journal of Applied Mathematics}, 2025, 7425581. \url{https://doi.org/10.1155/jama/7425581}.
+\bibitem{alam2012} F. Alam, H. Chowdhury, M. Stemmer, Z. Wang and J. Yang, ``Effects of surface structure on soccer ball aerodynamics,'' \emph{Procedia Engineering}, 34, 146--151, 2012. \url{https://doi.org/10.1016/j.proeng.2012.04.026}.
 \bibitem{paudel} S. Paudel and J. Yan, ``High-fidelity simulations of full-flight soccer ball aerodynamics using a monolithic overset approach,'' \emph{Computational Mechanics}, 77, 1245--1265, 2026. \url{https://doi.org/10.1007/s00466-025-02705-2}.
 \bibitem{myers} T. G. Myers and S. L. Mitchell, ``A mathematical analysis of the motion of an in-flight soccer ball,'' \emph{Sports Engineering}, 16, 29--41, 2013. \url{https://doi.org/10.1007/s12283-012-0105-8}.
 \bibitem{asai2007} T. Asai, K. Seo, O. Kobayashi and R. Sakashita, ``Fundamental aerodynamics of the soccer ball,'' \emph{Sports Engineering}, 10, 101--110, 2007. \url{https://doi.org/10.1007/BF02844207}.
