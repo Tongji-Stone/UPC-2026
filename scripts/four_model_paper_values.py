@@ -21,21 +21,8 @@ def main():
         commands=[]
         def macro(name,value):commands.append('\\newcommand{\\'+name+'}{'+str(value)+'}\n')
         def tr(en,cn):return cn if zh else en
-        names=dict(zip([c['case'] for c in data['config']['forward']],
-            ['大力射门','推射','弧线球','上旋','下旋','挑射'] if zh else ['Power','Placement','Curved','Topspin','Backspin','Chip']))
         c=PhysicsConfig.for_model('M4');macro('ReferenceCD',f'{c.drag_coefficient:.4f}');macro('ReferenceCL',f'{c.lift_coefficient:.4f}')
         macro('ForwardReMin',f'{14*2*.11/1.5e-5/1e5:.2f}');macro('ForwardReMax',f'{27*2*.11/1.5e-5/1e5:.2f}')
-        rows=[]
-        for c in data['config']['forward']:
-            rows.append(f"{names[c['case']]} & {c['speed_m_s']} & {c['elevation_deg']} & $({','.join(map(str,c['spin_rad_s']))})$")
-        macro('ForwardInputsTable',table(tr('Prescribed initial conditions.','自设初始条件。'),'tab:forward-inputs','lrrl',
-            tr(r'Kick & $v_0$ (m/s) & $\beta$ ($^\circ$) & $\boldsymbol\omega_0$ (rad/s)',r'踢法 & $v_0$ (m/s) & $\beta$ ($^\circ$) & $\boldsymbol\omega_0$ (rad/s)'),rows))
-        rows=[]
-        for r in forward:
-            e=r['event'];status=tr('goal','球门') if e['type']=='plane' else tr('ground','触地')
-            rows.append(f"{names[r['case']]} & {r['model']} & {status} & "+' & '.join(f'{x:.3f}' for x in e['position'])+f" & {e['time']:.4f}")
-        macro('ForwardOutcomesTable',table(tr('First goal-plane or ground endpoint for all 24 flights.','24 次飞行的首次球门平面或触地终点。'),'tab:forward-outcomes','lllrrrr',
-            tr(r'Kick & Model & End & $x$ (m) & $y$ (m) & $z$ (m) & $t$ (s)',r'踢法 & 模型 & 终止 & $x$ (m) & $y$ (m) & $z$ (m) & $t$ (s)'),rows))
         r=next(r for r in forward if r['case']=='curved' and r['model']=='M4');e=r['event']
         for name,val in dict(CurvedY=e['position'][1],CurvedZ=e['position'][2],CurvedTime=e['time'],CurvedVX=r['initial_state'][0],CurvedVZ=r['initial_state'][2]).items():macro(name,f'{val:.4f}')
         rows=[]

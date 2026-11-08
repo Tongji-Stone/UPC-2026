@@ -12,36 +12,34 @@ M3 represents the combined net force. M4 uses constant $C_D$ and $\alpha$ during
 
 \subsection{Forward Prediction}\label{sec:forward}
 \subsubsection{Prescribed conditions and solution}
-Five kick situations are represented by six initial states in Table~\ref{tab:forward-inputs}. These are chosen numerical examples: power, placement, sidespin, a paired topspin/backspin comparison, and a chip. For M3, the initial M4 net force is held constant in each forward example. Each begins at $\boldsymbol r_0=(0,0,0.11)$ m with
+Five kick situations are represented by six initial states. These are chosen numerical examples: power, placement, sidespin, a paired topspin/backspin comparison, and a chip. For M3, the initial M4 net force is held constant in each forward example. Each begins at $\boldsymbol r_0=(0,0,0.11)$ m with
 \begin{equation}
 \boldsymbol v_0=v_0(\cos\beta,0,\sin\beta),\qquad \alpha_D=\alpha_L=1.
 \end{equation}
-The top- and backspin pair has the same speed and launch angle, isolating the direction of rotation. For every state, all four models are integrated by adaptive Runge--Kutta (DOP853). A forward root of $x-11$ locates the goal crossing and a descending root of $z-R$ locates ground contact. The relative and absolute integration tolerances are $10^{-10}$ and $10^{-12}$, with a maximum step of 0.005 s. Table~\ref{tab:forward-outcomes} gives the resulting endpoint and time.
-\ForwardInputsTable
-\ForwardOutcomesTable
+The top- and backspin pair has the same speed and launch angle, isolating the direction of rotation. For every state, all four models are integrated by adaptive Runge--Kutta (DOP853). A forward root of $x-11$ locates the goal crossing and a descending root of $z-R$ locates ground contact. The relative and absolute integration tolerances are $10^{-10}$ and $10^{-12}$, with a maximum step of 0.005 s. The endpoint markers show the first goal-plane crossing or ground contact.
 
 \subsubsection{Case 1: Power shot}
-A high launch speed leaves little time for downward gravitational deflection. Drag removes forward momentum and increases the time required to reach the goal. With zero spin M2 and M4 have the same drag; M3 holds the initial net force constant.
+The ball starts at 27 m/s with an $8^\circ$ elevation and zero spin. A high launch speed leaves little time for downward gravitational deflection. Drag removes forward momentum and increases the time required to reach the goal. With zero spin M2 and M4 have the same drag; M3 holds the initial net force constant.
 \begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_power.pdf}
 \caption{Power shot under the same prescribed initial condition in M1--M4. Endpoint markers denote goal crossing or ground contact.}\label{fig:case-power}\end{figure}
 
 \subsubsection{Case 2: Placement shot}
-The lower launch speed gives gravity more time to bend the path. The comparison shows how the assumed drag coefficient changes both the travel time and crossing height. The initial direction is common to all models.
+The ball starts at 20 m/s with an $11^\circ$ elevation and zero spin. The lower launch speed gives gravity more time to bend the path. The comparison shows how the assumed drag coefficient changes both the travel time and crossing height. The initial direction is common to all models.
 \begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_placement.pdf}
 \caption{Placement shot with zero spin. M2 and M4 have identical drag at zero spin.}\label{fig:case-placement}\end{figure}
 
 \subsubsection{Case 3: Curved shot}
-Vertical-axis rotation creates a horizontal Magnus force. M1 and M2 preserve the initial horizontal direction; M3 holds the initial force constant while M4 evolves the Magnus force with velocity; both can bend laterally. The M4 goal crossing is $(\CurvedY,\CurvedZ)$ m at $\CurvedTime$ s. This case also supplies the reference state for the rotational-damping comparison in Section~\ref{sec:rotation}.
+The ball starts at 24 m/s with a $10^\circ$ elevation and spin $(0,0,35)$ rad/s. Vertical-axis rotation creates a horizontal Magnus force. M1 and M2 preserve the initial horizontal direction; M3 holds the initial force constant while M4 evolves the Magnus force with velocity; both can bend laterally. The M4 goal crossing is $(\CurvedY,\CurvedZ)$ m at $\CurvedTime$ s. This case also supplies the reference state for the rotational-damping comparison in Section~\ref{sec:rotation}.
 \begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_curved.pdf}
 \caption{Sidespin redirects the ball horizontally. The four models share speed, elevation and initial spin.}\label{fig:case-curved}\end{figure}
 
 \subsubsection{Case 4: Topspin and backspin}
-Changing the sign of $\omega_y$ reverses the vertical Magnus force. Topspin increases downward curvature; backspin opposes the gravitational fall and raises the trajectory. Equal launch speed and angle make this contrast visible directly. Table~\ref{tab:forward-outcomes} records each model's actual termination.
+Both shots start at 24 m/s and $12^\circ$, with spin $(0,35,0)$ and $(0,-35,0)$ rad/s, respectively. Changing the sign of $\omega_y$ reverses the vertical Magnus force. Topspin increases downward curvature; backspin opposes the gravitational fall and raises the trajectory. Equal launch speed and angle make this contrast visible directly. The figure shows the paths and endpoints of the models.
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{case_spin.pdf}
 \caption{Matched topspin and backspin examples. Only the sign of transverse spin changes between the two panels.}\label{fig:case-spin}\end{figure}
 
 \subsubsection{Case 5: Chip shot}
-The chip combines a larger elevation angle, lower speed and backspin. The initial vertical velocity builds an arc, while gravity, drag and upward Magnus lift determine how much height remains near the goal. Its slower flight lengthens the action of gravity and aerodynamic forces.
+The chip starts at 14 m/s and $20^\circ$, with spin $(0,-15,0)$ rad/s, combining a larger elevation angle, lower speed and backspin. The initial vertical velocity builds an arc, while gravity, drag and upward Magnus lift determine how much height remains near the goal. Its slower flight lengthens the action of gravity and aerodynamic forces.
 \begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_chip.pdf}
 \caption{The prescribed chip illustrates the combined effect of launch angle, slower airflow and backspin.}\label{fig:case-chip}\end{figure}
 

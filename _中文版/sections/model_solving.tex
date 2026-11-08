@@ -12,36 +12,34 @@ M3 的恒合力包含重力及其他力的共同作用。M4 中 $C_D$ 和 $\alph
 
 \subsection{正向预测}\label{sec:forward}
 \subsubsection{自设初始条件与求解}
-表~\ref{tab:forward-inputs} 用六组初始条件表示五类射门：大力射门、推射、侧旋弧线球、成对的上旋与下旋，以及挑射。这些数值用于展示不同踢法的物理过程。M3 在每个正向案例取 M4 初始合力作为恒力；各算例均从 $\boldsymbol r_0=(0,0,0.11)$ m 出发，取
+本文用六组初始条件表示五类射门：大力射门、推射、侧旋弧线球、成对的上旋与下旋，以及挑射。这些数值用于展示不同踢法的物理过程。M3 在每个正向案例取 M4 初始合力作为恒力；各算例均从 $\boldsymbol r_0=(0,0,0.11)$ m 出发，取
 \begin{equation}
 \boldsymbol v_0=v_0(\cos\beta,0,\sin\beta),\qquad \alpha_D=\alpha_L=1.
 \end{equation}
-上、下旋采用相同速度和仰角，直接比较旋转方向的作用。每组初始条件均用自适应龙格--库塔方法 DOP853 求解 M1--M4。$x-11$ 的前向零点确定球门交点，$z-R$ 的下降零点确定触地。相对和绝对积分容差分别为 $10^{-10}$、$10^{-12}$，最大时间步长为 0.005 s。表~\ref{tab:forward-outcomes} 汇总终点及时间。
-\ForwardInputsTable
-\ForwardOutcomesTable
+上、下旋采用相同速度和仰角，直接比较旋转方向的作用。每组初始条件均用自适应龙格--库塔方法 DOP853 求解 M1--M4。$x-11$ 的前向零点确定球门交点，$z-R$ 的下降零点确定触地。相对和绝对积分容差分别为 $10^{-10}$、$10^{-12}$，最大时间步长为 0.005 s。图中的终点标记表示足球首次到达球门平面或触地。
 
 \subsubsection{案例一：大力射门}
-较高初速度缩短了重力使足球向下偏转的时间；阻力消耗前进动量，使到达球门的时间增加。无旋转时 M2 与 M4 的阻力相同；M3 保持初始合力不变。
+设初速度为 27 m/s、仰角为 $8^\circ$，且足球不自旋。较高初速度缩短了重力使足球向下偏转的时间；阻力消耗前进动量，使到达球门的时间增加。无旋转时 M2 与 M4 的阻力相同；M3 保持初始合力不变。
 \begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_power.pdf}
 \caption{相同自设初始条件下 M1--M4 的大力射门轨迹，终点标记表示球门交点或触地。}\label{fig:case-power}\end{figure}
 
 \subsubsection{案例二：推射}
-较低初速度使重力有更长时间改变路径。不同阻力系数同时改变到达时间与交点高度，四模型的初始运动方向保持相同。
+设初速度为 20 m/s、仰角为 $11^\circ$，且足球不自旋。较低初速度使重力有更长时间改变路径。不同阻力系数同时改变到达时间与交点高度，四模型的初始运动方向保持相同。
 \begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_placement.pdf}
 \caption{零自旋推射。M2 与 M4 在无旋转条件下采用相同阻力。}\label{fig:case-placement}\end{figure}
 
 \subsubsection{案例三：弧线球}
-竖直轴旋转产生水平马格努斯力。M1、M2 保持初始水平方向，M3 保持初始合力，M4 的马格努斯力随速度变化，两者均可形成侧向弯曲。M4 在 $\CurvedTime$ s 到达球门平面，交点为 $(\CurvedY,\CurvedZ)$ m。第~\ref{sec:rotation} 节也用该初始状态比较旋转阻尼。
+设初速度为 24 m/s、仰角为 $10^\circ$，自旋为 $(0,0,35)$ rad/s。竖直轴旋转产生水平马格努斯力。M1、M2 保持初始水平方向，M3 保持初始合力，M4 的马格努斯力随速度变化，两者均可形成侧向弯曲。M4 在 $\CurvedTime$ s 到达球门平面，交点为 $(\CurvedY,\CurvedZ)$ m。第~\ref{sec:rotation} 节也用该初始状态比较旋转阻尼。
 \begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_curved.pdf}
 \caption{侧旋使足球水平偏转，四模型采用相同速度、仰角和初始自旋。}\label{fig:case-curved}\end{figure}
 
 \subsubsection{案例四：上旋与下旋}
-改变 $\omega_y$ 的符号会反转竖直马格努斯力。上旋增强向下弯曲，下旋抵消部分重力下落并抬高路径。相同初速度和仰角使这种差别直接呈现，各模型的实际终止状态见表~\ref{tab:forward-outcomes}。
+两种情况均取初速度 24 m/s、仰角 $12^\circ$，自旋分别为 $(0,35,0)$ 和 $(0,-35,0)$ rad/s。改变 $\omega_y$ 的符号会反转竖直马格努斯力。上旋增强向下弯曲，下旋抵消部分重力下落并抬高路径。相同初速度和仰角使这种差别直接呈现，图中显示了各模型的飞行路径和终点。
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{case_spin.pdf}
 \caption{同条件上、下旋对照，两图仅改变横向自旋的符号。}\label{fig:case-spin}\end{figure}
 
 \subsubsection{案例五：挑射}
-挑射结合较大仰角、较低速度和下旋。初始竖直速度形成弧线，重力、阻力及向上马格努斯力共同决定球门附近的剩余高度。较慢飞行使重力和气动力作用的时间增加。
+挑射取初速度 14 m/s、仰角 $20^\circ$，自旋为 $(0,-15,0)$ rad/s，结合了较大仰角、较低速度和下旋。初始竖直速度形成弧线，重力、阻力及向上马格努斯力共同决定球门附近的剩余高度。较慢飞行使重力和气动力作用的时间增加。
 \begin{figure}[H]\centering\includegraphics[width=.88\textwidth]{case_chip.pdf}
 \caption{自设挑射展示仰角、较慢来流与下旋的共同作用。}\label{fig:case-chip}\end{figure}
 
