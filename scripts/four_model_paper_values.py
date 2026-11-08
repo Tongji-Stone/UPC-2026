@@ -36,7 +36,7 @@ def main():
             tr('Goal-plane errors (m); a dash denotes no valid goal-plane crossing.',
                '球门交点误差（m）；无有效交点标记为“---”。'),
             'tab:penalty-errors','lcccc',tr('Event & M1 & M2 & M3 & M4','事件 & M1 & M2 & M3 & M4'),rows,
-            size=r'\normalsize',row_stretch=1.25))
+            size=r'\normalfont\normalsize',row_stretch=1.25))
         c=PhysicsConfig.for_model('M4');macro('ReferenceCD',f'{c.drag_coefficient:.4f}');macro('ReferenceCL',f'{c.lift_coefficient:.4f}')
         macro('ForwardReMin',f'{14*2*.11/1.5e-5/1e5:.2f}');macro('ForwardReMax',f'{27*2*.11/1.5e-5/1e5:.2f}')
         r=next(r for r in forward if r['case']=='curved' and r['model']=='M4');e=r['event']
@@ -88,9 +88,8 @@ def main():
             if ground:text+=tr(' Ground contact precedes the goal for '+', '.join(ground)+'.',' '+ '、'.join(ground)+' 在球门前触地。')
             macro(command+'Discussion',text)
         macro('TorqueViscousRatio',scientific(other['viscous_to_inertial_ratio']));macro('TorqueDisplacement',f"{other['goal_displacement_m']:.4f}")
-        a,b=[r['event'] for r in other['records'][:2]]
-        text=tr(f"The damped crossing is $({b['position'][1]:.4f},{b['position'][2]:.4f})$ m, compared with $({a['position'][1]:.4f},{a['position'][2]:.4f})$ m at constant spin. The displacement is {other['goal_displacement_m']:.4f} m ({other['displacement_pct_of_11m']:.3f}\\% of 11 m). Spin falls by {other['spin_loss_pct']:.3f}\\%, and crossing time changes by {other['time_change_pct']:+.3f}\\%. Adding viscous torque shifts the damped crossing by {other['viscous_goal_difference_m']:.2g} m. The short-flight endpoint is less sensitive than spin magnitude to this reference torque.",
-            f"阻尼交点为 $({b['position'][1]:.4f},{b['position'][2]:.4f})$ m，恒定自旋为 $({a['position'][1]:.4f},{a['position'][2]:.4f})$ m。位移为 {other['goal_displacement_m']:.4f} m，占 11 m 的 {other['displacement_pct_of_11m']:.3f}\\%。自旋降低 {other['spin_loss_pct']:.3f}\\%，到达时间变化 {other['time_change_pct']:+.3f}\\%。再加入黏性力矩使阻尼交点改变 {other['viscous_goal_difference_m']:.2g} m。短程交点的变化小于自旋幅值的变化。")
+        text=tr(f"Spin falls by {other['spin_loss_pct']:.3f}\\%, while the crossing moves {other['goal_displacement_m']:.4f} m ({other['displacement_pct_of_11m']:.3f}\\% of the 11 m distance) and arrival time changes by {other['time_change_pct']:+.3f}\\%. Rotational damping therefore has a small endpoint effect in this short reference flight.",
+            f"自旋降低 {other['spin_loss_pct']:.3f}\\%，球门交点移动 {other['goal_displacement_m']:.4f} m，占 11 m 距离的 {other['displacement_pct_of_11m']:.3f}\\%；到达时间变化 {other['time_change_pct']:+.3f}\\%。因此，在这一短程参考飞行中，旋转阻尼对落点的影响较小。")
         macro('TorqueResults',text)
         rows=[' & '.join([f"{r['wind_m_s']:.0f}",f"{r['head_pct']:+.2f}",f"{r['tail_pct']:+.2f}",f"{r['cross_pct']:+.2f}",f"{r['angle_deg']:.2f}"]) for r in other['wind']]
         macro('WindResultsTable',table(tr('Illustrative wind at the 24 m/s curved-shot launch: dynamic-pressure changes at fixed coefficients.','24 m/s 弧线球初速下的示例风况：固定系数时的动压变化。'),'tab:wind','rrrrr',

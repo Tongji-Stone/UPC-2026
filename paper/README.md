@@ -50,3 +50,11 @@ xelatex -no-shell-escape -interaction=nonstopmode -halt-on-error main.tex
 J03WR9 最新窗口为源帧176245、176246、176247，原始时间0.08、0.12、0.16 s；该例单独重算与作图使用 `four_model_compute.py inverse --case J03WR9` 和 `four_model_plot.py --inverse-only`。
 
 J03WMX 保留源帧 152602、152603、152604，拟合时刻为 0、0.04、0.08 s。
+
+## 排版与示例照片
+
+目录与球门交点误差表采用正文的 `normalsize`（12 pt）。两张用户提供的射门照片保存在 `assets/`，来源文件与SHA256见 `shot_photo_sources.json`。照片作为(a)踢法示例，与(b)相应轨迹对照上下组合；新增两次精准推射对照图可用 `python scripts/four_model_plot.py --placement-only` 从现有结果生成。接缝球示意与六种足球表面细节采用左右子图，共用图号；旋转阻尼小节保留模型来源与物理结论，数值沿用既有计算。
+
+第八章按“Model Strengths / Model Weaknesses”重写，中文对应“模型优点 / 模型缺点”，两版保持相同论述结构。
+
+最终排版核验：`results/current_report/layout_revision_verification.json` 记录两版12 pt字号、子图编号和第八章结构；`pdf_verification.json`、`bilingual_verification.json` 保存编译、引用及字体核查。当前英文成品为 `main.pdf`，旧备用构建 `main_local.pdf` 已移除。

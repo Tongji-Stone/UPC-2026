@@ -71,12 +71,14 @@ def inverse():
         fig.legend(handles,labels,loc='upper center',ncol=3,frameon=False,fontsize=8)
         save(fig,'penalty_'+case['case'],rect=[0,0,1,.90])
 
-def inverse_overview():
+def inverse_overview(case_names=None,basename='penalty_spatial_overview'):
     """Show all three spatial paths together using the saved fit and tracking data."""
     cases=read_json(DATA/'inputs.json')['cases']
-    fig=plt.figure(figsize=(10,3.35))
+    if case_names:
+        cases=[next(c for c in cases if c['case']==name) for name in case_names]
+    fig=plt.figure(figsize=(10,3.35) if len(cases)==3 else (8,3.2))
     for i,case in enumerate(cases):
-        ax=fig.add_subplot(1,3,i+1,projection='3d')
+        ax=fig.add_subplot(1,len(cases),i+1,projection='3d')
         actual=case['goal'];tend=actual['time_s']
         rows=[r for r in case['samples'] if 0<=r['time_s']<=tend+1e-10 and r['X_m']<=52.5+1e-10]
         xyz=np.array([[r[k] for k in ('x_m','y_m','z_m')] for r in rows])
@@ -96,7 +98,7 @@ def inverse_overview():
     handles += [Line2D([0],[0],color=c,ls=s,lw=1.3,label=m) for m,c,s in zip(MODELS,COLORS,STYLES)]
     handles += [Line2D([0],[0],color='black',marker='x',markersize=5,lw=0,label='Goal crossing')]
     fig.legend(handles=handles,loc='upper center',ncol=7,frameon=False,fontsize=8)
-    save(fig,'penalty_spatial_overview',rect=[0,0,1,.88])
+    save(fig,basename,rect=[0,0,1,.88])
 
 def penalty_dynamics():
     """Compare inferred M4 speed and forces for the three recorded penalties."""
@@ -123,12 +125,17 @@ def other():
 
 if __name__=='__main__':
     import argparse
-    parser=argparse.ArgumentParser();parser.add_argument('--inverse-only',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--inverse-only',action='store_true')
+    parser.add_argument('--placement-only',action='store_true');args=parser.parse_args()
     FIG.mkdir(parents=True,exist_ok=True)
     plt.rcParams.update({'font.family':'serif','font.serif':['Times New Roman'],'font.size':9,'font.weight':'bold','axes.labelweight':'bold','axes.titleweight':'bold',
         'axes.spines.right':False,'axes.spines.top':False,'pdf.fonttype':42,'svg.fonttype':'none'})
-    if args.inverse_only:inverse();inverse_overview();penalty_dynamics()
-    else:forward();inverse();inverse_overview();penalty_dynamics();other()
+    if args.placement_only:
+        inverse_overview(['J03WMX','J03WR9'],'placement_spatial_comparison')
+    else:
+        if args.inverse_only:inverse();inverse_overview();penalty_dynamics()
+        else:forward();inverse();inverse_overview();penalty_dynamics();other()
+        inverse_overview(['J03WMX','J03WR9'],'placement_spatial_comparison')
     save_json(FIG/'figure_contract.json',dict(width_inches=6.5,dpi=300,formats=['pdf','svg','png'],
         units='SI',models=list(MODELS),raw_frames=39,
         inverse_input_rule='corrected consecutive source frames; zero time at selected start; original repeated samples retained',

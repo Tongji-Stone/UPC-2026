@@ -28,14 +28,35 @@ The recorded penalties comprise two placement shots and one power shot. Figure~\
 \caption{Three recorded penalty trajectories and model predictions, from left to right: placement 1, power shot, placement 2. Each inversion uses positions at 0, 0.04 and 0.08 s after the selected start.}\label{fig:penalty-overview}\end{figure}
 
 \subsubsection{Case 1: Placement Shots}
+As shown in Figure~\ref{fig:placement-photo}, the placement-shot illustration shows the ball close to the turf. Figure~\ref{fig:placement-paths} compares the two recorded placement trajectories with the four model predictions.
+\begin{figure}[H]\centering
+\begin{subfigure}{\textwidth}\centering
+\includegraphics[width=.56\linewidth]{placement_shot_example.png}
+\caption{Illustrative placement shot.}\label{fig:placement-photo}
+\end{subfigure}\par\vspace{.5em}
+\begin{subfigure}{\textwidth}\centering
+\includegraphics[width=.98\linewidth]{placement_spatial_comparison.pdf}
+\caption{Measured and predicted trajectories for the two placement cases.}\label{fig:placement-paths}
+\end{subfigure}
+\caption{Placement-shot illustration and the two recorded low-flight trajectories.}\label{fig:placement-example}
+\end{figure}
 The two placement shots both travel close to the ground. M4 estimates their initial speeds at the selected frames as 29.20 and 28.34 m/s, respectively. For placement 1, M4 reaches the goal plane with a 0.360 m error; M1 and M2 hit the ground and M3 does not reach the goal within the calculation horizon. For placement 2, M1, M2, M3 and M4 all reach the goal, with errors of 0.475, 0.475, 0.155 and 0.146 m, respectively.
 
 A low trajectory is sensitive to vertical forces. Gravity pulls downward, while the vertical Magnus component can raise or lower the path. M1 omits aerodynamic forces, and M2 adds drag without transverse lift. M3 fits a constant acceleration to the early points, but its continuation can deviate as acceleration evolves. M4 allows aerodynamic forces to change with velocity and spin direction; it reaches the goal for placement 1 and gives a smaller crossing error for placement 2. Early tracking and the fitted parameters both influence these differences.
 
 \subsubsection{Case 2: Power Shot}
-M4 estimates the power shot's speed at the selected start as 32.05 m/s, higher than for the two placement examples. Figure~\ref{fig:penalty-J03WOH} shows its spatial path and $x$, $y$, $z$ against time. The first three positions are fitted; later black points assess the continuation.
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WOH.pdf}
-\caption{Power-shot trajectory and coordinates against time. Open circles are fitting inputs and black points are measured samples.}\label{fig:penalty-J03WOH}\end{figure}
+As shown in Figure~\ref{fig:power-photo}, the illustrative power shot places the ball well above the turf. M4 estimates the recorded power shot's speed at the selected start as 32.05 m/s, higher than for the two placement examples. Figure~\ref{fig:power-paths} shows its spatial path and $x$, $y$, $z$ against time. The first three positions are fitted; later black points assess the continuation.
+\begin{figure}[H]\centering
+\begin{subfigure}{\textwidth}\centering
+\includegraphics[width=.43\linewidth]{power_shot_example.png}
+\caption{Illustrative power shot.}\label{fig:power-photo}
+\end{subfigure}\par\vspace{.5em}
+\begin{subfigure}{\textwidth}\centering
+\includegraphics[width=.95\linewidth]{penalty_J03WOH.pdf}
+\caption{Spatial trajectory and coordinates against time for the recorded power shot.}\label{fig:power-paths}
+\end{subfigure}
+\caption{Power-shot illustration and comparison with the recorded trajectory. Open circles are fitting inputs and black points are measured samples.}\label{fig:penalty-J03WOH}
+\end{figure}
 $x(t)$ shows forward deceleration; $y(t)$ and $z(t)$ show lateral and vertical curvature. M1, M2, M3 and M4 have goal-plane errors of 0.684, 0.657, 0.374 and 0.113 m, respectively. M1 uses gravity alone and M2 adds drag; their horizontal directions are mainly set by initial velocity. M3 continues the constant acceleration determined from the three inputs. M4 uses drag and Magnus force to describe evolving curvature and agrees more closely with the later points in this shot. Errors compare each model's own $(y,z)$ crossing with the measured crossing.
 
 \paragraph{Physical picture of speed and aerodynamic forces.} Figure~\ref{fig:penalty-dynamics} compares M4 speed and force magnitudes. Drag scales with relative speed squared: the fitted initial drag is about 7.58 N for the power shot and 7.05 and 2.21 N for the placement shots, with coefficient values also affecting the comparison. As the ball slows, drag decreases. Magnus force depends on the cross product of spin and relative velocity: spin direction determines whether its effect is chiefly lateral or vertical, and its magnitude changes with the motion. The displayed speeds and forces are computed from the M4 inversions, using a reference spin magnitude of 30 rad/s.

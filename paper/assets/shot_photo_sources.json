@@ -1,0 +1,18 @@
+[
+  {
+    "original_filename": "微信图片_20261108153619_95_70.png",
+    "asset": "power_shot_example.png",
+    "classification": "power shot: ball visibly higher above the turf",
+    "sha256": "43645c1212e39d47ffe8e35c500f61b803bd434abbd4bbe1b6a5fd3306097b96",
+    "use": "illustrative shot photograph paired with the corresponding case-analysis plots",
+    "source": "user-supplied image"
+  },
+  {
+    "original_filename": "微信图片_20261108153227_93_70.png",
+    "asset": "placement_shot_example.png",
+    "classification": "placement shot: ball close to the turf",
+    "sha256": "3a89a0fe550256a49414e933664e9106040910676a71c0dae398b14bfccd7092",
+    "use": "illustrative shot photograph paired with the corresponding case-analysis plots",
+    "source": "user-supplied image"
+  }
+]

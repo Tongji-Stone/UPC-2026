@@ -1,0 +1,232 @@
+{
+  "all_passed": true,
+  "editions": {
+    "en": {
+      "pages": 29,
+      "labels": {
+        "tab:penalty-errors": {
+          "number": "3",
+          "page": 15
+        },
+        "fig:placement-example": {
+          "number": "7",
+          "page": 12
+        },
+        "fig:placement-photo": {
+          "number": "7a",
+          "page": 12
+        },
+        "fig:placement-paths": {
+          "number": "7b",
+          "page": 12
+        },
+        "fig:penalty-J03WOH": {
+          "number": "8",
+          "page": 14
+        },
+        "fig:power-photo": {
+          "number": "8a",
+          "page": 14
+        },
+        "fig:power-paths": {
+          "number": "8b",
+          "page": 14
+        },
+        "fig:surface-details": {
+          "number": "16",
+          "page": 22
+        },
+        "fig:surface-geometry": {
+          "number": "16a",
+          "page": 22
+        },
+        "fig:alam-surfaces": {
+          "number": "16b",
+          "page": 22
+        }
+      },
+      "review_pages": [
+        2,
+        12,
+        14,
+        15,
+        22,
+        25
+      ]
+    },
+    "zh": {
+      "pages": 28,
+      "labels": {
+        "tab:penalty-errors": {
+          "number": "3",
+          "page": 14
+        },
+        "fig:placement-example": {
+          "number": "7",
+          "page": 12
+        },
+        "fig:placement-photo": {
+          "number": "7a",
+          "page": 12
+        },
+        "fig:placement-paths": {
+          "number": "7b",
+          "page": 12
+        },
+        "fig:penalty-J03WOH": {
+          "number": "8",
+          "page": 13
+        },
+        "fig:power-photo": {
+          "number": "8a",
+          "page": 13
+        },
+        "fig:power-paths": {
+          "number": "8b",
+          "page": 13
+        },
+        "fig:surface-details": {
+          "number": "16",
+          "page": 21
+        },
+        "fig:surface-geometry": {
+          "number": "16a",
+          "page": 21
+        },
+        "fig:alam-surfaces": {
+          "number": "16b",
+          "page": 21
+        }
+      },
+      "review_pages": [
+        2,
+        12,
+        13,
+        14,
+        21,
+        24
+      ]
+    }
+  },
+  "checks": {
+    "en_toc_body_size": {
+      "passed": true,
+      "observed_pdf_pt": [
+        11.9552
+      ],
+      "nominal_tex_pt": 12
+    },
+    "en_label_tab:penalty-errors": {
+      "passed": true
+    },
+    "en_label_fig:placement-example": {
+      "passed": true
+    },
+    "en_label_fig:placement-photo": {
+      "passed": true
+    },
+    "en_label_fig:placement-paths": {
+      "passed": true
+    },
+    "en_label_fig:penalty-J03WOH": {
+      "passed": true
+    },
+    "en_label_fig:power-photo": {
+      "passed": true
+    },
+    "en_label_fig:power-paths": {
+      "passed": true
+    },
+    "en_label_fig:surface-details": {
+      "passed": true
+    },
+    "en_label_fig:surface-geometry": {
+      "passed": true
+    },
+    "en_label_fig:alam-surfaces": {
+      "passed": true
+    },
+    "en_error_table_body_size": {
+      "passed": true,
+      "observed_pdf_pt": [
+        11.9552
+      ],
+      "cells": 9
+    },
+    "en_rotation_no_display_derivation": {
+      "passed": true
+    },
+    "en_child_figure_references": {
+      "passed": true
+    },
+    "en_six_subfigures": {
+      "passed": true
+    },
+    "en_chapter8_strengths_weaknesses": {
+      "passed": true
+    },
+    "zh_toc_body_size": {
+      "passed": true,
+      "observed_pdf_pt": [
+        11.9552
+      ],
+      "nominal_tex_pt": 12
+    },
+    "zh_label_tab:penalty-errors": {
+      "passed": true
+    },
+    "zh_label_fig:placement-example": {
+      "passed": true
+    },
+    "zh_label_fig:placement-photo": {
+      "passed": true
+    },
+    "zh_label_fig:placement-paths": {
+      "passed": true
+    },
+    "zh_label_fig:penalty-J03WOH": {
+      "passed": true
+    },
+    "zh_label_fig:power-photo": {
+      "passed": true
+    },
+    "zh_label_fig:power-paths": {
+      "passed": true
+    },
+    "zh_label_fig:surface-details": {
+      "passed": true
+    },
+    "zh_label_fig:surface-geometry": {
+      "passed": true
+    },
+    "zh_label_fig:alam-surfaces": {
+      "passed": true
+    },
+    "zh_error_table_body_size": {
+      "passed": true,
+      "observed_pdf_pt": [
+        11.9552
+      ],
+      "cells": 9
+    },
+    "zh_rotation_no_display_derivation": {
+      "passed": true
+    },
+    "zh_child_figure_references": {
+      "passed": true
+    },
+    "zh_six_subfigures": {
+      "passed": true
+    },
+    "zh_chapter8_strengths_weaknesses": {
+      "passed": true
+    },
+    "original_photos_preserved": {
+      "passed": true
+    },
+    "calculations_unchanged": {
+      "passed": true,
+      "baseline_commit": "f10a33c"
+    }
+  }
+}
