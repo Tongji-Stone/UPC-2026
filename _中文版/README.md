@@ -8,6 +8,8 @@
 
 完整说明见 ../paper/README.md。表述规则见 ../docs/文章表述修改依据.md，内部资料核查见 ../check.md。
 
-两版目录和误差汇总表统一为正文 12 pt。射门照片并排展示，精准推射增加双例轨迹合图，大力射门保留加宽间距的四面板图。几何比较图使用左右子图，第八章按模型优点和缺点组织。图源记录见 paper/assets/shot_photo_sources.json，排版核查见 results/current_report/layout_revision_verification.json。
+两版目录和误差汇总表统一为正文 12 pt。射门照片并排展示，精准推射的两幅三维轨迹左右并排，大力射门采用加宽间距的 2×2 四面板图。几何比较图使用左右子图，第八章按模型优点和缺点组织。图源记录见 paper/assets/shot_photo_sources.json，排版核查见 results/current_report/layout_revision_verification.json。
 
 本次叙述修订同步英文稿：背景仅介绍点球和研究方向；问题重述完整覆盖题目 B，删除三阶段划分；基本假设只描述物理条件。新增短推导和符号解释，最终力学关系及数值结果保持不变。实际图表与参考文献的正文引用核查见 results/current_report/narrative_verification.json。
+
+第四章已按求解方法、两类踢法案例和题设反演重组，输入与交点表由统一结果生成，详见 ../docs/第四章两类点球对照.md。当前数据与源文件核查为 results/current_report/chapter4/verification.json。

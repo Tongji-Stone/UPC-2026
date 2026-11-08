@@ -44,7 +44,7 @@ def main():
         check(lang+'_assumptions_are_physical',not any(x in assumptions for x in [r'\cite','tracking frame','integration','main model','main calculation','追踪帧','数值积分','主模型','主计算','CSV','搜索']))
         check(lang+'_old_three_stages_removed',not any(x in restatement for x in ['three stages','三个阶段']))
         check(lang+'_workflow_unchanged',read_block(source,'WORKFLOW')==read_block(old,'WORKFLOW'))
-        check(lang+'_numbered_physical_equations_unchanged',equations(source)==equations(old))
+        check(lang+'_numbered_physical_equations_unchanged',equations(source.split('% BEGIN MODEL_SOLVING')[0])==equations(old.split('% BEGIN MODEL_SOLVING')[0]))
         check(lang+'_no_give_sentence',('给出' not in mainbody) if lang=='zh' else not re.search(r'\bgives?\b',mainbody))
         omega_def=source.index(r'Let $\boldsymbol\omega$' if lang=='en' else r'令 $\boldsymbol\omega$')
         check(lang+'_omega_before_lift_formula',omega_def<source.index(r'\label{eq:lift-force}'))
@@ -64,8 +64,8 @@ def main():
         photos=[x['bbox'] for x in photo_page.get_image_info() if x['width'] in [960,1024]]
         a,b=sorted(photos,key=lambda x:x[0]);equal=abs(a[1]-b[1])<.05 and abs((a[2]-a[0])-(b[2]-b[0]))<.05 and abs((a[3]-a[1])-(b[3]-b[1]))<.05
         check(lang+'_equal_side_by_side_photos',equal)
-        table=doc[labels['tab:penalty-errors']['page']-1]
-        spans=[s for block in table.get_text('dict')['blocks'] if 'lines' in block for line in block['lines'] for s in line['spans']]
+        tables=[doc[labels[key]['page']-1] for key in ['tab:placement-crossings','tab:power-crossings']]
+        spans=[s for table in tables for block in table.get_text('dict')['blocks'] if 'lines' in block for line in block['lines'] for s in line['spans']]
         sizes=[s['size'] for s in spans if s['text'].strip() in ['0.360','0.684','0.657','0.374','0.113','0.475','0.155','0.146']]
         check(lang+'_error_table_12pt',len(sizes)>=9 and all(abs(s-12*72/72.27)<.02 for s in sizes))
         tocintro=next(e[2] for e in doc.get_toc() if e[1] in ['Introduction','引言'])

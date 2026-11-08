@@ -1,0 +1,21 @@
+{
+  "all_passed": true,
+  "editions": {
+    "paper": {
+      "pages": 30,
+      "tex_sha256": "ee4d5fccb7811080ed7e4a737aefcaed40b0c055e44465e387f575ddb5713bdf",
+      "pdf_sha256": "4e922fd3bda4b19cbe06e4b67be015b73be937ac02971831301b6f369c22568d",
+      "pdf_newer_than_source": true,
+      "no_unresolved_references": true,
+      "compile_errors": []
+    },
+    "_中文版": {
+      "pages": 28,
+      "tex_sha256": "7d857ea1e6f9aa8b059eeb0a8dcf430a25ee174a38b5c7f71b909772a58530e6",
+      "pdf_sha256": "c28dfa0e99803bdee9bc0b4bf64108733f6def5ee3f32b2066d83433024b9f12",
+      "pdf_newer_than_source": true,
+      "no_unresolved_references": true,
+      "compile_errors": []
+    }
+  }
+}
