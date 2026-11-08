@@ -11,17 +11,10 @@ M4 & gravity, drag, Magnus force & velocity, spin direction, $C_D$, $\alpha$ (7)
 M3 represents the combined net force. M4 uses constant $C_D$ and $\alpha$ during each flight with $C_L=\alpha Sp$. Forward reference values are $C_D^*=\ReferenceCD$ and $\alpha^*=\ReferenceCL$ at a published reference condition \cite{kiratidis2018}.
 
 \subsection{Inverse Prediction from Three Real Penalties}\label{sec:inverse}
-\subsubsection{Measurements, coordinate system and input times}
-The Sportec Open DFL data associate actual match events with TRACAB Gen5 multi-camera tracking at 25 Hz \cite{bassek,dataset}. We use penalties by Dejan Ljubicic (J03WMX), Dawid Igor Kownacki (J03WOH), and Philipp Klement (J03WR9). The supplied CSV retains 39 source frames, respectively 15, 12 and 12. Positions are used as published; no added observation-noise model is introduced.
+\subsubsection{Observations and prediction}
+We test the models on three recorded penalties: two placement shots and one power shot. The first selected position defines the time origin, and the positions at 0.04 and 0.08 s complete the input for predicting the flight. See \hyperref[app:data]{Appendix A} for the data source and frame selection.
 
-The source horizontal origin is the pitch centre. All three shots travel towards $X=52.5$ m. To use the competition's penalty-mark coordinates, we apply
-\begin{equation}
-x=X-41.5,\qquad y=Y,\qquad z=Z_{\rm original},\qquad x_g=11\ \mathrm{m}.
-\label{eq:data-coordinates}\end{equation}
-The nominal penalty mark is the horizontal origin, so each actual first observation retains its measured offset. Released $Z$ values are interpreted as metres and ball-centre height. Mass, radius and air properties use the model reference settings in Section 2; the supplied source leaves per-ball mass and radius unreported.
-
-Each inversion defines $t=0$ at its selected source frame. J03WMX uses samples 3, 4 and 5 of the original sequence; J03WOH uses samples 2, 3 and 4; J03WR9 uses samples 3, 4 and 5. All three fitting times are 0, 0.04 and 0.08 s. Their time origins on the original recording are 0.08, 0.04 and 0.08 s, respectively. Table~\ref{tab:penalty-inputs} gives the measured starting positions. Earlier records, repeated frames and post-goal records remain in the raw CSV. Trajectory comparison begins at the selected start, with subsequent samples used only for comparison up to the observed goal crossing. Frame-interpolated crossings are marked separately from measured frames.
-\PenaltyInputsTable
+The horizontal origin is the penalty mark, $x$ points toward the goal, $y$ is lateral and $z$ is ball-centre height; the goal plane is $x=11$ m. Later positions are used for comparison, and the observed goal crossing is taken from a measurement or interpolation between adjacent positions.
 
 \subsubsection{Bounded inversion and selection}
 M3 determines constant acceleration from three positions:
@@ -31,22 +24,22 @@ M4 minimizes the position error over velocity, spin direction, $C_D$ and $\alpha
 Only the product $\alpha\boldsymbol\omega$ enters Magnus force, so spin magnitude and $\alpha$ are not separately identified by positions. A reference spin magnitude of 30 rad/s is assumed. Seven fitted quantities and six later position coordinates leave multiple possible solutions.
 
 \subsection{Case Analysis and Validation}\label{sec:case-validation}
-The recorded penalties fall into two kick types: J03WMX and J03WR9 are placement shots, and J03WOH is a power shot. Figure~\ref{fig:penalty-overview} compares their spatial trajectories. Open circles indicate fitting inputs, black lines and points denote tracking, colored lines show the models, and crosses mark measured or interpolated goal crossings. Predictions stop at first ground contact.
+The recorded penalties comprise two placement shots and one power shot. Figure~\ref{fig:penalty-overview} compares their spatial trajectories. Open circles indicate fitting inputs, black lines and points denote tracking, colored lines show the models, and crosses mark measured or interpolated goal crossings. Predictions stop at first ground contact.
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_spatial_overview.pdf}
-\caption{Three recorded penalty trajectories and model predictions. Each inversion uses positions at 0, 0.04 and 0.08 s after the selected start.}\label{fig:penalty-overview}\end{figure}
+\caption{Three recorded penalty trajectories and model predictions, from left to right: placement 1, power shot, placement 2. Each inversion uses positions at 0, 0.04 and 0.08 s after the selected start.}\label{fig:penalty-overview}\end{figure}
 
 \subsubsection{Case 1: Placement Shots}
-J03WMX and J03WR9 both travel close to the ground. M4 estimates their initial speeds at the selected frames as 29.20 and 28.34 m/s, respectively. For J03WMX, M4 reaches the goal plane with a 0.360 m error; M1 and M2 hit the ground and M3 does not reach the goal within the calculation horizon. For J03WR9, M1, M2, M3 and M4 all reach the goal, with errors of 0.475, 0.475, 0.155 and 0.146 m, respectively.
+The two placement shots both travel close to the ground. M4 estimates their initial speeds at the selected frames as 29.20 and 28.34 m/s, respectively. For placement 1, M4 reaches the goal plane with a 0.360 m error; M1 and M2 hit the ground and M3 does not reach the goal within the calculation horizon. For placement 2, M1, M2, M3 and M4 all reach the goal, with errors of 0.475, 0.475, 0.155 and 0.146 m, respectively.
 
-A low trajectory is sensitive to vertical forces. Gravity pulls downward, while the vertical Magnus component can raise or lower the path. M1 omits aerodynamic forces, and M2 adds drag without transverse lift. M3 fits a constant acceleration to the early points, but its continuation can deviate as acceleration evolves. M4 allows aerodynamic forces to change with velocity and spin direction; it reaches the goal for J03WMX and gives a smaller crossing error for J03WR9. Early tracking and the fitted parameters both influence these differences.
+A low trajectory is sensitive to vertical forces. Gravity pulls downward, while the vertical Magnus component can raise or lower the path. M1 omits aerodynamic forces, and M2 adds drag without transverse lift. M3 fits a constant acceleration to the early points, but its continuation can deviate as acceleration evolves. M4 allows aerodynamic forces to change with velocity and spin direction; it reaches the goal for placement 1 and gives a smaller crossing error for placement 2. Early tracking and the fitted parameters both influence these differences.
 
 \subsubsection{Case 2: Power Shot}
-M4 estimates the J03WOH speed at the selected start as 32.05 m/s, higher than for the two placement examples. Figure~\ref{fig:penalty-J03WOH} shows its spatial path and $x$, $y$, $z$ against time. The first three positions are fitted; later black points assess the continuation.
+M4 estimates the power shot's speed at the selected start as 32.05 m/s, higher than for the two placement examples. Figure~\ref{fig:penalty-J03WOH} shows its spatial path and $x$, $y$, $z$ against time. The first three positions are fitted; later black points assess the continuation.
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WOH.pdf}
-\caption{J03WOH power-shot trajectory and coordinates against time. Open circles are fitting inputs and black points are measured samples.}\label{fig:penalty-J03WOH}\end{figure}
+\caption{Power-shot trajectory and coordinates against time. Open circles are fitting inputs and black points are measured samples.}\label{fig:penalty-J03WOH}\end{figure}
 $x(t)$ shows forward deceleration; $y(t)$ and $z(t)$ show lateral and vertical curvature. M1, M2, M3 and M4 have goal-plane errors of 0.684, 0.657, 0.374 and 0.113 m, respectively. M1 uses gravity alone and M2 adds drag; their horizontal directions are mainly set by initial velocity. M3 continues the constant acceleration determined from the three inputs. M4 uses drag and Magnus force to describe evolving curvature and agrees more closely with the later points in this shot. Errors compare each model's own $(y,z)$ crossing with the measured crossing.
 
-\paragraph{Physical picture of speed and aerodynamic forces.} Figure~\ref{fig:penalty-dynamics} compares M4 speed and force magnitudes. Drag scales with relative speed squared: the fitted initial drag is about 7.58 N for J03WOH and 7.05 and 2.21 N for the placement shots, with coefficient values also affecting the comparison. As the ball slows, drag decreases. Magnus force depends on the cross product of spin and relative velocity: spin direction determines whether its effect is chiefly lateral or vertical, and its magnitude changes with the motion. The displayed speeds and forces are computed from the M4 inversions, using a reference spin magnitude of 30 rad/s.
+\paragraph{Physical picture of speed and aerodynamic forces.} Figure~\ref{fig:penalty-dynamics} compares M4 speed and force magnitudes. Drag scales with relative speed squared: the fitted initial drag is about 7.58 N for the power shot and 7.05 and 2.21 N for the placement shots, with coefficient values also affecting the comparison. As the ball slows, drag decreases. Magnus force depends on the cross product of spin and relative velocity: spin direction determines whether its effect is chiefly lateral or vertical, and its magnitude changes with the motion. The displayed speeds and forces are computed from the M4 inversions, using a reference spin magnitude of 30 rad/s.
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_m4_dynamics.pdf}
 \caption{M4 speed, drag and Magnus force for the three recorded penalties. Curves end at first model-predicted ground contact or goal-plane crossing.}\label{fig:penalty-dynamics}\end{figure}
 

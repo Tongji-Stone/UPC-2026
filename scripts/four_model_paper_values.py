@@ -34,7 +34,9 @@ def main():
                 rmse=r.get('future_rmse_3d_m');count=r.get('future_sample_count',0)
                 second=(f'{rmse:.3f} ({count})' if rmse is not None else '---')
                 cells.append(r'\shortstack{'+first+r'\\'+second+'}')
-            rows.append(case+' & '+' & '.join(cells))
+            case_label=({'J03WMX':'推射 1','J03WOH':'大力抽射','J03WR9':'推射 2'} if zh else
+                        {'J03WMX':'Placement 1','J03WOH':'Power shot','J03WR9':'Placement 2'})[case]
+            rows.append(case_label+' & '+' & '.join(cells))
         macro('PenaltyErrorSummaryTable',table(
             tr('Goal-plane error and held-out 3D trajectory RMSE (m). Each cell lists goal error first, then RMSE and the number of comparison samples. A dash marks no valid goal-plane crossing; trajectory comparisons end at model termination.',
                '球门交点误差与后续三维轨迹均方根误差（m）。每格上行为交点误差，下行为轨迹误差及参与比较的采样点数；无有效交点标记为“---”，轨迹比较截止于模型终止。'),

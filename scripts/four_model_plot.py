@@ -7,6 +7,7 @@ from matplotlib.lines import Line2D
 from football.reporting import DATA,OUT,MODELS,read_json,read_csv,save_json
 
 FIG=OUT/'figures';COLORS=['#444B49','#0072B2','#D55E00','#009E73'];STYLES=['-','--','-.',':']
+CASE_LABELS={'J03WMX':'Placement 1','J03WR9':'Placement 2','J03WOH':'Power shot'}
 def col(rows,key):return np.array([float(r[key]) for r in rows])
 def trace(group,case,model):return read_csv(OUT/f'{group}/{case}_{model}.csv')
 def save(fig,name,rect=None):
@@ -64,7 +65,7 @@ def inverse():
                 ax.plot(col(rows,'time_s')[mask],col(rows,field)[mask],color=c,ls=s,lw=1.3,label=label)
                 if result['event']['type']=='ground' and result['event']['time']<=tend:
                     ax.scatter([float(rows[-1]['time_s'])],[float(rows[-1][field])],color=c,marker='s',s=13)
-        goal(ax3);ax3.set_title(case['case'],fontsize=10)
+        goal(ax3);ax3.set_title(CASE_LABELS[case['case']],fontsize=10)
         for ax,field in zip(axes,['x','y','z']):ax.set(xlabel='Time (s)',ylabel=field+' (m)',xlim=(0,tend*1.025));ax.tick_params(labelsize=8)
         handles,labels=axes[0].get_legend_handles_labels()
         fig.legend(handles,labels,loc='upper center',ncol=3,frameon=False,fontsize=8)
@@ -87,7 +88,7 @@ def inverse_overview():
             if not path.exists():continue
             data=trace('inverse',case['case'],model);mask=col(data,'time_s')<=tend+1e-10
             ax.plot(col(data,'x_m')[mask],col(data,'y_m')[mask],col(data,'z_m')[mask],color=color,ls=style,lw=1.25)
-        goal(ax);ax.set_title(case['case'],fontsize=10,pad=0)
+        goal(ax);ax.set_title(CASE_LABELS[case['case']],fontsize=10,pad=0)
         ax.tick_params(labelsize=7,pad=0)
         ax.set_xlabel('x (m)',labelpad=-2);ax.set_ylabel('y (m)',labelpad=-2);ax.set_zlabel('z (m)',labelpad=-2)
     handles=[Line2D([0],[0],color='black',marker='o',markersize=3,lw=.8,label='Measured'),
@@ -104,7 +105,7 @@ def penalty_dynamics():
     for case,color,style in cases:
         data=trace('inverse',case,'M4')
         for ax,key in zip(axes,['speed_m_s','drag_N','lift_N']):
-            ax.plot(col(data,'time_s'),col(data,key),label=case,color=color,ls=style,lw=1.5)
+            ax.plot(col(data,'time_s'),col(data,key),label=CASE_LABELS[case],color=color,ls=style,lw=1.5)
     for ax,label in zip(axes,['Speed (m/s)','Drag (N)','Magnus force (N)']):
         ax.set(xlabel='Time (s)',ylabel=label);ax.grid(alpha=.2);ax.tick_params(labelsize=8)
     handles,labels=axes[0].get_legend_handles_labels()

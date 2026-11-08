@@ -28,7 +28,7 @@
 \end{center}
 We compare gravity, drag, constant net force and a gravity--drag--Magnus model. M3 estimates constant acceleration from early positions; M4 fits a constant drag coefficient and a lift coefficient proportional to the spin parameter.
 
-Three recorded penalties provide 39 tracking frames. After conversion to penalty-mark coordinates, three selected positions per event enter 12 bounded inversions, compared with later samples. J03WMX and J03WR9 are analyzed as placement shots and J03WOH as a power shot, comparing speed, aerodynamic forces and prediction error. A separate curved-shot calculation examines rotational damping. Section 5 uses the competition positions for individual perturbations, position-constrained crossings and 100,000 Monte Carlo trajectories.
+Three recorded penalties provide 39 tracking frames. After conversion to penalty-mark coordinates, three selected positions per event enter 12 bounded inversions, compared with later samples. Two placement shots and one power shot are analyzed, comparing speed, aerodynamic forces and prediction error. A separate curved-shot calculation examines rotational damping. Section 5 uses the competition positions for individual perturbations, position-constrained crossings and 100,000 Monte Carlo trajectories.
 
 \noindent\textbf{Keywords:} Soccer ball, aerodynamic drag, Magnus effect, inverse prediction, trajectory comparison
 \newpage\begingroup\fontsize{10}{11.5}\selectfont\tableofcontents\endgroup\newpage
@@ -36,13 +36,13 @@ Three recorded penalties provide 39 tracking frames. After conversion to penalty
 \subsection{Problem Background}
 A penalty kick places stringent spatial and temporal demands on the goalkeeper. The goalkeeper must reach an appropriate location at the right time, while deciding when and in which direction to move. Studies of penalty anticipation discuss this timing problem and show that shot speed and kicking technique affect the predictability of shot direction \cite{kamp2018,hunter2018}. Such work also considers cues from the kicker before contact; the present problem instead focuses on predicting the ball's later position from its measured positions after launch.
 
-The path of a kicked soccer ball is not generally a straight line. Gravity bends the trajectory downwards, air resistance slows the ball, and rotation can produce a sideways or vertical aerodynamic force. Bray and Kerwin combined aerodynamic forces with equations of motion and compared the resulting trajectories with experimental free kicks \cite{bray}. Myers and Mitchell analyzed three-dimensional spinning-ball motion and the influence of drag and spin \cite{myers}; Maponi and Piombin developed a numerical framework that also accommodates wind \cite{maponi}.
+A kicked soccer ball can curve in flight: gravity pulls it downward, drag slows it, and rotation produces lateral or vertical force. Previous studies combine aerodynamic forces with motion equations and measured trajectories\cite{bray}, and examine how drag, spin and wind affect three-dimensional flight\cite{myers,maponi}.
 
-The aerodynamic behavior is also affected by the ball's surface. Wind-tunnel measurements by Asai et al. examined the relationship between flow conditions and soccer-ball forces \cite{asai2007}, while Paudel and Yan's simulations compared a football with realistic seam geometry against a smooth sphere \cite{paudel}. These studies motivate a spherical geometric approximation together with an examination of how aerodynamic coefficients affect the predicted flight.
+The ball's surface also affects its aerodynamic forces. Wind-tunnel measurements relate flow conditions to those forces\cite{asai2007}, while simulations compare a seamed football with a smooth sphere\cite{paudel}. These studies support a spherical approximation followed by an examination of force coefficients.
 
-Measurements of real flights provide a basis for evaluating such models. Griffiths et al. tracked the three-dimensional motion and spin of a marked football in field conditions \cite{griffiths2005}. Goff and Carr\'e used camera-recorded trajectories to estimate aerodynamic coefficients \cite{goff2009}; subsequent work by Goff et al. combined measurements from 29 flights to construct speed-dependent drag and lift curves \cite{goff2017}.
+Measured flights provide a basis for comparison. Ball markings and cameras can track position and spin\cite{griffiths2005}, while trajectories can be used to estimate drag and lift coefficients\cite{goff2009,goff2017}.
 
-In this problem, the initial position and two early positions are given, whereas the initial velocity and spin are not directly specified. We therefore use the equations of motion to find states compatible with the early observations and calculate their goal-plane crossings. The DFL open dataset combines match events and optical tracking data for professional matches \cite{bassek,dataset}, allowing predicted crossings to be compared with later recorded positions.
+The problem supplies an initial position and two later positions, but not initial velocity or spin. We find states compatible with those observations and calculate their goal-plane crossings. Recorded match flights provide a comparison; \hyperref[app:data]{Appendix A} gives the source and processing.
 
 \subsection{Problem Restatement}
 We study a ball travelling from the penalty mark to a goal 7.32 m wide and 2.44 m high, 11 m away. The motion and prediction problem can be organized into three stages:
@@ -88,7 +88,7 @@ $\theta,\boldsymbol e_L$ & Spin--airflow angle and Magnus direction & rad; unit 
 $X_g$ & Local goal-plane coordinate & 11 m\\
 $\boldsymbol Q,I_b$ & Damping torque and moment of inertia (Section 6) & N\,m; kg\,m$^2$\\\bottomrule
 \end{tabular}\end{table}
-The competition mass, radius and gravity follow the reference values of Maponi and Piombin \cite{maponi}; the air density follows Asai et al.\ \cite{asai2007}. The viscosity is a declared reference air setting, with $\mu=\rho\nu$. The three match penalties use the same declared reference settings.
+The ball and air parameters use published reference values \cite{maponi,asai2007}. The viscosity is a declared reference air setting, with $\mu=\rho\nu$. The three match penalties use the same declared reference settings.
 
 \section{Model Establishment}\label{sec:model}
 The same Newtonian equations generate all four models by selecting the included aerodynamic terms. We first describe the geometry, then connect the forces to the surrounding flow and ball rotation.
@@ -167,31 +167,31 @@ The observed initial position fixes the origin of the flight. The six velocity a
 \section{Discussion of Other Factors}\label{sec:other}
 The main model isolates gravity, drag and Magnus lift. We now examine the physical effects omitted from its geometry, spin evolution and ambient airflow.
 \subsection{Asymmetric Surface Geometry}\label{sec:surface}
-Paudel and Yan \cite{paudel} performed full-flight flow simulations using realistic football geometry and a smooth-sphere comparison. For launch speeds of 10, 15 and 20 m/s and spin rates of 31.5, 63 and 94.5 rad/s, their results show that seams and surface structure alter separation, wake dynamics and Magnus force. The smooth sphere produces greater lateral bending in their nine comparisons, and vertical flight-time differences become more visible at higher speed and rotation.
+A full-flight simulation compares realistic football geometry with a smooth sphere \cite{paudel}. For launch speeds of 10, 15 and 20 m/s and spin rates of 31.5, 63 and 94.5 rad/s, their results show that seams and surface structure alter separation, wake dynamics and Magnus force. The smooth sphere produces greater lateral bending in their nine comparisons, and vertical flight-time differences become more visible at higher speed and rotation.
 
 \begin{figure}[H]\centering\includegraphics[width=.60\textwidth]{surface_comparison.png}
-\caption{Illustrative comparison of a paneled football and a smooth sphere, inspired by Paudel and Yan \cite{paudel}. Their compared bodies had diameter 0.22 m and mass 0.436 kg. The panel geometry shown here is schematic.}\label{fig:surface-geometry}\end{figure}
+\caption{Illustrative comparison of a paneled football and a smooth sphere, based on a published comparison \cite{paudel}. Their compared bodies had diameter 0.22 m and mass 0.436 kg. The panel geometry shown here is schematic.}\label{fig:surface-geometry}\end{figure}
 
-Alam et al.~\cite{alam2012} measured drag coefficients over a range of Reynolds numbers for six footballs and a smooth sphere. Figure~\ref{fig:alam-surfaces} shows the panels and surface textures of these footballs, while Figure~\ref{fig:alam-drag} compares their drag coefficients. The differences illustrate the influence of ball surface structure on aerodynamic drag.
+Wind-tunnel experiments measured drag coefficients over a range of Reynolds numbers for six footballs and a smooth sphere \cite{alam2012}. Figure~\ref{fig:alam-surfaces} shows the panels and surface textures of these footballs, while Figure~\ref{fig:alam-drag} compares their drag coefficients. The differences illustrate the influence of ball surface structure on aerodynamic drag.
 
 \begin{figure}[H]\centering
 \includegraphics[width=.86\textwidth]{alam_ball_surfaces.png}
-\caption{Six footballs and details of their surfaces, reproduced from Figures 1--3 of Alam et al.~\cite{alam2012}.}\label{fig:alam-surfaces}\end{figure}
+\caption{Six footballs and details of their surfaces, reproduced from Figures 1--3 of the source\cite{alam2012}.}\label{fig:alam-surfaces}\end{figure}
 
 \begin{figure}[H]\centering
 \includegraphics[width=.76\textwidth]{alam_drag_comparison.png}
-\caption{Drag coefficient against Reynolds number for different footballs and a smooth sphere, reproduced from Figure 5 of Alam et al.~\cite{alam2012}.}\label{fig:alam-drag}\end{figure}
+\caption{Drag coefficient against Reynolds number for different footballs and a smooth sphere, reproduced from Figure 5 of the source\cite{alam2012}.}\label{fig:alam-drag}\end{figure}
 
 The spherical geometry in the present report describes the centre-of-mass motion and projected area. Its force coefficients come from football measurements, so the average surface influence enters through $C_D$ and $C_L$. Explicit panel orientation and asymmetric wake fluctuations provide a further level of description when lateral-force details are important. These published results support retaining football-specific coefficients in a spherical trajectory model.
 
 \subsection{Rotation and Aerodynamic Damping}\label{sec:rotation}
-Rotation changes Magnus force, so a declining spin can change the continuation of a curved shot. According to Grad et al.\ \cite{grad2026}, Supplementary Section 8.4, and the MuJoCo ellipsoid model \cite{mujoco381}, the spherical inertial and viscous damping torques are
+Rotation changes Magnus force, so a declining spin can change the continuation of a curved shot. Using published rotational-damping relations \cite{grad2026,mujoco381}, the spherical inertial and viscous damping torques are
 \begin{equation}
 \boldsymbol Q=-k_2\omega\boldsymbol\omega-k_1\boldsymbol\omega,
 \quad k_2=\frac{8\pi}{15}\rho C_{\rm angular}R^5,\quad k_1=8\pi\mu R^3.
 \label{eq:torque-dimensional}
 \end{equation}
-The quadratic term describes high-Reynolds-number angular drag; the linear term is viscous resistance. We use MuJoCo's documented reference value $C_{\rm angular}=1.5$ \cite{mujoco381}. Defining $q=\rho v^2/2$ and $C_{Q,v}=\|\boldsymbol Q\|/(qAR)$ gives
+The quadratic term describes high-Reynolds-number angular drag; the linear term is viscous resistance. We use the published reference value $C_{\rm angular}=1.5$ \cite{mujoco381}. Defining $q=\rho v^2/2$ and $C_{Q,v}=\|\boldsymbol Q\|/(qAR)$ gives
 \begin{equation}
 C_{Q,v}=\frac{16}{15}C_{\rm angular}Sp^2+\frac{32Sp}{Re},\qquad
 C_{Q,\omega}=\frac{C_{Q,v}}{Sp^2}=\frac{16}{15}C_{\rm angular}+\frac{32}{Re\,Sp}.
@@ -203,7 +203,7 @@ $C_{Q,\omega}$ uses rotating surface speed $R\omega$ in its reference pressure. 
 \frac{30}{C_{\rm angular}Re\,Sp}=
 \frac{15\nu}{C_{\rm angular}R^2\omega}.
 \end{equation}
-It is \TorqueViscousRatio\ at the prescribed curved-shot launch, so the quadratic term dominates. Following the thin-shell inertia used by Maponi and Piombin \cite{maponi}, $I_b=2mR^2/3$. Adding the high-Reynolds-number torque gives
+It is \TorqueViscousRatio\ at the prescribed curved-shot launch, so the quadratic term dominates. Using the thin-shell inertia \cite{maponi}, $I_b=2mR^2/3$. Adding the high-Reynolds-number torque gives
 \begin{equation}
 \left\{\begin{aligned}
 \dot{\boldsymbol r}&=\boldsymbol v,\\
@@ -232,9 +232,9 @@ A 5\% limit on the headwind dynamic-pressure change corresponds to $w/v\leq\sqrt
 \section{Conclusions}
 The model separates the mechanisms of gravity, drag and Magnus lift. Gravity produces downward curvature, drag reduces speed, and spin redirects the path. We use constant drag and linear-spin lift.
 
-J03WMX and J03WR9 are placement shots and J03WOH is a power shot. Their M4 speeds at the selected start are 29.20, 28.34 and 32.05 m/s, respectively. Drag decreases as the ball slows, while spin direction determines the direction of Magnus force. The four-model comparison shows that fitting the early positions and predicting the goal crossing are distinct tasks: M4 has crossing errors of 0.113 m for J03WOH and 0.146 m for J03WR9.
+Two cases are placement shots and the third is a power shot. Their M4 speeds at the selected start are 29.20, 28.34 and 32.05 m/s, respectively. Drag decreases as the ball slows, while spin direction determines the direction of Magnus force. The four-model comparison shows that fitting the early positions and predicting the goal crossing are distinct tasks: M4 has crossing errors of 0.113 m for the power shot and 0.146 m for the second placement shot.
 
-Three actual penalties supply distinct early sampling sequences and held-out trajectories. Coordinate conversion places all three in the competition geometry. The 12 inverse outcomes connect the recorded motion to the force assumptions through spatial trajectories and the detailed J03WOH comparison. For the competition-position example in Section 5, a one-degree launch-direction change moves the crossing by the displacement shown in the one-factor table. With the early positions fixed, the explored compatible states shift the crossing by up to \SensitivityConditionalShift\ m; joint perturbations are quantified by 100,000 Monte Carlo trajectories with fixed ball mass and radius.
+Three actual penalties supply distinct early sampling sequences and held-out trajectories. Coordinate conversion places all three in the competition geometry. The 12 inverse outcomes connect the recorded motion to the force assumptions through spatial trajectories and the detailed power-shot comparison. For the competition-position example in Section 5, a one-degree launch-direction change moves the crossing by the displacement shown in the one-factor table. With the early positions fixed, the explored compatible states shift the crossing by up to \SensitivityConditionalShift\ m; joint perturbations are quantified by 100,000 Monte Carlo trajectories with fixed ball mass and radius.
 
 \section{Model Evaluation}
 \subsection{Physical Interpretation and Reproduction}
@@ -261,6 +261,18 @@ The real-penalty comparison evaluates how early motion carries into the later pa
 \bibitem{goff2009} J. E. Goff and M. J. Carr\'e, ``Trajectory analysis of a soccer ball,'' \emph{American Journal of Physics}, 77, 1020--1027, 2009. \url{https://doi.org/10.1119/1.3197187}.
 \bibitem{alam2012} F. Alam, H. Chowdhury, M. Stemmer, Z. Wang and J. Yang, ``Effects of surface structure on soccer ball aerodynamics,'' \emph{Procedia Engineering}, 34, 146--151, 2012. \url{https://doi.org/10.1016/j.proeng.2012.04.026}.
 \end{thebibliography}
+
+\newpage\section*{Appendix A: Data Sources and Frame Selection}\label{app:data}
+\addcontentsline{toc}{section}{Appendix A: Data Sources and Frame Selection}
+The three penalties come from the Sportec Open DFL dataset, which associates match events with TRACAB Gen5 multi-camera tracking at 25 Hz\cite{bassek,dataset}. The supplied CSV retains 39 source frames, with 15, 12 and 12 frames for the three events. Published positions are used without adding an observation-noise model.
+\begin{table}[H]\centering\small\caption{Correspondence between case labels and source records}\label{tab:data-provenance}
+\begin{tabular}{llll}\toprule
+Case & Event ID & Player & Selected samples\\\midrule
+Placement 1 & J03WMX & Dejan Ljubicic & 3, 4, 5\\
+Placement 2 & J03WR9 & Philipp Klement & 3, 4, 5\\
+Power shot & J03WOH & Dawid Igor Kownacki & 2, 3, 4\\\bottomrule
+\end{tabular}\end{table}
+The first selected position is the time origin and the fitting times are 0, 0.04 and 0.08 s. Their source-time origins are 0.08, 0.08 and 0.04 s in the table's order. Repeated and post-goal records are retained; later positions are used only for validation. The observed goal crossing uses a source frame or interpolation. The height field is interpreted in metres as ball-centre height, and coordinates are converted with $x=X-41.5$, $y=Y$ and $z=Z_{\rm original}$.
 
 \newpage\addcontentsline{toc}{section}{Reproduction Code}
 \section*{Reproduction Code}
