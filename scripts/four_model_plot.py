@@ -87,7 +87,8 @@ if __name__=='__main__':
     if args.inverse_only:inverse()
     else:forward();inverse();other()
     save_json(FIG/'figure_contract.json',dict(width_inches=6.5,dpi=300,formats=['pdf','svg','png'],
-        units='SI',models=list(MODELS),raw_frames=39,inverse_input_rule='summary-selected times, repeated samples retained',
+        units='SI',models=list(MODELS),raw_frames=39,
+        inverse_input_rule='corrected consecutive source frames; zero time at selected start; original repeated samples retained',
         forward_claim='force mechanisms under prescribed initial conditions',inverse_claim='continuation compared with held-out real samples',
         status_markers='asterisk: iteration limit; square: ground; cross: measured/interpolated goal crossing',
         probabilities='none',palette=COLORS))

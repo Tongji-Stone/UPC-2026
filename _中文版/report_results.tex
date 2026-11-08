@@ -52,9 +52,9 @@
 \caption{原始帧数、反演时刻与实测局部起点。}\label{tab:penalty-inputs}
 \setlength{\tabcolsep}{4pt}\begin{tabular}{lrrl}\toprule
 事件 & 帧数 & 反演时刻 (s) & $\boldsymbol r_0$ (m)\\\midrule
-J03WMX & 15 & 0.00,0.04,0.08 & $(0.71,0.05,0.16)$\\
-J03WOH & 12 & 0.00,0.04,0.08 & $(0.06,-0.04,0.11)$\\
-J03WR9 & 12 & 0.00,0.08,0.12 & $(1.47,0.49,0.23)$\\
+J03WMX & 15 & 0.00,0.04,0.08 & $(3.04,0.55,0.13)$\\
+J03WOH & 12 & 0.00,0.04,0.08 & $(0.77,0.08,0.24)$\\
+J03WR9 & 12 & 0.00,0.04,0.08 & $(1.47,0.49,0.23)$\\
 \bottomrule\end{tabular}\end{table}}
 \newcommand{\InverseBoundsTable}{\begin{table}[H]\centering\footnotesize
 \caption{反演分量边界与气动力修正设定。}\label{tab:inverse-bounds}
@@ -66,26 +66,63 @@ $\omega_{x0},\omega_{y0},\omega_{z0}$ (M4) & $[-20\pi,20\pi]$ rad/s\\
 方位角、仰角 (M3) & $[-\pi,\pi],[-\pi/2,\pi/2]$ rad\\
 $\alpha_D,\alpha_L$ & $[0.5,1.5]$\\
 \bottomrule\end{tabular}\end{table}}
-\newcommand{\InverseResultsTable}{\begin{table}[H]\centering\footnotesize
-\caption{全部反演：早期最大坐标残差、后续三维 RMSE/点数、交点误差与时间差。迭代上限行给出保存候选的指标。}\label{tab:inverse-results}
-\setlength{\tabcolsep}{4pt}\begin{tabular}{lllrrrr}\toprule
-事件 & 模型 & 状态 & 残差 (m) & RMSE (m)/$n$ & 交点 (m) & $\Delta t$ (s)\\\midrule
-WMX & M1 & 触地 & $1.83\times10^{-2}$ & ---/0 & --- & ---\\
-WMX & M2 & 触地 & $1.81\times10^{-2}$ & ---/0 & --- & ---\\
-WMX & M3 & 球门 & $6.74\times10^{-3}$ & 0.161/7 & 0.185 & -0.014\\
-WMX & M4 & 球门 & $5.84\times10^{-3}$ & 0.176/7 & 0.284 & -0.012\\
-WOH & M1 & 球门 & $2.04\times10^{-1}$ & 1.387/8 & 0.853 & 0.074\\
-WOH & M2 & 球门 & $2.06\times10^{-1}$ & 1.500/8 & 0.856 & 0.090\\
-WOH & M3 & 球门 & $2.08\times10^{-1}$ & 1.463/8 & 0.505 & 0.107\\
-WOH & M4 & 迭代上限 & $2.06\times10^{-1}$ & 1.441/8 & 0.664 & 0.086\\
-WR9 & M1 & 触地 & $2.40\times10^{-1}$ & 1.816/7 & --- & ---\\
-WR9 & M2 & 触地 & $2.42\times10^{-1}$ & 1.879/7 & --- & ---\\
-WR9 & M3 & 触地 & $2.42\times10^{-1}$ & 1.880/7 & --- & ---\\
-WR9 & M4 & 触地 & $2.41\times10^{-1}$ & 1.855/7 & --- & ---\\
+\newcommand{\WMXMeasuredTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WMX：三个实测拟合点与实测球门交点（源帧直接记录）。}\label{tab:measured-J03WMX}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrr}\toprule
+点 & 源帧号 & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+$P_0$ & 152602 & 0.00 & 3.040 & 0.550 & 0.130\\
+$P_1$ & 152603 & 0.04 & 4.190 & 0.820 & 0.150\\
+$P_2$ & 152604 & 0.08 & 5.250 & 1.070 & 0.180\\
+球门 & 152610 & 0.3200 & 11.000 & 2.7500 & 0.1600\\
 \bottomrule\end{tabular}\end{table}}
-\newcommand{\WMXDiscussion}{实测路径接近草地。仅重力和仅阻力预测在球门前触地；M3、M4 的向上马格努斯力支撑了这段低空飞行。 M4 候选的交点误差为 0.284 m，到达时间差为 -0.012 s。}
-\newcommand{\WOHDiscussion}{前两个等时间间隔的水平位移分别为 0.71 和 1.22 m。早期加速序列使阻力修正到达下边界。M4 搜索达到迭代上限，其候选在图表中单独标记。 M4 候选的交点误差为 0.664 m，到达时间差为 +0.086 s。}
-\newcommand{\WRDiscussion}{使用 0、0.08、0.12 s 避免将首个重复位置作为独立位移。实测横向运动明显，拟合升力方向决定了后续侧向弯曲。}
+\newcommand{\WMXPredictedTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WMX：反演初始状态与预测球门交点。M4 自旋单位为 rad/s；带星号的 M3 向量为单位旋转轴。M1、M2 不反演自旋。迭代上限行列出对应候选。}\label{tab:predicted-J03WMX}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrccr}\toprule
+模型 & 状态 & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & 自旋 & $d_g$ (m)\\\midrule
+M1 & 触地 & --- & --- & $\begin{pmatrix}27.850\\6.550\\0.953\end{pmatrix}$ & --- & ---\\
+M2 & 触地 & --- & --- & $\begin{pmatrix}28.411\\6.682\\0.967\end{pmatrix}$ & --- & ---\\
+M3 & 平面 & 2.4464 & 0.5086 & $\begin{pmatrix}28.428\\6.659\\0.327\end{pmatrix}$ & $\begin{pmatrix}0.092\\-0.995\\0.038\end{pmatrix}^{*}$ & 0.4622\\
+M4 & 迭代上限 & 2.6884 & 0.2686 & $\begin{pmatrix}28.776\\6.431\\0.574\end{pmatrix}$ & $\begin{pmatrix}62.832\\-62.832\\62.832\end{pmatrix}$ & 0.1248\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WMXDiscussion}{实测低空飞行中，升力影响足球能否持续保持在草地上方。 M4 的交点偏离距离为 0.1248 m。 达到迭代上限的候选为 M4。 M1、M2 在球门前触地。}
+\newcommand{\WOHMeasuredTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WOH：三个实测拟合点与实测球门交点（帧间线性插值）。}\label{tab:measured-J03WOH}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrr}\toprule
+点 & 源帧号 & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+$P_0$ & 128955 & 0.00 & 0.770 & 0.080 & 0.240\\
+$P_1$ & 128956 & 0.04 & 1.990 & 0.340 & 0.460\\
+$P_2$ & 128957 & 0.08 & 3.180 & 0.620 & 0.650\\
+球门 & 128964--128965 & 0.3643 & 11.000 & 2.9188 & 1.1789\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WOHPredictedTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WOH：反演初始状态与预测球门交点。M4 自旋单位为 rad/s；带星号的 M3 向量为单位旋转轴。M1、M2 不反演自旋。迭代上限行列出对应候选。}\label{tab:predicted-J03WOH}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrccr}\toprule
+模型 & 状态 & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & 自旋 & $d_g$ (m)\\\midrule
+M1 & 平面 & 2.3496 & 1.5583 & $\begin{pmatrix}30.200\\6.700\\5.553\end{pmatrix}$ & --- & 0.6841\\
+M2 & 平面 & 2.3494 & 1.5059 & $\begin{pmatrix}30.794\\6.831\\5.658\end{pmatrix}$ & --- & 0.6567\\
+M3 & 平面 & 3.1269 & 1.2184 & $\begin{pmatrix}30.881\\6.236\\5.884\end{pmatrix}$ & $\begin{pmatrix}-0.228\\0.317\\0.921\end{pmatrix}^{*}$ & 0.2118\\
+M4 & 平面 & 3.1221 & 1.1997 & $\begin{pmatrix}30.879\\6.235\\5.882\end{pmatrix}$ & $\begin{pmatrix}-39.084\\17.890\\62.832\end{pmatrix}$ & 0.2044\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WOHDiscussion}{实测上升弧线体现了初始竖直速度，以及重力和升力对后续路径的共同作用。 M4 的交点偏离距离为 0.2044 m。}
+\newcommand{\WRMeasuredTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WR9：三个实测拟合点与实测球门交点（帧间线性插值）。}\label{tab:measured-J03WR9}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrr}\toprule
+点 & 源帧号 & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+$P_0$ & 176244 & 0.00 & 1.470 & 0.490 & 0.230\\
+$P_1$ & 176245 & 0.04 & 2.570 & 0.850 & 0.340\\
+$P_2$ & 176246 & 0.08 & 3.640 & 1.200 & 0.410\\
+球门 & 176253--176254 & 0.3695 & 11.000 & 3.0697 & 0.4657\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WRPredictedTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WR9：反演初始状态与预测球门交点。M4 自旋单位为 rad/s；带星号的 M3 向量为单位旋转轴。M1、M2 不反演自旋。迭代上限行列出对应候选。}\label{tab:predicted-J03WR9}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrccr}\toprule
+模型 & 状态 & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & 自旋 & $d_g$ (m)\\\midrule
+M1 & 平面 & 3.6083 & 0.5750 & $\begin{pmatrix}27.200\\8.900\\2.703\end{pmatrix}$ & --- & 0.5496\\
+M2 & 平面 & 3.6083 & 0.5147 & $\begin{pmatrix}27.747\\9.079\\2.753\end{pmatrix}$ & --- & 0.5408\\
+M3 & 触地 & --- & --- & $\begin{pmatrix}27.703\\9.070\\3.252\end{pmatrix}$ & $\begin{pmatrix}-0.174\\0.985\\0.003\end{pmatrix}^{*}$ & ---\\
+M4 & 触地 & --- & --- & $\begin{pmatrix}27.881\\9.124\\3.271\end{pmatrix}$ & $\begin{pmatrix}-62.832\\62.832\\-3.805\end{pmatrix}$ & ---\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WRDiscussion}{实测路径具有明显横向运动，拟合自旋方向影响了朝向球门的后续轨迹。 M4 在 $x=9.507$ m 触地。 M3、M4 在球门前触地。}
 \newcommand{\TorqueViscousRatio}{$3.54\times10^{-4}$}
 \newcommand{\TorqueDisplacement}{0.0343}
 \newcommand{\TorqueResults}{阻尼交点为 $(0.8579,0.8848)$ m，恒定自旋为 $(0.8921,0.8822)$ m。位移为 0.0343 m，占 11 m 的 0.312\%。自旋降低 19.671\%，到达时间变化 -0.233\%。再加入黏性力矩使阻尼交点改变 1.2e-05 m。短程交点的变化小于自旋幅值的变化。}

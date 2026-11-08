@@ -1,0 +1,111 @@
+% 第五章；数值宏和表格由 sensitivity_results.tex 提供。
+第四章通过给定初始条件和真实点球记录说明了运动预测的过程。本章进一步考察参数变化对球门交点的影响。为比较不同扰动，采用题目给定的三次位置作为独立算例，质量固定为 $m=0.43$ kg，半径固定为 $R=0.11$ m，气动力沿用恒定自旋、静止空气的 M4 关系。
+
+\begin{table}[H]\centering\small
+\caption{灵敏性分析算例的早期位置。}\label{tab:sensitivity-reference}
+\begin{tabular}{crrr}\toprule
+$t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+0 & 0 & 0 & 0.11\\
+0.05 & 1.50 & 0.45 & 0.44\\
+0.10 & 2.96 & 0.86 & 0.74\\\bottomrule
+\end{tabular}\end{table}
+参考状态取
+\begin{equation}\begin{aligned}
+\boldsymbol v_0&=(30.4063,9.4256,6.9064)\;\mathrm{m/s},\\
+\boldsymbol\omega_0&=(-49.0903,-31.4834,-112.2656)\;\mathrm{rad/s}.
+\end{aligned}\label{eq:sensitivity-reference-state}\end{equation}
+气动力修正为 $\alpha_D=1.0001$、$\alpha_L=1.0000$。以下计算使用保存的完整精度状态，与表~\ref{tab:sensitivity-reference} 的位置相容；其球门交点为 $(y_g^*,z_g^*)=(2.6826,1.9592)$ m，到达时间为 $t_g^*=0.402649$ s。先分别改变单项参数，再保持早期位置重新匹配运动状态，最后考察联合发射扰动。
+
+\subsection{单参数对飞行的影响}\label{sec:sensitivity-local}
+每次只改变一项参数，其余条件保持代表解取值。球速变化范围为 $\pm5\%$，自旋大小、阻力与升力修正系数、空气密度各为 $\pm10\%$，速度方向与旋转轴的方位角、仰角各为 $\pm2^\circ$。各参数取 41 个等间隔值，共计算 \SensitivityFixedRuns{} 条轨迹。球速始终处于经验关系的 35 m/s 上限以内，所有轨迹均先到达球门平面。
+
+以代表解的交点和到达时间 $(y_g^*,z_g^*,t_g^*)$ 为基准，定义
+\begin{equation}
+\Delta y_g=y_g-y_g^*,\quad \Delta z_g=z_g-z_g^*,\quad
+\Delta t_g=t_g-t_g^*,\qquad
+D_g=\sqrt{(\Delta y_g)^2+(\Delta z_g)^2}.
+\label{eq:sensitivity-displacement}
+\end{equation}
+表~\ref{tab:sensitivity-one-factor} 选取标量的 $\pm5\%$ 变化和方向的 $\pm1^\circ$ 变化，列出正负两次扰动中较大的交点位移和时间变化。
+\SensitivityOneFactorTable
+
+图~\ref{fig:sensitivity-one-position} 给出各参数的横向和高度响应。为在同一图中比较时间变化，图~\ref{fig:sensitivity-one-time} 将扰动量除以各自扫描半宽：$\pm1$ 对应球速的 $\pm5\%$、其他标量的 $\pm10\%$ 或角度的 $\pm2^\circ$。纵轴仍以毫秒表示。
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{one_factor_position_response.pdf}
+\caption{九项单参数的球门位置响应。蓝色实线为横向变化 $\Delta y_g$，橙色虚线为高度变化 $\Delta z_g$，单位为 cm。标量横轴为相对变化百分比，方向横轴为角度变化；质量和半径固定，各子图纵轴分别定标。}\label{fig:sensitivity-one-position}
+\end{figure}
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{one_factor_time_response.pdf}
+\caption{九项参数的到达时间响应。横轴为扰动与扫描半宽之比，纵轴为 $\Delta t_g$（ms）；正值表示晚到，负值表示提前，每项参数取 41 个值。}\label{fig:sensitivity-one-time}
+\end{figure}
+
+初速度水平角、仰角改变 $1^\circ$ 时，交点主要沿对应方向移动约 0.20 m。球速改变 $5\%$ 时，最大交点位移为 0.108 m，到达时间变化为 23.187 ms。较高球速缩短了重力和气动力作用的时间；升力修正主要改变横向弯曲，阻力修正则通过减速过程影响到达时间。
+
+完整气动关系还使自旋产生非线性响应。在升力为正的区间，固定速度时有
+\begin{equation}
+C_L\propto Sp^{0.83}\big[C_{D,\mathrm{ceil}}-f(v)-0.514Sp\big].
+\label{eq:sensitivity-spin-lift}
+\end{equation}
+在代表初速度下，该式的峰值对应 $Sp\simeq0.3007$，而参考状态初始值为 0.4272。因此，继续增大自旋会降低这一经验关系中的升力系数。由于本例的马格努斯力使球向较小的 $y$ 弯曲，自旋增大 $5\%$ 时交点变为 $y_g=2.7433$ m，自旋减小 $5\%$ 时则为 $y_g=2.6305$ m。自旋和升力修正由此可以产生一定程度的相互补偿。
+
+\subsection{早期位置约束下的交点变化}\label{sec:sensitivity-constrained}
+同样的早期位置可能由不同的初速度、自旋和气动力组合产生。题目提供的两个后续位置约束六个坐标，而 M4 共有八个反演量。因此，在选取代表解后，还需考察其他相容状态会如何改变球门交点。
+
+在 $[0.8,1.2]^2$ 内取 $17\times17$ 组 $(\alpha_D,\alpha_L)$，每组重新求解初速度和自旋，使 0.05、0.10 s 的位置保持一致。搜索中总球速不超过 35 m/s，总自旋不超过 200 rad/s，最大坐标残差不超过 $10^{-7}$ m。该自旋范围包含参考状态，并使相容状态的比较限定在明确条件下。
+
+利用网格搜索和局部约束优化得到表~\ref{tab:sensitivity-profile}。表中同时列出较小的 $[0.9,1.1]^2$ 区间，用于比较气动力修正范围扩大后的变化。
+\SensitivityProfileTable
+在 $[0.8,1.2]^2$ 条件下，搜索所得交点相对代表解的最大位移为 \SensitivityConditionalShift\ m，全部相容轨迹均可完整通过球门。图~\ref{fig:sensitivity-constrained} 展示这些交点的横向、高度配对，说明同一组早期位置约束下仍存在有限的后续变化。
+\begin{figure}[H]\centering
+\includegraphics[width=.86\textwidth]{conditional_crossings.pdf}
+\caption{保持早期位置一致时的球门交点，采用较宽的气动力修正范围。颜色表示阻力修正系数，橙色星号为参考状态。}\label{fig:sensitivity-constrained}
+\end{figure}
+
+空气密度进一步说明了这种参数补偿。固定 $m,R,\nu$，将密度由 $\rho$ 改为 $\rho'$，并令
+\begin{equation}
+\alpha_D'=\alpha_D\frac{\rho}{\rho'},\qquad
+\alpha_L'=\alpha_L\frac{\rho}{\rho'}
+\label{eq:sensitivity-density-compensation}
+\end{equation}
+两种气动加速度及整条轨迹均保持不变。因此，固定气动力修正时的密度响应，与允许重新匹配修正系数时的响应有所不同；早期位置主要约束这些参数共同决定的受力。
+
+\subsection{联合扰动与蒙特卡洛模拟}\label{sec:sensitivity-mc}
+实际飞行中的多项条件可以同时变化。为考察其共同作用，在上述完整范围内对九项参数独立均匀抽样：球速 $\pm5\%$，各方向角 $\pm2^\circ$，自旋大小、两项气动力修正和密度各 $\pm10\%$，其中 $\rho\in[1.08,1.32]$ kg/m$^3$。以种子 \MCSeed{} 生成 \MCCount{} 条轨迹。每条轨迹均固定质量、半径和初始位置，早期位置随发射状态变化；第~\ref{sec:sensitivity-constrained} 节则保持观测位置一致。
+
+全部模拟轨迹均先到达球门平面。表~\ref{tab:sensitivity-mc} 给出样本覆盖范围，以及位置、到达时间各自的 2.5\%--97.5\% 分位区间。平均交点为 $(\MCMeanY,\MCMeanZ)$ m，横向、高度标准差分别为 \MCStdY\ m、\MCStdZ\ m，相对代表解的最大位移为 \MCMaxDisplacement\ m。
+\SensitivityMonteCarloTable
+
+为描述联合空间区域，令 $\boldsymbol q_i=(y_{g,i},z_{g,i})^T$，样本均值为 $\bar{\boldsymbol q}$，协方差为 $\widehat\Sigma$。计算
+\begin{equation}\begin{aligned}
+d_i^2&=(\boldsymbol q_i-\bar{\boldsymbol q})^T\widehat\Sigma^{-1}
+(\boldsymbol q_i-\bar{\boldsymbol q}),\\
+\mathcal E_{0.95}&=\left\{\boldsymbol q:
+(\boldsymbol q-\bar{\boldsymbol q})^T\widehat\Sigma^{-1}
+(\boldsymbol q-\bar{\boldsymbol q})\le c_{0.95}\right\},
+\end{aligned}
+\label{eq:sensitivity-joint-region}
+\end{equation}
+其中 $c_{0.95}=\MCJointThreshold$ 取自样本距离平方的 95\% 分位数，使图~\ref{fig:sensitivity-mc} 中的椭圆覆盖 95\% 的模拟交点。该联合区域同时考虑横向和高度，而表~\ref{tab:sensitivity-mc} 的分位区间分别描述单个坐标。
+\begin{figure}[H]\centering
+\includegraphics[width=.96\textwidth]{monte_carlo_crossings.pdf}
+\caption{质量、半径固定时，10 万条蒙特卡洛主样本的球门交点分布。六边形颜色表示样本计数；椭圆覆盖样本的 95\%，水平线表示球心净空上限 $z_g=2.33$ m。}\label{fig:sensitivity-mc}
+\end{figure}
+
+采用球心净空判据 $|y_g|\le3.66-R$、$R\le z_g\le2.44-R$，在上述均匀扰动下，\MCClearCount{} 条轨迹（\MCClearPercent\%）可完整通过开口；其余 \MCOverCount{} 条（\MCOverPercent\%）均因高度过大越界。
+
+图~\ref{fig:sensitivity-mc-parallel} 将输入参数与飞行结果连接起来。为便于观察，从十万条轨迹中随机选取 400 条，每条折线依次经过九项输入和三个输出。$v_0,\omega_0$ 为初速度、自旋的模长，$\phi,\theta$ 为方位角、仰角，下标 $v,\omega$ 区分速度方向与旋转轴。
+
+输入按扰动界限、输出按完整样本的极值线性缩放到 0--1，轴旁保留原始范围。蓝色表示可完整通过球门，橙色表示过高，灰色虚线为代表解。图中的 382 条蓝线和 18 条橙线用于展示参数联系，前述比例由完整十万条轨迹统计。
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{monte_carlo_parallel_coordinates.pdf}
+\caption{九项输入扰动与球门交点、到达时间的平行坐标图。左侧九轴为输入，浅色背景的右侧三轴为输出；全部坐标按各自范围缩放至 0--1。随机展示 400 条轨迹，颜色区分球门净空结果。}\label{fig:sensitivity-mc-parallel}
+\end{figure}
+橙色折线在速度仰角 $\theta_v$ 轴上偏向正扰动端，在高度 $z_g$ 轴上偏向高值端，体现了本例较大发射仰角与过高交点的联系。沿同一条折线，还可追踪相应的速度、自旋、气动力修正及到达时间。
+
+图~\ref{fig:sensitivity-mc-convergence} 检查样本量增加时的变化。从 50000 增至 100000 条轨迹，中心 95\% 区间端点的横向、高度变化分别不超过 \MCConvergenceY\ mm、\MCConvergenceZ\ mm，时间变化不超过 \MCConvergenceT\ ms。另用两个独立种子各计算 10000 条轨迹，所得中心区间接近。
+\begin{figure}[H]\centering
+\includegraphics[width=.96\textwidth]{monte_carlo_convergence.pdf}
+\caption{横向、高度交点的样本量检查。阴影和点线表示样本极值，橙色曲线表示各坐标的中心 95\% 区间。}\label{fig:sensitivity-mc-convergence}
+\end{figure}
+
+数值积分采用四阶龙格--库塔法，并通过独立自适应积分和步长减半进行检查，交点差均小于 $10^{-6}$ m。上述结果从单参数响应、相同观测下的相容轨迹和联合发射扰动三个角度，给出了球门交点变化的物理解释与量化范围。

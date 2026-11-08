@@ -19,6 +19,15 @@
     "J03WMX_selected_times": {
       "passed": true
     },
+    "J03WMX_selected_source_frames": {
+      "passed": true
+    },
+    "J03WMX_time_roundtrip": {
+      "passed": true
+    },
+    "J03WMX_goal_time_roundtrip": {
+      "passed": true
+    },
     "J03WMX_coordinate_roundtrip": {
       "passed": true
     },
@@ -35,6 +44,9 @@
       "passed": true
     },
     "J03WMX_M1_fit_interval": {
+      "passed": true
+    },
+    "J03WMX_M1_fit_before_contact": {
       "passed": true
     },
     "J03WMX_M1_ground_truncation": {
@@ -59,6 +71,9 @@
       "passed": true
     },
     "J03WMX_M2_fit_interval": {
+      "passed": true
+    },
+    "J03WMX_M2_fit_before_contact": {
       "passed": true
     },
     "J03WMX_M2_ground_truncation": {
@@ -88,6 +103,12 @@
     "J03WMX_M3_fit_interval": {
       "passed": true
     },
+    "J03WMX_M3_fit_before_contact": {
+      "passed": true
+    },
+    "J03WMX_M3_goal_distance": {
+      "passed": true
+    },
     "J03WMX_M3_ground_truncation": {
       "passed": true
     },
@@ -109,13 +130,13 @@
     "J03WMX_M4_parameter_count": {
       "passed": true
     },
-    "J03WMX_M4_selection_state_1": {
-      "passed": true
-    },
-    "J03WMX_M4_selection_state_2": {
-      "passed": true
-    },
     "J03WMX_M4_fit_interval": {
+      "passed": true
+    },
+    "J03WMX_M4_fit_before_contact": {
+      "passed": true
+    },
+    "J03WMX_M4_goal_distance": {
       "passed": true
     },
     "J03WMX_M4_ground_truncation": {
@@ -128,6 +149,15 @@
       "passed": true
     },
     "J03WOH_selected_times": {
+      "passed": true
+    },
+    "J03WOH_selected_source_frames": {
+      "passed": true
+    },
+    "J03WOH_time_roundtrip": {
+      "passed": true
+    },
+    "J03WOH_goal_time_roundtrip": {
       "passed": true
     },
     "J03WOH_coordinate_roundtrip": {
@@ -146,6 +176,12 @@
       "passed": true
     },
     "J03WOH_M1_fit_interval": {
+      "passed": true
+    },
+    "J03WOH_M1_fit_before_contact": {
+      "passed": true
+    },
+    "J03WOH_M1_goal_distance": {
       "passed": true
     },
     "J03WOH_M1_ground_truncation": {
@@ -172,6 +208,12 @@
     "J03WOH_M2_fit_interval": {
       "passed": true
     },
+    "J03WOH_M2_fit_before_contact": {
+      "passed": true
+    },
+    "J03WOH_M2_goal_distance": {
+      "passed": true
+    },
     "J03WOH_M2_ground_truncation": {
       "passed": true
     },
@@ -196,7 +238,22 @@
     "J03WOH_M3_selection_state_1": {
       "passed": true
     },
+    "J03WOH_M3_selection_state_2": {
+      "passed": true
+    },
+    "J03WOH_M3_selection_state_3": {
+      "passed": true
+    },
+    "J03WOH_M3_selection_state_4": {
+      "passed": true
+    },
     "J03WOH_M3_fit_interval": {
+      "passed": true
+    },
+    "J03WOH_M3_fit_before_contact": {
+      "passed": true
+    },
+    "J03WOH_M3_goal_distance": {
       "passed": true
     },
     "J03WOH_M3_ground_truncation": {
@@ -220,7 +277,28 @@
     "J03WOH_M4_parameter_count": {
       "passed": true
     },
+    "J03WOH_M4_selection_state_1": {
+      "passed": true
+    },
+    "J03WOH_M4_selection_state_2": {
+      "passed": true
+    },
+    "J03WOH_M4_selection_state_3": {
+      "passed": true
+    },
+    "J03WOH_M4_selection_state_4": {
+      "passed": true
+    },
+    "J03WOH_M4_selection_state_5": {
+      "passed": true
+    },
     "J03WOH_M4_fit_interval": {
+      "passed": true
+    },
+    "J03WOH_M4_fit_before_contact": {
+      "passed": true
+    },
+    "J03WOH_M4_goal_distance": {
       "passed": true
     },
     "J03WOH_M4_ground_truncation": {
@@ -233,6 +311,15 @@
       "passed": true
     },
     "J03WR9_selected_times": {
+      "passed": true
+    },
+    "J03WR9_selected_source_frames": {
+      "passed": true
+    },
+    "J03WR9_time_roundtrip": {
+      "passed": true
+    },
+    "J03WR9_goal_time_roundtrip": {
       "passed": true
     },
     "J03WR9_coordinate_roundtrip": {
@@ -251,6 +338,12 @@
       "passed": true
     },
     "J03WR9_M1_fit_interval": {
+      "passed": true
+    },
+    "J03WR9_M1_fit_before_contact": {
+      "passed": true
+    },
+    "J03WR9_M1_goal_distance": {
       "passed": true
     },
     "J03WR9_M1_ground_truncation": {
@@ -277,6 +370,12 @@
     "J03WR9_M2_fit_interval": {
       "passed": true
     },
+    "J03WR9_M2_fit_before_contact": {
+      "passed": true
+    },
+    "J03WR9_M2_goal_distance": {
+      "passed": true
+    },
     "J03WR9_M2_ground_truncation": {
       "passed": true
     },
@@ -301,7 +400,13 @@
     "J03WR9_M3_selection_state_1": {
       "passed": true
     },
+    "J03WR9_M3_selection_state_2": {
+      "passed": true
+    },
     "J03WR9_M3_fit_interval": {
+      "passed": true
+    },
+    "J03WR9_M3_fit_before_contact": {
       "passed": true
     },
     "J03WR9_M3_ground_truncation": {
@@ -331,7 +436,19 @@
     "J03WR9_M4_selection_state_2": {
       "passed": true
     },
+    "J03WR9_M4_selection_state_3": {
+      "passed": true
+    },
+    "J03WR9_M4_selection_state_4": {
+      "passed": true
+    },
+    "J03WR9_M4_selection_state_5": {
+      "passed": true
+    },
     "J03WR9_M4_fit_interval": {
+      "passed": true
+    },
+    "J03WR9_M4_fit_before_contact": {
       "passed": true
     },
     "J03WR9_M4_ground_truncation": {

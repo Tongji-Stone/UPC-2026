@@ -1,0 +1,138 @@
+{
+  "baseline_vs_saved_m": 9.155133597044475e-16,
+  "baseline_early_residual_m": 4.4075854077618715e-14,
+  "fast_vs_repository_m": 4.440892098500626e-16,
+  "max_rhs_difference": 5.329070518200751e-15,
+  "integrator_comparison": [
+    {
+      "case": "baseline",
+      "event": "plane",
+      "other_event": "plane",
+      "position_difference_m": 5.420799638382024e-15,
+      "time_difference_s": 2.7755575615628914e-16
+    },
+    {
+      "case": "spin",
+      "event": "plane",
+      "other_event": "plane",
+      "position_difference_m": 4.148135544450461e-15,
+      "time_difference_s": 3.3306690738754696e-16
+    },
+    {
+      "case": "rho",
+      "event": "plane",
+      "other_event": "plane",
+      "position_difference_m": 2.2315206618374916e-15,
+      "time_difference_s": 1.6653345369377348e-16
+    },
+    {
+      "case": "al",
+      "event": "plane",
+      "other_event": "plane",
+      "position_difference_m": 4.965068306494546e-16,
+      "time_difference_s": 1.6653345369377348e-16
+    },
+    {
+      "case": "pitch",
+      "event": "plane",
+      "other_event": "plane",
+      "position_difference_m": 1.2560739669470201e-15,
+      "time_difference_s": 2.220446049250313e-16
+    },
+    {
+      "case": "profile_y_min",
+      "event": "plane",
+      "other_event": "plane",
+      "position_difference_m": 3.76822190084106e-15,
+      "time_difference_s": 6.106226635438361e-16
+    },
+    {
+      "case": "profile_y_max",
+      "event": "plane",
+      "other_event": "plane",
+      "position_difference_m": 1.4895204919483639e-15,
+      "time_difference_s": 5.551115123125783e-17
+    },
+    {
+      "case": "profile_z_min",
+      "event": "plane",
+      "other_event": "plane",
+      "position_difference_m": 2.2315206618374916e-15,
+      "time_difference_s": 1.6653345369377348e-16
+    },
+    {
+      "case": "profile_z_max",
+      "event": "plane",
+      "other_event": "plane",
+      "position_difference_m": 3.76822190084106e-15,
+      "time_difference_s": 6.106226635438361e-16
+    }
+  ],
+  "finite_difference_refinement": [
+    {
+      "parameter": "speed",
+      "relative_change": 2.436558692591223e-06
+    },
+    {
+      "parameter": "yaw",
+      "relative_change": 5.1748873739894e-08
+    },
+    {
+      "parameter": "pitch",
+      "relative_change": 4.9526452590967954e-08
+    },
+    {
+      "parameter": "spin",
+      "relative_change": 1.5559862041355644e-07
+    },
+    {
+      "parameter": "spin_yaw",
+      "relative_change": 2.436335651589166e-08
+    },
+    {
+      "parameter": "spin_pitch",
+      "relative_change": 2.2367440392254068e-08
+    },
+    {
+      "parameter": "ad",
+      "relative_change": 3.5607148704194205e-08
+    },
+    {
+      "parameter": "al",
+      "relative_change": 3.0380043666651956e-09
+    },
+    {
+      "parameter": "rho",
+      "relative_change": 3.444747104294008e-08
+    }
+  ],
+  "protected_before": {
+    "_中文版/main.tex": "9b64cbcc2fd173c05f2c97e9db246fb1de52dcc8a27673b2b9ede4533e8e5432",
+    "_中文版/main.pdf": "6433e5b9cc9c81dd8bf1f233aa37ef589300bea74c17b0aaa8649738053be1e4",
+    "paper/main.tex": "d07801e02c41a7a2adecff932d72a46eec1181cb1dbd7c1c41340d94cce60dc0",
+    "paper/main.pdf": "e83e258507f5005e332974c7740233d35c1c90adc163f58bd2c5b21e7578c7cc",
+    "_中文版/report_results.tex": "8a2f16cb898d5b649a003ee7bc9fb1cde9f46f8c804a100321af19b042c734aa",
+    "paper/report_results.tex": "4e9b876c357882a5a936319d307f53d3a6f2f6c42dae7255c1adc08502f009f1",
+    "src/football/physics/model.py": "045bc3d48ec77eec7fb4bfcd25cd6afd791620e38baee4371d92cd010f8e71cb",
+    "src/football/inference/four_model_fit.py": "ba8190fc5af4050b9ce60c7a06ab5ebda72c9a794c007fe49f4e481b34137936",
+    "data/sensitivity_v2/representative_state.json": "5c057a9dd4d8be070a2139192f197ef452c9a882647bfc0365acf083f1f5d775",
+    "探索树.html": "4087a4a95a86ca2592a26d849359af91c60e6a62b45bbebb712fd3f9a4b3152d"
+  },
+  "protected_after": {
+    "_中文版/main.tex": "9b64cbcc2fd173c05f2c97e9db246fb1de52dcc8a27673b2b9ede4533e8e5432",
+    "_中文版/main.pdf": "6433e5b9cc9c81dd8bf1f233aa37ef589300bea74c17b0aaa8649738053be1e4",
+    "paper/main.tex": "d07801e02c41a7a2adecff932d72a46eec1181cb1dbd7c1c41340d94cce60dc0",
+    "paper/main.pdf": "e83e258507f5005e332974c7740233d35c1c90adc163f58bd2c5b21e7578c7cc",
+    "_中文版/report_results.tex": "8a2f16cb898d5b649a003ee7bc9fb1cde9f46f8c804a100321af19b042c734aa",
+    "paper/report_results.tex": "4e9b876c357882a5a936319d307f53d3a6f2f6c42dae7255c1adc08502f009f1",
+    "src/football/physics/model.py": "045bc3d48ec77eec7fb4bfcd25cd6afd791620e38baee4371d92cd010f8e71cb",
+    "src/football/inference/four_model_fit.py": "ba8190fc5af4050b9ce60c7a06ab5ebda72c9a794c007fe49f4e481b34137936",
+    "data/sensitivity_v2/representative_state.json": "5c057a9dd4d8be070a2139192f197ef452c9a882647bfc0365acf083f1f5d775",
+    "探索树.html": "4087a4a95a86ca2592a26d849359af91c60e6a62b45bbebb712fd3f9a4b3152d"
+  },
+  "protected_unchanged": true,
+  "scan_events": {
+    "plane": 369
+  },
+  "profile_all_early_residual_le_1e7": true
+}

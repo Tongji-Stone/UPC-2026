@@ -82,8 +82,11 @@ test_published_coefficients_and_units (test_physics.PhysicsTests.test_published_
 test_tables_interpolate_and_reject_outside (test_physics.PhysicsTests.test_tables_interpolate_and_reject_outside) ... ok
 test_uniform_and_plane (test_physics.PhysicsTests.test_uniform_and_plane) ... ok
 test_zero_and_parallel_spin (test_physics.PhysicsTests.test_zero_and_parallel_spin) ... ok
+test_exact_selected_points (test_report_inputs.CorrectedInputTests.test_exact_selected_points) ... ok
+test_raw_frames_and_hashes_unchanged (test_report_inputs.CorrectedInputTests.test_raw_frames_and_hashes_unchanged) ... ok
+test_time_origin_and_crossing_roundtrip (test_report_inputs.CorrectedInputTests.test_time_origin_and_crossing_roundtrip) ... ok
 
 ----------------------------------------------------------------------
-Ran 28 tests in 23.221s
+Ran 31 tests in 22.447s
 
 OK

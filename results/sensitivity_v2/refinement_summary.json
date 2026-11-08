@@ -1,0 +1,60 @@
+{
+  "inner": {
+    "grid_states": 70,
+    "accepted_refinements": 10,
+    "refined_y_range": [
+      2.6447666458380468,
+      2.7719328723950727
+    ],
+    "refined_z_range": [
+      1.9305664369358755,
+      1.9733520513149154
+    ],
+    "refined_t_range": [
+      0.40229882517546073,
+      0.40339120560092595
+    ],
+    "max_displacement": 0.09241121332047769,
+    "max_residual_m": 1.5520917884259688e-13,
+    "max_integrator_difference_m": 4.463041323674983e-15,
+    "interpretation": "Explored grid plus feasible local constrained extrema; not a certified global enclosure"
+  },
+  "wide": {
+    "grid_states": 198,
+    "accepted_refinements": 12,
+    "refined_y_range": [
+      2.6237200603011703,
+      2.797989387162282
+    ],
+    "refined_z_range": [
+      1.9266180838981728,
+      1.9826886820847138
+    ],
+    "refined_t_range": [
+      0.40205242847928846,
+      0.4036331035485101
+    ],
+    "max_displacement": 0.1182949398264392,
+    "max_residual_m": 5.305890893314569e-08,
+    "max_integrator_difference_m": 1.3384577335545666e-11,
+    "interpretation": "Explored grid plus feasible local constrained extrema; not a certified global enclosure"
+  },
+  "jacobian": {
+    "shape": [
+      6,
+      8
+    ],
+    "rank": 6,
+    "singular_values": [
+      29.935341542331475,
+      29.64338489938557,
+      28.975634269495995,
+      0.24717396967370953,
+      0.16381246765141982,
+      0.13413039752675396
+    ],
+    "null_space_dimension": 2,
+    "scale_description": "velocity/30 m/s, spin/120 rad/s, absolute force multipliers; residual/.11 m"
+  },
+  "protected_unchanged": true
+}

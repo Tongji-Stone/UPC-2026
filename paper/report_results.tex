@@ -52,9 +52,9 @@ Chip & M4 & goal & 11.000 & 0.000 & 0.368 & 0.9489\\
 \caption{Frame counts, fitting times and measured local starting positions.}\label{tab:penalty-inputs}
 \setlength{\tabcolsep}{4pt}\begin{tabular}{lrrl}\toprule
 Event & Frames & Fit times (s) & $\boldsymbol r_0$ (m)\\\midrule
-J03WMX & 15 & 0.00,0.04,0.08 & $(0.71,0.05,0.16)$\\
-J03WOH & 12 & 0.00,0.04,0.08 & $(0.06,-0.04,0.11)$\\
-J03WR9 & 12 & 0.00,0.08,0.12 & $(1.47,0.49,0.23)$\\
+J03WMX & 15 & 0.00,0.04,0.08 & $(3.04,0.55,0.13)$\\
+J03WOH & 12 & 0.00,0.04,0.08 & $(0.77,0.08,0.24)$\\
+J03WR9 & 12 & 0.00,0.04,0.08 & $(1.47,0.49,0.23)$\\
 \bottomrule\end{tabular}\end{table}}
 \newcommand{\InverseBoundsTable}{\begin{table}[H]\centering\footnotesize
 \caption{Component bounds and force-correction settings for inversion.}\label{tab:inverse-bounds}
@@ -66,26 +66,63 @@ $\omega_{x0},\omega_{y0},\omega_{z0}$ (M4) & $[-20\pi,20\pi]$ rad/s\\
 Azimuth, elevation (M3) & $[-\pi,\pi],[-\pi/2,\pi/2]$ rad\\
 $\alpha_D,\alpha_L$ & $[0.5,1.5]$\\
 \bottomrule\end{tabular}\end{table}}
-\newcommand{\InverseResultsTable}{\begin{table}[H]\centering\footnotesize
-\caption{All inversions: maximum early coordinate residual, later 3D RMSE/sample count, goal error and arrival-time error. Limit rows describe the saved iteration-limit candidate.}\label{tab:inverse-results}
-\setlength{\tabcolsep}{4pt}\begin{tabular}{lllrrrr}\toprule
-Event & Model & Status & Resid. (m) & RMSE (m)/$n$ & Goal (m) & $\Delta t$ (s)\\\midrule
-WMX & M1 & ground & $1.83\times10^{-2}$ & ---/0 & --- & ---\\
-WMX & M2 & ground & $1.81\times10^{-2}$ & ---/0 & --- & ---\\
-WMX & M3 & goal & $6.74\times10^{-3}$ & 0.161/7 & 0.185 & -0.014\\
-WMX & M4 & goal & $5.84\times10^{-3}$ & 0.176/7 & 0.284 & -0.012\\
-WOH & M1 & goal & $2.04\times10^{-1}$ & 1.387/8 & 0.853 & 0.074\\
-WOH & M2 & goal & $2.06\times10^{-1}$ & 1.500/8 & 0.856 & 0.090\\
-WOH & M3 & goal & $2.08\times10^{-1}$ & 1.463/8 & 0.505 & 0.107\\
-WOH & M4 & limit & $2.06\times10^{-1}$ & 1.441/8 & 0.664 & 0.086\\
-WR9 & M1 & ground & $2.40\times10^{-1}$ & 1.816/7 & --- & ---\\
-WR9 & M2 & ground & $2.42\times10^{-1}$ & 1.879/7 & --- & ---\\
-WR9 & M3 & ground & $2.42\times10^{-1}$ & 1.880/7 & --- & ---\\
-WR9 & M4 & ground & $2.41\times10^{-1}$ & 1.855/7 & --- & ---\\
+\newcommand{\WMXMeasuredTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WMX: three measured fitting points and observed goal crossing (direct source frame).}\label{tab:measured-J03WMX}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrr}\toprule
+Point & Source frame & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+$P_0$ & 152602 & 0.00 & 3.040 & 0.550 & 0.130\\
+$P_1$ & 152603 & 0.04 & 4.190 & 0.820 & 0.150\\
+$P_2$ & 152604 & 0.08 & 5.250 & 1.070 & 0.180\\
+Goal & 152610 & 0.3200 & 11.000 & 2.7500 & 0.1600\\
 \bottomrule\end{tabular}\end{table}}
-\newcommand{\WMXDiscussion}{The recorded path stays close to the turf. Gravity-only and drag-only predictions reach the ground before the goal; upward Magnus force in M3 and M4 sustains the low flight. The M4 candidate crossing error is 0.284 m, with arrival-time difference -0.012 s.}
-\newcommand{\WOHDiscussion}{The first two horizontal increments are 0.71 and 1.22 m in equal time intervals. This accelerating early sequence drives the drag correction to its lower bound. The M4 search reaches the iteration limit; its candidate is retained and marked in the figure and table. The M4 candidate crossing error is 0.664 m, with arrival-time difference +0.086 s.}
-\newcommand{\WRDiscussion}{Using 0, 0.08 and 0.12 s avoids treating the duplicated first position as a separate displacement. The measured lateral motion is substantial, and fitted lift direction controls the later sideways bending.}
+\newcommand{\WMXPredictedTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WMX: inverse initial states and predicted goal-plane crossings. Spin entries have units rad/s in M4; the starred M3 vector is a unit axis. M1/M2 do not estimate spin. Limit rows retain the iteration-limit candidate.}\label{tab:predicted-J03WMX}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrccr}\toprule
+Model & Status & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & Spin & $d_g$ (m)\\\midrule
+M1 & ground & --- & --- & $\begin{pmatrix}27.850\\6.550\\0.953\end{pmatrix}$ & --- & ---\\
+M2 & ground & --- & --- & $\begin{pmatrix}28.411\\6.682\\0.967\end{pmatrix}$ & --- & ---\\
+M3 & plane & 2.4464 & 0.5086 & $\begin{pmatrix}28.428\\6.659\\0.327\end{pmatrix}$ & $\begin{pmatrix}0.092\\-0.995\\0.038\end{pmatrix}^{*}$ & 0.4622\\
+M4 & limit & 2.6884 & 0.2686 & $\begin{pmatrix}28.776\\6.431\\0.574\end{pmatrix}$ & $\begin{pmatrix}62.832\\-62.832\\62.832\end{pmatrix}$ & 0.1248\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WMXDiscussion}{The measured low flight requires sustained vertical support from lift. M4's crossing deviation is 0.1248 m. The iteration-limit candidates are M4. Ground contact precedes the goal for M1, M2.}
+\newcommand{\WOHMeasuredTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WOH: three measured fitting points and observed goal crossing (linear interpolation).}\label{tab:measured-J03WOH}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrr}\toprule
+Point & Source frame & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+$P_0$ & 128955 & 0.00 & 0.770 & 0.080 & 0.240\\
+$P_1$ & 128956 & 0.04 & 1.990 & 0.340 & 0.460\\
+$P_2$ & 128957 & 0.08 & 3.180 & 0.620 & 0.650\\
+Goal & 128964--128965 & 0.3643 & 11.000 & 2.9188 & 1.1789\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WOHPredictedTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WOH: inverse initial states and predicted goal-plane crossings. Spin entries have units rad/s in M4; the starred M3 vector is a unit axis. M1/M2 do not estimate spin. Limit rows retain the iteration-limit candidate.}\label{tab:predicted-J03WOH}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrccr}\toprule
+Model & Status & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & Spin & $d_g$ (m)\\\midrule
+M1 & plane & 2.3496 & 1.5583 & $\begin{pmatrix}30.200\\6.700\\5.553\end{pmatrix}$ & --- & 0.6841\\
+M2 & plane & 2.3494 & 1.5059 & $\begin{pmatrix}30.794\\6.831\\5.658\end{pmatrix}$ & --- & 0.6567\\
+M3 & plane & 3.1269 & 1.2184 & $\begin{pmatrix}30.881\\6.236\\5.884\end{pmatrix}$ & $\begin{pmatrix}-0.228\\0.317\\0.921\end{pmatrix}^{*}$ & 0.2118\\
+M4 & plane & 3.1221 & 1.1997 & $\begin{pmatrix}30.879\\6.235\\5.882\end{pmatrix}$ & $\begin{pmatrix}-39.084\\17.890\\62.832\end{pmatrix}$ & 0.2044\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WOHDiscussion}{The rising measured arc connects vertical launch velocity with the subsequent action of gravity and lift. M4's crossing deviation is 0.2044 m.}
+\newcommand{\WRMeasuredTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WR9: three measured fitting points and observed goal crossing (linear interpolation).}\label{tab:measured-J03WR9}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrr}\toprule
+Point & Source frame & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+$P_0$ & 176244 & 0.00 & 1.470 & 0.490 & 0.230\\
+$P_1$ & 176245 & 0.04 & 2.570 & 0.850 & 0.340\\
+$P_2$ & 176246 & 0.08 & 3.640 & 1.200 & 0.410\\
+Goal & 176253--176254 & 0.3695 & 11.000 & 3.0697 & 0.4657\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WRPredictedTable}{\begin{table}[H]\centering\footnotesize
+\caption{J03WR9: inverse initial states and predicted goal-plane crossings. Spin entries have units rad/s in M4; the starred M3 vector is a unit axis. M1/M2 do not estimate spin. Limit rows retain the iteration-limit candidate.}\label{tab:predicted-J03WR9}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrccr}\toprule
+Model & Status & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & Spin & $d_g$ (m)\\\midrule
+M1 & plane & 3.6083 & 0.5750 & $\begin{pmatrix}27.200\\8.900\\2.703\end{pmatrix}$ & --- & 0.5496\\
+M2 & plane & 3.6083 & 0.5147 & $\begin{pmatrix}27.747\\9.079\\2.753\end{pmatrix}$ & --- & 0.5408\\
+M3 & ground & --- & --- & $\begin{pmatrix}27.703\\9.070\\3.252\end{pmatrix}$ & $\begin{pmatrix}-0.174\\0.985\\0.003\end{pmatrix}^{*}$ & ---\\
+M4 & ground & --- & --- & $\begin{pmatrix}27.881\\9.124\\3.271\end{pmatrix}$ & $\begin{pmatrix}-62.832\\62.832\\-3.805\end{pmatrix}$ & ---\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WRDiscussion}{The measured path bends laterally, so fitted spin direction affects the continuation towards the goal. M4 reaches the ground at $x=9.507$ m. Ground contact precedes the goal for M3, M4.}
 \newcommand{\TorqueViscousRatio}{$3.54\times10^{-4}$}
 \newcommand{\TorqueDisplacement}{0.0343}
 \newcommand{\TorqueResults}{The damped crossing is $(0.8579,0.8848)$ m, compared with $(0.8921,0.8822)$ m at constant spin. The displacement is 0.0343 m (0.312\% of 11 m). Spin falls by 19.671\%, and crossing time changes by -0.233\%. Adding viscous torque shifts the damped crossing by 1.2e-05 m. The short-flight endpoint is less sensitive than spin magnitude to this reference torque.}

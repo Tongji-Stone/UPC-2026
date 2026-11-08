@@ -1,0 +1,64 @@
+{
+  "source_commit": "91bda309827b3fafd0fb06d530440300814d682e",
+  "source_path": "results/structure_v2/problem/problem_b_M4.json",
+  "role": "Fixed reference state for the competition three-position sensitivity example",
+  "record": {
+    "case": "problem_b",
+    "model": "M4",
+    "status": "plane",
+    "event": {
+      "type": "plane",
+      "time": 0.40264914833815957,
+      "position": [
+        11.0,
+        2.682644507905513,
+        1.959231209935071
+      ],
+      "velocity": [
+        24.44703262426258,
+        4.580421316044812,
+        2.4225337951064807
+      ],
+      "spin": [
+        -49.09028517146845,
+        -31.483351948356475,
+        -112.26563317044834
+      ]
+    },
+    "error_m": null,
+    "rss_m2": 6.339455408042366e-25,
+    "max_residual_m": 6.374345495885336e-13,
+    "initial_state": [
+      30.406302947799468,
+      9.425592132173508,
+      6.906426894571296,
+      -49.09028517146845,
+      -31.483351948356475,
+      -112.26563317044834
+    ],
+    "drag_scale": 1.0001000000004363,
+    "lift_scale": 0.9999999935575422,
+    "active_parameters": 8,
+    "coverage": {
+      "speed_range": [
+        24.99012472063054,
+        32.57428093520266
+      ],
+      "Re_range": [
+        366521.82923591457,
+        477756.1203829723
+      ],
+      "Sp_range": [
+        0.42720926811617976,
+        0.5568613551676437
+      ],
+      "above_35_m_s": false,
+      "outside_A07_spinning_Re": true,
+      "above_A07_global_Sp": true,
+      "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+    },
+    "shot_type": "competition",
+    "target_yz_m": null,
+    "fit_converged": true
+  }
+}

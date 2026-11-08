@@ -4,7 +4,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def main():
     excluded={'.git','__pycache__','.pytest_cache','.venv','.mypy_cache','.ruff_cache'}
-    build_ext={'.log','.aux','.out','.toc','.xdv','.fls','.fdb_latexmk'}
+    build_ext={'.log','.aux','.out','.toc','.xdv','.fls','.fdb_latexmk','.tmp'}
     files=[];manifest={}
     for p in ROOT.rglob('*'):
         if not p.is_file():continue

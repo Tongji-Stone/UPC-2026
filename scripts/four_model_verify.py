@@ -15,7 +15,11 @@ def main():
     check('24_forward_12_inverse',len(forward)==24 and len(inverse)==12)
     for case in data['cases']:
         name=case['case'];t=case['fit_times_s'];p=case['fit_positions_m']
-        check(name+'_selected_times',np.allclose(t,[0,.08,.12] if name=='J03WR9' else [0,.04,.08]))
+        check(name+'_selected_times',np.allclose(t,[0,.04,.08]))
+        expected={'J03WMX':[152602,152603,152604],'J03WOH':[128955,128956,128957],'J03WR9':[176244,176245,176246]}[name]
+        check(name+'_selected_source_frames',[int(f) for f in case['fit_frames']]==expected)
+        check(name+'_time_roundtrip',all(abs(r['time_s']+case['time_origin_source_s']-r['source_time_s'])<1e-10 for r in case['samples']))
+        check(name+'_goal_time_roundtrip',abs(case['goal']['time_s']+case['time_origin_source_s']-case['goal']['source_time_s'])<1e-10)
         check(name+'_coordinate_roundtrip',all(abs(r['x_m']+41.5-r['X_m'])<1e-12 and r['y_m']==r['Y_m'] and r['z_m']==r['Z_original'] for r in case['samples']))
         for m in MODELS:
             a=read_json(OUT/f'inverse/{name}_{m}.json');r=a['record'];fit=a['fit'];key=name+'_'+m
@@ -31,6 +35,10 @@ def main():
                 check(key+f'_selection_state_{i}',abs(np.sum((q[indices]-1)**2)-stage['coefficient_distance'])<1e-12)
             trace=read_csv(OUT/f'inverse/{name}_{m}.csv');end=float(trace[-1]['time_s'])
             check(key+'_fit_interval',r['physical_fit_interval']==(end>=t[-1]-1e-9))
+            check(key+'_fit_before_contact',r['physical_fit_interval'])
+            if r['event']['type']=='plane':
+                distance=np.linalg.norm(np.asarray(r['event']['position'])[1:]-np.asarray(case['goal']['local_position'])[1:])
+                check(key+'_goal_distance',abs(distance-r['goal_error_m'])<1e-12)
             check(key+'_ground_truncation',r['event']['type']!='ground' or abs(float(trace[-1]['z_m'])-.11)<1e-8)
             check(key+'_limit_marked',fit['success'] or r['status'] in ['fit_limit','early_contact'])
             path=OUT/f'inverse/{name}_{m}_validation.csv';valid=read_csv(path) if path.exists() else []

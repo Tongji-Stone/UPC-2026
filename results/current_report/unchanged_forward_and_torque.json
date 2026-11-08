@@ -1,0 +1,122 @@
+{
+  "baseline_commit": "fd43413",
+  "all_unchanged": true,
+  "files": {
+    "results/current_report/forward/backspin_M1.csv": {
+      "unchanged": true,
+      "sha256": "a4b6fde62653e3bc0bbb6355bcc95bc87e17fc6de6d6ea14002741b251a2e8c4"
+    },
+    "results/current_report/forward/backspin_M2.csv": {
+      "unchanged": true,
+      "sha256": "31d94af9d3346a2190743ea577ae2c29d9c36d421776de00816be93c64cf437e"
+    },
+    "results/current_report/forward/backspin_M3.csv": {
+      "unchanged": true,
+      "sha256": "d8c9e347ab520239b828c9c1dd6223b66dc49b5f12d5423c280ebc17f51441a2"
+    },
+    "results/current_report/forward/backspin_M4.csv": {
+      "unchanged": true,
+      "sha256": "148461d9436c0fad388cdae8aa945402721f9af7b73c695f4bd52fdbe0eab8dc"
+    },
+    "results/current_report/forward/chip_M1.csv": {
+      "unchanged": true,
+      "sha256": "275120beac5f485b291b8333ad703c78f090f0306227b6bf3b377eb319ee1dcb"
+    },
+    "results/current_report/forward/chip_M2.csv": {
+      "unchanged": true,
+      "sha256": "8826753a837332f0c3f85cb6e1ae23da86f5cdc5cc6b1c96356bfab38013ef78"
+    },
+    "results/current_report/forward/chip_M3.csv": {
+      "unchanged": true,
+      "sha256": "e14162c92cf5adbcb2a33509cd9f6f8c2f9b2ecc727ed8c2927becb5a63f35f3"
+    },
+    "results/current_report/forward/chip_M4.csv": {
+      "unchanged": true,
+      "sha256": "69f8f2fedaa82c26f8a5570fd42b5eed2d99f5362d7df82897a3d7c3f733ed37"
+    },
+    "results/current_report/forward/curved_M1.csv": {
+      "unchanged": true,
+      "sha256": "d95f99bfe7876c96c68114d25ccc23f541a735780b4b8926bc078df3133ce2d1"
+    },
+    "results/current_report/forward/curved_M2.csv": {
+      "unchanged": true,
+      "sha256": "9310a21b893973e6c697ce05011680dcae760b6cfae6b7953383b2cd63df33a1"
+    },
+    "results/current_report/forward/curved_M3.csv": {
+      "unchanged": true,
+      "sha256": "2d7ac998517a73d873b37c14c1725bfdded6f5cf7529c7a989513ca538486f9c"
+    },
+    "results/current_report/forward/curved_M4.csv": {
+      "unchanged": true,
+      "sha256": "44a7db8d9d02751b38cf6c4f7a33dd9fa10e14136090ca5bcab5a631e2e5dd1d"
+    },
+    "results/current_report/forward/placement_M1.csv": {
+      "unchanged": true,
+      "sha256": "7b50b464665accc48182af96cfe0fa1c6cb37a7d52bf3b3260c7c34fc2814a8c"
+    },
+    "results/current_report/forward/placement_M2.csv": {
+      "unchanged": true,
+      "sha256": "a5d97bef2eb91b560407d3a9b3f42626cee95e8629347e788de0a971901303e5"
+    },
+    "results/current_report/forward/placement_M3.csv": {
+      "unchanged": true,
+      "sha256": "a5d97bef2eb91b560407d3a9b3f42626cee95e8629347e788de0a971901303e5"
+    },
+    "results/current_report/forward/placement_M4.csv": {
+      "unchanged": true,
+      "sha256": "f73df8610bfe43fdd2f86ea99fe2965501e809ca6b6e1a534a54dd41c297a5c2"
+    },
+    "results/current_report/forward/power_M1.csv": {
+      "unchanged": true,
+      "sha256": "b76b434c3d15a268ecc034bbaadd14442303fa81763ae378ad3d4e625d4ce6bc"
+    },
+    "results/current_report/forward/power_M2.csv": {
+      "unchanged": true,
+      "sha256": "6d48c640be9696c74dbfc54d0780ea44372aa624db7e991e24dee23b2e62773c"
+    },
+    "results/current_report/forward/power_M3.csv": {
+      "unchanged": true,
+      "sha256": "6d48c640be9696c74dbfc54d0780ea44372aa624db7e991e24dee23b2e62773c"
+    },
+    "results/current_report/forward/power_M4.csv": {
+      "unchanged": true,
+      "sha256": "ec0626c9541a1fd9271eccb7e47fe293f6537cad5f166dbc0a0ec5ec9021d9b2"
+    },
+    "results/current_report/forward/summary.json": {
+      "unchanged": true,
+      "sha256": "4cd875bec927637c02fe9a591b59b4fbf467fa6c5cb3a2613de08d67260445b5"
+    },
+    "results/current_report/forward/topspin_M1.csv": {
+      "unchanged": true,
+      "sha256": "2712f6a862ad4bfbd5fdaa2d172bead1973fd4ce9247975647a5639dc49239ef"
+    },
+    "results/current_report/forward/topspin_M2.csv": {
+      "unchanged": true,
+      "sha256": "7146546fa6ccef7c6a43ada942965896aa48e6c4cd4e86d839e9f056054c5a43"
+    },
+    "results/current_report/forward/topspin_M3.csv": {
+      "unchanged": true,
+      "sha256": "e76a573d7a7e9b6afdc2552bc9275c4feb4b26e49d37cf3c18f7470c698fe731"
+    },
+    "results/current_report/forward/topspin_M4.csv": {
+      "unchanged": true,
+      "sha256": "d3ee6ca27fd6d21a897c3f8bea0ca625c07998eff7cbc3cd98e502d8ec0a94f9"
+    },
+    "results/current_report/other/constant_spin.csv": {
+      "unchanged": true,
+      "sha256": "44a7db8d9d02751b38cf6c4f7a33dd9fa10e14136090ca5bcab5a631e2e5dd1d"
+    },
+    "results/current_report/other/inertial_and_viscous.csv": {
+      "unchanged": true,
+      "sha256": "b5d369d4c60e983cff5287121d7a58ae9a5b9a542104c4b76406486409db76b8"
+    },
+    "results/current_report/other/inertial_torque.csv": {
+      "unchanged": true,
+      "sha256": "9e43b496d1dabe230b6dfffa45fc3db1373b02e619995485d8a6bf2841a44daa"
+    },
+    "results/current_report/other/summary.json": {
+      "unchanged": true,
+      "sha256": "bb451ed9ff56b5c629d1b8b3dfdfc0b718b8d9b9466b171b2c2888b1bda4e00f"
+    }
+  }
+}

@@ -1,0 +1,111 @@
+% Section 5. Numerical macros and tables come from sensitivity_results.tex.
+Section 4 illustrates flight prediction through prescribed states and actual penalty records. We now examine how parameter changes affect the goal-plane crossing. The competition's three positions provide a separate reference example, with mass fixed at $m=0.43$ kg, radius at $R=0.11$ m, and the same constant-spin, still-air M4 coefficient relations.
+
+\begin{table}[H]\centering\small
+\caption{Early positions for the sensitivity example.}\label{tab:sensitivity-reference}
+\begin{tabular}{crrr}\toprule
+$t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+0 & 0 & 0 & 0.11\\
+0.05 & 1.50 & 0.45 & 0.44\\
+0.10 & 2.96 & 0.86 & 0.74\\\bottomrule
+\end{tabular}\end{table}
+The reference state is
+\begin{equation}\begin{aligned}
+\boldsymbol v_0&=(30.4063,9.4256,6.9064)\;\mathrm{m/s},\\
+\boldsymbol\omega_0&=(-49.0903,-31.4834,-112.2656)\;\mathrm{rad/s}.
+\end{aligned}\label{eq:sensitivity-reference-state}\end{equation}
+with $\alpha_D=1.0001$ and $\alpha_L=1.0000$. Calculations use the saved full-precision state, compatible with Table~\ref{tab:sensitivity-reference}. Its crossing is $(y_g^*,z_g^*)=(2.6826,1.9592)$ m at $t_g^*=0.402649$ s. We examine individual perturbations, states refitted to the same early positions, and joint launch perturbations.
+
+\subsection{Effects of individual parameters}\label{sec:sensitivity-local}
+One parameter is changed at a time while the other conditions retain their reference values. Launch speed varies by $\pm5\%$; spin magnitude, drag and lift multipliers, and air density each vary by $\pm10\%$; velocity and spin-axis azimuth and elevation each vary by $\pm2^\circ$. Each parameter has 41 equally spaced values, giving \SensitivityFixedRuns{} trajectories. Speeds remain below the empirical relation's 35 m/s upper limit, and all trajectories reach the goal plane before ground contact.
+
+For the reference crossing $(y_g^*,z_g^*,t_g^*)$, define
+\begin{equation}
+\Delta y_g=y_g-y_g^*,\quad \Delta z_g=z_g-z_g^*,\quad
+\Delta t_g=t_g-t_g^*,\qquad
+D_g=\sqrt{(\Delta y_g)^2+(\Delta z_g)^2}.
+\label{eq:sensitivity-displacement}
+\end{equation}
+Table~\ref{tab:sensitivity-one-factor} compares scalar changes of $\pm5\%$ and direction changes of $\pm1^\circ$, reporting the larger crossing displacement and arrival-time change from each positive--negative pair.
+\SensitivityOneFactorTable
+
+Figure~\ref{fig:sensitivity-one-position} gives the lateral and vertical responses. To compare arrival times on common axes, Figure~\ref{fig:sensitivity-one-time} divides each perturbation by its scan half-width: $\pm1$ corresponds to speed changes of $\pm5\%$, other scalar changes of $\pm10\%$, or angle changes of $\pm2^\circ$. The vertical axis retains milliseconds.
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{one_factor_position_response.pdf}
+\caption{Goal-plane position responses to nine one-factor perturbations. Blue solid curves show $\Delta y_g$ and orange dashed curves show $\Delta z_g$, in centimetres. Scalar changes are percentages; direction changes are in degrees. Ball mass and radius remain fixed. Vertical scales are set separately for each panel.}\label{fig:sensitivity-one-position}
+\end{figure}
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{one_factor_time_response.pdf}
+\caption{One-factor arrival-time responses. Perturbations are normalized by scan half-width and $\Delta t_g$ is in milliseconds. Positive values indicate later arrival and negative values earlier arrival; each parameter has 41 values.}\label{fig:sensitivity-one-time}
+\end{figure}
+
+A $1^\circ$ change in velocity azimuth or elevation moves the crossing by about 0.20 m, mainly in the corresponding lateral or vertical direction. A $5\%$ speed change gives a maximum displacement of 0.108 m and an arrival-time change of 23.187 ms. Higher speed shortens the action of gravity and aerodynamic forces. Lift scaling primarily changes transverse curvature, while drag scaling affects arrival time through deceleration.
+
+Spin has an additional nonlinear effect through the complete coefficient relation. In its positive-lift region, at fixed speed,
+\begin{equation}
+C_L\propto Sp^{0.83}\big[C_{D,\mathrm{ceil}}-f(v)-0.514Sp\big].
+\label{eq:sensitivity-spin-lift}
+\end{equation}
+At the reference launch speed, this expression peaks at $Sp\simeq0.3007$, below the reference initial value 0.4272. Increasing spin therefore reduces the empirical lift coefficient near this state. Since the reference Magnus force bends the ball toward smaller $y$, a $5\%$ spin increase gives $y_g=2.7433$ m, whereas a $5\%$ decrease gives $y_g=2.6305$ m. Spin and lift scaling can consequently compensate for one another.
+
+\subsection{Crossing variation under early-position constraints}\label{sec:sensitivity-constrained}
+The same early positions can arise from different combinations of initial velocity, spin and aerodynamic forces. Two later positions constrain six coordinates, while M4 contains eight inverse quantities. After selecting a representative state, we therefore examine how other compatible states change the goal-plane crossing.
+
+We take a $17\times17$ grid of $(\alpha_D,\alpha_L)$ in $[0.8,1.2]^2$ and refit the initial velocity and spin at each point while retaining the positions at 0.05 and 0.10 s. The search uses total speed at most 35 m/s, total spin at most 200 rad/s, and a maximum coordinate residual of $10^{-7}$ m. The spin range includes the representative state and defines the conditions for this comparison.
+
+Grid searches and local constrained optimization give Table~\ref{tab:sensitivity-profile}. The nested interval $[0.9,1.1]^2$ shows how the crossing ranges change as the force-multiplier range expands.
+\SensitivityProfileTable
+For multipliers in $[0.8,1.2]^2$, the largest crossing displacement found relative to the representative state is \SensitivityConditionalShift\ m, and all compatible trajectories clear the goal. Figure~\ref{fig:sensitivity-constrained} shows the lateral--vertical pairs, quantifying the remaining variation under the same early-position constraints.
+\begin{figure}[H]\centering
+\includegraphics[width=.86\textwidth]{conditional_crossings.pdf}
+\caption{Crossings compatible with the same early positions, using the wider force-multiplier setting. Colour denotes the drag multiplier; the orange star is the reference state.}\label{fig:sensitivity-constrained}
+\end{figure}
+
+Air density provides a further example of parameter compensation. With $m,R,\nu$ fixed, changing density from $\rho$ to $\rho'$ and taking
+\begin{equation}
+\alpha_D'=\alpha_D\frac{\rho}{\rho'},\qquad
+\alpha_L'=\alpha_L\frac{\rho}{\rho'}
+\label{eq:sensitivity-density-compensation}
+\end{equation}
+leaves both aerodynamic accelerations and the entire trajectory unchanged. Density changes with fixed force multipliers therefore give a different response from changes accompanied by a refit: the early positions constrain the combined aerodynamic action of these parameters.
+
+\subsection{Joint perturbations and Monte Carlo simulation}\label{sec:sensitivity-mc}
+Several flight conditions can change together. To examine their joint effect, we independently sample uniform perturbations over the full ranges above: speed $\pm5\%$, each direction angle $\pm2^\circ$, and spin magnitude, both force multipliers and density $\pm10\%$, with $\rho\in[1.08,1.32]$ kg/m$^3$. Seed \MCSeed{} generates \MCCount{} trajectories. Mass, radius and initial position remain fixed, while the early positions vary with the launch state; Section~\ref{sec:sensitivity-constrained} holds the observed positions fixed.
+
+All simulated trajectories reach the goal plane before ground contact. Table~\ref{tab:sensitivity-mc} reports the sampled ranges and the 2.5th--97.5th percentiles of each position coordinate and arrival time. The mean crossing is $(\MCMeanY,\MCMeanZ)$ m, with lateral and vertical standard deviations \MCStdY\ m and \MCStdZ\ m. The largest displacement from the representative crossing is \MCMaxDisplacement\ m.
+\SensitivityMonteCarloTable
+
+For a joint spatial region, let $\boldsymbol q_i=(y_{g,i},z_{g,i})^T$, with sample mean $\bar{\boldsymbol q}$ and covariance $\widehat\Sigma$. Compute
+\begin{equation}\begin{aligned}
+d_i^2&=(\boldsymbol q_i-\bar{\boldsymbol q})^T\widehat\Sigma^{-1}
+(\boldsymbol q_i-\bar{\boldsymbol q}),\\
+\mathcal E_{0.95}&=\left\{\boldsymbol q:
+(\boldsymbol q-\bar{\boldsymbol q})^T\widehat\Sigma^{-1}
+(\boldsymbol q-\bar{\boldsymbol q})\le c_{0.95}\right\},
+\end{aligned}
+\label{eq:sensitivity-joint-region}
+\end{equation}
+where $c_{0.95}=\MCJointThreshold$ is the empirical 95th percentile of the squared distances. The ellipse in Figure~\ref{fig:sensitivity-mc} encloses 95\% of the simulated crossings, describing lateral and vertical variation jointly, while the intervals in Table~\ref{tab:sensitivity-mc} describe each coordinate separately.
+\begin{figure}[H]\centering
+\includegraphics[width=.80\textwidth]{monte_carlo_crossings.pdf}
+\caption{Monte Carlo goal-plane crossings for 100,000 primary samples, with fixed ball mass and radius. Hexagon colour encodes sample count. The ellipse encloses 95\% of the samples; the horizontal line is the ball-centre upper clearance $z_g=2.33$ m.}\label{fig:sensitivity-mc}
+\end{figure}
+
+Under the stated uniform perturbations, the ball-centre clearance criterion $|y_g|\le3.66-R$, $R\le z_g\le2.44-R$ gives \MCClearCount{} trajectories (\MCClearPercent\%) passing fully through the opening. The remaining \MCOverCount{} trajectories (\MCOverPercent\%) are too high.
+
+Figure~\ref{fig:sensitivity-mc-parallel} connects inputs with flight outcomes. A random subset of 400 trajectories is displayed for readability; each polyline passes through nine inputs and three outputs. Here $v_0,\omega_0$ are velocity and spin magnitudes; $\phi,\theta$ are azimuth and elevation, with subscripts $v,\omega$ distinguishing velocity direction and spin axis.
+
+Inputs are scaled by their perturbation limits and outputs by the extrema of all 100,000 trajectories, mapping each axis linearly to 0--1 while retaining its original limits. Blue lines clear the goal, orange lines are too high, and the grey dashed line is the representative state. The 382 blue and 18 orange traces illustrate parameter combinations; the percentages above use the full sample.
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{monte_carlo_parallel_coordinates.pdf}
+\caption{Parallel coordinates linking nine input perturbations to goal-plane positions and arrival time. The first nine axes are inputs; the three shaded axes are outputs. Each coordinate is scaled to 0--1 within its own range. A random subset of 400 trajectories is shown, with colour distinguishing goal-clearance outcomes.}\label{fig:sensitivity-mc-parallel}
+\end{figure}
+Orange traces favour positive velocity-elevation perturbations on the $\theta_v$ axis and high values on the $z_g$ axis, relating larger launch elevations to overly high crossings in this example. Following a trace also reveals its speed, spin, force corrections and arrival time.
+
+Figure~\ref{fig:sensitivity-mc-convergence} examines increasing sample counts. From 50000 to 100000 trajectories, the central-95\% interval endpoints change by at most \MCConvergenceY\ mm laterally, \MCConvergenceZ\ mm vertically and \MCConvergenceT\ ms in time. Two independent seeds, each with 10000 trajectories, give similar central intervals.
+\begin{figure}[H]\centering
+\includegraphics[width=.96\textwidth]{monte_carlo_convergence.pdf}
+\caption{Sample-count checks for the lateral and vertical crossings. Shading and dotted curves show sampled extrema; orange curves show each coordinate's central 95\% interval.}\label{fig:sensitivity-mc-convergence}
+\end{figure}
+
+The trajectories are integrated with fourth-order Runge--Kutta and checked using independent adaptive integration and a halved step; crossing differences remain below $10^{-6}$ m. Individual responses, compatible trajectories and joint launch perturbations together provide a physical explanation and quantitative ranges for the goal-plane variation.

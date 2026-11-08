@@ -24,8 +24,8 @@
 \setlength{\parindent}{2em}
 \setlength{\parskip}{0pt}
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,numbers=left,numberstyle=\tiny,numbersep=8pt,columns=fullflexible,showstringspaces=false,frame=none}
-\graphicspath{{../paper/aerodynamics/}{../paper/assets/}{../results/current_report/figures/}}
-\input{report_results.tex}
+\graphicspath{{../paper/aerodynamics/}{../paper/assets/}{../results/current_report/figures/}{../results/sensitivity_v2/figures/}}
+\input{report_results.tex}\input{sensitivity_results.tex}
 
 \begin{document}
 \begin{center}
@@ -35,10 +35,10 @@
 \end{center}
 重力、阻力与马格努斯升力共同决定足球的三维飞行。本文建立恒定自旋三力模型，比较仅重力、恒定阻力、恒定阻力与升力，以及完整变系数四类模型。第三章保留经验气动关系及同工况风洞对照。
 
-五类自设踢法对应六组初始状态和 24 次正向飞行，用于分析速度、仰角与自旋方向的作用。三次真实比赛点球提供 39 个原始采样帧；坐标统一到点球点后，利用各例指定的三个位置完成 12 组有界反演，并与后续真实采样曲线比较。结果逐项报告拟合残差、后续误差、球门交点与触地状态。另用同一弧线球初始条件比较旋转阻尼，其球门交点位移为 \TorqueDisplacement\ m。第五章预留灵敏性与落点分布研究。
+五类自设踢法对应六组初始状态和 24 次正向飞行，用于分析速度、仰角与自旋方向的作用。三次真实比赛点球提供 39 个原始采样帧；坐标统一到点球点后，利用各例指定的三个位置完成 12 组有界反演，并与后续真实采样曲线比较。各例表格列出实测拟合位置、反演初始状态、预测交点及其偏离距离，并标明终止状态。另用同一弧线球初始条件比较旋转阻尼，其球门交点位移为 \TorqueDisplacement\ m。第五章以题目三点为参考算例，在质量与半径固定时比较单参数响应、相同位置约束下的交点及十万条蒙特卡洛轨迹的落点分布。
 
 \noindent\textbf{关键词：}足球；空气阻力；马格努斯效应；逆向预测；轨迹对照
-\newpage\begingroup\small\tableofcontents\endgroup\newpage
+\newpage\begingroup\fontsize{10}{11.5}\selectfont\tableofcontents\endgroup\newpage
 \section{引言}
 \subsection{问题背景}
 点球是一个受到严格时空条件约束的拦截问题。守门员需要在合适的时间到达合适的位置，同时决定何时以及向哪个方向移动。点球预判研究讨论了这一时机问题，并表明射门速度和踢球技术会影响射门方向的可预测性\cite{kamp2018,hunter2018}。这些研究也考虑球员触球前的动作线索；本题则关注足球离脚后，根据已测位置预测其后续位置。
@@ -56,7 +56,7 @@
 \begin{enumerate}
 \item \textbf{触球阶段。} 触球决定足球离脚后的初速度与自旋，这些初始条件构成第~\ref{sec:solving} 章正向算例的输入，也是逆向预测需要反演的未知量。
 \item \textbf{空中飞行阶段。} 重力、空气阻力和马格努斯升力共同决定轨迹，其演化由第~\ref{sec:model} 章的控制方程描述。
-\item \textbf{射门阶段。} 球门交点将飞行运动与射门结果联系起来。初始运动、气动参数和环境条件的变化可形成落点分布，第~\ref{sec:sensitivity} 章预留相应灵敏性与不确定性分析。
+\item \textbf{射门阶段。} 球门交点将飞行运动与射门结果联系起来。初始运动、气动参数和环境条件的变化可形成落点分布，第~\ref{sec:sensitivity} 章分析相应灵敏性与联合扰动。
 \end{enumerate}
 下文先比较自设初始条件的不同踢法，再通过三次真实点球反演初始状态，并与后续实测位置对照。图~\ref{fig:workflow} 概述这一物理与计算过程。
 \begin{figure}[H]\centering
@@ -67,14 +67,14 @@
 \section{模型准备}
 \subsection{基本假设}
 \begin{itemize}
-\item \textbf{触球与建模起点。} 自设正向算例从离脚后的初始状态开始；实测反演以首个可用追踪帧定义 $t=0$，触球作用通过初始运动条件体现。
+\item \textbf{触球与建模起点。} 自设正向算例从离脚后的初始状态开始；实测反演以选定的起始追踪帧定义 $t=0$，触球作用通过初始运动条件体现。
 \item \textbf{刚性球体。} 参照已有足球飞行模型\cite{maponi,bray,myers}，将足球视为质量、半径和迎风面积 $A=\pi R^2$ 恒定的刚性球体，质心与几何中心重合。经验足球气动系数表征表面的平均影响，第~\ref{sec:surface} 节进一步讨论接缝和非对称几何的作用。
 \item \textbf{自由飞行。} 自由飞行中考虑重力、空气阻力与自旋升力\cite{maponi,bray}。所研究的飞行在足球首次接触地面、球门结构或其他物体时结束，不考虑碰撞、弹跳和滚动；数值积分在到达指定球门平面时也停止。
 \item \textbf{均匀重力场。} 重力加速度为常量，取 $g=9.81\,\mathrm{m/s^2}$。
 \item \textbf{大气性质。} 单次飞行中空气密度和动力黏度在空间中保持均匀，气动力通过经验阻力系数和升力系数描述。
 \item \textbf{风。} 主计算采用静止空气；考虑风时，单次飞行的风速矢量在空间和时间上保持恒定，忽略小尺度湍流及快速变化的阵风。第~\ref{sec:wind} 节讨论不同风况对相对气流和气动力的影响。
 \item \textbf{飞行中的自旋。} 主模型忽略气动力矩，因此自旋向量保持恒定。第~\ref{sec:rotation} 节通过在同一初始状态下加入旋转阻尼，分析这一近似的影响。
-\item \textbf{观测与未知量。} 真实点球的三个指定位置用于有界确定性反演，随后位置用于比较。Z 原值按米及球心高度解释。初速度、自旋和气动力修正的搜索范围在第四章列明；第五章预留这些未定量对落点分布的影响。
+\item \textbf{观测与未知量。} 真实点球的三个指定位置用于有界确定性反演，随后位置用于比较。Z 原值按米及球心高度解释。初速度、自旋和气动力修正的搜索范围在第四章列明；第五章以题目三点算例考察参数变化对落点的影响。
 \end{itemize}
 \subsection{符号说明}
 \begin{table}[H]\centering\small
@@ -279,7 +279,7 @@ m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L,\\
 \input{sections/model_solving.tex}
 
 \section{灵敏性分析}\label{sec:sensitivity}
-\textit{待完成。}
+\input{sensitivity.tex}
 
 \section{其他因素讨论}\label{sec:other}
 主模型突出重力、阻力和马格努斯升力，以下分析其在几何、自旋演化和环境来流中省略的因素。
@@ -351,7 +351,7 @@ I_b\dot{\boldsymbol\omega}&=-k_2\omega\boldsymbol\omega.
 
 五类自设踢法给出六组初始状态和 24 次正向飞行。成对上、下旋展示竖直马格努斯力的反转，侧旋产生水平弯曲。M4 弧线球在 $\CurvedTime$ s 到达球门，交点为 $(\CurvedY,\CurvedZ)$ m；同一初始状态也用于量化旋转阻尼，在所引参考设定下交点移动 \TorqueDisplacement\ m。
 
-三次真实点球提供不同的早期采样序列及后续轨迹，坐标转换将三例统一到题目几何。12 组逆向结果分别报告早期残差、后续路径误差、球门交点和触地状态，将记录运动与受力假设联系起来。第五章继续预留灵敏性分析及落点分布研究。
+三次真实点球提供不同的早期采样序列及后续轨迹，坐标转换将三例统一到题目几何。12 组逆向结果分别列出反演初始状态、球门交点、偏离距离和触地状态，将记录运动与受力假设联系起来。题目三点的独立灵敏性算例表明，初速度方向改变 $1^\circ$ 时交点移动约 0.20 m；保持早期位置一致的搜索使交点最多移动 \SensitivityConditionalShift\ m，联合扰动则通过十万条蒙特卡洛轨迹给出落点分布。
 
 \section{模型评价}
 \subsection{物理解释与复现}

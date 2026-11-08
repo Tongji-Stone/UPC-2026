@@ -46,21 +46,43 @@ def main():
         rows=[r'$v_{x0}$ & $[0,35]$ m/s',r'$v_{y0},v_{z0}$ & $[-35,35]$ m/s',r'$\omega_{x0},\omega_{y0},\omega_{z0}$ (M4) & $[-20\pi,20\pi]$ rad/s',
             tr(r'Azimuth, elevation (M3) & $[-\pi,\pi],[-\pi/2,\pi/2]$ rad',r'方位角、仰角 (M3) & $[-\pi,\pi],[-\pi/2,\pi/2]$ rad'),r'$\alpha_D,\alpha_L$ & $[0.5,1.5]$']
         macro('InverseBoundsTable',table(tr('Component bounds and force-correction settings for inversion.','反演分量边界与气动力修正设定。'),'tab:inverse-bounds','ll',tr('Quantity & Search interval','物理量 & 搜索区间'),rows))
-        rows=[]
-        statuses={'plane':tr('goal','球门'),'ground':tr('ground','触地'),'fit_limit':tr('limit','迭代上限'),'early_contact':tr('early ground','过早触地'),'fit_failure':tr('failure','失败')}
-        for r in inverse:
-            value=lambda k:f"{r[k]:.3f}" if r.get(k) is not None else '---'
-            rows.append(f"{r['case'][-3:]} & {r['model']} & {statuses[r['status']]} & "+scientific(r.get('early_max_residual_m'))+' & '+value('future_rmse_3d_m')+f"/{r['future_sample_count']} & "+value('goal_error_m')+' & '+value('goal_time_error_s'))
-        macro('InverseResultsTable',table(tr('All inversions: maximum early coordinate residual, later 3D RMSE/sample count, goal error and arrival-time error. Limit rows describe the saved iteration-limit candidate.','全部反演：早期最大坐标残差、后续三维 RMSE/点数、交点误差与时间差。迭代上限行给出保存候选的指标。'),'tab:inverse-results','lllrrrr',
-            tr(r'Event & Model & Status & Resid. (m) & RMSE (m)/$n$ & Goal (m) & $\Delta t$ (s)',r'事件 & 模型 & 状态 & 残差 (m) & RMSE (m)/$n$ & 交点 (m) & $\Delta t$ (s)'),rows))
-        for case,command in [('J03WMX','WMXDiscussion'),('J03WOH','WOHDiscussion'),('J03WR9','WRDiscussion')]:
-            rr=[r for r in inverse if r['case']==case];m4=rr[-1]
-            if case=='J03WMX':text=tr('The recorded path stays close to the turf. Gravity-only and drag-only predictions reach the ground before the goal; upward Magnus force in M3 and M4 sustains the low flight.','实测路径接近草地。仅重力和仅阻力预测在球门前触地；M3、M4 的向上马格努斯力支撑了这段低空飞行。')
-            elif case=='J03WOH':text=tr('The first two horizontal increments are 0.71 and 1.22 m in equal time intervals. This accelerating early sequence drives the drag correction to its lower bound. The M4 search reaches the iteration limit; its candidate is retained and marked in the figure and table.','前两个等时间间隔的水平位移分别为 0.71 和 1.22 m。早期加速序列使阻力修正到达下边界。M4 搜索达到迭代上限，其候选在图表中单独标记。')
-            else:text=tr('Using 0, 0.08 and 0.12 s avoids treating the duplicated first position as a separate displacement. The measured lateral motion is substantial, and fitted lift direction controls the later sideways bending.','使用 0、0.08、0.12 s 避免将首个重复位置作为独立位移。实测横向运动明显，拟合升力方向决定了后续侧向弯曲。')
+        statuses={'plane':tr('plane','平面'),'ground':tr('ground','触地'),'fit_limit':tr('limit','迭代上限'),'early_contact':tr('early ground','过早触地'),'fit_failure':tr('failure','失败')}
+        def vector(values,axis=False):
+            v=r'$\begin{pmatrix}'+r'\\'.join(f'{x:.3f}' for x in values)+r'\end{pmatrix}'+('^{*}' if axis else '')+'$'
+            return v
+        for case,command in [('J03WMX','WMX'),('J03WOH','WOH'),('J03WR9','WR')]:
+            observed=next(c for c in data['cases'] if c['case']==case);rr=[r for r in inverse if r['case']==case]
+            rows=[]
+            for i,(t,pos,frame) in enumerate(zip(observed['fit_times_s'],observed['fit_positions_m'],observed['fit_frames'])):
+                rows.append(f'$P_{i}$ & {frame} & {t:.2f} & '+' & '.join(f'{x:.3f}' for x in pos))
+            goal=observed['goal'];source=tr('direct source frame','源帧直接记录') if goal['source']=='measured' else tr('linear interpolation','帧间线性插值')
+            rows.append(tr('Goal','球门')+' & '+'--'.join(goal['frames'])+f" & {goal['time_s']:.4f} & 11.000 & {goal['local_position'][1]:.4f} & {goal['local_position'][2]:.4f}")
+            macro(command+'MeasuredTable',table(tr(f'{case}: three measured fitting points and observed goal crossing ({source}).',f'{case}：三个实测拟合点与实测球门交点（{source}）。'),'tab:measured-'+case,'llrrrr',
+                tr(r'Point & Source frame & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)',r'点 & 源帧号 & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)'),rows))
+            rows=[]
+            for r in rr:
+                q=r.get('initial_state');event=r.get('event',{});reached=event.get('type')=='plane'
+                yz=[f'{x:.4f}' for x in event['position'][1:]] if reached else ['---','---']
+                spin=vector(q[3:],axis=r['model']=='M3') if q is not None and r['model'] in ['M3','M4'] else '---'
+                vel=vector(q[:3]) if q is not None else '---'
+                distance=f"{r['goal_error_m']:.4f}" if reached else '---'
+                rows.append(f"{r['model']} & {statuses[r['status']]} & "+' & '.join(yz)+f' & {vel} & {spin} & {distance}')
+            cap=tr(f'{case}: inverse initial states and predicted goal-plane crossings. Spin entries have units rad/s in M4; the starred M3 vector is a unit axis. M1/M2 do not estimate spin. Limit rows retain the iteration-limit candidate.',
+                f'{case}：反演初始状态与预测球门交点。M4 自旋单位为 rad/s；带星号的 M3 向量为单位旋转轴。M1、M2 不反演自旋。迭代上限行列出对应候选。')
+            macro(command+'PredictedTable',table(cap,'tab:predicted-'+case,'llrrccr',
+                tr(r'Model & Status & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & Spin & $d_g$ (m)',
+                   r'模型 & 状态 & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & 自旋 & $d_g$ (m)'),rows))
+            text=tr('The measured low flight requires sustained vertical support from lift.','实测低空飞行中，升力影响足球能否持续保持在草地上方。') if case=='J03WMX' else tr('The rising measured arc connects vertical launch velocity with the subsequent action of gravity and lift.','实测上升弧线体现了初始竖直速度，以及重力和升力对后续路径的共同作用。') if case=='J03WOH' else tr('The measured path bends laterally, so fitted spin direction affects the continuation towards the goal.','实测路径具有明显横向运动，拟合自旋方向影响了朝向球门的后续轨迹。')
+            m4=rr[-1]
             if m4.get('goal_error_m') is not None:
-                text+=tr(f" The M4 candidate crossing error is {m4['goal_error_m']:.3f} m, with arrival-time difference {m4['goal_time_error_s']:+.3f} s.",f" M4 候选的交点误差为 {m4['goal_error_m']:.3f} m，到达时间差为 {m4['goal_time_error_s']:+.3f} s。")
-            macro(command,text)
+                text+=tr(f" M4's crossing deviation is {m4['goal_error_m']:.4f} m.",f" M4 的交点偏离距离为 {m4['goal_error_m']:.4f} m。")
+            elif m4.get('event',{}).get('type')=='ground':
+                text+=tr(f" M4 reaches the ground at $x={m4['event']['position'][0]:.3f}$ m.",f" M4 在 $x={m4['event']['position'][0]:.3f}$ m 触地。")
+            limits=[r['model'] for r in rr if r['status']=='fit_limit']
+            if limits:text+=tr(' The iteration-limit candidates are '+', '.join(limits)+'.',' 达到迭代上限的候选为 '+ '、'.join(limits)+'。')
+            ground=[r['model'] for r in rr if r.get('event',{}).get('type')=='ground']
+            if ground:text+=tr(' Ground contact precedes the goal for '+', '.join(ground)+'.',' '+ '、'.join(ground)+' 在球门前触地。')
+            macro(command+'Discussion',text)
         macro('TorqueViscousRatio',scientific(other['viscous_to_inertial_ratio']));macro('TorqueDisplacement',f"{other['goal_displacement_m']:.4f}")
         a,b=[r['event'] for r in other['records'][:2]]
         text=tr(f"The damped crossing is $({b['position'][1]:.4f},{b['position'][2]:.4f})$ m, compared with $({a['position'][1]:.4f},{a['position'][2]:.4f})$ m at constant spin. The displacement is {other['goal_displacement_m']:.4f} m ({other['displacement_pct_of_11m']:.3f}\\% of 11 m). Spin falls by {other['spin_loss_pct']:.3f}\\%, and crossing time changes by {other['time_change_pct']:+.3f}\\%. Adding viscous torque shifts the damped crossing by {other['viscous_goal_difference_m']:.2g} m. The short-flight endpoint is less sensitive than spin magnitude to this reference torque.",
