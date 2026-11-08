@@ -135,11 +135,9 @@
 \node[wftitle] at (17.925,11.08) {Real-Data\\Validation};
 \path[fill=white,fill opacity=.52,rounded corners=9pt]
   (15.52,12.17) rectangle (20.33,14.27);
-\node[wftext,font=\fontsize{12}{13.5}\selectfont\bfseries] at (15.78,12.37)
-  {\begin{tabular}{@{}l@{\hspace{0.14cm}}l@{}}
-   $\bullet$ & \parbox[t]{3.85cm}{\raggedright Use early frames only\\for fitting;}\\[3pt]
-   $\bullet$ & \parbox[t]{3.85cm}{\raggedright Reserve future frames\\for testing.}
-   \end{tabular}};
+\node[wftext,text width=4.2cm,font=\fontsize{12}{15}\selectfont\bfseries] at (15.78,12.40)
+  {$\bullet$\ Fit early frames;\\[5pt]
+   $\bullet$\ Test later frames.};
 \path[wfbox,fill=wfBlue] (21.30,10.85) rectangle (27.53,14.50);
 \node[wftitle] at (24.415,11.08) {Performance \&\\Limitations};
 \path[fill=white,fill opacity=.52,rounded corners=9pt]
