@@ -23,6 +23,8 @@ def main():
         assert z.testzip() is None
     pdf=ROOT.parent/'UPC2026_ProblemB_三次真实点球与正向算例.pdf'
     shutil.copy2(ROOT/'paper/main.pdf',pdf)
+    if (ROOT/'_中文版/main.pdf').exists():
+        shutil.copy2(ROOT/'_中文版/main.pdf',ROOT.parent/'UPC2026_ProblemB_三次真实点球与正向算例_中文版.pdf')
     print(json.dumps(dict(files=len(files),archive_bytes=archive.stat().st_size,
         pdf_sha256=hashlib.sha256(pdf.read_bytes()).hexdigest())))
 if __name__=='__main__':main()
