@@ -68,11 +68,6 @@ def main():
         macro('ForwardReMin',f'{14*2*.11/1.5e-5/1e5:.2f}');macro('ForwardReMax',f'{27*2*.11/1.5e-5/1e5:.2f}')
         r=next(r for r in forward if r['case']=='curved' and r['model']=='M4');e=r['event']
         for name,val in dict(CurvedY=e['position'][1],CurvedZ=e['position'][2],CurvedTime=e['time'],CurvedVX=r['initial_state'][0],CurvedVZ=r['initial_state'][2]).items():macro(name,f'{val:.4f}')
-        rows=[]
-        for c in data['cases']:
-            rows.append(c['case']+' & '+str(len(c['samples']))+' & '+','.join(f'{t:.2f}' for t in c['fit_times_s'])+' & $('+','.join(f'{v:.2f}' for v in c['fit_positions_m'][0])+')$')
-        macro('PenaltyInputsTable',table(tr('Frame counts, fitting times and measured local starting positions.','原始帧数、反演时刻与实测局部起点。'),'tab:penalty-inputs','lrrl',
-            tr(r'Event & Frames & Fit times (s) & $\boldsymbol r_0$ (m)',r'事件 & 帧数 & 反演时刻 (s) & $\boldsymbol r_0$ (m)'),rows))
         rows=[r'$v_{x0}$ (M1, M2, M4) & $[0,35]$ m/s',r'$v_{y0},v_{z0}$ (M1, M2, M4) & $[-35,35]$ m/s',
             r'$\|\boldsymbol\omega_0\|$ (M4) & $30$ rad/s',
             tr(r'Azimuth, elevation (M4) & $[-\pi,\pi],[-\pi/2,\pi/2]$ rad',r'方位角、仰角 (M4) & $[-\pi,\pi],[-\pi/2,\pi/2]$ rad'),r'$C_D/C_D^*,\alpha/\alpha^*$ & $[0.5,1.5]$']
@@ -91,43 +86,6 @@ def main():
                r'事件 & 源帧 & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)'),observation_rows,size=r'\small')
         macro('PenaltyObservationTable',observation_table)
         macro('InverseBoundsTable',table(tr('Component bounds and force-correction settings for inversion.','反演分量边界与气动力修正设定。'),'tab:inverse-bounds','ll',tr('Quantity & Search interval','物理量 & 搜索区间'),rows))
-        statuses={'plane':tr('plane','平面'),'ground':tr('ground','触地'),'none':tr('time limit','时间上限'),'fit_limit':tr('limit','迭代上限'),'early_contact':tr('early ground','过早触地'),'fit_failure':tr('failure','失败')}
-        def vector(values,axis=False):
-            v=r'$\begin{pmatrix}'+r'\\'.join(f'{x:.3f}' for x in values)+r'\end{pmatrix}'+('^{*}' if axis else '')+'$'
-            return v
-        for case,command in [('J03WMX','WMX'),('J03WOH','WOH'),('J03WR9','WR')]:
-            observed=next(c for c in data['cases'] if c['case']==case);rr=[r for r in inverse if r['case']==case]
-            rows=[]
-            for i,(t,pos,frame) in enumerate(zip(observed['fit_times_s'],observed['fit_positions_m'],observed['fit_frames'])):
-                rows.append(f'$P_{i}$ & {frame} & {t:.2f} & '+' & '.join(f'{x:.3f}' for x in pos))
-            goal=observed['goal'];source=tr('direct source frame','源帧直接记录') if goal['source']=='measured' else tr('linear interpolation','帧间线性插值')
-            rows.append(tr('Goal','球门')+' & '+'--'.join(goal['frames'])+f" & {goal['time_s']:.4f} & 11.000 & {goal['local_position'][1]:.4f} & {goal['local_position'][2]:.4f}")
-            macro(command+'MeasuredTable',table(tr(f'{case}: three measured fitting points and observed goal crossing ({source}).',f'{case}：三个实测拟合点与实测球门交点（{source}）。'),'tab:measured-'+case,'llrrrr',
-                tr(r'Point & Source frame & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)',r'点 & 源帧号 & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)'),rows))
-            rows=[]
-            for r in rr:
-                q=r.get('initial_state');event=r.get('event',{});reached=event.get('type')=='plane'
-                yz=[f'{x:.4f}' for x in event['position'][1:]] if reached else ['---','---']
-                spin=vector(q[3:]) if q is not None and r['model']=='M4' else '---'
-                vel=vector(q[:3]) if q is not None else '---'
-                distance=f"{r['goal_error_m']:.4f}" if reached else '---'
-                rows.append(f"{r['model']} & {statuses[r['status']]} & "+' & '.join(yz)+f' & {vel} & {spin} & {distance}')
-            cap=tr(f'{case}: inverse initial states and predicted goal-plane crossings. M4 uses a 30 rad/s reference spin magnitude; M1--M3 do not estimate spin.',
-                f'{case}：反演初始状态与预测球门交点。M4 使用 30 rad/s 参考自旋大小；M1--M3 不反演自旋。')
-            macro(command+'PredictedTable',table(cap,'tab:predicted-'+case,'llrrccr',
-                tr(r'Model & Status & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & Spin & $d_g$ (m)',
-                   r'模型 & 状态 & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & 自旋 & $d_g$ (m)'),rows))
-            text=tr('The measured low flight requires sustained vertical support from lift.','实测低空飞行中，升力影响足球能否持续保持在草地上方。') if case=='J03WMX' else tr('The rising measured arc connects vertical launch velocity with the subsequent action of gravity and lift.','实测上升弧线体现了初始竖直速度，以及重力和升力对后续路径的共同作用。') if case=='J03WOH' else tr('The measured path bends laterally, so fitted spin direction affects the continuation towards the goal.','实测路径具有明显横向运动，拟合自旋方向影响了朝向球门的后续轨迹。')
-            m4=rr[-1]
-            if m4.get('goal_error_m') is not None:
-                text+=tr(f" M4's crossing deviation is {m4['goal_error_m']:.4f} m.",f" M4 的交点偏离距离为 {m4['goal_error_m']:.4f} m。")
-            elif m4.get('event',{}).get('type')=='ground':
-                text+=tr(f" M4 reaches the ground at $x={m4['event']['position'][0]:.3f}$ m.",f" M4 在 $x={m4['event']['position'][0]:.3f}$ m 触地。")
-            limits=[r['model'] for r in rr if r['status']=='fit_limit']
-            if limits:text+=tr(' The iteration-limit candidates are '+', '.join(limits)+'.',' 达到迭代上限的候选为 '+ '、'.join(limits)+'。')
-            ground=[r['model'] for r in rr if r.get('event',{}).get('type')=='ground']
-            if ground:text+=tr(' Ground contact precedes the goal for '+', '.join(ground)+'.',' '+ '、'.join(ground)+' 在球门前触地。')
-            macro(command+'Discussion',text)
         macro('TorqueViscousRatio',scientific(other['viscous_to_inertial_ratio']));macro('TorqueDisplacement',f"{other['goal_displacement_m']:.4f}")
         text=tr(f"Spin falls by {other['spin_loss_pct']:.3f}\\%, while the crossing moves {other['goal_displacement_m']:.4f} m ({other['displacement_pct_of_11m']:.3f}\\% of the 11 m distance) and arrival time changes by {other['time_change_pct']:+.3f}\\%. Rotational damping therefore has a small endpoint effect in this short reference flight.",
             f"自旋降低 {other['spin_loss_pct']:.3f}\\%，球门交点移动 {other['goal_displacement_m']:.4f} m，占 11 m 距离的 {other['displacement_pct_of_11m']:.3f}\\%；到达时间变化 {other['time_change_pct']:+.3f}\\%。因此，在这一短程参考飞行中，旋转阻尼对落点的影响较小。")

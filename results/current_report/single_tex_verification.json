@@ -1,38 +1,20 @@
 {
-  "baseline_commit": "e4e6f91",
+  "all_passed": true,
   "editions": {
     "paper": {
       "passed": true,
-      "pages": 27,
-      "baseline_pages": 27,
-      "text_changed_pages": [
-        27
-      ],
-      "render_changed_pages": [
-        27
-      ],
-      "source_content_equivalent": true,
+      "pages": 29,
       "no_external_tex_or_code_inputs": true,
-      "tex_lines": 896,
-      "tex_sha256": "adb57418b95dbd3cd7f75b78bf21cd5d5c9aefc1a8063fb89587a1eadedb93d2",
-      "pdf_sha256": "f90da7bb5825e72a6a3d60a7cc565aa594d88fb3ab10daa68a85e940ea1ee14b"
+      "tex_sha256": "289d1419a74bd654f71161f0107f80efab16a64ceb462319ecb4014bc3019b3a",
+      "pdf_sha256": "3ccf0f80a809b5542f4659c2d9bca0e105e0525703000745a52aad8ded05c349"
     },
     "_中文版": {
       "passed": true,
-      "pages": 27,
-      "baseline_pages": 27,
-      "text_changed_pages": [],
-      "render_changed_pages": [
-        27
-      ],
-      "source_content_equivalent": true,
+      "pages": 28,
       "no_external_tex_or_code_inputs": true,
-      "tex_lines": 903,
-      "tex_sha256": "07007064dcadd83b75b7989e07f007bfc34aac9c7880737f228277fce8737ec7",
-      "pdf_sha256": "10eb3b21ef16ae58c8f561e81a6dc477fd3f27a3229c34920ce6f5fdd8407bb0"
+      "tex_sha256": "c7f6ed813c5fef5538bd768da58722c5b1576c9757890f3aa5c325de994fedfd",
+      "pdf_sha256": "766192487580cad7517a432fc9b5ec0f6f5327ff295dbb2535c5505f90f74f78"
     }
   },
-  "all_passed": true,
-  "render_note": "External code excerpts are embedded as lstlisting; appendix line numbering and input-file separator artifacts may differ. All preceding pages render identically.",
-  "generated_table_update_idempotent": true
+  "content_policy": "Intentional bilingual narrative revision; numbered physical equations and calculations unchanged"
 }

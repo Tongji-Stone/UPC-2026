@@ -54,12 +54,12 @@
   },
   "documents": {
     "paper": {
-      "pages": 27,
-      "sha256": "f90da7bb5825e72a6a3d60a7cc565aa594d88fb3ab10daa68a85e940ea1ee14b"
+      "pages": 29,
+      "sha256": "3ccf0f80a809b5542f4659c2d9bca0e105e0525703000745a52aad8ded05c349"
     },
     "_中文版": {
-      "pages": 27,
-      "sha256": "10eb3b21ef16ae58c8f561e81a6dc477fd3f27a3229c34920ce6f5fdd8407bb0"
+      "pages": 28,
+      "sha256": "766192487580cad7517a432fc9b5ec0f6f5327ff295dbb2535c5505f90f74f78"
     }
   },
   "model": "constant CD and linear CL=alpha*Sp",

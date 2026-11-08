@@ -50,3 +50,9 @@ package_report.py 生成完整项目包及散列清单，排除缓存、编译�
 ## 单文件 LaTeX
 
 分别进入 paper/ 与 _中文版/，运行三遍 `xelatex -no-shell-escape -interaction=nonstopmode -halt-on-error main.tex` 即可。图片仍引用项目内共享文件，全部正文均可在各自 main.tex 中直接编辑。注释标记用于定位自动生成的数值表区域，不是外部模块。核查记录见 results/current_report/single_tex_verification.json。
+
+## 面向评委的叙述与引用
+
+两版重写问题背景、完整赛题重述和物理假设，保留四模型及全部计算结果。阻力与马格努斯力各增加无编号推导，最终式（3）至式（7）保持不变。正文明确介绍附录数据来源及表格；所有实际出现的图表均在正文引用，参考文献均在正文使用。未调用的分案例重复表格宏已从生成脚本删除。
+
+仓库内运行 `python scripts/verify_report_narrative.py`，可核对实际编译图表的正文引用、文献使用、假设术语、单文件结构、路线图不变及相对 5799e1a 的物理公式和数值文件不变。结果保存于 results/current_report/narrative_verification.json。
