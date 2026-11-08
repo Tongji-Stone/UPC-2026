@@ -1,0 +1,45 @@
+{
+  "all_passed": true,
+  "checks": {
+    "english_compile": {
+      "passed": true,
+      "warnings": [],
+      "pages": 31
+    },
+    "english_references": {
+      "passed": true
+    },
+    "english_shared_figures": {
+      "passed": true
+    },
+    "english_removed_examples": {
+      "passed": true
+    },
+    "chinese_compile": {
+      "passed": true,
+      "warnings": [],
+      "pages": 30
+    },
+    "chinese_references": {
+      "passed": true
+    },
+    "chinese_shared_figures": {
+      "passed": true
+    },
+    "chinese_removed_examples": {
+      "passed": true
+    },
+    "song_hei_kai_fonts": {
+      "passed": true
+    },
+    "identical_equations": {
+      "passed": true
+    },
+    "identical_citations": {
+      "passed": true
+    },
+    "identical_table_numbers": {
+      "passed": true
+    }
+  }
+}

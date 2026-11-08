@@ -1,0 +1,219 @@
+{
+  "pages": 31,
+  "warnings": [],
+  "out_of_page_text": [],
+  "all_fonts_embedded": true,
+  "fonts": {
+    "UWFYPW+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "IVQDIE+TimesNewRomanPS-BoldMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "SEDKCZ+CMMI12": {
+      "format": "cff",
+      "embedded": true
+    },
+    "EPWALQ+CMR12": {
+      "format": "cff",
+      "embedded": true
+    },
+    "SMNFMK+CMR10": {
+      "format": "cff",
+      "embedded": true
+    },
+    "QRXCTJ+CMMI8": {
+      "format": "cff",
+      "embedded": true
+    },
+    "SVNOGJ+CMEX9": {
+      "format": "cff",
+      "embedded": true
+    },
+    "YIOVSL+CMMI9": {
+      "format": "cff",
+      "embedded": true
+    },
+    "NBTZGC+CMMI6": {
+      "format": "cff",
+      "embedded": true
+    },
+    "BSZLBH+CMR5": {
+      "format": "cff",
+      "embedded": true
+    },
+    "YGAKSQ+CMMIB7": {
+      "format": "cff",
+      "embedded": true
+    },
+    "POIZSV+CMR9": {
+      "format": "cff",
+      "embedded": true
+    },
+    "ZDFUPA+CMMIB10": {
+      "format": "cff",
+      "embedded": true
+    },
+    "ORASYJ+CMSY9": {
+      "format": "cff",
+      "embedded": true
+    },
+    "GKBIQI+CMSY6": {
+      "format": "cff",
+      "embedded": true
+    },
+    "HHBTLT+CMBX9": {
+      "format": "cff",
+      "embedded": true
+    },
+    "OCMWXA+CMR6": {
+      "format": "cff",
+      "embedded": true
+    },
+    "BJDXXN+CMSY10": {
+      "format": "cff",
+      "embedded": true
+    },
+    "OOKZAR+CMR8": {
+      "format": "cff",
+      "embedded": true
+    },
+    "CAZDRM+CMMI10": {
+      "format": "cff",
+      "embedded": true
+    },
+    "OSHOCD+CMSY8": {
+      "format": "cff",
+      "embedded": true
+    },
+    "SZCAWF+CMBX12": {
+      "format": "cff",
+      "embedded": true
+    },
+    "TGNGZY+CMBX8": {
+      "format": "cff",
+      "embedded": true
+    },
+    "FLEUWY+TimesNewRomanPS-BoldMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "HLHDOK+DejaVuSans-BoldOblique": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "YCGPIR+CMEX10": {
+      "format": "cff",
+      "embedded": true
+    },
+    "XXLCXO+CMBSY10": {
+      "format": "cff",
+      "embedded": true
+    },
+    "FUREHM+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "FSFVNI+DejaVuSans-Oblique": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "FUWOQM+TimesNewRomanPS-BoldMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "WEGTXO+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "DIRUKW+DejaVuSans-Oblique": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "NYLJZF+CMR7": {
+      "format": "cff",
+      "embedded": true
+    },
+    "OSZELY+CMSY7": {
+      "format": "cff",
+      "embedded": true
+    },
+    "DMHJTZ+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "CECFXM+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "HHGMEO+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "DALJPX+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "GEDQDP+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "WVCFVQ+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "CSLERC+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "MNUOMH+CMMI7": {
+      "format": "cff",
+      "embedded": true
+    },
+    "HYYHOH+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "CNHQWU+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "ELFGBM+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "CIPDCT+TimesNewRomanPS-ItalicMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "GPZEAC+TimesNewRomanPSMT": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "YUAASH+LMMono12-Regular-Identity-H": {
+      "format": "cid",
+      "embedded": true
+    },
+    "RPYBNW+LMMono10-Regular-Identity-H": {
+      "format": "cid",
+      "embedded": true
+    },
+    "BIRZKI+LMMonoLt10-Bold-Identity-H": {
+      "format": "cid",
+      "embedded": true
+    },
+    "YNZXCQ+LMMono10-Italic-Identity-H": {
+      "format": "cid",
+      "embedded": true
+    }
+  },
+  "has_eight_chapters": true,
+  "no_unresolved_references": true,
+  "no_old_results": true,
+  "fifth_chapter_pending": true,
+  "workflow_border_removed": true,
+  "workflow_body_font_pt": 12.0,
+  "all_passed": true
+}

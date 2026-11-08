@@ -1,0 +1,559 @@
+{
+  "source_fingerprint": "810d6ac4b4f09a28c09df446170094f01750cbe472c07b30fb9d5ad6cf6557a7",
+  "record": {
+    "case": "J03WMX",
+    "model": "M4",
+    "status": "plane",
+    "fit_converged": true,
+    "physical_fit_interval": true,
+    "event": {
+      "type": "plane",
+      "time": 0.38807575101181185,
+      "position": [
+        11.0,
+        2.8421899274079454,
+        0.42903775287140866
+      ],
+      "velocity": [
+        23.389195982568737,
+        8.154233507824047,
+        1.7036509501457904
+      ],
+      "spin": [
+        16.417396928101567,
+        -62.83185305532583,
+        38.76533666521288
+      ]
+    },
+    "early_max_residual_m": 0.005836258114839593,
+    "early_rss_m2": 5.3912495924584386e-05,
+    "initial_state": [
+      29.846494702536944,
+      5.905910306564089,
+      -0.8086330734063863,
+      16.417396928101567,
+      -62.83185305532583,
+      38.76533666521288
+    ],
+    "drag_scale": 1.1632749851970976,
+    "lift_scale": 1.4999999999999998,
+    "future_sample_count": 7,
+    "future_rmse_3d_m": 0.17598211563877914,
+    "goal_error_m": 0.2843946117379501,
+    "goal_time_error_s": -0.011924248988188169,
+    "scored_goal_error_m": 0.2843946117379501,
+    "at_parameter_bound": true
+  },
+  "fit": {
+    "model": "M4",
+    "initial_state": [
+      29.846494702536944,
+      5.905910306564089,
+      -0.8086330734063863,
+      16.417396928101567,
+      -62.83185305532583,
+      38.76533666521288
+    ],
+    "drag_scale": 1.1632749851970976,
+    "lift_scale": 1.4999999999999998,
+    "rss_m2": 5.3912495924584386e-05,
+    "minimum_search_rss_m2": 5.391249591828507e-05,
+    "max_residual_m": 0.005836258114839593,
+    "fitted_positions": [
+      [
+        0.7100000000000009,
+        0.05,
+        0.16
+      ],
+      [
+        1.8894529231009765,
+        0.2929285804030029,
+        0.1358362581148396
+      ],
+      [
+        3.0403607710321765,
+        0.5485393776924974,
+        0.12704853636843988
+      ]
+    ],
+    "active_parameters": 8,
+    "spin_representation": "rad/s vector",
+    "coefficient_distance": 0.2766587207911122,
+    "rss_allowance_m2": 6e-12,
+    "coefficient_distance_allowance": 1e-08,
+    "starts": [
+      {
+        "start": 0,
+        "rss_m2": 5.391249592150106e-05,
+        "success": true,
+        "nfev": 85,
+        "parameters": [
+          0.9948831636287375,
+          0.19686367841657557,
+          -0.026954436099301288,
+          0.27362236935013656,
+          -1.0471975510546243,
+          0.6460888381160137,
+          1.1632755162689523,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 1,
+        "rss_m2": 5.391249592249286e-05,
+        "success": true,
+        "nfev": 83,
+        "parameters": [
+          0.9948831757996454,
+          0.19686367484073605,
+          -0.026954433454109958,
+          0.27362464759410665,
+          -1.0471975510143519,
+          0.6460894284959285,
+          1.163275816196347,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 2,
+        "rss_m2": 5.3912495921898804e-05,
+        "success": true,
+        "nfev": 82,
+        "parameters": [
+          0.9948831841748622,
+          0.1968636673844456,
+          -0.026954429244250427,
+          0.2736204422635603,
+          -1.0471975510602318,
+          0.6460895290898329,
+          1.1632765935137583,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 3,
+        "rss_m2": 5.391249592476756e-05,
+        "success": true,
+        "nfev": 61,
+        "parameters": [
+          0.9948831567512315,
+          0.19686367688546963,
+          -0.02695443578021288,
+          0.2736232821350261,
+          -1.0471975509220972,
+          0.6460889444202146,
+          1.1632749851970976,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 4,
+        "rss_m2": 5.3912495920358654e-05,
+        "success": true,
+        "nfev": 83,
+        "parameters": [
+          0.9948831634564451,
+          0.19686367850742229,
+          -0.026954436139170288,
+          0.27362347527002323,
+          -1.0471975510979006,
+          0.6460889462693621,
+          1.1632753748886553,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 5,
+        "rss_m2": 5.391249592002209e-05,
+        "success": true,
+        "nfev": 87,
+        "parameters": [
+          0.9948831720907954,
+          0.1968636832605482,
+          -0.02695443797016222,
+          0.2736223455944958,
+          -1.0471975511147336,
+          0.6460886499238057,
+          1.163276112402296,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 6,
+        "rss_m2": 5.3912495921495053e-05,
+        "success": true,
+        "nfev": 62,
+        "parameters": [
+          0.9948831747409498,
+          0.19686367628267828,
+          -0.026954434228712507,
+          0.273625333304587,
+          -1.0471975510603893,
+          0.6460894042364134,
+          1.163275712214275,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 7,
+        "rss_m2": 5.391249591987565e-05,
+        "success": true,
+        "nfev": 84,
+        "parameters": [
+          0.9948831667631944,
+          0.19686367983008843,
+          -0.02695443660532961,
+          0.2736209073946047,
+          -1.0471975511341902,
+          0.646088637444821,
+          1.1632759043343763,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 8,
+        "rss_m2": 5.39124959189495e-05,
+        "success": true,
+        "nfev": 75,
+        "parameters": [
+          0.9948831774776172,
+          0.1968636725532304,
+          -0.026954432238547776,
+          0.27362144132931315,
+          -1.0471975511636316,
+          0.6460892478246208,
+          1.1632762403886419,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 9,
+        "rss_m2": 5.3912495920072485e-05,
+        "success": true,
+        "nfev": 84,
+        "parameters": [
+          0.9948831713282446,
+          0.1968636744849692,
+          -0.026954433583014772,
+          0.2736242230544248,
+          -1.0471975511095124,
+          0.6460893545361603,
+          1.1632756112715732,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 10,
+        "rss_m2": 5.391249592169863e-05,
+        "success": true,
+        "nfev": 91,
+        "parameters": [
+          0.9948831621831504,
+          0.19686368387789444,
+          -0.02695443894863991,
+          0.27362104451334723,
+          -1.0471975510621039,
+          0.6460883606732578,
+          1.1632757411472936,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 11,
+        "rss_m2": 5.391249592101396e-05,
+        "success": true,
+        "nfev": 93,
+        "parameters": [
+          0.9948831772438352,
+          0.1968636817015528,
+          -0.026954436822453413,
+          0.27362219244736946,
+          -1.0471975510748461,
+          0.646088785860281,
+          1.1632763744718109,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 12,
+        "rss_m2": 5.3912495918792734e-05,
+        "success": true,
+        "nfev": 82,
+        "parameters": [
+          0.9948831630690215,
+          0.19686367687714146,
+          -0.026954435369880375,
+          0.2736222501904551,
+          -1.0471975511646756,
+          0.6460889092123019,
+          1.1632754591153491,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 13,
+        "rss_m2": 5.391249592029436e-05,
+        "success": true,
+        "nfev": 78,
+        "parameters": [
+          0.9948831720302247,
+          0.1968636765571475,
+          -0.026954434619086018,
+          0.2736221160683654,
+          -1.047197551103286,
+          0.6460890204072567,
+          1.1632759608256664,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 14,
+        "rss_m2": 5.391249592101826e-05,
+        "success": true,
+        "nfev": 69,
+        "parameters": [
+          0.994883173006281,
+          0.19686367233157534,
+          -0.026954432413369263,
+          0.2736238765196383,
+          -1.0471975510704599,
+          0.6460894652388284,
+          1.1632756897231158,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 15,
+        "rss_m2": 5.391249591828507e-05,
+        "success": true,
+        "nfev": 43,
+        "parameters": [
+          0.9948831605918442,
+          0.19686367596780852,
+          -0.02695443505363515,
+          0.27362170303781214,
+          -1.0471975511965868,
+          0.6460888760158539,
+          1.1632753665220483,
+          1.4999999999989742
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 16,
+        "rss_m2": 5.391249592362465e-05,
+        "success": true,
+        "nfev": 71,
+        "parameters": [
+          0.9948831682486654,
+          0.1968636899599014,
+          -0.026954441585395086,
+          0.2736206251107306,
+          -1.0471975509930813,
+          0.6460880290660258,
+          1.1632762860577137,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 17,
+        "rss_m2": 5.391249592229276e-05,
+        "success": true,
+        "nfev": 76,
+        "parameters": [
+          0.9948831629972114,
+          0.19686368748457977,
+          -0.026954440684990616,
+          0.27362143934374195,
+          -1.0471975510354916,
+          0.6460882002411548,
+          1.1632758318234506,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 18,
+        "rss_m2": 5.391249592189585e-05,
+        "success": true,
+        "nfev": 60,
+        "parameters": [
+          0.9948831774263249,
+          0.19686367094053162,
+          -0.02695443139820647,
+          0.27362490079058877,
+          -1.0471975510414544,
+          0.6460897034440709,
+          1.1632757733219967,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      }
+    ],
+    "stages": [
+      {
+        "stage": "positions",
+        "rss_m2": 5.391249591828507e-05,
+        "coefficient_distance": 0.2766588453118834
+      },
+      {
+        "stage": "coefficients",
+        "success": true,
+        "message": "Optimization terminated successfully",
+        "rss_m2": 5.391250192804145e-05,
+        "coefficient_distance": 0.2765759780392455,
+        "parameters": [
+          0.9948792392436817,
+          0.19686234874559463,
+          -0.026954042456358795,
+          0.27365019784929434,
+          -1.047197551196597,
+          0.6461236982758052,
+          1.1630214036249715,
+          1.4999999999993896
+        ],
+        "accepted": false
+      },
+      {
+        "stage": "spin",
+        "success": true,
+        "accepted": false,
+        "message": "Optimization terminated successfully",
+        "rss_m2": 5.3912501918286415e-05,
+        "coefficient_distance": 0.2766587307912489,
+        "parameters": [
+          0.9948818454168525,
+          0.19686556789279117,
+          -0.02695548301773228,
+          0.27343985754594347,
+          -1.0471975511954181,
+          0.6459428363088987,
+          1.1632750158208183,
+          1.4999999999999605
+        ]
+      }
+    ],
+    "position_jacobian_singular_values": [
+      24.064058768790808,
+      23.93028751319409,
+      23.510172797681335,
+      0.11523045580903951,
+      0.10041596748790879,
+      0.09537303145082443
+    ],
+    "position_jacobian_rank": 6,
+    "selection": "positions, then coefficients nearest one, then smallest M4 spin",
+    "success": true,
+    "position_stage_converged": true,
+    "fit_bounds": {
+      "velocity_component_max_m_s": 35.0,
+      "spin_component_max_rad_s": 62.83185307179586,
+      "force_scale_min": 0.5,
+      "force_scale_max": 1.5
+    },
+    "at_parameter_bound": true
+  },
+  "fit_input": {
+    "times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "positions_m": [
+      [
+        0.7100000000000009,
+        0.05,
+        0.16
+      ],
+      [
+        1.8900000000000006,
+        0.29,
+        0.13
+      ],
+      [
+        3.039999999999999,
+        0.55,
+        0.13
+      ]
+    ],
+    "frames": [
+      "152600",
+      "152601",
+      "152602"
+    ]
+  },
+  "configuration": {
+    "mass": 0.43,
+    "radius": 0.11,
+    "air_density": 1.2,
+    "kinematic_viscosity": 1.5e-05,
+    "gravity": 9.81,
+    "drag_scale": 1.1632749851970976,
+    "lift_scale": 1.4999999999999998,
+    "coefficient_mode": "KL18",
+    "use_gravity": true,
+    "use_drag": true,
+    "use_magnus": true,
+    "wind": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "spin_decay": 0.0,
+    "use_rotational_drag": false,
+    "use_viscous_torque": true,
+    "angular_drag_coefficient": 1.5,
+    "inertia_coefficient": 0.6666666666666666,
+    "model_id": "four-model-v2-M4",
+    "dynamic_viscosity": 1.8e-05,
+    "moment_of_inertia": 0.003468666666666666,
+    "coefficient_callback": "model default",
+    "sources": {
+      "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+      "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+      "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+      "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+      "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+      "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+    },
+    "assumptions": [
+      "still air reference unless wind is supplied",
+      "constant spin unless rotational torque is enabled",
+      "isotropic thin shell",
+      "sin(theta) oblique-spin extension"
+    ]
+  },
+  "validation_target": {
+    "time_s": 0.4,
+    "position": [
+      52.5,
+      2.75,
+      0.16
+    ],
+    "source": "measured",
+    "frames": [
+      "152610"
+    ],
+    "local_position": [
+      11.0,
+      2.75,
+      0.16
+    ]
+  }
+}

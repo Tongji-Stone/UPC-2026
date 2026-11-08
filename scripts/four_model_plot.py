@@ -1,119 +1,91 @@
-"""Publication figures from cached report-v2 results; no fitting or integration."""
-import csv,json
-from pathlib import Path
+"""Plot the current forward scenarios and real penalties from saved results only."""
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle
+from football.reporting import DATA,OUT,MODELS,read_json,read_csv,save_json
 
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'results/structure_v2';FIG=OUT/'figures'
-MODELS=['M1','M2','M3','M4'];COLORS=['#454B4B','#0072B2','#D55E00','#009E73'];STYLES=['-', '--','-.',':']
-def js(p):return json.loads((OUT/p).read_text(encoding='utf-8'))
-def rows(p):
-    with p.open(encoding='utf-8') as f:return list(csv.DictReader(f))
-def column(r,k):return np.array([float(a[k]) for a in r])
-def trace(group,case,model):return rows(OUT/f'{group}/{case}_{model}.csv')
-def save(fig,name):
-    fig.tight_layout()
+FIG=OUT/'figures';COLORS=['#444B49','#0072B2','#D55E00','#009E73'];STYLES=['-','--','-.',':']
+def col(rows,key):return np.array([float(r[key]) for r in rows])
+def trace(group,case,model):return read_csv(OUT/f'{group}/{case}_{model}.csv')
+def save(fig,name,rect=None):
+    fig.tight_layout(rect=rect)
     for ext in ['pdf','svg','png']:fig.savefig(FIG/f'{name}.{ext}',dpi=300)
     plt.close(fig)
-def lines(ax,group,case,x,y):
-    for m,c,s in zip(MODELS,COLORS,STYLES):
-        if not (OUT/f'{group}/{case}_{m}.csv').exists():continue
-        if group in ['problem','matches'] and js(f'{group}/{case}_{m}.json')['record']['status']=='fit_failure':continue
-        r=trace(group,case,m);ax.plot(column(r,x),column(r,y),label=m,color=c,ls=s,lw=1.5)
+def goal(ax):
+    ax.plot([11]*5,[-3.66,3.66,3.66,-3.66,-3.66],[0,0,2.44,2.44,0],color='#8B8B83',lw=.8)
+    ax.set(xlabel='x (m)',ylabel='y (m)',zlabel='z (m)');ax.view_init(22,-64)
+    ax.set_box_aspect((11,7.32,3.0));ax.tick_params(labelsize=7)
+def flight3d(ax,case):
+    for model,c,s in zip(MODELS,COLORS,STYLES):
+        r=trace('forward',case,model)
+        ax.plot(col(r,'x_m'),col(r,'y_m'),col(r,'z_m'),label=model,color=c,ls=s,lw=1.4)
+        ax.scatter(float(r[-1]['x_m']),float(r[-1]['y_m']),float(r[-1]['z_m']),s=12,color=c)
+    goal(ax);ax.set_title(case.title(),fontsize=10)
 
-def main():
-    FIG.mkdir(parents=True,exist_ok=True)
-    plt.rcParams.update({'font.family':'serif','font.serif':['Times New Roman'],'font.size':10,
-        'axes.spines.right':False,'axes.spines.top':False,'pdf.fonttype':42,'svg.fonttype':'none'})
-    forward=js('forward/summary.json')
-    fig,axes=plt.subplots(1,2,figsize=(6.4,2.7))
-    lines(axes[0],'forward','zero_spin','x_m','z_m')
-    obs=rows(ROOT/'data/report_v2/zero_spin.csv')
-    axes[0].scatter(column(obs,'x_m'),column(obs,'z_m'),s=10,color='black',label='Measured early path',zorder=5)
-    axes[0].scatter([21.9],[.109],s=35,marker='x',color='black',label='Measured landing')
-    axes[0].set(xlabel='x (m)',ylabel='z (m)');axes[0].legend(fontsize=7,frameon=False)
-    rr=[r for r in forward['records'] if r['case']=='zero_spin']
-    axes[1].axhline(21.9,color='black',lw=1,label='Measured 21.9 m')
-    for i,r in enumerate(rr):axes[1].scatter(i,r['predicted_range_m'],s=40,color=COLORS[i],marker=['o','s','^','D'][i])
-    axes[1].set(xticks=range(4),xticklabels=MODELS,ylabel='Landing x (m)');axes[1].legend(fontsize=8,frameon=False)
-    save(fig,'forward_range')
-    fig,axes=plt.subplots(2,2,figsize=(6.4,4.6))
-    for ax,case in zip(axes.flat,forward['cases'][1:]):
+def forward():
+    for case in ['power','placement','curved','chip']:
+        fig=plt.figure(figsize=(6.3,3.5));ax=fig.add_subplot(111,projection='3d')
+        flight3d(ax,case);ax.legend(frameon=False,fontsize=8,loc='upper left');save(fig,'case_'+case)
+    fig=plt.figure(figsize=(6.5,3.2))
+    for i,case in enumerate(['topspin','backspin']):flight3d(fig.add_subplot(1,2,i+1,projection='3d'),case)
+    fig.legend(MODELS,loc='upper center',ncol=4,frameon=False,fontsize=8);save(fig,'case_spin',rect=[0,0,1,.90])
+    fig,axes=plt.subplots(2,3,figsize=(6.5,4.5))
+    for i,case in enumerate(['curved','topspin']):
+        for ax,field,label in zip(axes[i],['speed_m_s','drag_N','lift_N'],['Speed (m/s)','Drag (N)','Lift magnitude (N)']):
+            for m,c,s in zip(MODELS,COLORS,STYLES):
+                r=trace('forward',case,m);ax.plot(col(r,'time_s'),col(r,field),color=c,ls=s,label=m,lw=1.3)
+            ax.set(xlabel='Time (s)',ylabel=label,title=case.title());ax.tick_params(labelsize=8)
+    axes[0,0].legend(frameon=False,fontsize=7);save(fig,'forward_dynamics')
+
+def inverse():
+    for case in read_json(DATA/'inputs.json')['cases']:
+        fig=plt.figure(figsize=(6.5,5.3));ax3=fig.add_subplot(2,2,1,projection='3d')
+        axes=[fig.add_subplot(2,2,i) for i in [2,3,4]]
+        actual=case['goal'];tend=actual['time_s']
+        rows=[r for r in case['samples'] if r['time_s']<=tend+1e-10 and r['X_m']<=52.5+1e-10]
+        xyz=np.array([[r[k] for k in ['x_m','y_m','z_m']] for r in rows]);times=np.array([r['time_s'] for r in rows])
+        fit=np.array(case['fit_positions_m']);tf=np.array(case['fit_times_s'])
+        ax3.plot(*xyz.T,color='black',marker='o',ms=2.5,lw=1,label='Measured samples')
+        ax3.scatter(*fit.T,facecolors='white',edgecolors='black',s=24,depthshade=False,label='Fit inputs')
+        ax3.scatter(*actual['local_position'],marker='x',color='black',s=25)
+        for j,ax in enumerate(axes):
+            ax.plot(times,xyz[:,j],color='black',marker='o',ms=2.7,lw=1,label='Measured samples')
+            ax.scatter(tf,fit[:,j],facecolors='white',edgecolors='black',s=26,zorder=6,label='Fit inputs')
+            if actual['source']=='linear interpolation':ax.scatter([tend],[actual['local_position'][j]],marker='x',color='black',s=24)
         for m,c,s in zip(MODELS,COLORS,STYLES):
-            r=trace('forward',case['case'],m);mask=column(r,'x_m')<=1.5
-            ax.plot(column(r,'x_m')[mask],column(r,'z_m')[mask],color=c,ls=s,label=m,lw=1.3)
-        obs=rows(ROOT/'data/report_v2'/case['observations'])
-        ax.scatter(column(obs,'x_m'),column(obs,'z_m'),color='black',s=10,label='Digitized measurements',zorder=5)
-        ax.set(xlabel='x (m)',ylabel='z (m)',xlim=(-.02,1.3),title=case['case'].replace('_',' ').title())
-    axes[0,0].legend(frameon=False,fontsize=7)
-    save(fig,'forward_topspin')
-    fig,axes=plt.subplots(2,3,figsize=(6.4,4.6))
-    for i,case in enumerate(['zero_spin','topspin_b']):
-        for j,(field,label) in enumerate([('speed_m_s','Speed (m/s)'),('drag_N','Drag (N)'),('lift_N','Lift (N)')]):
-            lines(axes[i,j],'forward',case,'time_s',field)
-            axes[i,j].set(xlabel='Time (s)',ylabel=label,title=('Zero spin' if i==0 else 'Topspin b'))
-    axes[0,0].legend(frameon=False,fontsize=8)
-    save(fig,'forward_dynamics')
-    fig,axes=plt.subplots(1,3,figsize=(6.4,2.5))
-    for ax,coord in zip(axes[:2],['y_m','z_m']):
-        lines(ax,'problem','problem_b','x_m',coord);ax.set(xlabel='x (m)',ylabel=coord[0]+' (m)')
-        p=js('problem/problem_b_M4.json')['input']['positions_m'];p=np.array(p)
-        ax.scatter(p[:,0],p[:,1 if coord=='y_m' else 2],color='black',s=15,zorder=5)
-    axes[2].add_patch(Rectangle((-3.66,0),7.32,2.44,fill=False,color='gray'))
-    for i,m in enumerate(MODELS):
-        e=js(f'problem/problem_b_{m}.json')['record']['event']
-        if e['type']=='plane':axes[2].scatter(e['position'][1],e['position'][2],color=COLORS[i],marker=['o','s','^','D'][i],s=25,label=m)
-    axes[0].legend(fontsize=7,frameon=False);axes[2].set(xlabel='Goal y (m)',ylabel='Goal z (m)',xlim=(-3.9,3.9),ylim=(0,2.7))
-    save(fig,'problem_prediction')
-    fig,axes=plt.subplots(1,3,figsize=(6.4,2.5))
-    for ax,(field,label) in zip(axes,[('speed_m_s','Speed (m/s)'),('drag_N','Drag (N)'),('lift_N','Lift (N)')]):
-        lines(ax,'problem','problem_b','time_s',field);ax.set(xlabel='Time (s)',ylabel=label)
-    axes[0].legend(frameon=False,fontsize=8);save(fig,'problem_dynamics')
-    fig,axes=plt.subplots(1,3,figsize=(6.4,2.5))
-    r=trace('problem','problem_b','M4')
-    for ax,field,label in zip(axes,['CD','CL','Sp'],[r'$C_D$',r'$C_L$',r'$Sp$']):
-        ax.plot(column(r,'time_s'),column(r,field),color=COLORS[3],lw=1.5)
-        ax.set(xlabel='Time (s)',ylabel=label)
-    save(fig,'problem_coefficients')
-    matches=js('matches/summary.json')['records'];cases=list(dict.fromkeys(r['case'] for r in matches))
-    fig,ax=plt.subplots(figsize=(6.4,3))
-    for j,(m,c) in enumerate(zip(MODELS,COLORS)):
-        rs=[next(r for r in matches if r['case']==case and r['model']==m) for case in cases]
-        for i,r in enumerate(rs):
-            x=i+(j-1.5)*.14
-            if r['error_m'] is not None:ax.scatter(x,r['error_m'],color=c,marker=['o','s','^','D'][j],label=m if i==0 else None,s=30)
-            else:ax.plot(x,-.3,marker='x',color=c,ms=6)
-    labels=[('Penalty' if case.startswith('penalty') else ('WOH ' if case.startswith('J03WOH') else 'WQQ ')+case[-4:]) for case in cases]
-    ax.set(xticks=range(len(cases)),xticklabels=labels,
-        ylabel='Goal-plane error (m)');ax.axhline(0,color='gray',lw=.5);ax.legend(frameon=False,ncol=4,fontsize=8)
-    save(fig,'inverse_errors')
-    fig,axes=plt.subplots(1,2,figsize=(6.4,2.8))
-    for ax,field in zip(axes,['y_m','z_m']):
-        lines(ax,'matches','penalty_18232100000995','x_m',field)
-        rr=rows(ROOT/'data/report_v2/penalty.csv');xx=column(rr,'x_m');yy=column(rr,'y_m' if field=='y_m' else 'z_raw')
-        if field=='y_m':yy-=yy[0]
-        ax.scatter(xx-xx[0],yy,color='black',s=13,label='Tracking measurements',zorder=5)
-        ax.set(xlabel='Local x (m)',ylabel=field[0]+' (m)')
-    axes[0].legend(fontsize=7,frameon=False);save(fig,'penalty_prediction')
-    fig,axes=plt.subplots(1,3,figsize=(6.4,2.6))
-    for label,color,style in [('constant_spin',COLORS[1],'-'),('inertial_torque',COLORS[2],'--')]:
-        r=rows(OUT/f'other/{label}.csv');name='Constant spin' if label=='constant_spin' else 'Quadratic torque'
-        axes[0].plot(column(r,'time_s'),column(r,'omega_rad_s'),color=color,ls=style,label=name)
-        for ax,field in zip(axes[1:],['y_m','z_m']):ax.plot(column(r,'x_m'),column(r,field),color=color,ls=style,label=name)
+            result=read_json(OUT/f"inverse/{case['case']}_{m}.json")['record']
+            if not (OUT/f"inverse/{case['case']}_{m}.csv").exists():continue
+            rows=trace('inverse',case['case'],m);mask=col(rows,'time_s')<=tend+1e-10
+            label=m+('*' if result['status']=='fit_limit' else '')
+            ax3.plot(col(rows,'x_m')[mask],col(rows,'y_m')[mask],col(rows,'z_m')[mask],color=c,ls=s,lw=1.3,label=label)
+            for ax,field in zip(axes,['x_m','y_m','z_m']):
+                ax.plot(col(rows,'time_s')[mask],col(rows,field)[mask],color=c,ls=s,lw=1.3,label=label)
+                if result['event']['type']=='ground' and result['event']['time']<=tend:
+                    ax.scatter([float(rows[-1]['time_s'])],[float(rows[-1][field])],color=c,marker='s',s=13)
+        goal(ax3);ax3.set_title(case['case'],fontsize=10)
+        for ax,field in zip(axes,['x','y','z']):ax.set(xlabel='Time (s)',ylabel=field+' (m)',xlim=(0,tend*1.025));ax.tick_params(labelsize=8)
+        handles,labels=axes[0].get_legend_handles_labels()
+        fig.legend(handles,labels,loc='upper center',ncol=3,frameon=False,fontsize=8)
+        save(fig,'penalty_'+case['case'],rect=[0,0,1,.90])
+
+def other():
+    fig,axes=plt.subplots(1,3,figsize=(6.5,2.7))
+    for key,c,s,label in [('constant_spin',COLORS[1],'-','Constant spin'),('inertial_torque',COLORS[2],'--','Quadratic torque')]:
+        r=read_csv(OUT/f'other/{key}.csv')
+        axes[0].plot(col(r,'time_s'),col(r,'omega_rad_s'),color=c,ls=s,label=label)
+        for ax,field in zip(axes[1:],['y_m','z_m']):ax.plot(col(r,'x_m'),col(r,field),color=c,ls=s)
     axes[0].set(xlabel='Time (s)',ylabel='Spin (rad/s)');axes[1].set(xlabel='x (m)',ylabel='y (m)');axes[2].set(xlabel='x (m)',ylabel='z (m)')
     axes[0].legend(frameon=False,fontsize=7);save(fig,'torque_comparison')
-    # Figure contract and audit make the link from quantities to claims explicit.
-    (FIG/'figure_contract.json').write_text(json.dumps(dict(width_inches=6.4,formats=['pdf','svg','png'],dpi=300,
-        palette=COLORS,encoding='colour plus line style or marker',
-        claims={'forward_range':'range response to gravity, constant and variable drag',
-        'forward_topspin':'measured local curvature and model differences',
-        'forward_dynamics':'physical speed and force evolution',
-        'inverse_errors':'individual event errors; crosses denote no goal-plane prediction',
-        'torque_comparison':'same initial state, changed angular damping'},
-        uncertainty='No synthetic error bars; individual experiments and deterministic simulations'),indent=2),encoding='utf-8')
-    print('nine figure groups exported as PDF/SVG/300-dpi PNG')
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    FIG.mkdir(parents=True,exist_ok=True)
+    plt.rcParams.update({'font.family':'serif','font.serif':['Times New Roman'],'font.size':9,
+        'axes.spines.right':False,'axes.spines.top':False,'pdf.fonttype':42,'svg.fonttype':'none'})
+    forward();inverse();other()
+    save_json(FIG/'figure_contract.json',dict(width_inches=6.5,dpi=300,formats=['pdf','svg','png'],
+        units='SI',models=list(MODELS),raw_frames=39,inverse_input_rule='summary-selected times, repeated samples retained',
+        forward_claim='force mechanisms under prescribed initial conditions',inverse_claim='continuation compared with held-out real samples',
+        status_markers='asterisk: iteration limit; square: ground; cross: measured/interpolated goal crossing',
+        probabilities='none',palette=COLORS))
+    print('current shared report figures exported',flush=True)
