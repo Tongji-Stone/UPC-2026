@@ -16,8 +16,8 @@
 \setlength{\parindent}{1.5em}
 \setlength{\parskip}{0pt}
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,numbers=left,numberstyle=\tiny,numbersep=8pt,columns=fullflexible,showstringspaces=false,frame=none}
-\graphicspath{{aerodynamics/}{assets/}{../results/current_report/figures/}}
-\input{report_results.tex}
+\graphicspath{{aerodynamics/}{assets/}{../results/current_report/figures/}{../results/sensitivity_v2/figures/}}
+\input{report_results.tex}\input{sensitivity_results.tex}
 
 \begin{document}
 \begin{center}
@@ -27,10 +27,10 @@
 \end{center}
 Gravity, drag and Magnus lift govern a soccer ball's three-dimensional flight. We formulate a constant-spin model and compare gravity alone, constant drag, constant drag and lift, and complete variable coefficients. Empirical aerodynamic relations and a matched wind-tunnel comparison provide the coefficient basis.
 
-Five prescribed kick situations give six initial states and 24 forward flights, illustrating the roles of speed, elevation and spin direction. Three actual match penalties provide 39 original sampled frames. After conversion to penalty-mark coordinates, three selected positions per event enter 12 bounded inversions, whose continuations are compared with later measured samples. Results report fitting residuals, held-out errors, crossings and ground termination individually. A separate same-state curved-shot calculation quantifies angular damping, shifting the crossing by \TorqueDisplacement\ m. Sensitivity and crossing-distribution analysis remain reserved for Section 5.
+Five prescribed kick situations give six initial states and 24 forward flights, illustrating the roles of speed, elevation and spin direction. Three actual match penalties provide 39 original sampled frames. After conversion to penalty-mark coordinates, three selected positions per event enter 12 bounded inversions, whose continuations are compared with later measured samples. Results report fitting residuals, held-out errors, crossings and ground termination individually. A separate same-state curved-shot calculation quantifies angular damping, shifting the crossing by \TorqueDisplacement\ m. Section 5 uses the competition positions as a reference example for individual parameter effects, crossings compatible with the same early positions, and 100,000 Monte Carlo trajectories with fixed mass and radius.
 
 \noindent\textbf{Keywords:} Soccer ball, aerodynamic drag, Magnus effect, inverse prediction, trajectory comparison
-\newpage\begingroup\small\tableofcontents\endgroup\newpage
+\newpage\begingroup\fontsize{10}{11.5}\selectfont\tableofcontents\endgroup\newpage
 \section{Introduction}
 \subsection{Problem Background}
 A penalty kick places stringent spatial and temporal demands on the goalkeeper. The goalkeeper must reach an appropriate location at the right time, while deciding when and in which direction to move. Studies of penalty anticipation discuss this timing problem and show that shot speed and kicking technique affect the predictability of shot direction \cite{kamp2018,hunter2018}. Such work also considers cues from the kicker before contact; the present problem instead focuses on predicting the ball's later position from its measured positions after launch.
@@ -48,7 +48,7 @@ We study a ball travelling from the penalty mark to a goal 7.32 m wide and 2.44 
 \begin{enumerate}
 \item \textbf{Ball--foot contact.} Contact establishes launch velocity and spin. These initial conditions determine the forward examples and the unknown quantities reconstructed in Section~\ref{sec:solving}.
 \item \textbf{Airborne flight.} Gravity, drag and Magnus lift develop the trajectory according to the governing equations established in Section~\ref{sec:model}.
-\item \textbf{Goal arrival and shot outcome.} The goal-plane crossing connects the flight to the shot result. Variation in initial motion, aerodynamic parameters and environmental conditions can produce a distribution of crossing locations; Section~\ref{sec:sensitivity} is reserved for that subsequent sensitivity and uncertainty analysis.
+\item \textbf{Goal arrival and shot outcome.} The goal-plane crossing connects the flight to the shot result. Variation in initial motion, aerodynamic parameters and environmental conditions can produce a distribution of crossing locations; Section~\ref{sec:sensitivity} examines these sensitivities and joint perturbations.
 \end{enumerate}
 We first compare prescribed kicks, then estimate initial states from three real penalties and compare predictions with later recorded positions. Figure~\ref{fig:workflow} summarizes this physical and computational sequence.
 \begin{figure}[H]\centering
@@ -66,7 +66,7 @@ We first compare prescribed kicks, then estimate initial states from three real 
 \item \textbf{Atmospheric properties.} Air density and dynamic viscosity are spatially uniform during each flight. Aerodynamic forces are represented using empirical drag and lift coefficients.
 \item \textbf{Wind.} The main calculation uses still air. When wind is included, its velocity vector is spatially and temporally constant during each flight; small-scale turbulence and rapidly varying gusts are neglected. Section~\ref{sec:wind} examines how different wind conditions affect relative airflow and force magnitude.
 \item \textbf{Spin during flight.} The main model neglects aerodynamic torque, so its spin vector remains constant. Section~\ref{sec:rotation} examines this approximation by adding rotational damping to the same initial state.
-\item \textbf{Observations and unknowns.} Three specified real-penalty positions enter a bounded deterministic fit, and subsequent positions supply the comparison. Released Z values are interpreted as metres and centre height. Section 4 states the search ranges for velocity, spin and force corrections; Section 5 is reserved for their effect on crossing distributions.
+\item \textbf{Observations and unknowns.} Three specified real-penalty positions enter a bounded deterministic fit, and subsequent positions supply the comparison. Released Z values are interpreted as metres and centre height. Section 4 states the search ranges for velocity, spin and force corrections; Section 5 uses the competition-position example to examine parameter effects on crossing distributions.
 \end{itemize}
 \subsection{Notations}
 \begin{table}[H]\centering\small
@@ -271,7 +271,7 @@ The observed initial position fixes the origin of the flight. The six velocity a
 \input{sections/model_solving.tex}
 
 \section{Sensitivity Analysis}\label{sec:sensitivity}
-\textit{To be completed.}
+\input{sensitivity.tex}
 
 \section{Discussion of Other Factors}\label{sec:other}
 The main model isolates gravity, drag and Magnus lift. We now examine the physical effects omitted from its geometry, spin evolution and ambient airflow.
@@ -343,7 +343,7 @@ The model separates the mechanisms of gravity, drag and Magnus lift. Gravity pro
 
 Five prescribed kick situations provide six initial states and 24 forward flights. The matched top- and backspin pair demonstrates the reversal of vertical Magnus force, while sidespin produces horizontal curvature. In the curved M4 example the goal crossing is $(\CurvedY,\CurvedZ)$ m at $\CurvedTime$ s. The same initial state is used to quantify angular damping, giving a crossing displacement of \TorqueDisplacement\ m under the cited reference setting.
 
-Three actual penalties supply distinct early sampling sequences and held-out trajectories. Coordinate conversion places all three in the competition geometry. The 12 inverse outcomes report early residuals, continuation errors, goal crossings and ground termination separately, connecting the recorded motion to each force assumption. Section 5 remains reserved for sensitivity analysis and crossing-location distributions.
+Three actual penalties supply distinct early sampling sequences and held-out trajectories. Coordinate conversion places all three in the competition geometry. The 12 inverse outcomes report early residuals, continuation errors, goal crossings and ground termination separately, connecting the recorded motion to each force assumption. For the competition-position example in Section 5, a one-degree launch-direction change moves the crossing by about 0.20 m. With the early positions fixed, the explored compatible states shift the crossing by up to \SensitivityConditionalShift\ m; joint perturbations are quantified by 100,000 Monte Carlo trajectories with fixed ball mass and radius.
 
 \section{Model Evaluation}
 \subsection{Physical Interpretation and Reproduction}

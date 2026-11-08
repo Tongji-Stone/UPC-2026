@@ -9,7 +9,8 @@ def main():
     def check(k,ok,**detail):checks[k]=dict(passed=bool(ok),**detail)
     for lang,folder in [('english','paper'),('chinese','_中文版')]:
         root=ROOT/folder;s=(root/'main.tex').read_text(encoding='utf-8')
-        s=s.replace(r'\input{sections/model_solving.tex}',(root/'sections/model_solving.tex').read_text(encoding='utf-8'));texts[lang]=s
+        s=s.replace(r'\input{sections/model_solving.tex}',(root/'sections/model_solving.tex').read_text(encoding='utf-8'))
+        s=s.replace(r'\input{sensitivity.tex}',(root/'sensitivity.tex').read_text(encoding='utf-8'));texts[lang]=s
         d=pymupdf.open(root/'main.pdf');text='\n'.join(p.get_text() for p in d)
         log=(root/'main.log').read_text(encoding='utf-8',errors='replace')
         warnings=[l for l in log.splitlines() if any(x in l for x in ['Overfull','Missing character','undefined','LaTeX Error'])]
@@ -23,14 +24,17 @@ def main():
             p.get_pixmap(matrix=pymupdf.Matrix(1,1)).save(str(qa/f'{lang}_{i+1:02}.png'))
             fontnames.update(f[3] for f in p.get_fonts())
         canvas.save(qa/f'{lang}_contact.png')
-        if lang=='chinese':check('song_hei_kai_fonts',all(any(n in f for f in fontnames) for n in ['SimSun','SimHei','KaiTi']))
+        if lang=='chinese':
+            italic_chinese=bool(re.search(r'\\textit\{[^}]*[\u4e00-\u9fff]',s))
+            check('song_hei_kai_fonts',all(any(n in f for f in fontnames) for n in ['SimSun','SimHei'])
+                and 'ItalicFont=KaiTi' in s.replace(' ','') and (not italic_chinese or any('KaiTi' in f for f in fontnames)))
     equations=lambda s:[re.sub(r'\s+','',x) for x in re.findall(r'\\begin\{equation\}(.*?)\\end\{equation\}',s,re.S)]
     check('identical_equations',equations(texts['english'])==equations(texts['chinese']))
     cites=lambda s:set(re.findall(r'\\cite\{([^}]+)\}',s))
     check('identical_citations',cites(texts['english'])==cites(texts['chinese']))
     blocks=lambda s:re.findall(r'\\begin\{tabular\}.*?\\end\{tabular\}',s,re.S)
     numbers=lambda s:re.findall(r'(?<![A-Za-z])[-+]?\d+(?:\.\d+)?',s)
-    en=(ROOT/'paper/report_results.tex').read_text(encoding='utf-8');zh=(ROOT/'_中文版/report_results.tex').read_text(encoding='utf-8')
+    en=(ROOT/'paper/report_results.tex').read_text(encoding='utf-8')+(ROOT/'paper/sensitivity_results.tex').read_text(encoding='utf-8');zh=(ROOT/'_中文版/report_results.tex').read_text(encoding='utf-8')+(ROOT/'_中文版/sensitivity_results.tex').read_text(encoding='utf-8')
     check('identical_table_numbers',[numbers(x) for x in blocks(en)]==[numbers(x) for x in blocks(zh)])
     result=dict(all_passed=all(v['passed'] for v in checks.values()),checks=checks);save_json(OUT/'bilingual_verification.json',result)
     print(dict(all_passed=result['all_passed'],failed=[k for k,v in checks.items() if not v['passed']]))

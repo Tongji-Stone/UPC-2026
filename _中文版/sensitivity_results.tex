@@ -1,0 +1,52 @@
+% Generated from reviewed sensitivity data; keep mass and radius fixed.
+\newcommand{\SensitivityFixedRuns}{369}
+\newcommand{\SensitivityMaxDirection}{20.247}
+\newcommand{\SensitivityConditionalShift}{0.1183}
+\newcommand{\SensitivityConditionalResidual}{5.31\times10^{-8}}
+\newcommand{\MCCount}{100000}
+\newcommand{\MCSeed}{20261108}
+\newcommand{\MCMeanY}{2.6927}
+\newcommand{\MCMeanZ}{1.9561}
+\newcommand{\MCStdY}{0.2494}
+\newcommand{\MCStdZ}{0.2385}
+\newcommand{\MCMaxDisplacement}{0.835}
+\newcommand{\MCClearCount}{94870}
+\newcommand{\MCOverCount}{5130}
+\newcommand{\MCClearPercent}{94.87}
+\newcommand{\MCOverPercent}{5.13}
+\newcommand{\MCJointThreshold}{4.6575}
+\newcommand{\MCAdaptiveError}{2.23\times10^{-8}}
+\newcommand{\MCHalfStepError}{4.91\times10^{-8}}
+\newcommand{\MCCheckCount}{70}
+\newcommand{\MCConvergenceY}{0.472}
+\newcommand{\MCConvergenceZ}{0.210}
+\newcommand{\MCConvergenceT}{0.155}
+\newcommand{\SensitivityOneFactorTable}{\begin{table}[H]\centering\small
+\caption{单参数扰动对球门交点和到达时间的影响。}\label{tab:sensitivity-one-factor}
+\begin{tabular}{p{.32\textwidth}crr}\toprule
+参数 & 比较扰动 & $\max D_g$ (cm) & $\max|\Delta t_g|$ (ms)\\\midrule
+初速度大小 & $\pm5\%$ & 10.796 & 23.187\\
+初速度水平角 & $\pm1^\circ$ & 20.179 & 1.943\\
+初速度仰角 & $\pm1^\circ$ & 20.247 & 1.922\\
+自旋大小 & $\pm5\%$ & 6.239 & 2.072\\
+旋转轴方位角 & $\pm1^\circ$ & 0.675 & 0.049\\
+旋转轴仰角 & $\pm1^\circ$ & 1.049 & 0.115\\
+阻力修正系数 & $\pm5\%$ & 0.859 & 2.664\\
+升力修正系数 & $\pm5\%$ & 3.584 & 0.263\\
+空气密度 & $\pm5\%$ & 3.122 & 2.404\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\SensitivityProfileTable}{\begin{table}[H]\centering\small
+\caption{早期位置约束下的球门交点范围。}\label{tab:sensitivity-profile}
+\begin{tabular}{lrrr}\toprule
+两项修正系数范围 & $y_g$ (m) & $z_g$ (m) & $t_g$ (s)\\\midrule
+$[0.9,1.1]$ & 2.6448--2.7719 & 1.9306--1.9734 & 0.4023--0.4034\\
+$[0.8,1.2]$ & 2.6237--2.7980 & 1.9266--1.9827 & 0.4021--0.4036\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\SensitivityMonteCarloTable}{\begin{table}[H]\centering\small
+\caption{10 万条蒙特卡洛轨迹的交点与到达时间。}\label{tab:sensitivity-mc}
+\begin{tabular}{lrr}\toprule
+输出量 & 样本最小值--最大值 & 单坐标中心 95\% 区间\\\midrule
+$y_g$ (m) & 2.0308--3.3515 & 2.2508--3.1364\\
+$z_g$ (m) & 1.4055--2.4868 & 1.5494--2.3664\\
+$t_g$ (s) & 0.3687--0.4485 & 0.3795--0.4293\\
+\bottomrule\end{tabular}\end{table}}

@@ -348,7 +348,7 @@
     },
     "endpoint_convergence": {
       "passed": true,
-      "difference_m": 1.88411095042053e-15
+      "difference_m": 8.005932084973442e-16
     },
     "drag_dissipation": {
       "passed": true

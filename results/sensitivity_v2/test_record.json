@@ -1,0 +1,16 @@
+{
+  "pytest": "38 passed",
+  "command": "python -m pytest -q",
+  "duration_seconds": 40.62,
+  "calculation_reruns": [
+    "sensitivity_v2_compute.py",
+    "sensitivity_v2_refine.py",
+    "sensitivity_v2_check.py",
+    "sensitivity_monte_carlo_compute.py"
+  ],
+  "scripts_parse": true,
+  "fixed_ball_perturbation_check": true,
+  "density_compensation_check": true,
+  "powershell_scripts_parse": true,
+  "base_commit": "fd43413"
+}

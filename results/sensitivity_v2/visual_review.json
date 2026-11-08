@@ -1,0 +1,20 @@
+{
+  "all_passed": true,
+  "render_method": "Poppler full-document contact sheets and 110-dpi reference pages; final contents reviewed after compacting",
+  "pages": {
+    "paper": 39,
+    "_中文版": 36
+  },
+  "checks": [
+    "complete document layout inspected",
+    "contents fit on a single page in each edition",
+    "reference positions and full-state notation supplied",
+    "time responses use one axes with nine curves",
+    "parallel coordinates and captions legible",
+    "original fourth-chapter sources and tables preserved"
+  ],
+  "pdf_sha256": {
+    "paper": "b49540fc813f187be5e21cce6819c10ec3ce07e6b19a7b80f3c760d2e819b974",
+    "_中文版": "e8fe0e6d83be4adbb57af622ba48d1871defc42cb544a935a5c704043d53292f"
+  }
+}
