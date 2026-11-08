@@ -1,5 +1,5 @@
 {
-  "source_fingerprint": "290a251d4f82debb432194ec279965552d5f67cb221a6dc4cb199f73ad6e1c2c",
+  "source_fingerprint": "c433016828985589eb399e59207834d29ca870048c16d573df0605d7eff4d4b4",
   "record": {
     "case": "J03WOH",
     "model": "M3",
@@ -202,5 +202,10 @@
       2.9188235294117644,
       1.178921568627451
     ]
+  },
+  "cache_reuse": {
+    "baseline_commit": "13384c5",
+    "reason": "case input, fit settings and dynamics unchanged",
+    "previous_source_fingerprint": "290a251d4f82debb432194ec279965552d5f67cb221a6dc4cb199f73ad6e1c2c"
   }
 }

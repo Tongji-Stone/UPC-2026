@@ -1,10 +1,12 @@
 {
-  "all_passed": true,
+  "all_passed": false,
   "checks": {
     "english_compile": {
-      "passed": true,
-      "warnings": [],
-      "pages": 42
+      "passed": false,
+      "warnings": [
+        "Overfull \\hbox (8.20964pt too wide) in paragraph at lines 3--4"
+      ],
+      "pages": 36
     },
     "english_references": {
       "passed": true
@@ -27,7 +29,7 @@
     "chinese_compile": {
       "passed": true,
       "warnings": [],
-      "pages": 39
+      "pages": 34
     },
     "chinese_references": {
       "passed": true

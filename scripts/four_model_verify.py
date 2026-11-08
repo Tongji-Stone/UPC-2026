@@ -16,7 +16,7 @@ def main():
     for case in data['cases']:
         name=case['case'];t=case['fit_times_s'];p=case['fit_positions_m']
         check(name+'_selected_times',np.allclose(t,[0,.04,.08]))
-        expected={'J03WMX':[152602,152603,152604],'J03WOH':[128955,128956,128957],'J03WR9':[176244,176245,176246]}[name]
+        expected={'J03WMX':[152602,152603,152604],'J03WOH':[128955,128956,128957],'J03WR9':[176245,176246,176247]}[name]
         check(name+'_selected_source_frames',[int(f) for f in case['fit_frames']]==expected)
         check(name+'_time_roundtrip',all(abs(r['time_s']+case['time_origin_source_s']-r['source_time_s'])<1e-10 for r in case['samples']))
         check(name+'_goal_time_roundtrip',abs(case['goal']['time_s']+case['time_origin_source_s']-case['goal']['source_time_s'])<1e-10)
@@ -26,12 +26,15 @@ def main():
             check(key+'_fingerprint',a['source_fingerprint']==fingerprint())
             check(key+'_only_early_input',np.array_equal(a['fit_input']['times_s'],t) and np.array_equal(a['fit_input']['positions_m'],p))
             c=PhysicsConfig.for_model(m,**data['config']['physics'],drag_scale=r['drag_scale'],lift_scale=r['lift_scale'])
+            if m=='M3':
+                from dataclasses import replace
+                c=replace(c,constant_acceleration=tuple(fit['constant_acceleration']))
             pred=observed_trajectory(t,p[0],r['initial_state'],c,rtol=1e-11,atol=1e-13)[:,:3]
             check(key+'_saved_fit_matches_state',np.max(abs(pred-np.array(fit['fitted_positions'])))<1e-8)
-            check(key+'_parameter_count',fit['active_parameters']==dict(M1=3,M2=4,M3=7,M4=8)[m])
+            check(key+'_parameter_count',fit['active_parameters']==dict(M1=3,M2=4,M3=6,M4=7)[m])
             for i,stage in enumerate(fit['stages']):
                 if 'parameters' not in stage:continue
-                q=np.array(stage['parameters']);indices=[5,6] if m=='M3' else [6,7]
+                q=np.array(stage['parameters']);indices=[3] if m=='M2' else [5,6]
                 check(key+f'_selection_state_{i}',abs(np.sum((q[indices]-1)**2)-stage['coefficient_distance'])<1e-12)
             trace=read_csv(OUT/f'inverse/{name}_{m}.csv');end=float(trace[-1]['time_s'])
             check(key+'_fit_interval',r['physical_fit_interval']==(end>=t[-1]-1e-9))

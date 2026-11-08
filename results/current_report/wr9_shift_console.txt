@@ -1,0 +1,11 @@
+J03WR9 M1: plane
+M2 start 1/1: RSS=8.097e-05, nfev=10
+J03WR9 M2: plane
+J03WR9 M3: plane
+M4 start 1/6: RSS=2.592e-05, nfev=240
+M4 start 2/6: RSS=1.9179e-06, nfev=38
+M4 start 3/6: RSS=7.5554e-05, nfev=240
+M4 start 4/6: RSS=1.9179e-06, nfev=50
+M4 start 5/6: RSS=1.9179e-06, nfev=49
+M4 start 6/6: RSS=1.9179e-06, nfev=39
+J03WR9 M4: plane

@@ -38,8 +38,9 @@ def forward():
             ax.set(xlabel='Time (s)',ylabel=label,title=case.title());ax.tick_params(labelsize=8)
     axes[0,0].legend(frameon=False,fontsize=7);save(fig,'forward_dynamics')
 
-def inverse():
+def inverse(only=None):
     for case in read_json(DATA/'inputs.json')['cases']:
+        if only and case['case']!=only:continue
         fig=plt.figure(figsize=(6.5,5.3));ax3=fig.add_subplot(2,2,1,projection='3d')
         axes=[fig.add_subplot(2,2,i) for i in [2,3,4]]
         actual=case['goal'];tend=actual['time_s']
@@ -80,11 +81,12 @@ def other():
 
 if __name__=='__main__':
     import argparse
-    parser=argparse.ArgumentParser();parser.add_argument('--inverse-only',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--inverse-only',action='store_true')
+    parser.add_argument('--case',choices=['J03WMX','J03WOH','J03WR9']);args=parser.parse_args()
     FIG.mkdir(parents=True,exist_ok=True)
     plt.rcParams.update({'font.family':'serif','font.serif':['Times New Roman'],'font.size':9,'font.weight':'bold','axes.labelweight':'bold','axes.titleweight':'bold',
         'axes.spines.right':False,'axes.spines.top':False,'pdf.fonttype':42,'svg.fonttype':'none'})
-    if args.inverse_only:inverse()
+    if args.inverse_only or args.case:inverse(args.case)
     else:forward();inverse();other()
     save_json(FIG/'figure_contract.json',dict(width_inches=6.5,dpi=300,formats=['pdf','svg','png'],
         units='SI',models=list(MODELS),raw_frames=39,

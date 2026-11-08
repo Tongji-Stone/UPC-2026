@@ -1,98 +1,88 @@
 {
-  "pages": 42,
-  "warnings": [],
+  "pages": 36,
+  "warnings": [
+    "Overfull \\hbox (8.20964pt too wide) in paragraph at lines 3--4"
+  ],
   "out_of_page_text": [],
   "all_fonts_embedded": true,
   "fonts": {
-    "CYDELZ+TimesNewRomanPSMT": {
+    "EDJVSN+TimesNewRomanPSMT": {
       "format": "ttf",
       "embedded": true
     },
-    "TCTSZQ+TimesNewRomanPS-BoldMT": {
+    "DTGWBQ+TimesNewRomanPS-BoldMT": {
       "format": "ttf",
       "embedded": true
     },
-    "WHWDAG+CMMI12": {
+    "ZMZOEW+CMMI12": {
       "format": "cff",
       "embedded": true
     },
-    "HBSVXK+CMR12": {
+    "NQXWKS+CMR12": {
       "format": "cff",
       "embedded": true
     },
-    "QWQVZU+CMR10": {
+    "KALJBU+CMR10": {
       "format": "cff",
       "embedded": true
     },
-    "XUFSUZ+CMMI8": {
+    "PWYSXL+CMMI8": {
       "format": "cff",
       "embedded": true
     },
-    "DTEUAB+CMEX9": {
+    "OWPESD+CMEX9": {
       "format": "cff",
       "embedded": true
     },
-    "MFNHZZ+CMMI9": {
+    "RYVZXW+CMMI9": {
       "format": "cff",
       "embedded": true
     },
-    "QWAQZD+CMMI6": {
+    "RQZTNI+CMMI6": {
       "format": "cff",
       "embedded": true
     },
-    "ROJQSH+CMR5": {
+    "EXXIZN+CMR5": {
       "format": "cff",
       "embedded": true
     },
-    "KYUYPW+CMMIB7": {
+    "GLWOKA+CMMIB7": {
       "format": "cff",
       "embedded": true
     },
-    "UFGXTK+CMR9": {
+    "FJHXVW+CMR9": {
       "format": "cff",
       "embedded": true
     },
-    "ZQSSZW+CMMIB10": {
+    "UNCEKM+CMMIB10": {
       "format": "cff",
       "embedded": true
     },
-    "NHYQAX+CMSY9": {
+    "CFGQUG+CMSY9": {
       "format": "cff",
       "embedded": true
     },
-    "PHTIIR+CMSY6": {
+    "BEGCNX+CMR6": {
       "format": "cff",
       "embedded": true
     },
-    "PUOOOI+CMBX9": {
+    "QVYDYX+CMBX9": {
       "format": "cff",
       "embedded": true
     },
-    "DINKCL+CMR6": {
+    "KXDHXD+CMSY10": {
       "format": "cff",
       "embedded": true
     },
-    "JSGIRE+CMSY10": {
+    "SPYPRL+CMR8": {
       "format": "cff",
       "embedded": true
     },
-    "DWIAEX+CMR8": {
+    "PUCGKB+CMMI10": {
       "format": "cff",
       "embedded": true
     },
-    "YNCIPD+CMMI10": {
-      "format": "cff",
-      "embedded": true
-    },
-    "RVUPQF+CMSY8": {
-      "format": "cff",
-      "embedded": true
-    },
-    "WJTEVS+CMBX12": {
-      "format": "cff",
-      "embedded": true
-    },
-    "KCUVSF+CMBX8": {
+    "QWOKVZ+CMSY8": {
       "format": "cff",
       "embedded": true
     },
@@ -104,43 +94,19 @@
       "format": "ttf",
       "embedded": true
     },
-    "BCKHQS+CMEX10": {
-      "format": "cff",
-      "embedded": true
-    },
-    "ORTGAT+CMBSY10": {
-      "format": "cff",
-      "embedded": true
-    },
-    "FUREHM+TimesNewRomanPSMT": {
-      "format": "ttf",
-      "embedded": true
-    },
-    "FSFVNI+DejaVuSans-Oblique": {
-      "format": "ttf",
-      "embedded": true
-    },
     "FUWOQM+TimesNewRomanPS-BoldMT": {
       "format": "ttf",
       "embedded": true
     },
-    "WEGTXO+TimesNewRomanPSMT": {
-      "format": "ttf",
-      "embedded": true
-    },
-    "DIRUKW+DejaVuSans-Oblique": {
-      "format": "ttf",
-      "embedded": true
-    },
-    "NAXIVR+CMR7": {
+    "EGPRTK+CMEX10": {
       "format": "cff",
       "embedded": true
     },
-    "CFWCUV+CMSY7": {
+    "FTRUTB+CMBX12": {
       "format": "cff",
       "embedded": true
     },
-    "DMHJTZ+TimesNewRomanPSMT": {
+    "FTVYYM+TimesNewRomanPSMT": {
       "format": "ttf",
       "embedded": true
     },
@@ -148,39 +114,47 @@
       "format": "ttf",
       "embedded": true
     },
-    "HHGMEO+TimesNewRomanPSMT": {
+    "CNVPUN+TimesNewRomanPS-BoldItalicMT": {
       "format": "ttf",
       "embedded": true
     },
-    "DALJPX+TimesNewRomanPSMT": {
+    "EOBZUU+TimesNewRomanPS-BoldItalicMT": {
       "format": "ttf",
       "embedded": true
     },
-    "GEDQDP+TimesNewRomanPSMT": {
+    "FRYAZB+TimesNewRomanPS-ItalicMT": {
       "format": "ttf",
       "embedded": true
     },
-    "WVCFVQ+TimesNewRomanPSMT": {
+    "FHXFSG+TimesNewRomanPS-BoldMT": {
       "format": "ttf",
       "embedded": true
     },
-    "CSLERC+TimesNewRomanPSMT": {
-      "format": "ttf",
-      "embedded": true
-    },
-    "GNSFGT+CMMI7": {
+    "LTITDW+CMR7": {
       "format": "cff",
       "embedded": true
     },
-    "CLMVWY+TimesNewRomanPSMT": {
+    "OUQJCC+CMMI7": {
+      "format": "cff",
+      "embedded": true
+    },
+    "FIEJNW+CMSY7": {
+      "format": "cff",
+      "embedded": true
+    },
+    "DIYNXC+TimesNewRomanPS-BoldMT": {
       "format": "ttf",
       "embedded": true
     },
-    "HFEOCF+TimesNewRomanPSMT": {
+    "CECFXM+TimesNewRomanPS-BoldMT": {
       "format": "ttf",
       "embedded": true
     },
-    "ELFGBM+TimesNewRomanPSMT": {
+    "EVICAO+DejaVuSans-Bold": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "GGASAK+DejaVuSans-BoldOblique": {
       "format": "ttf",
       "embedded": true
     },
@@ -188,35 +162,19 @@
       "format": "ttf",
       "embedded": true
     },
-    "GCWXDV+DejaVuSans-Oblique": {
+    "NELKGJ+TimesNewRomanPS-ItalicMT": {
       "format": "ttf",
       "embedded": true
     },
-    "BMQQDV+DejaVuSans": {
-      "format": "ttf",
-      "embedded": true
-    },
-    "GPZEAC+TimesNewRomanPSMT": {
-      "format": "ttf",
-      "embedded": true
-    },
-    "IBVRJO+TimesNewRomanPS-ItalicMT": {
-      "format": "ttf",
-      "embedded": true
-    },
-    "KHCFPZ+LMMono12-Regular-Identity-H": {
+    "POJFKI+LMMono12-Regular-Identity-H": {
       "format": "cid",
       "embedded": true
     },
-    "IHQLVS+LMMono10-Regular-Identity-H": {
+    "PAUOVQ+LMMono10-Regular-Identity-H": {
       "format": "cid",
       "embedded": true
     },
-    "IGDGYV+LMMonoLt10-Bold-Identity-H": {
-      "format": "cid",
-      "embedded": true
-    },
-    "XSBYTB+LMMono10-Italic-Identity-H": {
+    "JIURWW+LMMonoLt10-Bold-Identity-H": {
       "format": "cid",
       "embedded": true
     }
@@ -227,5 +185,5 @@
   "fifth_chapter_complete": true,
   "workflow_border_removed": true,
   "workflow_body_font_pt": 12.0,
-  "all_passed": true
+  "all_passed": false
 }

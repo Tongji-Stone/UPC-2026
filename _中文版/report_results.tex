@@ -14,7 +14,7 @@
 事件 & 帧数 & 反演时刻 (s) & $\boldsymbol r_0$ (m)\\\midrule
 J03WMX & 15 & 0.00,0.04,0.08 & $(3.04,0.55,0.13)$\\
 J03WOH & 12 & 0.00,0.04,0.08 & $(0.77,0.08,0.24)$\\
-J03WR9 & 12 & 0.00,0.04,0.08 & $(1.47,0.49,0.23)$\\
+J03WR9 & 12 & 0.00,0.04,0.08 & $(2.57,0.85,0.34)$\\
 \bottomrule\end{tabular}\end{table}}
 \newcommand{\InverseBoundsTable}{\begin{table}[H]\centering\footnotesize
 \caption{反演分量边界与气动力修正设定。}\label{tab:inverse-bounds}
@@ -68,21 +68,21 @@ M4 & 平面 & 2.9344 & 1.2906 & $\begin{pmatrix}30.857\\6.408\\5.819\end{pmatrix
 \caption{J03WR9：三个实测拟合点与实测球门交点（帧间线性插值）。}\label{tab:measured-J03WR9}
 \setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrr}\toprule
 点 & 源帧号 & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
-$P_0$ & 176244 & 0.00 & 1.470 & 0.490 & 0.230\\
-$P_1$ & 176245 & 0.04 & 2.570 & 0.850 & 0.340\\
-$P_2$ & 176246 & 0.08 & 3.640 & 1.200 & 0.410\\
-球门 & 176253--176254 & 0.3695 & 11.000 & 3.0697 & 0.4657\\
+$P_0$ & 176245 & 0.00 & 2.570 & 0.850 & 0.340\\
+$P_1$ & 176246 & 0.04 & 3.640 & 1.200 & 0.410\\
+$P_2$ & 176247 & 0.08 & 4.710 & 1.530 & 0.470\\
+球门 & 176253--176254 & 0.3295 & 11.000 & 3.0697 & 0.4657\\
 \bottomrule\end{tabular}\end{table}}
 \newcommand{\WRPredictedTable}{\begin{table}[H]\centering\footnotesize
 \caption{J03WR9：反演初始状态与预测球门交点。M4 使用 30 rad/s 参考自旋大小；M1--M3 不反演自旋。}\label{tab:predicted-J03WR9}
 \setlength{\tabcolsep}{4pt}\begin{tabular}{llrrccr}\toprule
 模型 & 状态 & $y_g$ (m) & $z_g$ (m) & $\boldsymbol v_0$ (m/s) & 自旋 & $d_g$ (m)\\\midrule
-M1 & 平面 & 3.6083 & 0.5750 & $\begin{pmatrix}27.200\\8.900\\2.703\end{pmatrix}$ & --- & 0.5496\\
-M2 & 平面 & 3.6083 & 0.5147 & $\begin{pmatrix}27.747\\9.079\\2.753\end{pmatrix}$ & --- & 0.5408\\
-M3 & 触地 & --- & --- & $\begin{pmatrix}27.875\\9.125\\3.250\end{pmatrix}$ & --- & ---\\
-M4 & 触地 & --- & --- & $\begin{pmatrix}27.711\\9.071\\3.170\end{pmatrix}$ & $\begin{pmatrix}-9.311\\28.518\\-0.241\end{pmatrix}$ & ---\\
+M1 & 平面 & 3.5444 & 0.4841 & $\begin{pmatrix}26.750\\8.550\\2.003\end{pmatrix}$ & --- & 0.4751\\
+M2 & 平面 & 3.5445 & 0.4712 & $\begin{pmatrix}26.924\\8.606\\2.015\end{pmatrix}$ & --- & 0.4749\\
+M3 & 平面 & 3.0656 & 0.6205 & $\begin{pmatrix}26.750\\9.000\\1.875\end{pmatrix}$ & --- & 0.1549\\
+M4 & 平面 & 3.1189 & 0.6035 & $\begin{pmatrix}26.812\\8.977\\1.892\end{pmatrix}$ & $\begin{pmatrix}4.317\\-8.132\\-28.552\end{pmatrix}$ & 0.1463\\
 \bottomrule\end{tabular}\end{table}}
-\newcommand{\WRDiscussion}{实测路径具有明显横向运动，拟合自旋方向影响了朝向球门的后续轨迹。 M4 在 $x=9.917$ m 触地。 M3、M4 在球门前触地。}
+\newcommand{\WRDiscussion}{实测路径具有明显横向运动，拟合自旋方向影响了朝向球门的后续轨迹。 M4 的交点偏离距离为 0.1463 m。}
 \newcommand{\TorqueViscousRatio}{$3.54\times10^{-4}$}
 \newcommand{\TorqueDisplacement}{0.0616}
 \newcommand{\TorqueResults}{阻尼交点为 $(0.7799,0.8772)$ m，恒定自旋为 $(0.8415,0.8769)$ m。位移为 0.0616 m，占 11 m 的 0.560\%。自旋降低 19.740\%，到达时间变化 -0.066\%。再加入黏性力矩使阻尼交点改变 2.1e-05 m。短程交点的变化小于自旋幅值的变化。}

@@ -13,7 +13,7 @@ class CorrectedInputTests(unittest.TestCase):
         expected={
             'J03WMX':[[3.04,.55,.13],[4.19,.82,.15],[5.25,1.07,.18]],
             'J03WOH':[[.77,.08,.24],[1.99,.34,.46],[3.18,.62,.65]],
-            'J03WR9':[[1.47,.49,.23],[2.57,.85,.34],[3.64,1.20,.41]]}
+            'J03WR9':[[2.57,.85,.34],[3.64,1.20,.41],[4.71,1.53,.47]]}
         for c in self.data['cases']:
             np.testing.assert_allclose(c['fit_positions_m'],expected[c['case']],atol=1e-12)
             np.testing.assert_allclose(c['fit_times_s'],[0,.04,.08],atol=1e-12)
@@ -26,12 +26,13 @@ class CorrectedInputTests(unittest.TestCase):
             self.assertEqual(hashlib.sha256((DATA/name).read_bytes()).hexdigest(),h)
         wr=next(c for c in self.data['cases'] if c['case']=='J03WR9')
         self.assertTrue(wr['samples'][1]['repeated'])
-        self.assertEqual(wr['samples'][0]['time_s'],-.04)
-        self.assertEqual(wr['samples'][1]['time_s'],0)
+        self.assertEqual(wr['samples'][0]['time_s'],-.08)
+        self.assertEqual(wr['samples'][1]['time_s'],-.04)
+        self.assertEqual(wr['samples'][2]['time_s'],0)
 
     def test_time_origin_and_crossing_roundtrip(self):
         for c in self.data['cases']:
-            origin=.08 if c['case']=='J03WMX' else .04
+            origin=.08 if c['case'] in ['J03WMX','J03WR9'] else .04
             self.assertAlmostEqual(c['time_origin_source_s'],origin)
             for q in c['samples']:self.assertAlmostEqual(q['time_s']+origin,q['source_time_s'])
             crossing=goal_crossing(c['samples'])
