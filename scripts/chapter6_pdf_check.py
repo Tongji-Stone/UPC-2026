@@ -38,7 +38,8 @@ def main():
     paths+=list((ROOT/'scripts').glob('chapter6_*.py'))+[ROOT/'scripts/reproduce_chapter6.ps1']
     paths+=[p for p in out.rglob('*') if p.is_file() and 'qa' not in p.relative_to(out).parts and p.name!='delivery_manifest.json']
     save_json(out/'delivery_manifest.json',dict(files={str(p.relative_to(ROOT)):dict(bytes=p.stat().st_size,
-        sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in paths},pushed_to_git=False))
+        sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in paths},
+        git_delivery_branch='codex/report-narrative-revision-20261108',verification_stage='pre-push'))
     print({name:r['pages'] for name,r in editions.items()})
 
 

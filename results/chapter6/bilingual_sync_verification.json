@@ -1,0 +1,19 @@
+{
+  "all_passed": true,
+  "checks": {
+    "identical_equations": true,
+    "identical_figure_inputs": true,
+    "identical_cited_sources": true,
+    "no_merge_markers": true,
+    "paper_all_references_used": true,
+    "paper_single_tex": true,
+    "_中文版_all_references_used": true,
+    "_中文版_single_tex": true
+  },
+  "git_merge_performed": false,
+  "target_branch": "codex/report-narrative-revision-20261108",
+  "source_sha256": {
+    "paper": "8e78268a9a4320e38328de1021dca0f4fb14d4b3c91e92ba9ededa78fe3b3bb1",
+    "_中文版": "afd43f26cbf66c1c6413fd5a391b87770230ee73c667e5e4f10efca91ba99de8"
+  }
+}

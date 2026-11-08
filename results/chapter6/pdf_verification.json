@@ -2,7 +2,7 @@
   "all_passed": true,
   "editions": {
     "english": {
-      "pages": 32,
+      "pages": 31,
       "labels": {
         "fig:alam-drag": {
           "number": "19",
@@ -28,8 +28,8 @@
       "no_unresolved_references": true,
       "no_compile_errors": true,
       "new_pages_within_bounds": true,
-      "tex_sha256": "660c62320192bf5518d0c461d487e92cbf397173a59f5fd4d243efe9cb1de2d9",
-      "pdf_sha256": "fcd71535d01da26ccc035805dd2a6712022b990d0c5fb19a5834064d7ad61703"
+      "tex_sha256": "8e78268a9a4320e38328de1021dca0f4fb14d4b3c91e92ba9ededa78fe3b3bb1",
+      "pdf_sha256": "d7f2abf1fe8b81698880b28284762c63016bae7c3eb32bd66004e6ed0ecdbc34"
     },
     "chinese": {
       "pages": 29,
@@ -58,8 +58,8 @@
       "no_unresolved_references": true,
       "no_compile_errors": true,
       "new_pages_within_bounds": true,
-      "tex_sha256": "97693c2a5baa2b9132cc78786633f41c537fb9dbf80128cae46fca20bd5567fa",
-      "pdf_sha256": "c81432c938d8d9f04b016d6f55d09932c6ec0189826cad94430a3d6b40f253ef"
+      "tex_sha256": "afd43f26cbf66c1c6413fd5a391b87770230ee73c667e5e4f10efca91ba99de8",
+      "pdf_sha256": "bda28fb8e5c412d23adb0e879c5cc1f299eae91026934db00e02a8017ea1d8f7"
     }
   }
 }
