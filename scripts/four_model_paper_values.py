@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import numpy as np
 from football.physics import PhysicsConfig
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'results/structure_v2'
+ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'results/structure_linear_spin'
 def js(p):return json.loads((OUT/p).read_text(encoding='utf-8'))
 def scientific(value,precision=2):
     text=f'{value:.{precision}g}'
@@ -19,13 +19,13 @@ def main():
     def macro(name,value):commands.append('\\newcommand{\\'+name+'}{'+str(value)+'}\n')
     p=js('problem/problem_b_M4.json')['record'];s=np.array(p['initial_state']);c=p['coverage'];q=p['event']
     for name,value in dict(ProblemY=f"{q['position'][1]:.3f}",ProblemZ=f"{q['position'][2]:.3f}",
-        ProblemTime=f"{q['time']:.4f}",ProblemAlphaD=f"{p['drag_scale']:.4f}",ProblemAlphaL=f"{p['lift_scale']:.4f}",
+        ProblemTime=f"{q['time']:.4f}",ProblemAlphaD=f"{p['fitted_cd']:.4f}",ProblemAlphaL=f"{p['fitted_alpha']:.4f}",
         ProblemSpin=f'{np.linalg.norm(s[3:]):.2f}',ProblemResidual=scientific(p['max_residual_m']),
         ProblemSpeedMin=f"{c['speed_range'][0]:.2f}",ProblemSpeedMax=f"{c['speed_range'][1]:.2f}",
         ProblemReMin=f"{c['Re_range'][0]/1e5:.2f}",ProblemReMax=f"{c['Re_range'][1]/1e5:.2f}",
         ProblemSpMin=f"{c['Sp_range'][0]:.3f}",ProblemSpMax=f"{c['Sp_range'][1]:.3f}").items():macro(name,value)
     for name,value in zip(['ProblemVX','ProblemVY','ProblemVZ','ProblemWX','ProblemWY','ProblemWZ'],s):macro(name,f'{value:.3f}')
-    cfg=PhysicsConfig.for_model('M3');macro('ReferenceCD',f'{cfg.drag_coefficient:.4f}');macro('ReferenceCL',f'{cfg.lift_coefficient:.4f}')
+    cfg=PhysicsConfig.for_model('M4');macro('ReferenceCD',f'{cfg.drag_coefficient:.4f}');macro('ReferenceCL',f'{cfg.lift_coefficient:.4f}')
     forward=js('forward/summary.json');f=forward['records'];rows=[]
     for c in forward['cases']:
         label='Zero spin' if c['case']=='zero_spin' else 'Topspin '+c['case'][-1]
@@ -39,16 +39,16 @@ def main():
     macro('ForwardRangeTable',table('Nonspinning controlled launch: predicted landing and signed range error. The reported range is 21.9 m.','tab:forward-range','lrr','Model & Range (m) & Prediction minus measurement (m)',rows))
     rows=[]
     for case in ['topspin_a','topspin_b','topspin_c','topspin_d']:
-        rr=[next(r for r in f if r['case']==case and r['model']==m) for m in ['M1','M2','M3','M4']]
+        rr=[next(r for r in f if r['case']==case and r['model']==m) for m in ['M1','M2','M4']]
         rows.append(case[-1]+' & '+' & '.join(f"{r['spatial_rmse_m']:.4f}" for r in rr)+r'\\')
-    macro('ForwardSpinTable',table('Height RMSE (m) at digitized horizontal positions for the four topspin segments.','tab:forward-spin','lrrrr','Launch & M1 & M2 & M3 & M4',rows))
+    macro('ForwardSpinTable',table('Height RMSE (m) at digitized horizontal positions for the four topspin segments.','tab:forward-spin','lrrr','Launch & M1 & M2 & M4',rows))
     rows=[]
     for m in ['M1','M2','M3','M4']:
         r=js(f'problem/problem_b_{m}.json')['record'];e=r['event']
-        rows.append(f"{m} & {r['drag_scale']:.4f}" if m!='M1' else 'M1 & ---')
-        rows[-1]+=(f" & {r['lift_scale']:.4f}" if m in ['M3','M4'] else ' & ---')
+        rows.append(f"{m} & {r['fitted_cd']:.4f}" if m=='M4' else f'{m} & ---')
+        rows[-1]+=(f" & {r['fitted_alpha']:.4f}" if m == 'M4' else ' & ---')
         rows[-1]+=' & '+scientific(r['max_residual_m'])+f" & {e['position'][1]:.3f} & {e['position'][2]:.3f} & {e['time']:.4f}"+r'\\'
-    macro('ProblemResultsTable',table('Inverse predictions for the competition observations. Residual is the maximum absolute early-coordinate difference.','tab:problem','lrrrrrr',r'Model & $\alpha_D$ & $\alpha_L$ & Residual (m) & $y_g$ (m) & $z_g$ (m) & $t_g$ (s)',rows))
+    macro('ProblemResultsTable',table('Inverse predictions for the competition observations. Residual is the maximum absolute early-coordinate difference.','tab:problem','lrrrrrr',r'Model & $C_D$ & $\alpha$ & Residual (m) & $y_g$ (m) & $z_g$ (m) & $t_g$ (s)',rows))
     matches=js('matches/summary.json')['records'];rows=[]
     names={'J03WOH_18232100000487':'WOH 0487 (head)','J03WOH_18232100000606':'WOH 0606 (foot)',
         'J03WOH_18232100000968':'WOH 0968 (foot)','J03WQQ_18232200001227':'WQQ 1227 (head)',
@@ -81,6 +81,6 @@ def main():
         rows.append(f"{r['wind_m_s']:.0f} & {r['headwind_q_change_pct']:+.2f} & {r['tailwind_q_change_pct']:+.2f} & {r['crosswind_q_change_pct']:+.2f} & {r['crosswind_airflow_angle_deg']:.2f}"+r'\\')
     macro('WindResultsTable',table('Illustrative wind estimates at the fitted launch speed. Percentages describe dynamic pressure at fixed aerodynamic coefficients.','tab:wind','rrrrr',r'$w$ (m/s) & Headwind (\%) & Tailwind (\%) & Crosswind (\%) & Airflow angle ($^\circ$)',rows))
     macro('WindThreshold',f"{other['five_percent_dynamic_pressure_wind_threshold_m_s']:.2f}")
-    (ROOT/'paper/report_results.tex').write_text('% Generated from results/structure_v2; do not edit numerical values manually.\n'+''.join(commands),encoding='utf-8')
+    (ROOT/'paper/report_results.tex').write_text('% Generated from results/structure_linear_spin; do not edit numerical values manually.\n'+''.join(commands),encoding='utf-8')
     print('paper numerical macros and tables refreshed')
 if __name__=='__main__':main()

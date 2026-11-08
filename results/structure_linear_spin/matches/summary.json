@@ -1,0 +1,1332 @@
+{
+  "records": [
+    {
+      "case": "J03WOH_18232100000487",
+      "model": "M1",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 0.4964577656675743,
+        "position": [
+          9.11,
+          1.0177384196185257,
+          3.058817206928553
+        ],
+        "velocity": [
+          18.35000000000001,
+          2.0499999999999963,
+          -0.9670906811989074
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": 0.7173001277009514,
+      "fit_converged": true,
+      "candidate_plane_error_m": 0.7173001277009514,
+      "rss_m2": 0.001703704883199692,
+      "max_residual_m": 0.0359999999999967,
+      "initial_state": [
+        18.35000000000001,
+        2.0499999999999963,
+        3.9031599999999975,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.0,
+      "lift_scale": 1.0,
+      "constant_acceleration": null,
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 3,
+      "coverage": {
+        "speed_range": [
+          18.464154606696805,
+          18.872192718007103
+        ],
+        "Re_range": [
+          270807.6008982198,
+          276792.1598641042
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "head",
+      "target_yz_m": [
+        1.7170491803278687,
+        2.899180327868853
+      ]
+    },
+    {
+      "case": "J03WOH_18232100000487",
+      "model": "M2",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 0.5362161088742442,
+        "position": [
+          9.11,
+          1.0178095530994204,
+          2.93527945917045
+        ],
+        "velocity": [
+          15.57325792996453,
+          1.739913358287509,
+          -1.5247570523152163
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": 0.7001708388438562,
+      "fit_converged": true,
+      "candidate_plane_error_m": 0.7001708388438562,
+      "rss_m2": 0.0013335147317857002,
+      "max_residual_m": 0.031678583743166344,
+      "initial_state": [
+        18.593177485534166,
+        2.077312147886909,
+        3.9514180002682973,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.4999999999995872,
+      "lift_scale": 1.0,
+      "constant_acceleration": null,
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 4,
+      "coverage": {
+        "speed_range": [
+          15.744159079358143,
+          19.121589342446864
+        ],
+        "Re_range": [
+          230914.33316391942,
+          280449.977022554
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "head",
+      "target_yz_m": [
+        1.7170491803278687,
+        2.899180327868853
+      ]
+    },
+    {
+      "case": "J03WOH_18232100000487",
+      "model": "M3",
+      "status": "ground",
+      "event": {
+        "type": "ground",
+        "time": 0.99646138101151,
+        "position": [
+          -7.623404220094516,
+          -3.714692071517266,
+          0.11000000000000003
+        ],
+        "velocity": [
+          -35.675952681890934,
+          -9.955767262643876,
+          -8.455767262643876
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": null,
+      "fit_converged": true,
+      "candidate_plane_error_m": null,
+      "rss_m2": 0.0,
+      "max_residual_m": 0.0,
+      "initial_state": [
+        20.374999999999766,
+        2.4999999999999964,
+        3.9999999999999982,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.0,
+      "lift_scale": 1.0,
+      "constant_acceleration": [
+        -56.24999999999325,
+        -12.50000000000001,
+        -12.50000000000001
+      ],
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 6,
+      "coverage": {
+        "speed_range": [
+          2.0398079280457266,
+          37.991984701361055
+        ],
+        "Re_range": [
+          29917.182944670658,
+          557215.7756199621
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": true,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "head",
+      "target_yz_m": [
+        1.7170491803278687,
+        2.899180327868853
+      ]
+    },
+    {
+      "case": "J03WOH_18232100000487",
+      "model": "M4",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 0.5401827425640713,
+        "position": [
+          9.11,
+          0.5043857300309856,
+          3.5831410932492234
+        ],
+        "velocity": [
+          15.346795105186152,
+          -0.20925374046141326,
+          0.8908565363636383
+        ],
+        "spin": [
+          6.039208305050837,
+          -23.275978840964054,
+          -17.937579882559366
+        ]
+      },
+      "error_m": 1.3922481719383377,
+      "fit_converged": true,
+      "candidate_plane_error_m": 1.3922481719383377,
+      "rss_m2": 0.0012836893089742524,
+      "max_residual_m": 0.031289822594733785,
+      "initial_state": [
+        18.615391848062288,
+        2.2464052249994753,
+        3.7394802344806872,
+        6.039208305050837,
+        -23.275978840964054,
+        -17.937579882559366
+      ],
+      "drag_scale": 1.4999999999999998,
+      "lift_scale": 1.4999998702130635,
+      "constant_acceleration": null,
+      "fitted_cd": 0.36231767069109677,
+      "fitted_alpha": 2.287709889928691,
+      "active_parameters": 7,
+      "coverage": {
+        "speed_range": [
+          15.374053873225648,
+          19.11969828516864
+        ],
+        "Re_range": [
+          225486.1234739762,
+          280422.2415158067
+        ],
+        "Sp_range": [
+          0.17259686584907286,
+          0.21464735503152124
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "head",
+      "target_yz_m": [
+        1.7170491803278687,
+        2.899180327868853
+      ]
+    },
+    {
+      "case": "J03WOH_18232100000606",
+      "model": "M1",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 1.1314893617021275,
+        "position": [
+          26.59,
+          5.091702127659563,
+          2.047434572928924
+        ],
+        "velocity": [
+          23.500000000000018,
+          4.499999999999994,
+          -3.9967506382978746
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": 4.987653713957968,
+      "fit_converged": true,
+      "candidate_plane_error_m": 4.987653713957968,
+      "rss_m2": 0.0018631928832,
+      "max_residual_m": 0.026278400000000146,
+      "initial_state": [
+        23.500000000000018,
+        4.499999999999994,
+        7.103160000000001,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.0,
+      "lift_scale": 1.0,
+      "constant_acceleration": null,
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 3,
+      "coverage": {
+        "speed_range": [
+          23.926980350722648,
+          24.959064124794438
+        ],
+        "Re_range": [
+          350929.04514393216,
+          366066.2738303184
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": false,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "rightLeg",
+      "target_yz_m": [
+        10.073620689655172,
+        2.2865517241379307
+      ]
+    },
+    {
+      "case": "J03WOH_18232100000606",
+      "model": "M2",
+      "status": "ground",
+      "event": {
+        "type": "ground",
+        "time": 1.3606296492983285,
+        "position": [
+          25.083673202528,
+          4.804077674347971,
+          0.11000000000000315
+        ],
+        "velocity": [
+          14.484623792942537,
+          2.774125512765474,
+          -6.32785694622722
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": null,
+      "fit_converged": true,
+      "candidate_plane_error_m": null,
+      "rss_m2": 0.0016427178315100357,
+      "max_residual_m": 0.028271703973352436,
+      "initial_state": [
+        23.909889862089916,
+        4.579272228399492,
+        7.221212635665623,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.4999999999999998,
+      "lift_scale": 1.0,
+      "constant_acceleration": null,
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 4,
+      "coverage": {
+        "speed_range": [
+          16.04811117594745,
+          25.39288245332849
+        ],
+        "Re_range": [
+          235372.2972472293,
+          372428.94264881784
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "rightLeg",
+      "target_yz_m": [
+        10.073620689655172,
+        2.2865517241379307
+      ]
+    },
+    {
+      "case": "J03WOH_18232100000606",
+      "model": "M3",
+      "status": "none",
+      "event": {
+        "type": "none",
+        "time": null,
+        "position": null,
+        "velocity": null,
+        "spin": null
+      },
+      "error_m": null,
+      "fit_converged": true,
+      "candidate_plane_error_m": null,
+      "rss_m2": 0.0,
+      "max_residual_m": 0.0,
+      "initial_state": [
+        24.62500000000003,
+        5.624999999999969,
+        5.625000000000002,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.0,
+      "lift_scale": 1.0,
+      "constant_acceleration": [
+        -31.250000000000444,
+        -31.249999999999332,
+        31.249999999999957
+      ],
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 6,
+      "coverage": {
+        "speed_range": [
+          21.623217531773808,
+          257.325760224274
+        ],
+        "Re_range": [
+          317140.52379934915,
+          3774111.1499560187
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": true,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "rightLeg",
+      "target_yz_m": [
+        10.073620689655172,
+        2.2865517241379307
+      ]
+    },
+    {
+      "case": "J03WOH_18232100000606",
+      "model": "M4",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 1.5311854813452181,
+        "position": [
+          26.59,
+          1.7515234034787024,
+          5.1941397667153915
+        ],
+        "velocity": [
+          13.163322514284099,
+          -1.1822224664945111,
+          -0.7098026817600829
+        ],
+        "spin": [
+          8.61253101897844,
+          -25.64650913713601,
+          -12.964600978276703
+        ]
+      },
+      "error_m": 8.815405348928953,
+      "fit_converged": true,
+      "candidate_plane_error_m": 8.815405348928953,
+      "rss_m2": 0.0011315820535580815,
+      "max_residual_m": 0.022849450530544768,
+      "initial_state": [
+        23.96647251779495,
+        4.7555074738755385,
+        6.9101735183880555,
+        8.61253101897844,
+        -25.64650913713601,
+        -12.964600978276703
+      ],
+      "drag_scale": 1.4999999965365136,
+      "lift_scale": 1.4999999999999998,
+      "constant_acceleration": null,
+      "fitted_cd": 0.3623176698545086,
+      "fitted_alpha": 2.2877100878719467,
+      "active_parameters": 7,
+      "coverage": {
+        "speed_range": [
+          13.235351503544468,
+          25.392068728926724
+        ],
+        "Re_range": [
+          194118.4887186522,
+          372417.0080242586
+        ],
+        "Sp_range": [
+          0.12996184104687106,
+          0.24933225227272957
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "rightLeg",
+      "target_yz_m": [
+        10.073620689655172,
+        2.2865517241379307
+      ]
+    },
+    {
+      "case": "J03WOH_18232100000968",
+      "model": "M1",
+      "status": "ground",
+      "event": {
+        "type": "ground",
+        "time": 0.16584263513543757,
+        "position": [
+          3.1841785946004086,
+          2.545684449328967,
+          0.11
+        ],
+        "velocity": [
+          19.200000000000053,
+          15.350000000000009,
+          -0.8737562506786428
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": null,
+      "fit_converged": true,
+      "candidate_plane_error_m": null,
+      "rss_m2": 0.03442040888319966,
+      "max_residual_m": 0.12399999999999978,
+      "initial_state": [
+        19.200000000000053,
+        15.350000000000009,
+        0.75316,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.0,
+      "lift_scale": 1.0,
+      "constant_acceleration": null,
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 3,
+      "coverage": {
+        "speed_range": [
+          24.581753028242332,
+          24.597275255312372
+        ],
+        "Re_range": [
+          360532.3777475542,
+          360760.0370779148
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": false,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "rightLeg",
+      "target_yz_m": [
+        7.2787500000000005,
+        0.344375
+      ]
+    },
+    {
+      "case": "J03WOH_18232100000968",
+      "model": "M2",
+      "status": "ground",
+      "event": {
+        "type": "ground",
+        "time": 0.1657893971448839,
+        "position": [
+          3.1593451000898916,
+          2.5257331414561808,
+          0.1099999999999999
+        ],
+        "velocity": [
+          18.811554665426936,
+          15.03886582679163,
+          -0.8692714608825532
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": null,
+      "fit_converged": true,
+      "candidate_plane_error_m": null,
+      "rss_m2": 0.035430750106300014,
+      "max_residual_m": 0.12540102410620857,
+      "initial_state": [
+        19.30544964249068,
+        15.433709337851296,
+        0.7556496631196935,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 0.5000000000000001,
+      "lift_scale": 1.0,
+      "constant_acceleration": null,
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 4,
+      "coverage": {
+        "speed_range": [
+          24.09974496046155,
+          24.72793513897581
+        ],
+        "Re_range": [
+          353462.9260867694,
+          362676.38203831186
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": false,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "rightLeg",
+      "target_yz_m": [
+        7.2787500000000005,
+        0.344375
+      ]
+    },
+    {
+      "case": "J03WOH_18232100000968",
+      "model": "M3",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 0.25207815785413623,
+        "position": [
+          8.67,
+          8.266921221032089,
+          0.7882533919121167
+        ],
+        "velocity": [
+          55.66318913788503,
+          57.21514308423899,
+          5.801953946353403
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": 1.0832868451534592,
+      "fit_converged": true,
+      "candidate_plane_error_m": 1.0832868451534592,
+      "rss_m2": 0.0,
+      "max_residual_m": 0.0,
+      "initial_state": [
+        13.125000000000142,
+        8.375,
+        -0.5000000000000001,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.0,
+      "lift_scale": 1.0,
+      "constant_acceleration": [
+        168.7499999999975,
+        193.7500000000003,
+        25.000000000000004
+      ],
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 6,
+      "coverage": {
+        "speed_range": [
+          15.577427579674499,
+          80.03515410583968
+        ],
+        "Re_range": [
+          228468.93783522598,
+          1173848.9268856486
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": true,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "rightLeg",
+      "target_yz_m": [
+        7.2787500000000005,
+        0.344375
+      ]
+    },
+    {
+      "case": "J03WOH_18232100000968",
+      "model": "M4",
+      "status": "ground",
+      "event": {
+        "type": "ground",
+        "time": 0.2699857128719838,
+        "position": [
+          4.967823878622744,
+          4.241755456423936,
+          0.10999999999999999
+        ],
+        "velocity": [
+          17.320309756191698,
+          16.19272852465617,
+          -0.6299033896568474
+        ],
+        "spin": [
+          10.218165242204375,
+          -13.36229815416461,
+          24.84025134981962
+        ]
+      },
+      "error_m": null,
+      "fit_converged": true,
+      "candidate_plane_error_m": null,
+      "rss_m2": 0.034925464226042646,
+      "max_residual_m": 0.12123139625376722,
+      "initial_state": [
+        19.495576279432733,
+        15.201801580012312,
+        0.5526902500981107,
+        10.218165242204375,
+        -13.36229815416461,
+        24.84025134981962
+      ],
+      "drag_scale": 0.5000000000000001,
+      "lift_scale": 1.4999999999974862,
+      "constant_acceleration": null,
+      "fitted_cd": 0.1207725568970323,
+      "fitted_alpha": 2.2877100878681134,
+      "active_parameters": 7,
+      "coverage": {
+        "speed_range": [
+          23.71907176522606,
+          24.72807578963229
+        ],
+        "Re_range": [
+          347879.7192233156,
+          362678.4449146069
+        ],
+        "Sp_range": [
+          0.1334515482754864,
+          0.13912854738430563
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": false,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "rightLeg",
+      "target_yz_m": [
+        7.2787500000000005,
+        0.344375
+      ]
+    },
+    {
+      "case": "J03WQQ_18240200001227",
+      "model": "M1",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 0.513312693498452,
+        "position": [
+          8.29,
+          -3.2082043343653233,
+          4.894374282740179
+        ],
+        "velocity": [
+          16.149999999999984,
+          -6.249999999999998,
+          2.867562476780182
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": 2.785328513065617,
+      "fit_converged": true,
+      "candidate_plane_error_m": 2.785328513065617,
+      "rss_m2": 0.05248194488319994,
+      "max_residual_m": 0.1800000000000006,
+      "initial_state": [
+        16.149999999999984,
+        -6.249999999999998,
+        7.903160000000002,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.0,
+      "lift_scale": 1.0,
+      "constant_acceleration": null,
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 3,
+      "coverage": {
+        "speed_range": [
+          17.553003006842935,
+          19.035360201099415
+        ],
+        "Re_range": [
+          257444.04410036304,
+          279185.28294945805
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "head",
+      "target_yz_m": [
+        -5.523999999999998,
+        6.441999999999999
+      ]
+    },
+    {
+      "case": "J03WQQ_18240200001227",
+      "model": "M2",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 0.5555999075040154,
+        "position": [
+          8.290000000000001,
+          -3.2120932520506873,
+          4.75897508354094
+        ],
+        "velocity": [
+          13.680673245504842,
+          -5.30079592465579,
+          1.6843851706896094
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": 2.8596303398578606,
+      "fit_converged": true,
+      "candidate_plane_error_m": 2.8596303398578606,
+      "rss_m2": 0.05229631063359053,
+      "max_residual_m": 0.17828613913025682,
+      "initial_state": [
+        16.36079263451348,
+        -6.3392511000628895,
+        8.006686961838566,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.4999999999999998,
+      "lift_scale": 1.0,
+      "constant_acceleration": null,
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 4,
+      "coverage": {
+        "speed_range": [
+          14.768087597531322,
+          19.286489474346407
+        ],
+        "Re_range": [
+          216598.61809712605,
+          282868.51229041396
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "head",
+      "target_yz_m": [
+        -5.523999999999998,
+        6.441999999999999
+      ]
+    },
+    {
+      "case": "J03WQQ_18240200001227",
+      "model": "M3",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 0.2868088063004511,
+        "position": [
+          8.290000000000006,
+          6.871218645945849,
+          1.0224253175572426
+        ],
+        "velocity": [
+          45.933545748178176,
+          64.28997677200184,
+          -19.09843566942293
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": 13.528238430016602,
+      "fit_converged": true,
+      "candidate_plane_error_m": 13.528238430016602,
+      "rss_m2": 0.0,
+      "max_residual_m": 0.0,
+      "initial_state": [
+        11.875000000000036,
+        -16.375,
+        11.375000000000002,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.0,
+      "lift_scale": 1.0,
+      "constant_acceleration": [
+        118.74999999999858,
+        281.25,
+        -106.24999999999996
+      ],
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 6,
+      "coverage": {
+        "speed_range": [
+          18.83760733066792,
+          81.28863378950098
+        ],
+        "Re_range": [
+          276284.90751646284,
+          1192233.2955793475
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": true,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "head",
+      "target_yz_m": [
+        -5.523999999999998,
+        6.441999999999999
+      ]
+    },
+    {
+      "case": "J03WQQ_18240200001227",
+      "model": "M4",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 0.5334343044868756,
+        "position": [
+          8.29,
+          -2.3878947123839485,
+          4.478732585613389
+        ],
+        "velocity": [
+          14.769177492853078,
+          -2.6344018627161425,
+          0.9493041576090318
+        ],
+        "spin": [
+          -7.525813706654164,
+          12.213863602898343,
+          26.347365407997277
+        ]
+      },
+      "error_m": 3.699942609744864,
+      "fit_converged": true,
+      "candidate_plane_error_m": 3.699942609744864,
+      "rss_m2": 0.04986449601224337,
+      "max_residual_m": 0.1740954478422928,
+      "initial_state": [
+        16.241925228974164,
+        -6.574991326819595,
+        8.082016860769464,
+        -7.525813706654164,
+        12.213863602898343,
+        26.347365407997277
+      ],
+      "drag_scale": 1.4999998385109201,
+      "lift_scale": 1.4999999999999998,
+      "constant_acceleration": null,
+      "fitted_cd": 0.3623176316841986,
+      "fitted_alpha": 2.2877100878719467,
+      "active_parameters": 7,
+      "coverage": {
+        "speed_range": [
+          15.032293749569092,
+          19.296363456079032
+        ],
+        "Re_range": [
+          220473.64166034668,
+          283013.3306891591
+        ],
+        "Sp_range": [
+          0.17101667925727138,
+          0.21952737586002777
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "head",
+      "target_yz_m": [
+        -5.523999999999998,
+        6.441999999999999
+      ]
+    },
+    {
+      "case": "penalty_18232100000995",
+      "model": "M1",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 0.4787746170678333,
+        "position": [
+          10.939999999999998,
+          2.106608315098466,
+          1.1416494225780356
+        ],
+        "velocity": [
+          22.85,
+          4.4,
+          -0.19361899343544287
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": 0.8530298848095476,
+      "fit_converged": true,
+      "candidate_plane_error_m": 0.8530298848095476,
+      "rss_m2": 0.05817432888319965,
+      "max_residual_m": 0.20399999999999996,
+      "initial_state": [
+        22.85,
+        4.4,
+        4.503160000000001,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.0,
+      "lift_scale": 1.0,
+      "constant_acceleration": null,
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 3,
+      "coverage": {
+        "speed_range": [
+          23.26978603903133,
+          23.701496787873968
+        ],
+        "Re_range": [
+          341290.19523912616,
+          347621.95288881817
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": false,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "penalty",
+      "target_yz_m": [
+        2.9588235294117644,
+        1.178921568627451
+      ]
+    },
+    {
+      "case": "penalty_18232100000995",
+      "model": "M2",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 0.49386668561570823,
+        "position": [
+          10.939999999999998,
+          2.1064873845587107,
+          1.0971099242401174
+        ],
+        "velocity": [
+          21.37771380480267,
+          4.1162600037041495,
+          -0.4657750294486478
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": 0.8562534957477986,
+      "fit_converged": true,
+      "candidate_plane_error_m": 0.8562534957477986,
+      "rss_m2": 0.05940980784716653,
+      "max_residual_m": 0.20595825422172043,
+      "initial_state": [
+        22.968710266489527,
+        4.422604974035131,
+        4.5252297883552,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 0.5000000000000023,
+      "lift_scale": 1.0,
+      "constant_acceleration": null,
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 4,
+      "coverage": {
+        "speed_range": [
+          21.77538037133228,
+          23.824331904582735
+        ],
+        "Re_range": [
+          319372.24544620677,
+          349423.53460054676
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "penalty",
+      "target_yz_m": [
+        2.9588235294117644,
+        1.178921568627451
+      ]
+    },
+    {
+      "case": "penalty_18232100000995",
+      "model": "M3",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 0.2287312881506426,
+        "position": [
+          10.94,
+          2.5748267055218426,
+          2.0674977986059604
+        ],
+        "velocity": [
+          84.28309809801708,
+          21.26398771318123,
+          14.99113495847364
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": 0.9679985936148712,
+      "fit_converged": true,
+      "candidate_plane_error_m": 0.9679985936148712,
+      "rss_m2": 0.0,
+      "max_residual_m": 0.0,
+      "initial_state": [
+        11.375000000000046,
+        1.2499999999999993,
+        2.125,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.0,
+      "lift_scale": 1.0,
+      "constant_acceleration": [
+        318.74999999999875,
+        87.50000000000001,
+        56.250000000000014
+      ],
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 6,
+      "coverage": {
+        "speed_range": [
+          11.639104346984825,
+          88.20732353840843
+        ],
+        "Re_range": [
+          170706.86375577742,
+          1293707.411896657
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": true,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "penalty",
+      "target_yz_m": [
+        2.9588235294117644,
+        1.178921568627451
+      ]
+    },
+    {
+      "case": "penalty_18232100000995",
+      "model": "M4",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 0.5063172210205734,
+        "position": [
+          10.939999999999998,
+          3.0585083936016764,
+          1.3608977831559286
+        ],
+        "velocity": [
+          20.148592903191876,
+          7.839802507678574,
+          0.5219490127396305
+        ],
+        "spin": [
+          -3.25101450677394,
+          -9.449881540478692,
+          28.286580626644596
+        ]
+      },
+      "error_m": 0.20749075835486186,
+      "fit_converged": true,
+      "candidate_plane_error_m": 0.20749075835486186,
+      "rss_m2": 0.059201073667599836,
+      "max_residual_m": 0.2074547317023021,
+      "initial_state": [
+        23.048945563741995,
+        4.096144608719362,
+        4.425388734543622,
+        -3.25101450677394,
+        -9.449881540478692,
+        28.286580626644596
+      ],
+      "drag_scale": 0.5000000000000001,
+      "lift_scale": 1.4999999999990135,
+      "constant_acceleration": null,
+      "fitted_cd": 0.1207725568970323,
+      "fitted_alpha": 2.2877100878704426,
+      "active_parameters": 7,
+      "coverage": {
+        "speed_range": [
+          21.626389668871155,
+          23.824700579602425
+        ],
+        "Re_range": [
+          317187.0484767769,
+          349428.9418341689
+        ],
+        "Sp_range": [
+          0.13851170926468234,
+          0.15259135022199255
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "penalty",
+      "target_yz_m": [
+        2.9588235294117644,
+        1.178921568627451
+      ]
+    }
+  ]
+}

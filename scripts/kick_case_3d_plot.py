@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 plt.rcParams.update({'font.family':'Times New Roman','font.weight':'bold','axes.labelweight':'bold','axes.titleweight':'bold'})
-p=Path('results/kick_cases');d=pd.read_csv(p/'trajectories.csv')
+p=Path('results/kick_cases_linear_spin');d=pd.read_csv(p/'trajectories.csv')
 for name in ['Power','Placement','Curved','Topspin','Backspin','Chip']:
  fig=plt.figure(figsize=(6.5,4.3),constrained_layout=True);ax=fig.add_subplot(111,projection='3d')
  # Coordinates retain the competition convention: x points at the goal.

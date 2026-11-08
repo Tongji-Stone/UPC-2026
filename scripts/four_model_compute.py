@@ -129,7 +129,7 @@ def controlled():
     records=[]
     for case in read(DATA/'controlled_cases.json'):
         obs=csvread(DATA/case['observations']);x=np.array([float(r['x_m']) for r in obs]);z=np.array([float(r['z_m']) for r in obs])
-        for model in MODELS:
+        for model in ('M1','M2','M4'):
             config=cfg(model,case['physics']);state=np.r_[case['velocity'],case['spin']]
             f=fly(case['position'],state,config,plane=100.,span=6.)
             save_trace(OUT/f"forward/{case['case']}_{model}.csv",f,config)
@@ -162,6 +162,8 @@ def inverse(group,only_case=None):
             try:
                 fit=fit_early(t,p,config,model)
                 config=replace(config,drag_scale=fit['drag_scale'],lift_scale=fit['lift_scale'])
+                if model == 'M3':
+                    config=replace(config,constant_acceleration=tuple(fit['constant_acceleration']))
                 f=fly(p[0],fit['initial_state'],config,case['plane_x_m'],span=5.)
                 save_trace(OUT/f"{group}/{case['case']}_{model}.csv",f,config)
                 e=dict(f.event)
@@ -172,6 +174,9 @@ def inverse(group,only_case=None):
                     candidate_plane_error_m=error,
                     rss_m2=fit['rss_m2'],max_residual_m=fit['max_residual_m'],
                     initial_state=fit['initial_state'],drag_scale=fit['drag_scale'],lift_scale=fit['lift_scale'],
+                    constant_acceleration=fit.get('constant_acceleration'),
+                    fitted_cd=config.drag_coefficient*fit['drag_scale'] if model == 'M4' else None,
+                    fitted_alpha=config.lift_coefficient*fit['lift_scale'] if model == 'M4' else None,
                     active_parameters=fit['active_parameters'],coverage=f.diagnostics,
                     shot_type=case.get('shot_type','competition'),target_yz_m=case['target_yz_m'])
                 save_json(path,dict(record=record,fit=fit,input=dict(times_s=t,positions_m=p),

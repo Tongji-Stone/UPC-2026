@@ -16,7 +16,7 @@
 \setlength{\parindent}{1.5em}
 \setlength{\parskip}{0pt}
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,numbers=left,numberstyle=\tiny,numbersep=8pt,columns=fullflexible,showstringspaces=false,frame=none}
-\graphicspath{{aerodynamics/}{assets/}{../results/structure_v2/figures/}{../results/paper_geometry/}}
+\graphicspath{{aerodynamics/}{assets/}{../results/structure_linear_spin/figures/}{../results/paper_geometry/}}
 \input{report_results.tex}
 
 \begin{document}
@@ -25,9 +25,9 @@
 \vspace{2mm}{\bfseries Problem B\par}
 \vspace{3mm}{\bfseries Abstract\par}
 \end{center}
-Gravity bends a soccer ball's path, buoyancy acts upward, drag reduces its speed, and Magnus lift redirects a spinning ball. We formulate a three-dimensional model including buoyancy and compare four models using existing three-force calculations: gravity alone, constant drag, constant drag and lift, and complete speed- and spin-dependent aerodynamic coefficients. Published Teamgeist relations reproduce the selected 2007 wind-tunnel drag and lift curves with coefficient RMSE values of 0.0113 and 0.0504.
+We compare gravity, drag, constant-force and Magnus-force models. M3 estimates constant acceleration from three positions; M4 fits drag and linear-spin lift parameters. The predicted M4 goal-plane crossing for the competition shot is $(y,z)=(\ProblemY,\ProblemZ)$ m.
 
-Forward calculations are compared with controlled launch experiments, including a measured range of 21.9 m and four rotating-ball trajectory segments. The variable-coefficient model predicts a range of \ForwardMFourRange\ m in the nonspinning experiment. Inverse calculations estimate initial motion and nonnegative force corrections from two later positions, selecting corrections close to unity. Five recorded match flights provide subsequent positions for comparison. For the competition data, the variable-coefficient model predicts the goal-plane centre $(y,z)=(\ProblemY,\ProblemZ)$ m at $t=\ProblemTime$ s. A separate same-initial-state calculation quantifies rotational damping, while surface geometry and wind are discussed through published flow results and force estimates.
+
 
 \noindent\textbf{Keywords:} Soccer ball, aerodynamic drag, Magnus effect, inverse prediction, trajectory comparison
 \newpage\tableofcontents\newpage
@@ -44,7 +44,7 @@ Measurements of real flights provide a basis for evaluating such models. Griffit
 In this problem, the initial position and two early positions are given, whereas the initial velocity and spin are not directly specified. We therefore use the equations of motion to find states compatible with the early observations and calculate their goal-plane crossings. The DFL open dataset combines match events and optical tracking data for professional matches \cite{bassek,dataset}, allowing predicted crossings to be compared with later recorded positions.
 
 \subsection{Problem Restatement}
-We model a soccer ball travelling in three dimensions from the vicinity of the penalty mark to the goal. The goal is 7.32 m wide and 2.44 m high; the penalty mark is 11 m from the goal line. We establish a model incorporating gravity, buoyancy, drag and the Magnus effect, solve for its trajectory and the point at which it crosses the goal plane, and compare the calculated positions with a recorded penalty flight. The prediction uses the initial position and the positions at 0.05 and 0.10 s; subsequent positions are reserved for validation. Figure~\ref{fig:workflow} summarizes the force models and inverse problem: early positions determine initial conditions and force corrections, while later positions provide validation targets. Section 2 states the assumptions and notation. Section 3 establishes the forces and equations. Section 4 compares forward and inverse predictions. Section 5 is reserved for sensitivity analysis. Section 6 discusses surface geometry, spin damping and wind, followed by conclusions and model evaluation in Sections 7 and 8.
+We model a soccer ball travelling in three dimensions from the vicinity of the penalty mark to the goal. The goal is 7.32 m wide and 2.44 m high; the penalty mark is 11 m from the goal line. We establish a model incorporating gravity, buoyancy, drag and the Magnus effect, solve for its trajectory and the point at which it crosses the goal plane, and compare the calculated positions with a recorded penalty flight. The prediction uses the initial position and the positions at 0.05 and 0.10 s; subsequent positions are reserved for validation.  Section 2 states the assumptions and notation. Section 3 establishes the forces and equations. Section 4 compares forward and inverse predictions. Section 5 is reserved for sensitivity analysis. Section 6 discusses surface geometry, spin damping and wind, followed by conclusions and model evaluation in Sections 7 and 8.
 \begin{figure}[H]\centering
 \resizebox{\textwidth}{!}{\input{assets/workflow_tikz.tex}}
 \caption{Force model including buoyancy, four-model baseline comparison and goal-plane validation.}\label{fig:workflow}
@@ -90,7 +90,7 @@ The same Newtonian equations generate all four models by selecting the included 
 For a pitch 105 m long with its origin at the centre, the two goal lines are located at $x=\pm52.50$ m. The selected kick travels towards the positive-$x$ goal. For the competition geometry the valid goal opening is $-3.66\le y\le3.66$ m and $0\le z\le2.44$ m. The goal-plane position is the ball centre's first forward intersection with $x=X_g$.
 \begin{figure}[H]\centering\includegraphics[width=0.78\textwidth]{penalty_geometry_new.png}
 \caption{Penalty-kick geometry in local coordinates. $O$ is the penalty mark and $C$ is an illustrative point on the goal plane.}\label{fig:geometry}\end{figure}
-Figure~\ref{fig:geometry} uses the penalty mark as the local origin and places the goal plane at $x=11$ m. For the match record below, the pitch-centred coordinate system instead places the goal at $X_g=52.50$ m.
+The competition coordinates use the penalty mark as the origin and place the goal plane at $x=11$ m. For the match record, the pitch-centred coordinate system places the goal at $X_g=52.50$ m.
 
 The ball crosses the opening cleanly when its centre satisfies $|y|\leq3.66-R$ and $R\leq z\leq2.44-R$ at $x=X_g$. Ground contact occurs when the descending centre reaches $z=R$. These event definitions are used consistently for all four models.
 
@@ -108,126 +108,20 @@ Gravity supplies a constant downward force,
 \begin{equation}\boldsymbol F_g=-mg\boldsymbol e_z,\end{equation}
 where $\boldsymbol e_z$ is the upward vertical unit vector. It produces downward curvature even when all aerodynamic forces are removed.
 
-Figure~\ref{fig:force-schematic} illustrates the relative airflow in the ball frame and the corresponding force directions. The right-hand example takes the spin axis out of the page; the lift direction follows the cross product.
 \begin{figure}[H]\centering
 \includegraphics[width=.88\textwidth]{force_schematic.pdf}
 \caption{Relative airflow and force directions. The symbol $\odot$ denotes spin out of the page; $\boldsymbol u$ in the left panel is the velocity of the ball relative to the air.}\label{fig:force-schematic}\end{figure}
 
 \subsubsection{Aerodynamic Drag}\label{sec:drag}
-In the ball frame, the far-field air velocity is $-\boldsymbol u$. Approximate the maximum cross-section by a disk of area $A=\pi R^2$ facing the oncoming air. For a uniform stream decelerated from speed $v$ to rest, Bernoulli's relation gives the stagnation-to-far-field pressure difference and a corresponding force scale,
-\begin{equation}
-\Delta p_{\mathrm{stag}}=\tfrac12\rho v^2,\qquad
-F_{\mathrm{scale}}=\Delta p_{\mathrm{stag}}A=\tfrac12\rho Av^2.
-\label{eq:drag-scale}\end{equation}
-Pressure and viscous shear vary across the actual ball, so the dimensionless coefficient $C_D$ expresses the integrated drag relative to this scale. Drag opposes the velocity of the ball relative to the air, giving \cite{goff2009,kiratidis2018}
-\begin{equation}
-\boldsymbol F_D=-\tfrac12\rho A\alpha_D C_D(Re,Sp)v\boldsymbol u,
-\qquad \boldsymbol u=\boldsymbol v-\boldsymbol v_{\rm wind},\quad v=\|\boldsymbol u\|.
-\label{eq:drag-force}\end{equation}
-Its quantities have the following physical roles:
-\begin{enumerate}
-\item \textbf{Air density \boldmath$\rho$.} The density measures air mass per unit volume. We use the uniform reference value $1.2$ kg/m$^3$ reported by Asai et al.\ \cite{asai2007}.
-\item \textbf{Projected area \boldmath$A=\pi R^2$.} A larger radius intercepts more airflow; the spherical geometry fixes this area throughout flight.
-\item \textbf{Relative speed and direction \boldmath$v,\boldsymbol u$.} The quadratic speed dependence gives stronger resistance at higher speed, and the negative direction opposes airflow. The still-air main model has $\boldsymbol u=\boldsymbol v$.
-\item \textbf{Drag coefficient \boldmath$C_D(Re,Sp)$.} The coefficient represents boundary-layer transition, separation and wake formation. Following Asai et al.\ and Kiratidis and Leinweber \cite{asai2007,kiratidis2018}, we define
-\begin{equation}
-Re=\frac{2Rv}{\nu},\qquad Sp=\frac{R\omega}{v},\qquad
-\omega=\|\boldsymbol\omega\|,\quad\nu=\frac{\mu}{\rho}.
-\label{eq:re-sp}\end{equation}
-$Re$ compares inertial and viscous flow effects; $Sp$ compares rotating surface speed with airspeed. Constant spin makes $Sp$ rise as the ball slows.
-
-The drag crisis is the rapid reduction of drag associated with boundary-layer transition. A useful coefficient law should describe this transition as well as the slower variation in the supercritical regime. According to Kiratidis and Leinweber \cite{kiratidis2018}, their Eq.~(5) represents zero-spin drag by
-\begin{equation}
-\begin{aligned}
-f(v)={}&\frac{a-b_{\min}}{1+\exp[(v-v_c)/v_s]}+b_{\min}\\
-&+\frac{v-v_{\min}}{1+\exp[-(v-v_{\min})/v_s]}
-\frac{b_{\max}-b_{\min}}{v_{\max}-v_{\min}}.
-\end{aligned}
-\label{eq:cd-zero}\end{equation}
-The coefficient $a$ sets the low-speed level, $v_c$ locates the transition, and $v_s$ controls its width. The remaining parameters set the level and slope of the high-speed tail. Table~\ref{tab:teamgeist} gives the Teamgeist parameters reported in their Table~1 \cite{kiratidis2018}.
-\par\smallskip\noindent\begin{minipage}{\linewidth}\centering
-\captionof{table}{Teamgeist zero-spin drag parameters from Kiratidis and Leinweber \cite{kiratidis2018}.}\label{tab:teamgeist}
-\begin{tabular}{ccccccc}\toprule
-$a$ & $v_c$ & $v_s$ & $b_{\min}$ & $b_{\max}$ & $v_{\min}$ & $v_{\max}$\\
---- & m/s & m/s & --- & --- & m/s & m/s\\\midrule
-0.4927 & 12.58 & 1.071 & 0.1440 & 0.1540 & 23.17 & 35.00\\\bottomrule
-\end{tabular}\end{minipage}\par\smallskip
-For a spinning Teamgeist, Kiratidis and Leinweber's Eq.~(7) adds a linear spin correction with slope 0.514, fitted to the supercritical wind-tunnel data \cite{kiratidis2018}:
-\begin{equation}
-C_D(Re,Sp)=f\!\left(\frac{Re\nu}{2R}\right)+0.514Sp.
-\label{eq:cd-full}\end{equation}
-Thus drag changes with speed even at zero spin, and also increases with rotation. The Teamgeist parameter set is used throughout the coefficient comparison; other ball surfaces require their own parameters.
-
-
-The final M4 trajectory has speeds of \ProblemSpeedMin--\ProblemSpeedMax\ m/s and Reynolds numbers of $(\ProblemReMin$--$\ProblemReMax)\times10^5$. Kiratidis and Leinweber's Teamgeist fit extends to 35 m/s \cite{kiratidis2018}, corresponding to $Re=5.13\times10^5$ for the reference air. The competition flight lies in this speed range and in the supercritical regime represented by the empirical relation, supporting its use here. The rotating Asai measurements span $Re=333793$--455172; the coefficient figures use the measured upper condition exactly. The inferred competition spin gives $Sp=\ProblemSpMin$--\ProblemSpMax; its higher values extend beyond the selected wind-tunnel spin interval.
-\item \textbf{Drag correction \boldmath$\alpha_D\geq0$.} This dimensionless multiplier equals one in forward calculations and is estimated from early positions in inverse calculations.
-\end{enumerate}
-\paragraph{Comparison with published wind-tunnel data.}
-Asai et al.\ \cite{asai2007} measured soccer-ball forces in Tokai University's low-speed recirculating wind tunnel using a six-component balance ($1.5\times1$ m test section; about 1\% turbulence). We use their spinning full-size Teamgeist FRP replica: $R=0.11$ m, $\rho=1.2$ kg/m$^3$, airspeed 22--30 m/s and spin 2--10 rev/s. Five points per coefficient are digitized from their Figures 8 and 9 at $Re=455172$ (about 30 m/s); the reported side force $C_S$ represents transverse Magnus lift here. The speed--Re correspondence gives $\nu\simeq1.45\times10^{-5}$ m$^2$/s for this matched comparison.
-
-Figure~\ref{fig:cd-comparison} reproduces the increase of drag with $Sp$: the coefficient MAE is 0.00985 and RMSE is 0.01127. Both curves use the same experimental condition and measured spin interval.
-\begin{figure}[H]\centering
-\includegraphics[width=4.7in]{cd_comparison.pdf}
-\caption{Teamgeist drag at $Re=455172$: the complete empirical relation \cite{kiratidis2018} and five digitized Asai measurements \cite{asai2007}, Figure 8.}\label{fig:cd-comparison}
-\end{figure}
-
+Let $\boldsymbol u=\boldsymbol v-\boldsymbol v_{\rm wind}$ be velocity relative to the air, $u=\|\boldsymbol u\|$ and $A=\pi R^2$. Drag acts opposite to relative velocity and scales with its square \cite{goff2009,kiratidis2018}:
+\begin{equation}\boldsymbol F_D=-\tfrac12\rho A C_D u\boldsymbol u.\label{eq:drag-force}\end{equation}
+The dimensionless drag coefficient $C_D$ is constant in the main model.
 \subsubsection{Magnus Lift}\label{sec:lift}
-
-Figure~\ref{fig:magnus-flow} illustrates relative streamlines in the ball frame. For the spin shown, the upper surface moves with the relative airflow while the lower surface moves against it. Rotation makes the flow asymmetric and produces a transverse force. The figure uses a two-dimensional ideal flow with circulation to illustrate the directions.
-\begin{figure}[H]\centering
-\includegraphics[width=.78\textwidth]{magnus_streamlines.pdf}
-\caption{Idealized relative streamlines around a spinning football. Arrows show the directions of relative airflow, spin and Magnus force; colours indicate relative speed in this illustrative flow field.}\label{fig:magnus-flow}\end{figure}
-
-Rotation changes the flow on opposite sides of the ball and creates a transverse pressure force. Using the drag dynamic-pressure scale gives $F_L=qAC_L$ for transverse spin \cite{goff2009,kiratidis2018}. For a three-dimensional spin axis, we adopt
-\begin{equation}
-\begin{aligned}
-\boldsymbol F_L&=\tfrac12\rho A\alpha_L C_L(Re,Sp)v^2\sin\theta\,\boldsymbol e_L,\\
-\boldsymbol e_L&=\frac{\boldsymbol\omega\times\boldsymbol u}{\|\boldsymbol\omega\times\boldsymbol u\|},\qquad
-\sin\theta=\frac{\|\boldsymbol\omega\times\boldsymbol u\|}{\omega v}.
-\end{aligned}\label{eq:lift-force}
-\end{equation}
-Lift is zero for zero spin, zero airspeed or parallel spin and airflow.
-
-For $\omega>0$ and $v>0$, substituting the definitions of direction and angle into Eq.~\eqref{eq:lift-force} yields the equivalent form
-\begin{equation}
-\boldsymbol F_L=\tfrac12\rho A\alpha_L C_L(Re,Sp)\frac{v}{\omega}
-(\boldsymbol\omega\times\boldsymbol u).
-\label{eq:lift-cross}\end{equation}
-This form makes the direction perpendicular to both spin and relative velocity explicit. Since $C_L$ also depends on spin, the factor $1/\omega$ does not imply divergent lift at zero spin; zero spin or zero relative speed is handled separately by setting lift to zero.
-
-\begin{enumerate}
-\item \textbf{Dynamic-pressure and area scale \boldmath$\rho Av^2/2$.} Density, projected area and speed have the same meanings as in the drag force.
-\item \textbf{Magnus direction \boldmath$\boldsymbol e_L$.} This unit vector is perpendicular to airflow. Topspin bends the path downward, backspin upward, and sidespin horizontally.
-\item \textbf{Angular projection \boldmath$\sin\theta$.} The transverse component is one for perpendicular spin and airflow and vanishes for parallel directions. This projection extends the transverse empirical law to an oblique spin axis.
-\item \textbf{Lift coefficient \boldmath$C_L(Re,Sp)$.} Rotation and boundary-layer state jointly determine lift.
-
-Rotation creates an asymmetric flow and a transverse Magnus force. Its magnitude depends on the boundary-layer state as well as spin, so a spin-only relation does not describe all flow conditions. Kiratidis and Leinweber \cite{kiratidis2018} introduce the reference power law in their Eq.~(8),
-\begin{equation}
-C_L^{\mathrm{fit}}(Sp)=1.15Sp^{0.83},
-\label{eq:cl-reference}\end{equation}
-and scale it using drag as an indicator of flow state in their Eq.~(9) \cite{kiratidis2018}. We use that complete relation:
-\begin{equation}
-C_L(Re,Sp)=C_L^{\mathrm{fit}}(Sp)
-\frac{C_{D,\mathrm{ceil}}-\min\!\left[C_D(Re,Sp),C_{D,\mathrm{ceil}}\right]}
-{C_{D,\mathrm{ceil}}-C_{D,\mathrm{ref}}},
-\label{eq:cl-full}\end{equation}
-with the Teamgeist reference quantities
-\begin{equation}
-C_{D,\mathrm{ceil}}=f(0),\qquad
-C_{D,\mathrm{ref}}=C_D(333793,0.19).
-\label{eq:cl-anchors}\end{equation}
-Here $C_{D,\mathrm{ceil}}\simeq0.4927$ is the zero-spin low-speed ceiling. The reference drag is evaluated with Eq.~\eqref{eq:cd-full}, including its spin term and using the same $R$ and $\nu$ as the calculation. At the reference $(Re,Sp)=(333793,0.19)$ the scaling factor is one and $C_L\simeq0.290$. The ceiling, reference condition and use of drag to reduce lift follow Kiratidis and Leinweber \cite{kiratidis2018}; Eq.~\eqref{eq:cl-full} supplies the final lift coefficient in the force model.
-
-
-\item \textbf{Lift correction \boldmath$\alpha_L\geq0$.} This dimensionless multiplier is one in forward prediction and is fitted to early positions when inverse prediction includes lift.
-\end{enumerate}
-\paragraph{Comparison with published wind-tunnel data.}
-Figure~\ref{fig:cl-comparison} uses the same Asai experiment and flow condition. The complete relation reproduces increasing lift with $Sp$ and lies above all five measured values: MAE 0.04505, RMSE 0.05040 and maximum difference 0.07325. This larger discrepancy motivates the inverse lift correction $\alpha_L$.
-\begin{figure}[H]\centering
-\includegraphics[width=4.7in]{cl_comparison.pdf}
-\caption{Teamgeist transverse lift at $Re=455172$: the complete empirical relation \cite{kiratidis2018} and five digitized Asai side-force measurements \cite{asai2007}, Figure 9.}\label{fig:cl-comparison}
-\end{figure}
-
+\begin{figure}[H]\centering\includegraphics[width=.78\textwidth]{magnus_streamlines.pdf}
+\caption{Idealized flow around a spinning football.}\label{fig:magnus-flow}\end{figure}
+For relative speed $u$, let $Sp=R\|\boldsymbol\omega\|/u$ and use the simple relation $C_L=\alpha Sp$. Resolving the transverse component gives
+\begin{equation}\boldsymbol F_L=\tfrac12\rho A R\alpha(\boldsymbol\omega\times\boldsymbol u).\label{eq:lift-force}\end{equation}
+The force is zero for zero spin or relative velocity. Reversing the cross-product order requires reversing the sign.
 \subsection{Dynamical Equations}\label{sec:dynamics}
 Newton's second law and angular-momentum balance give
 \begin{equation}
@@ -242,15 +136,6 @@ m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_B+\boldsymbol F_D+\boldsymbo
 \dot{\boldsymbol\omega}&=\boldsymbol0.
 \end{aligned}\right.\label{eq:motion}
 \end{equation}
-Substituting drag and Eq.~\eqref{eq:lift-cross} into Newton's second law gives the components used for numerical integration. Define $k_D=\rho A\alpha_D C_Dv/(2m)$ and $k_L=\rho A\alpha_L C_Lv/(2m\omega)$. For $\omega>0$ and $v>0$,
-\begin{equation}
-\begin{aligned}
-\dot v_x&=-k_Du_x+k_L(\omega_yu_z-\omega_zu_y),\\
-\dot v_y&=-k_Du_y+k_L(\omega_zu_x-\omega_xu_z),\\
-\dot v_z&=-g(1-\rho V_b/m)-k_Du_z+k_L(\omega_xu_y-\omega_yu_x).
-\end{aligned}\label{eq:motion-components}\end{equation}
-The components are integrated together with $\dot{\boldsymbol r}=\boldsymbol v$; at zero spin or relative speed the lift components are set to zero.
-
 Its initial conditions are
 \begin{equation}
 \left\{\begin{aligned}
@@ -266,23 +151,19 @@ This section presents the equations extended to include buoyancy. The existing n
 \section{Model Solving}\label{sec:solving}
 The following examples retain the existing three-force baseline, without buoyancy. We compare increasing levels of aerodynamic description to identify which effects control the trajectory. Table~\ref{tab:models} defines the four models. Forward prediction uses measured or reconstructed launch conditions and unit force corrections. Inverse prediction uses two later positions to estimate the initial motion and force corrections, then propagates the fitted state to the goal.
 \begin{table}[H]\centering\small
-\caption{Four-model hierarchy. Gravity and constant spin are common to all models.}\label{tab:models}
-\begin{tabular}{llll}\toprule
-Model & Drag & Magnus lift & Inverse quantities\\\midrule
-M1 & none & none & $\boldsymbol v_0$ (3)\\
-M2 & constant $C_D^*$ & none & $\boldsymbol v_0,\alpha_D$ (4)\\
-M3 & constant $C_D^*$ & constant $C_L^*$ & $\boldsymbol v_0$, spin axis, $\alpha_D,\alpha_L$ (7)\\
-M4 & $C_D(Re,Sp)$ & $C_L(Re,Sp)$ & $\boldsymbol v_0,\boldsymbol\omega_0,\alpha_D,\alpha_L$ (8)\\\bottomrule
+\caption{Models and inverse quantities}\label{tab:models}
+\begin{tabular}{lll}\toprule
+Model & Assumption & Inverse quantities\\\midrule
+M1 & gravity & velocity (3)\\
+M2 & gravity and drag & velocity, drag coefficient (4)\\
+M3 & constant net force & velocity, acceleration (6)\\
+M4 & gravity, drag and Magnus force & velocity, spin axis, $C_D$, $\alpha$ (7)\\\bottomrule
 \end{tabular}\end{table}
-For M2 and M3, the constants are evaluated once at the published reference point:
-\begin{equation}
-C_D^*=C_D(333793,0.19),\qquad C_L^*=C_L(333793,0.19)=1.15(0.19)^{0.83}.
-\end{equation}
-For the competition air and ball parameters, $C_D^*=\ReferenceCD$ and $C_L^*=\ReferenceCL$. All models use the same physical conditions within each comparison. M1 and M2 have no spin-dependent trajectory; M3 uses the spin-axis direction, and M4 uses both its direction and magnitude.
+M3 represents the combined net force, including gravity. M4 uses constant $C_D$ and $\alpha$ with $C_L=\alpha Sp$. Forward reference values are $C_D=\ReferenceCD$ and $\alpha=\ReferenceCL$, anchored to a published reference condition \cite{kiratidis2018}.
 
 \subsection{Forward Prediction}\label{sec:forward}
 \subsubsection{Prediction procedure and experimental conditions}
-Given $\boldsymbol r_0$, $\boldsymbol v_0$ and $\boldsymbol\omega_0$, we set $\alpha_D=\alpha_L=1$ and integrate Eq.~\eqref{eq:motion} using an adaptive Runge--Kutta method. A root of $x-X_g$ locates the goal-plane crossing, and a descending root of $z-R$ locates ground contact. The calculation records speed and aerodynamic force magnitudes along the flight.
+Forward comparisons use M1, M2 and M4 with prescribed initial conditions and reference aerodynamic coefficients. M3 requires a measured constant acceleration and is therefore excluded from these forward comparisons.
 
 We compare five controlled flights: one nonspinning launch, with a measured range of 21.9 m, and four topspin trajectories. Their initial states are listed in Table~\ref{tab:forward-initial}.
 
@@ -294,28 +175,25 @@ Table~\ref{tab:forward-initial} specifies the forward inputs. All examples lie i
 \subsubsection{Calculated trajectories and physical interpretation}
 \ForwardRangeTable
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{forward_range.pdf}
-\caption{Forward prediction of Goff and Carr\'e's nonspinning experiment \cite{goff2009}. Left: calculated flight paths, digitized early positions and measured landing. Right: individual model ranges against the measured 21.9 m. M2 and M3 coincide because the initial spin is zero.}\label{fig:forward-range}\end{figure}
-Gravity alone produces the longest range. Air resistance removes horizontal momentum and shortens flight distance. M2 and M3 use the same constant drag and predict identical nonspinning trajectories. M4 allows drag to change with the slowing airflow; its predicted range differs from the measured value by \ForwardMFourError\ m under the stated approximate launch conditions.
+\caption{Forward prediction of Goff and Carr\'e's nonspinning experiment \cite{goff2009}. Left: calculated flight paths, digitized early positions and measured landing. Right: individual model ranges against the measured 21.9 m. M2 and M4 coincide because the initial spin is zero.}\label{fig:forward-range}\end{figure}
+Drag removes horizontal momentum and shortens flight distance. With zero spin, M2 and M4 use the same reference drag and coincide. The M4 predicted range differs from measurement by \ForwardMFourError\ m.
 
 \ForwardSpinTable
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{forward_topspin.pdf}
 \caption{Four topspin launches digitized from Goff and Carr\'e \cite{goff2009}, Figure 14. Black points are measured marker centres; model curves use unit force corrections and the stated initial conditions. Each panel covers the published early spatial segment.}\label{fig:forward-spin}\end{figure}
-Topspin produces downward Magnus force and increases downward curvature. Table~\ref{tab:forward-spin} gives the height RMSE at measured horizontal positions. The ranking varies across launches. Local direction estimates and the experimental ball's surface both influence the comparison with the Teamgeist reference. In topspin c, the high spin parameter raises the empirical drag above the ceiling in Eq.~\eqref{eq:cl-full}, so M4 assigns zero lift. The measured path retains downward spin-induced curvature, and M3 consequently gives a smaller local error in that case. These examples connect differences in the coefficient law to differences in the predicted path.
+Topspin produces downward Magnus force. Table~\ref{tab:forward-spin} reports height RMSE at the measured horizontal positions.
 
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{forward_dynamics.pdf}
 \caption{Speed, drag and lift during the nonspinning and topspin-b forward examples. Force magnitudes are calculated from the shared equations. Constant aerodynamic coefficients still produce changing forces because dynamic pressure varies with speed.}\label{fig:forward-dynamics}\end{figure}
-Figure~\ref{fig:forward-dynamics} shows the mechanism behind these paths. Drag is strongest when the ball is fast. Downward lift in a topspin flight changes its vertical motion and flight duration. In M4, changing speed also changes $Re$ and $Sp$, so the force evolution includes both dynamic-pressure and coefficient effects.
+Drag is strongest when the ball is fast. Downward lift in a topspin flight changes its vertical motion and flight duration. With fixed coefficients, force magnitude still changes with speed.
 
 \subsection{Inverse Prediction}\label{sec:inverse}
 \subsubsection{Early-position fitting and representative solution}
-Let $\boldsymbol p_1$ and $\boldsymbol p_2$ be positions at $t_1,t_2$ after the known $\boldsymbol r_0$. The initial motion and applicable force corrections are chosen to minimize
-\begin{equation}
-J_r=\sum_{i=1}^{2}\|\boldsymbol r(t_i;\boldsymbol\eta)-\boldsymbol p_i\|^2,\qquad
-\boldsymbol\eta_{\rm M4}=(\boldsymbol v_0,\boldsymbol\omega_0,\alpha_D,\alpha_L).
-\end{equation}
-The next selection criterion favors the published force scale,
-\begin{equation}J_\alpha=(\alpha_D-1)^2+(\alpha_L-1)^2,\end{equation}
-using only the terms present in each model. Among equal-quality M4 states, the smallest spin magnitude selects a representative state. Deterministic multi-start optimization applies these criteria in order. The position-error allowance is $6\times10^{-12}$ m$^2$, and the coefficient-objective allowance is $10^{-8}$; both are numerical selection tolerances. Initial guesses use measured displacement velocities and the literature's experimental spin rates. M3 represents its spin axis by two angles; its unit vector serves only to carry direction in Eq.~\eqref{eq:lift-force}.
+M3 solves for constant acceleration from three positions:
+\begin{equation}\boldsymbol r(t)=\boldsymbol r_0+\boldsymbol v_0t+\tfrac12\boldsymbol a t^2.\end{equation}
+M4 minimizes the two later position errors over launch velocity, spin direction, $C_D$ and $\alpha$. To obtain a representative solution, the spin magnitude is fixed at 30 rad/s; multiple deterministic initial guesses are used within the specified bounds. Only the product $\alpha\boldsymbol\omega$ appears in Magnus force, so position data do not separately identify $\alpha$ and spin magnitude. Seven unknowns are constrained by six later position coordinates; the result is a representative bounded solution.
+
+In this inversion, $C_D$ and $\alpha$ are each restricted to 0.5--1.5 times their reference values. Both reach their upper bounds in the competition case, so the representative solution depends on the selected bounds; a wider search and comparison of feasible solutions are needed to assess stability.
 
 \subsubsection{Comparison with recorded match flights}\label{sec:real-validation}
 The Sportec Open DFL dataset associates optical tracking with match events \cite{bassek,dataset}. We analyze four flights from matches J03WOH and J03WQQ, and one recorded penalty. Events are selected for an identifiable shot and a tracked crossing of the actual goal-line plane. The four flights comprise two headers and two foot shots. Each inverse calculation uses the first three available positions at 0, 0.04 and 0.08 s. Later tracking coordinates determine the observed crossing of the goal plane. The penalty segment begins with a slower first displacement before the faster recorded flight; its early coordinates are used as recorded.
@@ -328,6 +206,15 @@ The Sportec Open DFL dataset associates optical tracking with match events \cite
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_prediction.pdf}
 \caption{Converged inverse predictions for the recorded penalty, with all tracked positions shown. The first three positions enter the fit; remaining positions display the observed continuation. All model statuses are listed in Table~\ref{tab:match-results}.}\label{fig:penalty}\end{figure}
 The comparison links early acceleration to later flight. A large fitted drag correction produces rapid momentum loss, while lift corrections alter the direction of curvature. Changes in early recorded displacement therefore have a strong effect on the predicted endpoint. The event-level results show how each model responds to the actual recorded segment.
+
+We also recomputed the three penalty flights after the teammate corrected their starting frames. The table reports goal-plane errors in metres; a dash denotes ground contact, early termination or an unconverged fit.
+\begin{table}[H]\centering\small
+\caption{Corrected-start penalties: goal-plane error (m)}\begin{tabular}{lrrrr}\toprule
+Case & M1 & M2 & M3 & M4\\\midrule
+J03WMX & --- & --- & --- & 0.360\\
+J03WOH & 0.684 & 0.657 & 0.374 & 0.113\\
+J03WR9 & 0.550 & 0.541 & --- & ---\\
+\bottomrule\end{tabular}\end{table}
 
 \subsubsection{Competition Problem B}\label{sec:example}
 The supplied observations are
@@ -342,55 +229,51 @@ Applying the same inverse procedure gives Table~\ref{tab:problem}. The preferred
 \begin{aligned}
 \boldsymbol v_0&=(\ProblemVX,\ProblemVY,\ProblemVZ)\ \mathrm{m/s},\\
 \boldsymbol\omega_0&=(\ProblemWX,\ProblemWY,\ProblemWZ)\ \mathrm{rad/s},\\
-(\alpha_D,\alpha_L)&=(\ProblemAlphaD,\ProblemAlphaL).
+(C_D,\alpha)&=(\ProblemAlphaD,\ProblemAlphaL).
 \end{aligned}
 \end{equation}
 \ProblemResultsTable
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{problem_prediction.pdf}
 \caption{Four inverse predictions for Problem B: horizontal path, vertical path and ball-centre positions at the goal plane. Black points are the supplied early observations.}\label{fig:problem-prediction}\end{figure}
-M1 and M2 predict nearly the same horizontal direction because gravity and drag preserve the horizontal velocity ratio. Adding Magnus lift in M3 and M4 bends the ball laterally. The M4 goal-plane centre is $(\ProblemY,\ProblemZ)$ m at $\ProblemTime$ s and fits inside the goal with the ball-radius margin. Its early maximum coordinate residual is \ProblemResidual\ m. The inferred initial spin is \ProblemSpin\ rad/s; it supplies the aerodynamic curvature required by this representative fit.
+M1 and M2 predict nearly the same horizontal direction. M3 extends the constant acceleration determined from three positions; M4 describes curvature through Magnus force. The M4 goal-plane centre is $(\ProblemY,\ProblemZ)$ m at $\ProblemTime$ s, with early maximum coordinate residual \ProblemResidual\ m. The stated spin magnitude is a reference setting.
 
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{problem_dynamics.pdf}
 \caption{Speed and aerodynamic force magnitudes for the four fitted Problem B models. All share the same observations, while their force assumptions produce different continuation paths.}\label{fig:problem-dynamics}\end{figure}
-
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{problem_coefficients.pdf}
-\caption{The complete M4 aerodynamic coefficients and spin parameter during the Problem B flight. Constant spin combined with decreasing speed raises $Sp$; the coupled empirical relations determine the resulting drag and lift coefficients.}\label{fig:problem-coefficients}\end{figure}
-The coefficient evolution in Figure~\ref{fig:problem-coefficients} shows why constant spin still produces changing aerodynamics. The surface-to-air speed ratio increases as the ball slows, while the drag-dependent scaling also changes the lift coefficient.
 
 \subsection{Case Studies: Different Penalty-Kick Techniques}\label{sec:kick-cases}
 What happens when a goalkeeper faces not one textbook kick but a repertoire of different techniques? We examine five illustrative situations using the same three early positions at 0, 0.05 and 0.10 s. Each reference flight is generated with M4; its first three positions feed M1 and M4 with zero assumed spin. The figures show the generated flight, the zero-spin M4 continuation and the input points. The chosen values describe examples, not statistical means or individual players \cite{alcock2012,hunteraccuracy,ravenscroft2015,carre2002}. No observation noise or wind is added.
 
 \subsubsection*{Case 1: Power Shot}
-The ball leaves at 27 m/s with an $8^\circ$ elevation and zero spin. It reaches the goal quickly; in this example the M1 goal-plane error is 0.035 m, and the zero-spin M4 result is within 0.001 m. A goalkeeper has little time to react, although the weakly curved path is relatively straightforward under these assumed conditions.
-\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases/power_3d.pdf}\caption{Case 1: power shot.}\end{figure}
+The ball leaves at 27 m/s with an $8^\circ$ elevation and zero spin. It reaches the goal quickly; in this example the M1 goal-plane error is 0.060 m, and the zero-spin M4 result is within 0.001 m. A goalkeeper has little time to react, although the weakly curved path is relatively straightforward under these assumed conditions.
+\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases_linear_spin/power_3d.pdf}\caption{Case 1: power shot.}\end{figure}
 
 \subsubsection*{Case 2: Placement Shot}
-For a more controlled shot, we choose 20 m/s, an $11^\circ$ elevation and zero spin. The simulated ball crosses the goal plane at a height of 0.617 m. M1 has a 0.071 m error, while zero-spin M4 is within 0.001 m. A lower speed leaves more flight time, so the goalkeeper can use the developing path to refine the expected position.
-\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases/placement_3d.pdf}\caption{Case 2: placement shot.}\end{figure}
+For a more controlled shot, we choose 20 m/s, an $11^\circ$ elevation and zero spin. The simulated ball crosses the goal plane at a height of 0.551 m. M1 has a 0.123 m error, while zero-spin M4 is within 0.001 m. A lower speed leaves more flight time, so the goalkeeper can use the developing path to refine the expected position.
+\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases_linear_spin/placement_3d.pdf}\caption{Case 2: placement shot.}\end{figure}
 
 \subsubsection*{Case 3: Curved Shot}
-The curved kick uses 24 m/s, a $10^\circ$ elevation and vertical-axis spin $(0,0,35)$ rad/s. The flight bends sideways: its simulated goal crossing is $y=0.892$ m, $z=0.882$ m. When the prediction assumes zero spin, M4 misses this crossing by 0.727 m. The first positions alone can make the sideways motion appear partly attributable to initial direction, so a goalkeeper should allow for subsequent curvature.
-\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases/curved_3d.pdf}\caption{Case 3: sidespin curve.}\end{figure}
+The curved kick uses 24 m/s, a $10^\circ$ elevation and vertical-axis spin $(0,0,35)$ rad/s. The flight bends sideways: its simulated goal crossing is $y=0.841$ m, $z=0.877$ m. When the prediction assumes zero spin, M4 misses this crossing by 0.688 m. The first positions alone can make the sideways motion appear partly attributable to initial direction, so a goalkeeper should allow for subsequent curvature.
+\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases_linear_spin/curved_3d.pdf}\caption{Case 3: sidespin curve.}\end{figure}
 
 \subsubsection*{Case 4: Topspin and Backspin}
-Both examples use 24 m/s. The topspin case takes $12^\circ$ and $(0,35,0)$ rad/s; the backspin case takes $10^\circ$ and $(0,-35,0)$ rad/s. Their simulated goal heights are 0.382 m and 1.778 m, respectively. Zero-spin M4 incurs errors of 0.750 m and 0.698 m. Opposite spin changes the vertical path, making height an important part of the goalkeeper's assessment.
-\begin{figure}[H]\centering\includegraphics[width=.48\textwidth]{../results/kick_cases/topspin_3d.pdf}\hfill\includegraphics[width=.48\textwidth]{../results/kick_cases/backspin_3d.pdf}\caption{Case 4: topspin (left) and backspin (right).}\end{figure}
+Both examples use 24 m/s. The topspin case takes $12^\circ$ and $(0,35,0)$ rad/s; the backspin case takes $10^\circ$ and $(0,-35,0)$ rad/s. Their simulated goal heights are 0.426 m and 1.723 m, respectively. Zero-spin M4 incurs errors of 0.682 m and 0.692 m. Opposite spin changes the vertical path, making height an important part of the goalkeeper's assessment.
+\begin{figure}[H]\centering\includegraphics[width=.48\textwidth]{../results/kick_cases_linear_spin/topspin_3d.pdf}\hfill\includegraphics[width=.48\textwidth]{../results/kick_cases_linear_spin/backspin_3d.pdf}\caption{Case 4: topspin (left) and backspin (right).}\end{figure}
 
 \subsubsection*{Case 5: Chip Shot}
-The chip uses 14 m/s, a $20^\circ$ elevation and $(0,-15,0)$ rad/s backspin. Its higher launch angle and lower speed produce a longer, arcing flight; the simulated goal height is 0.368 m. M1 and zero-spin M4 have errors of 0.305 m and 0.086 m, respectively. Unlike a power kick, the goalkeeper must account for a slower ball that rises before descending.
-\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases/chip_3d.pdf}\caption{Case 5: chip shot.}\end{figure}
+The chip uses 14 m/s, a $20^\circ$ elevation and $(0,-15,0)$ rad/s backspin. Its higher launch angle and lower speed produce a longer, arcing flight; the simulated goal height is 0.941 m. M1 and zero-spin M4 have errors of 0.250 m and 0.555 m, respectively. Unlike a power kick, the goalkeeper must account for a slower ball that rises before descending.
+\begin{figure}[H]\centering\includegraphics[width=.64\textwidth]{../results/kick_cases_linear_spin/chip_3d.pdf}\caption{Case 5: chip shot.}\end{figure}
 
-\paragraph{Comparison.} Table~\ref{tab:kick-cases} collects the six trajectories. M4 with the generating spin supplied is a conditional control, not a three-position-only prediction: its near-zero error follows from using the same equations to generate and predict the trajectory. These single synthetic examples illustrate possible effects of spin; the recorded-match comparison remains a separate evaluation. Coefficients are fixed in these cases, unlike the multi-parameter inverse procedure above.
+\paragraph{Comparison.} Table~\ref{tab:kick-cases} collects the six trajectories. M4 with the generating spin supplied is a conditional control, not a three-position-only prediction: its near-zero error follows from using the same equations to generate and predict the trajectory. These single synthetic examples illustrate possible effects of spin; the recorded-match comparison remains a separate evaluation. These cases use the same fixed M4 coefficients.
 \begin{table}[H]\centering\small\caption{Summary of illustrative three-point cases; goal-plane errors in metres}\label{tab:kick-cases}
 \begin{tabular}{lrrrrrr}\toprule
 Case & $v_0$ & Angle & Spin $(\omega_y,\omega_z)$ & M1 & M4 zero & M4 known\\
  & (m/s) & (deg) & (rad/s) & (m) & (m) & (m)\\\midrule
-Power & 27 & 8 & $(0,0)$ & 0.035 & $<0.001$ & $<0.001$\\
-Placement & 20 & 11 & $(0,0)$ & 0.071 & $<0.001$ & $<0.001$\\
-Curved & 24 & 10 & $(0,35)$ & 0.730 & 0.727 & $<0.001$\\
-Topspin & 24 & 12 & $(35,0)$ & 0.797 & 0.750 & $<0.001$\\
-Backspin & 24 & 10 & $(-35,0)$ & 0.651 & 0.698 & $<0.001$\\
-Chip & 14 & 20 & $(-15,0)$ & 0.305 & 0.086 & $<0.001$\\\bottomrule
+Power & 27 & 8 & $(0,0)$ & 0.060 & $<0.001$ & $<0.001$\\
+Placement & 20 & 11 & $(0,0)$ & 0.123 & $<0.001$ & $<0.001$\\
+Curved & 24 & 10 & $(0,35)$ & 0.693 & 0.688 & $<0.001$\\
+Topspin & 24 & 12 & $(35,0)$ & 0.764 & 0.682 & $<0.001$\\
+Backspin & 24 & 10 & $(-35,0)$ & 0.610 & 0.692 & $<0.001$\\
+Chip & 14 & 20 & $(-15,0)$ & 0.250 & 0.555 & $<0.001$\\\bottomrule
 \end{tabular}\end{table}
 
 \section{Sensitivity Analysis}\label{sec:sensitivity}
@@ -404,7 +287,7 @@ Paudel and Yan \cite{paudel} performed full-flight flow simulations using realis
 \begin{figure}[H]\centering\includegraphics[width=.60\textwidth]{surface_comparison.png}
 \caption{Illustrative comparison of a paneled football and a smooth sphere, inspired by Paudel and Yan \cite{paudel}. Their compared bodies had diameter 0.22 m and mass 0.436 kg. The panel geometry shown here is schematic.}\label{fig:surface-geometry}\end{figure}
 
-Alam et al.~\cite{alam2012} measured drag coefficients over a range of Reynolds numbers for six footballs and a smooth sphere. Figure~\ref{fig:alam-surfaces} shows the panels and surface textures of these footballs, while Figure~\ref{fig:alam-drag} compares their drag coefficients. The differences illustrate the influence of ball surface structure on aerodynamic drag.
+The wind-tunnel measurements of Alam et al.~\cite{alam2012} show that football surface structure affects the drag coefficient.
 
 \begin{figure}[H]\centering
 \includegraphics[width=.86\textwidth]{alam_ball_surfaces.png}
@@ -417,38 +300,7 @@ Alam et al.~\cite{alam2012} measured drag coefficients over a range of Reynolds 
 The spherical geometry in the present report describes the centre-of-mass motion and projected area. Its force coefficients come from football measurements, so the average surface influence enters through $C_D$ and $C_L$. Explicit panel orientation and asymmetric wake fluctuations provide a further level of description when lateral-force details are important. These published results support retaining football-specific coefficients in a spherical trajectory model.
 
 \subsection{Rotation and Aerodynamic Damping}\label{sec:rotation}
-Rotation changes Magnus force, so a declining spin can change the continuation of a curved shot. According to Grad et al.\ \cite{grad2026}, Supplementary Section 8.4, and the MuJoCo ellipsoid model \cite{mujoco381}, the spherical inertial and viscous damping torques are
-\begin{equation}
-\boldsymbol Q=-k_2\omega\boldsymbol\omega-k_1\boldsymbol\omega,
-\quad k_2=\frac{8\pi}{15}\rho C_{\rm angular}R^5,\quad k_1=8\pi\mu R^3.
-\label{eq:torque-dimensional}
-\end{equation}
-The quadratic term describes high-Reynolds-number angular drag; the linear term is viscous resistance. We use MuJoCo's documented reference value $C_{\rm angular}=1.5$ \cite{mujoco381}. Defining $q=\rho v^2/2$ and $C_{Q,v}=\|\boldsymbol Q\|/(qAR)$ gives
-\begin{equation}
-C_{Q,v}=\frac{16}{15}C_{\rm angular}Sp^2+\frac{32Sp}{Re},\qquad
-C_{Q,\omega}=\frac{C_{Q,v}}{Sp^2}=\frac{16}{15}C_{\rm angular}+\frac{32}{Re\,Sp}.
-\label{eq:cq-full}
-\end{equation}
-$C_{Q,\omega}$ uses rotating surface speed $R\omega$ in its reference pressure. The factor $1/Sp^2$ converts between the two normalizations. The viscous-to-inertial torque ratio is
-\begin{equation}
-\frac{Q_{\rm viscous}}{Q_{\rm inertial}}=
-\frac{30}{C_{\rm angular}Re\,Sp}=
-\frac{15\nu}{C_{\rm angular}R^2\omega}.
-\end{equation}
-It is \TorqueViscousRatio\ at the fitted competition launch, so the quadratic term dominates. Following the thin-shell inertia used by Maponi and Piombin \cite{maponi}, $I_b=2mR^2/3$. Adding the high-Reynolds-number torque gives
-\begin{equation}
-\left\{\begin{aligned}
-\dot{\boldsymbol r}&=\boldsymbol v,\\
-m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_B+\boldsymbol F_D+\boldsymbol F_L,\\
-I_b\dot{\boldsymbol\omega}&=-k_2\omega\boldsymbol\omega.
-\end{aligned}\right.\label{eq:motion-torque}
-\end{equation}
-The torque opposes spin and removes rotational energy. With this isolated quadratic law, $\omega(t)=\omega_0/[1+(k_2/I_b)\omega_0t]$, providing an integration check.
-
-We repeat the M4 Problem B flight with exactly its fitted initial state and force corrections, first with constant spin and then with Eq.~\eqref{eq:motion-torque}. The state is held fixed so the comparison measures the damping effect directly.
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{torque_comparison.pdf}
-\caption{Same-initial-state comparison of constant spin and high-Reynolds-number rotational damping for Problem B. The documented angular-drag reference is 1.5, and the ball uses thin-shell inertia.}\label{fig:torque}\end{figure}
-\TorqueResults
+Aerodynamic torque can reduce spin \cite{grad2026,mujoco381}; the main model holds spin constant. The linear-spin lift expression can support subsequent comparisons of spin magnitude and damping.
 
 \subsection{Wind Speed and Force Estimates}\label{sec:wind}
 Wind changes the airflow through $\boldsymbol u=\boldsymbol v-\boldsymbol v_{\rm wind}$ \cite{maponi}. At fixed coefficients, a wind speed $w$ along the flight direction changes the dynamic-pressure scale by
@@ -462,11 +314,11 @@ Crosswind also rotates the airflow by $\arctan(w/v)$, changing the force directi
 A 5\% limit on the headwind dynamic-pressure change corresponds to $w/v\leq\sqrt{1.05}-1$, or $w\leq\WindThreshold$ m/s at this launch. The still-air approximation is most suitable for indoor or weak-wind flight; stronger wind should enter through the relative-velocity calculation.
 
 \section{Conclusions}
-The model relates soccer-ball flight to gravity, buoyancy, drag and Magnus lift; the numerical results presented here use the three-force baseline without buoyancy. The complete Teamgeist coefficient relations represent flow-state and spin changes, while the matched 2007 wind-tunnel comparison gives a closer reproduction for drag than for lift.
+The model relates soccer-ball flight to gravity, buoyancy, drag and Magnus lift; the numerical results presented here use the three-force baseline without buoyancy. M4 uses constant drag and linear-spin lift to reduce the number of fitted parameters.
 
 The controlled nonspinning example shows that including drag is essential for range prediction. Its M4 range is \ForwardMFourRange\ m against the published 21.9 m. The rotating trajectory segments display the downward curvature of topspin and variation in the accuracy of the common coefficient law. Recorded match comparisons show how early displacement and fitted force corrections affect subsequent prediction.
 
-For Problem B, M4 gives $(y,z)=(\ProblemY,\ProblemZ)$ m at the goal plane. Magnus lift accounts for the marked horizontal difference from the gravity-only and drag-only predictions. The same-state rotational-damping comparison shifts the crossing by \TorqueDisplacement\ m under the documented torque setting. Wind estimates give the weak-wind condition for the still-air approximation. Sensitivity-analysis findings will be added after Section 5 is completed.
+For Problem B, M4 gives $(y,z)=(\ProblemY,\ProblemZ)$ m at the goal plane. Magnus lift accounts for the marked horizontal difference from the gravity-only and drag-only predictions. Wind estimates give the weak-wind condition for the still-air approximation. Sensitivity-analysis findings will be added after Section 5 is completed.
 
 \section{Model Evaluation}
 \subsection{Physical Interpretation and Computational Use}

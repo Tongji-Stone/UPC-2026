@@ -1,0 +1,214 @@
+{
+  "description": "illustrative synthetic single examples, not empirical distributions; M4_known uses true simulated spin",
+  "times_s": [
+    0.0,
+    0.05,
+    0.1
+  ],
+  "cases": [
+    {
+      "case": "Power",
+      "speed_m_s": 27,
+      "angle_deg": 8,
+      "spin_x": 0,
+      "spin_y": 0,
+      "spin_z": 0,
+      "early_positions_m": [
+        [
+          0.0,
+          0.0,
+          0.11
+        ],
+        [
+          1.3254414294704229,
+          0.0,
+          0.2840858540543519
+        ],
+        [
+          2.628588023136735,
+          0.0,
+          0.4309239906617905
+        ]
+      ],
+      "truth_status": "plane",
+      "true_y": 0.0,
+      "true_z": 0.7414175877668595,
+      "M1_status": "plane",
+      "M1_error_m": 0.06042054692838053,
+      "M4_zero_status": "plane",
+      "M4_zero_error_m": 8.844666110653387e-10,
+      "M4_known_status": "plane",
+      "M4_known_error_m": 8.844666110653387e-10
+    },
+    {
+      "case": "Placement",
+      "speed_m_s": 20,
+      "angle_deg": 11,
+      "spin_x": 0,
+      "spin_y": 0,
+      "spin_z": 0,
+      "early_positions_m": [
+        [
+          0.0,
+          0.0,
+          0.11
+        ],
+        [
+          0.9754014418309922,
+          0.0,
+          0.28738808835313817
+        ],
+        [
+          1.9385940471887824,
+          0.0,
+          0.43818380917374483
+        ]
+      ],
+      "truth_status": "plane",
+      "true_y": 0.0,
+      "true_z": 0.5514263002223607,
+      "M1_status": "plane",
+      "M1_error_m": 0.1234517651956928,
+      "M4_zero_status": "plane",
+      "M4_zero_error_m": 8.956071440036035e-10,
+      "M4_known_status": "plane",
+      "M4_known_error_m": 8.956071440036035e-10
+    },
+    {
+      "case": "Curved",
+      "speed_m_s": 24,
+      "angle_deg": 10,
+      "spin_x": 0,
+      "spin_y": 0,
+      "spin_z": 35,
+      "early_positions_m": [
+        [
+          0.0,
+          0.0,
+          0.11
+        ],
+        [
+          1.1727398928056523,
+          0.009108252333360808,
+          0.30459353165670183
+        ],
+        [
+          2.3276332926944616,
+          0.0360676101000397,
+          0.47193023159747305
+        ]
+      ],
+      "truth_status": "plane",
+      "true_y": 0.8414646506157537,
+      "true_z": 0.8768610515716461,
+      "M1_status": "plane",
+      "M1_error_m": 0.6930936182895028,
+      "M4_zero_status": "plane",
+      "M4_zero_error_m": 0.6882284962389174,
+      "M4_known_status": "plane",
+      "M4_known_error_m": 2.0678392694977116e-11
+    },
+    {
+      "case": "Topspin",
+      "speed_m_s": 24,
+      "angle_deg": 12,
+      "spin_x": 0,
+      "spin_y": 35,
+      "spin_z": 0,
+      "early_positions_m": [
+        [
+          0.0,
+          0.0,
+          0.11
+        ],
+        [
+          1.1666703754824748,
+          0.0,
+          0.3363412116413114
+        ],
+        [
+          2.319017436130282,
+          0.0,
+          0.5170299361499864
+        ]
+      ],
+      "truth_status": "plane",
+      "true_y": 0.0,
+      "true_z": 0.4258137728641119,
+      "M1_status": "plane",
+      "M1_error_m": 0.7640094569960412,
+      "M4_zero_status": "plane",
+      "M4_zero_error_m": 0.6822716232576849,
+      "M4_known_status": "plane",
+      "M4_known_error_m": 3.952464300318731e-09
+    },
+    {
+      "case": "Backspin",
+      "speed_m_s": 24,
+      "angle_deg": 10,
+      "spin_x": 0,
+      "spin_y": -35,
+      "spin_z": 0,
+      "early_positions_m": [
+        [
+          0.0,
+          0.0,
+          0.11
+        ],
+        [
+          1.1711972643129707,
+          0.0,
+          0.31369374453598803
+        ],
+        [
+          2.3217788369748185,
+          0.0,
+          0.5079365213754037
+        ]
+      ],
+      "truth_status": "plane",
+      "true_y": 0.0,
+      "true_z": 1.7227112628092707,
+      "M1_status": "plane",
+      "M1_error_m": 0.6101027506777721,
+      "M4_zero_status": "plane",
+      "M4_zero_error_m": 0.6916360601825381,
+      "M4_known_status": "plane",
+      "M4_known_error_m": 1.0874185996602706e-09
+    },
+    {
+      "case": "Chip",
+      "speed_m_s": 14,
+      "angle_deg": 20,
+      "spin_x": 0,
+      "spin_y": -15,
+      "spin_z": 0,
+      "early_positions_m": [
+        [
+          0.0,
+          0.0,
+          0.11
+        ],
+        [
+          0.6540922756491225,
+          0.0,
+          0.3383050594223117
+        ],
+        [
+          1.301018687626312,
+          0.0,
+          0.54451682712953
+        ]
+      ],
+      "truth_status": "plane",
+      "true_y": 0.0,
+      "true_z": 0.940919807137237,
+      "M1_status": "plane",
+      "M1_error_m": 0.24966480949335068,
+      "M4_zero_status": "plane",
+      "M4_zero_error_m": 0.5548642857130568,
+      "M4_known_status": "plane",
+      "M4_known_error_m": 8.812679475070706e-10
+    }
+  ]
+}

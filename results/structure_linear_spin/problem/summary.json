@@ -1,0 +1,260 @@
+{
+  "records": [
+    {
+      "case": "problem_b",
+      "model": "M1",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 0.37061994609164467,
+        "position": [
+          11.0,
+          3.216981132075479,
+          1.9570064288620417
+        ],
+        "velocity": [
+          29.679999999999993,
+          8.68,
+          3.165668328840964
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": null,
+      "fit_converged": true,
+      "candidate_plane_error_m": null,
+      "rss_m2": 0.0006459951250000562,
+      "max_residual_m": 0.016000000000002457,
+      "initial_state": [
+        29.679999999999993,
+        8.68,
+        6.80145,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.0,
+      "lift_scale": 1.0,
+      "constant_acceleration": null,
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 3,
+      "coverage": {
+        "speed_range": [
+          31.08482356340834,
+          31.662351809404488
+        ],
+        "Re_range": [
+          455910.7455966556,
+          464381.1598712658
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "competition",
+      "target_yz_m": null
+    },
+    {
+      "case": "problem_b",
+      "model": "M2",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 0.4041392196168976,
+        "position": [
+          11.0,
+          3.217234039892623,
+          1.882796225279047
+        ],
+        "velocity": [
+          24.40591400310232,
+          7.1381397550429835,
+          2.016304377140469
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": null,
+      "fit_converged": true,
+      "candidate_plane_error_m": null,
+      "rss_m2": 0.00015265493027184082,
+      "max_residual_m": 0.010734155716161264,
+      "initial_state": [
+        30.504458744587115,
+        8.921816640144165,
+        6.981788831213716,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.4999999999999998,
+      "lift_scale": 1.0,
+      "constant_acceleration": null,
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 4,
+      "coverage": {
+        "speed_range": [
+          25.50817831266331,
+          32.540224196280995
+        ],
+        "Re_range": [
+          374119.94858572853,
+          477256.6215454546
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "competition",
+      "target_yz_m": null
+    },
+    {
+      "case": "problem_b",
+      "model": "M3",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 0.4050083612273949,
+        "position": [
+          11.0,
+          2.4948244142247127,
+          1.9203670564844244
+        ],
+        "velocity": [
+          23.919866220361676,
+          2.91986622036168,
+          2.03989966527126
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "error_m": null,
+      "fit_converged": true,
+      "candidate_plane_error_m": null,
+      "rss_m2": 0.0,
+      "max_residual_m": 0.0,
+      "initial_state": [
+        30.4,
+        9.4,
+        6.9,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "drag_scale": 1.0,
+      "lift_scale": 1.0,
+      "constant_acceleration": [
+        -16.00000000000001,
+        -16.00000000000001,
+        -12.000000000000009
+      ],
+      "fitted_cd": null,
+      "fitted_alpha": null,
+      "active_parameters": 6,
+      "coverage": {
+        "speed_range": [
+          24.183606211423115,
+          32.55963759012069
+        ],
+        "Re_range": [
+          354692.8911008723,
+          477541.3513217701
+        ],
+        "Sp_range": [
+          0.0,
+          0.0
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "competition",
+      "target_yz_m": null
+    },
+    {
+      "case": "problem_b",
+      "model": "M4",
+      "status": "plane",
+      "event": {
+        "type": "plane",
+        "time": 0.39896701124122785,
+        "position": [
+          11.0,
+          2.6159065106451926,
+          1.952595560172095
+        ],
+        "velocity": [
+          25.09403855946784,
+          4.141278811968301,
+          2.457980576801902
+        ],
+        "spin": [
+          19.743418594384465,
+          1.20601281800855,
+          -22.55533097273708
+        ]
+      },
+      "error_m": null,
+      "fit_converged": true,
+      "candidate_plane_error_m": null,
+      "rss_m2": 8.789686892590929e-07,
+      "max_residual_m": 0.0007842598453402516,
+      "initial_state": [
+        30.378416145444383,
+        9.407401486754244,
+        6.897403854543288,
+        19.743418594384465,
+        1.20601281800855,
+        -22.55533097273708
+      ],
+      "drag_scale": 1.4999999999999998,
+      "lift_scale": 1.4999999999088134,
+      "constant_acceleration": null,
+      "fitted_cd": 0.36231767069109677,
+      "fitted_alpha": 2.287710087732875,
+      "active_parameters": 7,
+      "coverage": {
+        "speed_range": [
+          25.55195941485607,
+          32.54107481586081
+        ],
+        "Re_range": [
+          374762.07141788903,
+          477269.09729929187
+        ],
+        "Sp_range": [
+          0.10141029510160957,
+          0.12914860838740058
+        ],
+        "above_35_m_s": false,
+        "outside_A07_spinning_Re": true,
+        "above_A07_global_Sp": false,
+        "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+      },
+      "shot_type": "competition",
+      "target_yz_m": null
+    }
+  ]
+}

@@ -7,7 +7,7 @@ from football.inference.coupled_fit import observed_trajectory
 from football.inference.physical_fit import fit_velocity
 
 cases=[('Power',27,8,(0,0,0)),('Placement',20,11,(0,0,0)),('Curved',24,10,(0,0,35)),('Topspin',24,12,(0,35,0)),('Backspin',24,10,(0,-35,0)),('Chip',14,20,(0,-15,0))]
-t=np.array([0.,.05,.10]);p0=np.array([0.,0.,.11]);out=Path('results/kick_cases');out.mkdir(parents=True,exist_ok=True);rows=[];traces=[]
+t=np.array([0.,.05,.10]);p0=np.array([0.,0.,.11]);out=Path('results/kick_cases_linear_spin');out.mkdir(parents=True,exist_ok=True);rows=[];traces=[]
 for name,speed,angle,spin in cases:
     a=np.deg2rad(angle);v=np.array([speed*np.cos(a),0,speed*np.sin(a)]);config=PhysicsConfig.for_model('M4')
     truth=simulate(p0,v,spin,config=config,plane_x=11,t_span=(0,3),max_step=.01); early=observed_trajectory(t,p0,np.r_[v,spin],config)[:,:3]

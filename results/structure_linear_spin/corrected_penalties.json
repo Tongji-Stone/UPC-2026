@@ -1,0 +1,1307 @@
+{
+  "input_commit": "b6b71d7",
+  "records": [
+    {
+      "case": "J03WMX",
+      "model": "M1",
+      "fit": {
+        "model": "M1",
+        "initial_state": [
+          27.849999999999998,
+          6.55,
+          0.95316,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "rss_m2": 0.0018320568831998673,
+        "max_residual_m": 0.03599999999999781,
+        "fitted_positions": [
+          [
+            3.039999999999999,
+            0.55,
+            0.13
+          ],
+          [
+            4.154,
+            0.812,
+            0.16027840000000002
+          ],
+          [
+            5.268000000000001,
+            1.0740000000000003,
+            0.17486080000000004
+          ]
+        ],
+        "active_parameters": 3,
+        "spin_representation": "not used",
+        "coefficient_distance": 0.0,
+        "starts": [],
+        "stages": [],
+        "selection": "bounded gravity-only linear least squares",
+        "success": true,
+        "fit_bounds": {
+          "velocity_component_max_m_s": 35.0,
+          "spin_component_max_rad_s": 62.83185307179586,
+          "force_scale_min": 0.5,
+          "force_scale_max": 1.5
+        },
+        "at_parameter_bound": false
+      },
+      "event": {
+        "type": "ground",
+        "time": 0.21342876288227144,
+        "position": [
+          8.983991046271269,
+          1.9479583968788792,
+          0.10999999999999999
+        ],
+        "velocity": [
+          27.849999999999998,
+          6.55,
+          -1.140576163875083
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "goal_error_m": null,
+      "actual_cd": null,
+      "alpha": null
+    },
+    {
+      "case": "J03WMX",
+      "model": "M2",
+      "fit": {
+        "model": "M2",
+        "initial_state": [
+          28.411014513215836,
+          6.6819180900963975,
+          0.9667756790654202,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "drag_scale": 1.4999999999999998,
+        "lift_scale": 1.0,
+        "rss_m2": 0.0010385484262859063,
+        "minimum_search_rss_m2": 0.001038548426282516,
+        "max_residual_m": 0.026125599950788114,
+        "fitted_positions": [
+          [
+            3.039999999999999,
+            0.55,
+            0.13
+          ],
+          [
+            4.16387440004921,
+            0.8143213138760621,
+            0.1604531649116878
+          ],
+          [
+            5.2633477779722995,
+            1.0729038101155497,
+            0.1747188987183382
+          ]
+        ],
+        "active_parameters": 4,
+        "spin_representation": "not used",
+        "coefficient_distance": 0.24999999999999978,
+        "rss_allowance_m2": 6e-12,
+        "coefficient_distance_allowance": 1e-08,
+        "starts": [
+          {
+            "start": 0,
+            "rss_m2": 0.001038548426282516,
+            "success": true,
+            "nfev": 7,
+            "parameters": [
+              0.9470338171071945,
+              0.22273060300321326,
+              0.03222585596884734,
+              1.4999999999999998
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          }
+        ],
+        "stages": [
+          {
+            "stage": "positions",
+            "rss_m2": 0.001038548426282516,
+            "coefficient_distance": 0.24999999999999978
+          }
+        ],
+        "position_jacobian_singular_values": [
+          23.91446251405042,
+          23.91444384705454,
+          23.450914640225637,
+          0.06763769850821476
+        ],
+        "position_jacobian_rank": 4,
+        "selection": "positions, then coefficients nearest one",
+        "success": true,
+        "position_stage_converged": true,
+        "fit_bounds": {
+          "velocity_component_max_m_s": 35.0,
+          "spin_component_max_rad_s": 62.83185307179586,
+          "force_scale_min": 0.5,
+          "force_scale_max": 1.5
+        },
+        "at_parameter_bound": true
+      },
+      "event": {
+        "type": "ground",
+        "time": 0.21311039560826298,
+        "position": [
+          8.759229932057632,
+          1.895091915906775,
+          0.10999999999999999
+        ],
+        "velocity": [
+          25.376874033396746,
+          5.968325896809307,
+          -1.1154444270296415
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "goal_error_m": null,
+      "actual_cd": null,
+      "alpha": null
+    },
+    {
+      "case": "J03WMX",
+      "model": "M3",
+      "fit": {
+        "model": "M3",
+        "initial_state": [
+          29.87499999999992,
+          6.999999999999995,
+          0.37499999999999967,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "constant_acceleration": [
+          -56.24999999999769,
+          -12.499999999999872,
+          6.250000000000005
+        ],
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "rss_m2": 0.0,
+        "max_residual_m": 0.0,
+        "fitted_positions": [
+          [
+            3.039999999999999,
+            0.55,
+            0.13
+          ],
+          [
+            4.189999999999998,
+            0.82,
+            0.15
+          ],
+          [
+            5.25,
+            1.07,
+            0.18
+          ]
+        ],
+        "active_parameters": 6,
+        "spin_representation": "not used",
+        "starts": [],
+        "stages": [],
+        "success": true,
+        "fit_bounds": {
+          "velocity_component_max_m_s": 35.0,
+          "spin_component_max_rad_s": 62.83185307179586,
+          "force_scale_min": 0.5,
+          "force_scale_max": 1.5
+        },
+        "selection": "exact constant-acceleration interpolation"
+      },
+      "event": {
+        "type": "none",
+        "time": null,
+        "position": null,
+        "velocity": null,
+        "spin": null
+      },
+      "goal_error_m": null,
+      "actual_cd": null,
+      "alpha": null
+    },
+    {
+      "case": "J03WMX",
+      "model": "M4",
+      "fit": {
+        "model": "M4",
+        "initial_state": [
+          28.423333506006028,
+          6.6671663952509075,
+          0.55115923302715,
+          6.838685754522041,
+          -29.183872191911753,
+          1.2385398810926829
+        ],
+        "drag_scale": 1.4999999999999998,
+        "lift_scale": 1.499999999672913,
+        "rss_m2": 0.000903448090959355,
+        "minimum_search_rss_m2": 0.0009034480909579495,
+        "max_residual_m": 0.025901529985182137,
+        "fitted_positions": [
+          [
+            3.039999999999999,
+            0.55,
+            0.13
+          ],
+          [
+            4.164098470014816,
+            0.8140667838294824,
+            0.15321841944053982
+          ],
+          [
+            5.2632459497322515,
+            1.073039673846096,
+            0.17848251650264096
+          ]
+        ],
+        "active_parameters": 7,
+        "spin_representation": "30 rad/s reference magnitude; alpha and spin magnitude are not separately identified",
+        "coefficient_distance": 0.49999999967291275,
+        "rss_allowance_m2": 6e-12,
+        "coefficient_distance_allowance": 1e-08,
+        "starts": [
+          {
+            "start": 0,
+            "rss_m2": 0.0009034480909579495,
+            "success": true,
+            "nfev": 66,
+            "parameters": [
+              0.947444450200201,
+              0.2222388798416969,
+              0.018371974434238332,
+              -1.3406184552884504,
+              0.04129639946465787,
+              1.4999999999999998,
+              1.499999999672913
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          },
+          {
+            "start": 1,
+            "rss_m2": 0.0009034480911556278,
+            "success": true,
+            "nfev": 67,
+            "parameters": [
+              0.9474444654681236,
+              0.2222388162827272,
+              0.01837197757653774,
+              -1.3406246564835165,
+              0.04130099778812418,
+              1.4999999999999998,
+              1.49999999556074
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          },
+          {
+            "start": 2,
+            "rss_m2": 0.0010430893800436407,
+            "success": true,
+            "nfev": 20,
+            "parameters": [
+              0.948084713486303,
+              0.21823028076929976,
+              0.032225857450791616,
+              3.10643459065149,
+              1.5707963267948963,
+              1.4999999999999998,
+              0.5000000000000001
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          },
+          {
+            "start": 3,
+            "rss_m2": 0.0009034480910862161,
+            "success": true,
+            "nfev": 64,
+            "parameters": [
+              0.9474444342453272,
+              0.22223894957019338,
+              0.018371971846888793,
+              -1.340612779083252,
+              0.04129137191666047,
+              1.4999999999999998,
+              1.499999996882866
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          },
+          {
+            "start": 4,
+            "rss_m2": 0.0009034480913031032,
+            "success": true,
+            "nfev": 74,
+            "parameters": [
+              0.9474444407734599,
+              0.2222389201245301,
+              0.018371973222326414,
+              -1.34059323871782,
+              0.04129393941940987,
+              1.4999999999999998,
+              1.499999992655933
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          },
+          {
+            "start": 5,
+            "rss_m2": 0.0009034480910878514,
+            "success": true,
+            "nfev": 80,
+            "parameters": [
+              0.9474444058613981,
+              0.22223906842626,
+              0.018371966481988394,
+              -1.3406234666121226,
+              0.04128229371798669,
+              1.4999999999999998,
+              1.499999997035478
+            ],
+            "message": "`xtol` termination condition is satisfied."
+          }
+        ],
+        "stages": [
+          {
+            "stage": "positions",
+            "rss_m2": 0.0009034480909579495,
+            "coefficient_distance": 0.49999999967291275
+          }
+        ],
+        "position_jacobian_singular_values": [
+          23.916783601323296,
+          23.91462832636353,
+          23.450072327832746,
+          0.0742054740558011,
+          0.06763880275849185,
+          0.04947387600862444
+        ],
+        "position_jacobian_rank": 6,
+        "selection": "minimum position residual across deterministic starts",
+        "success": true,
+        "position_stage_converged": true,
+        "fit_bounds": {
+          "velocity_component_max_m_s": 35.0,
+          "spin_component_max_rad_s": 62.83185307179586,
+          "force_scale_min": 0.5,
+          "force_scale_max": 1.5
+        },
+        "at_parameter_bound": true
+      },
+      "event": {
+        "type": "plane",
+        "time": 0.30389055507863544,
+        "position": [
+          11.0,
+          2.4377178108073436,
+          0.33904894362927007
+        ],
+        "velocity": [
+          24.182321230128043,
+          5.8009248495253365,
+          0.735259688039769
+        ],
+        "spin": [
+          6.838685754522041,
+          -29.183872191911753,
+          1.2385398810926829
+        ]
+      },
+      "goal_error_m": 0.3599704014244998,
+      "actual_cd": 0.36231767069109677,
+      "alpha": 2.287710087373094
+    },
+    {
+      "case": "J03WOH",
+      "model": "M1",
+      "fit": {
+        "model": "M1",
+        "initial_state": [
+          30.19999999999996,
+          6.7,
+          5.553159999999999,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "rss_m2": 0.0003009208832000348,
+        "max_residual_m": 0.012000000000000899,
+        "fitted_positions": [
+          [
+            0.7700000000000031,
+            0.08,
+            0.24
+          ],
+          [
+            1.978000000000001,
+            0.3479999999999999,
+            0.45427839999999997
+          ],
+          [
+            3.186000000000001,
+            0.6159999999999999,
+            0.6528608
+          ]
+        ],
+        "active_parameters": 3,
+        "spin_representation": "not used",
+        "coefficient_distance": 0.0,
+        "starts": [],
+        "stages": [],
+        "selection": "bounded gravity-only linear least squares",
+        "success": true,
+        "fit_bounds": {
+          "velocity_component_max_m_s": 35.0,
+          "spin_component_max_rad_s": 62.83185307179586,
+          "force_scale_min": 0.5,
+          "force_scale_max": 1.5
+        },
+        "at_parameter_bound": false
+      },
+      "event": {
+        "type": "plane",
+        "time": 0.3387417218543052,
+        "position": [
+          11.0,
+          2.349569536423846,
+          1.5582580751502109
+        ],
+        "velocity": [
+          30.19999999999996,
+          6.7,
+          2.23010370860925
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "goal_error_m": 0.684066000992288,
+      "actual_cd": null,
+      "alpha": null
+    },
+    {
+      "case": "J03WOH",
+      "model": "M2",
+      "fit": {
+        "model": "M2",
+        "initial_state": [
+          30.794392723250986,
+          6.831284234523891,
+          5.6578186320317885,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "drag_scale": 1.3435415968959141,
+        "lift_scale": 1.0,
+        "rss_m2": 0.0001554419527560568,
+        "minimum_search_rss_m2": 0.00015544195275595592,
+        "max_residual_m": 0.010282407470714017,
+        "fitted_positions": [
+          [
+            0.7700000000000031,
+            0.08,
+            0.24
+          ],
+          [
+            1.9883920791606524,
+            0.35028240747071404,
+            0.45606251030694267
+          ],
+          [
+            3.180812621203362,
+            0.614803410465796,
+            0.6519899544835401
+          ]
+        ],
+        "active_parameters": 4,
+        "spin_representation": "not used",
+        "coefficient_distance": 0.11802082879779476,
+        "rss_allowance_m2": 6e-12,
+        "coefficient_distance_allowance": 1e-08,
+        "starts": [
+          {
+            "start": 0,
+            "rss_m2": 0.00015544195275595592,
+            "success": true,
+            "nfev": 8,
+            "parameters": [
+              1.0264797574416995,
+              0.2277094744841297,
+              0.1885939544010596,
+              1.3435415968959141
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          }
+        ],
+        "stages": [
+          {
+            "stage": "positions",
+            "rss_m2": 0.00015544195275595592,
+            "coefficient_distance": 0.11802082879779476
+          }
+        ],
+        "position_jacobian_singular_values": [
+          23.92291638154735,
+          23.922901540599337,
+          23.468210148942536,
+          0.08123839069032522
+        ],
+        "position_jacobian_rank": 4,
+        "selection": "positions, then coefficients nearest one",
+        "success": true,
+        "position_stage_converged": true,
+        "fit_bounds": {
+          "velocity_component_max_m_s": 35.0,
+          "spin_component_max_rad_s": 62.83185307179586,
+          "force_scale_min": 0.5,
+          "force_scale_max": 1.5
+        },
+        "at_parameter_bound": false
+      },
+      "event": {
+        "type": "plane",
+        "time": 0.36439722329917273,
+        "position": [
+          11.0,
+          2.349375413479552,
+          1.5059200544016134
+        ],
+        "velocity": [
+          25.675388111240103,
+          5.695708163362021,
+          1.4389721969841442
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "goal_error_m": 0.6566575716744164,
+      "actual_cd": null,
+      "alpha": null
+    },
+    {
+      "case": "J03WOH",
+      "model": "M3",
+      "fit": {
+        "model": "M3",
+        "initial_state": [
+          30.874999999999986,
+          6.25,
+          5.875000000000001,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "constant_acceleration": [
+          -18.75000000000071,
+          12.50000000000001,
+          -18.750000000000018
+        ],
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "rss_m2": 0.0,
+        "max_residual_m": 0.0,
+        "fitted_positions": [
+          [
+            0.7700000000000031,
+            0.08,
+            0.24
+          ],
+          [
+            1.990000000000002,
+            0.34,
+            0.46
+          ],
+          [
+            3.1799999999999997,
+            0.62,
+            0.65
+          ]
+        ],
+        "active_parameters": 6,
+        "spin_representation": "not used",
+        "starts": [],
+        "stages": [],
+        "success": true,
+        "fit_bounds": {
+          "velocity_component_max_m_s": 35.0,
+          "spin_component_max_rad_s": 62.83185307179586,
+          "force_scale_min": 0.5,
+          "force_scale_max": 1.5
+        },
+        "selection": "exact constant-acceleration interpolation"
+      },
+      "event": {
+        "type": "plane",
+        "time": 0.3737522504111569,
+        "position": [
+          11.0,
+          3.2890187193660054,
+          1.126193739721134
+        ],
+        "velocity": [
+          23.867145304790533,
+          10.921903130139459,
+          -1.1328546952091936
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "goal_error_m": 0.373931414308066,
+      "actual_cd": null,
+      "alpha": null
+    },
+    {
+      "case": "J03WOH",
+      "model": "M4",
+      "fit": {
+        "model": "M4",
+        "initial_state": [
+          30.856659139531107,
+          6.407831878869256,
+          5.818992025515035,
+          -6.828525794913638,
+          9.509518979578525,
+          27.62137368497872
+        ],
+        "drag_scale": 1.3404054196562607,
+        "lift_scale": 1.4999999999994733,
+        "rss_m2": 1.2395178849280752e-05,
+        "minimum_search_rss_m2": 1.2395178848893981e-05,
+        "max_residual_m": 0.002902443396721077,
+        "fitted_positions": [
+          [
+            0.7700000000000031,
+            0.08,
+            0.24
+          ],
+          [
+            1.989540705616272,
+            0.3429024433967211,
+            0.4588872526724054
+          ],
+          [
+            3.1802442283390118,
+            0.6185358862407386,
+            0.6505644170891114
+          ]
+        ],
+        "active_parameters": 7,
+        "spin_representation": "30 rad/s reference magnitude; alpha and spin magnitude are not separately identified",
+        "coefficient_distance": 0.36587584973082826,
+        "rss_allowance_m2": 6e-12,
+        "coefficient_distance_allowance": 1e-08,
+        "starts": [
+          {
+            "start": 0,
+            "rss_m2": 1.2395178849012254e-05,
+            "success": true,
+            "nfev": 52,
+            "parameters": [
+              1.028555303113699,
+              0.21359439813109646,
+              0.19396640698465373,
+              2.1935466661533467,
+              1.1699021772646752,
+              1.3404054220203336,
+              1.4999999999988547
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          },
+          {
+            "start": 1,
+            "rss_m2": 1.2395178848906951e-05,
+            "success": true,
+            "nfev": 54,
+            "parameters": [
+              1.0285553125444513,
+              0.21359439673017397,
+              0.19396639996281126,
+              2.1935502674865677,
+              1.1699021743333111,
+              1.3404059117234548,
+              1.499999999998422
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          },
+          {
+            "start": 2,
+            "rss_m2": 9.256477974400672e-05,
+            "success": false,
+            "nfev": 240,
+            "parameters": [
+              1.0231176515178255,
+              0.2223320177730919,
+              0.19120230154880186,
+              3.1136772316925936,
+              0.16875929478995194,
+              1.0890753022029174,
+              1.3666792237923089
+            ],
+            "message": "The maximum number of function evaluations is exceeded."
+          },
+          {
+            "start": 3,
+            "rss_m2": 0.00024027825308859836,
+            "success": false,
+            "nfev": 240,
+            "parameters": [
+              1.0231420153533488,
+              0.2262777717722571,
+              0.17805850144697283,
+              -1.581904955350442,
+              0.03047225131665059,
+              1.0039131210624372,
+              0.9919055760190544
+            ],
+            "message": "The maximum number of function evaluations is exceeded."
+          },
+          {
+            "start": 4,
+            "rss_m2": 1.2395178848893981e-05,
+            "success": true,
+            "nfev": 44,
+            "parameters": [
+              1.028555304651037,
+              0.21359439596230856,
+              0.19396640085050118,
+              2.1935489106600485,
+              1.1699022503992829,
+              1.3404054196562607,
+              1.4999999999994733
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          },
+          {
+            "start": 5,
+            "rss_m2": 1.2395178849125147e-05,
+            "success": true,
+            "nfev": 48,
+            "parameters": [
+              1.0285553040805888,
+              0.21359439959606502,
+              0.19396641045543717,
+              2.1935460657333197,
+              1.169902038812835,
+              1.3404055403137423,
+              1.4999999999973004
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          }
+        ],
+        "stages": [
+          {
+            "stage": "positions",
+            "rss_m2": 1.2395178848893981e-05,
+            "coefficient_distance": 0.36587584973082826
+          }
+        ],
+        "position_jacobian_singular_values": [
+          23.926312183751833,
+          23.92434084016216,
+          23.469421944450247,
+          0.08125104897799607,
+          0.07500041529441877,
+          0.054223777731816386
+        ],
+        "position_jacobian_rank": 6,
+        "selection": "minimum position residual across deterministic starts",
+        "success": true,
+        "position_stage_converged": true,
+        "fit_bounds": {
+          "velocity_component_max_m_s": 35.0,
+          "spin_component_max_rad_s": 62.83185307179586,
+          "force_scale_min": 0.5,
+          "force_scale_max": 1.5
+        },
+        "at_parameter_bound": true
+      },
+      "event": {
+        "type": "plane",
+        "time": 0.3690829190495884,
+        "position": [
+          11.0,
+          2.934373718950482,
+          1.2905782246068416
+        ],
+        "velocity": [
+          24.82873574287397,
+          8.862133868221932,
+          0.09969550370568311
+        ],
+        "spin": [
+          -6.828525794913638,
+          9.509518979578525,
+          27.62137368497872
+        ]
+      },
+      "goal_error_m": 0.11273427703759856,
+      "actual_cd": 0.3237683796210523,
+      "alpha": 2.287710087871144
+    },
+    {
+      "case": "J03WR9",
+      "model": "M1",
+      "fit": {
+        "model": "M1",
+        "initial_state": [
+          27.200000000000024,
+          8.9,
+          2.7031599999999996,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "rss_m2": 0.00031813688320002565,
+        "max_residual_m": 0.012000000000000899,
+        "fitted_positions": [
+          [
+            1.4699999999999989,
+            0.49,
+            0.23
+          ],
+          [
+            2.5579999999999994,
+            0.8460000000000001,
+            0.33027839999999997
+          ],
+          [
+            3.646000000000001,
+            1.2020000000000004,
+            0.4148607999999999
+          ]
+        ],
+        "active_parameters": 3,
+        "spin_representation": "not used",
+        "coefficient_distance": 0.0,
+        "starts": [],
+        "stages": [],
+        "selection": "bounded gravity-only linear least squares",
+        "success": true,
+        "fit_bounds": {
+          "velocity_component_max_m_s": 35.0,
+          "spin_component_max_rad_s": 62.83185307179586,
+          "force_scale_min": 0.5,
+          "force_scale_max": 1.5
+        },
+        "at_parameter_bound": false
+      },
+      "event": {
+        "type": "plane",
+        "time": 0.3503676470588228,
+        "position": [
+          11.0,
+          3.6082720588235278,
+          0.5749743296658746
+        ],
+        "velocity": [
+          27.200000000000024,
+          8.9,
+          -0.7339466176470496
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "goal_error_m": 0.5495896489855783,
+      "actual_cd": null,
+      "alpha": null
+    },
+    {
+      "case": "J03WR9",
+      "model": "M2",
+      "fit": {
+        "model": "M2",
+        "initial_state": [
+          27.747379176621514,
+          9.079109807151534,
+          2.753096371898038,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "drag_scale": 1.4999999999999998,
+        "lift_scale": 1.0,
+        "rss_m2": 0.00010758185802070757,
+        "minimum_search_rss_m2": 0.00010758185802010515,
+        "max_residual_m": 0.008888580003432955,
+        "fitted_positions": [
+          [
+            1.4699999999999989,
+            0.49,
+            0.23
+          ],
+          [
+            2.5675751613570976,
+            0.8491332121182509,
+            0.33111141999656707
+          ],
+          [
+            3.641242881834233,
+            1.2004437653981481,
+            0.41449468095472414
+          ]
+        ],
+        "active_parameters": 4,
+        "spin_representation": "not used",
+        "coefficient_distance": 0.24999999999999978,
+        "rss_allowance_m2": 6e-12,
+        "coefficient_distance_allowance": 1e-08,
+        "starts": [
+          {
+            "start": 0,
+            "rss_m2": 0.00010758185802010515,
+            "success": true,
+            "nfev": 8,
+            "parameters": [
+              0.9249126392207171,
+              0.3026369935717178,
+              0.09176987906326793,
+              1.4999999999999998
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          }
+        ],
+        "stages": [
+          {
+            "stage": "positions",
+            "rss_m2": 0.00010758185802010515,
+            "coefficient_distance": 0.24999999999999978
+          }
+        ],
+        "position_jacobian_singular_values": [
+          23.912751777805592,
+          23.91273330034128,
+          23.447614966620648,
+          0.06808184932054845
+        ],
+        "position_jacobian_rank": 4,
+        "selection": "positions, then coefficients nearest one",
+        "success": true,
+        "position_stage_converged": true,
+        "fit_bounds": {
+          "velocity_component_max_m_s": 35.0,
+          "spin_component_max_rad_s": 62.83185307179586,
+          "force_scale_min": 0.5,
+          "force_scale_max": 1.5
+        },
+        "at_parameter_bound": true
+      },
+      "event": {
+        "type": "plane",
+        "time": 0.3788488556614622,
+        "position": [
+          11.0,
+          3.6082734740964177,
+          0.5146768915477686
+        ],
+        "velocity": [
+          22.878620597059044,
+          7.486022637117009,
+          -1.120619111424717
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "goal_error_m": 0.5408382114740042,
+      "actual_cd": null,
+      "alpha": null
+    },
+    {
+      "case": "J03WR9",
+      "model": "M3",
+      "fit": {
+        "model": "M3",
+        "initial_state": [
+          27.87500000000005,
+          9.125,
+          3.2500000000000013,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "constant_acceleration": [
+          -18.75000000000071,
+          -6.250000000000005,
+          -25.00000000000004
+        ],
+        "drag_scale": 1.0,
+        "lift_scale": 1.0,
+        "rss_m2": 0.0,
+        "max_residual_m": 0.0,
+        "fitted_positions": [
+          [
+            1.4699999999999989,
+            0.49,
+            0.23
+          ],
+          [
+            2.5700000000000003,
+            0.85,
+            0.34
+          ],
+          [
+            3.6400000000000006,
+            1.2,
+            0.41
+          ]
+        ],
+        "active_parameters": 6,
+        "spin_representation": "not used",
+        "starts": [],
+        "stages": [],
+        "success": true,
+        "fit_bounds": {
+          "velocity_component_max_m_s": 35.0,
+          "spin_component_max_rad_s": 62.83185307179586,
+          "force_scale_min": 0.5,
+          "force_scale_max": 1.5
+        },
+        "selection": "exact constant-acceleration interpolation"
+      },
+      "event": {
+        "type": "ground",
+        "time": 0.292788205960997,
+        "position": [
+          8.82779998913284,
+          2.8938019620507887,
+          0.11
+        ],
+        "velocity": [
+          22.385221138231152,
+          7.29507371274377,
+          -4.069705149024932
+        ],
+        "spin": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "goal_error_m": null,
+      "actual_cd": null,
+      "alpha": null
+    },
+    {
+      "case": "J03WR9",
+      "model": "M4",
+      "fit": {
+        "model": "M4",
+        "initial_state": [
+          27.71075869542056,
+          9.07067612039108,
+          3.169949561399987,
+          -9.310550136700384,
+          28.517636486147673,
+          -0.24096762423081738
+        ],
+        "drag_scale": 1.4999999999999998,
+        "lift_scale": 1.4999999997182778,
+        "rss_m2": 1.573041416697615e-05,
+        "minimum_search_rss_m2": 1.5730414166515947e-05,
+        "max_residual_m": 0.002986826907614315,
+        "fitted_positions": [
+          [
+            1.4699999999999989,
+            0.49,
+            0.23
+          ],
+          [
+            2.567013173092386,
+            0.8490112599990358,
+            0.3383930397831623
+          ],
+          [
+            3.6415330283343277,
+            1.2005072839630146,
+            0.4108011481572967
+          ]
+        ],
+        "active_parameters": 7,
+        "spin_representation": "30 rad/s reference magnitude; alpha and spin magnitude are not separately identified",
+        "coefficient_distance": 0.4999999997182776,
+        "rss_allowance_m2": 6e-12,
+        "coefficient_distance_allowance": 1e-08,
+        "starts": [
+          {
+            "start": 0,
+            "rss_m2": 1.5730414178960433e-05,
+            "success": true,
+            "nfev": 73,
+            "parameters": [
+              0.9236919585900242,
+              0.30235586441142,
+              0.1056649854403935,
+              1.8863661695179583,
+              -0.00803153614072432,
+              1.4999999999999998,
+              1.499999998997206
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          },
+          {
+            "start": 1,
+            "rss_m2": 1.573041416675995e-05,
+            "success": true,
+            "nfev": 58,
+            "parameters": [
+              0.9236919572208708,
+              0.30235586875185694,
+              0.10566498542529963,
+              1.8863769194525377,
+              -0.008032828131525418,
+              1.4999999999999998,
+              1.4999999997014284
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          },
+          {
+            "start": 2,
+            "rss_m2": 1.573041416923737e-05,
+            "success": true,
+            "nfev": 73,
+            "parameters": [
+              0.923691958131384,
+              0.30235586594867586,
+              0.10566498543591223,
+              1.886376793197922,
+              -0.00803260697367222,
+              1.4999999999999998,
+              1.4999999995504985
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          },
+          {
+            "start": 3,
+            "rss_m2": 6.524049739312115e-05,
+            "success": false,
+            "nfev": 240,
+            "parameters": [
+              0.9246041098408548,
+              0.3022849862568085,
+              0.09603993063985439,
+              -3.1397616217389457,
+              -0.06484857635080622,
+              1.497413811644378,
+              1.4946028603319579
+            ],
+            "message": "The maximum number of function evaluations is exceeded."
+          },
+          {
+            "start": 4,
+            "rss_m2": 1.573041416702603e-05,
+            "success": true,
+            "nfev": 88,
+            "parameters": [
+              0.923691955745112,
+              0.30235587312675255,
+              0.10566498540953295,
+              1.8863712091031832,
+              -0.008032649651931505,
+              1.4999999999999998,
+              1.4999999996825515
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          },
+          {
+            "start": 5,
+            "rss_m2": 1.5730414166515947e-05,
+            "success": true,
+            "nfev": 79,
+            "parameters": [
+              0.9236919565140186,
+              0.3023558706797027,
+              0.10566498537999956,
+              1.8863698070523605,
+              -0.008032340513167643,
+              1.4999999999999998,
+              1.4999999997182778
+            ],
+            "message": "`ftol` termination condition is satisfied."
+          }
+        ],
+        "stages": [
+          {
+            "stage": "positions",
+            "rss_m2": 1.5730414166515947e-05,
+            "coefficient_distance": 0.4999999997182776
+          }
+        ],
+        "position_jacobian_singular_values": [
+          23.915028389456218,
+          23.91284180589543,
+          23.4466755956075,
+          0.07445106134035787,
+          0.06809486903497926,
+          0.04963942854036808
+        ],
+        "position_jacobian_rank": 6,
+        "selection": "minimum position residual across deterministic starts",
+        "success": true,
+        "position_stage_converged": true,
+        "fit_bounds": {
+          "velocity_component_max_m_s": 35.0,
+          "spin_component_max_rad_s": 62.83185307179586,
+          "force_scale_min": 0.5,
+          "force_scale_max": 1.5
+        },
+        "at_parameter_bound": true
+      },
+      "event": {
+        "type": "ground",
+        "time": 0.33186293289435603,
+        "position": [
+          9.917310560768941,
+          3.2502305729718315,
+          0.11000000000000008
+        ],
+        "velocity": [
+          23.303961991209203,
+          7.600586728267838,
+          -3.59852115500957
+        ],
+        "spin": [
+          -9.310550136700384,
+          28.517636486147673,
+          -0.24096762423081738
+        ]
+      },
+      "goal_error_m": null,
+      "actual_cd": 0.36231767069109677,
+      "alpha": 2.2877100874422815
+    }
+  ]
+}

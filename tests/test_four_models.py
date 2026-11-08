@@ -13,8 +13,8 @@ class FourModelTests(unittest.TestCase):
         for model in ['M1','M2','M3','M4']:
             r=fit_early(t,p,PhysicsConfig.for_model(model),model,max_nfev=1,bounds=limits)
             velocity=np.asarray(r['initial_state'][:3]);spin=np.asarray(r['initial_state'][3:])
-            self.assertTrue(0 <= velocity[0] <= 25)
-            self.assertTrue(np.all(np.abs(velocity[1:]) <= 25))
+            self.assertTrue(model == 'M3' or 0 <= velocity[0] <= 25)
+            self.assertTrue(model == 'M3' or np.all(np.abs(velocity[1:]) <= 25))
             if model=='M4': self.assertTrue(np.all(np.abs(spin) <= 20))
             if model in ('M2','M3','M4'): self.assertTrue(.8 <= r['drag_scale'] <= 1.2)
             if model in ('M3','M4'): self.assertTrue(.8 <= r['lift_scale'] <= 1.2)
@@ -25,7 +25,7 @@ class FourModelTests(unittest.TestCase):
         with self.assertRaises(ValueError): InverseBounds(force_scale_min=2,force_scale_max=1)
 
     def test_hierarchy_and_scales(self):
-        for m,drag,lift in [('M1',False,False),('M2',True,False),('M3',True,True),('M4',True,True)]:
+        for m,drag,lift in [('M1',False,False),('M2',True,False),('M3',False,False),('M4',True,True)]:
             cfg=PhysicsConfig.for_model(m)
             self.assertEqual((cfg.use_drag,cfg.use_magnus,cfg.use_rotational_drag),(drag,lift,False))
         cfg=PhysicsConfig.for_model('M4');a=forces([30,2,4],[0,30,10],cfg)
@@ -64,14 +64,28 @@ class FourModelTests(unittest.TestCase):
         b=state_derivative(0,np.r_[[0,0,1],[30,2,5],[0,200,0]],c)
         np.testing.assert_allclose(a,b,atol=1e-12)
 
-    def test_synthetic_variable_model_regularized_fit(self):
+    def test_linear_spin_force_and_constant_acceleration(self):
+        cfg = PhysicsConfig.for_model('M4')
+        velocity = np.array([30., 2., 4.]); spin = np.array([0., 30., 10.])
+        expected = .5 * cfg.air_density * np.pi * cfg.radius**3 * cfg.lift_coefficient * np.cross(spin, velocity)
+        np.testing.assert_allclose(forces(velocity, spin, cfg)['magnus'], expected)
+        np.testing.assert_allclose(forces(velocity, 2*spin, cfg)['magnus'], 2*expected)
+        t=np.array([0., .05, .1]); v=np.array([20.,2.,4.]); a=np.array([-3.,4.,-8.]); p0=np.array([0.,0.,1.])
+        p=p0+t[:,None]*v+.5*t[:,None]**2*a
+        result=fit_early(t,p,PhysicsConfig.for_model('M3'),'M3')
+        np.testing.assert_allclose(result['initial_state'][:3],v,atol=1e-10)
+        np.testing.assert_allclose(result['constant_acceleration'],a,atol=1e-10)
+
+    def test_synthetic_constant_model_fit(self):
         c=PhysicsConfig.for_model('M4');t=np.array([0,.05,.1])
         p=observed_trajectory(t,[0,0,.5],[30,2,5,0,0,30],c)[:,:3]
         r=fit_early(t,p,c,'M4',max_nfev=80)
         self.assertLess(r['rss_m2'],6e-12)
-        self.assertEqual(r['active_parameters'],8)
-        self.assertEqual(len(r['starts']),19)
-        self.assertLess(r['coefficient_distance'],1.1e-8)
+        self.assertEqual(r['active_parameters'],7)
+        self.assertEqual(len(r['starts']),6)
+        self.assertTrue(.5 <= r['drag_scale'] <= 1.5)
+        self.assertTrue(.5 <= r['lift_scale'] <= 1.5)
+        self.assertAlmostEqual(np.linalg.norm(r['initial_state'][3:]), 30.)
         predicted=observed_trajectory(t,p[0],r['initial_state'],
             replace(c,drag_scale=r['drag_scale'],lift_scale=r['lift_scale']))[:,:3]
         np.testing.assert_allclose(predicted,p,atol=3e-6)
@@ -85,8 +99,8 @@ class FourModelTests(unittest.TestCase):
         with self.assertRaises(ValueError):simulate([0,0,1],[30,0,0],config=replace(c,drag_scale=-1))
 
     def test_iteration_limit_is_a_fit_failure(self):
-        c=PhysicsConfig.for_model('M3')
-        r=fit_early([0,.04,.08],[[0,0,1],[1,.2,1.4],[2.2,.6,1.8]],c,'M3',max_nfev=1)
+        c=PhysicsConfig.for_model('M4')
+        r=fit_early([0,.04,.08],[[0,0,1],[1,.2,1.4],[2.2,.6,1.8]],c,'M4',max_nfev=1)
         self.assertFalse(r['success'])
         self.assertEqual(len(r['stages']),1)
 

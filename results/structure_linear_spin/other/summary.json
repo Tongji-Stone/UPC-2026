@@ -1,0 +1,241 @@
+{
+  "records": [
+    {
+      "case": "constant_spin",
+      "event": {
+        "type": "plane",
+        "time": 0.39896701124122785,
+        "position": [
+          11.0,
+          2.6159065106451926,
+          1.952595560172095
+        ],
+        "velocity": [
+          25.09403855946784,
+          4.141278811968301,
+          2.457980576801902
+        ],
+        "spin": [
+          19.743418594384465,
+          1.20601281800855,
+          -22.55533097273708
+        ]
+      },
+      "configuration": {
+        "mass": 0.43,
+        "radius": 0.11,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.5e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.24154511379406454,
+        "lift_coefficient": 1.5251400585812982,
+        "drag_scale": 1.4999999999999998,
+        "lift_scale": 1.4999999999088134,
+        "coefficient_mode": "linear_spin",
+        "constant_acceleration": null,
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": true,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": false,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M4",
+        "dynamic_viscosity": 1.8e-05,
+        "moment_of_inertia": 0.003468666666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "constant spin unless rotational torque is enabled",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "final_spin": 29.999999999999996,
+      "initial_spin": 29.999999999999996
+    },
+    {
+      "case": "inertial_torque",
+      "event": {
+        "type": "plane",
+        "time": 0.39924316750125466,
+        "position": [
+          11.0,
+          2.6544621915409974,
+          1.9492137828649454
+        ],
+        "velocity": [
+          25.05065912365874,
+          4.3955682732288315,
+          2.4336279273873704
+        ],
+        "spin": [
+          16.907688177377356,
+          1.0327942229117508,
+          -19.315727972917927
+        ]
+      },
+      "configuration": {
+        "mass": 0.43,
+        "radius": 0.11,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.5e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.24154511379406454,
+        "lift_coefficient": 1.5251400585812982,
+        "drag_scale": 1.4999999999999998,
+        "lift_scale": 1.4999999999088134,
+        "coefficient_mode": "linear_spin",
+        "constant_acceleration": null,
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": true,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": true,
+        "use_viscous_torque": false,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M4",
+        "dynamic_viscosity": 1.8e-05,
+        "moment_of_inertia": 0.003468666666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "constant spin unless rotational torque is enabled",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "final_spin": 25.691125520966768,
+      "initial_spin": 29.999999999999996
+    },
+    {
+      "case": "inertial_and_viscous",
+      "event": {
+        "type": "plane",
+        "time": 0.3992432792956989,
+        "position": [
+          10.999999999999998,
+          2.654477561855439,
+          1.9492124011357124
+        ],
+        "velocity": [
+          25.050641566344268,
+          4.395668214915036,
+          2.4336179117330925
+        ],
+        "spin": [
+          16.90659989251417,
+          1.0327277457974473,
+          -19.31448469150929
+        ]
+      },
+      "configuration": {
+        "mass": 0.43,
+        "radius": 0.11,
+        "air_density": 1.2,
+        "kinematic_viscosity": 1.5e-05,
+        "gravity": 9.81,
+        "drag_coefficient": 0.24154511379406454,
+        "lift_coefficient": 1.5251400585812982,
+        "drag_scale": 1.4999999999999998,
+        "lift_scale": 1.4999999999088134,
+        "coefficient_mode": "linear_spin",
+        "constant_acceleration": null,
+        "use_gravity": true,
+        "use_drag": true,
+        "use_magnus": true,
+        "wind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "spin_decay": 0.0,
+        "use_rotational_drag": true,
+        "use_viscous_torque": true,
+        "angular_drag_coefficient": 1.5,
+        "inertia_coefficient": 0.6666666666666666,
+        "model_id": "four-model-v2-M4",
+        "dynamic_viscosity": 1.8e-05,
+        "moment_of_inertia": 0.003468666666666666,
+        "coefficient_callback": "model default",
+        "sources": {
+          "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+          "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+          "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+          "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+          "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+          "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+        },
+        "assumptions": [
+          "still air reference unless wind is supplied",
+          "constant spin unless rotational torque is enabled",
+          "isotropic thin shell",
+          "sin(theta) oblique-spin extension"
+        ]
+      },
+      "final_spin": 25.689471878982776,
+      "initial_spin": 29.999999999999996
+    }
+  ],
+  "goal_displacement_m": 0.03870370714924186,
+  "displacement_pct_of_11m": 0.351851883174926,
+  "time_change_pct": 0.06921781807665006,
+  "spin_loss_pct": 14.36291493011076,
+  "viscous_to_inertial_torque_ratio_at_launch": 0.00041322314049586787,
+  "viscous_goal_difference_m": 1.543229541282581e-05,
+  "wind_estimates": [
+    {
+      "wind_m_s": 1.0,
+      "speed_ratio": 0.030730392455033204,
+      "headwind_q_change_pct": 6.240514193050695,
+      "tailwind_q_change_pct": -6.051642788962597,
+      "crosswind_q_change_pct": 0.09443570204403617,
+      "crosswind_airflow_angle_deg": 1.7601678542936945
+    },
+    {
+      "wind_m_s": 3.0,
+      "speed_ratio": 0.0921911773650996,
+      "headwind_q_change_pct": 19.288156791416245,
+      "tailwind_q_change_pct": -17.588314154623596,
+      "crosswind_q_change_pct": 0.8499213183963252,
+      "crosswind_airflow_angle_deg": 5.267276474421455
+    },
+    {
+      "wind_m_s": 5.0,
+      "speed_ratio": 0.153651962275166,
+      "headwind_q_change_pct": 33.0912850061341,
+      "tailwind_q_change_pct": -28.369499903932294,
+      "crosswind_q_change_pct": 2.360892551100904,
+      "crosswind_airflow_angle_deg": 8.735292844847839
+    }
+  ],
+  "five_percent_dynamic_pressure_wind_threshold_m_s": 0.8036043350925454
+}

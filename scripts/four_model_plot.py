@@ -7,7 +7,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'results/structure_v2';FIG=OUT/'figures'
+ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'results/structure_linear_spin';FIG=OUT/'figures'
 MODELS=['M1','M2','M3','M4'];COLORS=['#454B4B','#0072B2','#D55E00','#009E73'];STYLES=['-', '--','-.',':']
 def js(p):return json.loads((OUT/p).read_text(encoding='utf-8'))
 def rows(p):
@@ -27,7 +27,7 @@ def lines(ax,group,case,x,y):
 def main():
     FIG.mkdir(parents=True,exist_ok=True)
     plt.rcParams.update({'font.family':'serif','font.serif':['Times New Roman'],'font.size':10,
-        'axes.spines.right':False,'axes.spines.top':False,'pdf.fonttype':42,'svg.fonttype':'none'})
+        'font.weight':'bold','axes.labelweight':'bold','axes.titleweight':'bold','axes.spines.right':False,'axes.spines.top':False,'pdf.fonttype':42,'svg.fonttype':'none'})
     forward=js('forward/summary.json')
     fig,axes=plt.subplots(1,2,figsize=(6.4,2.7))
     lines(axes[0],'forward','zero_spin','x_m','z_m')
@@ -38,11 +38,12 @@ def main():
     rr=[r for r in forward['records'] if r['case']=='zero_spin']
     axes[1].axhline(21.9,color='black',lw=1,label='Measured 21.9 m')
     for i,r in enumerate(rr):axes[1].scatter(i,r['predicted_range_m'],s=40,color=COLORS[i],marker=['o','s','^','D'][i])
-    axes[1].set(xticks=range(4),xticklabels=MODELS,ylabel='Landing x (m)');axes[1].legend(fontsize=8,frameon=False)
+    axes[1].set(xticks=range(3),xticklabels=['M1','M2','M4'],ylabel='Landing x (m)');axes[1].legend(fontsize=8,frameon=False)
     save(fig,'forward_range')
     fig,axes=plt.subplots(2,2,figsize=(6.4,4.6))
     for ax,case in zip(axes.flat,forward['cases'][1:]):
         for m,c,s in zip(MODELS,COLORS,STYLES):
+            if m == 'M3': continue
             r=trace('forward',case['case'],m);mask=column(r,'x_m')<=1.5
             ax.plot(column(r,'x_m')[mask],column(r,'z_m')[mask],color=c,ls=s,label=m,lw=1.3)
         obs=rows(ROOT/'data/report_v2'/case['observations'])
@@ -108,7 +109,7 @@ def main():
     # Figure contract and audit make the link from quantities to claims explicit.
     (FIG/'figure_contract.json').write_text(json.dumps(dict(width_inches=6.4,formats=['pdf','svg','png'],dpi=300,
         palette=COLORS,encoding='colour plus line style or marker',
-        claims={'forward_range':'range response to gravity, constant and variable drag',
+        claims={'forward_range':'range response to gravity and constant drag',
         'forward_topspin':'measured local curvature and model differences',
         'forward_dynamics':'physical speed and force evolution',
         'inverse_errors':'individual event errors; crosses denote no goal-plane prediction',

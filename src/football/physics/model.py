@@ -89,6 +89,7 @@ class PhysicsConfig:
     drag_scale: float = 1.
     lift_scale: float = 1.
     coefficient_mode: str = 'constant'
+    constant_acceleration: tuple | None = None
     use_gravity: bool = True
     use_drag: bool = False
     use_magnus: bool = False
@@ -108,8 +109,8 @@ class PhysicsConfig:
             "M0": dict(use_gravity=False),
             "M1": dict(model_id='four-model-v2-M1'),
             "M2": dict(use_drag=True, model_id='four-model-v2-M2'),
-            "M3": dict(use_drag=True, use_magnus=True, model_id='four-model-v2-M3'),
-            "M4": dict(use_drag=True, use_magnus=True, coefficient_mode='KL18',
+            "M3": dict(use_gravity=False, constant_acceleration=(0., 0., -9.81), model_id='constant-acceleration-M3'),
+            "M4": dict(use_drag=True, use_magnus=True, coefficient_mode='linear_spin',
                        model_id='four-model-v2-M4'),
             "M5": dict(use_drag=True, use_magnus=True, use_rotational_drag=True,
                        model_id=MODEL_ID),
@@ -117,11 +118,11 @@ class PhysicsConfig:
         if name not in options:
             raise ValueError("model must be M0, M1, M2, M3, M4 or archived M5")
         cfg = replace(cls(**options[name]), **overrides)
-        if name in ('M2', 'M3'):
+        if name in ('M2', 'M4'):
             cd, cl = kiratidis_leinweber_coefficients(333793, .19,
                 cfg.radius, cfg.kinematic_viscosity)
             cfg = replace(cfg, drag_coefficient=overrides.get('drag_coefficient', cd),
-                          lift_coefficient=overrides.get('lift_coefficient', cl))
+                          lift_coefficient=overrides.get('lift_coefficient', cl/.19 if name == 'M4' else cl))
         return cfg
 
     @property
@@ -155,6 +156,8 @@ def coefficients(velocity, spin, config):
     sp = config.radius*float(np.linalg.norm(spin))/speed
     if config.coefficients is not None:
         cd, cl = config.coefficients(re, sp)
+    elif config.coefficient_mode == 'linear_spin':
+        cd, cl = config.drag_coefficient, config.lift_coefficient * sp
     elif config.model_id == MODEL_ID or config.coefficient_mode == 'KL18':
         cd, cl = kiratidis_leinweber_coefficients(
             re, sp, config.radius, config.kinematic_viscosity)
@@ -202,7 +205,7 @@ def config_record(config):
     record.update(dynamic_viscosity=config.dynamic_viscosity,
                   moment_of_inertia=config.moment_of_inertia,
                   coefficient_callback='custom' if config.coefficients else 'model default',
-                  sources={'CD_CL':'Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1',
+                  sources={'CD_CL': ('Kiratidis & Leinweber 2018 reference point; fixed constants' if config.coefficient_mode == 'constant' else 'Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1'),
                            'mass_radius_gravity':'Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2',
                            'torque':'Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid',
                            'angular_drag':'MuJoCo default 1.5, a declared reference setting',
@@ -219,7 +222,9 @@ def forces(velocity, spin, config):
     v = np.asarray(velocity, dtype=float) - np.asarray(config.wind, dtype=float)
     omega = np.asarray(spin, dtype=float)
     speed = np.linalg.norm(v)
-    weight = np.array([0., 0., -config.mass * config.gravity if config.use_gravity else 0.])
+    weight = (config.mass * np.asarray(config.constant_acceleration, dtype=float)
+              if config.constant_acceleration is not None else
+              np.array([0., 0., -config.mass * config.gravity if config.use_gravity else 0.]))
     drag = np.zeros(3)
     magnus = np.zeros(3)
     if speed > 1e-12:

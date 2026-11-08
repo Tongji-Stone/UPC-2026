@@ -23,7 +23,7 @@ class PhysicsTests(unittest.TestCase):
         self.assertIsNone(r.event['time'])
 
     def test_drag_loses_energy(self):
-        r = simulate((0, 0, 10), (30, 0, 0), config=PhysicsConfig.for_model('M3', use_gravity=False), plane_x=100, t_span=(0, 1))
+        r = simulate((0, 0, 10), (30, 0, 0), config=PhysicsConfig.for_model('M4', use_gravity=False), plane_x=100, t_span=(0, 1))
         energy = np.sum(r.velocity**2, axis=1)
         self.assertTrue(np.all(np.diff(energy) < 0))
 

@@ -1,0 +1,530 @@
+{
+  "record": {
+    "case": "J03WOH_18232100000606",
+    "model": "M4",
+    "status": "plane",
+    "event": {
+      "type": "plane",
+      "time": 1.5311854813452181,
+      "position": [
+        26.59,
+        1.7515234034787024,
+        5.1941397667153915
+      ],
+      "velocity": [
+        13.163322514284099,
+        -1.1822224664945111,
+        -0.7098026817600829
+      ],
+      "spin": [
+        8.61253101897844,
+        -25.64650913713601,
+        -12.964600978276703
+      ]
+    },
+    "error_m": 8.815405348928953,
+    "fit_converged": true,
+    "candidate_plane_error_m": 8.815405348928953,
+    "rss_m2": 0.0011315820535580815,
+    "max_residual_m": 0.022849450530544768,
+    "initial_state": [
+      23.96647251779495,
+      4.7555074738755385,
+      6.9101735183880555,
+      8.61253101897844,
+      -25.64650913713601,
+      -12.964600978276703
+    ],
+    "drag_scale": 1.4999999965365136,
+    "lift_scale": 1.4999999999999998,
+    "constant_acceleration": null,
+    "fitted_cd": 0.3623176698545086,
+    "fitted_alpha": 2.2877100878719467,
+    "active_parameters": 7,
+    "coverage": {
+      "speed_range": [
+        13.235351503544468,
+        25.392068728926724
+      ],
+      "Re_range": [
+        194118.4887186522,
+        372417.0080242586
+      ],
+      "Sp_range": [
+        0.12996184104687106,
+        0.24933225227272957
+      ],
+      "above_35_m_s": false,
+      "outside_A07_spinning_Re": true,
+      "above_A07_global_Sp": false,
+      "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+    },
+    "shot_type": "rightLeg",
+    "target_yz_m": [
+      10.073620689655172,
+      2.2865517241379307
+    ]
+  },
+  "fit": {
+    "model": "M4",
+    "initial_state": [
+      23.96647251779495,
+      4.7555074738755385,
+      6.9101735183880555,
+      8.61253101897844,
+      -25.64650913713601,
+      -12.964600978276703
+    ],
+    "drag_scale": 1.4999999965365136,
+    "lift_scale": 1.4999999999999998,
+    "rss_m2": 0.0011315820535580815,
+    "minimum_search_rss_m2": 0.0011315820535606135,
+    "max_residual_m": 0.022849450530544768,
+    "fitted_positions": [
+      [
+        0.0,
+        0.0,
+        0.29
+      ],
+      [
+        0.9482122551589827,
+        0.18449152802483582,
+        0.5628494505305448
+      ],
+      [
+        1.8760899781205884,
+        0.35784068253802576,
+        0.8285345346192339
+      ]
+    ],
+    "active_parameters": 7,
+    "spin_representation": "30 rad/s reference magnitude; alpha and spin magnitude are not separately identified",
+    "coefficient_distance": 0.4999999965365134,
+    "rss_allowance_m2": 6e-12,
+    "coefficient_distance_allowance": 1e-08,
+    "starts": [
+      {
+        "start": 0,
+        "rss_m2": 0.001131582053795153,
+        "success": true,
+        "nfev": 105,
+        "parameters": [
+          0.7988824588344382,
+          0.15851679244217037,
+          0.2303390544024299,
+          -1.246810952683801,
+          -0.4468663243443405,
+          1.4999999943273732,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 1,
+        "rss_m2": 0.0014464067645830203,
+        "success": true,
+        "nfev": 9,
+        "parameters": [
+          0.7947822441915758,
+          0.1640155833836328,
+          0.24070728153415585,
+          -1.3460374273094922,
+          -1.5707963267948963,
+          1.4999999999999998,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 2,
+        "rss_m2": 0.001503529283821854,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.7927044400824647,
+          0.16149361347985444,
+          0.2400097121175798,
+          3.141592653588225,
+          -1.5705379891256472,
+          1.2302197034945161,
+          1.2327403970558322
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 3,
+        "rss_m2": 0.0011315820535606135,
+        "success": true,
+        "nfev": 112,
+        "parameters": [
+          0.7988824172598317,
+          0.15851691579585128,
+          0.23033911727960185,
+          -1.2468122364021297,
+          -0.4468792673488731,
+          1.4999999965365136,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 4,
+        "rss_m2": 0.0011315820538085927,
+        "success": true,
+        "nfev": 101,
+        "parameters": [
+          0.7988824141570753,
+          0.15851692330010292,
+          0.23033912057699496,
+          -1.2468005801482642,
+          -0.44687672398144984,
+          1.4999999940959188,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 5,
+        "rss_m2": 0.0011315820537675064,
+        "success": true,
+        "nfev": 123,
+        "parameters": [
+          0.798882420778977,
+          0.15851690418379527,
+          0.2303391112964629,
+          -1.2467994145852888,
+          -0.4468743741612893,
+          1.4999999945523308,
+          1.4999999999999998
+        ],
+        "message": "`xtol` termination condition is satisfied."
+      }
+    ],
+    "stages": [
+      {
+        "stage": "positions",
+        "rss_m2": 0.0011315820535606135,
+        "coefficient_distance": 0.4999999965365134
+      }
+    ],
+    "position_jacobian_singular_values": [
+      23.978151489276332,
+      23.97634089689946,
+      23.56990613122296,
+      0.0639318061931696,
+      0.05107160778691518,
+      0.04298880510552904
+    ],
+    "position_jacobian_rank": 6,
+    "selection": "minimum position residual across deterministic starts",
+    "success": true,
+    "position_stage_converged": true,
+    "fit_bounds": {
+      "velocity_component_max_m_s": 35.0,
+      "spin_component_max_rad_s": 62.83185307179586,
+      "force_scale_min": 0.5,
+      "force_scale_max": 1.5
+    },
+    "at_parameter_bound": true
+  },
+  "input": {
+    "times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "positions_m": [
+      [
+        0.0,
+        0.0,
+        0.29
+      ],
+      [
+        0.9600000000000009,
+        0.1999999999999993,
+        0.54
+      ],
+      [
+        1.870000000000001,
+        0.34999999999999964,
+        0.84
+      ]
+    ]
+  },
+  "source_case": {
+    "case": "J03WOH_18232100000606",
+    "shot_type": "rightLeg",
+    "times_s": [
+      0.0,
+      0.04,
+      0.08,
+      0.12,
+      0.16,
+      0.2,
+      0.24,
+      0.28,
+      0.32,
+      0.36,
+      0.4,
+      0.44,
+      0.48,
+      0.52,
+      0.56,
+      0.6,
+      0.64,
+      0.68,
+      0.72,
+      0.76,
+      0.8,
+      0.84,
+      0.88,
+      0.92,
+      0.96,
+      1.0,
+      1.04,
+      1.08,
+      1.12,
+      1.16,
+      1.2,
+      1.24,
+      1.28,
+      1.32,
+      1.36,
+      1.4
+    ],
+    "positions_m": [
+      [
+        0.0,
+        0.0,
+        0.29
+      ],
+      [
+        0.9600000000000009,
+        0.1999999999999993,
+        0.54
+      ],
+      [
+        1.870000000000001,
+        0.34999999999999964,
+        0.84
+      ],
+      [
+        2.870000000000001,
+        0.6399999999999997,
+        1.02
+      ],
+      [
+        3.8000000000000007,
+        0.8599999999999994,
+        1.25
+      ],
+      [
+        4.73,
+        1.0899999999999999,
+        1.47
+      ],
+      [
+        5.649999999999999,
+        1.3299999999999996,
+        1.67
+      ],
+      [
+        6.52,
+        1.5899999999999999,
+        1.85
+      ],
+      [
+        7.400000000000002,
+        1.8399999999999999,
+        2.03
+      ],
+      [
+        8.260000000000002,
+        2.1199999999999997,
+        2.19
+      ],
+      [
+        9.09,
+        2.3699999999999997,
+        2.32
+      ],
+      [
+        9.919999999999998,
+        2.6499999999999995,
+        2.45
+      ],
+      [
+        10.739999999999998,
+        2.9299999999999997,
+        2.56
+      ],
+      [
+        11.559999999999999,
+        3.21,
+        2.67
+      ],
+      [
+        12.360000000000003,
+        3.4799999999999995,
+        2.77
+      ],
+      [
+        13.16,
+        3.7699999999999996,
+        2.86
+      ],
+      [
+        13.930000000000003,
+        4.06,
+        2.92
+      ],
+      [
+        14.690000000000001,
+        4.359999999999999,
+        3.0
+      ],
+      [
+        15.440000000000001,
+        4.659999999999999,
+        3.06
+      ],
+      [
+        16.180000000000003,
+        4.96,
+        3.1
+      ],
+      [
+        16.91,
+        5.26,
+        3.13
+      ],
+      [
+        17.650000000000002,
+        5.569999999999999,
+        3.14
+      ],
+      [
+        18.360000000000003,
+        5.869999999999999,
+        3.14
+      ],
+      [
+        19.029999999999998,
+        6.18,
+        3.12
+      ],
+      [
+        19.720000000000002,
+        6.5,
+        3.1
+      ],
+      [
+        20.41,
+        6.819999999999999,
+        3.08
+      ],
+      [
+        21.099999999999998,
+        7.1499999999999995,
+        3.05
+      ],
+      [
+        21.749999999999996,
+        7.459999999999999,
+        3.02
+      ],
+      [
+        22.400000000000002,
+        7.779999999999999,
+        2.95
+      ],
+      [
+        23.040000000000003,
+        8.1,
+        2.9
+      ],
+      [
+        23.680000000000003,
+        8.44,
+        2.81
+      ],
+      [
+        24.3,
+        8.78,
+        2.73
+      ],
+      [
+        24.91,
+        9.11,
+        2.62
+      ],
+      [
+        25.529999999999998,
+        9.44,
+        2.51
+      ],
+      [
+        26.12,
+        9.79,
+        2.4
+      ],
+      [
+        26.7,
+        10.14,
+        2.26
+      ]
+    ],
+    "plane_x_m": 26.59,
+    "target_yz_m": [
+      10.073620689655172,
+      2.2865517241379307
+    ],
+    "source": "Sportec Open DFL; fixed existing selection; height treated as metres",
+    "physics": {}
+  },
+  "configuration": {
+    "mass": 0.43,
+    "radius": 0.11,
+    "air_density": 1.2,
+    "kinematic_viscosity": 1.5e-05,
+    "gravity": 9.81,
+    "drag_coefficient": 0.24154511379406454,
+    "lift_coefficient": 1.5251400585812982,
+    "drag_scale": 1.4999999965365136,
+    "lift_scale": 1.4999999999999998,
+    "coefficient_mode": "linear_spin",
+    "constant_acceleration": null,
+    "use_gravity": true,
+    "use_drag": true,
+    "use_magnus": true,
+    "wind": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "spin_decay": 0.0,
+    "use_rotational_drag": false,
+    "use_viscous_torque": true,
+    "angular_drag_coefficient": 1.5,
+    "inertia_coefficient": 0.6666666666666666,
+    "model_id": "four-model-v2-M4",
+    "dynamic_viscosity": 1.8e-05,
+    "moment_of_inertia": 0.003468666666666666,
+    "coefficient_callback": "model default",
+    "sources": {
+      "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+      "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+      "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+      "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+      "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+      "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+    },
+    "assumptions": [
+      "still air reference unless wind is supplied",
+      "constant spin unless rotational torque is enabled",
+      "isotropic thin shell",
+      "sin(theta) oblique-spin extension"
+    ]
+  },
+  "validation_rule": "Only first three positions supplied to fit_early; subsequent data used for scoring"
+}

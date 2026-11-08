@@ -1,0 +1,415 @@
+{
+  "record": {
+    "case": "penalty_18232100000995",
+    "model": "M4",
+    "status": "plane",
+    "event": {
+      "type": "plane",
+      "time": 0.5063172210205734,
+      "position": [
+        10.939999999999998,
+        3.0585083936016764,
+        1.3608977831559286
+      ],
+      "velocity": [
+        20.148592903191876,
+        7.839802507678574,
+        0.5219490127396305
+      ],
+      "spin": [
+        -3.25101450677394,
+        -9.449881540478692,
+        28.286580626644596
+      ]
+    },
+    "error_m": 0.20749075835486186,
+    "fit_converged": true,
+    "candidate_plane_error_m": 0.20749075835486186,
+    "rss_m2": 0.059201073667599836,
+    "max_residual_m": 0.2074547317023021,
+    "initial_state": [
+      23.048945563741995,
+      4.096144608719362,
+      4.425388734543622,
+      -3.25101450677394,
+      -9.449881540478692,
+      28.286580626644596
+    ],
+    "drag_scale": 0.5000000000000001,
+    "lift_scale": 1.4999999999990135,
+    "constant_acceleration": null,
+    "fitted_cd": 0.1207725568970323,
+    "fitted_alpha": 2.2877100878704426,
+    "active_parameters": 7,
+    "coverage": {
+      "speed_range": [
+        21.626389668871155,
+        23.824700579602425
+      ],
+      "Re_range": [
+        317187.0484767769,
+        349428.9418341689
+      ],
+      "Sp_range": [
+        0.13851170926468234,
+        0.15259135022199255
+      ],
+      "above_35_m_s": false,
+      "outside_A07_spinning_Re": true,
+      "above_A07_global_Sp": false,
+      "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+    },
+    "shot_type": "penalty",
+    "target_yz_m": [
+      2.9588235294117644,
+      1.178921568627451
+    ]
+  },
+  "fit": {
+    "model": "M4",
+    "initial_state": [
+      23.048945563741995,
+      4.096144608719362,
+      4.425388734543622,
+      -3.25101450677394,
+      -9.449881540478692,
+      28.286580626644596
+    ],
+    "drag_scale": 0.5000000000000001,
+    "lift_scale": 1.4999999999990135,
+    "rss_m2": 0.059201073667599836,
+    "minimum_search_rss_m2": 0.05920107366759943,
+    "max_residual_m": 0.2074547317023021,
+    "fitted_positions": [
+      [
+        0.0,
+        0.0,
+        0.11
+      ],
+      [
+        0.917454731702303,
+        0.17042319469307524,
+        0.2808136810557193
+      ],
+      [
+        1.8258832471450912,
+        0.3538495842053055,
+        0.4392343946327969
+      ]
+    ],
+    "active_parameters": 7,
+    "spin_representation": "30 rad/s reference magnitude; alpha and spin magnitude are not separately identified",
+    "coefficient_distance": 0.49999999999901334,
+    "rss_allowance_m2": 6e-12,
+    "coefficient_distance_allowance": 1e-08,
+    "starts": [
+      {
+        "start": 0,
+        "rss_m2": 0.05920107366759943,
+        "success": true,
+        "nfev": 43,
+        "parameters": [
+          0.7682981854580665,
+          0.13653815362397873,
+          0.14751295781812074,
+          -1.9021401203240886,
+          1.2311904307336994,
+          0.5000000000000001,
+          1.4999999999990135
+        ],
+        "message": "`xtol` termination condition is satisfied."
+      },
+      {
+        "start": 1,
+        "rss_m2": 0.059201073667707445,
+        "success": true,
+        "nfev": 34,
+        "parameters": [
+          0.7682982316320269,
+          0.13653827899350424,
+          0.14751262104343263,
+          -1.9021136684650022,
+          1.2311592170593952,
+          0.5000000000000001,
+          1.4999999995136026
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 2,
+        "rss_m2": 0.05921394413638508,
+        "success": true,
+        "nfev": 61,
+        "parameters": [
+          0.7677533516793544,
+          0.13599768726674627,
+          0.15099786982864324,
+          3.1415624739244956,
+          1.4972893399579874,
+          0.5000000000000001,
+          1.4999999999999956
+        ],
+        "message": "`xtol` termination condition is satisfied."
+      },
+      {
+        "start": 3,
+        "rss_m2": 0.05920107371150138,
+        "success": true,
+        "nfev": 34,
+        "parameters": [
+          0.7682983945184522,
+          0.13653872484980162,
+          0.14751131859296066,
+          -1.9016704585029238,
+          1.23111083290061,
+          0.5000000000000001,
+          1.4999996411245697
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 4,
+        "rss_m2": 0.05920107366848186,
+        "success": true,
+        "nfev": 41,
+        "parameters": [
+          0.7682982245873007,
+          0.1365382327018677,
+          0.14751270610452816,
+          -1.902501747687493,
+          1.2310908865372558,
+          0.5000000000000001,
+          1.4999999797494707
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 5,
+        "rss_m2": 0.05921757409229605,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          0.7677009047857509,
+          0.1360991790760864,
+          0.1512039762298325,
+          3.010669588998674,
+          1.4686995899058466,
+          0.500372152092326,
+          1.483889170435656
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      }
+    ],
+    "stages": [
+      {
+        "stage": "positions",
+        "rss_m2": 0.05920107366759943,
+        "coefficient_distance": 0.49999999999901334
+      }
+    ],
+    "position_jacobian_singular_values": [
+      24.261921472148533,
+      24.260549151436155,
+      24.12906409633897,
+      0.0535108689035683,
+      0.04640091373544702,
+      0.04097452365092717
+    ],
+    "position_jacobian_rank": 6,
+    "selection": "minimum position residual across deterministic starts",
+    "success": true,
+    "position_stage_converged": true,
+    "fit_bounds": {
+      "velocity_component_max_m_s": 35.0,
+      "spin_component_max_rad_s": 62.83185307179586,
+      "force_scale_min": 0.5,
+      "force_scale_max": 1.5
+    },
+    "at_parameter_bound": true
+  },
+  "input": {
+    "times_s": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "positions_m": [
+      [
+        0.0,
+        0.0,
+        0.11
+      ],
+      [
+        0.7100000000000009,
+        0.12,
+        0.24
+      ],
+      [
+        1.9299999999999997,
+        0.38,
+        0.46
+      ]
+    ]
+  },
+  "source_case": {
+    "case": "penalty_18232100000995",
+    "shot_type": "penalty",
+    "times_s": [
+      0.0,
+      0.04,
+      0.08,
+      0.12,
+      0.16,
+      0.2,
+      0.24,
+      0.28,
+      0.32,
+      0.36,
+      0.4,
+      0.44
+    ],
+    "positions_m": [
+      [
+        0.0,
+        0.0,
+        0.11
+      ],
+      [
+        0.7100000000000009,
+        0.12,
+        0.24
+      ],
+      [
+        1.9299999999999997,
+        0.38,
+        0.46
+      ],
+      [
+        3.1199999999999974,
+        0.66,
+        0.65
+      ],
+      [
+        4.289999999999999,
+        0.9500000000000001,
+        0.83
+      ],
+      [
+        5.439999999999998,
+        1.25,
+        0.94
+      ],
+      [
+        6.559999999999995,
+        1.55,
+        1.04
+      ],
+      [
+        7.669999999999995,
+        1.8900000000000001,
+        1.13
+      ],
+      [
+        8.719999999999999,
+        2.2,
+        1.18
+      ],
+      [
+        9.82,
+        2.57,
+        1.18
+      ],
+      [
+        10.829999999999998,
+        2.92,
+        1.18
+      ],
+      [
+        11.849999999999994,
+        3.2800000000000002,
+        1.17
+      ]
+    ],
+    "plane_x_m": 10.939999999999998,
+    "target_yz_m": [
+      2.9588235294117644,
+      1.178921568627451
+    ],
+    "source": {
+      "match": "J03WOH",
+      "event_id": "18232100000995",
+      "event_timestamp": "2022-08-26T19:54:15.640+02:00",
+      "event_description": "Penalty / ShotAtGoal / SuccessfulShot",
+      "pitch_m": [
+        105.0,
+        68.0
+      ],
+      "coordinate_origin": "pitch center",
+      "goal_plane_x_m": 52.5,
+      "goal_y_limits_m": [
+        -3.66,
+        3.66
+      ],
+      "first_frame": 128954,
+      "last_frame": 128965,
+      "crossing_bracketing_frames": [
+        128964,
+        128965
+      ],
+      "linear_interpolation_fraction": 0.10784313725490183,
+      "crossing_elapsed_s": 0.4043137254901961,
+      "crossing_y_m": 2.9188235294117644,
+      "crossing_z_raw": 1.178921568627451,
+      "height_unit": "not established by paper; working assumption metres",
+      "selection_note": "earliest visible segment after long repeated position near penalty event; first step appears slower",
+      "event_alignment_note": "event time is 0.88 s before first selected frame, not a kick timestamp",
+      "source": "https://huggingface.co/datasets/pysport/idsse-data; CC BY 4.0"
+    },
+    "physics": {}
+  },
+  "configuration": {
+    "mass": 0.43,
+    "radius": 0.11,
+    "air_density": 1.2,
+    "kinematic_viscosity": 1.5e-05,
+    "gravity": 9.81,
+    "drag_coefficient": 0.24154511379406454,
+    "lift_coefficient": 1.5251400585812982,
+    "drag_scale": 0.5000000000000001,
+    "lift_scale": 1.4999999999990135,
+    "coefficient_mode": "linear_spin",
+    "constant_acceleration": null,
+    "use_gravity": true,
+    "use_drag": true,
+    "use_magnus": true,
+    "wind": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "spin_decay": 0.0,
+    "use_rotational_drag": false,
+    "use_viscous_torque": true,
+    "angular_drag_coefficient": 1.5,
+    "inertia_coefficient": 0.6666666666666666,
+    "model_id": "four-model-v2-M4",
+    "dynamic_viscosity": 1.8e-05,
+    "moment_of_inertia": 0.003468666666666666,
+    "coefficient_callback": "model default",
+    "sources": {
+      "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+      "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+      "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+      "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+      "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+      "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+    },
+    "assumptions": [
+      "still air reference unless wind is supplied",
+      "constant spin unless rotational torque is enabled",
+      "isotropic thin shell",
+      "sin(theta) oblique-spin extension"
+    ]
+  },
+  "validation_rule": "Only first three positions supplied to fit_early; subsequent data used for scoring"
+}
