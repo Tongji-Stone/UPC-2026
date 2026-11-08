@@ -1,5 +1,5 @@
 {
-  "version": "current-report-three-penalties-v2-corrected-starts",
+  "version": "current-report-three-penalties-v5-wmx-original-wr9-shift",
   "fit_sample_ordinals": {
     "J03WMX": [
       3,
@@ -12,9 +12,9 @@
       4
     ],
     "J03WR9": [
-      2,
       3,
-      4
+      4,
+      5
     ]
   },
   "position0_m": [

@@ -1,0 +1,11 @@
+J03WMX M1: ground
+M2 start 1/1: RSS=0.002607, nfev=7
+J03WMX M2: ground
+J03WMX M3: ground
+M4 start 1/6: RSS=0.002519, nfev=240
+M4 start 2/6: RSS=0.0024461, nfev=34
+M4 start 3/6: RSS=0.0024841, nfev=240
+M4 start 4/6: RSS=0.0024461, nfev=90
+M4 start 5/6: RSS=0.0024461, nfev=68
+M4 start 6/6: RSS=0.0024461, nfev=100
+J03WMX M4: ground

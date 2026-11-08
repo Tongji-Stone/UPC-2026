@@ -97,16 +97,10 @@
     "J03WMX_M3_parameter_count": {
       "passed": true
     },
-    "J03WMX_M3_selection_state_1": {
-      "passed": true
-    },
     "J03WMX_M3_fit_interval": {
       "passed": true
     },
     "J03WMX_M3_fit_before_contact": {
-      "passed": true
-    },
-    "J03WMX_M3_goal_distance": {
       "passed": true
     },
     "J03WMX_M3_ground_truncation": {
@@ -235,18 +229,6 @@
     "J03WOH_M3_parameter_count": {
       "passed": true
     },
-    "J03WOH_M3_selection_state_1": {
-      "passed": true
-    },
-    "J03WOH_M3_selection_state_2": {
-      "passed": true
-    },
-    "J03WOH_M3_selection_state_3": {
-      "passed": true
-    },
-    "J03WOH_M3_selection_state_4": {
-      "passed": true
-    },
     "J03WOH_M3_fit_interval": {
       "passed": true
     },
@@ -275,21 +257,6 @@
       "passed": true
     },
     "J03WOH_M4_parameter_count": {
-      "passed": true
-    },
-    "J03WOH_M4_selection_state_1": {
-      "passed": true
-    },
-    "J03WOH_M4_selection_state_2": {
-      "passed": true
-    },
-    "J03WOH_M4_selection_state_3": {
-      "passed": true
-    },
-    "J03WOH_M4_selection_state_4": {
-      "passed": true
-    },
-    "J03WOH_M4_selection_state_5": {
       "passed": true
     },
     "J03WOH_M4_fit_interval": {
@@ -397,16 +364,13 @@
     "J03WR9_M3_parameter_count": {
       "passed": true
     },
-    "J03WR9_M3_selection_state_1": {
-      "passed": true
-    },
-    "J03WR9_M3_selection_state_2": {
-      "passed": true
-    },
     "J03WR9_M3_fit_interval": {
       "passed": true
     },
     "J03WR9_M3_fit_before_contact": {
+      "passed": true
+    },
+    "J03WR9_M3_goal_distance": {
       "passed": true
     },
     "J03WR9_M3_ground_truncation": {
@@ -430,25 +394,13 @@
     "J03WR9_M4_parameter_count": {
       "passed": true
     },
-    "J03WR9_M4_selection_state_1": {
-      "passed": true
-    },
-    "J03WR9_M4_selection_state_2": {
-      "passed": true
-    },
-    "J03WR9_M4_selection_state_3": {
-      "passed": true
-    },
-    "J03WR9_M4_selection_state_4": {
-      "passed": true
-    },
-    "J03WR9_M4_selection_state_5": {
-      "passed": true
-    },
     "J03WR9_M4_fit_interval": {
       "passed": true
     },
     "J03WR9_M4_fit_before_contact": {
+      "passed": true
+    },
+    "J03WR9_M4_goal_distance": {
       "passed": true
     },
     "J03WR9_M4_ground_truncation": {
@@ -465,7 +417,7 @@
     },
     "endpoint_convergence": {
       "passed": true,
-      "difference_m": 1.88411095042053e-15
+      "difference_m": 1.5700924586837752e-16
     },
     "drag_dissipation": {
       "passed": true

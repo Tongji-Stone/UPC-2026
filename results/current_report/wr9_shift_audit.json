@@ -1,0 +1,102 @@
+{
+  "baseline_commit": "13384c5",
+  "old_source_fingerprint": "290a251d4f82debb432194ec279965552d5f67cb221a6dc4cb199f73ad6e1c2c",
+  "preserved_file_sha256": {
+    "forward/backspin_M1.csv": "3419193273c98e18872ba0abced4075db38877df25054fa0686683ed0ee73ac5",
+    "forward/backspin_M2.csv": "75e350b6b93950ffbbf19acdbd7ddf91895571a8bcba9e8fcea0acdc64d91be3",
+    "forward/backspin_M3.csv": "6206abece39e8cc0b5c8b16c6940d2c55215c053d0166b05894ced51b94a7600",
+    "forward/backspin_M4.csv": "3ca9a57de4df2d187610b407c0ee62932a1abe23977c8dc9af93361a8de4eafa",
+    "forward/chip_M1.csv": "301d2f7e238d2484f56fa2f74867571c8eb595daf3bd2044e48b7f7e8524ac91",
+    "forward/chip_M2.csv": "4489951b713942bdc64123e6abe7c5105f33d5227f5ee72d42b626e989e60fa1",
+    "forward/chip_M3.csv": "772218f3fc9b18fe1a6feae2a7c1fefa460c37f1a77db6ae3ff1515c989f509e",
+    "forward/chip_M4.csv": "7cbebff70926c499ea52e6db5c0821fbb728531a1e63843874e9563ce3152011",
+    "forward/curved_M1.csv": "539d3804d07f60bc5fa60beb01969c7a2bcb869584298951822c433062c06f8a",
+    "forward/curved_M2.csv": "1e353521a03729c901bf46f535cac2b7e597b3914cf090b89cef4dcf1b497500",
+    "forward/curved_M3.csv": "15e10c614783f5388f0497ac73272fee7ab4d70322b1d735cbb1df04172ecc37",
+    "forward/curved_M4.csv": "0e5ac7acd1b8ee4220d76e0eff338e05fbd6e26ea3abdee51081121f15c2e0b1",
+    "forward/placement_M1.csv": "240c0c953161b1561db1097042981ca5ed29a49fcfc0d529b633dfcc3b1bd0b9",
+    "forward/placement_M2.csv": "41e650a3d07d85a1c62845a551ae0b8ee59fb7a7d9237b14a6345b63153136c5",
+    "forward/placement_M3.csv": "dcf579bd56bd43892504da88729aa20fb645bfc2aadce211c24b15cf62cd5d21",
+    "forward/placement_M4.csv": "eef592659656a187b6eeb5044296ca926ced20c96bab39fdb5c10f70abeccce5",
+    "forward/power_M1.csv": "e2b97a0ee4608c5fb223803d1b5a6f4cd6b6f7eae07cfa31d573b724e6ed5732",
+    "forward/power_M2.csv": "388f21f8c0dd36c76998cff2c237a28132df0c007fb54aea70c957ab72066fe0",
+    "forward/power_M3.csv": "b44a5fb0097550dbf2d29b07e72e3b357e361edebbe0434b4897910e3d0520ad",
+    "forward/power_M4.csv": "559098110c3b6d944c1081ca8f6319f39b9d08405ad31c559e410ac9fbf17b69",
+    "forward/summary.json": "14eef345ec711a7ae34c809f7a32470ace89320d14e602354cb54dd56bf00a33",
+    "forward/topspin_M1.csv": "7b46578b5ab2b2f302503b83fab63d00918d7b6a723e7601e514428c38fa828a",
+    "forward/topspin_M2.csv": "c154039bff4edd34b5c1284bb679ab0e606426909e9be14af172cc5252f58fff",
+    "forward/topspin_M3.csv": "7ff2c1d02a6918ddbaf8b8d34d3d06181cb9fd9b8db1cede1a4d49e4eefc6a9c",
+    "forward/topspin_M4.csv": "d113dc65ba6c916058bebb863dd48877e49faef4f9cf2cd95867022e469db50f",
+    "other/constant_spin.csv": "0e5ac7acd1b8ee4220d76e0eff338e05fbd6e26ea3abdee51081121f15c2e0b1",
+    "other/inertial_and_viscous.csv": "2256f6e9b432e530383bf18786faf861ba4352560945572588de7b59e2da56c7",
+    "other/inertial_torque.csv": "4d4e13a67fa2beea65c7913f8ad4a1bd6ba6d1ec50be0bbeb9266e9b3d0cf09a",
+    "other/summary.json": "17c72f8ecd714fd824dfea474450dc7a4ec08ca3d0d4904adf9d2b3f5a38bc4f",
+    "inverse/J03WOH_M1.csv": "a66441020dc4a42d924318e2062bde65ff4a8d949def40edd6c38cc07d00385a",
+    "inverse/J03WOH_M1_validation.csv": "d02d099e6fb3cbdbff828d929f17cb7e2acc5916e960d45a665d12cafe200e61",
+    "inverse/J03WOH_M2.csv": "d9e3d1fa07ad29372ca3ba84005e58c580e998788b1a424ee8eb6e50c2b2bc8b",
+    "inverse/J03WOH_M2_validation.csv": "c13b10d84bd4affb05fcf817f7af154559a2c10b92fc8c7c105975277bb82cb7",
+    "inverse/J03WOH_M3.csv": "21fb1954cce82217dbfe46246379cafdcc88aa6ab0d8d37387d6cd1f1c69c9e3",
+    "inverse/J03WOH_M3_validation.csv": "9a482fa5df870bef2acb48f3c6bb3f97a072e4e839871afcb3e6f647cf4997c5",
+    "inverse/J03WOH_M4.csv": "676c70d3008a8e86fda362ddf0b6bc9c61f4b226f89288ef5fa815910c31fcf1",
+    "inverse/J03WOH_M4_validation.csv": "2e1f1d9555de7fed80e19fff37d7a720f06929dacb5ed27e4f386fd7d015e622"
+  },
+  "reused_unchanged_cases": [
+    {
+      "case": "J03WOH",
+      "model": "M1",
+      "record_sha256": "1d27eb1509ab7759ad2d171b323f65f93be481f3af162c576bc008ec68951ae5"
+    },
+    {
+      "case": "J03WOH",
+      "model": "M2",
+      "record_sha256": "02bf9811598d82b1df78c39febd4e75081a51ffc50ef34fccbf16fc46bb86929"
+    },
+    {
+      "case": "J03WOH",
+      "model": "M3",
+      "record_sha256": "186bf20f870fca4e8d3ff7b1980cd5489dcfae4ca8c56279652daf257dc0752d"
+    },
+    {
+      "case": "J03WOH",
+      "model": "M4",
+      "record_sha256": "3ee3cc19207fc42c08db46d8f924f574bc337ba9b65d05295560ead5995ea5c7"
+    }
+  ],
+  "preserved_files_unchanged": true,
+  "old_WR9_fit_input": [
+    [
+      1.4699999999999989,
+      0.49,
+      0.23
+    ],
+    [
+      2.5700000000000003,
+      0.85,
+      0.34
+    ],
+    [
+      3.6400000000000006,
+      1.2,
+      0.41
+    ]
+  ],
+  "new_WR9_fit_input": [
+    [
+      2.5700000000000003,
+      0.85,
+      0.34
+    ],
+    [
+      3.6400000000000006,
+      1.2,
+      0.41
+    ],
+    [
+      4.710000000000001,
+      1.53,
+      0.47
+    ]
+  ],
+  "new_source_fingerprint": "c433016828985589eb399e59207834d29ca870048c16d573df0605d7eff4d4b4",
+  "subsequent_WMX_change": "see wmx_last_point_audit.json"
+}

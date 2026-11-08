@@ -21,6 +21,24 @@ def main():
         commands=[]
         def macro(name,value):commands.append('\\newcommand{\\'+name+'}{'+str(value)+'}\n')
         def tr(en,cn):return cn if zh else en
+        rows=[]
+        for case in ('J03WMX','J03WOH','J03WR9'):
+            cells=[]
+            for model in ('M1','M2','M3','M4'):
+                r=next(item for item in inverse if item['case']==case and item['model']==model)
+                goal=r.get('scored_goal_error_m')
+                reason={'ground':tr('ground','触地'),'none':tr('time limit','超时'),
+                        'fit_limit':tr('fit limit','未收敛'),'early_contact':tr('early ground','提前触地'),
+                        'fit_failure':tr('failure','失败')}.get(r['status'],tr('unavailable','无交点'))
+                first=f'{goal:.3f}' if goal is not None else r'--- ('+reason+')'
+                rmse=r.get('future_rmse_3d_m');count=r.get('future_sample_count',0)
+                second=(f'{rmse:.3f} ({count})' if rmse is not None else '---')
+                cells.append(r'\shortstack{'+first+r'\\'+second+'}')
+            rows.append(case+' & '+' & '.join(cells))
+        macro('PenaltyErrorSummaryTable',table(
+            tr('Goal-plane error and held-out 3D trajectory RMSE (m). Each cell lists goal error first, then RMSE and the number of comparison samples. A dash marks no valid goal-plane crossing; trajectory comparisons end at model termination.',
+               '球门交点误差与后续三维轨迹均方根误差（m）。每格上行为交点误差，下行为轨迹误差及参与比较的采样点数；无有效交点标记为“---”，轨迹比较截止于模型终止。'),
+            'tab:penalty-errors','lcccc',tr('Event & M1 & M2 & M3 & M4','事件 & M1 & M2 & M3 & M4'),rows))
         c=PhysicsConfig.for_model('M4');macro('ReferenceCD',f'{c.drag_coefficient:.4f}');macro('ReferenceCL',f'{c.lift_coefficient:.4f}')
         macro('ForwardReMin',f'{14*2*.11/1.5e-5/1e5:.2f}');macro('ForwardReMax',f'{27*2*.11/1.5e-5/1e5:.2f}')
         r=next(r for r in forward if r['case']=='curved' and r['model']=='M4');e=r['event']

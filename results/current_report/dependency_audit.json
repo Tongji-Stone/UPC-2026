@@ -3,9 +3,8 @@
     "graphics": {
       "penalty_geometry_new.png": "paper/assets/penalty_geometry_new.png",
       "force_schematic.pdf": "paper/assets/force_schematic.pdf",
-      "cd_comparison.pdf": "paper/aerodynamics/cd_comparison.pdf",
       "magnus_streamlines.pdf": "paper/assets/magnus_streamlines.pdf",
-      "cl_comparison.pdf": "paper/aerodynamics/cl_comparison.pdf",
+      "ball_force_diagram_times_large.pdf": "paper/assets/ball_force_diagram_times_large.pdf",
       "surface_comparison.png": "paper/assets/surface_comparison.png",
       "alam_ball_surfaces.png": "paper/assets/alam_ball_surfaces.png",
       "alam_drag_comparison.png": "paper/assets/alam_drag_comparison.png",
@@ -16,9 +15,8 @@
       "case_spin.pdf": "results/current_report/figures/case_spin.pdf",
       "case_chip.pdf": "results/current_report/figures/case_chip.pdf",
       "forward_dynamics.pdf": "results/current_report/figures/forward_dynamics.pdf",
-      "penalty_J03WMX.pdf": "results/current_report/figures/penalty_J03WMX.pdf",
+      "penalty_spatial_overview.pdf": "results/current_report/figures/penalty_spatial_overview.pdf",
       "penalty_J03WOH.pdf": "results/current_report/figures/penalty_J03WOH.pdf",
-      "penalty_J03WR9.pdf": "results/current_report/figures/penalty_J03WR9.pdf",
       "one_factor_position_response.pdf": "results/sensitivity_v2/figures/one_factor_position_response.pdf",
       "one_factor_time_response.pdf": "results/sensitivity_v2/figures/one_factor_time_response.pdf",
       "conditional_crossings.pdf": "results/sensitivity_v2/figures/conditional_crossings.pdf",
@@ -27,16 +25,30 @@
       "monte_carlo_convergence.pdf": "results/sensitivity_v2/figures/monte_carlo_convergence.pdf"
     },
     "all_dependencies_resolved": true,
-    "old_aggregate_table_removed": true,
-    "event_table_pairs": 3
+    "fit_sample_ordinals": {
+      "J03WMX": [
+        3,
+        4,
+        6
+      ],
+      "J03WOH": [
+        2,
+        3,
+        4
+      ],
+      "J03WR9": [
+        3,
+        4,
+        5
+      ]
+    }
   },
   "_中文版": {
     "graphics": {
       "penalty_geometry_new.png": "paper/assets/penalty_geometry_new.png",
       "force_schematic.pdf": "paper/assets/force_schematic.pdf",
-      "cd_comparison.pdf": "paper/aerodynamics/cd_comparison.pdf",
       "magnus_streamlines.pdf": "paper/assets/magnus_streamlines.pdf",
-      "cl_comparison.pdf": "paper/aerodynamics/cl_comparison.pdf",
+      "ball_force_diagram_times_large.pdf": "paper/assets/ball_force_diagram_times_large.pdf",
       "surface_comparison.png": "paper/assets/surface_comparison.png",
       "alam_ball_surfaces.png": "paper/assets/alam_ball_surfaces.png",
       "alam_drag_comparison.png": "paper/assets/alam_drag_comparison.png",
@@ -47,9 +59,8 @@
       "case_spin.pdf": "results/current_report/figures/case_spin.pdf",
       "case_chip.pdf": "results/current_report/figures/case_chip.pdf",
       "forward_dynamics.pdf": "results/current_report/figures/forward_dynamics.pdf",
-      "penalty_J03WMX.pdf": "results/current_report/figures/penalty_J03WMX.pdf",
+      "penalty_spatial_overview.pdf": "results/current_report/figures/penalty_spatial_overview.pdf",
       "penalty_J03WOH.pdf": "results/current_report/figures/penalty_J03WOH.pdf",
-      "penalty_J03WR9.pdf": "results/current_report/figures/penalty_J03WR9.pdf",
       "one_factor_position_response.pdf": "results/sensitivity_v2/figures/one_factor_position_response.pdf",
       "one_factor_time_response.pdf": "results/sensitivity_v2/figures/one_factor_time_response.pdf",
       "conditional_crossings.pdf": "results/sensitivity_v2/figures/conditional_crossings.pdf",
@@ -58,7 +69,22 @@
       "monte_carlo_convergence.pdf": "results/sensitivity_v2/figures/monte_carlo_convergence.pdf"
     },
     "all_dependencies_resolved": true,
-    "old_aggregate_table_removed": true,
-    "event_table_pairs": 3
+    "fit_sample_ordinals": {
+      "J03WMX": [
+        3,
+        4,
+        6
+      ],
+      "J03WOH": [
+        2,
+        3,
+        4
+      ],
+      "J03WR9": [
+        3,
+        4,
+        5
+      ]
+    }
   }
 }

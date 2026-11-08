@@ -1,98 +1,86 @@
 {
-  "pages": 42,
+  "pages": 31,
   "warnings": [],
   "out_of_page_text": [],
   "all_fonts_embedded": true,
   "fonts": {
-    "CYDELZ+TimesNewRomanPSMT": {
+    "LEMHTI+TimesNewRomanPSMT": {
       "format": "ttf",
       "embedded": true
     },
-    "TCTSZQ+TimesNewRomanPS-BoldMT": {
+    "IQNUXQ+TimesNewRomanPS-BoldMT": {
       "format": "ttf",
       "embedded": true
     },
-    "WHWDAG+CMMI12": {
+    "XOLPCA+CMMI12": {
       "format": "cff",
       "embedded": true
     },
-    "HBSVXK+CMR12": {
+    "GEQTDU+CMR12": {
       "format": "cff",
       "embedded": true
     },
-    "QWQVZU+CMR10": {
+    "UDLELY+CMR10": {
       "format": "cff",
       "embedded": true
     },
-    "XUFSUZ+CMMI8": {
+    "XENQEY+CMMI8": {
       "format": "cff",
       "embedded": true
     },
-    "DTEUAB+CMEX9": {
+    "XDPOWX+CMEX9": {
       "format": "cff",
       "embedded": true
     },
-    "MFNHZZ+CMMI9": {
+    "WIRLOI+CMMI9": {
       "format": "cff",
       "embedded": true
     },
-    "QWAQZD+CMMI6": {
+    "GHOCND+CMMI6": {
       "format": "cff",
       "embedded": true
     },
-    "ROJQSH+CMR5": {
+    "OBXPCY+CMR5": {
       "format": "cff",
       "embedded": true
     },
-    "KYUYPW+CMMIB7": {
+    "GWKSCE+CMMIB7": {
       "format": "cff",
       "embedded": true
     },
-    "UFGXTK+CMR9": {
+    "QVVHHZ+CMR9": {
       "format": "cff",
       "embedded": true
     },
-    "ZQSSZW+CMMIB10": {
+    "TVKROJ+CMMIB10": {
       "format": "cff",
       "embedded": true
     },
-    "NHYQAX+CMSY9": {
+    "HIAUGE+CMSY9": {
       "format": "cff",
       "embedded": true
     },
-    "PHTIIR+CMSY6": {
+    "UPQTEO+CMR6": {
       "format": "cff",
       "embedded": true
     },
-    "PUOOOI+CMBX9": {
+    "VYESSZ+CMBX9": {
       "format": "cff",
       "embedded": true
     },
-    "DINKCL+CMR6": {
+    "FUXKNW+CMSY10": {
       "format": "cff",
       "embedded": true
     },
-    "JSGIRE+CMSY10": {
+    "JWSFKP+CMR8": {
       "format": "cff",
       "embedded": true
     },
-    "DWIAEX+CMR8": {
+    "QINCKA+CMMI10": {
       "format": "cff",
       "embedded": true
     },
-    "YNCIPD+CMMI10": {
-      "format": "cff",
-      "embedded": true
-    },
-    "RVUPQF+CMSY8": {
-      "format": "cff",
-      "embedded": true
-    },
-    "WJTEVS+CMBX12": {
-      "format": "cff",
-      "embedded": true
-    },
-    "KCUVSF+CMBX8": {
+    "LUYJAU+CMSY8": {
       "format": "cff",
       "embedded": true
     },
@@ -104,43 +92,19 @@
       "format": "ttf",
       "embedded": true
     },
-    "BCKHQS+CMEX10": {
-      "format": "cff",
-      "embedded": true
-    },
-    "ORTGAT+CMBSY10": {
-      "format": "cff",
-      "embedded": true
-    },
-    "FUREHM+TimesNewRomanPSMT": {
-      "format": "ttf",
-      "embedded": true
-    },
-    "FSFVNI+DejaVuSans-Oblique": {
-      "format": "ttf",
-      "embedded": true
-    },
     "FUWOQM+TimesNewRomanPS-BoldMT": {
       "format": "ttf",
       "embedded": true
     },
-    "WEGTXO+TimesNewRomanPSMT": {
-      "format": "ttf",
-      "embedded": true
-    },
-    "DIRUKW+DejaVuSans-Oblique": {
-      "format": "ttf",
-      "embedded": true
-    },
-    "NAXIVR+CMR7": {
+    "DLYJEM+CMEX10": {
       "format": "cff",
       "embedded": true
     },
-    "CFWCUV+CMSY7": {
+    "HCWLRT+CMBX12": {
       "format": "cff",
       "embedded": true
     },
-    "DMHJTZ+TimesNewRomanPSMT": {
+    "FTVYYM+TimesNewRomanPSMT": {
       "format": "ttf",
       "embedded": true
     },
@@ -148,39 +112,47 @@
       "format": "ttf",
       "embedded": true
     },
-    "HHGMEO+TimesNewRomanPSMT": {
+    "CNVPUN+TimesNewRomanPS-BoldItalicMT": {
       "format": "ttf",
       "embedded": true
     },
-    "DALJPX+TimesNewRomanPSMT": {
+    "EOBZUU+TimesNewRomanPS-BoldItalicMT": {
       "format": "ttf",
       "embedded": true
     },
-    "GEDQDP+TimesNewRomanPSMT": {
+    "FRYAZB+TimesNewRomanPS-ItalicMT": {
       "format": "ttf",
       "embedded": true
     },
-    "WVCFVQ+TimesNewRomanPSMT": {
+    "FHXFSG+TimesNewRomanPS-BoldMT": {
       "format": "ttf",
       "embedded": true
     },
-    "CSLERC+TimesNewRomanPSMT": {
-      "format": "ttf",
-      "embedded": true
-    },
-    "GNSFGT+CMMI7": {
+    "XVMAIO+CMR7": {
       "format": "cff",
       "embedded": true
     },
-    "CLMVWY+TimesNewRomanPSMT": {
+    "HSWZTG+CMMI7": {
+      "format": "cff",
+      "embedded": true
+    },
+    "ZQPOXC+CMSY7": {
+      "format": "cff",
+      "embedded": true
+    },
+    "EJZEZG+TimesNewRomanPS-BoldMT": {
       "format": "ttf",
       "embedded": true
     },
-    "HFEOCF+TimesNewRomanPSMT": {
+    "CECFXM+TimesNewRomanPS-BoldMT": {
       "format": "ttf",
       "embedded": true
     },
-    "ELFGBM+TimesNewRomanPSMT": {
+    "EVICAO+DejaVuSans-Bold": {
+      "format": "ttf",
+      "embedded": true
+    },
+    "GGASAK+DejaVuSans-BoldOblique": {
       "format": "ttf",
       "embedded": true
     },
@@ -188,35 +160,19 @@
       "format": "ttf",
       "embedded": true
     },
-    "GCWXDV+DejaVuSans-Oblique": {
+    "EVJLVE+TimesNewRomanPS-ItalicMT": {
       "format": "ttf",
       "embedded": true
     },
-    "BMQQDV+DejaVuSans": {
-      "format": "ttf",
-      "embedded": true
-    },
-    "GPZEAC+TimesNewRomanPSMT": {
-      "format": "ttf",
-      "embedded": true
-    },
-    "IBVRJO+TimesNewRomanPS-ItalicMT": {
-      "format": "ttf",
-      "embedded": true
-    },
-    "KHCFPZ+LMMono12-Regular-Identity-H": {
+    "TAWIUB+LMMono12-Regular-Identity-H": {
       "format": "cid",
       "embedded": true
     },
-    "IHQLVS+LMMono10-Regular-Identity-H": {
+    "YHPAUT+LMMono10-Regular-Identity-H": {
       "format": "cid",
       "embedded": true
     },
-    "IGDGYV+LMMonoLt10-Bold-Identity-H": {
-      "format": "cid",
-      "embedded": true
-    },
-    "XSBYTB+LMMono10-Italic-Identity-H": {
+    "LSOTFF+LMMonoLt10-Bold-Identity-H": {
       "format": "cid",
       "embedded": true
     }
