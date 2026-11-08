@@ -1,5 +1,22 @@
 {
-  "version": "current-report-three-penalties-v1",
+  "version": "current-report-three-penalties-v2-corrected-starts",
+  "fit_sample_ordinals": {
+    "J03WMX": [
+      3,
+      4,
+      5
+    ],
+    "J03WOH": [
+      2,
+      3,
+      4
+    ],
+    "J03WR9": [
+      2,
+      3,
+      4
+    ]
+  },
   "position0_m": [
     0,
     0,

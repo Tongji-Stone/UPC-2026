@@ -43,7 +43,7 @@ def inverse():
         fig=plt.figure(figsize=(6.5,5.3));ax3=fig.add_subplot(2,2,1,projection='3d')
         axes=[fig.add_subplot(2,2,i) for i in [2,3,4]]
         actual=case['goal'];tend=actual['time_s']
-        rows=[r for r in case['samples'] if r['time_s']<=tend+1e-10 and r['X_m']<=52.5+1e-10]
+        rows=[r for r in case['samples'] if 0<=r['time_s']<=tend+1e-10 and r['X_m']<=52.5+1e-10]
         xyz=np.array([[r[k] for k in ['x_m','y_m','z_m']] for r in rows]);times=np.array([r['time_s'] for r in rows])
         fit=np.array(case['fit_positions_m']);tf=np.array(case['fit_times_s'])
         ax3.plot(*xyz.T,color='black',marker='o',ms=2.5,lw=1,label='Measured samples')
@@ -79,10 +79,13 @@ def other():
     axes[0].legend(frameon=False,fontsize=7);save(fig,'torque_comparison')
 
 if __name__=='__main__':
+    import argparse
+    parser=argparse.ArgumentParser();parser.add_argument('--inverse-only',action='store_true');args=parser.parse_args()
     FIG.mkdir(parents=True,exist_ok=True)
     plt.rcParams.update({'font.family':'serif','font.serif':['Times New Roman'],'font.size':9,
         'axes.spines.right':False,'axes.spines.top':False,'pdf.fonttype':42,'svg.fonttype':'none'})
-    forward();inverse();other()
+    if args.inverse_only:inverse()
+    else:forward();inverse();other()
     save_json(FIG/'figure_contract.json',dict(width_inches=6.5,dpi=300,formats=['pdf','svg','png'],
         units='SI',models=list(MODELS),raw_frames=39,inverse_input_rule='summary-selected times, repeated samples retained',
         forward_claim='force mechanisms under prescribed initial conditions',inverse_claim='continuation compared with held-out real samples',

@@ -9,6 +9,7 @@ from football.inference.four_model_fit import InverseBounds
 ROOT=Path(__file__).resolve().parents[2]
 DATA=ROOT/'data/current_report';OUT=ROOT/'results/current_report'
 MODELS=('M1','M2','M3','M4')
+FIT_SAMPLE_ORDINALS={'J03WMX':[3,4,5],'J03WOH':[2,3,4],'J03WR9':[2,3,4]}
 FORWARD=[dict(case=c,speed_m_s=v,elevation_deg=a,spin_rad_s=w) for c,v,a,w in [
     ('power',27,8,[0,0,0]),('placement',20,11,[0,0,0]),('curved',24,10,[0,0,35]),
     ('topspin',24,12,[0,35,0]),('backspin',24,12,[0,-35,0]),('chip',14,20,[0,-15,0])]]
@@ -59,16 +60,24 @@ def prepare_inputs(source=None):
             X_m=float(r['X_m']),Y_m=float(r['Y_m']),Z_original=float(r['Z_原值']),
             x_m=float(r['X_m'])-41.5,y_m=float(r['Y_m']),z_m=float(r['Z_原值']),
             repeated=int(r['是否与上一帧位置重复']),section=r['位置区段']) for r in raw]
-        times=[0.,float(s['时刻1_s']),float(s['时刻2_s'])]
-        fitrows=[next(r for r in rows if abs(r['time_s']-t)<1e-10) for t in times]
         crossing=goal_crossing(rows)
         assert np.allclose(crossing['position'],[52.5,float(s['球门穿越Y_m']),float(s['球门穿越Z_原值'])],atol=1e-10)
         assert abs(crossing['time_s']-float(s['球门穿越相对时间_s']))<1e-10
+        ordinals=FIT_SAMPLE_ORDINALS[s['比赛ID']]
+        origin=rows[ordinals[0]-1]['time_s']
+        for i,r in enumerate(rows,1):
+            r['source_time_s']=r['time_s'];r['source_sample_ordinal']=i
+            r['time_s']=round(r['source_time_s']-origin,10)
+            r['selected_for_current_fit']=i in ordinals
+        fitrows=[rows[i-1] for i in ordinals];times=[r['time_s'] for r in fitrows]
+        crossing['source_time_s']=crossing['time_s'];crossing['time_s']-=origin
         cases.append(dict(case=s['比赛ID'],sample_id=s['样本ID'],player=s['主罚者'],foot=s['TypeOfShot_原标签'],
             fit_times_s=times,fit_positions_m=[[r[k] for k in ['x_m','y_m','z_m']] for r in fitrows],
-            fit_frames=[r['frame'] for r in fitrows],samples=rows,source_summary=s,
+            fit_frames=[r['frame'] for r in fitrows],fit_sample_ordinals=ordinals,
+            time_origin_source_s=origin,time_origin_frame=fitrows[0]['frame'],samples=rows,source_summary=s,
             actual_mass_kg=None,actual_radius_m=None,goal=dict(crossing,local_position=[11.,*crossing['position'][1:]])))
-    cfg=dict(version='current-report-three-penalties-v1',position0_m=[0,0,.11],models=list(MODELS),
+    cfg=dict(version='current-report-three-penalties-v2-corrected-starts',fit_sample_ordinals=FIT_SAMPLE_ORDINALS,
+        position0_m=[0,0,.11],models=list(MODELS),
         forward=FORWARD,physics=dict(mass=.43,radius=.11,air_density=1.2,kinematic_viscosity=1.5e-5,gravity=9.81),
         inverse_bounds=asdict(InverseBounds()),fit=dict(max_nfev=240,rss_allowance_m2=6e-12,coefficient_allowance=1e-8),
         integration=dict(method='DOP853',rtol=1e-10,atol=1e-12,max_step_s=.005,horizon_s=5),

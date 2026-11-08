@@ -38,6 +38,9 @@ def inverse(only=None):
             if path.exists() and read_json(path).get('source_fingerprint')==signature:
                 print(f"cached {case['case']} {model}",flush=True);continue
             cfg=config(model)
+            # A stale candidate must not leave a curve or validation file behind.
+            for suffix in ['.csv','_validation.csv']:
+                (OUT/f"inverse/{case['case']}_{model}{suffix}").unlink(missing_ok=True)
             try:
                 fit=fit_early(t,p,cfg,model,max_nfev=inputs()['config']['fit']['max_nfev'],bounds=InverseBounds())
                 cfg=replace(cfg,drag_scale=fit['drag_scale'],lift_scale=fit['lift_scale'])
@@ -65,7 +68,8 @@ def inverse(only=None):
                     at_parameter_bound=fit['at_parameter_bound'])
                 save_csv(OUT/f"inverse/{case['case']}_{model}.csv",trace_rows(f,cfg))
                 save_json(path,dict(source_fingerprint=signature,record=record,fit=fit,
-                    fit_input=dict(times_s=t,positions_m=p,frames=case['fit_frames']),
+                    fit_input=dict(times_s=t,positions_m=p,frames=case['fit_frames'],
+                        sample_ordinals=case['fit_sample_ordinals'],time_origin_source_s=case['time_origin_source_s']),
                     configuration=config_record(cfg),validation_target=goal))
             except (ValueError,RuntimeError,FloatingPointError) as e:
                 record=dict(case=case['case'],model=model,status='fit_failure',message=str(e),
