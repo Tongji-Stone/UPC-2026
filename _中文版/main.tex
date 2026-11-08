@@ -38,7 +38,7 @@
 三次真实比赛点球提供 39 个原始采样帧；坐标统一到点球点后，利用各例指定的三个位置完成 12 组有界反演，并与后续真实采样曲线比较。将两次推射与一次大力抽射作为案例，比较速度、气动力和预测误差。另用同一弧线球初始条件比较旋转阻尼，其球门交点位移为 \TorqueDisplacement\ m。第五章以题目三点为参考算例，比较单参数响应、位置约束下的交点及十万条蒙特卡洛轨迹。
 
 \noindent\textbf{关键词：}足球；空气阻力；马格努斯效应；逆向预测；轨迹对照
-\newpage\begingroup\fontsize{10}{11.5}\selectfont\tableofcontents\endgroup\newpage
+\newpage\begingroup\fontsize{12}{15}\selectfont\tableofcontents\endgroup\newpage
 \section{引言}
 \subsection{问题背景}
 点球是一个受到严格时空条件约束的拦截问题。守门员需要在合适的时间到达合适的位置，同时决定何时以及向哪个方向移动。点球预判研究讨论了这一时机问题，并表明射门速度和踢球技术会影响射门方向的可预测性\cite{kamp2018,hunter2018}。这些研究也考虑球员触球前的动作线索；本题则关注足球离脚后，根据已测位置预测其后续位置。
@@ -136,7 +136,7 @@ $\boldsymbol Q,I_b$ & 阻尼力矩与转动惯量（第六章） & N\,m; kg\,m$^
 自旋为零或相对速度为零时，该力自然为零。换用相反的叉乘顺序须同时改变符号。
 综上，足球的受力分析如下图所示。
 \begin{figure}[H]\centering
-\includegraphics[width=.58\textwidth]{ball_force_diagram_times_large.pdf}
+\includegraphics[width=.58\textwidth]{ball_force_diagram_times_xlarge.pdf}
 \caption{足球受力示意：重力、浮力、空气阻力和马格努斯力；箭头表示所示运动状态下各力的方向。}\label{fig:ball-force-summary}\end{figure}
 
 \subsection{动力学方程}\label{sec:dynamics}
@@ -269,8 +269,8 @@ I_b\dot{\boldsymbol\omega}&=-k_2\omega\boldsymbol\omega.
 \bibitem{alam2012} F. Alam, H. Chowdhury, M. Stemmer, Z. Wang and J. Yang, ``Effects of surface structure on soccer ball aerodynamics,'' \emph{Procedia Engineering}, 34, 146--151, 2012. \url{https://doi.org/10.1016/j.proeng.2012.04.026}.
 \end{thebibliography}
 
-\newpage\section*{附录 A：数据来源与选帧}\label{app:data}
-\addcontentsline{toc}{section}{附录 A：数据来源与选帧}
+\newpage\section*{附录 A：数据来源、选帧与参数设定}\label{app:data}
+\addcontentsline{toc}{section}{附录 A：数据来源、选帧与参数设定}
 三次点球来自 Sportec Open DFL 数据集，比赛事件与 TRACAB Gen5 多相机光学追踪数据关联，采样频率为 25 Hz\cite{bassek,dataset}。原始 CSV 共保留 39 个源帧，三个事件分别为 15、12、12 帧。本文沿用发布位置，不额外加入观测噪声模型。
 \begin{table}[H]\centering\small\caption{案例称呼与数据记录的对应关系}\label{tab:data-provenance}
 \begin{tabular}{llll}\toprule
@@ -280,6 +280,9 @@ I_b\dot{\boldsymbol\omega}&=-k_2\omega\boldsymbol\omega.
 大力抽射 & J03WOH & Dawid Igor Kownacki & 2、3、4\\\bottomrule
 \end{tabular}\end{table}
 三例以所选第一个位置为时间原点，拟合时刻均为 0、0.04、0.08 s；对应原时间轴起点依次为 0.08、0.08、0.04 s。原始重复帧和门线后记录保留，后续位置仅用于检验预测；实测门线交点使用源帧或相邻帧线性插值得到。原始高度字段按米和球心高度解释，坐标转换为 $x=X-41.5$、$y=Y$、$z=Z_{\rm original}$。
+
+反演使用的参数边界与气动力修正范围如下。
+\InverseBoundsTable
 
 \newpage\addcontentsline{toc}{section}{复现代码}
 \section*{复现代码}

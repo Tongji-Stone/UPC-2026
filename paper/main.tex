@@ -31,7 +31,7 @@ We compare gravity, drag, constant net force and a gravity--drag--Magnus model. 
 Three recorded penalties provide 39 tracking frames. After conversion to penalty-mark coordinates, three selected positions per event enter 12 bounded inversions, compared with later samples. Two placement shots and one power shot are analyzed, comparing speed, aerodynamic forces and prediction error. A separate curved-shot calculation examines rotational damping. Section 5 uses the competition positions for individual perturbations, position-constrained crossings and 100,000 Monte Carlo trajectories.
 
 \noindent\textbf{Keywords:} Soccer ball, aerodynamic drag, Magnus effect, inverse prediction, trajectory comparison
-\newpage\begingroup\fontsize{10}{11.5}\selectfont\tableofcontents\endgroup\newpage
+\newpage\begingroup\fontsize{12}{15}\selectfont\tableofcontents\endgroup\newpage
 \section{Introduction}
 \subsection{Problem Background}
 A penalty kick places stringent spatial and temporal demands on the goalkeeper. The goalkeeper must reach an appropriate location at the right time, while deciding when and in which direction to move. Studies of penalty anticipation discuss this timing problem and show that shot speed and kicking technique affect the predictability of shot direction \cite{kamp2018,hunter2018}. Such work also considers cues from the kicker before contact; the present problem instead focuses on predicting the ball's later position from its measured positions after launch.
@@ -129,7 +129,7 @@ Let $Sp=R\|\boldsymbol\omega\|/u$ and $C_L=\alpha Sp$. Resolving the transverse 
 The force vanishes at zero spin or zero relative velocity; reversing cross-product order requires reversing the sign.
 The forces on the football are summarized in the following diagram.
 \begin{figure}[H]\centering
-\includegraphics[width=.58\textwidth]{ball_force_diagram_times_large.pdf}
+\includegraphics[width=.58\textwidth]{ball_force_diagram_times_xlarge.pdf}
 \caption{Forces on the football: gravity, buoyancy, drag and Magnus force, with arrows showing their directions for the illustrated state.}\label{fig:ball-force-summary}\end{figure}
 
 \subsection{Dynamical Equations}\label{sec:dynamics}
@@ -262,8 +262,8 @@ The real-penalty comparison evaluates how early motion carries into the later pa
 \bibitem{alam2012} F. Alam, H. Chowdhury, M. Stemmer, Z. Wang and J. Yang, ``Effects of surface structure on soccer ball aerodynamics,'' \emph{Procedia Engineering}, 34, 146--151, 2012. \url{https://doi.org/10.1016/j.proeng.2012.04.026}.
 \end{thebibliography}
 
-\newpage\section*{Appendix A: Data Sources and Frame Selection}\label{app:data}
-\addcontentsline{toc}{section}{Appendix A: Data Sources and Frame Selection}
+\newpage\section*{Appendix A: Data Sources, Frame Selection and Parameter Bounds}\label{app:data}
+\addcontentsline{toc}{section}{Appendix A: Data Sources, Frame Selection and Parameter Bounds}
 The three penalties come from the Sportec Open DFL dataset, which associates match events with TRACAB Gen5 multi-camera tracking at 25 Hz\cite{bassek,dataset}. The supplied CSV retains 39 source frames, with 15, 12 and 12 frames for the three events. Published positions are used without adding an observation-noise model.
 \begin{table}[H]\centering\small\caption{Correspondence between case labels and source records}\label{tab:data-provenance}
 \begin{tabular}{llll}\toprule
@@ -273,6 +273,9 @@ Placement 2 & J03WR9 & Philipp Klement & 3, 4, 5\\
 Power shot & J03WOH & Dawid Igor Kownacki & 2, 3, 4\\\bottomrule
 \end{tabular}\end{table}
 The first selected position is the time origin and the fitting times are 0, 0.04 and 0.08 s. Their source-time origins are 0.08, 0.08 and 0.04 s in the table's order. Repeated and post-goal records are retained; later positions are used only for validation. The observed goal crossing uses a source frame or interpolation. The height field is interpreted in metres as ball-centre height, and coordinates are converted with $x=X-41.5$, $y=Y$ and $z=Z_{\rm original}$.
+
+The inversion bounds and force-correction settings are listed below.
+\InverseBoundsTable
 
 \newpage\addcontentsline{toc}{section}{Reproduction Code}
 \section*{Reproduction Code}

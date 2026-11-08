@@ -1,0 +1,250 @@
+{
+  "record": {
+    "case": "problem_b",
+    "model": "M2",
+    "status": "plane",
+    "event": {
+      "type": "plane",
+      "time": 0.4041392196168976,
+      "position": [
+        11.0,
+        3.217234039892623,
+        1.882796225279047
+      ],
+      "velocity": [
+        24.40591400310232,
+        7.1381397550429835,
+        2.016304377140469
+      ],
+      "spin": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "error_m": null,
+    "fit_converged": true,
+    "candidate_plane_error_m": null,
+    "rss_m2": 0.00015265493027184082,
+    "max_residual_m": 0.010734155716161264,
+    "initial_state": [
+      30.504458744587115,
+      8.921816640144165,
+      6.981788831213716,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "drag_scale": 1.4999999999999998,
+    "lift_scale": 1.0,
+    "active_parameters": 4,
+    "coverage": {
+      "speed_range": [
+        25.50817831266331,
+        32.540224196280995
+      ],
+      "Re_range": [
+        374119.94858572853,
+        477256.6215454546
+      ],
+      "Sp_range": [
+        0.0,
+        0.0
+      ],
+      "above_35_m_s": false,
+      "outside_A07_spinning_Re": true,
+      "above_A07_global_Sp": false,
+      "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+    },
+    "shot_type": "competition",
+    "target_yz_m": null
+  },
+  "fit": {
+    "model": "M2",
+    "initial_state": [
+      30.504458744587115,
+      8.921816640144165,
+      6.981788831213716,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "drag_scale": 1.4999999999999998,
+    "lift_scale": 1.0,
+    "rss_m2": 0.00015265493027184082,
+    "minimum_search_rss_m2": 0.0001526549302720453,
+    "max_residual_m": 0.010734155716161264,
+    "fitted_positions": [
+      [
+        0.0,
+        0.0,
+        0.11
+      ],
+      [
+        1.5018877169668112,
+        0.43926584428383875,
+        0.44161071867574747
+      ],
+      [
+        2.9590479492475374,
+        0.8654499807266933,
+        0.7391837581380122
+      ]
+    ],
+    "active_parameters": 4,
+    "spin_representation": "not used",
+    "coefficient_distance": 0.24999999999999978,
+    "rss_allowance_m2": 6e-12,
+    "coefficient_distance_allowance": 1e-08,
+    "starts": [
+      {
+        "start": 0,
+        "rss_m2": 0.0001526549302720453,
+        "success": true,
+        "nfev": 13,
+        "parameters": [
+          1.0168152914862372,
+          0.2973938880048055,
+          0.23272629437379055,
+          1.4999999999999998
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      }
+    ],
+    "stages": [
+      {
+        "stage": "positions",
+        "rss_m2": 0.0001526549302720453,
+        "coefficient_distance": 0.24999999999999978
+      }
+    ],
+    "position_jacobian_singular_values": [
+      29.6681919648927,
+      29.668153000197503,
+      28.882026862955975,
+      0.12806420748115652
+    ],
+    "position_jacobian_rank": 4,
+    "selection": "positions, then coefficients nearest one",
+    "success": true,
+    "position_stage_converged": true,
+    "fit_bounds": {
+      "velocity_component_max_m_s": 35.0,
+      "spin_component_max_rad_s": 62.83185307179586,
+      "force_scale_min": 0.5,
+      "force_scale_max": 1.5
+    },
+    "at_parameter_bound": true
+  },
+  "input": {
+    "times_s": [
+      0.0,
+      0.05,
+      0.1
+    ],
+    "positions_m": [
+      [
+        0.0,
+        0.0,
+        0.11
+      ],
+      [
+        1.5,
+        0.45,
+        0.44
+      ],
+      [
+        2.96,
+        0.86,
+        0.74
+      ]
+    ]
+  },
+  "source_case": {
+    "case": "problem_b",
+    "times_s": [
+      0.0,
+      0.05,
+      0.1
+    ],
+    "positions_m": [
+      [
+        0.0,
+        0.0,
+        0.11
+      ],
+      [
+        1.5,
+        0.45,
+        0.44
+      ],
+      [
+        2.96,
+        0.86,
+        0.74
+      ]
+    ],
+    "physics": {
+      "mass": 0.43,
+      "radius": 0.11,
+      "air_density": 1.2,
+      "kinematic_viscosity": 1.5e-05,
+      "gravity": 9.81,
+      "wind": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "angular_drag_coefficient": 1.5,
+      "inertia_coefficient": 0.6666666666666666,
+      "use_rotational_drag": false,
+      "spin_decay": 0.0
+    },
+    "plane_x_m": 11.0,
+    "target_yz_m": null
+  },
+  "configuration": {
+    "mass": 0.43,
+    "radius": 0.11,
+    "air_density": 1.2,
+    "kinematic_viscosity": 1.5e-05,
+    "gravity": 9.81,
+    "drag_coefficient": 0.24154511379406454,
+    "lift_coefficient": 0.28977661113044667,
+    "drag_scale": 1.4999999999999998,
+    "lift_scale": 1.0,
+    "coefficient_mode": "constant",
+    "use_gravity": true,
+    "use_drag": true,
+    "use_magnus": false,
+    "wind": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "spin_decay": 0.0,
+    "use_rotational_drag": false,
+    "use_viscous_torque": true,
+    "angular_drag_coefficient": 1.5,
+    "inertia_coefficient": 0.6666666666666666,
+    "model_id": "four-model-v2-M2",
+    "dynamic_viscosity": 1.8e-05,
+    "moment_of_inertia": 0.003468666666666666,
+    "coefficient_callback": "model default",
+    "sources": {
+      "CD_CL": "Kiratidis & Leinweber 2018 reference point; fixed constants",
+      "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+      "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+      "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+      "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+      "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+    },
+    "assumptions": [
+      "still air reference unless wind is supplied",
+      "constant spin unless rotational torque is enabled",
+      "isotropic thin shell",
+      "sin(theta) oblique-spin extension"
+    ]
+  },
+  "validation_rule": "Only first three positions supplied to fit_early; subsequent data used for scoring"
+}

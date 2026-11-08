@@ -1,11 +1,12 @@
 % Generated exclusively from results/current_report.
-\newcommand{\PenaltyErrorSummaryTable}{\begin{table}[H]\centering\footnotesize
-\caption{Goal-plane error and held-out 3D trajectory RMSE (m). Each cell lists goal error first, then RMSE and the number of comparison samples. A dash marks no valid goal-plane crossing; trajectory comparisons end at model termination.}\label{tab:penalty-errors}
+\newcommand{\PenaltyErrorSummaryTable}{\begin{table}[H]\centering\normalsize
+\renewcommand{\arraystretch}{1.25}
+\caption{Goal-plane errors (m); a dash denotes no valid goal-plane crossing.}\label{tab:penalty-errors}
 \setlength{\tabcolsep}{4pt}\begin{tabular}{lcccc}\toprule
 Event & M1 & M2 & M3 & M4\\\midrule
-Placement 1 & \shortstack{--- (ground)\\0.244 (3)} & \shortstack{--- (ground)\\0.136 (3)} & \shortstack{--- (time limit)\\0.826 (6)} & \shortstack{0.360\\0.234 (5)}\\
-Power shot & \shortstack{0.684\\0.412 (6)} & \shortstack{0.657\\0.356 (7)} & \shortstack{0.374\\0.190 (7)} & \shortstack{0.113\\0.093 (7)}\\
-Placement 2 & \shortstack{0.475\\0.300 (5)} & \shortstack{0.475\\0.320 (6)} & \shortstack{0.155\\0.151 (5)} & \shortstack{0.146\\0.132 (5)}\\
+Placement 1 & --- & --- & --- & 0.360\\
+Power shot & 0.684 & 0.657 & 0.374 & 0.113\\
+Placement 2 & 0.475 & 0.475 & 0.155 & 0.146\\
 \bottomrule\end{tabular}\end{table}}
 \newcommand{\ReferenceCD}{0.2415}
 \newcommand{\ReferenceCL}{1.5251}

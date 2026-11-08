@@ -19,8 +19,7 @@ The horizontal origin is the penalty mark, $x$ points toward the goal, $y$ is la
 \subsubsection{Bounded inversion and selection}
 M3 determines constant acceleration from three positions:
 \begin{equation}\boldsymbol r(t)=\boldsymbol r_0+\boldsymbol v_0t+\tfrac12\boldsymbol a t^2.\end{equation}
-M4 minimizes the position error over velocity, spin direction, $C_D$ and $\alpha$. Six deterministic initial guesses are used within the ranges in Table~\ref{tab:inverse-bounds}; the minimum-residual solution is retained.
-\InverseBoundsTable
+M4 minimizes the position error over velocity, spin direction, $C_D$ and $\alpha$. Six deterministic initial guesses are used within the ranges in Table~\ref{tab:inverse-bounds} in Appendix A; the minimum-residual solution is retained.
 Only the product $\alpha\boldsymbol\omega$ enters Magnus force, so spin magnitude and $\alpha$ are not separately identified by positions. A reference spin magnitude of 30 rad/s is assumed. Seven fitted quantities and six later position coordinates leave multiple possible solutions.
 
 \subsection{Case Analysis and Validation}\label{sec:case-validation}
@@ -43,5 +42,4 @@ $x(t)$ shows forward deceleration; $y(t)$ and $z(t)$ show lateral and vertical c
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_m4_dynamics.pdf}
 \caption{M4 speed, drag and Magnus force for the three recorded penalties. Curves end at first model-predicted ground contact or goal-plane crossing.}\label{fig:penalty-dynamics}\end{figure}
 
-\paragraph{Four-model error summary.} Table~\ref{tab:penalty-errors} compares goal-plane errors and held-out three-dimensional trajectory RMSE for all four models and three penalties. Trajectory errors use only samples after fitting and stop at model termination; parentheses give the number of samples. Counts can differ between models, so the values should be read alongside termination status.
 \PenaltyErrorSummaryTable

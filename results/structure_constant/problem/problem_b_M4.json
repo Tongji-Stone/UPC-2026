@@ -1,0 +1,322 @@
+{
+  "record": {
+    "case": "problem_b",
+    "model": "M4",
+    "status": "plane",
+    "event": {
+      "type": "plane",
+      "time": 0.38788249306507266,
+      "position": [
+        11.0,
+        2.6610876510807064,
+        1.967214306505619
+      ],
+      "velocity": [
+        26.70695946072492,
+        4.785352632736161,
+        2.751166752826085
+      ],
+      "spin": [
+        0.8183612924013186,
+        0.11291963615506985,
+        -0.5635015091992658
+      ]
+    },
+    "error_m": null,
+    "fit_converged": true,
+    "candidate_plane_error_m": null,
+    "rss_m2": 6.397875497348824e-05,
+    "max_residual_m": 0.006704194310293232,
+    "initial_state": [
+      30.10059299849248,
+      9.328589949120355,
+      6.835153567990066,
+      0.8183612924013186,
+      0.11291963615506985,
+      -0.5635015091992658
+    ],
+    "drag_scale": 1.0,
+    "lift_scale": 1.0,
+    "active_parameters": 5,
+    "coverage": {
+      "speed_range": [
+        27.271417307472213,
+        32.24573791367986
+      ],
+      "Re_range": [
+        399980.7871762591,
+        472937.4894006379
+      ],
+      "Sp_range": [
+        0.003411303543260948,
+        0.004033527071945052
+      ],
+      "above_35_m_s": false,
+      "outside_A07_spinning_Re": true,
+      "above_A07_global_Sp": false,
+      "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+    },
+    "shot_type": "competition",
+    "target_yz_m": null
+  },
+  "fit": {
+    "model": "M4",
+    "initial_state": [
+      30.10059299849248,
+      9.328589949120355,
+      6.835153567990066,
+      0.8183612924013186,
+      0.11291963615506985,
+      -0.5635015091992658
+    ],
+    "drag_scale": 1.0,
+    "lift_scale": 1.0,
+    "rss_m2": 6.397875497348824e-05,
+    "minimum_search_rss_m2": 6.397875497592455e-05,
+    "max_residual_m": 0.006704194310293232,
+    "fitted_positions": [
+      [
+        0.0,
+        0.0,
+        0.11
+      ],
+      [
+        1.4932958056897068,
+        0.4480539583659352,
+        0.43857344865851766
+      ],
+      [
+        2.963427340320056,
+        0.8609627324850879,
+        0.7407327286978114
+      ]
+    ],
+    "active_parameters": 5,
+    "spin_representation": "unit axis; magnitude absent from constant-CL forces",
+    "coefficient_distance": 0.0,
+    "rss_allowance_m2": 6e-12,
+    "coefficient_distance_allowance": 1e-08,
+    "starts": [
+      {
+        "start": 0,
+        "rss_m2": 6.397875497778365e-05,
+        "success": true,
+        "nfev": 17,
+        "parameters": [
+          1.003353127206852,
+          0.31095297116619863,
+          0.2278383651708831,
+          0.13711232716530083,
+          -0.5986163475153665
+        ],
+        "message": "Both `ftol` and `xtol` termination conditions are satisfied."
+      },
+      {
+        "start": 1,
+        "rss_m2": 6.397875497597098e-05,
+        "success": true,
+        "nfev": 15,
+        "parameters": [
+          1.003353115031946,
+          0.3109529886292899,
+          0.22783839673315426,
+          0.13711389477098976,
+          -0.5986175203353145
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 2,
+        "rss_m2": 8.265074075149503e-05,
+        "success": true,
+        "nfev": 20,
+        "parameters": [
+          1.0015793505940962,
+          0.3128043550320267,
+          0.23333419954235954,
+          3.1415926535897927,
+          -1.1569506860883088
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 3,
+        "rss_m2": 6.398699018352882e-05,
+        "success": true,
+        "nfev": 15,
+        "parameters": [
+          1.0033539829281204,
+          0.3108003830007593,
+          0.2280429967766683,
+          -2.636814863389437,
+          -0.9955433700908791
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 4,
+        "rss_m2": 6.397875497922363e-05,
+        "success": true,
+        "nfev": 13,
+        "parameters": [
+          1.0033531376958587,
+          0.310952923817394,
+          0.22783838308951837,
+          0.1371135857162556,
+          -0.598613308520031
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 5,
+        "rss_m2": 6.397875497592455e-05,
+        "success": true,
+        "nfev": 15,
+        "parameters": [
+          1.0033530999497493,
+          0.31095299830401185,
+          0.22783845226633553,
+          0.13711679749048294,
+          -0.5986182281437236
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      }
+    ],
+    "stages": [
+      {
+        "stage": "positions",
+        "rss_m2": 6.397875497592455e-05,
+        "coefficient_distance": 0.0
+      }
+    ],
+    "position_jacobian_singular_values": [
+      30.029599798719254,
+      29.945099796435915,
+      29.3141115543862,
+      0.12958423263848248,
+      0.10490243725513097
+    ],
+    "position_jacobian_rank": 5,
+    "selection": "positions with fixed coefficients",
+    "success": true,
+    "position_stage_converged": true,
+    "fit_bounds": {
+      "velocity_component_max_m_s": 35.0,
+      "spin_component_max_rad_s": 62.83185307179586,
+      "force_scale_min": 0.5,
+      "force_scale_max": 1.5
+    },
+    "at_parameter_bound": false
+  },
+  "input": {
+    "times_s": [
+      0.0,
+      0.05,
+      0.1
+    ],
+    "positions_m": [
+      [
+        0.0,
+        0.0,
+        0.11
+      ],
+      [
+        1.5,
+        0.45,
+        0.44
+      ],
+      [
+        2.96,
+        0.86,
+        0.74
+      ]
+    ]
+  },
+  "source_case": {
+    "case": "problem_b",
+    "times_s": [
+      0.0,
+      0.05,
+      0.1
+    ],
+    "positions_m": [
+      [
+        0.0,
+        0.0,
+        0.11
+      ],
+      [
+        1.5,
+        0.45,
+        0.44
+      ],
+      [
+        2.96,
+        0.86,
+        0.74
+      ]
+    ],
+    "physics": {
+      "mass": 0.43,
+      "radius": 0.11,
+      "air_density": 1.2,
+      "kinematic_viscosity": 1.5e-05,
+      "gravity": 9.81,
+      "wind": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "angular_drag_coefficient": 1.5,
+      "inertia_coefficient": 0.6666666666666666,
+      "use_rotational_drag": false,
+      "spin_decay": 0.0
+    },
+    "plane_x_m": 11.0,
+    "target_yz_m": null
+  },
+  "configuration": {
+    "mass": 0.43,
+    "radius": 0.11,
+    "air_density": 1.2,
+    "kinematic_viscosity": 1.5e-05,
+    "gravity": 9.81,
+    "drag_coefficient": 0.24154511379406454,
+    "lift_coefficient": 0.28977661113044667,
+    "drag_scale": 1.0,
+    "lift_scale": 1.0,
+    "coefficient_mode": "constant",
+    "use_gravity": true,
+    "use_drag": true,
+    "use_magnus": true,
+    "wind": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "spin_decay": 0.0,
+    "use_rotational_drag": false,
+    "use_viscous_torque": true,
+    "angular_drag_coefficient": 1.5,
+    "inertia_coefficient": 0.6666666666666666,
+    "model_id": "four-model-v2-M4",
+    "dynamic_viscosity": 1.8e-05,
+    "moment_of_inertia": 0.003468666666666666,
+    "coefficient_callback": "model default",
+    "sources": {
+      "CD_CL": "Kiratidis & Leinweber 2018 reference point; fixed constants",
+      "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+      "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+      "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+      "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+      "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+    },
+    "assumptions": [
+      "still air reference unless wind is supplied",
+      "constant spin unless rotational torque is enabled",
+      "isotropic thin shell",
+      "sin(theta) oblique-spin extension"
+    ]
+  },
+  "validation_rule": "Only first three positions supplied to fit_early; subsequent data used for scoring"
+}

@@ -8,8 +8,9 @@ def scientific(x):
     a,b=f'{x:.2e}'.split('e')
     return '$'+a+r'\times10^{'+str(int(b))+'}$'
 
-def table(caption,label,columns,head,rows):
-    return (r'\begin{table}[H]\centering\footnotesize'+'\n'+r'\caption{'+caption+r'}\label{'+label+'}\n'
+def table(caption,label,columns,head,rows,size=r'\footnotesize',row_stretch=None):
+    spacing = (r'\renewcommand{\arraystretch}{'+str(row_stretch)+'}'+'\n') if row_stretch else ''
+    return (r'\begin{table}[H]\centering'+size+'\n'+spacing+r'\caption{'+caption+r'}\label{'+label+'}\n'
         r'\setlength{\tabcolsep}{4pt}\begin{tabular}{'+columns+r'}\toprule'+'\n'+head+r'\\\midrule'+'\n'+
         '\n'.join(row+r'\\' for row in rows)+'\n'+r'\bottomrule\end{tabular}\end{table}')
 
@@ -27,20 +28,15 @@ def main():
             for model in ('M1','M2','M3','M4'):
                 r=next(item for item in inverse if item['case']==case and item['model']==model)
                 goal=r.get('scored_goal_error_m')
-                reason={'ground':tr('ground','触地'),'none':tr('time limit','超时'),
-                        'fit_limit':tr('fit limit','未收敛'),'early_contact':tr('early ground','提前触地'),
-                        'fit_failure':tr('failure','失败')}.get(r['status'],tr('unavailable','无交点'))
-                first=f'{goal:.3f}' if goal is not None else r'--- ('+reason+')'
-                rmse=r.get('future_rmse_3d_m');count=r.get('future_sample_count',0)
-                second=(f'{rmse:.3f} ({count})' if rmse is not None else '---')
-                cells.append(r'\shortstack{'+first+r'\\'+second+'}')
+                cells.append(f'{goal:.3f}' if goal is not None else '---')
             case_label=({'J03WMX':'推射 1','J03WOH':'大力抽射','J03WR9':'推射 2'} if zh else
                         {'J03WMX':'Placement 1','J03WOH':'Power shot','J03WR9':'Placement 2'})[case]
             rows.append(case_label+' & '+' & '.join(cells))
         macro('PenaltyErrorSummaryTable',table(
-            tr('Goal-plane error and held-out 3D trajectory RMSE (m). Each cell lists goal error first, then RMSE and the number of comparison samples. A dash marks no valid goal-plane crossing; trajectory comparisons end at model termination.',
-               '球门交点误差与后续三维轨迹均方根误差（m）。每格上行为交点误差，下行为轨迹误差及参与比较的采样点数；无有效交点标记为“---”，轨迹比较截止于模型终止。'),
-            'tab:penalty-errors','lcccc',tr('Event & M1 & M2 & M3 & M4','事件 & M1 & M2 & M3 & M4'),rows))
+            tr('Goal-plane errors (m); a dash denotes no valid goal-plane crossing.',
+               '球门交点误差（m）；无有效交点标记为“---”。'),
+            'tab:penalty-errors','lcccc',tr('Event & M1 & M2 & M3 & M4','事件 & M1 & M2 & M3 & M4'),rows,
+            size=r'\normalsize',row_stretch=1.25))
         c=PhysicsConfig.for_model('M4');macro('ReferenceCD',f'{c.drag_coefficient:.4f}');macro('ReferenceCL',f'{c.lift_coefficient:.4f}')
         macro('ForwardReMin',f'{14*2*.11/1.5e-5/1e5:.2f}');macro('ForwardReMax',f'{27*2*.11/1.5e-5/1e5:.2f}')
         r=next(r for r in forward if r['case']=='curved' and r['model']=='M4');e=r['event']

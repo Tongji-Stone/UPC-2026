@@ -19,8 +19,7 @@ M3 的恒合力包含重力及其他力的共同作用。M4 中 $C_D$ 和 $\alph
 \subsubsection{有界反演与选解}
 M3 使用三个位置直接解出恒加速度：
 \begin{equation}\boldsymbol r(t)=\boldsymbol r_0+\boldsymbol v_0t+\tfrac12\boldsymbol a t^2.\end{equation}
-M4 以初速度、旋转方向、$C_D$、$\alpha$ 为变量，最小化两个后续位置的平方误差。确定性六组初值的最小残差对应代表解；各参数范围列于表~\ref{tab:inverse-bounds}。
-\InverseBoundsTable
+M4 以初速度、旋转方向、$C_D$、$\alpha$ 为变量，最小化两个后续位置的平方误差。确定性六组初值的最小残差对应代表解；各参数范围见附录 A 的表~\ref{tab:inverse-bounds}。
 马格努斯力包含乘积 $\alpha\boldsymbol\omega$，仅由位置不能分别唯一确定 $\alpha$ 和自旋大小。为选择代表解，令 $\|\boldsymbol\omega\|=30$ rad/s；三个初速度、两个方向角和两个系数共有七项，而两个后续位置提供六个坐标，因此结果仍受边界与选解条件影响。
 
 \subsection{案例分析与验证}\label{sec:case-validation}
@@ -43,5 +42,4 @@ $x(t)$ 体现前进方向的减速，$y(t)$ 与 $z(t)$ 分别体现横向偏转�
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_m4_dynamics.pdf}
 \caption{三次真实点球的 M4 反演球速、阻力和马格努斯力；曲线分别截止于模型首次触地或到达球门。}\label{fig:penalty-dynamics}\end{figure}
 
-\paragraph{四模型误差汇总。} 表~\ref{tab:penalty-errors} 将三次点球、四种模型的球门交点误差和后续三维轨迹均方根误差放在一起。轨迹误差仅使用拟合后的实测采样，并在模型触地或终止时停止；括号内为参与比较的点数。不同模型的比较点数可能不同，因此需结合终止状态阅读。
 \PenaltyErrorSummaryTable
