@@ -1,0 +1,566 @@
+{
+  "fixed_initial_state": [
+    30.378416175902878,
+    9.40740154654372,
+    6.897403599893283,
+    19.74341474086782,
+    1.2059975416479294,
+    -22.555335162653254
+  ],
+  "configuration": {
+    "mass": 0.43,
+    "radius": 0.11,
+    "air_density": 1.2,
+    "kinematic_viscosity": 1.5e-05,
+    "gravity": 9.81,
+    "drag_coefficient": 0.24154511379406454,
+    "lift_coefficient": 1.5251400585812982,
+    "drag_scale": 1.4999999999999998,
+    "lift_scale": 1.4999999994703381,
+    "coefficient_mode": "linear_spin",
+    "constant_acceleration": null,
+    "use_gravity": true,
+    "use_drag": true,
+    "use_magnus": true,
+    "wind": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "spin_decay": 0.0,
+    "use_rotational_drag": false,
+    "use_viscous_torque": true,
+    "angular_drag_coefficient": 1.5,
+    "inertia_coefficient": 0.6666666666666666,
+    "model_id": "four-model-v2-M4",
+    "dynamic_viscosity": 1.8e-05,
+    "moment_of_inertia": 0.003468666666666666,
+    "coefficient_callback": "model default",
+    "sources": {
+      "CD_CL": "Fixed CD and linear CL=alpha*Sp, anchored to Kiratidis & Leinweber 2018 reference point",
+      "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
+      "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
+      "angular_drag": "MuJoCo default 1.5, a declared reference setting",
+      "inertia": "Maponi & Piombin 2025 Eq 6, thin spherical shell",
+      "air": "rho=1.2 from Asai 2007; nu=1.5e-5 reference air setting"
+    },
+    "assumptions": [
+      "still air reference unless wind is supplied",
+      "constant spin unless rotational torque is enabled",
+      "isotropic thin shell",
+      "sin(theta) oblique-spin extension"
+    ]
+  },
+  "reference_crossing": {
+    "type": "plane",
+    "time": 0.39896701285154546,
+    "position": [
+      11.0,
+      2.6159064340363067,
+      1.9525958720456822
+    ],
+    "velocity": [
+      25.09403835094901,
+      4.141278312070565,
+      2.4579822318972084
+    ],
+    "spin": [
+      19.74341474086782,
+      1.2059975416479294,
+      -22.555335162653254
+    ]
+  },
+  "directions": [
+    {
+      "azimuth_deg": 0.0,
+      "threshold_m_s": 3.294707643898643,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 5.0,
+      "threshold_m_s": 2.6501817734913273,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 10.0,
+      "threshold_m_s": 2.2102894544777523,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 15.0,
+      "threshold_m_s": 1.8990073866078492,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 20.0,
+      "threshold_m_s": 1.6712431002685375,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 25.0,
+      "threshold_m_s": 1.4999916095365586,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 30.0,
+      "threshold_m_s": 1.3685439637165513,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 35.0,
+      "threshold_m_s": 1.2661835132114008,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 40.0,
+      "threshold_m_s": 1.185807882070513,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 45.0,
+      "threshold_m_s": 1.122579999402551,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 50.0,
+      "threshold_m_s": 1.0731372101044456,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 55.0,
+      "threshold_m_s": 1.0351131546413468,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 60.0,
+      "threshold_m_s": 1.0068405443062014,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 65.0,
+      "threshold_m_s": 0.9871639580384481,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 70.0,
+      "threshold_m_s": 0.9753209550352255,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 75.0,
+      "threshold_m_s": 0.9708693421100079,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 80.0,
+      "threshold_m_s": 0.9736470119769302,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 85.0,
+      "threshold_m_s": 0.9837577452515581,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 90.0,
+      "threshold_m_s": 1.0015806564293268,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 95.0,
+      "threshold_m_s": 1.0278048713516763,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 100.0,
+      "threshold_m_s": 1.0634961156707843,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 105.0,
+      "threshold_m_s": 1.1102045182737545,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 110.0,
+      "threshold_m_s": 1.170140056601879,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 115.0,
+      "threshold_m_s": 1.2464487432976474,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 120.0,
+      "threshold_m_s": 1.3436615233829714,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 125.0,
+      "threshold_m_s": 1.4684435732985872,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 130.0,
+      "threshold_m_s": 1.6308948512447676,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 135.0,
+      "threshold_m_s": 1.8469159072711634,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 140.0,
+      "threshold_m_s": 2.142758657882776,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 145.0,
+      "threshold_m_s": 2.5643495396901295,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 150.0,
+      "threshold_m_s": 3.197736019505217,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 155.0,
+      "threshold_m_s": 4.216696368561761,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 160.0,
+      "threshold_m_s": 5.994139580508692,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 165.0,
+      "threshold_m_s": 9.283152279916393,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 170.0,
+      "threshold_m_s": 10.0,
+      "threshold_is_lower_bound": true
+    },
+    {
+      "azimuth_deg": 175.0,
+      "threshold_m_s": 4.932087007095953,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 180.0,
+      "threshold_m_s": 3.345580639802803,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 185.0,
+      "threshold_m_s": 2.571008345434567,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 190.0,
+      "threshold_m_s": 2.107011262434189,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 195.0,
+      "threshold_m_s": 1.7987750192880831,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 200.0,
+      "threshold_m_s": 1.5807356458682198,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 205.0,
+      "threshold_m_s": 1.4200137326713758,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 210.0,
+      "threshold_m_s": 1.298237011472119,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 215.0,
+      "threshold_m_s": 1.2043357229049498,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 220.0,
+      "threshold_m_s": 1.1312652299659738,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 225.0,
+      "threshold_m_s": 1.0743608445520179,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 230.0,
+      "threshold_m_s": 1.0304488755110779,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 235.0,
+      "threshold_m_s": 0.9973383713793449,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 240.0,
+      "threshold_m_s": 0.9735189491587158,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 245.0,
+      "threshold_m_s": 0.9579764629870418,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 250.0,
+      "threshold_m_s": 0.9500807655589478,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 255.0,
+      "threshold_m_s": 0.949520806456741,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 260.0,
+      "threshold_m_s": 0.9562738466361588,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 265.0,
+      "threshold_m_s": 0.9706033208626791,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 270.0,
+      "threshold_m_s": 0.9930842434028694,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 275.0,
+      "threshold_m_s": 1.0246615783165443,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 280.0,
+      "threshold_m_s": 1.0667526645540728,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 285.0,
+      "threshold_m_s": 1.121415437795856,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 290.0,
+      "threshold_m_s": 1.1916238661594587,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 295.0,
+      "threshold_m_s": 1.2817250007043886,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 300.0,
+      "threshold_m_s": 1.3982280769005726,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 305.0,
+      "threshold_m_s": 1.5512338666647623,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 310.0,
+      "threshold_m_s": 1.7571959154509815,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 315.0,
+      "threshold_m_s": 2.0447082325704464,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 320.0,
+      "threshold_m_s": 2.467969319412184,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 325.0,
+      "threshold_m_s": 3.1424675056434386,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 330.0,
+      "threshold_m_s": 4.351579383014679,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 335.0,
+      "threshold_m_s": 6.694190575085877,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 340.0,
+      "threshold_m_s": 8.490356077758554,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 345.0,
+      "threshold_m_s": 7.416224507497336,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 350.0,
+      "threshold_m_s": 5.675896417729493,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 355.0,
+      "threshold_m_s": 4.262641818785023,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 250.5,
+      "threshold_m_s": 0.9496972685002518,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 251.0,
+      "threshold_m_s": 0.9493867200994228,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 251.5,
+      "threshold_m_s": 0.9491490246702579,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 252.0,
+      "threshold_m_s": 0.9489840898225698,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 252.5,
+      "threshold_m_s": 0.9488918512055562,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 253.0,
+      "threshold_m_s": 0.9488722724455043,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 253.5,
+      "threshold_m_s": 0.9489253451106304,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 254.0,
+      "threshold_m_s": 0.9490510887016397,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 254.5,
+      "threshold_m_s": 0.9492495506691587,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 255.5,
+      "threshold_m_s": 0.9498649595713852,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 256.0,
+      "threshold_m_s": 0.9502821244278209,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 256.5,
+      "threshold_m_s": 0.9507724962454008,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 257.0,
+      "threshold_m_s": 0.9513362453979707,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 257.5,
+      "threshold_m_s": 0.9519735888754846,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 258.0,
+      "threshold_m_s": 0.9526847724827442,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 258.5,
+      "threshold_m_s": 0.9534700710716015,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 259.0,
+      "threshold_m_s": 0.954329788802257,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "azimuth_deg": 259.5,
+      "threshold_m_s": 0.955264259432311,
+      "threshold_is_lower_bound": false
+    }
+  ],
+  "cardinal": [
+    {
+      "direction": "tailwind",
+      "azimuth_deg": 17.20638675374814,
+      "threshold_m_s": 1.7901118474467834,
+      "reported_bound_m_s": 1.79,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "direction": "headwind",
+      "azimuth_deg": 197.20638675374815,
+      "threshold_m_s": 1.6938544246362193,
+      "reported_bound_m_s": 1.69,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "direction": "left_crosswind",
+      "azimuth_deg": 107.20638675374815,
+      "threshold_m_s": 1.1348614253731255,
+      "reported_bound_m_s": 1.13,
+      "threshold_is_lower_bound": false
+    },
+    {
+      "direction": "right_crosswind",
+      "azimuth_deg": 287.2063867537481,
+      "threshold_m_s": 1.1502614687466202,
+      "reported_bound_m_s": 1.15,
+      "threshold_is_lower_bound": false
+    }
+  ],
+  "worst": {
+    "azimuth_deg": 253.0,
+    "threshold_m_s": 0.9488722724455043,
+    "threshold_is_lower_bound": false
+  },
+  "reported_bound_m_s": 0.94,
+  "max_displacement_at_and_below_bound_m": 0.049526836300732784,
+  "above_bound_worst_displacement_m": 0.05006015020147845,
+  "criterion_m": 0.05,
+  "coarse_step_deg": 5,
+  "fine_step_deg": 0.5
+}

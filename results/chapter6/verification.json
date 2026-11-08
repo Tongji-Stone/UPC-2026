@@ -1,0 +1,9 @@
+{
+  "spin_analytic_max_error_rad_s": 1.4210854715202004e-14,
+  "endpoint_tolerance_difference_m": 2.589462819655575e-15,
+  "zero_spin_torque": true,
+  "damping_power_negative": true,
+  "torque_normalization_error": 0.0,
+  "baseline_endpoint_difference_m": 0.0,
+  "all_passed": true
+}

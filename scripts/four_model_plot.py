@@ -181,7 +181,7 @@ if __name__=='__main__':
         inverse_overview(['J03WMX','J03WR9'],'placement_spatial_comparison')
     else:
         if args.inverse_only:inverse();inverse_overview();penalty_dynamics();problem()
-        else:forward();inverse();inverse_overview();penalty_dynamics();problem();other()
+        else:forward();inverse();inverse_overview();penalty_dynamics();problem()
     save_json(FIG/'figure_contract.json',dict(width_inches=6.5,dpi=300,formats=['pdf','svg','png'],
         panel_layout_overrides={'penalty_J03WOH':dict(figsize_inches=[7.5,6.5],layout='2 by 2: 3D and three time histories'),
             'placement_spatial_comparison':dict(figsize_inches=[8,3.8],layout='two side-by-side 3D paths')},

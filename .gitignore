@@ -25,3 +25,5 @@ results/current_report/qa/
 
 results/sensitivity_v2/qa/
 *.tmp
+
+results/chapter6/qa/

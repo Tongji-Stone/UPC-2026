@@ -21,7 +21,7 @@
 \setlength{\parindent}{1.5em}
 \setlength{\parskip}{0pt}
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,numbers=left,numberstyle=\tiny,numbersep=8pt,columns=fullflexible,showstringspaces=false,frame=none}
-\graphicspath{{aerodynamics/}{assets/}{../results/current_report/figures/}{../results/sensitivity_linear/figures/}}
+\graphicspath{{aerodynamics/}{assets/}{../results/chapter6/figures/}{../results/current_report/figures/}{../results/sensitivity_linear/figures/}}
 
 % BEGIN REPORT_RESULTS
 % Generated exclusively from results/current_report.
@@ -154,19 +154,40 @@ $\|\boldsymbol\omega_0\|$ (M4) & $30$ rad/s\\
 Azimuth, elevation (M4) & $[-\pi,\pi],[-\dfrac{\pi}{2},\dfrac{\pi}{2}]$ rad\\
 $\dfrac{C_D}{C_D^*},\dfrac{\alpha}{\alpha^*}$ & $[0.5,1.5]$\\
 \bottomrule\end{tabular}\end{table}}
-\newcommand{\TorqueViscousRatio}{$3.54\times10^{-4}$}
-\newcommand{\TorqueDisplacement}{0.0616}
-\newcommand{\TorqueResults}{Spin falls by 19.740\%, while the crossing moves 0.0616 m (0.560\% of the 11 m distance) and arrival time changes by -0.066\%. Rotational damping therefore has a small endpoint effect in this short reference flight.}
-\newcommand{\WindResultsTable}{\begin{table}[H]\centering\footnotesize
-\caption{Illustrative wind at the 24 m/s curved-shot launch: dynamic-pressure changes at fixed coefficients.}\label{tab:wind}
-\setlength{\tabcolsep}{4pt}\begin{tabular}{rrrrr}\toprule
-$w$ (m/s) & Headwind (\%) & Tailwind (\%) & Crosswind (\%) & Angle ($^\circ$)\\\midrule
-1 & +8.51 & -8.16 & +0.17 & 2.39\\
-3 & +26.56 & -23.44 & +1.56 & 7.13\\
-5 & +46.01 & -37.33 & +4.34 & 11.77\\
-\bottomrule\end{tabular}\end{table}}
-\newcommand{\WindThreshold}{0.59}
 % END REPORT_RESULTS
+
+% BEGIN CHAPTER6_RESULTS
+% Generated exclusively from results/chapter6.
+\newcommand{\ChSixReMin}{3.75}
+\newcommand{\ChSixReMax}{4.77}
+\newcommand{\ChSixAngular}{1.5}
+\newcommand{\ChSixGoalShift}{2.38\times10^{-2}}
+\newcommand{\ChSixSpinLoss}{14.36}
+\newcommand{\ChSixGoalShiftCM}{2.38}
+\newcommand{\ChSixFinalSpin}{25.6921}
+\newcommand{\ChSixViscousRatio}{4.13\times10^{-4}}
+\newcommand{\ChSixViscousShift}{1.58\times10^{-5}}
+\newcommand{\ChSixWindBound}{0.94}
+\newcommand{\ChSixWindWorstAngle}{253.0}
+\newcommand{\ChSixWindMaxShift}{4.953}
+\newcommand{\ChSixTorqueTable}{\begin{table}[H]\centering\small
+\caption{Goal crossing and spin; the damping model fixes $C_{\rm angular}=1.5$.}\label{tab:torque-goals}
+\setlength{\tabcolsep}{5pt}\begin{tabular}{lrrrr}\toprule
+Model & $y_g$ (m) & $z_g$ (m) & $t_g$ (s) & $\|\boldsymbol\omega_g\|$ (rad/s)\\\midrule
+M4 & 2.6159 & 1.9526 & 0.398967 & 30.0000\\
+M4 + torque & 2.6397 & 1.9515 & 0.399139 & 25.6921\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\ChSixWindTable}{\begin{table}[H]\centering\small
+\caption{Wind-speed limits for a goal-crossing shift of at most 5 cm.}\label{tab:wind}
+\setlength{\tabcolsep}{5pt}\begin{tabular}{lr}\toprule
+Wind direction & Speed limit (m/s)\\\midrule
+Tailwind & 1.79\\
+Headwind & 1.69\\
+Left crosswind & 1.13\\
+Right crosswind & 1.15\\
+All horizontal directions & 0.94\\
+\bottomrule\end{tabular}\end{table}}
+% END CHAPTER6_RESULTS
 
 % BEGIN SENSITIVITY_RESULTS
 % Generated from reviewed sensitivity data; keep mass and radius fixed.
@@ -893,16 +914,15 @@ Figure~\ref{fig:sensitivity-mc-convergence} checks whether the crossing statisti
 
 
 \section{Discussion of Other Factors}\label{sec:other}
-The main model isolates gravity, drag and Magnus lift. We now examine the physical effects omitted from its geometry, spin evolution and ambient airflow.
-\subsection{Asymmetric Surface Geometry}\label{sec:surface}
-According to Paudel and Yan~\cite{paudel}, full-flight simulations distinguish realistic football geometry from a smooth sphere. As shown in Figure~\ref{fig:surface-details}, the comparison includes both idealized geometry and actual panel textures; as shown in Figure~\ref{fig:surface-geometry}, we distinguish the seamed and smooth geometries. For launch speeds of 10, 15 and 20 m/s and spin rates of 31.5, 63 and 94.5 rad/s, their results show that seams and surface structure alter separation, wake dynamics and Magnus force. The smooth sphere produces greater lateral bending in their nine comparisons, and vertical flight-time differences become more visible at higher speed and rotation.
-
+This chapter examines the rationale for neglecting geometric details, spin evolution and air motion in the Chapter 3 model.
+\subsection{Asymmetric Football Surface Geometry}\label{sec:surface}
+As shown in Figure~\ref{fig:surface-details}, football seams, panels and textures differ from an ideal spherical surface. We refer to the geometric descriptions of seamed footballs and smooth spheres in Paudel and Yan~\cite{paudel}; the corresponding geometry, panels and textures appear in Figures~\ref{fig:surface-geometry} and~\ref{fig:alam-surfaces}.
 \begin{figure}[H]\centering
 \begin{subfigure}[t]{.40\textwidth}\centering
 \begin{minipage}[c][3.5in][c]{\linewidth}\centering
 \includegraphics[width=\linewidth]{surface_comparison.png}
 \end{minipage}
-\caption{Illustrative seamed-football and smooth-sphere comparison, following Paudel and Yan~\cite{paudel}.}\label{fig:surface-geometry}
+\caption{Illustrative comparison of a seamed football and a smooth sphere.}\label{fig:surface-geometry}
 \end{subfigure}\hfill
 \begin{subfigure}[t]{.57\textwidth}\centering
 \begin{minipage}[c][3.5in][c]{\linewidth}\centering
@@ -913,38 +933,46 @@ According to Paudel and Yan~\cite{paudel}, full-flight simulations distinguish r
 \caption{Football geometry, panels and surface textures.}\label{fig:surface-details}
 \end{figure}
 
-According to Alam et al.\ \cite{alam2012}, wind-tunnel measurements reveal different drag coefficients for six footballs and a smooth sphere over a range of Reynolds numbers. As shown in Figure~\ref{fig:alam-surfaces}, these footballs have different panels and textures; as shown in Figure~\ref{fig:alam-drag}, their drag coefficients also differ. The differences illustrate the influence of ball surface structure on aerodynamic drag.
-
-
+According to the wind-tunnel measurements of Alam et al.\ \cite{alam2012}, as shown in Figure~\ref{fig:alam-drag}, the trajectory in Section~\ref{sec:problem-inverse} spans Reynolds numbers $(\ChSixReMin\text{--}\ChSixReMax)\times10^5$, over which the football drag coefficient varies relatively little. The additional geometric correction from resolving seams and textures is therefore small for this short-range centre-of-mass prediction. A spherical envelope is appropriate for describing the motion and projected area.
 \begin{figure}[H]\centering
 \includegraphics[width=.76\textwidth]{alam_drag_comparison.png}
 \caption{Drag coefficient against Reynolds number for different footballs and a smooth sphere, reproduced from Figure 5 of Alam et al.\ \cite{alam2012}.}\label{fig:alam-drag}\end{figure}
 
-The spherical geometry in the present report describes the centre-of-mass motion and projected area. Its force coefficients come from football measurements, so the average surface influence enters through $C_D$ and $C_L$. Explicit panel orientation and asymmetric wake fluctuations provide a further level of description when lateral-force details are important. These published results support retaining football-specific coefficients in a spherical trajectory model.
-
 \subsection{Rotation and Aerodynamic Damping}\label{sec:rotation}
-Aerodynamic torque opposes spin, gradually weakening rotation and changing the Magnus force. Following Grad et al.\ and the MuJoCo model~\cite{grad2026,mujoco381}, we use high-Reynolds-number rotational damping: stronger spin produces stronger resistance. The dimensionless angular-drag parameter $C_{\rm angular}=1.5$ is the software reference value. Following Maponi and Piombin~\cite{maponi}, the inertia is approximated by that of a thin spherical shell. Viscous damping is much weaker than the inertial contribution in this example, so the comparison focuses on the latter.
-
-The reference curved shot has initial velocity $(\CurvedVX,0,\CurvedVZ)$ m/s, spin $(0,0,35)$ rad/s and unit force corrections. Holding this state fixed, we compare constant spin with rotational damping. As shown in Figure~\ref{fig:torque}, decreasing spin slightly changes the flight curvature and goal-plane crossing.
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{torque_comparison.pdf}
-\caption{Constant spin and rotational damping under the same initial curved-shot conditions.}\label{fig:torque}\end{figure}
-\TorqueResults
-
-\subsection{Wind Speed and Force Estimates}\label{sec:wind}
-Following the relative-airflow treatment of Maponi and Piombin~\cite{maponi}, we introduce air-relative velocity $\boldsymbol u=\boldsymbol v-\boldsymbol v_{\rm wind}$ in this subsection, where $\boldsymbol v_{\rm wind}$ is air velocity and $u=\|\boldsymbol u\|$ is relative speed. For wind, $\boldsymbol u$ and $u$ replace $\boldsymbol v$ and $v$ in the aerodynamic relations of Section~\ref{sec:model}. Let $w$ be wind speed in m/s and $v$ the ball speed. At fixed coefficients, denote the still-air dynamic pressure by $q_0$ and the headwind, tailwind and crosswind values by $q_{\rm head}$, $q_{\rm tail}$ and $q_{\rm cross}$. From the squared relative-speed dependence,
+Chapter 3 neglects aerodynamic torque and the resulting change in angular velocity. According to the aerodynamic treatment of Grad et al.\ and MuJoCo's high-Reynolds-number model~\cite{grad2026,mujoco381}, rotational damping is the principal torque responsible for spin decay during free flight. We now include this effect. For a sphere of radius $R$, the damping torque is
 \begin{equation}
-\dfrac{q_{\rm head}}{q_0}=(1+\dfrac{w}{v})^2,\qquad
-\dfrac{q_{\rm tail}}{q_0}=(1-\dfrac{w}{v})^2,\qquad
-\dfrac{q_{\rm cross}}{q_0}=1+(\dfrac{w}{v})^2.
-\end{equation}
-Crosswind rotates the airflow by $\arctan(\dfrac{w}{v})$ and changes the force direction. As shown in Table~\ref{tab:wind}, illustrative winds of 1, 3 and 5 m/s alter dynamic pressure at the 24 m/s curved-shot speed.
-Let $F_{L,0}$, $F_{L,\mathrm{head}}$ and $F_{L,\mathrm{tail}}$ denote lift magnitudes in still air, headwind and tailwind. From Eq.~\eqref{eq:lift-force}, the M4 linear lift law depends on the first power of relative speed. With fixed spin and $0\le w<v$,
+\boldsymbol Q=-\dfrac{8\pi}{15}\rho C_{\mathrm{angular}}R^5
+\|\boldsymbol\omega\|\boldsymbol\omega.
+\label{eq:rotation-torque}\end{equation}
+Here $C_{\mathrm{angular}}$ is the dimensionless angular-drag parameter, fixed at $C_{\mathrm{angular}}=1.5$ following MuJoCo~\cite{mujoco381}.
+
+Following the thin-shell approximation of Maponi and Piombin~\cite{maponi}, the inertia is $I_b=\dfrac{2}{3}mR^2$. Incorporating Eq.~\eqref{eq:rotation-torque} into the Chapter 3 motion equation~\eqref{eq:motion}, with the forces in Eqs.~\eqref{eq:drag-force} and~\eqref{eq:lift-force}, leads to
 \begin{equation}
-\dfrac{F_{L,\mathrm{head}}}{F_{L,0}}=1+\dfrac{w}{v},\qquad
-\dfrac{F_{L,\mathrm{tail}}}{F_{L,0}}=1-\dfrac{w}{v}.
-\label{eq:wind-linear-lift}\end{equation}
-\WindResultsTable
-A 5\% limit on the headwind dynamic-pressure change corresponds to $\dfrac{w}{v}\leq\sqrt{1.05}-1$, or $w\leq\WindThreshold$ m/s at this launch. The still-air approximation is most suitable for indoor or weak-wind flight; stronger wind should enter through the relative-velocity calculation.
+\left\{\begin{aligned}
+\dot{\boldsymbol r}&=\boldsymbol v,\\
+m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L,\\
+I_b\dot{\boldsymbol\omega}&=\boldsymbol Q.
+\end{aligned}\right.
+\label{eq:rotation-motion}\end{equation}
+The initial conditions follow Eq.~\eqref{eq:initial}. Using Eq.~\eqref{eq:rotation-motion}, we repeat the inference with the same starting position and observations at 0.05 and 0.10 s as Section~\ref{sec:problem-inverse}, obtaining the following comparison.
+
+As shown in Figure~\ref{fig:torque}, the fixed rotational damping gradually reduces spin to \ChSixFinalSpin\ rad/s at the goal, a decrease of \ChSixSpinLoss\% from its initial value. As shown in Table~\ref{tab:torque-goals}, after refitting, the two goal crossings differ by \ChSixGoalShiftCM\ cm.
+\begin{figure}[H]\centering\includegraphics[width=.92\textwidth]{problem_spin_comparison.pdf}
+\caption{Angular velocity as a function of time.}\label{fig:torque}\end{figure}
+\ChSixTorqueTable
+
+Rotational damping weakens spin and hence Magnus force, gradually reducing the subsequent curvature. Over the approximately 0.4 s flight considered here, this change accumulates to a centimetre-scale difference at the goal. The constant-spin approximation therefore retains good endpoint prediction for this short flight.
+
+\subsection{A Computed Wind-Speed Limit}\label{sec:wind}
+Chapter 3 also neglects wind. We now examine the range of wind speeds for which its effect on the prediction is small. Following the relative-airflow treatment of Maponi and Piombin~\cite{maponi}, let air velocity be $\boldsymbol v_{\rm wind}$ and air-relative velocity be $\boldsymbol u=\boldsymbol v-\boldsymbol v_{\rm wind}$. Thus $\boldsymbol u$ replaces $\boldsymbol v$ in the Chapter 3 aerodynamic forces. With $q_w=\dfrac{1}{2}\rho u^2$ and $q_0=\dfrac{1}{2}\rho v^2$ denoting dynamic pressure with wind and in still air, respectively,
+\begin{equation}
+\dfrac{|q_w-q_0|}{q_0}\leq 2\dfrac{w}{v}+\left(\dfrac{w}{v}\right)^2.
+\label{eq:wind-pressure-bound}\end{equation}
+From Eq.~\eqref{eq:wind-pressure-bound}, drag scales quadratically with relative speed, while linear Magnus force varies with $\boldsymbol\omega\times\boldsymbol u$. The wind-to-ball speed ratio therefore describes the force change under weak wind.
+
+Using the M4 initial state and aerodynamic parameters of Section~\ref{sec:problem-inverse} as the reference, we scan the wind-speed limits for a goal-crossing displacement of no more than 5 cm.
+\ChSixWindTable
+As shown in Table~\ref{tab:wind}, the representative directions have corresponding wind-speed limits. Over the horizontal-direction scan, $w\leq\ChSixWindBound$ m/s produces a maximum computed crossing displacement of \ChSixWindMaxShift\ cm, within 5 cm. The still-air approximation therefore meets the endpoint-deviation criterion in this weak-wind range.
 
 \section{Conclusions}
 The four models describe gravitational fall, deceleration, a constant resultant force and rotational deflection. M3 obtains constant acceleration from three positions. M4 inserts constant $C_D$ and $C_L=\alpha Sp$ into the motion equations, updating drag and Magnus force as speed changes.
@@ -953,7 +981,7 @@ For M4, the crossing errors are \WMXMFourGoalError, \WRMFourGoalError\ and \WOHM
 
 In the competition-position example, a $1^\circ$ launch-direction change moves the crossing by about 0.20 m, while speed strongly affects arrival time. Spin magnitude and $\alpha$ compensate through the linear lift law. The largest grid-search shift under the 2 mm position constraint is \SensitivityConditionalShift\ m; \MCClearPercent\% of 100,000 jointly perturbed flights clear the opening.
 
-Rotational damping shifts the reference curved-shot crossing by \TorqueDisplacement\ m. Wind enters through relative velocity: along the flight direction, drag changes with the squared speed ratio and linear Magnus force with the speed ratio.
+With $C_{\mathrm{angular}}=1.5$ fixed and the competition positions refitted, spin decreases by \ChSixSpinLoss\% at the goal and the crossing moves \ChSixGoalShiftCM\ cm relative to M4. For horizontal winds up to \ChSixWindBound\ m/s, the direction scan keeps the crossing shift within 5 cm. These calculations support the constant-spin and still-air approximations for this problem.
 
 \Needspace{24\baselineskip}
 \section{Model Evaluation}
@@ -1010,8 +1038,10 @@ As shown in Table~\ref{tab:penalty-observations}, the retained inputs and observ
 As shown in Table~\ref{tab:m4-parameters}, the M4 states differ in speed, coefficients and unit spin axis $\boldsymbol n=\dfrac{\boldsymbol\omega}{\|\boldsymbol\omega\|}$.
 \MFourParameterTable
 
+
+
 \endgroup
-\newpage\addcontentsline{toc}{section}{Reproduction Code}
+\Needspace{8\baselineskip}\addcontentsline{toc}{section}{Reproduction Code}
 \section*{Reproduction Code}
 The following excerpts evaluate the force components and state derivatives used in Eq.~\eqref{eq:motion}. Initial-state inference and subsequent trajectory prediction use these same physical relations and coefficient settings.
 \begin{lstlisting}[language=Python]

@@ -1,0 +1,113 @@
+{
+  "files": {
+    "paper\\main.tex": {
+      "bytes": 77588,
+      "sha256": "660c62320192bf5518d0c461d487e92cbf397173a59f5fd4d243efe9cb1de2d9"
+    },
+    "paper\\main.pdf": {
+      "bytes": 7206243,
+      "sha256": "fcd71535d01da26ccc035805dd2a6712022b990d0c5fb19a5834064d7ad61703"
+    },
+    "_中文版\\main.tex": {
+      "bytes": 72559,
+      "sha256": "97693c2a5baa2b9132cc78786633f41c537fb9dbf80128cae46fca20bd5567fa"
+    },
+    "_中文版\\main.pdf": {
+      "bytes": 7341860,
+      "sha256": "c81432c938d8d9f04b016d6f55d09932c6ec0189826cad94430a3d6b40f253ef"
+    },
+    "docs\\第六章简化假设检验与复现.md": {
+      "bytes": 2401,
+      "sha256": "5cd0b9aecce245a9fa4178d26a06307c0e87e70293e46634a3bdb5265ffdeee2"
+    },
+    "scripts\\chapter6_compute.py": {
+      "bytes": 9781,
+      "sha256": "b4626406e6de8bc06b3a0e68cd81e97f423b9be1144224962228f1fe2fadfd95"
+    },
+    "scripts\\chapter6_paper_values.py": {
+      "bytes": 4337,
+      "sha256": "7f703d090addfd1f619733919fbe87264eda71f24b88cdd513973d69239d1165"
+    },
+    "scripts\\chapter6_pdf_check.py": {
+      "bytes": 3060,
+      "sha256": "77d47577bbbf0c8a5ac30f8a3bac4a2a1c3f29d6ebaa8a122edf972a45be30cc"
+    },
+    "scripts\\chapter6_plot.py": {
+      "bytes": 2252,
+      "sha256": "8957e3b6f938f78c4e67d207bab3faeca596a107c75a0058755e372ab03fe85c"
+    },
+    "scripts\\chapter6_verify.py": {
+      "bytes": 5486,
+      "sha256": "884a24826085d65ee25377cdae6ed1c864f215e6faae9e4c55b9406513bc7166"
+    },
+    "scripts\\reproduce_chapter6.ps1": {
+      "bytes": 768,
+      "sha256": "7d843700bfe088be9a57b723f65957d47e82d150beeaccf8cd470f4b3ffba43b"
+    },
+    "results\\chapter6\\input.json": {
+      "bytes": 2015,
+      "sha256": "05f336a21c4f18a7f9007b9bf3cbb335ecd0c042e5395ca946a8f50b1fb8c0db"
+    },
+    "results\\chapter6\\integration_verification.json": {
+      "bytes": 2211,
+      "sha256": "088cae33a02c8b078992065946998c4e17b76a56fe4c9e7a1697760fd3ffb9b3"
+    },
+    "results\\chapter6\\pdf_verification.json": {
+      "bytes": 1670,
+      "sha256": "44edcf9dee83611a057fb4e5d6df1febb468a5f0e50c0cce2774e2809dbac9d4"
+    },
+    "results\\chapter6\\verification.json": {
+      "bytes": 293,
+      "sha256": "3ce68392ae4abd9f7392c8b8b81b26b899bca77fbca62f0de9bfdf5f0a7b144c"
+    },
+    "results\\chapter6\\figures\\figure_record.json": {
+      "bytes": 1050,
+      "sha256": "b78579e0ffbb87cc1445b37d5130b51d5cf8140aabc77fb004caaabd82b5be56"
+    },
+    "results\\chapter6\\figures\\problem_spin_comparison.pdf": {
+      "bytes": 47042,
+      "sha256": "6eaa7f4123b02b55369de25bf300224ea367d3d983c66fc0071e58c44df637d0"
+    },
+    "results\\chapter6\\figures\\problem_spin_comparison.png": {
+      "bytes": 89251,
+      "sha256": "671e52ec748e91ba13905138e1c73e7b524d4b84121d1b6d9c37bd4ab94770c9"
+    },
+    "results\\chapter6\\figures\\problem_spin_comparison.svg": {
+      "bytes": 20017,
+      "sha256": "cdbd5c3a16d632fe35113f8ecb85007c4904c49af0317a9883a7607b86528162"
+    },
+    "results\\chapter6\\torque\\constant_spin.csv": {
+      "bytes": 28252,
+      "sha256": "4dbade89937ef9d71c6c3717ff63df7dcdac596d59238962a80516daa5c5d76e"
+    },
+    "results\\chapter6\\torque\\default_damping.csv": {
+      "bytes": 29546,
+      "sha256": "9f5badb1b55deb05f595becd91652e3b46d7a8718ceb60ad29577f9d11bdbcee"
+    },
+    "results\\chapter6\\torque\\fit.json": {
+      "bytes": 4620,
+      "sha256": "0a99c23a774b4805d340da04a55f51db7c82d2f76eff0d457beec99209abd9f1"
+    },
+    "results\\chapter6\\torque\\summary.json": {
+      "bytes": 8151,
+      "sha256": "58d11a9e4a5ce87b38e9f10070dac56cbf4416bc8818c45e3cb03608ddae8bbc"
+    },
+    "results\\chapter6\\torque\\with_viscosity.csv": {
+      "bytes": 29561,
+      "sha256": "4f27d3d000d79b53264a3148ac39d82d00b9b9cfdb300a770a319cd7ba6ad7cc"
+    },
+    "results\\chapter6\\wind\\checkpoint.json": {
+      "bytes": 654143,
+      "sha256": "5bd47c63d37e0eb22faf7d6ccfdfcbbf0b4f04420d749ebb917616264cce4779"
+    },
+    "results\\chapter6\\wind\\evaluations.csv": {
+      "bytes": 252797,
+      "sha256": "e5d5c411202b09f8d3ee95f544d5995dfb70d6923949d141e664c459e41f4f44"
+    },
+    "results\\chapter6\\wind\\summary.json": {
+      "bytes": 14978,
+      "sha256": "f3aa707f7e567a3d770d47be88eaa82e4b69f4418b6603272f04956adfa4d249"
+    }
+  },
+  "pushed_to_git": false
+}

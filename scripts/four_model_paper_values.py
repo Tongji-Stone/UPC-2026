@@ -17,7 +17,7 @@ def table(caption,label,columns,head,rows,size=r'\footnotesize',row_stretch=None
 
 def main():
     data=read_json(DATA/'inputs.json');forward=read_json(OUT/'forward/summary.json')['records']
-    inverse=read_json(OUT/'inverse/summary.json')['records'];other=read_json(OUT/'other/summary.json')
+    inverse=read_json(OUT/'inverse/summary.json')['records']
     for zh,folder in [(False,'paper'),(True,'_中文版')]:
         if not (ROOT/folder).exists():continue
         commands=[]
@@ -97,14 +97,6 @@ def main():
                r'案例 & $t$ (s) & $(x,y,z)$ & 实测 $(y_g,z_g)$'),observation_rows,size=r'\normalsize')
         macro('PenaltyObservationTable',observation_table)
         macro('InverseBoundsTable',table(tr('Component bounds and force-correction settings for inversion.','反演分量边界与气动力修正设定。'),'tab:inverse-bounds','ll',tr('Quantity & Search interval','物理量 & 搜索区间'),rows))
-        macro('TorqueViscousRatio',scientific(other['viscous_to_inertial_ratio']));macro('TorqueDisplacement',f"{other['goal_displacement_m']:.4f}")
-        text=tr(f"Spin falls by {other['spin_loss_pct']:.3f}\\%, while the crossing moves {other['goal_displacement_m']:.4f} m ({other['displacement_pct_of_11m']:.3f}\\% of the 11 m distance) and arrival time changes by {other['time_change_pct']:+.3f}\\%. Rotational damping therefore has a small endpoint effect in this short reference flight.",
-            f"自旋降低 {other['spin_loss_pct']:.3f}\\%，球门交点移动 {other['goal_displacement_m']:.4f} m，占 11 m 距离的 {other['displacement_pct_of_11m']:.3f}\\%；到达时间变化 {other['time_change_pct']:+.3f}\\%。因此，在这一短程参考飞行中，旋转阻尼对落点的影响较小。")
-        macro('TorqueResults',text)
-        rows=[' & '.join([f"{r['wind_m_s']:.0f}",f"{r['head_pct']:+.2f}",f"{r['tail_pct']:+.2f}",f"{r['cross_pct']:+.2f}",f"{r['angle_deg']:.2f}"]) for r in other['wind']]
-        macro('WindResultsTable',table(tr('Illustrative wind at the 24 m/s curved-shot launch: dynamic-pressure changes at fixed coefficients.','24 m/s 弧线球初速下的示例风况：固定系数时的动压变化。'),'tab:wind','rrrrr',
-            tr(r'$w$ (m/s) & Headwind (\%) & Tailwind (\%) & Crosswind (\%) & Angle ($^\circ$)',r'$w$ (m/s) & 逆风 (\%) & 顺风 (\%) & 侧风 (\%) & 偏角 ($^\circ$)'),rows))
-        macro('WindThreshold',f"{other['wind_threshold_m_s']:.2f}")
         write_block(ROOT/folder/'main.tex','REPORT_RESULTS','% Generated exclusively from results/current_report.\n'+''.join(commands))
     print('bilingual tables refreshed from 24 forward and 12 inverse results')
 

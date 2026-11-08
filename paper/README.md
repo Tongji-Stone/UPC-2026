@@ -63,3 +63,7 @@ package_report.py 生成完整项目包及散列清单，排除缓存、编译�
 当前章节、最终图件布局、题设重算与核验入口见 [第四章两类点球对照](../docs/第四章两类点球对照.md)。新增 `chapter4_compute.py` 重新核验题设 M4；`four_model_plot.py --chapter4-only` 仅重画第四章；`verify_chapter4.py` 执行 101 项源文件与数值检查。最终在编辑器编译中英文 `main.tex`，不以旧导出 PDF 作为本轮编译依据。
 
 2026-11-09合并后已重新导出并核对中英文PDF，分别为29页和31页。题给位置与反演状态在第四章呈现，第五章引用该结果；新版发布核对记录见 `results/current_report/github_publication_verification.json`。
+
+## 第六章简化假设检验
+
+第六章改用题设三点在固定 Cangular=1.5 下的七参数旋转阻尼反演，以及5 cm交点判据下的风速界限。数据、图表及核验集中在 `results/chapter6/`，独立复现入口为 `scripts/reproduce_chapter6.ps1`；详见 [复现说明](../docs/第六章简化假设检验与复现.md)。旧自设弧线球阻尼图和24 m/s风速表退出正文。

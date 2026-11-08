@@ -13,3 +13,7 @@
 本次叙述修订同步英文稿：背景仅介绍点球和研究方向；问题重述完整覆盖题目 B，删除三阶段划分；基本假设只描述物理条件。新增短推导和符号解释，最终力学关系及数值结果保持不变。实际图表与参考文献的正文引用核查见 results/current_report/narrative_verification.json。
 
 第四章已按求解方法、两类踢法案例和题设反演重组，输入与交点表由统一结果生成，详见 ../docs/第四章两类点球对照.md。当前数据与源文件核查为 results/current_report/chapter4/verification.json。
+
+## 第六章简化假设检验
+
+第六章改用题设三点在固定 Cangular=1.5 下的七参数旋转阻尼反演，以及5 cm交点判据下的风速界限。数据、图表及核验集中在 `results/chapter6/`，独立复现入口为 `scripts/reproduce_chapter6.ps1`；详见 [复现说明](../docs/第六章简化假设检验与复现.md)。旧自设弧线球阻尼图和24 m/s风速表退出正文。

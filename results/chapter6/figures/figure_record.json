@@ -1,0 +1,45 @@
+{
+  "core_claim": "Spin histories after fitting the same early positions",
+  "layout": "one axes; exactly two curves",
+  "sources": [
+    {
+      "path": "results\\chapter6\\torque\\constant_spin.csv",
+      "points": 82,
+      "time_range_s": [
+        0.0,
+        0.39896701285154546
+      ],
+      "spin_range_rad_s": [
+        29.999999999999996,
+        29.999999999999996
+      ],
+      "sha256": "4dbade89937ef9d71c6c3717ff63df7dcdac596d59238962a80516daa5c5d76e"
+    },
+    {
+      "path": "results\\chapter6\\torque\\default_damping.csv",
+      "points": 82,
+      "time_range_s": [
+        0.0,
+        0.3991388428403322
+      ],
+      "spin_range_rad_s": [
+        25.692089775098395,
+        30.0
+      ],
+      "sha256": "9f5badb1b55deb05f595becd91652e3b46d7a8718ceb60ad29577f9d11bdbcee"
+    }
+  ],
+  "units": "SI",
+  "size_inches": [
+    6.4,
+    3.25
+  ],
+  "dpi": 300,
+  "formats": [
+    "pdf",
+    "svg",
+    "png"
+  ],
+  "uncertainty_bands": "none",
+  "near_coincident_curves": false
+}

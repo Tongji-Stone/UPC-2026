@@ -29,7 +29,7 @@
 \setlength{\parindent}{2em}
 \setlength{\parskip}{0pt}
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,numbers=left,numberstyle=\tiny,numbersep=8pt,columns=fullflexible,showstringspaces=false,frame=none}
-\graphicspath{{../paper/aerodynamics/}{../paper/assets/}{../results/current_report/figures/}{../results/sensitivity_linear/figures/}}
+\graphicspath{{../paper/aerodynamics/}{../paper/assets/}{../results/chapter6/figures/}{../results/current_report/figures/}{../results/sensitivity_linear/figures/}}
 
 % BEGIN REPORT_RESULTS
 % Generated exclusively from results/current_report.
@@ -162,19 +162,40 @@ $\|\boldsymbol\omega_0\|$ (M4) & $30$ rad/s\\
 方位角、仰角 (M4) & $[-\pi,\pi],[-\dfrac{\pi}{2},\dfrac{\pi}{2}]$ rad\\
 $\dfrac{C_D}{C_D^*},\dfrac{\alpha}{\alpha^*}$ & $[0.5,1.5]$\\
 \bottomrule\end{tabular}\end{table}}
-\newcommand{\TorqueViscousRatio}{$3.54\times10^{-4}$}
-\newcommand{\TorqueDisplacement}{0.0616}
-\newcommand{\TorqueResults}{自旋降低 19.740\%，球门交点移动 0.0616 m，占 11 m 距离的 0.560\%；到达时间变化 -0.066\%。因此，在这一短程参考飞行中，旋转阻尼对落点的影响较小。}
-\newcommand{\WindResultsTable}{\begin{table}[H]\centering\footnotesize
-\caption{24 m/s 弧线球初速下的示例风况：固定系数时的动压变化。}\label{tab:wind}
-\setlength{\tabcolsep}{4pt}\begin{tabular}{rrrrr}\toprule
-$w$ (m/s) & 逆风 (\%) & 顺风 (\%) & 侧风 (\%) & 偏角 ($^\circ$)\\\midrule
-1 & +8.51 & -8.16 & +0.17 & 2.39\\
-3 & +26.56 & -23.44 & +1.56 & 7.13\\
-5 & +46.01 & -37.33 & +4.34 & 11.77\\
-\bottomrule\end{tabular}\end{table}}
-\newcommand{\WindThreshold}{0.59}
 % END REPORT_RESULTS
+
+% BEGIN CHAPTER6_RESULTS
+% Generated exclusively from results/chapter6.
+\newcommand{\ChSixReMin}{3.75}
+\newcommand{\ChSixReMax}{4.77}
+\newcommand{\ChSixAngular}{1.5}
+\newcommand{\ChSixGoalShift}{2.38\times10^{-2}}
+\newcommand{\ChSixSpinLoss}{14.36}
+\newcommand{\ChSixGoalShiftCM}{2.38}
+\newcommand{\ChSixFinalSpin}{25.6921}
+\newcommand{\ChSixViscousRatio}{4.13\times10^{-4}}
+\newcommand{\ChSixViscousShift}{1.58\times10^{-5}}
+\newcommand{\ChSixWindBound}{0.94}
+\newcommand{\ChSixWindWorstAngle}{253.0}
+\newcommand{\ChSixWindMaxShift}{4.953}
+\newcommand{\ChSixTorqueTable}{\begin{table}[H]\centering\small
+\caption{球门交点与自旋对照，阻尼模型固定 $C_{\rm angular}=1.5$。}\label{tab:torque-goals}
+\setlength{\tabcolsep}{5pt}\begin{tabular}{lrrrr}\toprule
+模型 & $y_g$ (m) & $z_g$ (m) & $t_g$ (s) & $\|\boldsymbol\omega_g\|$ (rad/s)\\\midrule
+M4 & 2.6159 & 1.9526 & 0.398967 & 30.0000\\
+M4 + 阻尼 & 2.6397 & 1.9515 & 0.399139 & 25.6921\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\ChSixWindTable}{\begin{table}[H]\centering\small
+\caption{球门交点偏移不超过5 cm的风速界限。}\label{tab:wind}
+\setlength{\tabcolsep}{5pt}\begin{tabular}{lr}\toprule
+风向 & 风速界限 (m/s)\\\midrule
+顺风 & 1.79\\
+逆风 & 1.69\\
+左侧风 & 1.13\\
+右侧风 & 1.15\\
+水平全风向 & 0.94\\
+\bottomrule\end{tabular}\end{table}}
+% END CHAPTER6_RESULTS
 
 % BEGIN SENSITIVITY_RESULTS
 % Generated from reviewed sensitivity data; keep mass and radius fixed.
@@ -904,58 +925,70 @@ d_i^2=(\boldsymbol q_i-\bar{\boldsymbol q})^{\mathsf T}
 
 
 \section{其他因素讨论}\label{sec:other}
-主模型突出重力、阻力和马格努斯升力，以下分析其在几何、自旋演化和环境来流中省略的因素。
-\subsection{足球表面的非对称几何}\label{sec:surface}
-根据 Paudel 与 Yan\cite{paudel} 的全程流动模拟，真实足球几何与光滑球的运动存在差异。如图~\ref{fig:surface-details} 所示，几何示意与实际球片纹理分别体现表面结构的不同层次；如图~\ref{fig:surface-geometry} 所示，接缝球与光滑球具有不同的表面几何。在初速度 10、15、20 m/s，自旋 31.5、63、94.5 rad/s 的工况下，接缝和表面结构会改变流动分离、尾流演化及马格努斯力。九组对照中光滑球的横向弯曲均更强，较高速度和转速下竖直飞行时间的差异也更明显。
+本章将讨论第三章所述主模型忽略的几何、自旋与空气等因素的合理性。
 
+\subsection{足球表面的非对称几何}\label{sec:surface}
+如图~\ref{fig:surface-details} 所示，事实上，足球的接缝、球片和纹理表现出与理想球面差异。我们调研了文献\cite{paudel}对接缝球与光滑球的几何描述，实际球片与纹理如图~\ref{fig:surface-geometry} 与图~\ref{fig:alam-surfaces} 所示。
 \begin{figure}[H]\centering
 \begin{subfigure}[t]{.40\textwidth}\centering
 \begin{minipage}[c][3.5in][c]{\linewidth}\centering
 \includegraphics[width=\linewidth]{surface_comparison.png}
 \end{minipage}
-\caption{参考 Paudel 与 Yan\cite{paudel} 的接缝足球与光滑球示意对照。}\label{fig:surface-geometry}
+\caption{接缝足球与光滑球对照示意图}\label{fig:surface-geometry}
 \end{subfigure}\hfill
 \begin{subfigure}[t]{.57\textwidth}\centering
 \begin{minipage}[c][3.5in][c]{\linewidth}\centering
 \includegraphics[width=\linewidth]{alam_ball_surfaces.png}
 \end{minipage}
-\caption{六种足球及表面细节，转载自 Alam 等\cite{alam2012} 的图 1--3。}\label{fig:alam-surfaces}
+\caption{六种足球及表面细节，转载自文献\cite{alam2012} 的图 1--3。}\label{fig:alam-surfaces}
 \end{subfigure}
 \caption{足球几何与表面结构的对照。}\label{fig:surface-details}
 \end{figure}
 
-根据 Alam 等\cite{alam2012} 的风洞实验，六种足球与光滑球在不同雷诺数下具有不同的阻力系数。如图~\ref{fig:alam-surfaces} 所示，球片和表面纹理存在差异；如图~\ref{fig:alam-drag} 所示，相应阻力系数也有所不同，不同表面结构的阻力变化体现了球型对气动力的影响。
-
-
+根据文献\cite{alam2012} 的风洞实验，如图~\ref{fig:alam-drag} 所示，第~\ref{sec:problem-inverse} 节轨迹的实际雷诺数范围为 $(\ChSixReMin\text{--}\ChSixReMax)\times10^5$，足球阻力系数随该阶段雷诺数的变化较小。因此，在本题短程轨迹计算中，接缝与纹理对质心预测的额外几何修正较小，以球形包络描述质心运动与迎风面积是合适的。
 \begin{figure}[H]\centering
 \includegraphics[width=.76\textwidth]{alam_drag_comparison.png}
-\caption{不同足球和光滑球的阻力系数随雷诺数变化，转载自 Alam 等\cite{alam2012} 的图 5。}\label{fig:alam-drag}\end{figure}
+\caption{不同足球和光滑球的阻力系数随雷诺数变化，转载自文献\cite{alam2012} 的图 5。}\label{fig:alam-drag}\end{figure}
 
-本文的球形几何描述质心运动与迎风面积，气动力系数来自足球实验，因此表面的平均作用已进入 $C_D$、$C_L$。当侧向力细节更为重要时，可进一步描述面板朝向与非对称尾流波动。这些文献结果说明，在球形轨迹模型中保留足球专用气动系数具有物理依据。
+
 
 \subsection{足球旋转与气动阻尼}\label{sec:rotation}
-空气阻尼力矩与自旋方向相反，使足球旋转逐渐减弱，并通过马格努斯力影响弯曲轨迹。我们参考 Grad 等与 MuJoCo 模型\cite{grad2026,mujoco381}，采用高雷诺数旋转阻尼描述，旋转越强则阻尼越强。无量纲旋转阻力参数 $C_{\rm angular}=1.5$ 采用软件参考值；我们参考 Maponi 与 Piombin\cite{maponi}，以薄球壳近似确定转动惯量。本算例中黏性阻尼远小于惯性阻尼，因此主要比较后者的影响。
+在第三章，我们并未考虑足球在空气中所受到的力矩，进而忽略角速度的变化。根据气动处理及 MuJoCo 的高雷诺数模型\cite{grad2026,mujoco381}，足球在空中受到的旋转阻尼力矩是角速度变化的主要来源。下面将考虑这一因素。
 
-参考弧线球的初速度为 $(\CurvedVX,0,\CurvedVZ)$ m/s，自旋为 $(0,0,35)$ rad/s，两项气动力修正均为 1。保持这一初始状态不变，比较恒定自旋和旋转阻尼下的飞行。如图~\ref{fig:torque} 所示，自旋减弱使轨迹曲率与球门交点发生小幅变化。
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{torque_comparison.pdf}
-\caption{同一弧线球初始条件下，恒定自旋与旋转阻尼的对照。}\label{fig:torque}\end{figure}
-\TorqueResults
+将模型化为半径为 $R$ 的球体，阻尼力矩为
+\begin{equation}
+\boldsymbol Q=-\dfrac{8\pi}{15}\rho C_{\mathrm{angular}}R^5
+\|\boldsymbol\omega\|\boldsymbol\omega.
+\label{eq:rotation-torque}\end{equation}
+其中 $C_{\mathrm{angular}}$ 为无量纲旋转阻力参数，这里采用 $C_{\mathrm{angular}}=1.5$\cite{mujoco381}。
 
-\subsection{风速与气动力估算}\label{sec:wind}
-我们参考 Maponi 与 Piombin\cite{maponi} 对相对气流的处理，在本节引入相对空气速度 $\boldsymbol u=\boldsymbol v-\boldsymbol v_{\rm wind}$，其中 $\boldsymbol v_{\rm wind}$ 为空气速度，$u=\|\boldsymbol u\|$ 为相对空气速率。有风时，将第三章气动力关系中的 $\boldsymbol v$ 与 $v$ 分别替换为 $\boldsymbol u$ 与 $u$。令 $w$ 为风速，单位为 m/s，$v$ 为球速；固定气动系数，以 $q_0$ 表示静止空气中的动压，$q_{\rm head}$、$q_{\rm tail}$、$q_{\rm cross}$ 分别表示逆风、顺风和横风时的动压。由相对速度的平方关系，
+根据文献\cite{maponi} 的薄球壳近似，取转动惯量 $I_b=\dfrac{2}{3}mR^2$。将式~\eqref{eq:rotation-torque} 纳入第三章式~\eqref{eq:motion}，并沿用式~\eqref{eq:drag-force}、\eqref{eq:lift-force} 的气动力，完整动力学方程为
 \begin{equation}
-\dfrac{q_{\rm head}}{q_0}=(1+\dfrac{w}{v})^2,\qquad
-\dfrac{q_{\rm tail}}{q_0}=(1-\dfrac{w}{v})^2,\qquad
-\dfrac{q_{\rm cross}}{q_0}=1+(\dfrac{w}{v})^2.
-\end{equation}
-横风还使来流转过 $\arctan(\dfrac{w}{v})$，从而改变气动力方向。如表~\ref{tab:wind} 所示，24 m/s 弧线球初速下，1、3、5 m/s 的示例风况会引起不同程度的动压变化。
-以 $F_{L,0}$、$F_{L,\mathrm{head}}$、$F_{L,\mathrm{tail}}$ 分别表示静止空气、逆风与顺风下的升力大小。由式~\eqref{eq:lift-force}，M4 的线性升力随相对速度的一次方变化；固定自旋且 $0\le w<v$ 时，
+\left\{\begin{aligned}
+\dot{\boldsymbol r}&=\boldsymbol v,\\
+m\dot{\boldsymbol v}&=\boldsymbol F_g+\boldsymbol F_D+\boldsymbol F_L,\\
+I_b\dot{\boldsymbol\omega}&=\boldsymbol Q.
+\end{aligned}\right.
+\label{eq:rotation-motion}\end{equation}
+初始条件沿用式~\eqref{eq:initial}。基于式~\eqref{eq:rotation-motion}，使用第~\ref{sec:problem-inverse} 节相同的初始位置及0.05、0.10 s位置，重新进行反演，其结果如下。
+
+如图~\ref{fig:torque} 所示，固定旋转阻尼使角速度随时间逐渐下降，到达球门时为 \ChSixFinalSpin\ rad/s，比初始值下降 \ChSixSpinLoss\%。如表~\ref{tab:torque-goals} 所示，重新反演后，两模型的球门交点距离为 \ChSixGoalShiftCM\ cm。
+\begin{figure}[H]\centering\includegraphics[width=.92\textwidth]{problem_spin_comparison.pdf}
+\caption{角速度随时间的变化曲线}\label{fig:torque}\end{figure}
+\ChSixTorqueTable
+
+在考虑了这一修正后，自旋会减弱，马格努斯力随之减小，后续轨迹的弯曲也逐渐减弱。对于本题约0.4 s的短程飞行，这一变化积累到球门时仅形成厘米级的交点差异，因此采用恒定自旋近似能够保持较好的落点预测。
+
+\subsection{风速影响的计算界限}\label{sec:wind}
+在第三章中，我们同样忽略了风速的影响，下面讨论怎样范围内的风速对模型结果造成的影响可以忽略。参考文献\cite{maponi} 对相对气流的处理，令空气速度为 $\boldsymbol v_{\rm wind}$，相对速度为 $\boldsymbol u=\boldsymbol v-\boldsymbol v_{\rm wind}$。因此，第三章气动力关系中的 $\boldsymbol v$ 需要替换为 $\boldsymbol u$。令 $q_w=\dfrac{1}{2}\rho u^2$、$q_0=\dfrac{1}{2}\rho v^2$ 分别为有风和静止空气的动压，则
 \begin{equation}
-\dfrac{F_{L,\mathrm{head}}}{F_{L,0}}=1+\dfrac{w}{v},\qquad
-\dfrac{F_{L,\mathrm{tail}}}{F_{L,0}}=1-\dfrac{w}{v}.
-\label{eq:wind-linear-lift}\end{equation}
-\WindResultsTable
-将逆风动压增幅限制在 5\% 时，有 $\dfrac{w}{v}\leq\sqrt{1.05}-1$，对应本算例的 $w\leq\WindThreshold$ m/s。静止空气近似更适合室内或弱风飞行；风速较大时应通过相对速度纳入计算。
+\dfrac{|q_w-q_0|}{q_0}\leq 2\dfrac{w}{v}+\left(\dfrac{w}{v}\right)^2.
+\label{eq:wind-pressure-bound}\end{equation}
+由式~\eqref{eq:wind-pressure-bound}，阻力随相对速度的平方量级变化，线性马格努斯力随 $\boldsymbol\omega\times\boldsymbol u$ 变化，因此弱风的作用可通过风速与球速之比估计。
+
+下面，我们以第~\ref{sec:problem-inverse} 节的M4初始状态与气动参数为基准，以交点偏移不超过5 cm为标准，扫描了所容许的风速界限。
+\ChSixWindTable
+如表~\ref{tab:wind} 所示，各典型风向具有相应的风速界限。综合水平全风向扫描，在 $w\leq\ChSixWindBound$ m/s 时，所计算的最大交点偏移为 \ChSixWindMaxShift\ cm，不超过5 cm。因此，在这一弱风范围内，静止空气近似能够满足本文的落点偏差标准。
 
 \section{小结}
 本文用四类模型比较足球的重力下落、减速、恒合力近似和旋转偏转。M3 从三个早期位置解出恒加速度；M4 将恒定 $C_D$ 与 $C_L=\alpha Sp$ 代入运动方程，随飞行速度更新阻力和马格努斯力。
@@ -964,7 +997,7 @@ d_i^2=(\boldsymbol q_i-\bar{\boldsymbol q})^{\mathsf T}
 
 题目三点的单参数扫描表明，发射方向改变 $1^\circ$ 会使交点移动约 0.20 m；速度变化主要影响飞行时间。在线性升力中，$\alpha$ 与自旋大小互为补偿。2 mm 早期位置约束下，网格搜索的最大交点位移为 \SensitivityConditionalShift\ m；九项条件联合扰动时，\MCClearPercent\% 的十万条轨迹完整通过球门。
 
-同一弧线球加入旋转阻尼后，交点移动 \TorqueDisplacement\ m。风通过相对速度改变阻力与升力，沿球速方向的风使阻力按速度比的平方变化，线性马格努斯力按速度比变化。
+固定 $C_{\mathrm{angular}}=1.5$ 并重新反演题设三点后，到门自旋下降 \ChSixSpinLoss\%，球门交点相对M4移动 \ChSixGoalShiftCM\ cm。在风速不超过 \ChSixWindBound\ m/s 的水平风向扫描中，交点偏移不超过5 cm。这些计算支持本题采用恒定自旋与静止空气近似。
 
 \section{模型评价}
 
@@ -1020,8 +1053,10 @@ d_i^2=(\boldsymbol q_i-\bar{\boldsymbol q})^{\mathsf T}
 如表~\ref{tab:m4-parameters} 所示，M4 的反演状态在球速、系数及单位自旋轴 $\boldsymbol n=\dfrac{\boldsymbol\omega}{\|\boldsymbol\omega\|}$ 上有所不同。
 \MFourParameterTable
 
+
+
 \endgroup
-\newpage\addcontentsline{toc}{section}{复现代码}
+\Needspace{8\baselineskip}\addcontentsline{toc}{section}{复现代码}
 \section*{复现代码}
 以下节选计算式~\eqref{eq:motion} 中的受力分量和状态导数，初始状态反演与后续轨迹预测均采用相同的物理关系和系数设定。
 \begin{lstlisting}[language=Python]

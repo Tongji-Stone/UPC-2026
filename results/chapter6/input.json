@@ -1,0 +1,80 @@
+{
+  "observations": {
+    "times_s": [
+      0.0,
+      0.05,
+      0.1
+    ],
+    "positions_m": [
+      [
+        0.0,
+        0.0,
+        0.11
+      ],
+      [
+        1.5,
+        0.45,
+        0.44
+      ],
+      [
+        2.96,
+        0.86,
+        0.74
+      ]
+    ]
+  },
+  "reference_state": {
+    "initial_state": [
+      30.378416175902878,
+      9.40740154654372,
+      6.897403599893283,
+      19.74341474086782,
+      1.2059975416479294,
+      -22.555335162653254
+    ],
+    "event": {
+      "type": "plane",
+      "time": 0.39896701285154546,
+      "position": [
+        11.0,
+        2.6159064340363067,
+        1.9525958720456822
+      ],
+      "velocity": [
+        25.09403835094901,
+        4.141278312070565,
+        2.4579822318972084
+      ],
+      "spin": [
+        19.74341474086782,
+        1.2059975416479294,
+        -22.555335162653254
+      ]
+    },
+    "fitted_cd": 0.36231767069109677,
+    "fitted_alpha": 2.2877100870641387,
+    "speed_m_s": 32.54107480760418,
+    "elevation_deg": 12.237233315909835
+  },
+  "torque": {
+    "Cangular_fixed": 1.5,
+    "active_parameters": 7,
+    "spin_direction_starts": 6,
+    "spin_rad_s": 30,
+    "max_nfev": 240
+  },
+  "wind": {
+    "criterion_m": 0.05,
+    "coarse_step_deg": 5,
+    "fine_step_deg": 0.5,
+    "reported_precision_m_s": 0.01,
+    "constant_horizontal": true
+  },
+  "source_sha256": {
+    "src/football/physics/model.py": "06c8ba2607c1bf97b29449eb0165bc1ac21ea55a1cb1a8b43f0b83b52876fd2c",
+    "src/football/physics/integration.py": "7a5153d67419b6db581022ba9076a7deb3deed55fa05442f50624b8fc5a0bd0c",
+    "src/football/inference/four_model_fit.py": "ef786b38d1d67e6f688e9b6608eb33c5b52030a6c4e4756f38c474d32829b2e1",
+    "scripts/chapter6_compute.py": "b4626406e6de8bc06b3a0e68cd81e97f423b9be1144224962228f1fe2fadfd95",
+    "results/current_report/problem/problem_b_M4.json": "2432dc25aa4ccaeabd4481afb8d72e475453e11d0cdde454fa49e51f99830b71"
+  }
+}

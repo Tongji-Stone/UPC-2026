@@ -1,0 +1,167 @@
+{
+  "mode": "fixed_Cangular_1.5",
+  "Cangular": 1.5,
+  "active_parameters": 7,
+  "fit": {
+    "model": "M4",
+    "initial_state": [
+      30.377410585153207,
+      9.411028163403396,
+      6.896892432459663,
+      18.882439741844735,
+      0.861854062963478,
+      -23.29615154848019
+    ],
+    "drag_scale": 1.4999999999999998,
+    "lift_scale": 1.499999999999815,
+    "rss_m2": 8.794886564389509e-07,
+    "minimum_search_rss_m2": 8.794886546597456e-07,
+    "max_residual_m": 0.0007844722319776398,
+    "fitted_positions": [
+      [
+        0.0,
+        0.0,
+        0.11
+      ],
+      [
+        1.4992155277680224,
+        0.44977239493818,
+        0.43983312260736807
+      ],
+      [
+        2.9604049824509397,
+        0.8601137432503831,
+        0.7400865536410576
+      ]
+    ],
+    "active_parameters": 7,
+    "spin_representation": "30 rad/s reference magnitude; alpha and spin magnitude are not separately identified",
+    "coefficient_distance": 0.4999999999998148,
+    "rss_allowance_m2": 6e-12,
+    "coefficient_distance_allowance": 1e-08,
+    "starts": [
+      {
+        "start": 0,
+        "rss_m2": 8.79488654676977e-07,
+        "success": true,
+        "nfev": 105,
+        "parameters": [
+          1.0125803579653294,
+          0.3137009307284089,
+          0.2298964019771247,
+          0.045610704107050426,
+          -0.8891520573948346,
+          1.4999999999999998,
+          1.4999999998876254
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 1,
+        "rss_m2": 8.794886546597456e-07,
+        "success": true,
+        "nfev": 53,
+        "parameters": [
+          1.0125803528384403,
+          0.3137009387801132,
+          0.2298964144153221,
+          0.045611495247596966,
+          -0.8891530445734572,
+          1.4999999999999998,
+          1.499999999999815
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 2,
+        "rss_m2": 9.22314358380667e-06,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          1.0115612092566364,
+          0.31339474348280405,
+          0.2337689263650206,
+          3.1415923887857398,
+          -1.3565554811729466,
+          1.4874617874319676,
+          1.4522599757510206
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 3,
+        "rss_m2": 8.798025513783531e-07,
+        "success": true,
+        "nfev": 45,
+        "parameters": [
+          1.0125805745752292,
+          0.31365117411676274,
+          0.229963412457907,
+          -0.843173829296576,
+          -1.3881221433090112,
+          1.4999999999999998,
+          1.353466223543121
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      },
+      {
+        "start": 4,
+        "rss_m2": 3.2650490578565985e-06,
+        "success": false,
+        "nfev": 240,
+        "parameters": [
+          1.0129463606822224,
+          0.3117212409109858,
+          0.23019990959164008,
+          0.05727302582808893,
+          -0.8596002082265356,
+          1.4919237434046013,
+          1.3420425844277004
+        ],
+        "message": "The maximum number of function evaluations is exceeded."
+      },
+      {
+        "start": 5,
+        "rss_m2": 8.797635530935034e-07,
+        "success": true,
+        "nfev": 38,
+        "parameters": [
+          1.0125805327915613,
+          0.3136573952540582,
+          0.2299551010932491,
+          -0.5379909602337665,
+          -1.3432916918238187,
+          1.4999999999999998,
+          1.344966695037932
+        ],
+        "message": "`ftol` termination condition is satisfied."
+      }
+    ],
+    "stages": [
+      {
+        "stage": "positions",
+        "rss_m2": 8.794886546597456e-07,
+        "coefficient_distance": 0.4999999999998148
+      }
+    ],
+    "position_jacobian_singular_values": [
+      29.6703197626408,
+      29.669325594097124,
+      28.88070028526051,
+      0.12807675618177744,
+      0.09504541165452679,
+      0.07961128684533328
+    ],
+    "position_jacobian_rank": 6,
+    "selection": "minimum position residual across deterministic starts",
+    "success": true,
+    "position_stage_converged": true,
+    "fit_bounds": {
+      "velocity_component_max_m_s": 35.0,
+      "spin_component_max_rad_s": 62.83185307179586,
+      "force_scale_min": 0.5,
+      "force_scale_max": 1.5
+    },
+    "at_parameter_bound": true
+  }
+}
