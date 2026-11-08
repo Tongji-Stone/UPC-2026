@@ -4,7 +4,7 @@
     "english_compile": {
       "passed": true,
       "warnings": [],
-      "pages": 31
+      "pages": 28
     },
     "english_references": {
       "passed": true
@@ -24,13 +24,13 @@
     "english_new_time_statement": {
       "passed": true
     },
-    "english_wmx_nonuniform_times": {
+    "english_wmx_three_frame_times": {
       "passed": true
     },
     "chinese_compile": {
       "passed": true,
       "warnings": [],
-      "pages": 30
+      "pages": 27
     },
     "chinese_references": {
       "passed": true
@@ -50,7 +50,7 @@
     "chinese_new_time_statement": {
       "passed": true
     },
-    "chinese_wmx_nonuniform_times": {
+    "chinese_wmx_three_frame_times": {
       "passed": true
     },
     "song_hei_kai_fonts": {

@@ -45,7 +45,7 @@
     "clear": true
   },
   "source": "results\\structure_linear_spin\\problem\\problem_b_M4.json",
-  "source_sha256": "b4b53989fd464e73603c5072a8042acd64737b475d441275291e7d12e54f5d8f",
+  "source_sha256": "1989238298183cd771527cb909675dd2e8917f60de31d5095b1e4f3ee8bb3c13",
   "parameters": [
     {
       "key": "speed",
@@ -108,7 +108,7 @@
       1.8
     ],
     "profile_grid": 17,
-    "total_spin_max": 200,
+    "spin_component_max": 60,
     "total_speed_max": 35,
     "residual_tolerance_m": 0.002,
     "position_coordinates_exact": false,

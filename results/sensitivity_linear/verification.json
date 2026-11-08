@@ -1,5 +1,5 @@
 {
-  "baseline_vs_saved_m": 6.661338147750939e-16,
+  "baseline_vs_saved_m": 1.3322676295501878e-15,
   "baseline_early_residual_m": 0.0007842598442679982,
   "fast_vs_repository_m": 1.3322676295501878e-15,
   "max_rhs_difference": 7.105427357601002e-15,
@@ -107,32 +107,32 @@
     }
   ],
   "protected_before": {
-    "_中文版/main.tex": "ef08841e7c3f307eb9ea2afe8b043ef88c05b30525d9a714b2fdd68cebdd452c",
-    "_中文版/main.pdf": "e2f6a0b8956cc9a9e8bfcaa4b0de22a9c2c183da3d3fae93b66b556f91b69f37",
-    "paper/main.tex": "557ec157de61a65ead53c224cc9ec2328d23025815ab89fbd86b906714ecf253",
-    "paper/main.pdf": "c76128311aedb54f19c6a9aab4381a75a801692c8d954b6f44ac81fbe806f638",
-    "_中文版/report_results.tex": "635a00ea432493b2edef03177c4eae23506a34110b5319340b9ad1accf9cfaaa",
-    "paper/report_results.tex": "7260dceb998704c14c2e3310420b2f24b4a999154896fa3fce554aa9195941ed",
-    "src/football/physics/model.py": "474e3b7153b32b74c1753791fd3007ec4d377414132271c0551f0bdcccc958f1",
-    "src/football/inference/four_model_fit.py": "91ab445117ecc17350f189c97d3dac429165d78e13f86bbb3e3dbac10c7c28a1",
+    "_中文版/main.tex": "bbf08fafa24229b5acf3f55817073a7c089e557129a63761677173aad4ecc989",
+    "_中文版/main.pdf": "608453684acac2ef16d3e182f502c2a2ab287d6a7f5b3976ca87f0fa7bb8a10b",
+    "paper/main.tex": "95f7a8f41ac8192f987c63985bf660d5f95f2739a1e02788a16916fa9583d8b5",
+    "paper/main.pdf": "18b4c265cc2a400dcc9f57e21b5a7e432f6fd7f6950e22745d8f03b6ff5fd0fb",
+    "_中文版/report_results.tex": "4c6b50960572bcd952edf3c7cfc9b86e395a2386d329e21f70f1bb9a71e4f2cf",
+    "paper/report_results.tex": "daf9769c1c10d783b2b2671c9958cf2a95b4d4b37022437aa55244bd227dd029",
+    "src/football/physics/model.py": "06c8ba2607c1bf97b29449eb0165bc1ac21ea55a1cb1a8b43f0b83b52876fd2c",
+    "src/football/inference/four_model_fit.py": "ef786b38d1d67e6f688e9b6608eb33c5b52030a6c4e4756f38c474d32829b2e1",
     "data/sensitivity_v2/representative_state.json": "5c057a9dd4d8be070a2139192f197ef452c9a882647bfc0365acf083f1f5d775",
-    "探索树.html": "c4b7045c291f6f06e74f6786be2f896b049e917268bce259e9cc68a7c56d9c22"
+    "探索树.html": "20fa1f2a218ee47a36a84f5a302686df8c60e77f06117b7e366a08ce878703b7"
   },
   "protected_after": {
-    "_中文版/main.tex": "ef08841e7c3f307eb9ea2afe8b043ef88c05b30525d9a714b2fdd68cebdd452c",
-    "_中文版/main.pdf": "e2f6a0b8956cc9a9e8bfcaa4b0de22a9c2c183da3d3fae93b66b556f91b69f37",
-    "paper/main.tex": "557ec157de61a65ead53c224cc9ec2328d23025815ab89fbd86b906714ecf253",
-    "paper/main.pdf": "c76128311aedb54f19c6a9aab4381a75a801692c8d954b6f44ac81fbe806f638",
-    "_中文版/report_results.tex": "635a00ea432493b2edef03177c4eae23506a34110b5319340b9ad1accf9cfaaa",
-    "paper/report_results.tex": "7260dceb998704c14c2e3310420b2f24b4a999154896fa3fce554aa9195941ed",
-    "src/football/physics/model.py": "474e3b7153b32b74c1753791fd3007ec4d377414132271c0551f0bdcccc958f1",
-    "src/football/inference/four_model_fit.py": "91ab445117ecc17350f189c97d3dac429165d78e13f86bbb3e3dbac10c7c28a1",
+    "_中文版/main.tex": "bbf08fafa24229b5acf3f55817073a7c089e557129a63761677173aad4ecc989",
+    "_中文版/main.pdf": "608453684acac2ef16d3e182f502c2a2ab287d6a7f5b3976ca87f0fa7bb8a10b",
+    "paper/main.tex": "95f7a8f41ac8192f987c63985bf660d5f95f2739a1e02788a16916fa9583d8b5",
+    "paper/main.pdf": "18b4c265cc2a400dcc9f57e21b5a7e432f6fd7f6950e22745d8f03b6ff5fd0fb",
+    "_中文版/report_results.tex": "4c6b50960572bcd952edf3c7cfc9b86e395a2386d329e21f70f1bb9a71e4f2cf",
+    "paper/report_results.tex": "daf9769c1c10d783b2b2671c9958cf2a95b4d4b37022437aa55244bd227dd029",
+    "src/football/physics/model.py": "06c8ba2607c1bf97b29449eb0165bc1ac21ea55a1cb1a8b43f0b83b52876fd2c",
+    "src/football/inference/four_model_fit.py": "ef786b38d1d67e6f688e9b6608eb33c5b52030a6c4e4756f38c474d32829b2e1",
     "data/sensitivity_v2/representative_state.json": "5c057a9dd4d8be070a2139192f197ef452c9a882647bfc0365acf083f1f5d775",
-    "探索树.html": "c4b7045c291f6f06e74f6786be2f896b049e917268bce259e9cc68a7c56d9c22"
+    "探索树.html": "20fa1f2a218ee47a36a84f5a302686df8c60e77f06117b7e366a08ce878703b7"
   },
   "protected_unchanged": true,
   "scan_events": {
     "plane": 369
   },
-  "profile_all_early_residual_le_002": true
+  "profile_all_within_tolerance": true
 }

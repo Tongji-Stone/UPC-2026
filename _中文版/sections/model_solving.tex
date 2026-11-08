@@ -1,6 +1,6 @@
 \section{模型求解}\label{sec:solving}
-我们利用三次真实点球的早期位置反演初始运动，并比较精准推射与大力抽射的飞行特点和预测结果。
-\begin{table}[H]\centering\small\caption{四模型体系及实际反演量}\label{tab:models}
+利用三次真实点球的早期位置反演初始运动，再将预测轨迹与后续实测位置比较。两次精准推射和一次大力抽射提供了不同的速度、弯曲方向和飞行高度。
+\begin{table}[H]\centering\small\caption{四模型体系及反演量。}\label{tab:models}
 \begin{tabular}{lll}\toprule
 模型 & 受力或运动假设 & 反演量\\\midrule
 M1 & 重力 & 初速度（3项）\\
@@ -8,38 +8,45 @@ M2 & 重力、空气阻力 & 初速度、阻力系数（4项）\\
 M3 & 恒合力、匀加速度 & 初速度、加速度（6项）\\
 M4 & 重力、阻力、马格努斯力 & 初速度、旋转方向、$C_D$、$\alpha$（7项）\\\bottomrule
 \end{tabular}\end{table}
-M3 的恒合力包含重力及其他力的共同作用。M4 中 $C_D$ 和 $\alpha$ 固定于每次飞行，升力系数 $C_L=\alpha Sp$ 随运动变化。正向参考值为 $C_D^*=\ReferenceCD$、$\alpha^*=\ReferenceCL$，取自文献参考工况\cite{kiratidis2018}。
+M3 的恒合力包含重力及其他力的共同作用。M4 中 $C_D$ 和 $\alpha$ 在一次飞行内恒定，$C_L=\alpha Sp$ 随球速变化。系数参考值为 $C_D^*=\ReferenceCD$、$\alpha^*=\ReferenceCL$，取文献工况 $Re^*=333793$、$Sp^*=0.19$，其中 $\alpha^*=C_L(Re^*,Sp^*)/Sp^*$\cite{kiratidis2018}。
 
 \subsection{三次真实点球的逆向预测}\label{sec:inverse}
-\subsubsection{观测与预测方法}
-我们选取三次真实点球进行检验：两次精准推射和一次大力抽射。以每次射门的第一个选定位置为时间原点，取此后 0.04、0.08 s 的位置作为输入，预测后续飞行。数据来源与选帧见\hyperref[app:data]{附录 A}。
+\subsubsection{观测与计算方法}
+每例以第一个选定位置为时间原点，使用 $t=0,0.04,0.08$ s 的三个位置作为输入。坐标原点位于点球点，$x$ 指向球门，$y$ 为横向，$z$ 为球心高度，球门平面为 $x=11$ m。数据来源及源帧见\hyperref[app:data]{附录 A}。
 
-坐标以点球点为水平原点，$x$ 指向球门，$y$ 为横向，$z$ 表示球心高度；球门平面为 $x=11$ m。后续观测位置用于比较，球门交点按实测位置或相邻位置之间的插值确定。
+数值积分采用 DOP853，步长不超过 0.005 s，相对和绝对容差分别为 $10^{-10}$、$10^{-12}$。积分过程中定位 $x-11=0$ 的正向根与 $z-R=0$ 的下降根，分别确定球门交点和首次触地。
 
-\subsubsection{有界反演与选解}
-M3 使用三个位置直接解出恒加速度：
-\begin{equation}\boldsymbol r(t)=\boldsymbol r_0+\boldsymbol v_0t+\tfrac12\boldsymbol a t^2.\end{equation}
-M4 以初速度、旋转方向、$C_D$、$\alpha$ 为变量，最小化两个后续位置的平方误差。确定性六组初值的最小残差对应代表解；各参数范围见附录 A 的表~\ref{tab:inverse-bounds}。
-马格努斯力包含乘积 $\alpha\boldsymbol\omega$，仅由位置不能分别唯一确定 $\alpha$ 和自旋大小。为选择代表解，令 $\|\boldsymbol\omega\|=30$ rad/s；三个初速度、两个方向角和两个系数共有七项，而两个后续位置提供六个坐标，因此结果仍受边界与选解条件影响。
+\subsubsection{反演与参考状态}
+M1、M2 分别拟合初速度，以及初速度和阻力系数。M3 由三个位置求解
+\begin{equation}
+\boldsymbol r(t)=\boldsymbol r_0+\boldsymbol v_0t+\tfrac12\boldsymbol a t^2.
+\label{eq:m3-interpolation}\end{equation}
+M4 以三个初速度分量、两个旋转方向角和两个系数为变量，最小化后两个位置的坐标平方误差。六组确定性初值分别迭代，取残差最小的结果；参数范围见表~\ref{tab:inverse-bounds}。马格努斯力中的 $\alpha\boldsymbol\omega$ 决定旋转偏转，取 $\|\boldsymbol\omega\|=30$ rad/s 作为参考模长，拟合旋转方向和 $\alpha$。
+
+后续路径误差与球门交点误差分别定义为
+\begin{equation}\begin{aligned}
+\mathrm{RMSE}_{3D}&=\sqrt{\frac1n\sum_{i=1}^{n}\|\widehat{\boldsymbol r}(t_i)-\boldsymbol r_i\|^2},\\
+E_g&=\sqrt{(\widehat y_g-y_g)^2+(\widehat z_g-z_g)^2}.
+\end{aligned}\label{eq:prediction-errors}\end{equation}
+路径比较使用拟合时刻之后、首次触地或球门交点之前的实测位置，表中同时给出点数 $n$。$E_g$ 在模型穿过球门平面时计算，实测交点由源帧或相邻帧插值得到。
 
 \subsection{案例分析与验证}\label{sec:case-validation}
-三次点球包括两次精准推射（推射 1、推射 2）和一次大力抽射。图~\ref{fig:penalty-overview} 汇总三次实测空间轨迹及模型预测。空心圆表示反演输入，黑线和黑点表示实测位置，彩色线表示四种模型，叉号表示实测或插值得到的球门交点；预测在首次触地时结束。
+图~\ref{fig:penalty-overview} 汇总三例的空间轨迹。空心圆为反演输入，黑线和黑点为实测位置，彩色线为模型预测，叉号为实测球门交点。
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_spatial_overview.pdf}
-\caption{三次真实点球的空间轨迹与模型预测，从左到右依次为推射 1、大力抽射、推射 2。各例的拟合时刻均为 0、0.04、0.08 s。}\label{fig:penalty-overview}\end{figure}
+\caption{三次真实点球的空间轨迹与模型预测。从左到右为推射 1、大力抽射、推射 2；各例的反演时刻均为 0、0.04、0.08 s。}\label{fig:penalty-overview}\end{figure}
 
 \subsubsection{案例一：精准推射}
-推射 1 和推射 2 的实测轨迹均贴近草地飞行。M4 在两个反演起点给出的球速分别为 29.20 和 28.34 m/s。推射 1 中 M4 到达球门平面，交点误差为 0.360 m；M1、M2 提前触地，M3 在计算时限内未到达球门。推射 2 中 M1、M2、M3、M4 均到达球门平面，交点误差分别为 0.475、0.475、0.155 和 0.146 m。
+两次推射均贴近草地飞行。M4 在选定起点的球速分别为 \WMXSpeed\ m/s 和 \WRSpeed\ m/s。推射 1 中，M1、M2 在球门前触地；M3 给出的 $a_x=-56.25$ m/s$^2$ 使前进速度持续减小，按式~\eqref{eq:m3-interpolation} 得到最大 $x=\WMXMThreeMaxX$ m，未达到球门。M4 到达球门平面，交点误差为 \WMXMFourGoalError\ m，后续路径 RMSE 为 \WMXMFourPathRMSE\ m。
 
-低空轨迹对竖直受力较敏感：重力持续使球下落，竖直方向的马格努斯力则可抬高或压低轨迹。M1 忽略气动力，M2 加入减速阻力，却没有横向升力；M3 用三个点给出恒加速度，能够通过早期位置，但后续加速度随速度变化时，其外推轨迹可能偏离。M4 允许气动力随速度和旋转方向变化；推射 1 的结果到达球门平面，推射 2 的交点误差也较小。具体误差还受到早期位置和拟合参数共同影响。
+推射 2 的四个模型均到达球门平面，M1--M4 的交点误差依次为 \WRMOneGoalError、\WRMTwoGoalError、\WRMThreeGoalError、\WRMFourGoalError\ m。该例中恒加速度能够延续早期弯曲，M4 的后续路径 RMSE 进一步由 M3 的 \WRMThreePathRMSE\ m 降至 \WRMFourPathRMSE\ m。低空飞行中，重力持续使球下落，竖直马格努斯力则随旋转方向抬高或压低轨迹；两者共同决定能否在触地前到达球门。
 
 \subsubsection{案例二：大力抽射}
-大力抽射的 M4 反演起点球速为 32.05 m/s，高于上述两次推射。图~\ref{fig:penalty-J03WOH} 展示空间轨迹及 $x$、$y$、$z$ 坐标随时间的变化；前三个位置用于拟合，后续黑点用于检验预测。
+大力抽射的 M4 起点球速为 \WOHSpeed\ m/s。图~\ref{fig:penalty-J03WOH} 显示空间轨迹及三个坐标随时间的变化。
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WOH.pdf}
-\caption{大力抽射的空间轨迹及三个坐标随时间的变化。空心圆为拟合输入，黑点为实测采样。}\label{fig:penalty-J03WOH}\end{figure}
-$x(t)$ 体现前进方向的减速，$y(t)$ 与 $z(t)$ 分别体现横向偏转和竖直弯曲。M1、M2、M3、M4 的球门交点误差依次为 0.684、0.657、0.374 和 0.113 m。M1 只考虑重力，M2 进一步计入阻力，两者的横向方向主要由初速度决定；M3 延续三点确定的恒加速度；M4 则通过阻力与马格努斯力描述随速度变化的弯曲，在该次射门中与后续实测更接近。交点误差按模型各自穿越球门平面时的 $(y,z)$ 与实测交点计算。
+\caption{大力抽射的空间轨迹及坐标变化。空心圆为反演输入，黑点为实测位置，彩色曲线为模型预测。}\label{fig:penalty-J03WOH}\end{figure}
+M1--M4 的球门交点误差依次为 \WOHMOneGoalError、\WOHMTwoGoalError、\WOHMThreeGoalError、\WOHMFourGoalError\ m，后续路径 RMSE 分别为 \WOHMOnePathRMSE、\WOHMTwoPathRMSE、\WOHMThreePathRMSE、\WOHMFourPathRMSE\ m。M1、M2 的横向运动主要由初速度决定，M3 延续恒加速度；M4 通过随速度变化的阻力和马格努斯力弯曲轨迹，在这次射门中得到最小的两项误差。
 
-\paragraph{速度与气动力的物理图像。} 图~\ref{fig:penalty-dynamics} 对比三次射门的 M4 球速和气动力。阻力与相对速度平方成正比；大力抽射的反演起点速度较高，其初始阻力约 7.58 N，两次推射约为 7.05 和 2.21 N，其中系数取值也会影响大小。随足球减速，阻力逐渐减小。马格努斯力与旋转、相对速度的叉乘有关：旋转方向决定它使球向侧方还是竖直方向弯曲，其大小随速度和旋转条件改变。图中力与速度来自 M4 的反演及数值计算，旋转模长采用 30 rad/s 的参考设定。
+\paragraph{速度与气动力。} 图~\ref{fig:penalty-dynamics} 给出三次射门的 M4 球速及气动力。大力抽射的初始阻力为 \WOHDrag\ N，两次推射分别为 \WMXDrag\ N 和 \WRDrag\ N。阻力由 $C_Dv^2$ 决定，既随球速变化，也受到拟合系数影响；随飞行减速，阻力减小。线性升力由 $\alpha(\boldsymbol\omega\times\boldsymbol v)$ 决定，旋转轴与速度的夹角和方向共同影响轨迹的横向及竖直弯曲。
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_m4_dynamics.pdf}
-\caption{三次真实点球的 M4 反演球速、阻力和马格努斯力；曲线分别截止于模型首次触地或到达球门。}\label{fig:penalty-dynamics}\end{figure}
-
+\caption{三例的 M4 球速、阻力和马格努斯力。曲线截止于首次触地或到达球门。}\label{fig:penalty-dynamics}\end{figure}
 \PenaltyErrorSummaryTable

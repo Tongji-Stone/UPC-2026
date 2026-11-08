@@ -11,10 +11,15 @@
     "results/sensitivity_linear/profile_summary.json": "3b23ad4d769af608385b455191377716a33b4631210fa8256f44f74eefd95f4c",
     "results/sensitivity_linear/profile.csv": "f67f784c4a94dfce1c85f28feb54f98605e614b68a3c23e94a7ea403dabe779a",
     "results/monte_carlo_linear/summary.json": "d667706f43dfd4a79899c7e9908ec90ec2654a7274238eea894e5cfe3199bc86",
-    "results/monte_carlo_linear/verification.json": "07f5cf99a462fda67a9bd2af32b5abd29ee7590f0ce9979439d05b049a18b042",
+    "results/monte_carlo_linear/verification.json": "af97765c6ac78b0b79093ceb94e560956b77338aabc7390768b855b6e415a5ff",
     "results/monte_carlo_linear/samples.npz": "e96d8c6c6bacc2d9a53dd525fec6e17ebee948c540c7b994f4c7c2a16d5db7b3",
     "results/monte_carlo_linear/convergence.json": "c34b9497f2c20fe02702f0bbee36abdf3a2f4f3ce112a4d2eb372e51c48f96ba",
-    "data/sensitivity_v2/parallel_display.json": "f5fddcfbdc990daf6e9e8c0365aced2d222ddead4cff6031189a2838d8c20148"
+    "results/monte_carlo_linear/independent_seeds.json": "79d730edf29181c5a78bddec2c8d1e6f0d37bd226620211fcb0d3e93eb339f1d",
+    "data/sensitivity_v2/parallel_display.json": "f5fddcfbdc990daf6e9e8c0365aced2d222ddead4cff6031189a2838d8c20148",
+    "results/sensitivity_linear/baseline.json": "fc2c854a983ba3eb4522e4b48c4d0dcbfd9bf9e57dddd61d48e42469a1b1597a",
+    "results/sensitivity_linear/verification.json": "fe44aa97d31e1e00935c446f97bbb9c8b7d96eeef4a105198f9b459a932a5f74",
+    "configs/sensitivity_v2.json": "58026d6bf999b2612594bb10fb88bfa92c3b9598b0cfc995103cb29616e54d16",
+    "results/structure_linear_spin/problem/problem_b_M4.json": "1989238298183cd771527cb909675dd2e8917f60de31d5095b1e4f3ee8bb3c13"
   },
   "policy": "Publication assets reuse reviewed computations; no refitting or new samples",
   "provenance": "Saved deterministic M4 sensitivity and seeded Monte Carlo results"

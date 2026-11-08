@@ -34,6 +34,11 @@ def main():
     assert len(comparison)==9
     summary=js(MC/'summary.json');verification=js(MC/'verification.json')
     profile=js(DATA/'profile_summary.json');convergence=js(MC/'convergence.json')
+    baseline=js(DATA/'baseline.json');q=baseline['state']
+    display=js(ROOT/'data/sensitivity_v2/parallel_display.json')
+    samples=np.load(MC/'samples.npz');ids=np.array(display['selected_ids'],dtype=int)
+    clear_display=int(samples['clear'][ids].sum())
+    reference=js(ROOT/js(ROOT/'configs/sensitivity_v2.json')['baseline_result'])['record']
     assert verification['mass_kg']==.43 and verification['radius_m']==.11
     common={
         'SensitivityFixedRuns':'369',
@@ -45,19 +50,35 @@ def main():
         'MCStdY':f"{summary['std'][0]:.4f}",'MCStdZ':f"{summary['std'][1]:.4f}",
         'MCMaxDisplacement':f"{summary['max_displacement']:.3f}",
         'MCClearCount':str(summary['clear']),'MCOverCount':str(summary['nonclear_at_plane']),
-        'MCClearPercent':f"{100*summary['clear_fraction']:.2f}",
-        'MCOverPercent':f"{100*(1-summary['clear_fraction']):.2f}",
+        'MCClearPercent':f"{100*summary['clear_fraction']:.3f}",
+        'MCOverPercent':f"{100*(1-summary['clear_fraction']):.3f}",
         'MCJointThreshold':f"{summary['ellipse_95']['empirical_d2_threshold']:.4f}",
         'MCAdaptiveError':scientific(verification['maximum_adaptive_difference_m']),
         'MCHalfStepError':scientific(verification['maximum_half_step_difference_m']),
         'MCCheckCount':str(len(verification['adaptive_integrator_comparisons']))}
+    for i,key in enumerate(['VX','VY','VZ','WX','WY','WZ']):
+        common['SensitivityReference'+key]=f'{q[i]:.4f}'
+    common.update(SensitivityReferenceCD=f"{reference['fitted_cd']:.4f}",
+        SensitivityReferenceAlpha=f"{reference['fitted_alpha']:.4f}",
+        SensitivityReferenceY=f"{baseline['event']['y']:.4f}",SensitivityReferenceZ=f"{baseline['event']['z']:.4f}",
+        SensitivityReferenceTime=f"{baseline['event']['t']:.6f}",
+        SensitivityReferenceResidual=f"{1000*js(DATA/'verification.json')['baseline_early_residual_m']:.3f}",
+        SensitivityWideCount=str(profile['wide']['states']),SensitivityInnerCount=str(profile['inner']['states']),
+        MCDisplayClear=str(clear_display),MCDisplayHigh=str(len(ids)-clear_display))
+    by_parameter={r['parameter']:r for r in comparison}
+    for key,name in [('speed','Speed'),('yaw','Yaw'),('pitch','Pitch'),('spin','Spin'),('ad','Drag'),('al','Lift')]:
+        common['Sensitivity'+name+'Shift']=f"{100*float(by_parameter[key]['max_displacement']):.3f}"
+        common['Sensitivity'+name+'Time']=f"{float(by_parameter[key]['max_time_ms']):.3f}"
+    replicas=js(MC/'independent_seeds.json')
     for key in ('y','z','t'):
+        replica_gap=max(float(np.max(abs(np.array(r[key+'_central_95'])-np.array(summary[key+'_central_95'])))) for r in replicas)
+        common['MCReplica'+key.upper()]=f'{1000*replica_gap:.3f}'
         change=max(abs(np.array(convergence[-1][key+'_central_95'])-convergence[-2][key+'_central_95']))
         common['MCConvergence'+key.upper()]=f'{change*1000:.3f}'
     labels={'speed':('Launch speed','初速度大小'),'yaw':('Velocity azimuth','初速度水平角'),
         'pitch':('Velocity elevation','初速度仰角'),'spin':('Spin magnitude','自旋大小'),
         'spin_yaw':('Spin-axis azimuth','旋转轴方位角'),'spin_pitch':('Spin-axis elevation','旋转轴仰角'),
-        'ad':('Drag multiplier','阻力修正系数'),'al':('Lift multiplier','升力修正系数'),'rho':('Air density','空气密度')}
+        'ad':('Drag coefficient','阻力系数'),'al':('Lift parameter','升力参数'),'rho':('Air density','空气密度')}
     for language,directory in [('en',ROOT/'paper'),('zh',ROOT/'_中文版')]:
         zh=language=='zh'
         text='% Generated from reviewed sensitivity data; keep mass and radius fixed.\n'
@@ -72,7 +93,7 @@ def main():
         text+=r'\newcommand{\SensitivityOneFactorTable}{\begin{table}[H]\centering\small'+'\n'+r'\caption{'+caption+r'}\label{tab:sensitivity-one-factor}'+'\n'+r'\begin{tabular}{p{.32\textwidth}crr}\toprule'+'\n'+header+r'\\\midrule'+'\n'+body+'\n'+r'\bottomrule\end{tabular}\end{table}}'+'\n'
         caption=('早期位置约束下的球门交点范围。' if zh else
                  'Ranges of goal-plane crossings compatible with the early positions.')
-        header=('两项修正系数范围 & $y_g$ (m) & $z_g$ (m) & $t_g$ (s)' if zh else
+        header=('系数倍数范围 & $y_g$ (m) & $z_g$ (m) & $t_g$ (s)' if zh else
                 'Range of each multiplier & $y_g$ (m) & $z_g$ (m) & $t_g$ (s)')
         body=[]
         for title,key in [('[1.35,1.65]','inner'),('[1.2,1.8]','wide')]:
@@ -164,8 +185,8 @@ def main():
     from build_monte_carlo_parallel import build_parallel_coordinates
     build_parallel_coordinates(ROOT)
     sources=[DATA/'comparison.csv',DATA/'one_factor.csv',DATA/'profile_summary.json',DATA/'profile.csv',
-             MC/'summary.json',MC/'verification.json',MC/'samples.npz',MC/'convergence.json',
-             ROOT/'data/sensitivity_v2/parallel_display.json']
+             MC/'summary.json',MC/'verification.json',MC/'samples.npz',MC/'convergence.json',MC/'independent_seeds.json',
+             ROOT/'data/sensitivity_v2/parallel_display.json',DATA/'baseline.json',DATA/'verification.json',ROOT/'configs/sensitivity_v2.json',ROOT/js(ROOT/'configs/sensitivity_v2.json')['baseline_result']]
     record=dict(fixed_mass_kg=.43,fixed_radius_m=.11,one_factor_parameters=9,
         one_factor_runs=369,monte_carlo_primary_count=summary['count'],monte_carlo_seed=verification['seed'],
         sources={p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in sources},

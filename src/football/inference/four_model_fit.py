@@ -40,6 +40,8 @@ def fit_early(times, positions, config, model, max_nfev=240, bounds=None):
         raise TypeError('bounds must be an InverseBounds instance')
     if model not in ('M1', 'M2', 'M3', 'M4'):
         raise ValueError('model must be M1, M2, M3 or M4')
+    if not np.isfinite(t).all() or not np.isfinite(p).all():
+        raise ValueError('times and positions must be finite')
     if t.shape != (3,) or p.shape != (3, 3) or np.any(np.diff(t) <= 0):
         raise ValueError('exactly three ordered positions are required')
     dt = t[1:] - t[0]

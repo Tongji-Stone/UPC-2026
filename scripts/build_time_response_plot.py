@@ -14,8 +14,8 @@ STYLE=[
  ('spin','Spin magnitude','#0072B2','--','v',.10),
  ('spin_yaw','Spin-axis azimuth','#D55E00',':','D',2.),
  ('spin_pitch','Spin-axis elevation','#D55E00','-.','P',2.),
- ('ad','Drag multiplier','#009E73','-','<',.10),
- ('al','Lift multiplier','#009E73','--','x',.10),
+ ('ad','Drag coefficient','#009E73','-','<',.10),
+ ('al','Lift parameter','#009E73','--','x',.10),
  ('rho','Air density','#009E73','-.','>',.10)]
 
 def build_time_response(root=ROOT):

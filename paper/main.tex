@@ -26,12 +26,12 @@
 \vspace{2mm}{\bfseries Problem B\par}
 \vspace{3mm}{\bfseries Abstract\par}
 \end{center}
-We compare gravity, drag, constant net force and a gravity--drag--Magnus model. M3 estimates constant acceleration from early positions; M4 fits a constant drag coefficient and a lift coefficient proportional to the spin parameter.
+Gravity bends a football's path downward, drag reduces its speed, and Magnus force redirects a spinning flight. We compare gravity, gravity with drag, a constant resultant force, and gravity with aerodynamic forces. M3 determines constant acceleration from three early positions. M4 uses constant drag and the linear lift relation $C_L=\alpha Sp$ to estimate velocity, spin direction and aerodynamic parameters.
 
-Three recorded penalties provide 39 tracking frames. After conversion to penalty-mark coordinates, three selected positions per event enter 12 bounded inversions, compared with later samples. Two placement shots and one power shot are analyzed, comparing speed, aerodynamic forces and prediction error. A separate curved-shot calculation examines rotational damping. Section 5 uses the competition positions for individual perturbations, position-constrained crossings and 100,000 Monte Carlo trajectories.
+Three actual penalties supply 39 sampled frames. Three early positions per flight enter inversion, with subsequent measurements used for comparison. M4 gives goal-plane errors of \WMXMFourGoalError, \WRMFourGoalError\ and \WOHMFourGoalError\ m for the two placement shots and the power shot; the latter has a subsequent path RMSE of \WOHMFourPathRMSE\ m. A separate competition-position example quantifies parameter effects: a $1^\circ$ direction change moves the crossing by about 0.20 m, and the largest grid-search shift under a 2 mm early-position constraint is \SensitivityConditionalShift\ m. Among 100,000 joint perturbations with fixed mass and radius, \MCClearPercent\% clear the goal. A same-state curved-shot calculation quantifies rotational damping, while relative airflow describes wind effects.
 
 \noindent\textbf{Keywords:} Soccer ball, aerodynamic drag, Magnus effect, inverse prediction, trajectory comparison
-\newpage\begingroup\fontsize{12}{15}\selectfont\tableofcontents\endgroup\newpage
+\newpage\begingroup\fontsize{11}{13}\selectfont\tableofcontents\endgroup\newpage
 \section{Introduction}
 \subsection{Problem Background}
 A penalty kick places stringent spatial and temporal demands on the goalkeeper. The goalkeeper must reach an appropriate location at the right time, while deciding when and in which direction to move. Studies of penalty anticipation discuss this timing problem and show that shot speed and kicking technique affect the predictability of shot direction \cite{kamp2018,hunter2018}. Such work also considers cues from the kicker before contact; the present problem instead focuses on predicting the ball's later position from its measured positions after launch.
@@ -78,20 +78,20 @@ $\boldsymbol r,\boldsymbol v$ & Ball-centre position and velocity & m; m/s\\
 $\boldsymbol\omega,\omega$ & Spin vector and its magnitude & rad/s\\
 $m,R,A$ & Mass, radius and frontal area & 0.43 kg; 0.11 m; $\pi R^2$\\
 $g$ & Gravitational acceleration & 9.81 m/s$^2$\\
-$\boldsymbol u,v$ & Air-relative velocity and its magnitude & m/s\\
+$\boldsymbol u,u$ & Air-relative velocity and its magnitude & m/s\\
 $\rho$ & Air density & 1.2 kg/m$^3$\\
 $\nu,\mu=\rho\nu$ & Kinematic and dynamic viscosity & $1.50\times10^{-5}$ m$^2$/s; Pa\,s\\
 $Re,Sp$ & Reynolds number and spin parameter & dimensionless\\
-$C_D,C_L$ & Drag and transverse lift coefficients & dimensionless\\
-$\alpha_D,\alpha_L$ & Multiplicative force corrections & dimensionless\\
+$C_D,C_L,\alpha$ & Drag, lift and linear-spin parameters & dimensionless\\
+$\lambda_D,\lambda_\alpha$ & Coefficient ratios to reference values & dimensionless\\
 $\theta,\boldsymbol e_L$ & Spin--airflow angle and Magnus direction & rad; unit vector\\
 $X_g$ & Local goal-plane coordinate & 11 m\\
-$\boldsymbol Q,I_b$ & Damping torque and moment of inertia (Section 6) & N\,m; kg\,m$^2$\\\bottomrule
+$\boldsymbol Q,I_b$ & Damping torque and moment of inertia & N\,m; kg\,m$^2$\\\bottomrule
 \end{tabular}\end{table}
 The ball and air parameters use published reference values \cite{maponi,asai2007}. The viscosity is a declared reference air setting, with $\mu=\rho\nu$. The three match penalties use the same declared reference settings.
 
 \section{Model Establishment}\label{sec:model}
-The same Newtonian equations generate all four models by selecting the included aerodynamic terms. We first describe the geometry, then connect the forces to the surrounding flow and ball rotation.
+The four models describe gravitational fall, drag-induced slowing, a constant-force approximation and aerodynamic curvature. We establish the goal geometry and M4 forces below; Section 4 gives the inverse procedures.
 \subsection{Geometry and Goal Plane}
 The local horizontal origin is the nominal penalty mark, with $x$ towards the goal, $y$ lateral and $z$ upward. The goal plane is $x=11$ m and the opening is $-3.66\le y\le3.66$ m, $0\le z\le2.44$ m. Section~\ref{sec:inverse} converts the measured pitch-centred coordinates.
 \begin{figure}[H]\centering\includegraphics[width=0.78\textwidth]{penalty_geometry_new.png}
@@ -109,9 +109,7 @@ By Archimedes' principle the displaced air exerts an upward force on the ball. I
 \boldsymbol F_B=\rho V_b g\,\boldsymbol e_z
 =\frac43\pi R^3\rho g\,\boldsymbol e_z.
 \label{eq:buoyancy}\end{equation}
-Together, gravity and buoyancy give $\boldsymbol F_g+\boldsymbol F_B=-(m-\rho V_b)g\boldsymbol e_z$. For the reference parameters in the table, buoyancy is about $1.56\%$ of the ball's weight and changes the downward acceleration from $g$ to $g(1-\rho V_b/m)$.
-
-The 1.56\% buoyancy scale is a small vertical correction; all four main comparisons use gravity, drag and Magnus lift as defined above.
+Together, gravity and buoyancy give $\boldsymbol F_g+\boldsymbol F_B=-(m-\rho V_b)g\boldsymbol e_z$. Buoyancy is $1.56\%$ of weight for the reference parameters. The baseline calculation uses gravity, drag and Magnus force, treating buoyancy as a small vertical correction.
 
 Figure~\ref{fig:force-schematic} illustrates the relative airflow in the ball frame and the corresponding force directions. The right-hand example takes the spin axis out of the page; the lift direction follows the cross product.
 \begin{figure}[H]\centering
@@ -124,9 +122,9 @@ With relative velocity $\boldsymbol u=\boldsymbol v-\boldsymbol v_{\rm wind}$, $
 The drag coefficient $C_D$ is constant during each flight.
 \subsubsection{Magnus Lift}\label{sec:lift}
 \begin{figure}[H]\centering\includegraphics[width=.78\textwidth]{magnus_streamlines.pdf}\caption{Idealized flow around a spinning football.}\label{fig:magnus-flow}\end{figure}
-Let $Sp=R\|\boldsymbol\omega\|/u$ and $C_L=\alpha Sp$. Resolving the transverse component yields
+Let $Re=2Ru/\nu$, $Sp=R\|\boldsymbol\omega\|/u$ and $C_L=\alpha Sp$. Resolving the transverse component yields
 \begin{equation}\boldsymbol F_L=\tfrac12\rho A R\alpha(\boldsymbol\omega\times\boldsymbol u).\label{eq:lift-force}\end{equation}
-The force vanishes at zero spin or zero relative velocity; reversing cross-product order requires reversing the sign.
+The force vanishes at zero spin or zero relative velocity.
 The forces on the football are summarized in the following diagram.
 \begin{figure}[H]\centering
 \includegraphics[width=.58\textwidth]{ball_force_diagram_times_xlarge.pdf}
@@ -213,7 +211,7 @@ I_b\dot{\boldsymbol\omega}&=-k_2\omega\boldsymbol\omega.
 \end{equation}
 The torque opposes spin and removes rotational energy. With this isolated quadratic law, $\omega(t)=\omega_0/[1+(k_2/I_b)\omega_0t]$, providing an integration check.
 
-For a prescribed curved shot, with initial velocity $(\CurvedVX,0,\CurvedVZ)$ m/s, spin $(0,0,35)$ rad/s and unit force corrections. Holding this state fixed, we compare constant spin with Eq.~\eqref{eq:motion-torque}.
+Use a reference curved shot with initial velocity $(\CurvedVX,0,\CurvedVZ)$ m/s, spin $(0,0,35)$ rad/s and unit force corrections. Holding this state fixed, we compare constant spin with Eq.~\eqref{eq:motion-torque}.
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{torque_comparison.pdf}
 \caption{Same-initial-state comparison of constant spin and high-Reynolds-number rotational damping for the prescribed curved shot. The documented angular-drag reference is 1.5, and the ball uses thin-shell inertia.}\label{fig:torque}\end{figure}
 \TorqueResults
@@ -225,22 +223,29 @@ Wind changes the airflow through $\boldsymbol u=\boldsymbol v-\boldsymbol v_{\rm
 \frac{q_{\rm tail}}{q_0}=(1-w/v)^2,\qquad
 \frac{q_{\rm cross}}{q_0}=1+(w/v)^2.
 \end{equation}
-Crosswind also rotates the airflow by $\arctan(w/v)$, changing the force direction. Table~\ref{tab:wind} evaluates these rough estimates at the curved-shot launch speed. The listed wind speeds are illustrative conditions for comparison.
+Crosswind rotates the airflow by $\arctan(w/v)$ and changes the force direction. Table~\ref{tab:wind} evaluates 1, 3 and 5 m/s winds at the 24 m/s curved-shot speed.
+For the M4 linear lift law, Eq.~\eqref{eq:lift-force} also gives the headwind and tailwind effects along the flight direction. With fixed spin and $0\le w<v$,
+\begin{equation}
+\frac{F_{L,\mathrm{head}}}{F_{L,0}}=1+\frac wv,\qquad
+\frac{F_{L,\mathrm{tail}}}{F_{L,0}}=1-\frac wv.
+\label{eq:wind-linear-lift}\end{equation}
 \WindResultsTable
 A 5\% limit on the headwind dynamic-pressure change corresponds to $w/v\leq\sqrt{1.05}-1$, or $w\leq\WindThreshold$ m/s at this launch. The still-air approximation is most suitable for indoor or weak-wind flight; stronger wind should enter through the relative-velocity calculation.
 
 \section{Conclusions}
-The model separates the mechanisms of gravity, drag and Magnus lift. Gravity produces downward curvature, drag reduces speed, and spin redirects the path. We use constant drag and linear-spin lift.
+The four models describe gravitational fall, deceleration, a constant resultant force and rotational deflection. M3 obtains constant acceleration from three positions. M4 inserts constant $C_D$ and $C_L=\alpha Sp$ into the motion equations, updating drag and Magnus force as speed changes.
 
-Two cases are placement shots and the third is a power shot. Their M4 speeds at the selected start are 29.20, 28.34 and 32.05 m/s, respectively. Drag decreases as the ball slows, while spin direction determines the direction of Magnus force. The four-model comparison shows that fitting the early positions and predicting the goal crossing are distinct tasks: M4 has crossing errors of 0.113 m for the power shot and 0.146 m for the second placement shot.
+M4 gives crossing errors of \WMXMFourGoalError, \WRMFourGoalError\ and \WOHMFourGoalError\ m for the three penalties. Its power-shot crossing error and subsequent path RMSE are the smallest among the four models. For placement 1, M3 passes through the early positions but reaches a maximum $x=\WMXMThreeMaxX$ m, short of the goal; M4 supplies a goal-plane prediction for this low flight.
 
-Three actual penalties supply distinct early sampling sequences and held-out trajectories. Coordinate conversion places all three in the competition geometry. The 12 inverse outcomes connect the recorded motion to the force assumptions through spatial trajectories and the detailed power-shot comparison. For the competition-position example in Section 5, a one-degree launch-direction change moves the crossing by the displacement shown in the one-factor table. With the early positions fixed, the explored compatible states shift the crossing by up to \SensitivityConditionalShift\ m; joint perturbations are quantified by 100,000 Monte Carlo trajectories with fixed ball mass and radius.
+In the competition-position example, a $1^\circ$ launch-direction change moves the crossing by about 0.20 m, while speed strongly affects arrival time. Spin magnitude and $\alpha$ compensate through the linear lift law. The largest grid-search shift under the 2 mm position constraint is \SensitivityConditionalShift\ m; \MCClearPercent\% of 100,000 jointly perturbed flights clear the opening.
+
+Rotational damping shifts the reference curved-shot crossing by \TorqueDisplacement\ m. Wind enters through relative velocity: along the flight direction, drag changes with the squared speed ratio and linear Magnus force with the speed ratio.
 
 \section{Model Evaluation}
-\subsection{Physical Interpretation and Reproduction}
-The four models connect different force assumptions with the recorded flights. Inversion and subsequent prediction use consistent equations. Original source coordinates, selected frames, transformed coordinates, numerical settings and candidate solutions are saved with the results.
-\subsection{Prediction and Further Development}
-The real-penalty comparison evaluates how early motion carries into the later path. Bound-active solutions and residuals identify the influence of the chosen coefficient scale and initial-state search. Ball-specific coefficients, direct spin measurements and higher-rate synchronized tracking would improve these connections. Rotational damping and wind can be included when their effect is relevant to the flight considered.
+\subsection{Model behaviour}
+The constant-force model links early positions directly to acceleration. The three-force model separates slowing from curvature through physical forces. The placement and power shots provide trajectory comparisons; path error, crossing error and ground termination describe the continuation and endpoint separately.
+\subsection{Further development}
+Denser early sampling can constrain acceleration and spin direction, while measured spin can determine the lift parameter more directly. Ball-specific drag and lift relations can reduce deviations associated with shared coefficients. Rotational damping and wind enter through angular momentum and relative velocity, preserving the common integration and event definitions.
 \addcontentsline{toc}{section}{References}
 \begin{thebibliography}{99}
 \raggedright
@@ -264,7 +269,8 @@ The real-penalty comparison evaluates how early motion carries into the later pa
 
 \newpage\section*{Appendix A: Data Sources, Frame Selection and Parameter Bounds}\label{app:data}
 \addcontentsline{toc}{section}{Appendix A: Data Sources, Frame Selection and Parameter Bounds}
-The three penalties come from the Sportec Open DFL dataset, which associates match events with TRACAB Gen5 multi-camera tracking at 25 Hz\cite{bassek,dataset}. The supplied CSV retains 39 source frames, with 15, 12 and 12 frames for the three events. Published positions are used without adding an observation-noise model.
+\begingroup\def\small{\fontsize{10}{11.5}\selectfont}\small\setlength{\intextsep}{4pt}
+The three penalties come from the Sportec Open DFL dataset, which associates match events with TRACAB Gen5 multi-camera tracking at 25 Hz\cite{bassek,dataset}. The supplied CSV retains 39 source frames, with 15, 12 and 12 frames for the three events.
 \begin{table}[H]\centering\small\caption{Correspondence between case labels and source records}\label{tab:data-provenance}
 \begin{tabular}{llll}\toprule
 Case & Event ID & Player & Selected samples\\\midrule
@@ -274,12 +280,16 @@ Power shot & J03WOH & Dawid Igor Kownacki & 2, 3, 4\\\bottomrule
 \end{tabular}\end{table}
 The first selected position is the time origin and the fitting times are 0, 0.04 and 0.08 s. Their source-time origins are 0.08, 0.08 and 0.04 s in the table's order. Repeated and post-goal records are retained; later positions are used only for validation. The observed goal crossing uses a source frame or interpolation. The height field is interpreted in metres as ball-centre height, and coordinates are converted with $x=X-41.5$, $y=Y$ and $z=Z_{\rm original}$.
 
-The inversion bounds and force-correction settings are listed below.
+Table~\ref{tab:penalty-observations} gives the early inputs and goal crossings; Table~\ref{tab:inverse-bounds} gives the inversion ranges.
+\PenaltyObservationTable
 \InverseBoundsTable
+Table~\ref{tab:m4-parameters} gives the fitted M4 parameters, with $\boldsymbol n=\boldsymbol\omega/30$.
+\MFourParameterTable
 
+\endgroup
 \newpage\addcontentsline{toc}{section}{Reproduction Code}
 \section*{Reproduction Code}
 The project contains the original penalty CSV, coordinate conversion, shared inversion, prediction results and figure scripts. The excerpts show the common state equation and force evaluation. Paper and program use the same coefficients and bounds; computation, plotting and bilingual table generation are separate commands.
-\lstinputlisting[language=Python,firstline=177,lastline=181]{../src/football/physics/model.py}
-\lstinputlisting[language=Python,firstline=217,lastline=237]{../src/football/physics/model.py}
+\lstinputlisting[language=Python,firstline=180,lastline=184]{../src/football/physics/model.py}
+\lstinputlisting[language=Python,firstline=220,lastline=242]{../src/football/physics/model.py}
 \end{document}

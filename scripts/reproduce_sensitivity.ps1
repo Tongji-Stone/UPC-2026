@@ -5,15 +5,13 @@ Push-Location -LiteralPath $ProjectRoot
 try {
     $env:PYTHONPATH = "$ProjectRoot\src;$env:PYTHONPATH"
     if ($Recompute) {
-        foreach ($Script in @('sensitivity_v2_compute.py','sensitivity_monte_carlo_compute.py')) {
+        foreach ($Script in @('sensitivity_reference_compute.py','sensitivity_v2_compute.py','sensitivity_v2_check.py','sensitivity_monte_carlo_compute.py')) {
             & $Python -B "scripts/$Script"
             if ($LASTEXITCODE -ne 0) { throw "Calculation failed: $Script" }
         }
     }
-    foreach ($Script in @('build_sensitivity_assets.py')) {
-        & $Python -B "scripts/$Script"
-        if ($LASTEXITCODE -ne 0) { throw "Build failed: $Script" }
-    }
+    & $Python -B scripts/build_sensitivity_assets.py
+    if ($LASTEXITCODE -ne 0) { throw 'Sensitivity figures and tables failed' }
     foreach ($Folder in @('paper','_中文版')) {
         Push-Location -LiteralPath $Folder
         try {
@@ -22,5 +20,9 @@ try {
                 if ($LASTEXITCODE -ne 0) { throw "PDF compilation failed: $Folder" }
             }
         } finally { Pop-Location }
+    }
+    foreach ($Script in @('four_model_pdf_check.py','verify_bilingual_reports.py','verify_sensitivity_integration.py')) {
+        & $Python -B "scripts/$Script"
+        if ($LASTEXITCODE -ne 0) { throw "Paper verification failed: $Script" }
     }
 } finally { Pop-Location }

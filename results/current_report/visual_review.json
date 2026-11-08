@@ -1,0 +1,24 @@
+{
+  "all_passed": true,
+  "rendering": "Poppler complete contact sheets, final bilingual page renders and selected 100--110 dpi pages",
+  "documents": {
+    "paper": {
+      "pages": 28,
+      "sha256": "5033b4387c5dab13118127bd01ad46b5c49d1a4544b509a6993d2308b079467d"
+    },
+    "_中文版": {
+      "pages": 27,
+      "sha256": "17cb6bcce293bc65696041bcbb8d887206243ecae716667539e655f00beb9882"
+    }
+  },
+  "reviewed": [
+    "complete bilingual documents",
+    "single-page contents in each edition",
+    "12-case error table",
+    "one-axis nine-parameter time plot",
+    "Monte Carlo and parallel coordinates with 385 clear and 15 high display traces",
+    "one-page data and parameter appendix",
+    "references, page boundaries and embedded fonts"
+  ],
+  "code_and_data_unchanged_during_final_layout": true
+}

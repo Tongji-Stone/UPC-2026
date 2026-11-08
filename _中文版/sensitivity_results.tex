@@ -12,14 +12,45 @@
 \newcommand{\MCMaxDisplacement}{0.801}
 \newcommand{\MCClearCount}{95772}
 \newcommand{\MCOverCount}{4228}
-\newcommand{\MCClearPercent}{95.77}
-\newcommand{\MCOverPercent}{4.23}
+\newcommand{\MCClearPercent}{95.772}
+\newcommand{\MCOverPercent}{4.228}
 \newcommand{\MCJointThreshold}{4.5916}
 \newcommand{\MCAdaptiveError}{1.19\times10^{-12}}
 \newcommand{\MCHalfStepError}{1.43\times10^{-12}}
 \newcommand{\MCCheckCount}{70}
+\newcommand{\SensitivityReferenceVX}{30.3784}
+\newcommand{\SensitivityReferenceVY}{9.4074}
+\newcommand{\SensitivityReferenceVZ}{6.8974}
+\newcommand{\SensitivityReferenceWX}{19.7434}
+\newcommand{\SensitivityReferenceWY}{1.2060}
+\newcommand{\SensitivityReferenceWZ}{-22.5553}
+\newcommand{\SensitivityReferenceCD}{0.3623}
+\newcommand{\SensitivityReferenceAlpha}{2.2877}
+\newcommand{\SensitivityReferenceY}{2.6159}
+\newcommand{\SensitivityReferenceZ}{1.9526}
+\newcommand{\SensitivityReferenceTime}{0.398967}
+\newcommand{\SensitivityReferenceResidual}{0.784}
+\newcommand{\SensitivityWideCount}{153}
+\newcommand{\SensitivityInnerCount}{63}
+\newcommand{\MCDisplayClear}{385}
+\newcommand{\MCDisplayHigh}{15}
+\newcommand{\SensitivitySpeedShift}{8.356}
+\newcommand{\SensitivitySpeedTime}{20.659}
+\newcommand{\SensitivityYawShift}{20.070}
+\newcommand{\SensitivityYawTime}{1.965}
+\newcommand{\SensitivityPitchShift}{20.218}
+\newcommand{\SensitivityPitchTime}{1.692}
+\newcommand{\SensitivitySpinShift}{3.873}
+\newcommand{\SensitivitySpinTime}{0.287}
+\newcommand{\SensitivityDragShift}{0.620}
+\newcommand{\SensitivityDragTime}{2.274}
+\newcommand{\SensitivityLiftShift}{3.873}
+\newcommand{\SensitivityLiftTime}{0.287}
+\newcommand{\MCReplicaY}{5.425}
 \newcommand{\MCConvergenceY}{0.264}
+\newcommand{\MCReplicaZ}{4.320}
 \newcommand{\MCConvergenceZ}{0.506}
+\newcommand{\MCReplicaT}{0.328}
 \newcommand{\MCConvergenceT}{0.138}
 \newcommand{\SensitivityOneFactorTable}{\begin{table}[H]\centering\small
 \caption{单参数扰动对球门交点和到达时间的影响。}\label{tab:sensitivity-one-factor}
@@ -31,14 +62,14 @@
 自旋大小 & $\pm5\%$ & 3.873 & 0.287\\
 旋转轴方位角 & $\pm1^\circ$ & 1.002 & 0.071\\
 旋转轴仰角 & $\pm1^\circ$ & 0.852 & 0.084\\
-阻力修正系数 & $\pm5\%$ & 0.620 & 2.274\\
-升力修正系数 & $\pm5\%$ & 3.873 & 0.287\\
+阻力系数 & $\pm5\%$ & 0.620 & 2.274\\
+升力参数 & $\pm5\%$ & 3.873 & 0.287\\
 空气密度 & $\pm5\%$ & 4.142 & 1.990\\
 \bottomrule\end{tabular}\end{table}}
 \newcommand{\SensitivityProfileTable}{\begin{table}[H]\centering\small
 \caption{早期位置约束下的球门交点范围。}\label{tab:sensitivity-profile}
 \begin{tabular}{lrrr}\toprule
-两项修正系数范围 & $y_g$ (m) & $z_g$ (m) & $t_g$ (s)\\\midrule
+系数倍数范围 & $y_g$ (m) & $z_g$ (m) & $t_g$ (s)\\\midrule
 $[1.35,1.65]$ & 2.5538--2.6550 & 1.9122--2.0307 & 0.3973--0.4025\\
 $[1.2,1.8]$ & 2.5478--2.6601 & 1.9075--2.0368 & 0.3973--0.4043\\
 \bottomrule\end{tabular}\end{table}}

@@ -435,7 +435,7 @@
   "maximum_half_step_difference_m": 1.4268752343935866e-12,
   "baseline_difference_m": 2.72454521075814e-13,
   "protected_unchanged": true,
-  "elapsed_seconds": 21.44526279999991,
+  "elapsed_seconds": 23.671302300062962,
   "python": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
   "numpy": "2.3.5",
   "sampling": "Independent uniform in each declared perturbation range",

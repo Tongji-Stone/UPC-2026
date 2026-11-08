@@ -1,104 +1,97 @@
-"""Check the bilingual source integration and compiled papers against saved data."""
-import csv,hashlib,json,re,subprocess,sys
+"""Verify the active linear-spin experiments, bilingual paper, plots and PDFs."""
+import csv
+import hashlib
+import json
+import re
 from pathlib import Path
+
+import numpy as np
 from pypdf import PdfReader
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'results/sensitivity_v2'
 
-def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
-def read(path):return path.read_text(encoding='utf-8')
+ROOT=Path(__file__).resolve().parents[1]
+OUT=ROOT/'results/sensitivity_linear'
+MC=ROOT/'results/monte_carlo_linear'
 
+def read(p): return p.read_text(encoding='utf-8')
+def js(p): return json.loads(read(p))
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def rows(p):
+    with p.open(encoding='utf-8-sig') as f: return list(csv.DictReader(f))
+def equations(s): return [re.sub(r'\s+','',x) for x in re.findall(r'\\begin\{equation\}(.*?)\\end\{equation\}',s,re.S)]
 def main():
-    baseline=json.loads(read(ROOT/'data/sensitivity_v2/source_baseline.json'))
-    assets=json.loads(read(OUT/'asset_manifest.json'))
     checks={}
-    checks['baseline_commit_recorded']=bool(re.fullmatch(r'[0-9a-f]{40}',baseline['commit']))
-    checks['reviewed_input_data_unchanged']=all(sha(ROOT/name)==value for name,value in assets['sources'].items())
-    checks['physics_inverse_original_values_unchanged']=all(sha(ROOT/name)==value for name,value in baseline['immutable_files'].items())
-    en=read(ROOT/'paper/main.tex');zh=read(ROOT/'_中文版/main.tex')
-    se=read(ROOT/'paper/sensitivity.tex');sz=read(ROOT/'_中文版/sensitivity.tex')
-    equations=lambda s:re.findall(r'\\begin\{equation\}(.*?)\\end\{equation\}',s,re.S)
-    checks['old_physical_equations_preserved']=all(baseline['main_equations'][folder]==equations(read(ROOT/folder/'main.tex')) for folder in ['paper','_中文版'])
-    checks['new_bilingual_equations_identical']=equations(se)==equations(sz)
-    checks['all_old_labels_preserved']=all(set(baseline['main_labels'][folder])<=
-          set(re.findall(r'\\label\{([^}]+)\}',read(ROOT/folder/'main.tex'))) for folder in ['paper','_中文版'])
-    checks['ball_properties_fixed']=assets['fixed_mass_kg']==.43 and assets['fixed_radius_m']==.11 and assets['one_factor_parameters']==9 and assets['one_factor_runs']==369
-    with (OUT/'compensation.csv').open(encoding='utf-8-sig') as stream:
-        compensation=list(csv.DictReader(stream))
-    checks['compensation_varies_density_only']=len(compensation)==4 and all(r['parameter']=='rho' for r in compensation)
-    me=read(ROOT/'paper/sensitivity_results.tex');mz=read(ROOT/'_中文版/sensitivity_results.tex')
-    checks['bilingual_scalar_values_identical']=me.split(r'\newcommand{\SensitivityOneFactorTable}')[0]==mz.split(r'\newcommand{\SensitivityOneFactorTable}')[0]
-    tables=lambda s:re.findall(r'\\begin\{tabular\}.*?\\end\{tabular\}',s,re.S)
-    nums=lambda s:re.findall(r'(?<![A-Za-z])[-+]?\d+(?:\.\d+)?',s)
-    checks['bilingual_new_table_values_identical']=[nums(x) for x in tables(me)]==[nums(x) for x in tables(mz)]
-    checks['nine_parameter_table_excludes_mass_radius']=all(x not in me for x in ['Ball mass','Radius + launch height'])
-    checks['reviewed_monte_carlo_count_seed']=assets['monte_carlo_primary_count']==100000 and assets['monte_carlo_seed']==20261108
-    with (ROOT/'results/sensitivity_v2/one_factor.csv').open(encoding='utf-8-sig') as stream:
-        response=[r for r in csv.DictReader(stream) if r['parameter'] not in ('mass','radius')]
-    groups={key:[r for r in response if r['parameter']==key] for key in {r['parameter'] for r in response}}
-    checks['response_plots_nine_full_41_point_scans']=len(groups)==9 and all(len(g)==41 for g in groups.values())
-    checks['response_curves_recover_reference_at_zero']=all(
-        max(abs(float(r[k])) for k in ('dy','dz','dt'))<1e-9
-        for r in response if abs(float(r['delta']))<1e-12)
-    checks['response_figure_files_in_both_versions']=all((folder/name).exists() for folder in [ROOT/'results/sensitivity_v2/figures'] for name in ['one_factor_position_response.pdf','one_factor_time_response.pdf'])
-    checks['both_response_figures_referenced']=all(name in section for section in [se,sz]
-        for name in ['one_factor_position_response.pdf','one_factor_time_response.pdf'])
-    overlay=json.loads(read(OUT/'time_response_overlay_record.json'))
-    checks['time_plot_one_axes_nine_curves']=overlay['layout']=='one axes; nine overlaid curves' and len(overlay['curves'])==9
-    checks['time_plot_common_normalized_limits']=all(abs(c['x'][0]+1)<1e-12 and abs(c['x'][-1]-1)<1e-12 for c in overlay['curves'])
-    checks['time_plot_preserves_all_original_samples']=all(
-        c['points']==41 and
-        all(abs(x-float(r['delta'])/c['half_width'])<1e-12 and abs(y-1000*float(r['dt']))<1e-10
-            for x,y,r in zip(c['x'],c['arrival_time_change_ms'],
-                           sorted(groups[c['parameter']],key=lambda r:float(r['delta']))))
-        for c in overlay['curves'])
-    parallel=json.loads(read(OUT/'parallel_coordinates_record.json'))
-    accepted=json.loads(read(ROOT/'data/sensitivity_v2/parallel_display.json'))
-    checks['parallel_display_sample_ids_preserved']=parallel['selected_ids']==accepted['selected_ids'] and parallel['display_seed']==20261112
-    checks['parallel_display_counts_documented']=parallel['display_count']==400 and parallel['displayed_clear']==382 and parallel['displayed_high']==18 and parallel['full_count']==100000
-    checks['parallel_scaling_and_input_observation_recorded']=parallel['all_scaled_values_within_unit_interval'] and len(parallel['input_half_widths'])==9 and len(parallel['output_min'])==3 and min(parallel['displayed_high_elevation_range_degrees'])>0
-    checks['only_parallel_component_in_paper']=all('monte_carlo_parallel_coordinates.pdf' in text and 'monte_carlo_parallel_spider_preview' not in text for text in [se,sz])
-    checks['shared_sensitivity_figures']=all('../results/sensitivity_v2/figures/' in text for text in [en,zh])
-    checks['reference_positions_documented']=all('tab:sensitivity-reference' in text for text in [se,sz])
-    checks['independent_reference_frozen']=sha(ROOT/'data/sensitivity_v2/representative_state.json')==json.loads(read(OUT/'baseline.json'))['source_sha256']
-    documents={};dependencies={}
-    for folder,source,section,macros in [('paper',en,se,me),('_中文版',zh,sz,mz)]:
-        document=PdfReader(str(ROOT/folder/'main.pdf'));texts=[p.extract_text() or '' for p in document.pages]
-        text='\n'.join(texts);log=read(ROOT/folder/'main.log')
-        checks[folder+'_complete_compilation']=not re.search(r'^!',log,re.M) and 'Output written' in log
-        checks[folder+'_no_overflow_missing_glyphs']='Overfull' not in log and 'Missing character' not in log
-        checks[folder+'_references_resolved']='undefined references' not in log and 'undefined on input line' not in log and '??' not in text
-        checks[folder+'_placeholder_removed']=all(x not in source+section for x in ['To be completed.','待完成。','will be added after Section 5'])
-        checks[folder+'_new_inputs_active']=r'\input{sensitivity.tex}' in source and r'\input{sensitivity_results.tex}' in source
-        checks[folder+'_compact_contents']=(r'{\small\tableofcontents}' in source or r'\begingroup\small\tableofcontents\endgroup' in source or r'\fontsize{10}{11.5}\selectfont\tableofcontents' in source)
-        checks[folder+'_key_results_present']=all(x in text for x in ['0.1183','94.87','2.0308','3.3515','100000','369'])
-        combined=source+read(ROOT/folder/'sections/model_solving.tex')+section+macros+read(ROOT/folder/'report_results.tex')
-        path_line=next(line for line in source.splitlines() if line.startswith(r'\graphicspath'))
-        graphic_paths=[ROOT/folder]+[ROOT/folder/p for p in re.findall(r'\{([^{}]+/)\}',path_line)]
+    def check(name,value): checks[name]=bool(value)
+    cfg=js(ROOT/'configs/sensitivity_v2.json')
+    baseline=js(OUT/'baseline.json');assets=js(OUT/'asset_manifest.json')
+    verification=js(OUT/'verification.json');physical=js(OUT/'physical_checks.json')
+    reference=js(ROOT/cfg['baseline_result']);summary=js(MC/'summary.json');mv=js(MC/'verification.json')
+    check('constant_CD_linear_CL_model',reference['configuration']['coefficient_mode']=='linear_spin')
+    check('fixed_mass_radius',cfg['physics']['mass']==.43 and cfg['physics']['radius']==.11 and mv['mass_kg']==.43 and mv['radius_m']==.11)
+    check('reference_recomputed_from_current_sources',all(sha(ROOT/p)==h for p,h in reference['source_sha256'].items()))
+    check('baseline_source_matches',baseline['source_sha256']==sha(ROOT/cfg['baseline_result']))
+    check('publication_source_hashes_match',all(sha(ROOT/p)==h for p,h in assets['sources'].items()))
+    check('shared_rhs_matches',verification['max_rhs_difference']<1e-10 and verification['fast_vs_repository_m']<1e-7)
+    check('physical_limits_and_compensation',physical['all_passed'])
+    scans=rows(OUT/'one_factor.csv');groups={k:[r for r in scans if r['parameter']==k] for k in cfg['one_factor_half_widths']}
+    check('nine_41_point_scans',len(scans)==369 and len(groups)==9 and all(len(v)==41 for v in groups.values()))
+    check('mass_radius_not_scanned',not any(r['parameter'] in ['mass','radius'] for r in scans))
+    check('zero_perturbation_reference',all(max(abs(float(r[k])) for k in ['dy','dz','dt'])<1e-8 for r in scans if abs(float(r['delta']))<1e-12))
+    overlay=js(OUT/'time_response_overlay_record.json')
+    check('time_one_axes_nine_curves',overlay['layout']=='one axes; nine overlaid curves' and len(overlay['curves'])==9)
+    check('time_all_scan_points_preserved',all(c['points']==41 and all(abs(x-float(r['delta'])/c['half_width'])<1e-12 and abs(y-1000*float(r['dt']))<1e-10 for x,y,r in zip(c['x'],c['arrival_time_change_ms'],sorted(groups[c['parameter']],key=lambda r:float(r['delta'])))) for c in overlay['curves']))
+    profile=rows(OUT/'profile.csv');pr=cfg['profile']
+    check('profile_tolerance',all(float(r['residual_m'])<=pr['coordinate_tolerance_m'] for r in profile))
+    check('profile_bounds',all(pr['force_multiplier_bounds'][0]-1e-9<=float(r[k])<=pr['force_multiplier_bounds'][1]+1e-9 for r in profile for k in ['ad','al']))
+    check('profile_velocity_spin_bounds',all(float(r['speed'])<=pr['max_speed_m_s'] and max(abs(float(r[f's{i}'])) for i in [3,4,5])<=pr['spin_component_max_rad_s']+1e-8 for r in profile))
+    check('density_only_compensation',all(r['parameter']=='rho' and float(r['displacement'])<1e-8 for r in rows(OUT/'compensation.csv')))
+    sample=np.load(MC/'samples.npz')
+    check('MC_count_and_seed',len(sample['time'])==cfg['monte_carlo']['samples']==summary['count']==100000 and mv['seed']==cfg['monte_carlo']['seed'])
+    check('MC_seed_reproducible',mv['random_prefix_reproduced'])
+    check('MC_all_reach_plane',summary['plane']==summary['count'] and np.all(sample['event']==0))
+    check('MC_clearance_statistics',int(sample['clear'].sum())==summary['clear'] and summary['clear']+summary['nonclear_at_plane']==summary['count'])
+    check('MC_numerical_convergence',mv['maximum_adaptive_difference_m']<1e-6 and mv['maximum_half_step_difference_m']<1e-6)
+    check('MC_empirical_joint_region',abs(summary['ellipse_95']['empirical_coverage']-.95)<1e-12)
+    display=js(ROOT/'data/sensitivity_v2/parallel_display.json');parallel=js(OUT/'parallel_coordinates_record.json')
+    ids=np.array(display['selected_ids']);actual_clear=int(sample['clear'][ids].sum())
+    check('parallel_original_display_ids',parallel['selected_ids']==display['selected_ids'] and len(ids)==400)
+    check('parallel_actual_clearance_counts',parallel['displayed_clear']==actual_clear and parallel['displayed_high']==400-actual_clear)
+    check('parallel_scaling',parallel['all_scaled_values_within_unit_interval'])
+    documents={};dependencies={};sources={}
+    for folder in ['paper','_中文版']:
+        main=read(ROOT/folder/'main.tex');section=read(ROOT/folder/'sections/model_solving.tex');sensitivity=read(ROOT/folder/'sensitivity.tex')
+        tables=read(ROOT/folder/'report_results.tex')+read(ROOT/folder/'sensitivity_results.tex')
+        expanded=main+section+sensitivity+tables;sources[folder]=expanded
+        log=read(ROOT/folder/'main.log');doc=PdfReader(ROOT/folder/'main.pdf');text='\n'.join(p.extract_text() or '' for p in doc.pages)
+        check(folder+'_clean_compile',not any(x in log for x in ['Overfull','Missing character','undefined references','LaTeX Error']) and 'Output written' in log)
+        check(folder+'_references_resolved','??' not in text)
+        labels=set(re.findall(r'\\label\{([^}]+)\}',expanded))|{'LastPage'}
+        refs=set(re.findall(r'\\(?:eqref|ref|pageref)\{([^}]+)\}',expanded))
+        check(folder+'_source_refs_defined',refs<=labels)
+        cites={x.strip() for group in re.findall(r'\\cite\{([^}]+)\}',expanded) for x in group.split(',')}
+        check(folder+'_citation_keys_defined',cites<=set(re.findall(r'\\bibitem\{([^}]+)\}',main)))
+        check(folder+'_current_result_paths','results/sensitivity_linear/figures/' in main and 'results/current_report/figures/' in main)
+        check(folder+'_chapter_complete',all(x not in expanded for x in ['To be completed.','待完成。','沿用队友','We retain the individual-parameter']))
+        check(folder+'_new_results_present',all(x in text for x in [f"{summary['y_range'][0]:.4f}",f"{summary['y_range'][1]:.4f}",f"{100*summary['clear_fraction']:.3f}",f"{js(OUT/'profile_summary.json')['wide']['max_displacement']:.4f}"]))
+        check(folder+'_no_old_results',all(x not in text for x in ['0.1183','94.87','2.6826','0.3007']))
+        path_line=next(x for x in main.splitlines() if x.startswith(r'\graphicspath'))
+        paths=[ROOT/folder]+[ROOT/folder/x for x in re.findall(r'\{([^{}]+/)\}',path_line)]
         graphics={}
-        for name in re.findall(r'\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}',combined):
-            resolved=next((p/name for p in graphic_paths if (p/name).is_file()),None)
-            graphics[name]=resolved.resolve().relative_to(ROOT.resolve()).as_posix() if resolved else None
-        inputs=re.findall(r'\\input\{([^}]+)\}',source)
-        resolved_inputs=all((ROOT/folder/name).is_file() for name in inputs)
-        checks[folder+'_graphics_and_inputs_resolved']=all(graphics.values()) and resolved_inputs
-        dependencies[folder]=dict(graphics=graphics,all_dependencies_resolved=checks[folder+'_graphics_and_inputs_resolved'],
-            old_examples_absent=all(x not in combined for x in ['ProblemResultsTable','MatchResultsTable','structure_v2','kick_cases']))
-        refs=set(re.findall(r'\\(?:eqref|ref|pageref)\{([^}]+)\}',combined))
-        labels=set(re.findall(r'\\label\{([^}]+)\}',combined))|{'LastPage'}
-        checks[folder+'_all_source_references_defined']=refs<=labels
-        citations={key.strip() for group in re.findall(r'\\cite\{([^}]+)\}',combined) for key in group.split(',')}
-        bibliography=set(re.findall(r'\\bibitem\{([^}]+)\}',source))
-        checks[folder+'_citation_keys_defined']=citations<=bibliography
-        documents[folder]=dict(pages=len(document.pages),sha256=sha(ROOT/folder/'main.pdf'),
-            underfull_boxes=log.count('Underfull'),sensitivity_equations=len(equations(section)),new_tables=len(tables(macros)))
-    (ROOT/'results/current_report/dependency_audit.json').write_text(json.dumps(dependencies,ensure_ascii=False,indent=2),encoding='utf-8')
-    result=dict(all_passed=all(checks.values()),checks=checks,documents=documents,
-        visual_review='See visual_review.json for the separately recorded rendered-page inspection.',
-        sources='results/sensitivity_v2 and results/monte_carlo',
-        baseline_commit=baseline['commit'],original_model_and_results_preserved=True)
+        for name in re.findall(r'\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}',expanded):
+            target=next((p/name for p in paths if (p/name).is_file()),None)
+            graphics[name]=target.resolve().relative_to(ROOT).as_posix() if target else None
+        check(folder+'_graphics_resolved',all(graphics.values()))
+        check(folder+'_inputs_resolved',all((ROOT/folder/p).is_file() for p in re.findall(r'\\input\{([^}]+)\}',main)))
+        dependencies[folder]=dict(graphics=graphics,all_dependencies_resolved=all(graphics.values()))
+        documents[folder]=dict(pages=len(doc.pages),sha256=sha(ROOT/folder/'main.pdf'))
+    check('bilingual_display_equations',equations(sources['paper'])==equations(sources['_中文版']))
+    table_blocks=lambda s:re.findall(r'\\begin\{tabular\}.*?\\end\{tabular\}',s,re.S)
+    numbers=lambda s:re.findall(r'(?<![A-Za-z])[-+]?\d+(?:\.\d+)?',s)
+    check('bilingual_table_values',[numbers(x) for x in table_blocks(sources['paper'])]==[numbers(x) for x in table_blocks(sources['_中文版'])])
+    check('writing_guidance_and_internal_notes',(ROOT/'docs/文章表述修改依据.md').is_file() and (ROOT/'check.md').is_file())
+    result=dict(all_passed=all(checks.values()),checks=checks,documents=documents,model='constant CD and linear CL=alpha*Sp')
     (OUT/'integration_verification.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
-    print(json.dumps(dict(all_passed=result['all_passed'],checks=len(checks),documents=documents,
-                         failed=[k for k,v in checks.items() if not v]),ensure_ascii=False,indent=2))
-    if not result['all_passed']:raise SystemExit(1)
+    (ROOT/'results/current_report/dependency_audit.json').write_text(json.dumps(dependencies,ensure_ascii=False,indent=2),encoding='utf-8')
+    print(json.dumps(dict(all_passed=result['all_passed'],checks=len(checks),failed=[k for k,v in checks.items() if not v],documents=documents),ensure_ascii=True,indent=2))
+    if not result['all_passed']: raise SystemExit(1)
 
-if __name__=='__main__':main()
+if __name__=='__main__': main()

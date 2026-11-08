@@ -1,12 +1,9 @@
-# 中文版
+# 中文论文
 
-入口 `main.tex`，XeLaTeX 编译三遍。正文宋体（SimSun），粗体黑体（SimHei），斜体楷体（KaiTi）；英文及数学保持现有字体，图内与路线图标注使用英文。
+入口 main.tex，第四章为 sections/model_solving.tex，第五章为 sensitivity.tex。数值表与英文版由相同结果生成，图件直接引用共享目录。正文使用宋体，粗体为黑体，斜体映射为楷体，西文使用 Times New Roman。
 
-第四章译文为 `sections/model_solving.tex`。数值表由 `scripts/four_model_paper_values.py` 与英文版同时生成；两版直接引用同一套图表和风洞材料。翻译校验不依赖旧逐段 SHA 锁定，改由 `scripts/verify_bilingual_reports.py` 比较展开公式、引用及表格数字，并检查 PDF 字体、引用、页面和共享图路径。
+在仓库根目录运行 ./scripts/reproduce_report.ps1 -Recompute，可重新计算并生成中英文 PDF。只重算第五章使用 ./scripts/reproduce_sensitivity.ps1 -Recompute。各编译目录执行三遍 XeLaTeX，随后进行双语、数据和 PDF 核查。
 
-完整计算和编译步骤见 `../paper/README.md`；运行 `../scripts/reproduce_report.ps1` 可同步刷新两版。旧稿通过 Git 历史回溯。
+当前 M3 为恒合力模型，M4 采用恒定阻力和线性升力。三次真实点球的源帧、输入、反演状态及后续误差随 results/current_report/ 保存；题目三点的灵敏性与蒙特卡洛结果分别保存于 results/sensitivity_linear/、results/monte_carlo_linear/。
 
-
-第五章固定球体质量与半径，保留题目三点参考算例的九参数分析。设置、冻结参考状态、结果及程序分别位于原有 configs、data、results、scripts 目录；两版通过共享图路径引用六组图件。缓存重建使用 `./scripts/reproduce_sensitivity.ps1`，完整重算加 `-Recompute`。详见 [灵敏性分析与复现](../docs/灵敏性分析与复现.md)。
-
-J03WMX 保留原第 3–5 个点，J03WR9 使用后移的第 3–5 个点，J03WOH 使用第 2–4 个点；三例拟合时刻均为 0、0.04、0.08 s。正文以一张汇总表呈现交点误差及后续轨迹误差。
+完整说明见 ../paper/README.md。表述规则见 ../docs/文章表述修改依据.md，内部资料核查见 ../check.md。

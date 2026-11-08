@@ -42,7 +42,7 @@ def build_parallel_coordinates(root=ROOT):
         ax.add_collection(LineCollection(segments,colors=color,alpha=alpha,linewidths=width,zorder=1 if ok else 2))
     ax.plot(x,reference,color=gray,ls=(0,(4,2)),lw=1.1,zorder=4)
     labels=[r'$v_0$',r'$\phi_v$',r'$\theta_v$',r'$\omega_0$',r'$\phi_\omega$',r'$\theta_\omega$',
-            r'$\alpha_D$',r'$\alpha_L$',r'$\rho$',r'$y_g$',r'$z_g$',r'$t_g$']
+            r'$C_D$',r'$\alpha$',r'$\rho$',r'$y_g$',r'$z_g$',r'$t_g$']
     lower=['-5%',r'$-2^\circ$',r'$-2^\circ$','-10%',r'$-2^\circ$',r'$-2^\circ$','-10%','-10%','-10%',
            f'{lo[0]:.3f} m',f'{lo[1]:.3f} m',f'{lo[2]:.4f} s']
     upper=['+5%',r'$+2^\circ$',r'$+2^\circ$','+10%',r'$+2^\circ$',r'$+2^\circ$','+10%','+10%','+10%',
@@ -58,8 +58,8 @@ def build_parallel_coordinates(root=ROOT):
         ax.text(i,1.055,b,ha='center',va='bottom',fontsize=6.7,transform=ax.get_xaxis_transform())
     ax.text(4,1.20,'Nine input perturbations',ha='center',fontsize=9,transform=ax.get_xaxis_transform())
     ax.text(10,1.20,'Three outcomes',ha='center',fontsize=9,color=orange,transform=ax.get_xaxis_transform())
-    handles=[Line2D([0],[0],color=blue,lw=1.3,label='Clears goal (382)'),
-             Line2D([0],[0],color=orange,lw=1.3,label='Too high (18)'),
+    handles=[Line2D([0],[0],color=blue,lw=1.3,label=f'Clears goal ({int(clear.sum())})'),
+             Line2D([0],[0],color=orange,lw=1.3,label=f'Too high ({int((~clear).sum())})'),
              Line2D([0],[0],color=gray,ls='--',lw=1.1,label='Paper representative')]
     fig.legend(handles=handles,loc='lower center',bbox_to_anchor=(.52,.025),ncol=3,frameon=False,
                fontsize=8,handlelength=2,columnspacing=1.2)

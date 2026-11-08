@@ -1,66 +1,72 @@
 {
-  "record": {
-    "case": "problem_b",
-    "model": "M4",
-    "status": "plane",
-    "event": {
-      "type": "plane",
-      "time": 0.39896701124122785,
-      "position": [
-        11.0,
-        2.6159065106451926,
-        1.952595560172095
+  "input": {
+    "physics": {
+      "mass": 0.43,
+      "radius": 0.11,
+      "rho": 1.2,
+      "nu": 1.5e-05,
+      "gravity": 9.81
+    },
+    "positions_m": [
+      [
+        0,
+        0,
+        0.11
       ],
-      "velocity": [
-        25.09403855946784,
-        4.141278811968301,
-        2.457980576801902
+      [
+        1.5,
+        0.45,
+        0.44
       ],
-      "spin": [
-        19.743418594384465,
-        1.20601281800855,
-        -22.55533097273708
+      [
+        2.96,
+        0.86,
+        0.74
       ]
-    },
-    "error_m": null,
-    "fit_converged": true,
-    "candidate_plane_error_m": null,
-    "rss_m2": 8.789686892590929e-07,
-    "max_residual_m": 0.0007842598453402516,
-    "initial_state": [
-      30.378416145444383,
-      9.407401486754244,
-      6.897403854543288,
-      19.743418594384465,
-      1.20601281800855,
-      -22.55533097273708
     ],
-    "drag_scale": 1.4999999999999998,
-    "lift_scale": 1.4999999999088134,
-    "constant_acceleration": null,
-    "fitted_cd": 0.36231767069109677,
-    "fitted_alpha": 2.287710087732875,
-    "active_parameters": 7,
-    "coverage": {
-      "speed_range": [
-        25.55195941485607,
-        32.54107481586081
-      ],
-      "Re_range": [
-        374762.07141788903,
-        477269.09729929187
-      ],
-      "Sp_range": [
-        0.10141029510160957,
-        0.12914860838740058
-      ],
-      "above_35_m_s": false,
-      "outside_A07_spinning_Re": true,
-      "above_A07_global_Sp": false,
-      "note": "These are coverage flags, not a claim of support over a rectangular Re-Sp grid."
+    "times_s": [
+      0,
+      0.05,
+      0.1
+    ],
+    "one_factor_half_widths": {
+      "speed": 0.05,
+      "yaw": 2.0,
+      "pitch": 2.0,
+      "spin": 0.1,
+      "spin_yaw": 2.0,
+      "spin_pitch": 2.0,
+      "ad": 0.1,
+      "al": 0.1,
+      "rho": 0.1
     },
-    "shot_type": "competition",
-    "target_yz_m": null
+    "profile": {
+      "force_multiplier_bounds": [
+        1.2,
+        1.8
+      ],
+      "nested_bounds": [
+        1.35,
+        1.65
+      ],
+      "grid_per_axis": 17,
+      "max_speed_m_s": 35,
+      "spin_component_max_rad_s": 60,
+      "coordinate_tolerance_m": 0.002
+    },
+    "monte_carlo": {
+      "samples": 100000,
+      "seed": 20261108,
+      "independent_seeds": [
+        20261109,
+        20261110
+      ],
+      "independent_samples": 10000,
+      "dt_s": 0.002
+    },
+    "baseline_result": "results/structure_linear_spin/problem/problem_b_M4.json",
+    "model": "M4: constant CD, linear CL=alpha*Sp, constant spin, still air",
+    "reference_spin_rad_s": 30
   },
   "fit": {
     "model": "M4",
@@ -224,73 +230,6 @@
     },
     "at_parameter_bound": true
   },
-  "input": {
-    "times_s": [
-      0.0,
-      0.05,
-      0.1
-    ],
-    "positions_m": [
-      [
-        0.0,
-        0.0,
-        0.11
-      ],
-      [
-        1.5,
-        0.45,
-        0.44
-      ],
-      [
-        2.96,
-        0.86,
-        0.74
-      ]
-    ]
-  },
-  "source_case": {
-    "case": "problem_b",
-    "times_s": [
-      0.0,
-      0.05,
-      0.1
-    ],
-    "positions_m": [
-      [
-        0.0,
-        0.0,
-        0.11
-      ],
-      [
-        1.5,
-        0.45,
-        0.44
-      ],
-      [
-        2.96,
-        0.86,
-        0.74
-      ]
-    ],
-    "physics": {
-      "mass": 0.43,
-      "radius": 0.11,
-      "air_density": 1.2,
-      "kinematic_viscosity": 1.5e-05,
-      "gravity": 9.81,
-      "wind": [
-        0.0,
-        0.0,
-        0.0
-      ],
-      "angular_drag_coefficient": 1.5,
-      "inertia_coefficient": 0.6666666666666666,
-      "use_rotational_drag": false,
-      "spin_decay": 0.0
-    },
-    "plane_x_m": 11.0,
-    "target_yz_m": null
-  },
   "configuration": {
     "mass": 0.43,
     "radius": 0.11,
@@ -321,7 +260,7 @@
     "moment_of_inertia": 0.003468666666666666,
     "coefficient_callback": "model default",
     "sources": {
-      "CD_CL": "Kiratidis & Leinweber 2018, Eqs 5,7--9/Table 1",
+      "CD_CL": "Fixed CD and linear CL=alpha*Sp, anchored to Kiratidis & Leinweber 2018 reference point",
       "mass_radius_gravity": "Maponi & Piombin 2025 Table 1: 0.43 kg, 0.11 m, 9.81 m/s2",
       "torque": "Grad 2026 supp 8.4; MuJoCo 3.8.1 spherical ellipsoid",
       "angular_drag": "MuJoCo default 1.5, a declared reference setting",
@@ -335,5 +274,45 @@
       "sin(theta) oblique-spin extension"
     ]
   },
-  "validation_rule": "Only first three positions supplied to fit_early; subsequent data used for scoring"
+  "record": {
+    "case": "problem_b",
+    "model": "M4",
+    "initial_state": [
+      30.378416145444383,
+      9.407401486754244,
+      6.897403854543288,
+      19.743418594384465,
+      1.20601281800855,
+      -22.55533097273708
+    ],
+    "drag_scale": 1.4999999999999998,
+    "lift_scale": 1.4999999999088134,
+    "fitted_cd": 0.36231767069109677,
+    "fitted_alpha": 2.287710087732875,
+    "max_residual_m": 0.0007842598453402516,
+    "event": {
+      "type": "plane",
+      "time": 0.3989670112412277,
+      "position": [
+        10.999999999999998,
+        2.615906510645194,
+        1.9525955601720943
+      ],
+      "velocity": [
+        25.094038559467844,
+        4.141278811968306,
+        2.4579805768019036
+      ],
+      "spin": [
+        19.743418594384465,
+        1.20601281800855,
+        -22.55533097273708
+      ]
+    }
+  },
+  "source_sha256": {
+    "src/football/physics/model.py": "06c8ba2607c1bf97b29449eb0165bc1ac21ea55a1cb1a8b43f0b83b52876fd2c",
+    "src/football/inference/four_model_fit.py": "ef786b38d1d67e6f688e9b6608eb33c5b52030a6c4e4756f38c474d32829b2e1",
+    "configs/sensitivity_v2.json": "58026d6bf999b2612594bb10fb88bfa92c3b9598b0cfc995103cb29616e54d16"
+  }
 }

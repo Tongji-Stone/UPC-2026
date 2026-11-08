@@ -157,8 +157,8 @@ def main():
         prefixes.append(dict(n=n,**describe({k:v[:n] for k,v in result.items()})))
     write_json('convergence.json',prefixes)
     replicas=[]
-    for seed in [20261109,20261110]:
-        r=propagate(draw(10000,seed));replicas.append(dict(seed=seed,**describe(r)))
+    for seed in INPUT['monte_carlo']['independent_seeds']:
+        r=propagate(draw(INPUT['monte_carlo']['independent_samples'],seed));replicas.append(dict(seed=seed,**describe(r)))
         print('replicate',seed,'complete',flush=True)
     write_json('independent_seeds.json',replicas)
     # Adaptive DOP853 uses a separately written scalar RHS from the prior report.

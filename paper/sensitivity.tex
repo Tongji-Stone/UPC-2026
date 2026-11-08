@@ -1,27 +1,70 @@
-We retain the individual-parameter, early-position-constrained and Monte Carlo structure for the current M4 equations. The reference observations are $(0,0,0.11)$ m at 0 s, $(1.50,0.45,0.44)$ m at 0.05 s, and $(2.96,0.86,0.74)$ m at 0.10 s. Mass and radius are fixed at 0.43 kg and 0.11 m.
-
-The fitted reference uses $\boldsymbol v_0=(30.3784,9.4074,6.8974)$ m/s.
-
-The reference spin is $\boldsymbol\omega_0=(19.7434,1.2060,-22.5553)$ rad/s, $C_D=0.3623$ and $\alpha=2.2877$. The crossing is $(2.6159,1.9526)$ m at 0.398967 s. The 30 rad/s spin magnitude is a reference setting; the maximum early-coordinate residual is 0.000784 m and both coefficients reach the fitted upper bounds.
+The competition's three positions provide a reference example for examining initial motion, aerodynamic coefficients and air conditions. Mass and radius remain fixed at $m=0.43$ kg and $R=0.11$ m, with the M4 forces of Section~\ref{sec:model}.
+\begin{table}[H]\centering\small
+\caption{Early positions for the sensitivity example.}\label{tab:sensitivity-reference}
+\begin{tabular}{crrr}\toprule
+$t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+0 & 0 & 0 & 0.11\\
+0.05 & 1.50 & 0.45 & 0.44\\
+0.10 & 2.96 & 0.86 & 0.74\\\bottomrule
+\end{tabular}\end{table}
+Using the 30 rad/s reference spin magnitude of Section 4 gives
+\begin{equation}\begin{aligned}
+\boldsymbol v_0&=(\SensitivityReferenceVX,\SensitivityReferenceVY,\SensitivityReferenceVZ)\;\mathrm{m/s},\\
+\boldsymbol\omega_0&=(\SensitivityReferenceWX,\SensitivityReferenceWY,\SensitivityReferenceWZ)\;\mathrm{rad/s}.
+\end{aligned}\label{eq:sensitivity-reference-state}\end{equation}
+Here $C_D=\SensitivityReferenceCD$ and $\alpha=\SensitivityReferenceAlpha$, with a maximum early-coordinate residual of \SensitivityReferenceResidual\ mm. The reference flight crosses the goal plane at $(y_g^*,z_g^*)=(\SensitivityReferenceY,\SensitivityReferenceZ)$ m and $t_g^*=\SensitivityReferenceTime$ s.
 
 \subsection{Effects of individual parameters}\label{sec:sensitivity-local}
-One parameter changes at a time: speed by $\pm5\%$; spin magnitude, drag coefficient, lift parameter and air density by $\pm10\%$; velocity and spin-axis angles by $\pm2^\circ$. Each uses 41 values, totaling \SensitivityFixedRuns{} flights. The table compares $\pm1^\circ$ angles and $\pm5\%$ scalar changes.
+One parameter changes at a time. Speed varies by $\pm5\%$; spin magnitude, $C_D$, $\alpha$ and air density each vary by $\pm10\%$; velocity and spin-axis azimuth and elevation each vary by $\pm2^\circ$. Each scan uses 41 equally spaced values, giving \SensitivityFixedRuns{} flights. Define
+\begin{equation}\begin{aligned}
+\Delta y_g&=y_g-y_g^*,\quad \Delta z_g=z_g-z_g^*,\quad \Delta t_g=t_g-t_g^*,\\
+D_g&=\sqrt{(\Delta y_g)^2+(\Delta z_g)^2}.
+\end{aligned}\label{eq:sensitivity-displacement}\end{equation}
+Table~\ref{tab:sensitivity-one-factor} compares direction changes of $\pm1^\circ$ and other changes of $\pm5\%$, taking the larger $D_g$ and $|\Delta t_g|$ from each positive--negative pair.
 \SensitivityOneFactorTable
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{one_factor_position_response.pdf}\caption{Goal-plane coordinate responses to the nine individual parameters.}\label{fig:sensitivity-one-position}\end{figure}
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{one_factor_time_response.pdf}\caption{Arrival-time response, with perturbations normalized by each scan half-width.}\label{fig:sensitivity-one-time}\end{figure}
-Spin magnitude and $\alpha$ enter Magnus force as a product, so changes in opposite directions can compensate.
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{one_factor_position_response.pdf}
+\caption{Goal-plane coordinate responses to nine one-factor perturbations. Blue solid curves show $\Delta y_g$ and orange dashed curves $\Delta z_g$, in cm. Vertical scales differ between panels.}\label{fig:sensitivity-one-position}\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{one_factor_time_response.pdf}
+\caption{One-factor arrival-time responses. Perturbation divided by scan half-width is plotted horizontally, so $\pm1$ marks each scan endpoint. The vertical axis is $\Delta t_g$ in ms; positive values mean later arrival.}\label{fig:sensitivity-one-time}\end{figure}
+A $1^\circ$ change in velocity azimuth or elevation gives a maximum displacement of \SensitivityYawShift\ cm or \SensitivityPitchShift\ cm. A $5\%$ speed change gives \SensitivitySpeedShift\ cm and \SensitivitySpeedTime\ ms. Speed sets the time available to reach the goal, while direction directly changes lateral and vertical displacement; drag further alters flight time through deceleration.
+
+The linear lift law contains the product of $\alpha$ and spin magnitude. Applying the same relative change to either quantity therefore produces coincident response curves. For any $k>0$,
+\begin{equation}
+\boldsymbol\omega_0'=k\boldsymbol\omega_0,\qquad \alpha'=\alpha/k
+\quad\Longrightarrow\quad \boldsymbol F_L'=\boldsymbol F_L.
+\label{eq:sensitivity-spin-compensation}\end{equation}
+This compensation explains the reference spin convention and connects the individual scans with the position-constrained analysis below.
 
 \subsection{Crossing variation under early-position constraints}\label{sec:sensitivity-constrained}
-We scan a $17\times17$ grid of the two coefficient multipliers over $[1.2,1.8]^2$, refitting velocity and spin components at each node. Total speed is at most 35 m/s, individual spin components at most 60 rad/s in magnitude, and maximum early-coordinate residual at most 0.002 m. The inner range is $[1.35,1.65]^2$. Reported ranges describe the sampled feasible candidates.
+We retain the positions in Table~\ref{tab:sensitivity-reference} and refit velocity and spin to examine aerodynamic parameter combinations. With the coefficient references $C_D^*,\alpha^*$, define $\lambda_D=C_D/C_D^*$ and $\lambda_\alpha=\alpha/\alpha^*$. Each multiplier takes 17 values in $[1.2,1.8]$. At each node, three velocity and three spin components are fitted, using total speed at most 35 m/s, spin components at most 60 rad/s in magnitude, and maximum early-coordinate residual at most 2 mm.
+
+The grid produces \SensitivityWideCount{} compatible flights; \SensitivityInnerCount{} lie in the inner square $[1.35,1.65]^2$. Table~\ref{tab:sensitivity-profile} gives crossings and arrival times. The largest crossing displacement in the wider scan is \SensitivityConditionalShift\ m.
 \SensitivityProfileTable
-The largest crossing displacement in the wider scan is \SensitivityConditionalShift\ m.
-\begin{figure}[H]\centering\includegraphics[width=.86\textwidth]{conditional_crossings.pdf}\caption{Scanned crossings with early residual at most 2 mm. Colour indicates the drag multiplier.}\label{fig:sensitivity-constrained}\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=.86\textwidth]{conditional_crossings.pdf}
+\caption{Grid-search crossings under the 2 mm early-position constraint. Colour indicates $\lambda_D$; the orange star is the reference flight.}\label{fig:sensitivity-constrained}\end{figure}
+Different forces and initial states can stay close at early times and separate later, producing the lateral and vertical spread shown here. Refitting the other inverse quantities connects this spread to compensation under the position constraints.
 
 \subsection{Joint perturbations and Monte Carlo simulation}\label{sec:sensitivity-mc}
-Nine parameters are sampled independently and uniformly over the individual scan ranges, with mass, radius and initial position fixed. Seed \MCSeed{} generates \MCCount{} trajectories; the early positions are allowed to change.
+Nine parameters are sampled independently and uniformly over the full ranges in Section~\ref{sec:sensitivity-local}. Seed \MCSeed{} generates \MCCount{} trajectories. Mass, radius and initial position remain fixed while launch motion and aerodynamic coefficients vary together. Trajectories use fourth-order Runge--Kutta with a 0.002 s step and cubic interpolation of the crossing event. Every trajectory reaches the goal plane before ground contact.
 \SensitivityMonteCarloTable
-The crossing mean is $(\MCMeanY,\MCMeanZ)$ m and standard deviations are \MCStdY\ m and \MCStdZ\ m. Under the ball-centre clearance rule, \MCClearCount{} trajectories (\MCClearPercent\%) pass fully through the opening and \MCOverCount{} pass above it.
-\begin{figure}[H]\centering\includegraphics[width=.96\textwidth]{monte_carlo_crossings.pdf}\caption{Joint-perturbation crossings; the ellipse covers 95\% of simulated samples.}\label{fig:sensitivity-mc}\end{figure}
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{monte_carlo_parallel_coordinates.pdf}\caption{A random display of 400 flights connects the nine inputs to three outputs.}\label{fig:sensitivity-mc-parallel}\end{figure}
-\begin{figure}[H]\centering\includegraphics[width=.96\textwidth]{monte_carlo_convergence.pdf}\caption{Effect of sample count on the simulated crossing distribution.}\label{fig:sensitivity-mc-convergence}\end{figure}
-Fourth-order Runge--Kutta integration is compared with adaptive integration and a halved step. These ranges and fractions correspond to the stated uniform sampling assumptions.
+The central 95\% intervals are the 2.5th--97.5th percentiles of each output. The mean crossing is $(\MCMeanY,\MCMeanZ)$ m, with lateral and vertical standard deviations \MCStdY\ m and \MCStdZ\ m. The largest displacement from the reference crossing is \MCMaxDisplacement\ m.
+
+For a joint region, let $\boldsymbol q_i=(y_{g,i},z_{g,i})^T$, with sample mean $\bar{\boldsymbol q}$ and covariance $\widehat\Sigma$. Use
+\begin{equation}\begin{aligned}
+d_i^2&=(\boldsymbol q_i-\bar{\boldsymbol q})^T\widehat\Sigma^{-1}(\boldsymbol q_i-\bar{\boldsymbol q}),\\
+\mathcal E_{0.95}&=\{\boldsymbol q:(\boldsymbol q-\bar{\boldsymbol q})^T\widehat\Sigma^{-1}
+(\boldsymbol q-\bar{\boldsymbol q})\le c_{0.95}\}.
+\end{aligned}\label{eq:sensitivity-joint-region}\end{equation}
+The empirical 95th percentile $c_{0.95}=\MCJointThreshold$ gives an ellipse containing 95\% of the simulated crossings.
+\begin{figure}[H]\centering\includegraphics[width=.96\textwidth]{monte_carlo_crossings.pdf}
+\caption{Goal-plane crossings under 100,000 joint perturbations. Hexagon colour indicates sample count, the ellipse gives the joint 95\% region, and the dashed line marks the centre-height clearance limit $z_g=2.33$ m.}\label{fig:sensitivity-mc}\end{figure}
+The clearance rule of Section~\ref{sec:model} gives \MCClearCount{} flights (\MCClearPercent\%) passing fully through the opening and \MCOverCount{} (\MCOverPercent\%) crossing too high.
+
+Figure~\ref{fig:sensitivity-mc-parallel} displays 400 randomly selected flights. Each line connects nine inputs to $y_g,z_g,t_g$. Inputs use their perturbation limits and outputs the full-sample extrema for linear scaling to 0--1. Blue lines clear the opening, orange lines are too high, and the grey dashed line is the reference state.
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{monte_carlo_parallel_coordinates.pdf}
+\caption{Parallel coordinates linking inputs, goal-plane positions and arrival time. The first nine axes are inputs; three shaded axes are outputs. The displayed subset contains \MCDisplayClear{} clear flights and \MCDisplayHigh{} high flights.}\label{fig:sensitivity-mc-parallel}\end{figure}
+Following a line reveals the elevation, spin, coefficients and arrival time associated with a high crossing. The spread on the output axes shows lateral and vertical changes together.
+
+Increasing the sample from 50000 to 100000 changes the central-95\% interval endpoints by at most \MCConvergenceY\ mm laterally, \MCConvergenceZ\ mm vertically and \MCConvergenceT\ ms in time. Two independent seeds each produce 10000 flights. Their largest interval-endpoint differences from the full sample are \MCReplicaY\ mm laterally, \MCReplicaZ\ mm vertically and \MCReplicaT\ ms in time.
+\begin{figure}[H]\centering\includegraphics[width=.96\textwidth]{monte_carlo_convergence.pdf}
+\caption{Sample-count effects on crossing ranges and percentile intervals. Blue shading and dotted curves show sampled extrema; orange curves show each coordinate's central 95\% interval.}\label{fig:sensitivity-mc-convergence}\end{figure}

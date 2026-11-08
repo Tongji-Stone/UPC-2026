@@ -13,6 +13,8 @@ def trace(group,case,model):return read_csv(OUT/f'{group}/{case}_{model}.csv')
 def save(fig,name,rect=None):
     fig.tight_layout(rect=rect)
     for ext in ['pdf','svg','png']:fig.savefig(FIG/f'{name}.{ext}',dpi=300)
+    svg=FIG/f'{name}.svg'
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text(encoding='utf-8').splitlines())+'\n',encoding='utf-8')
     plt.close(fig)
 def goal(ax):
     ax.plot([11]*5,[-3.66,3.66,3.66,-3.66,-3.66],[0,0,2.44,2.44,0],color='#8B8B83',lw=.8)

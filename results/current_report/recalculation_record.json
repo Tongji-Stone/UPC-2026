@@ -1,0 +1,60 @@
+{
+  "base_commit": "f10a33c723cfc6f5c8e0c74748adeb9ce3ac5eb2",
+  "branch": "codex/linear-spin-m3-m4",
+  "model": "M3 constant resultant force; M4 constant CD and CL=alpha Sp",
+  "mass_kg": 0.43,
+  "radius_m": 0.11,
+  "reference_spin_rad_s": 30,
+  "forced_fresh_inverse": true,
+  "forward_flights": 24,
+  "real_inverse_fits": 12,
+  "one_factor_flights": 369,
+  "coefficient_grid_nodes": 289,
+  "MC_primary_samples": 100000,
+  "MC_clear_count": 95772,
+  "MC_clear_percent": 95.772,
+  "MC_seed": 20261108,
+  "unit_tests": {
+    "passed": 42,
+    "elapsed_seconds": 28.93
+  },
+  "model_checks": 142,
+  "integration_checks": 48,
+  "all_final_checks_passed": true,
+  "documents": {
+    "paper": {
+      "pages": 28,
+      "sha256": "5033b4387c5dab13118127bd01ad46b5c49d1a4544b509a6993d2308b079467d"
+    },
+    "_中文版": {
+      "pages": 27,
+      "sha256": "17cb6bcce293bc65696041bcbb8d887206243ecae716667539e655f00beb9882"
+    }
+  },
+  "real_penalty_M4": [
+    {
+      "case": "J03WMX",
+      "goal_error_m": 0.3599704014244998,
+      "future_rmse_3d_m": 0.23385122916414122,
+      "fitted_cd": 0.36231767069109677,
+      "fitted_alpha": 2.287710087373094
+    },
+    {
+      "case": "J03WOH",
+      "goal_error_m": 0.11273427703759856,
+      "future_rmse_3d_m": 0.09275341938749809,
+      "fitted_cd": 0.3237683796210523,
+      "fitted_alpha": 2.287710087871144
+    },
+    {
+      "case": "J03WR9",
+      "goal_error_m": 0.14633654694823534,
+      "future_rmse_3d_m": 0.1315655228262574,
+      "fitted_cd": 0.1207725568970323,
+      "fitted_alpha": 2.2877100878696375
+    }
+  ],
+  "writing_guidance": "docs/文章表述修改依据.md",
+  "internal_notes": "check.md",
+  "original_version_archive": "../论文_本地归档/复算前_f10a33c_20261108_155316/原版本.zip"
+}

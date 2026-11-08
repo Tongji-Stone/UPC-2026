@@ -33,21 +33,21 @@ def forward():
     save_json(OUT/'forward/summary.json',dict(records=records,source_fingerprint=fingerprint()))
     print('saved 24 forward flights',flush=True)
 
-def inverse(only=None):
+def inverse(only=None,force=False):
     signature=fingerprint()
     for case in inputs()['cases']:
         if only and case['case']!=only:continue
         t=np.array(case['fit_times_s']);p=np.array(case['fit_positions_m'])
         for model in MODELS:
             path=OUT/f"inverse/{case['case']}_{model}.json"
-            if path.exists() and read_json(path).get('source_fingerprint')==signature:
+            if not force and path.exists() and read_json(path).get('source_fingerprint')==signature:
                 print(f"cached {case['case']} {model}",flush=True);continue
             cfg=config(model)
             # A stale candidate must not leave a curve or validation file behind.
             for suffix in ['.csv','_validation.csv']:
                 (OUT/f"inverse/{case['case']}_{model}{suffix}").unlink(missing_ok=True)
             try:
-                fit=fit_early(t,p,cfg,model,max_nfev=inputs()['config']['fit']['max_nfev'],bounds=InverseBounds())
+                fit=fit_early(t,p,cfg,model,max_nfev=inputs()['config']['fit']['max_nfev'],bounds=InverseBounds(**inputs()['config']['inverse_bounds']))
                 cfg=replace(cfg,drag_scale=fit['drag_scale'],lift_scale=fit['lift_scale'])
                 if model == 'M3':
                     cfg=replace(cfg,constant_acceleration=tuple(fit['constant_acceleration']))
@@ -119,5 +119,5 @@ def collect():
     print('collected all 12 inverse outcomes',flush=True)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('task',choices=['prepare','forward','inverse','other','collect']);p.add_argument('--case')
-    args=p.parse_args();{'prepare':prepare_inputs,'forward':forward,'inverse':lambda:inverse(args.case),'other':other,'collect':collect}[args.task]()
+    p=argparse.ArgumentParser();p.add_argument('task',choices=['prepare','forward','inverse','other','collect']);p.add_argument('--case');p.add_argument('--force',action='store_true')
+    args=p.parse_args();{'prepare':prepare_inputs,'forward':forward,'inverse':lambda:inverse(args.case,args.force),'other':other,'collect':collect}[args.task]()

@@ -1,0 +1,18 @@
+{
+  "model": "constant CD; CL=alpha*Sp",
+  "mass_kg": 0.43,
+  "radius_m": 0.11,
+  "vacuum_analytic_max_difference": 4.440892098500626e-16,
+  "mechanical_energy_initial_J": 228.13214628686188,
+  "mechanical_energy_final_J": 148.61069928824125,
+  "maximum_sampled_energy_increment_J": -0.13761596625613493,
+  "maximum_lift_power_W": 1.4210854715202004e-14,
+  "maximum_energy_balance_difference_W": 1.1368683772161603e-13,
+  "actual_CD": 0.36231767069109677,
+  "actual_alpha": 2.287710087732875,
+  "initial_CL": 0.23199735510391992,
+  "final_CL": 0.29545457422451865,
+  "exact_spin_alpha_compensation_difference": 1.900395703982448e-15,
+  "protected_unchanged": true,
+  "all_passed": true
+}

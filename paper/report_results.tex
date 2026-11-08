@@ -1,12 +1,78 @@
 % Generated exclusively from results/current_report.
-\newcommand{\PenaltyErrorSummaryTable}{\begin{table}[H]\centering\normalsize
-\renewcommand{\arraystretch}{1.25}
-\caption{Goal-plane errors (m); a dash denotes no valid goal-plane crossing.}\label{tab:penalty-errors}
-\setlength{\tabcolsep}{4pt}\begin{tabular}{lcccc}\toprule
-Event & M1 & M2 & M3 & M4\\\midrule
-Placement 1 & --- & --- & --- & 0.360\\
-Power shot & 0.684 & 0.657 & 0.374 & 0.113\\
-Placement 2 & 0.475 & 0.475 & 0.155 & 0.146\\
+\newcommand{\WMXMOneGoalError}{---}
+\newcommand{\WMXMOnePathRMSE}{0.244}
+\newcommand{\WMXMOneEarlyResidual}{36.00}
+\newcommand{\WMXMTwoGoalError}{---}
+\newcommand{\WMXMTwoPathRMSE}{0.136}
+\newcommand{\WMXMTwoEarlyResidual}{26.13}
+\newcommand{\WMXMThreeGoalError}{---}
+\newcommand{\WMXMThreePathRMSE}{0.826}
+\newcommand{\WMXMThreeEarlyResidual}{0.00}
+\newcommand{\WMXMFourGoalError}{0.360}
+\newcommand{\WMXMFourPathRMSE}{0.234}
+\newcommand{\WMXMFourEarlyResidual}{25.90}
+\newcommand{\WMXSpeed}{29.20}
+\newcommand{\WMXDrag}{7.05}
+\newcommand{\WMXCD}{0.3623}
+\newcommand{\WMXAlpha}{2.2877}
+\newcommand{\WOHMOneGoalError}{0.684}
+\newcommand{\WOHMOnePathRMSE}{0.412}
+\newcommand{\WOHMOneEarlyResidual}{12.00}
+\newcommand{\WOHMTwoGoalError}{0.657}
+\newcommand{\WOHMTwoPathRMSE}{0.356}
+\newcommand{\WOHMTwoEarlyResidual}{10.28}
+\newcommand{\WOHMThreeGoalError}{0.374}
+\newcommand{\WOHMThreePathRMSE}{0.190}
+\newcommand{\WOHMThreeEarlyResidual}{0.00}
+\newcommand{\WOHMFourGoalError}{0.113}
+\newcommand{\WOHMFourPathRMSE}{0.093}
+\newcommand{\WOHMFourEarlyResidual}{2.90}
+\newcommand{\WOHSpeed}{32.05}
+\newcommand{\WOHDrag}{7.58}
+\newcommand{\WOHCD}{0.3238}
+\newcommand{\WOHAlpha}{2.2877}
+\newcommand{\WRMOneGoalError}{0.475}
+\newcommand{\WRMOnePathRMSE}{0.300}
+\newcommand{\WRMOneEarlyResidual}{8.00}
+\newcommand{\WRMTwoGoalError}{0.475}
+\newcommand{\WRMTwoPathRMSE}{0.320}
+\newcommand{\WRMTwoEarlyResidual}{7.01}
+\newcommand{\WRMThreeGoalError}{0.155}
+\newcommand{\WRMThreePathRMSE}{0.151}
+\newcommand{\WRMThreeEarlyResidual}{0.00}
+\newcommand{\WRMFourGoalError}{0.146}
+\newcommand{\WRMFourPathRMSE}{0.132}
+\newcommand{\WRMFourEarlyResidual}{1.12}
+\newcommand{\WRSpeed}{28.34}
+\newcommand{\WRDrag}{2.21}
+\newcommand{\WRCD}{0.1208}
+\newcommand{\WRAlpha}{2.2877}
+\newcommand{\PenaltyErrorSummaryTable}{\begin{table}[H]\centering\small
+\renewcommand{\arraystretch}{1.12}
+\caption{Early maximum coordinate residual, subsequent path RMSE/sample count, goal-plane error and termination.}\label{tab:penalty-errors}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrl}\toprule
+Event & Model & Residual (mm) & RMSE (m)/$n$ & Goal (m) & Status\\\midrule
+Placement 1 & M1 & 36.00 & 0.244/3 & --- & ground\\
+Placement 1 & M2 & 26.13 & 0.136/3 & --- & ground\\
+Placement 1 & M3 & 0.00 & 0.826/6 & --- & no crossing\\
+Placement 1 & M4 & 25.90 & 0.234/5 & 0.360 & goal\\
+Power shot & M1 & 12.00 & 0.412/6 & 0.684 & goal\\
+Power shot & M2 & 10.28 & 0.356/7 & 0.657 & goal\\
+Power shot & M3 & 0.00 & 0.190/7 & 0.374 & goal\\
+Power shot & M4 & 2.90 & 0.093/7 & 0.113 & goal\\
+Placement 2 & M1 & 8.00 & 0.300/5 & 0.475 & goal\\
+Placement 2 & M2 & 7.01 & 0.320/6 & 0.475 & goal\\
+Placement 2 & M3 & 0.00 & 0.151/5 & 0.155 & goal\\
+Placement 2 & M4 & 1.12 & 0.132/5 & 0.146 & goal\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\WMXMThreeMaxX}{10.973}
+\newcommand{\MFourParameterTable}{\begin{table}[H]\centering\small
+\caption{Fitted M4 states at the selected starting frames.}\label{tab:m4-parameters}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{lrrrrrr}\toprule
+Event & $v_0$ (m/s) & $C_D$ & $\alpha$ & $n_x$ & $n_y$ & $n_z$\\\midrule
+J03WMX & 29.20 & 0.3623 & 2.2877 & 0.2280 & -0.9728 & 0.0413\\
+J03WR9 & 28.34 & 0.1208 & 2.2877 & 0.1439 & -0.2711 & -0.9517\\
+J03WOH & 32.05 & 0.3238 & 2.2877 & -0.2276 & 0.3170 & 0.9207\\
 \bottomrule\end{tabular}\end{table}}
 \newcommand{\ReferenceCD}{0.2415}
 \newcommand{\ReferenceCL}{1.5251}
@@ -24,6 +90,23 @@ Event & Frames & Fit times (s) & $\boldsymbol r_0$ (m)\\\midrule
 J03WMX & 15 & 0.00,0.04,0.08 & $(3.04,0.55,0.13)$\\
 J03WOH & 12 & 0.00,0.04,0.08 & $(0.77,0.08,0.24)$\\
 J03WR9 & 12 & 0.00,0.04,0.08 & $(2.57,0.85,0.34)$\\
+\bottomrule\end{tabular}\end{table}}
+\newcommand{\PenaltyObservationTable}{\begin{table}[H]\centering\small
+\caption{Selected early positions and observed goal crossings in local coordinates.}\label{tab:penalty-observations}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{llrrrr}\toprule
+Event & Source frame & $t$ (s) & $x$ (m) & $y$ (m) & $z$ (m)\\\midrule
+Placement 1 & 152602 & 0.00 & 3.040 & 0.550 & 0.130\\
+Placement 1 & 152603 & 0.04 & 4.190 & 0.820 & 0.150\\
+Placement 1 & 152604 & 0.08 & 5.250 & 1.070 & 0.180\\
+Placement 1 goal & 152610 & 0.3200 & 11.0000 & 2.7500 & 0.1600\\
+Placement 2 & 176245 & 0.00 & 2.570 & 0.850 & 0.340\\
+Placement 2 & 176246 & 0.04 & 3.640 & 1.200 & 0.410\\
+Placement 2 & 176247 & 0.08 & 4.710 & 1.530 & 0.470\\
+Placement 2 goal & 176253--176254 & 0.3295 & 11.0000 & 3.0697 & 0.4657\\
+Power shot & 128955 & 0.00 & 0.770 & 0.080 & 0.240\\
+Power shot & 128956 & 0.04 & 1.990 & 0.340 & 0.460\\
+Power shot & 128957 & 0.08 & 3.180 & 0.620 & 0.650\\
+Power shot goal & 128964--128965 & 0.3643 & 11.0000 & 2.9188 & 1.1789\\
 \bottomrule\end{tabular}\end{table}}
 \newcommand{\InverseBoundsTable}{\begin{table}[H]\centering\footnotesize
 \caption{Component bounds and force-correction settings for inversion.}\label{tab:inverse-bounds}
@@ -94,7 +177,7 @@ M4 & plane & 3.1189 & 0.6035 & $\begin{pmatrix}26.812\\8.977\\1.892\end{pmatrix}
 \newcommand{\WRDiscussion}{The measured path bends laterally, so fitted spin direction affects the continuation towards the goal. M4's crossing deviation is 0.1463 m.}
 \newcommand{\TorqueViscousRatio}{$3.54\times10^{-4}$}
 \newcommand{\TorqueDisplacement}{0.0616}
-\newcommand{\TorqueResults}{The damped crossing is $(0.7799,0.8772)$ m, compared with $(0.8415,0.8769)$ m at constant spin. The displacement is 0.0616 m (0.560\% of 11 m). Spin falls by 19.740\%, and crossing time changes by -0.066\%. Adding viscous torque shifts the damped crossing by 2.1e-05 m. The short-flight endpoint is less sensitive than spin magnitude to this reference torque.}
+\newcommand{\TorqueResults}{The damped crossing is $(0.7799,0.8772)$ m, compared with $(0.8415,0.8769)$ m at constant spin. The displacement is 0.0616 m (0.560\% of 11 m). Spin falls by 19.740\%, and crossing time changes by -0.066\%. Adding viscous torque shifts the damped crossing by 2.1e-05 m.}
 \newcommand{\WindResultsTable}{\begin{table}[H]\centering\footnotesize
 \caption{Illustrative wind at the 24 m/s curved-shot launch: dynamic-pressure changes at fixed coefficients.}\label{tab:wind}
 \setlength{\tabcolsep}{4pt}\begin{tabular}{rrrrr}\toprule

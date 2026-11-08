@@ -41,17 +41,17 @@
   },
   "profile": {
     "force_multiplier_bounds": [
-      0.8,
-      1.2
+      1.2,
+      1.8
     ],
     "nested_bounds": [
-      0.9,
-      1.1
+      1.35,
+      1.65
     ],
     "grid_per_axis": 17,
     "max_speed_m_s": 35,
-    "max_spin_rad_s": 200,
-    "coordinate_tolerance_m": 1e-07
+    "spin_component_max_rad_s": 60,
+    "coordinate_tolerance_m": 0.002
   },
   "monte_carlo": {
     "samples": 100000,
@@ -63,6 +63,7 @@
     "independent_samples": 10000,
     "dt_s": 0.002
   },
-  "baseline_result": "data/sensitivity_v2/representative_state.json",
-  "model": "constant-spin M4 three-force numerical baseline"
+  "baseline_result": "results/structure_linear_spin/problem/problem_b_M4.json",
+  "model": "M4: constant CD, linear CL=alpha*Sp, constant spin, still air",
+  "reference_spin_rad_s": 30
 }

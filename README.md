@@ -1,35 +1,33 @@
-# 足球三力模型：正向算例与三次真实点球
+# 足球飞行模型与真实点球对照
 
-主模型使用重力、阻力和 Magnus 升力，保持自旋恒定、无风、球形几何。四模型 M1–M4 分别使用重力、恒定阻力、恒定阻力与升力、完整 Kiratidis–Leinweber 系数。正向修正系数为 1，反演使用论文列明的有界分级选解。
+当前分支使用 M1 重力、M2 重力与恒定阻力、M3 恒合力，以及 M4 重力、阻力和线性马格努斯力。M4 在单次飞行内保持 CD 与 alpha 恒定，CL=alpha Sp，自旋方向保持不变。
 
-- 英文 PDF / LaTeX：`paper/main.pdf`、`paper/main.tex`。
-- 中文 PDF / LaTeX：中文版分支的 `_中文版/main.pdf`、`_中文版/main.tex`。
-- 当前数据与来源：`data/current_report/`；配置：`configs/current_report.json`。
-- 当前结果、候选、图表与核验：`results/current_report/`。
-- 两版共用 `paper/aerodynamics/`、`paper/assets/` 和当前结果图目录，图中文字为英文。
+- 英文论文：paper/main.tex、paper/main.pdf。
+- 中文论文：_中文版/main.tex、_中文版/main.pdf。
+- 实测原始数据及选帧：data/current_report/。
+- 模型与计算设置：configs/current_report.json、configs/sensitivity_v2.json。
+- 正向、反演及阻尼结果：results/current_report/。
+- 题目三点参考反演：results/structure_linear_spin/problem/。
+- 单参数和位置约束搜索：results/sensitivity_linear/。
+- 十万次联合扰动：results/monte_carlo_linear/。
 
-## 计算内容
+## 重新计算
 
-第四章使用三次真实点球 J03WMX、J03WOH、J03WR9 的 39 个原始帧，以选定的三个位置反演，后续位置用于评分。坐标转换为 x=X−41.5、y=Y、z=Z原值，球门 x=11 m。WMX 和 WR9 使用原第 3–5 帧，WOH 使用原第 2–4 帧；各例以所选起点为零时刻，拟合时刻均为 0、0.04、0.08 s。原始重复帧保留。案例按精准推射和大力抽射展开。第五章给出题目三点参考算例的灵敏性与联合扰动分析。
+需要 Python 3.10+、XeLaTeX、Times New Roman；中文另用 SimSun、SimHei、KaiTi。
 
-源数据署名 Deutsche Fußball Liga (DFL)，CC BY 4.0；引用 Bassek 等 (2025)，DOI 10.1038/s41597-025-04505-y，官方数据 DOI 10.6084/m9.figshare.28196177。逐帧来源及冻结版本见数据目录说明。
+    python -m pip install -e ".[report,test]"
+    ./scripts/reproduce_report.ps1 -Recompute
 
-## 复现
+上述命令重算 24 条给定初态轨迹、三例共 12 组反演、阻尼与风估算、题目三点参考状态、九参数扫描、位置约束网格及十万条蒙特卡洛轨迹，随后生成图表、两版数值表及 PDF 并核查。默认不加 -Recompute 时复用指纹相同的反演和已保存的灵敏性结果；-RefreshFiguresOnly 刷新图表及论文。
 
-需要 Python 3.10+、XeLaTeX、Times New Roman；中文另需 SimSun、SimHei、KaiTi。
+只更新第五章：
 
-```powershell
-python -m pip install -e '.[report,test]'
-./scripts/reproduce_report.ps1
-```
+    ./scripts/reproduce_sensitivity.ps1 -Recompute
 
-仅刷新图表和编译：`./scripts/reproduce_report.ps1 -RefreshFiguresOnly`。脚本支持 `-Python '解释器完整路径'`。反演按源码及输入指纹缓存；相关源码变化时自动重算。计算、制图、数值表生成分开执行。
+脚本支持 -Python 指定解释器。科学计算与绘图分开，随机种子、输入、候选状态、数值积分核查和原始样本随结果保存。
 
-逐步命令、指标和文件索引见 [复现说明](paper/README.md) 和 [计算记录](docs/报告结构与四模型重算.md)。核验命令 `python -m unittest discover -s tests -v`。探索过程见 [探索树](探索树.html)。
+## 数据与文章说明
 
-## 版本
+三次真实点球共有 39 个源帧。WMX、WR9 选原第 3--5 点，WOH 选第 2--4 点，拟合时刻均为 0、0.04、0.08 s。源 CSV 保留原字节和来源署名：Deutsche Fußball Liga (DFL)，CC BY 4.0；Bassek 等 (2025)，DOI 10.1038/s41597-025-04505-y。
 
-英文分支 `codex/report-english-20261108`，中文分支 `codex/report-chinese-20261108`。中文正文宋体、粗体黑体、斜体楷体；公式、数值和共享英文图表同步核验。旧的当前报告算例和重复编译资源已删除，旧稿通过 Git 历史回溯。`results/coupled_model/` 等独立历史研究保留，coupled 系列入口只服务对应历史材料。
-
-
-第五章固定球体质量与半径，保留题目三点参考算例的九参数分析。设置、冻结参考状态、结果及程序分别位于原有 configs、data、results、scripts 目录；两版通过共享图路径引用六组图件。缓存重建使用 `./scripts/reproduce_sensitivity.ps1`，完整重算加 `-Recompute`。详见 [灵敏性分析与复现](docs/灵敏性分析与复现.md)。
+论文质量固定为 0.43 kg，半径固定为 0.11 m。写作修改依据见 [文章表述修改依据](docs/文章表述修改依据.md)，资料核查及内部说明见 [check.md](check.md)。复现步骤见 [论文说明](paper/README.md)，模型和结果见 [复算记录](docs/linear_spin_recalculation.md)，探索过程见 [探索树](探索树.html)。

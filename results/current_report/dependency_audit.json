@@ -4,87 +4,43 @@
       "penalty_geometry_new.png": "paper/assets/penalty_geometry_new.png",
       "force_schematic.pdf": "paper/assets/force_schematic.pdf",
       "magnus_streamlines.pdf": "paper/assets/magnus_streamlines.pdf",
-      "ball_force_diagram_times_large.pdf": "paper/assets/ball_force_diagram_times_large.pdf",
+      "ball_force_diagram_times_xlarge.pdf": "paper/assets/ball_force_diagram_times_xlarge.pdf",
       "surface_comparison.png": "paper/assets/surface_comparison.png",
       "alam_ball_surfaces.png": "paper/assets/alam_ball_surfaces.png",
       "alam_drag_comparison.png": "paper/assets/alam_drag_comparison.png",
       "torque_comparison.pdf": "results/current_report/figures/torque_comparison.pdf",
-      "case_power.pdf": "results/current_report/figures/case_power.pdf",
-      "case_placement.pdf": "results/current_report/figures/case_placement.pdf",
-      "case_curved.pdf": "results/current_report/figures/case_curved.pdf",
-      "case_spin.pdf": "results/current_report/figures/case_spin.pdf",
-      "case_chip.pdf": "results/current_report/figures/case_chip.pdf",
-      "forward_dynamics.pdf": "results/current_report/figures/forward_dynamics.pdf",
       "penalty_spatial_overview.pdf": "results/current_report/figures/penalty_spatial_overview.pdf",
       "penalty_J03WOH.pdf": "results/current_report/figures/penalty_J03WOH.pdf",
-      "one_factor_position_response.pdf": "results/sensitivity_v2/figures/one_factor_position_response.pdf",
-      "one_factor_time_response.pdf": "results/sensitivity_v2/figures/one_factor_time_response.pdf",
-      "conditional_crossings.pdf": "results/sensitivity_v2/figures/conditional_crossings.pdf",
-      "monte_carlo_crossings.pdf": "results/sensitivity_v2/figures/monte_carlo_crossings.pdf",
-      "monte_carlo_parallel_coordinates.pdf": "results/sensitivity_v2/figures/monte_carlo_parallel_coordinates.pdf",
-      "monte_carlo_convergence.pdf": "results/sensitivity_v2/figures/monte_carlo_convergence.pdf"
+      "penalty_m4_dynamics.pdf": "results/current_report/figures/penalty_m4_dynamics.pdf",
+      "one_factor_position_response.pdf": "results/sensitivity_linear/figures/one_factor_position_response.pdf",
+      "one_factor_time_response.pdf": "results/sensitivity_linear/figures/one_factor_time_response.pdf",
+      "conditional_crossings.pdf": "results/sensitivity_linear/figures/conditional_crossings.pdf",
+      "monte_carlo_crossings.pdf": "results/sensitivity_linear/figures/monte_carlo_crossings.pdf",
+      "monte_carlo_parallel_coordinates.pdf": "results/sensitivity_linear/figures/monte_carlo_parallel_coordinates.pdf",
+      "monte_carlo_convergence.pdf": "results/sensitivity_linear/figures/monte_carlo_convergence.pdf"
     },
-    "all_dependencies_resolved": true,
-    "fit_sample_ordinals": {
-      "J03WMX": [
-        3,
-        4,
-        6
-      ],
-      "J03WOH": [
-        2,
-        3,
-        4
-      ],
-      "J03WR9": [
-        3,
-        4,
-        5
-      ]
-    }
+    "all_dependencies_resolved": true
   },
   "_中文版": {
     "graphics": {
       "penalty_geometry_new.png": "paper/assets/penalty_geometry_new.png",
       "force_schematic.pdf": "paper/assets/force_schematic.pdf",
       "magnus_streamlines.pdf": "paper/assets/magnus_streamlines.pdf",
-      "ball_force_diagram_times_large.pdf": "paper/assets/ball_force_diagram_times_large.pdf",
+      "ball_force_diagram_times_xlarge.pdf": "paper/assets/ball_force_diagram_times_xlarge.pdf",
       "surface_comparison.png": "paper/assets/surface_comparison.png",
       "alam_ball_surfaces.png": "paper/assets/alam_ball_surfaces.png",
       "alam_drag_comparison.png": "paper/assets/alam_drag_comparison.png",
       "torque_comparison.pdf": "results/current_report/figures/torque_comparison.pdf",
-      "case_power.pdf": "results/current_report/figures/case_power.pdf",
-      "case_placement.pdf": "results/current_report/figures/case_placement.pdf",
-      "case_curved.pdf": "results/current_report/figures/case_curved.pdf",
-      "case_spin.pdf": "results/current_report/figures/case_spin.pdf",
-      "case_chip.pdf": "results/current_report/figures/case_chip.pdf",
-      "forward_dynamics.pdf": "results/current_report/figures/forward_dynamics.pdf",
       "penalty_spatial_overview.pdf": "results/current_report/figures/penalty_spatial_overview.pdf",
       "penalty_J03WOH.pdf": "results/current_report/figures/penalty_J03WOH.pdf",
-      "one_factor_position_response.pdf": "results/sensitivity_v2/figures/one_factor_position_response.pdf",
-      "one_factor_time_response.pdf": "results/sensitivity_v2/figures/one_factor_time_response.pdf",
-      "conditional_crossings.pdf": "results/sensitivity_v2/figures/conditional_crossings.pdf",
-      "monte_carlo_crossings.pdf": "results/sensitivity_v2/figures/monte_carlo_crossings.pdf",
-      "monte_carlo_parallel_coordinates.pdf": "results/sensitivity_v2/figures/monte_carlo_parallel_coordinates.pdf",
-      "monte_carlo_convergence.pdf": "results/sensitivity_v2/figures/monte_carlo_convergence.pdf"
+      "penalty_m4_dynamics.pdf": "results/current_report/figures/penalty_m4_dynamics.pdf",
+      "one_factor_position_response.pdf": "results/sensitivity_linear/figures/one_factor_position_response.pdf",
+      "one_factor_time_response.pdf": "results/sensitivity_linear/figures/one_factor_time_response.pdf",
+      "conditional_crossings.pdf": "results/sensitivity_linear/figures/conditional_crossings.pdf",
+      "monte_carlo_crossings.pdf": "results/sensitivity_linear/figures/monte_carlo_crossings.pdf",
+      "monte_carlo_parallel_coordinates.pdf": "results/sensitivity_linear/figures/monte_carlo_parallel_coordinates.pdf",
+      "monte_carlo_convergence.pdf": "results/sensitivity_linear/figures/monte_carlo_convergence.pdf"
     },
-    "all_dependencies_resolved": true,
-    "fit_sample_ordinals": {
-      "J03WMX": [
-        3,
-        4,
-        6
-      ],
-      "J03WOH": [
-        2,
-        3,
-        4
-      ],
-      "J03WR9": [
-        3,
-        4,
-        5
-      ]
-    }
+    "all_dependencies_resolved": true
   }
 }

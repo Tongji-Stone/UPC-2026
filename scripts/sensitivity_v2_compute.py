@@ -1,6 +1,6 @@
 """Standalone sensitivity experiments for the paper's saved M4 representative.
 
-Uses the paper's equations, not the subsequently introduced inverse bounds.
+Uses constant CD and linear CL=alpha*Sp, with fixed ball mass and radius.
 Writes reproducible outputs to results/sensitivity_v2; does not change paper or model sources.
 """
 import csv
@@ -25,7 +25,7 @@ INPUT = json.loads((REPO / 'configs/sensitivity_v2.json').read_text(encoding='ut
 sys.path.insert(0, str(REPO / 'src'))
 from football.physics.model import PhysicsConfig, simulate, state_derivative
 
-SOURCE = REPO / 'results/structure_linear_spin/problem/problem_b_M4.json'
+SOURCE = REPO / INPUT['baseline_result']
 SAVED = json.loads(SOURCE.read_text(encoding='utf-8'))
 BASE = np.array(SAVED['record']['initial_state'])
 P0 = np.array(INPUT['positions_m'][0], dtype=float)
@@ -35,6 +35,7 @@ CFG.update(ad=SAVED['record']['drag_scale'], al=SAVED['record']['lift_scale'])
 V0 = np.linalg.norm(BASE[:3])
 W0 = np.linalg.norm(BASE[3:])
 SCALE = np.array([30., 30., 30., 120., 120., 120.])
+PROFILE = INPUT['profile']
 PROTECTED = ['_中文版/main.tex', '_中文版/main.pdf', 'paper/main.tex',
              'paper/main.pdf', '_中文版/report_results.tex', 'paper/report_results.tex',
              'src/football/physics/model.py', 'src/football/inference/four_model_fit.py',
@@ -84,8 +85,8 @@ def rhs_factory(spin, cfg):
 
 
 def observed(state, cfg=CFG, tight=False):
-    sol = solve_ivp(rhs_factory(state[3:], cfg), (0., .1), np.r_[P0, state[:3]],
-                    method='DOP853', t_eval=[.05, .1],
+    sol = solve_ivp(rhs_factory(state[3:], cfg), (INPUT['times_s'][0], INPUT['times_s'][-1]), np.r_[P0, state[:3]],
+                    method='DOP853', t_eval=INPUT['times_s'][1:],
                     rtol=2e-12 if tight else 1e-10,
                     atol=2e-14 if tight else 1e-12, max_step=.025)
     if not sol.success:
@@ -203,9 +204,13 @@ def interaction(baseline):
 
 
 def profile():
-    """Continuation in two force scales, six exact early coordinates as constraints."""
-    rows=[]; fits=[]; solutions={}; values=np.linspace(1.2,1.8,17)
-    order=sorted([(i,j) for i in range(17) for j in range(17)],key=lambda ij:abs(ij[0]-8)+abs(ij[1]-8))
+    """Continuation in two force scales, six early coordinates with a stated residual tolerance."""
+    rows=[]; fits=[]; solutions={}
+    grid=PROFILE['grid_per_axis']; middle=grid//2
+    values=np.linspace(*PROFILE['force_multiplier_bounds'],grid)
+    inner_low,inner_high=PROFILE['nested_bounds']
+    spin_limit=PROFILE['spin_component_max_rad_s']/SCALE[3]
+    order=sorted([(i,j) for i in range(grid) for j in range(grid)],key=lambda ij:abs(ij[0]-middle)+abs(ij[1]-middle))
     previous=BASE.copy()
     for count,(i,j) in enumerate(order):
         ad,al=float(values[i]),float(values[j]); cfg={**CFG,'ad':ad,'al':al}
@@ -214,18 +219,18 @@ def profile():
         def residual(q): return (observed(q*SCALE,cfg)-OBS).ravel()/.11
         candidates=[]
         seeds=[start]
-        if i in (0,8,16) and j in (0,8,16):
+        if i in (0,middle,grid-1) and j in (0,middle,grid-1):
             seeds += [BASE, np.r_[BASE[:3],-BASE[3:]], np.r_[BASE[:3],BASE[3:]*.55]]
         for seed_id,seed in enumerate(seeds):
-            opt=least_squares(residual, np.clip(seed/SCALE,[-0.,-1.4,-1.4,-.5,-.5,-.5],
-                         [1.4,1.4,1.4,.5,.5,.5]),
-                         bounds=([0.,-1.4,-1.4,-.5,-.5,-.5],[1.4,1.4,1.4,.5,.5,.5]),
+            opt=least_squares(residual, np.clip(seed/SCALE,[-0.,-1.4,-1.4,-spin_limit,-spin_limit,-spin_limit],
+                         [1.4,1.4,1.4,spin_limit,spin_limit,spin_limit]),
+                         bounds=([0.,-1.4,-1.4,-spin_limit,-spin_limit,-spin_limit],[1.4,1.4,1.4,spin_limit,spin_limit,spin_limit]),
                          ftol=2e-11,xtol=2e-11,gtol=2e-11,max_nfev=160)
             state=opt.x*SCALE
             err=float(np.max(abs(observed(state,cfg,tight=True)-OBS)))
             speed=float(np.linalg.norm(state[:3])); spin=float(np.linalg.norm(state[3:]))
             # Wide component limits only keep the search finite; accept a stated total-magnitude scenario.
-            accepted=bool(err<=.002 and speed<=35 and spin<=200)
+            accepted=bool(err<=PROFILE['coordinate_tolerance_m'] and speed<=PROFILE['max_speed_m_s'] and spin<=200)
             fits.append(dict(i=i,j=j,seed_id=seed_id,ad=ad,al=al,residual_m=err,
                              speed=speed,spin=spin,success=bool(opt.success),nfev=opt.nfev,
                              accepted=accepted,**{f's{k}':float(v) for k,v in enumerate(state)}))
@@ -237,9 +242,9 @@ def profile():
                 f=flight(state,cfg)
                 rows.append(dict(i=i,j=j,branch=branch,ad=ad,al=al,residual_m=err,
                                  speed=float(np.linalg.norm(state[:3])),spin=float(np.linalg.norm(state[3:])),
-                                 inner=bool(1.35-1e-9<=ad<=1.65+1e-9 and 1.35-1e-9<=al<=1.65+1e-9),
+                                 inner=bool(inner_low-1e-9<=ad<=inner_high+1e-9 and inner_low-1e-9<=al<=inner_high+1e-9),
                                  **{f's{k}':float(v) for k,v in enumerate(state)},**f))
-        if (count+1)%25==0: print(f'profile {count+1}/289; feasible nodes {len(solutions)}',flush=True)
+        if (count+1)%25==0: print(f'profile {count+1}/{grid*grid}; feasible nodes {len(solutions)}',flush=True)
     save_csv('profile.csv',rows);save_csv('profile_attempts.csv',fits)
     result={}
     for label,group in [('wide',rows),('inner',[r for r in rows if r['inner']])]:
@@ -316,7 +321,7 @@ def verification(profile_rows, scan_rows, derivatives, before):
            max_rhs_difference=max(rhs_errors),integrator_comparison=integration,
            finite_difference_refinement=finite,protected_before=before,protected_after=after,
            protected_unchanged=before==after,scan_events=dict(Counter(r['event'] for r in scan_rows)),
-           profile_all_early_residual_le_002=all(r['residual_m']<=.002 for r in profile_rows))
+           profile_all_within_tolerance=all(r['residual_m']<=PROFILE['coordinate_tolerance_m'] for r in profile_rows))
     assert v['baseline_vs_saved_m']<1e-7 and v['fast_vs_repository_m']<1e-7
     assert v['max_rhs_difference']<1e-10 and before==after
     assert all(r['position_difference_m']<1e-7 for r in integration)
@@ -329,11 +334,12 @@ if __name__=='__main__':
     before=hashes()
     BASELINE=flight(BASE,tight=True)
     save_json('baseline.json',dict(state=BASE.tolist(),config=CFG,position=P0.tolist(),
-        times=[.05,.1],observations=OBS.tolist(),event=BASELINE,
+        times=INPUT['times_s'][1:],observations=OBS.tolist(),event=BASELINE,
         source=str(SOURCE.relative_to(REPO)),source_sha256=hashlib.sha256(SOURCE.read_bytes()).hexdigest(),
         parameters=[dict(key=k,label=l,unit=u,comparison=d) for k,l,u,d in PARAMETERS],
-        choices=dict(profile_scales=[1.2,1.8],profile_grid=17,total_spin_max=200,total_speed_max=35,
-                     residual_tolerance_m=.002,position_coordinates_exact=False,random_sampling=False,
+        choices=dict(profile_scales=PROFILE['force_multiplier_bounds'],profile_grid=PROFILE['grid_per_axis'],
+                     spin_component_max=PROFILE['spin_component_max_rad_s'],total_speed_max=PROFILE['max_speed_m_s'],
+                     residual_tolerance_m=PROFILE['coordinate_tolerance_m'],position_coordinates_exact=False,random_sampling=False,
                      mass_radius_fixed=True)))
     print('baseline',BASELINE,flush=True)
     scan,ranks,derivatives=one_factor(BASELINE);print('one factor complete',flush=True)

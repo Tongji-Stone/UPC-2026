@@ -19,8 +19,8 @@ def main():
         check(lang+'_removed_examples',all(x not in s for x in ['ProblemResultsTable','MatchResultsTable','structure_v2','kick_cases']))
         check(lang+'_aggregate_table_removed',r'\InverseResultsTable' not in s)
         check(lang+'_overview_and_detail','penalty_spatial_overview.pdf' in s and 'penalty_J03WOH.pdf' in s)
-        check(lang+'_new_time_statement',('0, 0.04 and 0.08' if lang=='english' else '0、0.04、0.08') in s)
-        check(lang+'_wmx_three_frame_times',('0, 0.04 and 0.08' if lang=='english' else '0、0.04、0.08') in s)
+        check(lang+'_new_time_statement',(r'0,0.04,0.08' in s or '0, 0.04 and 0.08' in s or '0、0.04、0.08' in s))
+        check(lang+'_wmx_three_frame_times',(r'0,0.04,0.08' in s or '0, 0.04 and 0.08' in s or '0、0.04、0.08' in s))
         canvas=Image.new('RGB',(840,((len(d)+3)//4)*290),'#e5e0d8');draw=ImageDraw.Draw(canvas);fontnames=set()
         for i,p in enumerate(d):
             pix=p.get_pixmap(matrix=pymupdf.Matrix(.32,.32));im=Image.frombytes('RGB',(pix.width,pix.height),pix.samples)
