@@ -68,29 +68,11 @@ M4 以初速度、旋转方向、$C_D$、$\alpha$ 为变量，最小化两个后
 马格努斯力包含乘积 $\alpha\boldsymbol\omega$，仅由位置不能分别唯一确定 $\alpha$ 和自旋大小。为选择代表解，令 $\|\boldsymbol\omega\|=30$ rad/s；三个初速度、两个方向角和两个系数共有七项，而两个后续位置提供六个坐标，因此结果仍受边界与选解条件影响。
 
 \subsubsection{预测曲线、反演状态与球门交点}
-以下分别列出每次点球的三个实测拟合点、实测球门交点，以及四模型反演的初速度、自旋信息和预测交点。M1--M3 不反演自旋；M4 给出角速度参考向量。预测交点与实测交点的偏离距离定义为
-\begin{equation}
-d_g=\sqrt{(y_{\rm pred}-y_{\rm obs})^2+(z_{\rm pred}-z_{\rm obs})^2}\quad\mathrm{m}.
-\label{eq:goal-deviation}\end{equation}
-偏离距离在模型自身穿越球门平面时计算。提前触地的模型列出终止状态，交点及偏离距离留为“---”。图中空心圆表示拟合输入，方形标记触地，星号标明迭代上限候选；所有模型均在首次触地时截断。
+图~\ref{fig:penalty-overview} 将三次点球的空间轨迹放在一起比较。空心圆表示用于反演的三个位置，黑色实线及黑点表示实测轨迹，不同颜色和线型表示四种模型的预测；叉号表示实测或插值得到的球门交点。预测曲线从选定起点开始，并在首次触地时终止。
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_spatial_overview.pdf}
+\caption{三次真实点球的空间轨迹与模型预测。每次反演使用选定起点后 0、0.04、0.08 s 的三个位置。}\label{fig:penalty-overview}\end{figure}
 
-\par\needspace{10\baselineskip}\noindent\textbf{J03WMX}\par
-\WMXMeasuredTable
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WMX.pdf}
-\caption{J03WMX：从更正起点开始的预测轨迹与实测采样对照，拟合输入相对时刻为 0、0.04、0.08 s。}\label{fig:penalty-J03WMX}\end{figure}
-\WMXPredictedTable
-\WMXDiscussion
-
-\par\needspace{10\baselineskip}\noindent\textbf{J03WOH}\par
-\WOHMeasuredTable
+\paragraph{J03WOH：四图展开。} 为进一步观察预测误差的形成，图~\ref{fig:penalty-J03WOH} 对 J03WOH 同时给出空间轨迹及 $x$、$y$、$z$ 坐标随时间的变化。前三个位置用于拟合，其余采样点用于观察预测路径与实际飞行的差异。
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WOH.pdf}
-\caption{J03WOH：从更正起点开始的预测轨迹与实测采样对照，拟合输入相对时刻为 0、0.04、0.08 s。}\label{fig:penalty-J03WOH}\end{figure}
-\WOHPredictedTable
-\WOHDiscussion
-
-\par\needspace{10\baselineskip}\noindent\textbf{J03WR9}\par
-\WRMeasuredTable
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{penalty_J03WR9.pdf}
-\caption{J03WR9：从更正起点开始的预测轨迹与实测采样对照，拟合输入相对时刻为 0、0.04、0.08 s。}\label{fig:penalty-J03WR9}\end{figure}
-\WRPredictedTable
-\WRDiscussion
+\caption{J03WOH 的空间轨迹及三个坐标随时间的变化。空心圆为拟合输入，黑点为实测采样。}\label{fig:penalty-J03WOH}\end{figure}
+从 $x(t)$ 可以比较前进方向的减速过程；$y(t)$ 和 $z(t)$ 则分别展示横向偏转和竖直弯曲。对该次点球，M1、M2、M3、M4 的球门交点偏离距离依次为 0.684、0.657、0.374 和 0.113 m。M3 的匀加速度拟合可准确经过三个输入点；M4 在后续轨迹及球门交点上的偏离较小。各模型交点误差以各自穿越球门平面时的 $(y,z)$ 与实测交点计算。
